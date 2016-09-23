@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>56</x>
+      <y>280</y>
+      <w>96</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>酒店工作人员
+--
+账号
+个人信息</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>64</x>
+      <y>176</y>
+      <w>80</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>客户
+--
+账号
+个人信息</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>200</y>
+      <w>80</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>查找
+--
+订单号
+客户账号</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>272</x>
+      <y>344</y>
+      <w>104</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>订单
+--
+订单号
+入住房间号
+入住时间
+预计离开时间
+实际离开时间</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>144</x>
+      <y>232</y>
+      <w>152</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+发起</panel_attributes>
+    <additional_attributes>10.0;90.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>136</x>
+      <y>200</y>
+      <w>160</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=*
+参与</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>144</x>
+      <y>320</y>
+      <w>144</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+更新</panel_attributes>
+    <additional_attributes>10.0;10.0;160.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>352</x>
+      <y>216</y>
+      <w>80</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=*
+参与</panel_attributes>
+    <additional_attributes>30.0;220.0;60.0;220.0;60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>56</x>
+      <y>88</y>
+      <w>128</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>更新入住、退房信息</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

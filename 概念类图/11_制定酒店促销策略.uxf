@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>272</x>
+      <y>440</y>
+      <w>112</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>合作企业客户特惠
+--
+折扣
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>256</y>
+      <w>80</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>多间预订特惠
+--
+最少预订间数
+折扣</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>272</x>
+      <y>344</y>
+      <w>112</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>特定期间住宿特惠
+--
+开始时间
+结束时间
+折扣</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>304</y>
+      <w>80</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>酒店工作人员
+--
+账号
+个人信息</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>472</x>
+      <y>312</y>
+      <w>88</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>酒店促销策略</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>184</y>
+      <w>80</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>生日特惠
+--
+折扣</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>184</y>
+      <w>128</w>
+      <h>288</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>140.0;170.0;70.0;170.0;70.0;340.0;30.0;340.0;70.0;340.0;70.0;220.0;30.0;220.0;70.0;220.0;70.0;110.0;10.0;110.0;70.0;110.0;70.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>192</x>
+      <y>232</y>
+      <w>96</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*</panel_attributes>
+    <additional_attributes>100.0;160.0;10.0;160.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>192</x>
+      <y>264</y>
+      <w>112</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>192</x>
+      <y>184</y>
+      <w>112</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>192</x>
+      <y>288</y>
+      <w>96</w>
+      <h>192</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..*</panel_attributes>
+    <additional_attributes>100.0;210.0;10.0;210.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>112</x>
+      <y>304</y>
+      <w>104</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=
+制定</panel_attributes>
+    <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>104</y>
+      <w>120</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>制定酒店促销策略</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
