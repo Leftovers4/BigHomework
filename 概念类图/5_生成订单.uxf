@@ -47,11 +47,11 @@
     <id>UMLClass</id>
     <coordinates>
       <x>950</x>
-      <y>390</y>
+      <y>370</y>
       <w>100</w>
       <h>70</h>
     </coordinates>
-    <panel_attributes>订单记录
+    <panel_attributes>客户订单记录
 --
 时间
 订单类型</panel_attributes>
@@ -75,14 +75,39 @@ m2=1
     <id>Relation</id>
     <coordinates>
       <x>770</x>
-      <y>410</y>
+      <y>390</y>
       <w>200</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
-m1=1
-m2=0..n
+m1=0..*
+m2=1
 更新</panel_attributes>
     <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>940</x>
+      <y>450</y>
+      <w>110</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>酒店 
+--
+酒店订单记录
+酒店客房数量</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>450</y>
+      <w>190</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>1           更新              1</panel_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
   </element>
 </diagram>

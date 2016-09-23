@@ -5,18 +5,18 @@
     <id>UMLClass</id>
     <coordinates>
       <x>360</x>
-      <y>320</y>
+      <y>300</y>
       <w>120</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>UC1维护基本信息</panel_attributes>
+    <panel_attributes>维护基本信息</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>530</x>
-      <y>470</y>
+      <y>450</y>
       <w>200</w>
       <h>50</h>
     </coordinates>
@@ -30,23 +30,25 @@ m2=1
     <id>UMLClass</id>
     <coordinates>
       <x>710</x>
-      <y>430</y>
+      <y>410</y>
       <w>210</w>
-      <h>100</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>基本信息
 --
 姓名
 性别
 出生日期
-联系方式</panel_attributes>
+联系方式
+信用值
+信用值变更记录</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>440</x>
-      <y>460</y>
+      <y>440</y>
       <w>100</w>
       <h>60</h>
     </coordinates>
@@ -54,5 +56,18 @@ m2=1
 --
 账号</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>470</y>
+      <w>200</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+
+1                               1</panel_attributes>
+    <additional_attributes>10.0;20.0;180.0;20.0</additional_attributes>
   </element>
 </diagram>

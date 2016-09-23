@@ -9,7 +9,7 @@
       <w>150</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>UC3查看预订过的酒店</panel_attributes>
+    <panel_attributes>查看预订过的酒店</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -76,7 +76,7 @@ m2=1
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
-m2=1...n</panel_attributes>
+m2=1...*</panel_attributes>
     <additional_attributes>10.0;10.0;160.0;10.0</additional_attributes>
   </element>
 </diagram>

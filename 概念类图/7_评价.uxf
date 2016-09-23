@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>10</zoom_level>
+  <zoom_level>11</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>650</x>
-      <y>470</y>
-      <w>160</w>
-      <h>70</h>
+      <x>594</x>
+      <y>451</y>
+      <w>176</w>
+      <h>44</h>
     </coordinates>
-    <panel_attributes>酒店
---
-   	评价记录</panel_attributes>
+    <panel_attributes>酒店评价记录</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
-      <y>300</y>
-      <w>140</w>
-      <h>90</h>
+      <x>275</x>
+      <y>264</y>
+      <w>154</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>客户
 --
@@ -32,10 +30,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>650</x>
-      <y>300</y>
-      <w>170</w>
-      <h>90</h>
+      <x>594</x>
+      <y>264</y>
+      <w>187</w>
+      <h>99</h>
     </coordinates>
     <panel_attributes>订单
 --
@@ -46,10 +44,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>280</x>
-      <y>220</y>
-      <w>100</w>
-      <h>30</h>
+      <x>187</x>
+      <y>176</y>
+      <w>110</w>
+      <h>33</h>
     </coordinates>
     <panel_attributes>评价</panel_attributes>
     <additional_attributes/>
@@ -57,10 +55,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
-      <y>330</y>
-      <w>180</w>
-      <h>40</h>
+      <x>418</x>
+      <y>297</y>
+      <w>198</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>1           请求           1..*</panel_attributes>
     <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
@@ -68,10 +66,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
-      <y>380</y>
-      <w>60</w>
-      <h>110</h>
+      <x>693</x>
+      <y>352</y>
+      <w>66</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>1..*
 

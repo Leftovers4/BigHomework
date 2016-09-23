@@ -23,7 +23,7 @@
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>UC2浏览订单</panel_attributes>
+    <panel_attributes>浏览订单</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -32,12 +32,14 @@
       <x>820</x>
       <y>380</y>
       <w>160</w>
-      <h>70</h>
+      <h>100</h>
     </coordinates>
     <panel_attributes>订单
 --
 订单号
-订单类型</panel_attributes>
+订单类型
+订单日期
+酒店名称</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -75,7 +77,7 @@ m2=1
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
-m2=1...n</panel_attributes>
+m2=1...*</panel_attributes>
     <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
   </element>
 </diagram>

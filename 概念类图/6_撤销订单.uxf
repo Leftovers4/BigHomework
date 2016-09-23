@@ -11,7 +11,8 @@
     </coordinates>
     <panel_attributes>酒店
 --
-   	客房预定信息</panel_attributes>
+   	客房订单记录
+   	客房数量</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -26,8 +27,7 @@
 --
    	账号
    	个人信息
-   	信用值
-   	订单信息</panel_attributes>
+   	</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -70,14 +70,14 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
+      <x>540</x>
       <y>290</y>
-      <w>180</w>
+      <w>120</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>
-1           更新           1..*</panel_attributes>
-    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
+  更新   1..*</panel_attributes>
+    <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -93,5 +93,72 @@
 
 1</panel_attributes>
     <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>410</y>
+      <w>70</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>信用值</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>410</y>
+      <w>80</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>订单信息</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>330</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>450</x>
+      <y>330</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>300</y>
+      <w>210</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>
+1 </panel_attributes>
+    <additional_attributes>190.0;10.0;190.0;190.0;100.0;190.0;100.0;140.0;100.0;190.0;10.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>430</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
 </diagram>
