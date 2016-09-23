@@ -4,8 +4,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>490</x>
-      <y>190</y>
+      <x>750</x>
+      <y>310</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -16,8 +16,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>230</x>
-      <y>310</y>
+      <x>490</x>
+      <y>430</y>
       <w>20</w>
       <h>190</h>
     </coordinates>
@@ -28,8 +28,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>530</x>
-      <y>310</y>
+      <x>790</x>
+      <y>430</y>
       <w>20</w>
       <h>190</h>
     </coordinates>
@@ -39,8 +39,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>230</x>
-      <y>260</y>
+      <x>490</x>
+      <y>380</y>
       <w>30</w>
       <h>70</h>
     </coordinates>
@@ -50,8 +50,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>530</x>
-      <y>210</y>
+      <x>790</x>
+      <y>330</y>
       <w>30</w>
       <h>120</h>
     </coordinates>
@@ -61,8 +61,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>310</y>
+      <x>500</x>
+      <y>430</y>
       <w>310</w>
       <h>40</h>
     </coordinates>
@@ -73,8 +73,8 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>190</x>
-      <y>170</y>
+      <x>450</x>
+      <y>290</y>
       <w>100</w>
       <h>110</h>
     </coordinates>
@@ -84,43 +84,42 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>230</x>
-      <y>490</y>
+      <x>490</x>
+      <y>610</y>
       <w>30</w>
-      <h>80</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>100</x>
-      <y>100</y>
+      <x>360</x>
+      <y>220</y>
       <w>580</w>
-      <h>450</h>
+      <h>440</h>
     </coordinates>
-    <panel_attributes>sd 处理订单申述
-</panel_attributes>
+    <panel_attributes>sd 浏览订单执行情况</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>350</y>
+      <x>500</x>
+      <y>470</y>
       <w>310</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;..
+    <panel_attributes>lt=&lt;.
 提示选择浏览订单类型</panel_attributes>
     <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>390</y>
+      <x>500</x>
+      <y>510</y>
       <w>310</w>
       <h>40</h>
     </coordinates>
@@ -131,24 +130,24 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>430</y>
+      <x>500</x>
+      <y>550</y>
       <w>310</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;..
+    <panel_attributes>lt=&lt;.
 订单列表</panel_attributes>
     <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>530</x>
-      <y>490</y>
+      <x>790</x>
+      <y>610</y>
       <w>30</w>
-      <h>80</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
 </diagram>
