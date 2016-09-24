@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.2">
-  <zoom_level>10</zoom_level>
+  <zoom_level>16</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>100</x>
-      <y>250</y>
-      <w>120</w>
-      <h>70</h>
+      <x>352</x>
+      <y>464</y>
+      <w>192</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>halign=center
 网站营销人员
@@ -19,10 +19,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>210</x>
-      <y>260</y>
-      <w>140</w>
-      <h>50</h>
+      <x>528</x>
+      <y>480</y>
+      <w>224</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1   
@@ -34,10 +34,10 @@ m2=1..*
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>330</x>
-      <y>240</y>
-      <w>90</w>
-      <h>90</h>
+      <x>720</x>
+      <y>448</y>
+      <w>144</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>halign=center
 valign=center
@@ -45,9 +45,8 @@ valign=center
 订单申述
 --
 撤销时间
-客户
 订单号
-信用值
+
 
 
 </panel_attributes>
@@ -56,10 +55,10 @@ valign=center
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>530</x>
-      <y>170</y>
-      <w>120</w>
-      <h>80</h>
+      <x>1040</x>
+      <y>336</y>
+      <w>192</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>halign=center
 订单
@@ -74,10 +73,10 @@ valign=center
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>190</y>
-      <w>140</w>
-      <h>110</h>
+      <x>848</x>
+      <y>368</y>
+      <w>224</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
@@ -87,10 +86,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>530</x>
-      <y>340</y>
-      <w>120</w>
-      <h>50</h>
+      <x>1040</x>
+      <y>608</y>
+      <w>192</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>halign=center
 客户
@@ -103,10 +102,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>410</x>
-      <y>290</y>
-      <w>140</w>
-      <h>100</h>
+      <x>848</x>
+      <y>528</y>
+      <w>224</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
@@ -116,10 +115,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>30</y>
-      <w>100</w>
-      <h>30</h>
+      <x>192</x>
+      <y>112</y>
+      <w>160</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>处理订单申述</panel_attributes>
     <additional_attributes/>
