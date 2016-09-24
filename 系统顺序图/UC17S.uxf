@@ -4,8 +4,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>792</x>
-      <y>132</y>
+      <x>451</x>
+      <y>99</y>
       <w>110</w>
       <h>33</h>
     </coordinates>
@@ -16,8 +16,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>506</x>
-      <y>264</y>
+      <x>165</x>
+      <y>231</y>
       <w>22</w>
       <h>473</h>
     </coordinates>
@@ -28,8 +28,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>836</x>
-      <y>264</y>
+      <x>495</x>
+      <y>231</y>
       <w>22</w>
       <h>473</h>
     </coordinates>
@@ -40,8 +40,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>506</x>
-      <y>209</y>
+      <x>165</x>
+      <y>176</y>
       <w>33</w>
       <h>77</h>
     </coordinates>
@@ -51,8 +51,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>836</x>
-      <y>154</y>
+      <x>495</x>
+      <y>121</y>
       <w>33</w>
       <h>132</h>
     </coordinates>
@@ -62,8 +62,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>517</x>
-      <y>264</y>
+      <x>176</x>
+      <y>231</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -74,19 +74,20 @@
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>363</x>
-      <y>33</y>
-      <w>935</w>
+      <x>22</x>
+      <y>0</y>
+      <w>814</w>
       <h>737</h>
     </coordinates>
-    <panel_attributes>sd 处理订单申述</panel_attributes>
+    <panel_attributes>sd 处理订单申述
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>462</x>
-      <y>110</y>
+      <x>121</x>
+      <y>77</y>
       <w>110</w>
       <h>121</h>
     </coordinates>
@@ -96,8 +97,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>506</x>
-      <y>726</y>
+      <x>165</x>
+      <y>693</y>
       <w>33</w>
       <h>66</h>
     </coordinates>
@@ -107,20 +108,20 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>517</x>
-      <y>297</y>
+      <x>176</x>
+      <y>264</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.
+    <panel_attributes>lt=&lt;..
 提示输入异常订单信息</panel_attributes>
     <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>517</x>
-      <y>330</y>
+      <x>176</x>
+      <y>308</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -131,20 +132,20 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>517</x>
-      <y>374</y>
+      <x>176</x>
+      <y>341</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.
+    <panel_attributes>lt=&lt;..
 异常订单信息</panel_attributes>
     <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>517</x>
-      <y>418</y>
+      <x>176</x>
+      <y>385</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -155,21 +156,45 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>517</x>
-      <y>462</y>
+      <x>506</x>
+      <y>418</y>
+      <w>209</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+更新订单状态</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>176</x>
+      <y>451</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.
+    <panel_attributes>lt=&lt;..
+记录撤销时间</panel_attributes>
+    <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>176</x>
+      <y>484</y>
+      <w>341</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
 提示输入恢复的信用值</panel_attributes>
     <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>462</x>
-      <y>506</y>
-      <w>429</w>
+      <x>121</x>
+      <y>528</y>
+      <w>418</w>
       <h>110</h>
     </coordinates>
     <panel_attributes>alt
@@ -183,8 +208,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>517</x>
-      <y>517</y>
+      <x>176</x>
+      <y>539</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -195,8 +220,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>517</x>
-      <y>572</y>
+      <x>176</x>
+      <y>594</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -207,8 +232,20 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>836</x>
-      <y>726</y>
+      <x>506</x>
+      <y>649</y>
+      <w>209</w>
+      <h>44</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;..
+恢复信用值</panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>495</x>
+      <y>693</y>
       <w>33</w>
       <h>66</h>
     </coordinates>
@@ -216,59 +253,71 @@
     <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
-    <id>UMLGeneric</id>
+    <id>UMLActor</id>
     <coordinates>
-      <x>1023</x>
-      <y>132</y>
+      <x>649</x>
+      <y>77</y>
       <w>110</w>
-      <h>33</h>
+      <h>121</h>
     </coordinates>
-    <panel_attributes>客户</panel_attributes>
+    <panel_attributes>网络营销人员</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>693</x>
+      <y>176</y>
+      <w>33</w>
+      <h>253</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;210.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1067</x>
-      <y>264</y>
+      <x>693</x>
+      <y>407</y>
       <w>22</w>
-      <h>462</h>
+      <h>66</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1067</x>
-      <y>154</y>
+      <x>693</x>
+      <y>462</y>
       <w>33</w>
-      <h>132</h>
+      <h>198</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;160.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLGeneric</id>
     <coordinates>
-      <x>847</x>
+      <x>693</x>
       <y>638</y>
-      <w>242</w>
-      <h>44</h>
+      <w>22</w>
+      <h>66</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.
-更新信用值和订单信息</panel_attributes>
-    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
+    <panel_attributes>
+</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1067</x>
-      <y>715</y>
+      <x>693</x>
+      <y>693</y>
       <w>33</w>
-      <h>77</h>
+      <h>66</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
 </diagram>
