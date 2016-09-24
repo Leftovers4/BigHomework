@@ -12,6 +12,7 @@
     <panel_attributes>合作企业客户特惠
 --
 折扣
+halign=center
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -26,7 +27,8 @@
     <panel_attributes>多间预订特惠
 --
 最少预订间数
-折扣</panel_attributes>
+折扣
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -41,7 +43,8 @@
 --
 开始时间
 结束时间
-折扣</panel_attributes>
+折扣
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -55,7 +58,8 @@
     <panel_attributes>酒店工作人员
 --
 账号
-个人信息</panel_attributes>
+个人信息
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -79,7 +83,8 @@
     </coordinates>
     <panel_attributes>生日特惠
 --
-折扣</panel_attributes>
+折扣
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

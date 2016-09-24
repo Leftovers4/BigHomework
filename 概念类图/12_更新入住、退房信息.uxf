@@ -12,7 +12,8 @@
     <panel_attributes>酒店工作人员
 --
 账号
-个人信息</panel_attributes>
+个人信息
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -26,7 +27,8 @@
     <panel_attributes>客户
 --
 账号
-个人信息</panel_attributes>
+个人信息
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -40,7 +42,8 @@
     <panel_attributes>查找
 --
 订单号
-客户账号</panel_attributes>
+客户账号
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -57,7 +60,8 @@
 入住房间号
 入住时间
 预计离开时间
-实际离开时间</panel_attributes>
+实际离开时间
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -99,7 +103,7 @@ m2=*
     <panel_attributes>lt=-
 m1=1
 m2=*
-更新</panel_attributes>
+填写</panel_attributes>
     <additional_attributes>10.0;10.0;160.0;90.0</additional_attributes>
   </element>
   <element>
@@ -107,14 +111,24 @@ m2=*
     <coordinates>
       <x>352</x>
       <y>216</y>
-      <w>80</w>
+      <w>72</w>
       <h>200</h>
     </coordinates>
-    <panel_attributes>lt=-
-m1=0..1
-m2=*
-参与</panel_attributes>
-    <additional_attributes>30.0;220.0;60.0;220.0;60.0;10.0;10.0;10.0</additional_attributes>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=*
+m2=0..1</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;10.0;70.0;220.0;30.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>88</x>
+      <y>424</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>空房数</panel_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
@@ -126,5 +140,19 @@ m2=*
     </coordinates>
     <panel_attributes>更新入住、退房信息</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>104</x>
+      <y>336</y>
+      <w>48</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=*
+更新</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
   </element>
 </diagram>

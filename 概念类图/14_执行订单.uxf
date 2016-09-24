@@ -12,7 +12,8 @@
     <panel_attributes>酒店工作人员
 --
 账号
-个人信息</panel_attributes>
+个人信息
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -21,12 +22,14 @@
       <x>80</x>
       <y>184</y>
       <w>80</w>
-      <h>64</h>
+      <h>72</h>
     </coordinates>
     <panel_attributes>客户
 --
 账号
-个人信息</panel_attributes>
+个人信息
+信用值
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -40,7 +43,8 @@
     <panel_attributes>查找
 --
 订单号
-客户账号</panel_attributes>
+客户账号
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -54,7 +58,8 @@
     <panel_attributes>订单
 --
 订单号
-状态</panel_attributes>
+状态
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -104,14 +109,13 @@ m2=*
     <coordinates>
       <x>368</x>
       <y>224</y>
-      <w>80</w>
-      <h>184</h>
+      <w>64</w>
+      <h>192</h>
     </coordinates>
-    <panel_attributes>lt=-
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=0..1
-m2=*
-参与</panel_attributes>
-    <additional_attributes>30.0;200.0;60.0;200.0;60.0;10.0;10.0;10.0</additional_attributes>
+m2=*</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0;60.0;210.0;30.0;210.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -123,5 +127,19 @@ m2=*
     </coordinates>
     <panel_attributes>执行订单</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>40</x>
+      <y>208</y>
+      <w>280</w>
+      <h>248</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+系统提高</panel_attributes>
+    <additional_attributes>330.0;260.0;330.0;290.0;10.0;290.0;10.0;10.0;50.0;10.0</additional_attributes>
   </element>
 </diagram>

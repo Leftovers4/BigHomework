@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
-      <y>300</y>
+      <x>50</x>
+      <y>210</y>
       <w>120</w>
       <h>30</h>
     </coordinates>
@@ -15,8 +15,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>530</x>
-      <y>450</y>
+      <x>220</x>
+      <y>360</y>
       <w>200</w>
       <h>50</h>
     </coordinates>
@@ -29,8 +29,8 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>710</x>
-      <y>410</y>
+      <x>400</x>
+      <y>320</y>
       <w>210</w>
       <h>140</h>
     </coordinates>
@@ -41,27 +41,29 @@ m2=1
 出生日期
 联系方式
 信用值
-信用值变更记录</panel_attributes>
+信用值变更记录
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>440</x>
-      <y>440</y>
+      <x>130</x>
+      <y>350</y>
       <w>100</w>
       <h>60</h>
     </coordinates>
     <panel_attributes>客户
 --
-账号</panel_attributes>
+账号
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>530</x>
-      <y>470</y>
+      <x>220</x>
+      <y>380</y>
       <w>200</w>
       <h>50</h>
     </coordinates>

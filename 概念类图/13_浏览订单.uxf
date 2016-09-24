@@ -12,7 +12,8 @@
     <panel_attributes>酒店工作人员
 --
 账号
-个人信息</panel_attributes>
+个人信息
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -25,7 +26,8 @@
     </coordinates>
     <panel_attributes>订单
 --
-类型</panel_attributes>
+类型
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -38,7 +40,7 @@
     </coordinates>
     <panel_attributes>lt=-
 m1=1
-m2=*
+m2=1
 请求</panel_attributes>
     <additional_attributes>10.0;20.0;110.0;20.0</additional_attributes>
   </element>

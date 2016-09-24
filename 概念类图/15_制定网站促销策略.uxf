@@ -11,7 +11,8 @@
     </coordinates>
     <panel_attributes>会员等级折扣
 --
-等级及相应折扣</panel_attributes>
+等级及相应折扣
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -26,21 +27,22 @@
 --
 开始时间
 结束时间
-折扣</panel_attributes>
+折扣
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>40</x>
-      <y>240</y>
+      <y>248</y>
       <w>80</w>
-      <h>64</h>
+      <h>48</h>
     </coordinates>
     <panel_attributes>网站营销人员
 --
 账号
-个人信息</panel_attributes>
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -65,7 +67,8 @@
     <panel_attributes>VIP会员折扣
 --
 等级及相应折扣
-商圈及相应折扣</panel_attributes>
+商圈及相应折扣
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -88,7 +91,7 @@
       <h>168</h>
     </coordinates>
     <panel_attributes>lt=-
-m1=0..*</panel_attributes>
+m1=1</panel_attributes>
     <additional_attributes>90.0;180.0;10.0;180.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -100,7 +103,7 @@ m1=0..*</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=-
-m1=0..*</panel_attributes>
+m1=1</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -112,7 +115,7 @@ m1=0..*</panel_attributes>
       <h>72</h>
     </coordinates>
     <panel_attributes>lt=-
-m1=0..*</panel_attributes>
+m1=1</panel_attributes>
     <additional_attributes>90.0;10.0;10.0;10.0;10.0;70.0</additional_attributes>
   </element>
   <element>

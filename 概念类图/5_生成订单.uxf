@@ -4,33 +4,34 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>350</x>
-      <y>250</y>
+      <x>0</x>
+      <y>170</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes>UC5生成订单</panel_attributes>
+    <panel_attributes>生成订单</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>380</x>
-      <y>380</y>
+      <x>30</x>
+      <y>300</y>
       <w>80</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>客户
 --
 账号
-基本信息</panel_attributes>
+基本信息
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>590</x>
-      <y>370</y>
+      <x>240</x>
+      <y>290</y>
       <w>190</w>
       <h>110</h>
     </coordinates>
@@ -40,28 +41,30 @@
 订单最晚执行时间
 房间类型及数量
 预计入住人数
-有无儿童</panel_attributes>
+有无儿童
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>950</x>
-      <y>370</y>
+      <x>600</x>
+      <y>290</y>
       <w>100</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>客户订单记录
 --
 时间
-订单类型</panel_attributes>
+订单类型
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
-      <y>400</y>
+      <x>100</x>
+      <y>320</y>
       <w>160</w>
       <h>50</h>
     </coordinates>
@@ -74,8 +77,8 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
-      <y>390</y>
+      <x>420</x>
+      <y>310</y>
       <w>200</w>
       <h>50</h>
     </coordinates>
@@ -88,22 +91,23 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>940</x>
-      <y>450</y>
+      <x>590</x>
+      <y>370</y>
       <w>110</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>酒店 
 --
 酒店订单记录
-酒店客房数量</panel_attributes>
+酒店客房数量
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>770</x>
-      <y>450</y>
+      <x>420</x>
+      <y>370</y>
       <w>190</w>
       <h>40</h>
     </coordinates>

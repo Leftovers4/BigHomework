@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>320</x>
+      <x>0</x>
       <y>250</y>
       <w>150</w>
       <h>30</h>
@@ -15,7 +15,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>410</x>
+      <x>90</x>
       <y>410</y>
       <w>90</w>
       <h>70</h>
@@ -23,13 +23,14 @@
     <panel_attributes>客户
 --
 账号
-基本信息</panel_attributes>
+基本信息
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>650</x>
+      <x>330</x>
       <y>430</y>
       <w>100</w>
       <h>30</h>
@@ -40,7 +41,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>900</x>
+      <x>580</x>
       <y>410</y>
       <w>150</w>
       <h>80</h>
@@ -49,13 +50,14 @@
 --
 名称
 地址和商圈
-历史订单</panel_attributes>
+历史订单
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
+      <x>170</x>
       <y>430</y>
       <w>180</w>
       <h>50</h>
@@ -69,7 +71,7 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>740</x>
+      <x>420</x>
       <y>440</y>
       <w>180</w>
       <h>40</h>

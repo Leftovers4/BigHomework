@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>130</x>
+      <x>110</x>
       <y>180</y>
       <w>120</w>
       <h>70</h>
@@ -13,29 +13,28 @@
 网站管理人员
 --
 账号
-个人信息
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
+      <x>220</x>
       <y>190</y>
       <w>140</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1   
-m2=1..n
-添加
+m2=1..*
+增删改查
 </panel_attributes>
     <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
+      <x>340</x>
       <y>190</y>
       <w>90</w>
       <h>50</h>
@@ -53,7 +52,7 @@ valign=center
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>580</x>
+      <x>560</x>
       <y>190</y>
       <w>100</w>
       <h>40</h>
@@ -67,20 +66,20 @@ valign=center
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
+      <x>420</x>
       <y>200</y>
       <w>160</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
-m2=1..n</panel_attributes>
+m2=1..*</panel_attributes>
     <additional_attributes>140.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
+      <x>380</x>
       <y>230</y>
       <w>30</w>
       <h>140</h>
@@ -93,7 +92,7 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
+      <x>340</x>
       <y>350</y>
       <w>90</w>
       <h>60</h>
@@ -113,20 +112,20 @@ valign=center
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
+      <x>420</x>
       <y>370</y>
       <w>160</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
-m2=1..n</panel_attributes>
+m2=1..*</panel_attributes>
     <additional_attributes>140.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>580</x>
+      <x>560</x>
       <y>360</y>
       <w>120</w>
       <h>40</h>
@@ -140,7 +139,7 @@ m2=1..n</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
+      <x>0</x>
       <y>20</y>
       <w>100</w>
       <h>30</h>

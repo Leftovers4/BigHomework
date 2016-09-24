@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>594</x>
-      <y>451</y>
+      <x>407</x>
+      <y>429</y>
       <w>176</w>
       <h>44</h>
     </coordinates>
@@ -15,37 +15,39 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>275</x>
-      <y>264</y>
+      <x>88</x>
+      <y>242</y>
       <w>154</w>
       <h>99</h>
     </coordinates>
     <panel_attributes>客户
 --
-   	账号
-   	个人信息
+账号
+个人信息
+halign=center
    	</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>594</x>
-      <y>264</y>
+      <x>407</x>
+      <y>242</y>
       <w>187</w>
       <h>99</h>
     </coordinates>
     <panel_attributes>订单
 --
-   	执行状态
-   	评价内容（含评价时间）</panel_attributes>
+执行状态
+评价内容（含评价时间）
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>187</x>
-      <y>176</y>
+      <x>0</x>
+      <y>154</y>
       <w>110</w>
       <h>33</h>
     </coordinates>
@@ -55,8 +57,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>418</x>
-      <y>297</y>
+      <x>231</x>
+      <y>275</y>
       <w>198</w>
       <h>44</h>
     </coordinates>
@@ -66,8 +68,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>693</x>
-      <y>352</y>
+      <x>506</x>
+      <y>330</y>
       <w>66</w>
       <h>121</h>
     </coordinates>

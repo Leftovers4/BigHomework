@@ -4,24 +4,23 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>120</x>
-      <y>210</y>
+      <x>100</x>
+      <y>250</y>
       <w>120</w>
       <h>70</h>
     </coordinates>
     <panel_attributes>halign=center
-网络营销人员
+网站营销人员
 --
 账号
-个人信息
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>230</x>
-      <y>220</y>
+      <x>210</x>
+      <y>260</y>
       <w>140</w>
       <h>50</h>
     </coordinates>
@@ -35,8 +34,8 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>350</x>
-      <y>220</y>
+      <x>330</x>
+      <y>260</y>
       <w>90</w>
       <h>40</h>
     </coordinates>
@@ -51,8 +50,8 @@ valign=center
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
-      <y>210</y>
+      <x>530</x>
+      <y>250</y>
       <w>120</w>
       <h>60</h>
     </coordinates>
@@ -67,21 +66,21 @@ valign=center
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
-      <y>230</y>
+      <x>410</x>
+      <y>270</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1
-m2=1..n</panel_attributes>
+m2=1..*</panel_attributes>
     <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>20</x>
-      <y>20</y>
+      <x>0</x>
+      <y>60</y>
       <w>100</w>
       <h>30</h>
     </coordinates>

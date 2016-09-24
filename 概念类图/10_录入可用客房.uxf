@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>330</x>
-      <y>280</y>
+      <x>0</x>
+      <y>220</y>
       <w>120</w>
       <h>30</h>
     </coordinates>
@@ -15,22 +15,23 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>400</x>
-      <y>390</y>
+      <x>70</x>
+      <y>330</y>
       <w>110</w>
       <h>110</h>
     </coordinates>
     <panel_attributes>酒店工作人员
 --
 账号
+halign=center
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>500</x>
-      <y>430</y>
+      <x>170</x>
+      <y>370</y>
       <w>200</w>
       <h>40</h>
     </coordinates>
@@ -41,8 +42,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>680</x>
-      <y>390</y>
+      <x>350</x>
+      <y>330</y>
       <w>160</w>
       <h>110</h>
     </coordinates>
@@ -50,7 +51,8 @@
 --
 类型
 数量
-原始价格</panel_attributes>
+原始价格
+halign=center</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
