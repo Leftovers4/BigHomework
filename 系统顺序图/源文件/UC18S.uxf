@@ -5,7 +5,7 @@
     <id>UMLGeneric</id>
     <coordinates>
       <x>572</x>
-      <y>187</y>
+      <y>176</y>
       <w>110</w>
       <h>33</h>
     </coordinates>
@@ -17,7 +17,7 @@
     <id>UMLGeneric</id>
     <coordinates>
       <x>286</x>
-      <y>319</y>
+      <y>308</y>
       <w>22</w>
       <h>363</h>
     </coordinates>
@@ -29,7 +29,7 @@
     <id>UMLGeneric</id>
     <coordinates>
       <x>616</x>
-      <y>319</y>
+      <y>308</y>
       <w>22</w>
       <h>374</h>
     </coordinates>
@@ -41,7 +41,7 @@
     <id>Relation</id>
     <coordinates>
       <x>286</x>
-      <y>264</y>
+      <y>253</y>
       <w>33</w>
       <h>77</h>
     </coordinates>
@@ -52,7 +52,7 @@
     <id>Relation</id>
     <coordinates>
       <x>616</x>
-      <y>209</y>
+      <y>198</y>
       <w>33</w>
       <h>132</h>
     </coordinates>
@@ -63,7 +63,7 @@
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>319</y>
+      <y>308</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -75,7 +75,7 @@
     <id>UMLFrame</id>
     <coordinates>
       <x>143</x>
-      <y>88</y>
+      <y>77</y>
       <w>957</w>
       <h>660</h>
     </coordinates>
@@ -86,18 +86,18 @@
     <id>UMLActor</id>
     <coordinates>
       <x>242</x>
-      <y>165</y>
+      <y>154</y>
       <w>110</w>
       <h>121</h>
     </coordinates>
-    <panel_attributes>网络营销人员</panel_attributes>
+    <panel_attributes>网站营销人员</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>286</x>
-      <y>671</y>
+      <y>660</y>
       <w>33</w>
       <h>99</h>
     </coordinates>
@@ -108,7 +108,7 @@
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>352</y>
+      <y>341</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -120,7 +120,7 @@
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>385</y>
+      <y>374</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -132,7 +132,7 @@
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>484</y>
+      <y>473</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -144,7 +144,7 @@
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>517</y>
+      <y>506</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -156,7 +156,7 @@
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>616</y>
+      <y>605</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -168,7 +168,7 @@
     <id>Relation</id>
     <coordinates>
       <x>869</x>
-      <y>682</y>
+      <y>671</y>
       <w>33</w>
       <h>88</h>
     </coordinates>
@@ -179,7 +179,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>825</x>
-      <y>187</y>
+      <y>176</y>
       <w>110</w>
       <h>33</h>
     </coordinates>
@@ -190,7 +190,7 @@
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>451</y>
+      <y>440</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -202,7 +202,7 @@
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>418</y>
+      <y>407</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -214,7 +214,7 @@
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>550</y>
+      <y>539</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -226,7 +226,7 @@
     <id>Relation</id>
     <coordinates>
       <x>297</x>
-      <y>583</y>
+      <y>572</y>
       <w>341</w>
       <h>44</h>
     </coordinates>
@@ -238,7 +238,7 @@
     <id>Relation</id>
     <coordinates>
       <x>627</x>
-      <y>616</y>
+      <y>605</y>
       <w>264</w>
       <h>44</h>
     </coordinates>
@@ -250,7 +250,7 @@
     <id>UMLGeneric</id>
     <coordinates>
       <x>869</x>
-      <y>319</y>
+      <y>308</y>
       <w>22</w>
       <h>374</h>
     </coordinates>
@@ -261,7 +261,7 @@
     <id>Relation</id>
     <coordinates>
       <x>869</x>
-      <y>209</y>
+      <y>198</y>
       <w>33</w>
       <h>132</h>
     </coordinates>
@@ -272,7 +272,7 @@
     <id>Relation</id>
     <coordinates>
       <x>616</x>
-      <y>682</y>
+      <y>671</y>
       <w>33</w>
       <h>88</h>
     </coordinates>
