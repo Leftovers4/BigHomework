@@ -103,7 +103,7 @@ halign=center</panel_attributes>
     </coordinates>
     <panel_attributes>
 --
-creditui
+personnelui
 halign=center</panel_attributes>
     <additional_attributes/>
   </element>
@@ -198,7 +198,7 @@ halign=center</panel_attributes>
     </coordinates>
     <panel_attributes>
 --
-creditbl
+personnelbl
 halign=center</panel_attributes>
     <additional_attributes/>
   </element>
@@ -293,7 +293,7 @@ halign=center</panel_attributes>
     </coordinates>
     <panel_attributes>
 --
-creditdata
+personneldata
 halign=center</panel_attributes>
     <additional_attributes/>
   </element>
@@ -517,29 +517,5 @@ RMI
     <panel_attributes>lt=.&gt;
 </panel_attributes>
     <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>220</x>
-      <y>370</y>
-      <w>470</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>lt=.&gt;
-</panel_attributes>
-    <additional_attributes>10.0;50.0;10.0;20.0;450.0;20.0;450.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>290</x>
-      <y>450</y>
-      <w>390</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes>lt=.&gt;
-</panel_attributes>
-    <additional_attributes>10.0;60.0;10.0;70.0;370.0;70.0;370.0;10.0</additional_attributes>
   </element>
 </diagram>
