@@ -92,7 +92,7 @@ halign=center</panel_attributes>
     </coordinates>
     <panel_attributes>
 --
-personneldata
+creditdata
 halign=center</panel_attributes>
     <additional_attributes/>
   </element>
@@ -205,7 +205,7 @@ halign=center</panel_attributes>
     </coordinates>
     <panel_attributes>
 --
-personneldata
+creditdata
 Service
 halign=center</panel_attributes>
     <additional_attributes/>
