@@ -4,19 +4,19 @@
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>16</x>
-      <y>0</y>
-      <w>504</w>
-      <h>624</h>
+      <x>472</x>
+      <y>224</y>
+      <w>376</w>
+      <h>336</h>
     </coordinates>
-    <panel_attributes>执行订单</panel_attributes>
+    <panel_attributes>sd 浏览订单</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>104</x>
-      <y>120</y>
+      <x>560</x>
+      <y>352</y>
       <w>24</w>
       <h>48</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>104</x>
-      <y>584</y>
+      <x>560</x>
+      <y>520</y>
       <w>24</w>
       <h>56</h>
     </coordinates>
@@ -37,8 +37,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
-      <y>584</y>
+      <x>736</x>
+      <y>520</y>
       <w>24</w>
       <h>56</h>
     </coordinates>
@@ -48,33 +48,32 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>112</x>
-      <y>152</y>
+      <x>568</x>
+      <y>384</y>
       <w>184</w>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
-请求执行订单</panel_attributes>
+请求浏览订单</panel_attributes>
     <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>112</x>
-      <y>184</y>
+      <x>568</x>
+      <y>416</y>
       <w>184</w>
-      <h>40</h>
+      <h>32</h>
     </coordinates>
-    <panel_attributes>lt=&lt;..
-提示输入订单信息
-或客户名</panel_attributes>
+    <panel_attributes>lt=&lt;.
+提示选择订单类型</panel_attributes>
     <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>248</x>
-      <y>72</y>
+      <x>704</x>
+      <y>304</y>
       <w>80</w>
       <h>24</h>
     </coordinates>
@@ -84,8 +83,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
-      <y>88</y>
+      <x>736</x>
+      <y>320</y>
       <w>24</w>
       <h>80</h>
     </coordinates>
@@ -95,21 +94,21 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>72</x>
-      <y>48</y>
+      <x>528</x>
+      <y>280</y>
       <w>80</w>
       <h>88</h>
     </coordinates>
-    <panel_attributes>_酒店工作人员_</panel_attributes>
+    <panel_attributes>酒店工作人员</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>104</x>
-      <y>152</y>
+      <x>560</x>
+      <y>384</y>
       <w>16</w>
-      <h>440</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -117,10 +116,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>280</x>
-      <y>152</y>
+      <x>736</x>
+      <y>384</y>
       <w>16</w>
-      <h>440</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -128,191 +127,26 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>112</x>
-      <y>240</y>
+      <x>568</x>
+      <y>464</y>
       <w>184</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=-&gt;&gt;&gt;
-输入订单号或客户名
+选择订单类型
 </panel_attributes>
     <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>112</x>
-      <y>416</y>
+      <x>568</x>
+      <y>496</y>
       <w>184</w>
       <h>32</h>
     </coordinates>
-    <panel_attributes>lt=&lt;..
-显示相应订单信息</panel_attributes>
-    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>112</x>
-      <y>456</y>
-      <w>184</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;&gt;&gt;
-将订单置为已执行状态</panel_attributes>
-    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>112</x>
-      <y>488</y>
-      <w>184</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;..
-询问是否确认该操作</panel_attributes>
-    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>112</x>
-      <y>528</y>
-      <w>184</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;&gt;&gt;
-确认
-</panel_attributes>
-    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>112</x>
-      <y>560</y>
-      <w>184</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;..
-显示订单状态为已执行</panel_attributes>
-    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>72</x>
-      <y>224</y>
-      <w>248</w>
-      <h>176</h>
-    </coordinates>
-    <panel_attributes>alt</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>112</x>
-      <y>288</y>
-      <w>184</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;&gt;&gt;
-请求浏览订单
-</panel_attributes>
-    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>64</x>
-      <y>272</y>
-      <w>272</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;320.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLActor</id>
-    <coordinates>
-      <x>400</x>
-      <y>48</y>
-      <w>48</w>
-      <h>88</h>
-    </coordinates>
-    <panel_attributes>_客户_</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>416</x>
-      <y>120</y>
-      <w>24</w>
-      <h>456</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;550.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>416</x>
-      <y>560</y>
-      <w>16</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>416</x>
-      <y>584</y>
-      <w>24</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>288</x>
-      <y>560</y>
-      <w>144</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;..
-提高信用</panel_attributes>
-    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>112</x>
-      <y>360</y>
-      <w>184</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;&gt;&gt;
-选择订单
-</panel_attributes>
-    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>112</x>
-      <y>320</y>
-      <w>184</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;..
-显示订单列表</panel_attributes>
+    <panel_attributes>lt=&lt;.
+显示相应的订单列表</panel_attributes>
     <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
   </element>
 </diagram>
