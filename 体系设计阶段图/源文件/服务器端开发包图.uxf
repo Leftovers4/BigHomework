@@ -6,7 +6,7 @@
     <coordinates>
       <x>84</x>
       <y>476</y>
-      <w>483</w>
+      <w>406</w>
       <h>238</h>
     </coordinates>
     <panel_attributes>data</panel_attributes>
@@ -85,20 +85,6 @@ halign=center</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>483</x>
-      <y>511</y>
-      <w>70</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>
---
-creditdata
-halign=center</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLPackage</id>
-    <coordinates>
       <x>287</x>
       <y>196</y>
       <w>70</w>
@@ -114,7 +100,7 @@ JavaRMI</panel_attributes>
     <coordinates>
       <x>84</x>
       <y>280</y>
-      <w>483</w>
+      <w>406</w>
       <h>133</h>
     </coordinates>
     <panel_attributes>dataService</panel_attributes>
@@ -196,21 +182,6 @@ halign=center</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>483</x>
-      <y>315</y>
-      <w>70</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>
---
-creditdata
-Service
-halign=center</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>315</x>
@@ -283,18 +254,6 @@ halign=center</panel_attributes>
     <additional_attributes>10.0;250.0;10.0;10.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>511</x>
-      <y>350</y>
-      <w>21</w>
-      <h>189</h>
-    </coordinates>
-    <panel_attributes>lt=.&gt;
-</panel_attributes>
-    <additional_attributes>10.0;250.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLPackage</id>
     <coordinates>
       <x>273</x>
@@ -323,13 +282,13 @@ databaseUtility</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>308</x>
-      <y>546</y>
-      <w>224</w>
-      <h>147</h>
+      <y>581</y>
+      <w>147</w>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>300.0;10.0;300.0;140.0;10.0;140.0;10.0;190.0</additional_attributes>
+    <additional_attributes>190.0;10.0;190.0;90.0;10.0;90.0;10.0;140.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -341,17 +300,6 @@ databaseUtility</panel_attributes>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>434</x>
-      <y>581</y>
-      <w>21</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -378,7 +326,7 @@ databaseUtility</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>658</x>
+      <x>574</x>
       <y>427</y>
       <w>49</w>
       <h>42</h>
@@ -392,33 +340,33 @@ halign=center</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
+      <x>483</x>
       <y>448</y>
-      <w>112</w>
+      <w>105</w>
       <h>154</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;200.0;140.0;10.0</additional_attributes>
+    <additional_attributes>10.0;200.0;130.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
+      <x>483</x>
       <y>357</y>
-      <w>112</w>
+      <w>105</w>
       <h>112</h>
     </coordinates>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
-    <additional_attributes>10.0;10.0;140.0;140.0</additional_attributes>
+    <additional_attributes>10.0;10.0;130.0;140.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
       <x>35</x>
       <y>161</y>
-      <w>693</w>
+      <w>623</w>
       <h>595</h>
     </coordinates>
     <panel_attributes>pkg</panel_attributes>

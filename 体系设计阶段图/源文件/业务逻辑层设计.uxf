@@ -6,7 +6,7 @@
     <coordinates>
       <x>310</x>
       <y>350</y>
-      <w>790</w>
+      <w>700</w>
       <h>270</h>
     </coordinates>
     <panel_attributes>businessLogic</panel_attributes>
@@ -79,20 +79,6 @@ halign=left</panel_attributes>
     <panel_attributes>
 --
 hotelbl
-halign=left</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLPackage</id>
-    <coordinates>
-      <x>990</x>
-      <y>430</y>
-      <w>80</w>
-      <h>60</h>
-    </coordinates>
-    <panel_attributes>
---
-personelbl
 halign=left</panel_attributes>
     <additional_attributes/>
   </element>
