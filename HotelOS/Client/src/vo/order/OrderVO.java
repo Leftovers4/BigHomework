@@ -1,5 +1,6 @@
 package vo.order;
 
+import util.OrderType;
 import vo.hotel.RoomVO;
 
 import java.util.ArrayList;
@@ -13,74 +14,74 @@ public class OrderVO {
     /**
      * 订单ID
      */
-    private long orderID;
+    public String orderID;
 
 
     /**
      * 酒店ID
      */
-    private long hotelID;
+    public long hotelID;
 
     /**
      * 用户名
      */
-    private String username;
+    public String username;
 
     /**
      * 订单类型
      */
-    private OrderType orderType;
+    public OrderType orderType;
 
 
     /**
      * 酒店名称
      */
-    private String hotelName;
+    public String hotelName;
 
 
     /**
      * 房间类型及数量
      */
-    private ArrayList<RoomVO> rooms;
+    public ArrayList<RoomVO> rooms;
 
     /**
      * 人数
      */
-    private int personAmount;
+    public int personAmount;
 
     /**
      * 有无儿童
      */
-    private boolean withChildren;
+    public boolean withChildren;
 
     /**
      * 评价
      */
-    private EvaluationVO evaluationVO;
+    public EvaluationVO evaluationVO;
 
     /**
      * 时间
      */
 
     // 生成订单时间
-    private Date generateTime;
+    public Date generateTime;
     // 预计离开时间
-    private Date expectedLeaveTime;
+    public Date expectedLeaveTime;
     // 最晚执行时间
-    private Date lastExecuteTime;
+    public Date lastExecuteTime;
     // 执行订单时间
-    private Date executeTime;
+    public Date executeTime;
     // 撤销订单时间
-    private Date cancelTime;
+    public Date cancelTime;
 
     /**
      * 价格
      */
 
     // 原始价格
-    private double originPrice;
+    public double originPrice;
     // 折后价格
-    private double actualPrice;
+    public double actualPrice;
 
 
     public OrderVO(){}
@@ -88,7 +89,7 @@ public class OrderVO {
     /**
      * 用于生成订单
      */
-    public OrderVO(long orderID, long hotelID, String username, String hotelName, ArrayList<RoomVO> rooms, int personAmount, boolean withChildren, Date generateTime, Date expectedLeaveTime, Date lastExecuteTime, double originPrice, double actualPrice) {
+    public OrderVO(String orderID, long hotelID, String username, String hotelName, ArrayList<RoomVO> rooms, int personAmount, boolean withChildren, Date generateTime, Date expectedLeaveTime, Date lastExecuteTime, double originPrice, double actualPrice) {
         super();
         this.orderID = orderID;
         this.hotelID = hotelID;

@@ -33,17 +33,19 @@ public class UserBLService_Stub implements UserBLService {
 
     @Override
     public UserVO find(String username) {
-        return null;
+        return new UserVO("张三", "123456");
     }
 
     @Override
     public ArrayList<UserVO> showListByType(UserType userType) {
-        return null;
+        ArrayList<UserVO> list = new ArrayList<>();
+        list.add(new UserVO("张三", "123456"));
+        return list;
     }
 
     @Override
     public UserVO getInfo(String username) {
-        return null;
+        return new UserVO("张三", "123456");
     }
 
     @Override
@@ -53,12 +55,14 @@ public class UserBLService_Stub implements UserBLService {
 
     @Override
     public ArrayList<UserVO> showList() {
-        return null;
+        ArrayList<UserVO> list = new ArrayList<>();
+        list.add(new UserVO("张三", "123456"));
+        return list;
     }
 
     @Override
     public MemberType getMemberType(String username) {
-        return null;
+        return MemberType.NORMAL_MEMBER;
     }
 
     @Override

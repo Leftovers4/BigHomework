@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public interface OrderBLService {
 
     // 根据订单ID查找订单
-    public OrderVO find(long orderID);
+    public OrderVO find(String orderID);
 
     // 添加订单
     public ResultMessage add(OrderVO orderVO);

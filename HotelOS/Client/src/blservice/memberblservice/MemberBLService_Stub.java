@@ -1,5 +1,6 @@
 package blservice.memberblservice;
 
+import util.MemberType;
 import util.ResultMessage;
 import vo.member.MemberVO;
 
@@ -19,6 +20,6 @@ public class MemberBLService_Stub implements MemberBLService {
 
     @Override
     public MemberVO showInfo(String username) {
-        return null;
+        return new MemberVO("张三", MemberType.NORMAL_MEMBER, 1, null, null);
     }
 }

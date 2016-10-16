@@ -12,17 +12,21 @@ import java.util.ArrayList;
 public class PromotionBLService_Stub implements PromotionBLService {
     @Override
     public PromotionVO find(long promotionID) {
-        return null;
+        return new PromotionVO(PromotionType.HOTEL_PROMOTION, null, null, 9);
     }
 
     @Override
     public ArrayList<PromotionVO> getHotelPromList(long hotelID) {
-        return null;
+        ArrayList<PromotionVO> list = new ArrayList<>();
+        list.add(new PromotionVO(PromotionType.HOTEL_PROMOTION, null, null, 9));
+        return list;
     }
 
     @Override
     public ArrayList<PromotionVO> getWebPromList(PromotionType type) {
-        return null;
+        ArrayList<PromotionVO> list = new ArrayList<>();
+        list.add(new PromotionVO(PromotionType.WEB_PROMOTION, null, null, 9));
+        return list;
     }
 
     @Override

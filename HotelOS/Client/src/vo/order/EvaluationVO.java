@@ -11,22 +11,22 @@ public class EvaluationVO {
     /**
      * 用户名
      */
-    private String username;
+    public String username;
 
     /**
      * 酒店ID
      */
-    private long hotelID;
+    public long hotelID;
 
     /**
      * 评价时间
      */
-    private Date evaluateTime;
+    public Date evaluateTime;
 
     /**
      * 评价内容
      */
-    private String evaluation;
+    public String evaluation;
 
 
     public EvaluationVO(){}

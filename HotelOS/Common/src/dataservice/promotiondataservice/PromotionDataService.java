@@ -1,9 +1,11 @@
 package dataservice.promotiondataservice;
 
 import dataservice.DataServiceParent;
+import po.promotion.PromotionPO;
 import util.PromotionType;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  * Created by Hiki on 2016/10/16.

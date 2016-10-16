@@ -1,5 +1,7 @@
 package vo.hotel;
 
+import util.Address;
+import util.TradingArea;
 import vo.order.EvaluationVO;
 
 import java.util.ArrayList;
@@ -12,42 +14,42 @@ public class HotelVO {
     /**
      * ID
      */
-    private long HotelID;
+    public long HotelID;
 
     /**
      * 名称
      */
-    private String hotelName;
+    public String hotelName;
 
     /**
      * 地址
      */
-    private Address address;
+    public Address address;
 
     /**
      * 商圈
      */
-    private TradingArea tradingArea;
+    public TradingArea tradingArea;
 
     /**
      * 简介
      */
-    private String description;
+    public String description;
 
     /**
      * 设施服务
      */
-    private String service;
+    public String service;
 
     /**
      * 客房数量
      */
-    private ArrayList<RoomVO> rooms;
+    public ArrayList<RoomVO> rooms;
 
     /**
      * 历史评价
      */
-    private ArrayList<EvaluationVO> evaluations;
+    public ArrayList<EvaluationVO> evaluations;
 
 
     public HotelVO(){}
@@ -58,7 +60,7 @@ public class HotelVO {
      *
      *
      **/
-    public HotelPO(String hotelName, Address address, TradingArea tradingArea, String description,
+    public HotelVO(String hotelName, Address address, TradingArea tradingArea, String description,
                    String service, ArrayList<RoomVO> rooms) {
         super();
         this.hotelName = hotelName;
@@ -69,6 +71,7 @@ public class HotelVO {
         this.rooms = rooms;
 
     }
+
 
 
 }

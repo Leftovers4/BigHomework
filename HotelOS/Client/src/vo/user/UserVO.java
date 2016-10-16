@@ -1,5 +1,7 @@
 package vo.user;
 
+import util.MemberType;
+
 /**
  * Created by Hiki on 2016/10/16.
  */
@@ -8,37 +10,37 @@ public class UserVO {
     /**
      * 用户名
      */
-    private String username;
+    public String username;
 
     /**
      * 密码
      */
-    private String password;
+    public String password;
 
     /**
      * 姓名
      */
-    private String name;
+    public String name;
 
     /**
      * 性别
      */
-    private boolean gender;
+    public boolean gender;
 
     /**
      * 联系方式（电话号码）
      */
-    private String phone;
+    public String phone;
 
     /**
      * 会员类型
      */
-    private MemberType memberType;
+    public MemberType memberType;
 
     /**
      * 信用（包括信用值，信用记录）
      */
-    private CreditVO creditPO;
+    public CreditVO creditPO;
 
     public UserVO(){}
 

@@ -1,5 +1,7 @@
 package vo.hotel;
 
+import util.RoomType;
+
 /**
  * Created by Hiki on 2016/10/16.
  */
@@ -8,17 +10,17 @@ public class RoomVO {
     /**
      * 房间类型
      */
-    private RoomType roomType;
+    public RoomType roomType;
 
     /**
      * 数量
      */
-    private int amount;
+    public int amount;
 
     /**
      * 价格
      */
-    private double price;
+    public double price;
 
 
     public RoomVO(){}

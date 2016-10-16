@@ -10,17 +10,17 @@ public class CreditVO {
     /**
      * 用户名
      */
-    private String username;
+    public String username;
 
     /**
      * 信用值
      */
-    private double credit;
+    public double credit;
 
     /**
      * 信用记录（增加/扣除）
      */
-    private ArrayList<Double> creditRecord;
+    public ArrayList<Double> creditRecord;
 
 
     public CreditVO(){}

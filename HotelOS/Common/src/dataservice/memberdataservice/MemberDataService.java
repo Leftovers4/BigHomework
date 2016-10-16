@@ -1,6 +1,7 @@
 package dataservice.memberdataservice;
 
 import dataservice.DataServiceParent;
+import po.member.MemberPO;
 
 import java.rmi.RemoteException;
 

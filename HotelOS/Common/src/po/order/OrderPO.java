@@ -20,7 +20,7 @@ public class OrderPO implements Serializable {
     /**
      * 订单ID
      */
-    private long orderID;
+    private String orderID;
 
 
     /**
@@ -95,7 +95,7 @@ public class OrderPO implements Serializable {
     /**
      * 用于生成订单
      */
-    public OrderPO(long orderID, long hotelID, String username, String hotelName, ArrayList<RoomPO> rooms, int personAmount, boolean withChildren, Date generateTime, Date expectedLeaveTime, Date lastExecuteTime, double originPrice, double actualPrice) {
+    public OrderPO(String orderID, long hotelID, String username, String hotelName, ArrayList<RoomPO> rooms, int personAmount, boolean withChildren, Date generateTime, Date expectedLeaveTime, Date lastExecuteTime, double originPrice, double actualPrice) {
         super();
         this.orderID = orderID;
         this.hotelID = hotelID;
@@ -111,11 +111,11 @@ public class OrderPO implements Serializable {
         this.actualPrice = actualPrice;
     }
 
-    public long getOrderID() {
+    public String getOrderID() {
         return orderID;
     }
 
-    public void setOrderID(long orderID) {
+    public void setOrderID(String orderID) {
         this.orderID = orderID;
     }
 

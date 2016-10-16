@@ -10,8 +10,8 @@ import java.util.ArrayList;
  */
 public class OrderBLService_Stub implements OrderBLService {
     @Override
-    public OrderVO find(long orderID) {
-        return null;
+    public OrderVO find(String orderID) {
+        return new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null, null, 100, 98);
     }
 
     @Override
@@ -36,6 +36,8 @@ public class OrderBLService_Stub implements OrderBLService {
 
     @Override
     public ArrayList<OrderVO> showList(OrderVO orderVO) {
-        return null;
+        ArrayList<OrderVO> list = new ArrayList<>();
+        list.add(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null, null, 100, 98));
+        return list;
     }
 }

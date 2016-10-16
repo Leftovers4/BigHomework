@@ -1,5 +1,7 @@
 package vo.member;
 
+import util.MemberType;
+
 import java.util.Date;
 
 /**
@@ -10,27 +12,27 @@ public class MemberVO {
     /**
      * 用户名
      */
-    private String username;
+    public String username;
 
     /**
      * 会员类型
      */
-    private MemberType memberType;
+    public MemberType memberType;
 
     /**
      * 等级
      */
-    private int level;
+    public int level;
 
     /**
      * 生日
      */
-    private Date birthday;
+    public Date birthday;
 
     /**
      * 企业名称
      */
-    private String enterprise;
+    public String enterprise;
 
     public MemberVO() {}
 
