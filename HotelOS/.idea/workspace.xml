@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8286c05f-68a1-416b-a736-65bbf1f25462" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Common/src/po/hotel/RoomPO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Common/src/po/order/EvaluationPO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Common/src/po/user/CreditPO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Common/src/util/Address.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Common/src/util/OrderType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Common/src/util/RoomType.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Common/src/util/TradingArea.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../Documents/体系结构设计文档.docx" afterPath="$PROJECT_DIR$/../Documents/体系结构设计文档.docx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/Client/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/blservice/hotelblservice/HotelBLService.java" afterPath="$PROJECT_DIR$/Client/src/blservice/hotelblservice/HotelBLService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/blservice/hotelblservice/HotelBLService_Stub.java" afterPath="$PROJECT_DIR$/Client/src/blservice/hotelblservice/HotelBLService_Stub.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Common/src/po/hotel/HotelPO.java" afterPath="$PROJECT_DIR$/Common/src/po/hotel/HotelPO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Common/src/po/member/MemberPO.java" afterPath="$PROJECT_DIR$/Common/src/po/member/MemberPO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Common/src/po/order/OrderPO.java" afterPath="$PROJECT_DIR$/Common/src/po/order/OrderPO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Common/src/po/promotion/PromotionPO.java" afterPath="$PROJECT_DIR$/Common/src/po/promotion/PromotionPO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Common/src/po/user/UserPO.java" afterPath="$PROJECT_DIR$/Common/src/po/user/UserPO.java" />
-    </list>
+    <list default="true" id="8286c05f-68a1-416b-a736-65bbf1f25462" name="Default" comment="" />
     <ignored path="HotelOS01.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -1121,15 +1102,15 @@
       <workItem from="1476587707693" duration="1373000" />
       <workItem from="1476589218470" duration="227000" />
       <workItem from="1476598181912" duration="2711000" />
-      <workItem from="1476603748553" duration="2136000" />
+      <workItem from="1476603748553" duration="2186000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6447000" />
+    <option name="totallyTimeSpent" value="6497000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="444" y="93" width="1339" height="1038" extended-state="0" />
+    <frame x="444" y="93" width="1339" height="1038" extended-state="1" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
