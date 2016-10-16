@@ -1,8 +1,8 @@
 package blservice.hotelblservice;
-
+import util.*;
 import vo.hotel.HotelVO;
 
-import java.util.ArrayLis
+import java.util.ArrayList;
 
 /**
  * Created by Hiki on 2016/10/15.
@@ -10,7 +10,7 @@ import java.util.ArrayLis
 public interface HotelBLService {
 
     // 根据酒店ID查找用户
-    public HotelVO (long hotelID);
+    public HotelVO find(long hotelID);
 
     // 根据条件显示酒店列表
     public ArrayList<HotelVO> showList(HotelVO hotelVO);
@@ -22,7 +22,7 @@ public interface HotelBLService {
     public ResultMessage del(long hotelID);
 
     // 修改酒店信息
-    public ResultMessage modify(HotelVO);
+    public ResultMessage modify(HotelVO hotelVO);
 
 
 }

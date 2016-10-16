@@ -1,13 +1,18 @@
 package blservice.promotionblservice;
 
+import util.PromotionType;
 import util.ResultMessage;
+import vo.promotion.PromotionVO;
+
+import java.util.ArrayList;
 
 /**
  * Created by kevin on 2016/10/16.
  */
 public class PromotionBLService_Stub implements PromotionBLService {
-    public PromotionBLService_Stub(long promotionID) {
-
+    @Override
+    public PromotionVO find(long promotionID) {
+        return null;
     }
 
     @Override
@@ -22,16 +27,16 @@ public class PromotionBLService_Stub implements PromotionBLService {
 
     @Override
     public ResultMessage add(PromotionVO promotionVO) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
     public ResultMessage del(PromotionVO promotionVO) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
     public ResultMessage modify(PromotionVO promotionVO) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 }
