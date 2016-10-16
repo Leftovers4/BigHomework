@@ -3,6 +3,9 @@ package blservice.userblservice;
 import util.MemberType;
 import util.ResultMessage;
 import util.UserType;
+import vo.user.UserVO;
+
+import java.util.ArrayList;
 
 /**
  * Created by kevin on 2016/10/16.
@@ -10,22 +13,22 @@ import util.UserType;
 public class UserBLService_Stub implements UserBLService {
     @Override
     public ResultMessage login(UserVO userVO) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
     public ResultMessage logout() {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
     public ResultMessage add(UserVO userVO) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
     public ResultMessage del(UserVO userVO) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
@@ -45,7 +48,7 @@ public class UserBLService_Stub implements UserBLService {
 
     @Override
     public ResultMessage setInfo(UserVO userVO) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
@@ -60,11 +63,11 @@ public class UserBLService_Stub implements UserBLService {
 
     @Override
     public ResultMessage addCredit(String username, double amount) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
     public ResultMessage deductCredit(String username, double amount) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 }

@@ -1,5 +1,6 @@
 package blservice.hotelblservice;
 
+import util.ResultMessage;
 import vo.hotel.HotelVO;
 
 import java.util.ArrayList;
@@ -8,8 +9,9 @@ import java.util.ArrayList;
  * Created by kevin on 2016/10/16.
  */
 public class HotelBLService_Stub implements HotelBLService {
-    public HotelBLService_Stub(long hotelID) {
-
+    @Override
+    public HotelVO find(long hotelID) {
+        return null;
     }
 
     @Override
@@ -19,16 +21,16 @@ public class HotelBLService_Stub implements HotelBLService {
 
     @Override
     public ResultMessage add(HotelVO hotelVO) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
     public ResultMessage del(long hotelID) {
-        return null;
+        return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ResultMessage modify() {
-        return null;
+    public ResultMessage modify(HotelVO hotelVO) {
+        return ResultMessage.SUCCESS;
     }
 }

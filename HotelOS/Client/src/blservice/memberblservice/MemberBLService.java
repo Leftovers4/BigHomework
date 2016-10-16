@@ -1,5 +1,6 @@
 package blservice.memberblservice;
 import util.*;
+import vo.member.MemberVO;
 
 /**
  * Created by Hiki on 2016/10/15.
