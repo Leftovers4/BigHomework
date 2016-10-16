@@ -1,6 +1,8 @@
 package blservice.hotelblservice;
 
-import util.ResultMessage;
+import vo.hotel.HotelVO;
+
+import java.util.ArrayList;
 
 /**
  * Created by kevin on 2016/10/16.
