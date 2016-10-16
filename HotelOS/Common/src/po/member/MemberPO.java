@@ -40,6 +40,7 @@ public class MemberPO implements Serializable {
      */
     private String enterprise;
 
+    public MemberPO() {}
 
     /**
      * 用于注册会员

@@ -89,6 +89,9 @@ public class OrderPO implements Serializable {
     // 折后价格
     private double actualPrice;
 
+
+    public OrderPO(){}
+
     /**
      * 用于生成订单
      */

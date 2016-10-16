@@ -33,6 +33,9 @@ public class EvaluationPO implements Serializable {
      */
     private String evaluation;
 
+
+    public EvaluationPO(){}
+
     /**
      * 用于客户评价
      */

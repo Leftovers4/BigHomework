@@ -30,6 +30,8 @@ public class RoomPO implements Serializable {
     private double price;
 
 
+    public RoomPO(){}
+
     /**
      * 用于增加房间类型
      */

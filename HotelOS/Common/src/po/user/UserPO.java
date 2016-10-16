@@ -50,8 +50,10 @@ public class UserPO implements Serializable {
      */
     private CreditPO creditPO;
 
+    public UserPO(){}
+
     /**
-     * 在注册时使用
+     * 在登录时使用
      */
     public UserPO(String username, String password) {
         super();
@@ -60,11 +62,12 @@ public class UserPO implements Serializable {
     }
 
     /**
-     * 在修改信息时使用
+     * 在注册、修改信息时使用
      */
-    public UserPO(String username, String name, boolean gender, String phone) {
+    public UserPO(String username, String password, String name, boolean gender, String phone) {
         super();
         this.username = username;
+        this.password = password;
         this.name = name;
         this.gender = gender;
         this.phone = phone;

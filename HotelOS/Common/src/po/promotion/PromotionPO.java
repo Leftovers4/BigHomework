@@ -40,6 +40,9 @@ public class PromotionPO implements Serializable {
      */
     private double discount;
 
+
+    public PromotionPO(){}
+
     /**
      * 用于增加营销策略
      */

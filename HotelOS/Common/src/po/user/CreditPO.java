@@ -28,6 +28,9 @@ public class CreditPO implements Serializable {
      */
     private ArrayList<Double> creditRecord;
 
+
+    public CreditPO(){}
+
     /**
      * 用于创建信用类
      */
