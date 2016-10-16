@@ -32,6 +32,7 @@ public class CreditPO implements Serializable {
      * 用于创建信用类
      */
     public CreditPO(String username, double credit, ArrayList<Double> creditRecord) {
+        super();
         this.username = username;
         this.credit = credit;
     }

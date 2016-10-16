@@ -44,6 +44,7 @@ public class PromotionPO implements Serializable {
      * 用于增加营销策略
      */
     public PromotionPO(PromotionType promotionType, Date beginTime, Date endTime, double discount) {
+        super();
         this.promotionType = promotionType;
         this.beginTime = beginTime;
         this.endTime = endTime;

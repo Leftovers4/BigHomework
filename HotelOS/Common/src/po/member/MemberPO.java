@@ -45,7 +45,7 @@ public class MemberPO implements Serializable {
      * 用于注册会员
      */
     public MemberPO(String username, MemberType memberType, int level, Date birthday, String enterprise) {
-
+        super();
         this.username = username;
         this.memberType = memberType;
         this.level = level;

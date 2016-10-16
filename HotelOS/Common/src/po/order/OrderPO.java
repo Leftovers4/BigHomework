@@ -93,6 +93,7 @@ public class OrderPO implements Serializable {
      * 用于生成订单
      */
     public OrderPO(long orderID, long hotelID, String username, String hotelName, ArrayList<RoomPO> rooms, int personAmount, boolean withChildren, Date generateTime, Date expectedLeaveTime, Date lastExecuteTime, double originPrice, double actualPrice) {
+        super();
         this.orderID = orderID;
         this.hotelID = hotelID;
         this.username = username;

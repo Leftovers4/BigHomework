@@ -67,7 +67,7 @@ public class HotelPO implements Serializable{
      **/
     public HotelPO(String hotelName, Address address, TradingArea tradingArea, String description,
                    String service, ArrayList<RoomPO> rooms) {
-
+        super();
         this.hotelName = hotelName;
         this.address = address;
         this.tradingArea = tradingArea;

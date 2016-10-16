@@ -37,6 +37,7 @@ public class EvaluationPO implements Serializable {
      * 用于客户评价
      */
     public EvaluationPO(String username, long hotelID, Date evaluateTime, String evaluation) {
+        super();
         this.username = username;
         this.hotelID = hotelID;
         this.evaluateTime = evaluateTime;

@@ -34,7 +34,7 @@ public class RoomPO implements Serializable {
      * 用于增加房间类型
      */
     public RoomPO(RoomType roomType, int amount, double price){
-
+        super();
         this.roomType = roomType;
         this.amount = amount;
         this.price = price;
