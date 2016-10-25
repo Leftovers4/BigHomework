@@ -1,5 +1,6 @@
-package blservice.userblservice;
+package blservice.userblservice_stub;
 
+import blservice.userblservice.UserBLService;
 import util.MemberType;
 import util.ResultMessage;
 import util.UserType;

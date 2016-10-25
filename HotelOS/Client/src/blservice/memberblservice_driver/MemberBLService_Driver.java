@@ -1,5 +1,6 @@
-package blservice.memberblservice;
+package blservice.memberblservice_driver;
 
+import blservice.memberblservice.MemberBLService;
 import org.junit.Before;
 import org.junit.Test;
 import util.MemberType;

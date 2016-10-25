@@ -1,5 +1,6 @@
-package blservice.memberblservice;
+package blservice.memberblservice_stub;
 
+import blservice.memberblservice.MemberBLService;
 import util.MemberType;
 import util.ResultMessage;
 import vo.member.MemberVO;

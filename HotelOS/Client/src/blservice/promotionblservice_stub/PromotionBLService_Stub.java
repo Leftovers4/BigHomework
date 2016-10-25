@@ -1,5 +1,6 @@
-package blservice.promotionblservice;
+package blservice.promotionblservice_stub;
 
+import blservice.promotionblservice.PromotionBLService;
 import util.PromotionType;
 import util.ResultMessage;
 import vo.promotion.PromotionVO;

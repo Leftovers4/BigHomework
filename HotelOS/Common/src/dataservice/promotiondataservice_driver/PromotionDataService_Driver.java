@@ -1,5 +1,6 @@
-package dataservice.promotiondataservice;
+package dataservice.promotiondataservice_driver;
 
+import dataservice.promotiondataservice.PromotionDataService;
 import org.junit.Before;
 import org.junit.Test;
 import po.promotion.PromotionPO;

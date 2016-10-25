@@ -1,5 +1,6 @@
-package dataservice.promotiondataservice;
+package dataservice.promotiondataservice_stub;
 
+import dataservice.promotiondataservice.PromotionDataService;
 import po.promotion.PromotionPO;
 import util.PromotionType;
 

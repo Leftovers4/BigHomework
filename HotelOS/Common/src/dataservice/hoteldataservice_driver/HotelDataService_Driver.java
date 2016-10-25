@@ -1,5 +1,6 @@
-package dataservice.hoteldataservice;
+package dataservice.hoteldataservice_driver;
 
+import dataservice.hoteldataservice.HotelDataService;
 import org.junit.Before;
 import org.junit.Test;
 import po.hotel.HotelPO;

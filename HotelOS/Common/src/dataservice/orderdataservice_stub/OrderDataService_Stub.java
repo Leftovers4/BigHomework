@@ -1,5 +1,6 @@
-package dataservice.orderdataservice;
+package dataservice.orderdataservice_stub;
 
+import dataservice.orderdataservice.OrderDataService;
 import po.order.OrderPO;
 
 import java.rmi.RemoteException;

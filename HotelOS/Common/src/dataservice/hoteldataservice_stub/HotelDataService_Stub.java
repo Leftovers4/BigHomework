@@ -1,5 +1,6 @@
-package dataservice.hoteldataservice;
+package dataservice.hoteldataservice_stub;
 
+import dataservice.hoteldataservice.HotelDataService;
 import po.hotel.HotelPO;
 import util.Address;
 import util.TradingArea;

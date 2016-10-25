@@ -1,5 +1,6 @@
-package blservice.promotionblservice;
+package blservice.promotionblservice_driver;
 
+import blservice.promotionblservice.PromotionBLService;
 import org.junit.Before;
 import org.junit.Test;
 import util.PromotionType;

@@ -1,5 +1,6 @@
-package blservice.orderblservice;
+package blservice.orderblservice_stub;
 
+import blservice.orderblservice.OrderBLService;
 import util.ResultMessage;
 import vo.order.OrderVO;
 

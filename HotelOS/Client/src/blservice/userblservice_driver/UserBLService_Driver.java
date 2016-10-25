@@ -1,5 +1,6 @@
-package blservice.userblservice;
+package blservice.userblservice_driver;
 
+import blservice.userblservice.UserBLService;
 import org.junit.Before;
 import org.junit.Test;
 import util.ResultMessage;

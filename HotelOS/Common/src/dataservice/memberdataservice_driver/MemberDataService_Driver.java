@@ -1,5 +1,6 @@
-package dataservice.memberdataservice;
+package dataservice.memberdataservice_driver;
 
+import dataservice.memberdataservice.MemberDataService;
 import org.junit.Before;
 import org.junit.Test;
 import po.member.MemberPO;

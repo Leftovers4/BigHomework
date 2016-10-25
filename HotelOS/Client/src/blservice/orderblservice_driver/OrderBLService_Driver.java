@@ -1,5 +1,6 @@
-package blservice.orderblservice;
+package blservice.orderblservice_driver;
 
+import blservice.orderblservice.OrderBLService;
 import org.junit.Before;
 import org.junit.Test;
 import util.ResultMessage;

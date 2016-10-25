@@ -1,5 +1,6 @@
-package blservice.hotelblservice;
+package blservice.hotelblservice_stub;
 
+import blservice.hotelblservice.HotelBLService;
 import util.Address;
 import util.ResultMessage;
 import util.TradingArea;

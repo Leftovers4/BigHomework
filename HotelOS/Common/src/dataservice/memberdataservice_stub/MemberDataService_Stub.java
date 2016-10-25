@@ -1,5 +1,6 @@
-package dataservice.memberdataservice;
+package dataservice.memberdataservice_stub;
 
+import dataservice.memberdataservice.MemberDataService;
 import po.member.MemberPO;
 import util.MemberType;
 

@@ -1,5 +1,6 @@
-package blservice.hotelblservice;
+package blservice.hotelblservice_driver;
 
+import blservice.hotelblservice.HotelBLService;
 import org.junit.Before;
 import org.junit.Test;
 import util.Address;
