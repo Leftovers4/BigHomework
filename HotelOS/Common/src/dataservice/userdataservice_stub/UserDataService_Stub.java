@@ -34,17 +34,17 @@ public class UserDataService_Stub implements UserDataService {
     }
 
     @Override
-    public void insert(UserPO userPO) throws RemoteException {
+    public void insert(UserPO UserPO) throws RemoteException {
 
     }
 
     @Override
-    public void delete(UserPO userPO) throws RemoteException {
+    public void delete(UserPO UserPO) throws RemoteException {
 
     }
 
     @Override
-    public void update(UserPO userPO) throws RemoteException {
+    public void update(UserPO UserPO) throws RemoteException {
 
     }
 

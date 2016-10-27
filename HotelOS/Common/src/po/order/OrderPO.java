@@ -28,10 +28,12 @@ public class OrderPO implements Serializable {
      */
     private long hotelID;
 
+
     /**
      * 用户名
      */
     private String username;
+
 
     /**
      * 订单类型
@@ -50,52 +52,41 @@ public class OrderPO implements Serializable {
      */
     private ArrayList<RoomPO> rooms;
 
+
     /**
      * 人数
      */
     private int personAmount;
+
 
     /**
      * 有无儿童
      */
     private boolean withChildren;
 
+
     /**
      * 评价
      */
     private EvaluationPO evaluationPO;
 
+
     /**
      * 时间
      */
+    private OrderTimePO orderTimePO;
 
-    // 生成订单时间
-    private Date generateTime;
-    // 预计离开时间
-    private Date expectedLeaveTime;
-    // 最晚执行时间
-    private Date lastExecuteTime;
-    // 执行订单时间
-    private Date executeTime;
-    // 撤销订单时间
-    private Date cancelTime;
 
     /**
      * 价格
      */
+    private OrderPricePO orderPricePO;
 
-    // 原始价格
-    private double originPrice;
-    // 折后价格
-    private double actualPrice;
-
-
-    public OrderPO(){}
 
     /**
      * 用于生成订单
      */
-    public OrderPO(String orderID, long hotelID, String username, String hotelName, ArrayList<RoomPO> rooms, int personAmount, boolean withChildren, Date generateTime, Date expectedLeaveTime, Date lastExecuteTime, double originPrice, double actualPrice) {
+    public OrderPO(String orderID, long hotelID, String username, String hotelName, ArrayList<RoomPO> rooms, int personAmount, boolean withChildren, OrderTimePO orderTimePO, OrderPricePO orderPricePO) {
         super();
         this.orderID = orderID;
         this.hotelID = hotelID;
@@ -104,11 +95,7 @@ public class OrderPO implements Serializable {
         this.rooms = rooms;
         this.personAmount = personAmount;
         this.withChildren = withChildren;
-        this.generateTime = generateTime;
-        this.expectedLeaveTime = expectedLeaveTime;
-        this.lastExecuteTime = lastExecuteTime;
-        this.originPrice = originPrice;
-        this.actualPrice = actualPrice;
+        this.orderTimePO = orderTimePO;
     }
 
     public String getOrderID() {
@@ -183,59 +170,19 @@ public class OrderPO implements Serializable {
         this.evaluationPO = evaluationPO;
     }
 
-    public Date getGenerateTime() {
-        return generateTime;
+    public OrderTimePO getOrderTimePO() {
+        return orderTimePO;
     }
 
-    public void setGenerateTime(Date generateTime) {
-        this.generateTime = generateTime;
+    public void setOrderTimePO(OrderTimePO orderTimePO) {
+        this.orderTimePO = orderTimePO;
     }
 
-    public Date getExpectedLeaveTime() {
-        return expectedLeaveTime;
+    public OrderPricePO getOrderPricePO() {
+        return orderPricePO;
     }
 
-    public void setExpectedLeaveTime(Date expectedLeaveTime) {
-        this.expectedLeaveTime = expectedLeaveTime;
-    }
-
-    public Date getLastExecuteTime() {
-        return lastExecuteTime;
-    }
-
-    public void setLastExecuteTime(Date lastExecuteTime) {
-        this.lastExecuteTime = lastExecuteTime;
-    }
-
-    public Date getExecuteTime() {
-        return executeTime;
-    }
-
-    public void setExecuteTime(Date executeTime) {
-        this.executeTime = executeTime;
-    }
-
-    public Date getCancelTime() {
-        return cancelTime;
-    }
-
-    public void setCancelTime(Date cancelTime) {
-        this.cancelTime = cancelTime;
-    }
-
-    public double getOriginPrice() {
-        return originPrice;
-    }
-
-    public void setOriginPrice(double originPrice) {
-        this.originPrice = originPrice;
-    }
-
-    public double getActualPrice() {
-        return actualPrice;
-    }
-
-    public void setActualPrice(double actualPrice) {
-        this.actualPrice = actualPrice;
+    public void setOrderPricePO(OrderPricePO orderPricePO) {
+        this.orderPricePO = orderPricePO;
     }
 }

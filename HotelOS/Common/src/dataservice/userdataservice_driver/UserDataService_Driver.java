@@ -3,12 +3,10 @@ package dataservice.userdataservice_driver;
 import dataservice.userdataservice.UserDataService;
 import org.junit.Before;
 import org.junit.Test;
-import po.user.UserPO;
+import po.user.ClientPO;
 import util.UserType;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by kevin on 2016/10/16.
@@ -23,13 +21,13 @@ public class UserDataService_Driver {
 
     @Test
     public void findByUsername() throws Exception {
-        UserPO res = tested.findByUsername("张三");
+        ClientPO res = tested.findByUsername("张三");
         printUserPO(res);
     }
 
     @Test
     public void findByType() throws Exception {
-        ArrayList<UserPO> res = tested.findByType(UserType.WEB_ADMINISTRATOR);
+        ArrayList<ClientPO> res = tested.findByType(UserType.WEB_ADMINISTRATOR);
         for (int i = 0; i < res.size(); i++) {
             printUserPO(res.get(i));
         }
@@ -52,7 +50,7 @@ public class UserDataService_Driver {
 
     @Test
     public void getList() throws Exception {
-        ArrayList<UserPO> res = tested.getList();
+        ArrayList<ClientPO> res = tested.getList();
         for (int i = 0; i < res.size(); i++) {
             printUserPO(res.get(i));
         }
@@ -68,13 +66,13 @@ public class UserDataService_Driver {
 
     }
 
-    private void printUserPO(UserPO userPO){
-        System.out.println(userPO.getUsername());
-        System.out.println(userPO.getPassword());
-        System.out.println(userPO.getMemberType());
-        System.out.println(userPO.getName());
-        System.out.println(userPO.isGender());
-        System.out.println(userPO.getPhone());
-        System.out.println(userPO.getCreditPO().getCredit());
+    private void printUserPO(ClientPO clientPO){
+        System.out.println(clientPO.getUsername());
+        System.out.println(clientPO.getPassword());
+        System.out.println(clientPO.getMemberType());
+        System.out.println(clientPO.getName());
+        System.out.println(clientPO.isGender());
+        System.out.println(clientPO.getPhone());
+        System.out.println(clientPO.getCreditPO().getCredit());
     }
 }

@@ -14,45 +14,44 @@ public class HotelVO {
     /**
      * ID
      */
-    public long HotelID;
+    private long HotelID;
 
     /**
      * 名称
      */
-    public String hotelName;
+    private String hotelName;
 
     /**
      * 地址
      */
-    public Address address;
+    private Address address;
 
     /**
      * 商圈
      */
-    public TradingArea tradingArea;
+    private TradingArea tradingArea;
 
     /**
      * 简介
      */
-    public String description;
+    private String description;
 
     /**
      * 设施服务
      */
-    public String service;
+    private String service;
 
     /**
      * 客房数量
      */
-    public ArrayList<RoomVO> rooms;
+    private ArrayList<RoomVO> rooms;
 
     /**
      * 历史评价
      */
-    public ArrayList<EvaluationVO> evaluations;
+    private ArrayList<EvaluationVO> evaluations;
 
 
-    public HotelVO(){}
 
     /**
      * 用于网站管理人员对酒店信息的查看和修改

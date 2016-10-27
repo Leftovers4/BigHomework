@@ -26,14 +26,9 @@ public class PromotionPO implements Serializable {
     private PromotionType promotionType;
 
     /**
-     * 开始时间
+     * 时间
      */
-    private Date beginTime;
-
-    /**
-     * 结束时间
-     */
-    private Date endTime;
+    private PromotionTimePO promotionTimePO;
 
     /**
      * 折扣
@@ -46,11 +41,10 @@ public class PromotionPO implements Serializable {
     /**
      * 用于增加营销策略
      */
-    public PromotionPO(PromotionType promotionType, Date beginTime, Date endTime, double discount) {
+    public PromotionPO(PromotionType promotionType, PromotionTimePO promotionTimePO, double discount) {
         super();
         this.promotionType = promotionType;
-        this.beginTime = beginTime;
-        this.endTime = endTime;
+        this.promotionTimePO = promotionTimePO;
         this.discount = discount;
     }
 
@@ -70,20 +64,12 @@ public class PromotionPO implements Serializable {
         this.promotionType = promotionType;
     }
 
-    public Date getBeginTime() {
-        return beginTime;
+    public PromotionTimePO getPromotionTimePO() {
+        return promotionTimePO;
     }
 
-    public void setBeginTime(Date beginTime) {
-        this.beginTime = beginTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setPromotionTimePO(PromotionTimePO promotionTimePO) {
+        this.promotionTimePO = promotionTimePO;
     }
 
     public double getDiscount() {

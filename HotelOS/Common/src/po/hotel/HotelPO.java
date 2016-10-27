@@ -59,7 +59,6 @@ public class HotelPO implements Serializable{
     private ArrayList<EvaluationPO> evaluations;
 
 
-    public HotelPO(){}
 
     /**
      * 用于网站管理人员对酒店信息的查看和修改

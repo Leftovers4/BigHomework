@@ -1,5 +1,6 @@
 package vo.promotion;
 
+import vo.promotion.PromotionTimeVO;
 import util.PromotionType;
 
 import java.util.Date;
@@ -12,27 +13,22 @@ public class PromotionVO {
     /**
      * 营销策略ID
      */
-    public long promotionID;
+    private long promotionID;
 
     /**
      * 营销策略类型
      */
-    public PromotionType promotionType;
+    private PromotionType promotionType;
 
     /**
-     * 开始时间
+     * 时间
      */
-    public Date beginTime;
-
-    /**
-     * 结束时间
-     */
-    public Date endTime;
+    private PromotionTimeVO promotionTimeVO;
 
     /**
      * 折扣
      */
-    public double discount;
+    private double discount;
 
 
     public PromotionVO(){}
@@ -40,11 +36,10 @@ public class PromotionVO {
     /**
      * 用于增加营销策略
      */
-    public PromotionVO(PromotionType promotionType, Date beginTime, Date endTime, double discount) {
+    public PromotionVO(PromotionType promotionType, PromotionTimeVO promotionTimeVO, double discount) {
         super();
         this.promotionType = promotionType;
-        this.beginTime = beginTime;
-        this.endTime = endTime;
+        this.promotionTimeVO = promotionTimeVO;
         this.discount = discount;
     }
 }
