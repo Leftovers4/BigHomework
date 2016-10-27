@@ -756,4 +756,16 @@ halign=center</panel_attributes>
 </panel_attributes>
     <additional_attributes>10.0;140.0;150.0;10.0</additional_attributes>
   </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>385</x>
+      <y>595</y>
+      <w>49</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>50.0;60.0;10.0;10.0</additional_attributes>
+  </element>
 </diagram>
