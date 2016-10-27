@@ -29,17 +29,17 @@ public class OrderBLService_Driver {
 
     @Test
     public void add() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.add(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null, null, 100, 98)));
+        assertEquals(ResultMessage.SUCCESS, tested.add(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null)));
     }
 
     @Test
     public void modify() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.modify(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null, null, 100, 98)));
+        assertEquals(ResultMessage.SUCCESS, tested.modify(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null)));
     }
 
     @Test
     public void evaluate() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.evaluate(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null, null, 100, 98)));
+        assertEquals(ResultMessage.SUCCESS, tested.evaluate(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null)));
     }
 
     @Test
@@ -49,7 +49,7 @@ public class OrderBLService_Driver {
 
     @Test
     public void showList() throws Exception {
-        ArrayList<OrderVO> res = tested.showList(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null, null, 100, 98));
+        ArrayList<OrderVO> res = tested.showList(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null));
         for (int i = 0; i < res.size(); i++) {
             printOrderVO(res.get(i));
         }

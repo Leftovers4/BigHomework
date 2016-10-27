@@ -5,18 +5,12 @@ package vo.user;
  */
 public class HotelWorkerVO extends UserVO{
 
-    private long hotelID;
+    public long hotelID;
 
     public HotelWorkerVO(String username, String password, long hotelID) {
         super(username, password);
         this.hotelID = hotelID;
     }
 
-    public long getHotelID() {
-        return hotelID;
-    }
 
-    public void setHotelID(long hotelID) {
-        this.hotelID = hotelID;
-    }
 }
