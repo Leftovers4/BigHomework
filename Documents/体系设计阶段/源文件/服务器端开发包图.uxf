@@ -117,7 +117,7 @@ JavaRMI</panel_attributes>
     <panel_attributes>
 --
 userdata
-Service
+service
 halign=center</panel_attributes>
     <additional_attributes/>
   </element>
@@ -132,7 +132,7 @@ halign=center</panel_attributes>
     <panel_attributes>
 --
 memberdata
-Service
+service
 halign=center</panel_attributes>
     <additional_attributes/>
   </element>
@@ -147,7 +147,7 @@ halign=center</panel_attributes>
     <panel_attributes>
 --
 orderdata
-Service
+service
 halign=center</panel_attributes>
     <additional_attributes/>
   </element>
@@ -162,7 +162,7 @@ halign=center</panel_attributes>
     <panel_attributes>
 --
 promotiondata
-Service
+service
 halign=center</panel_attributes>
     <additional_attributes/>
   </element>
@@ -177,7 +177,7 @@ halign=center</panel_attributes>
     <panel_attributes>
 --
 hoteldata
-Service
+service
 halign=center</panel_attributes>
     <additional_attributes/>
   </element>
