@@ -47,7 +47,7 @@ halign=center</panel_attributes>
     </coordinates>
     <panel_attributes>
 --
-memberui
+personnelui
 halign=center</panel_attributes>
     <additional_attributes/>
   </element>
@@ -128,7 +128,7 @@ halign=center</panel_attributes>
     </coordinates>
     <panel_attributes>
 --
-memberbl
+personnelbl
 halign=center</panel_attributes>
     <additional_attributes/>
   </element>
@@ -210,7 +210,7 @@ halign=center</panel_attributes>
     </coordinates>
     <panel_attributes>
 --
-memberdata
+personneldata
 service
 halign=center</panel_attributes>
     <additional_attributes/>
@@ -330,18 +330,6 @@ halign=center</panel_attributes>
 
 </panel_attributes>
     <additional_attributes>10.0;10.0;10.0;240.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>630</x>
-      <y>595</y>
-      <w>49</w>
-      <h>42</h>
-    </coordinates>
-    <panel_attributes>lt=.&gt;
-</panel_attributes>
-    <additional_attributes>50.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -494,14 +482,14 @@ halign=center</panel_attributes>
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>665</x>
+      <x>658</x>
       <y>385</y>
-      <w>49</w>
+      <w>56</w>
       <h>42</h>
     </coordinates>
     <panel_attributes>
 --
-memberbl
+personnelbl
 service
 halign=center</panel_attributes>
     <additional_attributes/>
@@ -772,5 +760,53 @@ halign=center</panel_attributes>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
     <additional_attributes>50.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>637</x>
+      <y>623</y>
+      <w>119</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>637</x>
+      <y>623</y>
+      <w>119</w>
+      <h>28</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>623</x>
+      <y>595</y>
+      <w>56</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>679</x>
+      <y>609</y>
+      <w>259</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;300.0;70.0;350.0;60.0</additional_attributes>
   </element>
 </diagram>
