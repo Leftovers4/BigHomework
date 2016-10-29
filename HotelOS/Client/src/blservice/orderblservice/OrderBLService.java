@@ -1,6 +1,7 @@
 package blservice.orderblservice;
 import util.*;
 import vo.order.OrderVO;
+import vo.user.CreditVO;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,18 @@ public interface OrderBLService {
     // (待推敲) 根据用户、酒店、类型查找订单
     // (待推敲) 根据用户查找预定过的酒店
     public ArrayList<OrderVO> showList(OrderVO orderVO);
+
+    // 根据用户名查找订单列表
+    public ArrayList<OrderVO> showListByUsername(OrderVO orderVO);
+
+    // 根据用户名、订单类型查找订单列表（分类型查找用户历史订单列表）
+    public ArrayList<OrderVO> showListByUsername_orderType(OrderVO orderVO);
+
+    // 根据酒店id获得订单评价列表
+    public ArrayList<CreditVO> showEvaluationListByHotelID(long hotelID);
+
+    // 改变订单类型
+    public ResultMessage changeOrderType(String orderID);
 
 
 

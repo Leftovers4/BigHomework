@@ -29,6 +29,11 @@ public class HotelPO implements Serializable{
     private String hotelName;
 
     /**
+     * 星级
+     */
+    private int star;
+
+    /**
      * 地址
      */
     private Address address;

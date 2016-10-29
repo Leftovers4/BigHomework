@@ -1,6 +1,7 @@
 package blservice.hotelblservice;
 import util.*;
 import vo.hotel.HotelVO;
+import vo.hotel.RoomVO;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,12 @@ public interface HotelBLService {
 
     // 修改酒店信息
     public ResultMessage modify(HotelVO hotelVO);
+
+    // 获得房间类型及数量
+    public ArrayList<RoomVO> getRooms();
+
+    // 改变房间类型及数量
+    public ArrayList<RoomVO> setRooms();
 
 
 }

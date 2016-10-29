@@ -2,6 +2,7 @@ package dataservice.hoteldataservice;
 
 import dataservice.DataServiceParent;
 import po.hotel.HotelPO;
+import po.hotel.RoomPO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -26,7 +27,8 @@ public interface HotelDataService extends DataServiceParent {
     // 更新酒店信息
     public void update(HotelPO hotelPO) throws RemoteException;
 
-
+    // 获取房间类型及数量
+    public ArrayList<RoomPO> findRooms(long HotelID) throws RemoteException;
 
 
 
