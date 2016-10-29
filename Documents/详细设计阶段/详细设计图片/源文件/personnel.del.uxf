@@ -2,17 +2,6 @@
 <diagram program="umlet" version="14.2">
   <zoom_level>10</zoom_level>
   <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>350</x>
-      <y>220</y>
-      <w>800</w>
-      <h>530</h>
-    </coordinates>
-    <panel_attributes>Hotel.del</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>440</x>
@@ -20,8 +9,8 @@
       <w>100</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>hotelUI:
-HotelUI</panel_attributes>
+    <panel_attributes>personnelUI:
+PersonnelUI</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -32,8 +21,8 @@ HotelUI</panel_attributes>
       <w>110</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>hotelController:
-HotelController</panel_attributes>
+    <panel_attributes>personnelController:
+PersonnelController</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -44,7 +33,7 @@ HotelController</panel_attributes>
       <w>100</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Hotel</panel_attributes>
+    <panel_attributes>Personnel</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -155,7 +144,7 @@ HotelController</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-del(HotelVO)</panel_attributes>
+del(PersonnelVO)</panel_attributes>
     <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -167,7 +156,7 @@ del(HotelVO)</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-del(HotelVO)</panel_attributes>
+del(PersonnelVO)</panel_attributes>
     <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -217,5 +206,16 @@ delete()</panel_attributes>
     <panel_attributes>lt=.&gt;
 </panel_attributes>
     <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>350</x>
+      <y>220</y>
+      <w>820</w>
+      <h>530</h>
+    </coordinates>
+    <panel_attributes>Personnel.del</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

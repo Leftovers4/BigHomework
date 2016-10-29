@@ -9,7 +9,7 @@
       <w>970</w>
       <h>530</h>
     </coordinates>
-    <panel_attributes>Hotel.add</panel_attributes>
+    <panel_attributes>Hotel.showList</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -155,7 +155,7 @@ HotelController</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-add(HotelVO)</panel_attributes>
+showList()</panel_attributes>
     <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -167,7 +167,7 @@ add(HotelVO)</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-add(HotelVO)</panel_attributes>
+showList()</panel_attributes>
     <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -249,7 +249,7 @@ valign=center</panel_attributes>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
-insert(HotelPO)</panel_attributes>
+getList()</panel_attributes>
     <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
