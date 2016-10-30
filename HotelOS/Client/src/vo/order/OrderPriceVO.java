@@ -8,13 +8,13 @@ public class OrderPriceVO {
     /**
      * 原始价格
      */
-    private double originPrice;
+    public double originPrice;
 
 
     /**
      * 折后价格
      */
-    private double actualPrice;
+    public double actualPrice;
 
     public OrderPriceVO(double originPrice, double actualPrice) {
         this.originPrice = originPrice;

@@ -13,22 +13,22 @@ public class PromotionVO {
     /**
      * 营销策略ID
      */
-    private long promotionID;
+    public long promotionID;
 
     /**
      * 营销策略类型
      */
-    private PromotionType promotionType;
+    public PromotionType promotionType;
 
     /**
      * 时间
      */
-    private PromotionTimeVO promotionTimeVO;
+    public PromotionTimeVO promotionTimeVO;
 
     /**
      * 折扣
      */
-    private double discount;
+    public double discount;
 
 
     public PromotionVO(){}

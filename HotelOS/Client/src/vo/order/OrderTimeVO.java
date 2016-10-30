@@ -10,31 +10,31 @@ public class OrderTimeVO {
     /**
      * 生成订单时间
      */
-    private Date generateTime;
+    public Date generateTime;
 
 
     /**
      * 预计离开时间
      */
-    private Date expectedLeaveTime;
+    public Date expectedLeaveTime;
 
 
     /**
      * 最晚执行时间
      */
-    private Date lastExecuteTime;
+    public Date lastExecuteTime;
 
 
     /**
      * 执行订单时间
      */
-    private Date executeTime;
+    public Date executeTime;
 
 
     /**
      * 撤销订单时间
      */
-    private Date cancelTime;
+    public Date cancelTime;
 
 
     public OrderTimeVO(Date generateTime, Date expectedLeaveTime, Date lastExecuteTime){

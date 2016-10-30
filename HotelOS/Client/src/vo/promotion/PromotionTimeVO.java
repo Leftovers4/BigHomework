@@ -10,12 +10,12 @@ public class PromotionTimeVO {
     /**
      * 开始时间
      */
-    private Date beginTime;
+    public Date beginTime;
 
     /**
      * 结束时间
      */
-    private Date endTime;
+    public Date endTime;
 
 
     public PromotionTimeVO(Date beginTime, Date endTime) {

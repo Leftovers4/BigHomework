@@ -10,27 +10,27 @@ public class ClientVO extends UserVO{
     /**
      * 姓名
      */
-    private String name;
+    public String name;
 
     /**
      * 性别
      */
-    private boolean gender;
+    public boolean gender;
 
     /**
      * 联系方式（电话号码）
      */
-    private String phone;
+    public String phone;
 
     /**
      * 会员类型
      */
-    private MemberType memberType;
+    public MemberType memberType;
 
     /**
      * 信用（包括信用值，信用记录）
      */
-    private CreditVO creditVO;
+    public CreditVO creditVO;
 
 
     public ClientVO(String username, String password, String name, boolean gender, String phone, MemberType memberType, CreditVO creditVO) {

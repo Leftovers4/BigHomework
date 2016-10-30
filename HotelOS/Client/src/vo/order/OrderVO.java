@@ -14,67 +14,67 @@ public class OrderVO {
     /**
      * 订单ID
      */
-    private String orderID;
+    public String orderID;
 
 
     /**
      * 酒店ID
      */
-    private long hotelID;
+    public long hotelID;
 
 
     /**
      * 用户名
      */
-    private String username;
+    public String username;
 
 
     /**
      * 订单类型
      */
-    private OrderType orderType;
+    public OrderType orderType;
 
 
     /**
      * 酒店名称
      */
-    private String hotelName;
+    public String hotelName;
 
 
     /**
      * 房间类型及数量
      */
-    private ArrayList<RoomVO> rooms;
+    public ArrayList<RoomVO> rooms;
 
 
     /**
      * 人数
      */
-    private int personAmount;
+    public int personAmount;
 
 
     /**
      * 有无儿童
      */
-    private boolean withChildren;
+    public boolean withChildren;
 
 
     /**
      * 评价
      */
-    private EvaluationVO evaluationVO;
+    public EvaluationVO evaluationVO;
 
 
     /**
      * 时间
      */
-    private OrderTimeVO orderTimeVO;
+    public OrderTimeVO orderTimeVO;
 
 
     /**
      * 价格
      */
-    private OrderPriceVO orderPriceVO;
+    public OrderPriceVO orderPriceVO;
 
 
     /**
