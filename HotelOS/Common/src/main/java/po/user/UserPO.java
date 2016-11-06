@@ -41,9 +41,9 @@ public class UserPO implements Serializable {
     private String phone;
 
     /**
-     * 会员类型
+     * 会员信息
      */
-    private MemberType memberType;
+    private MemberPO memberPO;
 
     /**
      * 信用（包括信用值，信用记录）
@@ -51,13 +51,13 @@ public class UserPO implements Serializable {
     private CreditPO creditPO;
 
 
-    public UserPO(String username, String password, String name, boolean gender, String phone, MemberType memberType, CreditPO creditPO) {
+    public UserPO(String username, String password, String name, boolean gender, String phone, MemberPO memberPO, CreditPO creditPO) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.gender = gender;
         this.phone = phone;
-        this.memberType = memberType;
+        this.memberPO = memberPO;
         this.creditPO = creditPO;
     }
 
@@ -76,7 +76,6 @@ public class UserPO implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
     public String getName() {
         return name;
@@ -102,12 +101,12 @@ public class UserPO implements Serializable {
         this.phone = phone;
     }
 
-    public MemberType getMemberType() {
-        return memberType;
+    public MemberPO getMemberPO() {
+        return memberPO;
     }
 
-    public void setMemberType(MemberType memberType) {
-        this.memberType = memberType;
+    public void setMemberPO(MemberPO memberPO) {
+        this.memberPO = memberPO;
     }
 
     public CreditPO getCreditPO() {

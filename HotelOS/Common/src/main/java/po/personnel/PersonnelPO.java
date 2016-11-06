@@ -1,9 +1,16 @@
-package vo.personnel;
+package po.personnel;
+
+import java.io.Serializable;
 
 /**
  * Created by Hiki on 2016/11/6.
  */
-public class PersonnelVO {
+public class PersonnelPO implements Serializable {
+
+    /**
+     * 序列化UID
+     */
+    private static final long serialVersionUID = 1L;
 
     /**
      * 工作人员ID
@@ -15,7 +22,7 @@ public class PersonnelVO {
      */
     private String password;
 
-    public PersonnelVO(long personnelID, String password) {
+    public PersonnelPO(long personnelID, String password) {
         this.personnelID = personnelID;
         this.password = password;
     }
@@ -35,5 +42,4 @@ public class PersonnelVO {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

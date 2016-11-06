@@ -1,6 +1,8 @@
 package dataservice.datafactoryservice;
 
 import java.rmi.RemoteException;
+
+import dataservice.personneldataservice.PersonnelDataService;
 import dataservice.userdataservice.UserDataService;
 import dataservice.memberdataservice.MemberDataService;
 import dataservice.hoteldataservice.HotelDataService;
@@ -18,7 +20,7 @@ public interface DataFactoryService extends DataServiceParent{
 
 	public UserDataService getUserDataImpl() throws RemoteException;
 
-	public MemberDataService getMemberDataImpl() throws RemoteException;
+	public PersonnelDataService getPersonnelDataImpl() throws RemoteException;
 
 	public HotelDataService getHotelDataImpl() throws RemoteException;
 
