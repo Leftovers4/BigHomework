@@ -1,5 +1,7 @@
 package blservice.userblservice;
 import util.*;
+import vo.user.CreditVO;
+import vo.user.MemberVO;
 import vo.user.UserVO;
 
 import java.util.ArrayList;
@@ -42,12 +44,23 @@ public interface UserBLService {
     // 显示用户会员类型
     public MemberType getMemberType(String username);
 
+    // 注册会员
+    public ResultMessage register(MemberVO memberVO);
+
+    // 删除会员
+    public ResultMessage delete(String username);
+
+    // 显示会员信息
+    public MemberVO showInfo(String username);
+
     // 增加用户信用值
     public ResultMessage addCredit(String username, double amount);
 
     // 扣除用户信用值
     public ResultMessage deductCredit(String username, double amount);
 
+    // 显示信用记录
+    public CreditVO showCreditRecord (String username);
 
 
 }

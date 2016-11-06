@@ -39,6 +39,14 @@ public interface UserDataService extends DataServiceParent {
     // 扣除用户信用值
     public void deductCredit(String username, double amount) throws RemoteException;
 
+    // 注册会员
+    public void insertMember(MemberPO memberPO) throws RemoteException;
+
+    // 删除会员
+    public void deleteMember(String username) throws RemoteException;
+
+    // 更新会员信息
+    public void update(MemberPO memberPO) throws RemoteException;
 
 
 }
