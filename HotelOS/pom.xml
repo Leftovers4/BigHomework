@@ -6,7 +6,13 @@
 
     <groupId>Leftovers</groupId>
     <artifactId>HotelOS</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>Client</module>
+        <module>Common</module>
+        <module>Server</module>
+    </modules>
 
     <dependencies>
         <dependency>
