@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 
 import dataservice.personneldataservice.PersonnelDataService;
 import dataservice.userdataservice.UserDataService;
-import dataservice.memberdataservice.MemberDataService;
 import dataservice.hoteldataservice.HotelDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.promotiondataservice.PromotionDataService;

@@ -3,7 +3,6 @@ package blservice_driver;
 import blservice.promotionblservice.PromotionBLService;
 import org.junit.Before;
 import org.junit.Test;
-import util.PromotionType;
 import util.ResultMessage;
 import vo.promotion.PromotionVO;
 

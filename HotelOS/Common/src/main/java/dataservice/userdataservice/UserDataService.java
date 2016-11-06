@@ -1,6 +1,8 @@
 package dataservice.userdataservice;
 
 import dataservice.DataServiceParent;
+//TODO 有俩个memberpo
+import po.user.MemberPO;
 import po.user.UserPO;
 import util.UserType;
 
