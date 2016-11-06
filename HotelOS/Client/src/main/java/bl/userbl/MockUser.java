@@ -67,7 +67,7 @@ public class MockUser extends User {
      * @param credit the credit to add
      * @return the result message
      */
-    ResultMessage addCredit(double credit){
+    public ResultMessage addCredit(double credit){
         this.credit += credit;
         return ResultMessage.SUCCESS;
     }
@@ -78,7 +78,7 @@ public class MockUser extends User {
      * @param credit the credit to deduct
      * @return the result message
      */
-    ResultMessage deductCredit(double credit){
+    public ResultMessage deductCredit(double credit){
         if (this.credit < credit){
             return ResultMessage.CREDIT_NOT_ENOUGH;
         }else {
@@ -93,11 +93,12 @@ public class MockUser extends User {
      * @param date the date
      * @return true or false
      */
-    boolean isBirthDay(Date date){
+    public boolean isBirthDay(Date date){
         if (date.equals(birthday)){
             return true;
         }else {
             return false;
         }
     }
+
 }
