@@ -27,7 +27,7 @@ public class PromotionPO implements Serializable {
     /**
      * 时间
      */
-    private po.promotion.PromotionTimePO promotionTimePO;
+    private PromotionTimePO promotionTimePO;
 
     /**
      * 折扣
