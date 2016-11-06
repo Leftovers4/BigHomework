@@ -22,11 +22,19 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="HotelOS" />
+        <module name="Client" />
+        <module name="Common" />
+        <module name="main" />
+        <module name="Server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Client" target="1.6" />
+      <module name="Client2" target="1.5" />
+      <module name="Common" target="1.5" />
       <module name="HotelOS" target="1.5" />
+      <module name="main" target="1.5" />
+      <module name="Server" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

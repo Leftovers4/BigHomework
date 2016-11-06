@@ -9,7 +9,7 @@
       <w>970</w>
       <h>530</h>
     </coordinates>
-    <panel_attributes>Personnel.modify</panel_attributes>
+    <panel_attributes>Personnel.find</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
