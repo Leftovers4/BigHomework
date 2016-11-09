@@ -24,7 +24,7 @@ public class UserBLService_Driver {
 
     @Test
     public void login() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.login(new UserVO("张三", "123456")));
+        assertEquals(ResultMessage.SUCCESS, tested.login(new UserVO("zhangsan", "123456", "张三", true, "110", null, null)));
     }
 
     @Test
@@ -34,12 +34,12 @@ public class UserBLService_Driver {
 
     @Test
     public void add() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.add(new UserVO("张三", "123456")));
+        assertEquals(ResultMessage.SUCCESS, tested.add(new UserVO("zhangsan", "123456", "张三", true, "110", null, null)));
     }
 
     @Test
     public void del() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.del(new UserVO("张三", "123456")));
+        assertEquals(ResultMessage.SUCCESS, tested.del(new UserVO("zhangsan", "123456", "张三", true, "110", null, null)));
     }
 
     @Test
@@ -64,7 +64,7 @@ public class UserBLService_Driver {
 
     @Test
     public void setInfo() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.setInfo(new UserVO("张三", "123456")));
+        assertEquals(ResultMessage.SUCCESS, tested.setInfo(new UserVO("zhangsan", "123456", "张三", true, "110", null, null)));
     }
 
     @Test

@@ -13,37 +13,37 @@ public class UserVO {
     /**
      * 用户名
      */
-    private String username;
+    public String username;
 
     /**
      * 密码
      */
-    private String password;
+    public String password;
 
     /**
      * 姓名
      */
-    private String name;
+    public String name;
 
     /**
      * 性别
      */
-    private boolean gender;
+    public boolean gender;
 
     /**
      * 联系方式（电话号码）
      */
-    private String phone;
+    public String phone;
 
     /**
      * 会员信息
      */
-    private MemberVO memberVO;
+    public MemberVO memberVO;
 
     /**
      * 信用（包括信用值，信用记录）
      */
-    private CreditVO creditVO;
+    public CreditVO creditVO;
 
 
     public UserVO(String username, String password, String name, boolean gender, String phone, MemberVO memberVO, CreditVO creditVO) {

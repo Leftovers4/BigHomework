@@ -4,6 +4,8 @@ import blservice.userblservice.UserBLService;
 import util.MemberType;
 import util.ResultMessage;
 import util.UserType;
+import vo.user.CreditVO;
+import vo.user.MemberVO;
 import vo.user.UserVO;
 
 import java.util.ArrayList;
@@ -34,19 +36,19 @@ public class UserBLService_Stub implements UserBLService {
 
     @Override
     public UserVO find(String username) {
-        return new UserVO("张三", "123456");
+        return new UserVO("zhangsan", "123456", "张三", true, "110", null, null);
     }
 
     @Override
     public ArrayList<UserVO> showListByType(UserType userType) {
         ArrayList<UserVO> list = new ArrayList<UserVO>();
-        list.add(new UserVO("张三", "123456"));
+        list.add(new UserVO("zhangsan", "123456", "张三", true, "110", null, null));
         return list;
     }
 
     @Override
     public UserVO getInfo(String username) {
-        return new UserVO("张三", "123456");
+        return new UserVO("zhangsan", "123456", "张三", true, "110", null, null);
     }
 
     @Override
@@ -57,13 +59,28 @@ public class UserBLService_Stub implements UserBLService {
     @Override
     public ArrayList<UserVO> showList() {
         ArrayList<UserVO> list = new ArrayList<UserVO>();
-        list.add(new UserVO("张三", "123456"));
+        list.add(new UserVO("zhangsan", "123456", "张三", true, "110", null, null));
         return list;
     }
 
     @Override
     public MemberType getMemberType(String username) {
         return MemberType.NORMAL_MEMBER;
+    }
+
+    @Override
+    public ResultMessage register(MemberVO memberVO) {
+        return null;
+    }
+
+    @Override
+    public ResultMessage delete(String username) {
+        return null;
+    }
+
+    @Override
+    public MemberVO showInfo(String username) {
+        return null;
     }
 
     @Override
@@ -74,5 +91,10 @@ public class UserBLService_Stub implements UserBLService {
     @Override
     public ResultMessage deductCredit(String username, double amount) {
         return ResultMessage.SUCCESS;
+    }
+
+    @Override
+    public CreditVO showCreditRecord(String username) {
+        return null;
     }
 }

@@ -2,6 +2,7 @@ package dataservice_stub;
 
 import dataservice.promotiondataservice.PromotionDataService;
 import po.promotion.PromotionPO;
+import po.promotion.PromotionTimePO;
 import util.PromotionType;
 
 import java.rmi.RemoteException;
@@ -24,23 +25,23 @@ public class PromotionDataService_Stub implements PromotionDataService {
     @Override
     public ArrayList<PromotionPO> findByHotelID(long hotelID) throws RemoteException {
         ArrayList<PromotionPO> list = new ArrayList<>();
-        list.add(new PromotionPO(PromotionType.HOTEL_PROMOTION, null, 0.9));
+        list.add(new PromotionPO(PromotionType.BIRTHDAY_HP, new PromotionTimePO(null, null), 0.9, 1));
         return list;
     }
 
     @Override
     public ArrayList<PromotionPO> findByPromotionType(PromotionType type) throws RemoteException {
         ArrayList<PromotionPO> list = new ArrayList<>();
-        if (type == PromotionType.HOTEL_PROMOTION)
-            list.add(new PromotionPO(PromotionType.HOTEL_PROMOTION, null, 0.9));
+        if (type == PromotionType.BIRTHDAY_HP)
+            list.add(new PromotionPO(PromotionType.BIRTHDAY_HP, new PromotionTimePO(null, null), 0.9, 1));
         else
-            list.add(new PromotionPO(PromotionType.HOTEL_PROMOTION, null, 0.9));
+            list.add(new PromotionPO(PromotionType.BIRTHDAY_HP, new PromotionTimePO(null, null), 0.9, 1));
         return list;
     }
 
     @Override
     public PromotionPO findByPromotionID(long promotionID) throws RemoteException {
-        return new PromotionPO(PromotionType.HOTEL_PROMOTION, null, 0.9);
+        return new PromotionPO(PromotionType.BIRTHDAY_HP, new PromotionTimePO(null, null), 0.9, 1);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package blservice_driver;
 
 import blservice.hotelblservice.HotelBLService;
+import blservice_stub.HotelBLService_Stub;
 import org.junit.Before;
 import org.junit.Test;
 import util.Address;
@@ -20,7 +21,7 @@ public class HotelBLService_Driver {
 
     @Before
     public void setUp() throws Exception {
-
+        tested = new HotelBLService_Stub();
     }
 
     @Test

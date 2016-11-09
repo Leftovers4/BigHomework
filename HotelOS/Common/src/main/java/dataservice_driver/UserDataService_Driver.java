@@ -69,7 +69,7 @@ public class UserDataService_Driver {
     private void printUserPO(UserPO userPO){
         System.out.println(userPO.getUsername());
         System.out.println(userPO.getPassword());
-        System.out.println(userPO.getMemberType());
+        System.out.println(userPO.getMemberPO());
         System.out.println(userPO.getName());
         System.out.println(userPO.isGender());
         System.out.println(userPO.getPhone());
