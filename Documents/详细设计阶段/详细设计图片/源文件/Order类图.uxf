@@ -145,7 +145,7 @@ m2=1
     <id>UMLClass</id>
     <coordinates>
       <x>340</x>
-      <y>590</y>
+      <y>570</y>
       <w>100</w>
       <h>40</h>
     </coordinates>
@@ -162,7 +162,7 @@ OrderLineItem
       <x>370</x>
       <y>480</y>
       <w>50</w>
-      <h>130</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 1
@@ -170,13 +170,13 @@ OrderLineItem
 
 
 0..*</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>330</y>
+      <x>970</x>
+      <y>170</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -191,15 +191,15 @@ po.OrderPO
     <id>Relation</id>
     <coordinates>
       <x>540</x>
-      <y>340</y>
-      <w>440</w>
-      <h>150</h>
+      <y>180</y>
+      <w>450</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
 m1=1
 m2=1
 </panel_attributes>
-    <additional_attributes>10.0;120.0;320.0;120.0;320.0;10.0;420.0;10.0</additional_attributes>
+    <additional_attributes>10.0;260.0;330.0;120.0;330.0;10.0;430.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -215,8 +215,8 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>440</y>
+      <x>970</x>
+      <y>280</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -230,8 +230,8 @@ po.OrderPricePO
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>510</y>
+      <x>970</x>
+      <y>350</y>
       <w>120</w>
       <h>40</h>
     </coordinates>
@@ -245,8 +245,8 @@ po.OrderTimePO
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>960</x>
-      <y>600</y>
+      <x>970</x>
+      <y>440</y>
       <w>110</w>
       <h>40</h>
     </coordinates>
@@ -260,8 +260,8 @@ po.EvaluationPO
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
-      <y>450</y>
+      <x>860</x>
+      <y>290</y>
       <w>130</w>
       <h>40</h>
     </coordinates>
@@ -272,8 +272,8 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
-      <y>450</y>
+      <x>860</x>
+      <y>290</y>
       <w>130</w>
       <h>110</h>
     </coordinates>
@@ -284,13 +284,117 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
-      <y>520</y>
+      <x>860</x>
+      <y>360</y>
       <w>130</w>
       <h>130</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1</panel_attributes>
     <additional_attributes>110.0;100.0;10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>660</x>
+      <y>570</y>
+      <w>140</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+&lt;&lt;interface&gt;&gt;
+RoomInfo
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>660</x>
+      <y>510</y>
+      <w>140</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+&lt;&lt;interface&gt;&gt;
+PromotionCalculate
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>590</y>
+      <w>250</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>430</x>
+      <y>530</y>
+      <w>250</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;</panel_attributes>
+    <additional_attributes>10.0;50.0;230.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>590</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>580</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+bl.hotelbl.Hotel
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>880</x>
+      <y>510</y>
+      <w>190</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>valign=center
+halign=center
+bl.promotionbl.PromotionList
+--
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>530</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
   </element>
 </diagram>
