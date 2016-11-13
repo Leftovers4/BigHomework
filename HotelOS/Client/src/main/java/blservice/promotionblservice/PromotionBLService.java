@@ -9,24 +9,17 @@ import java.util.ArrayList;
  */
 public interface PromotionBLService {
 
-    // 根据ID查找营销策略
-    public PromotionVO find(long promotionID);
-
-    // 根据酒店ID查找酒店营销策略列表
-    public ArrayList<PromotionVO> getHotelPromList(long hotelID);
-
-    // 根据营销策略类型显示网站营销策略
-    public ArrayList<PromotionVO> getWebPromList();
-
     // 增加营销策略
-    public ResultMessage add(PromotionVO promotionVO);
+    public ResultMessage create(PromotionVO promotionVO);
 
-    // 删除营销策略
-    public ResultMessage del(PromotionVO promotionVO);
+    // 根据营销策略ID删除策略
+    public ResultMessage delete(long id);
 
-    // 修改营销策略
-    public ResultMessage modify(PromotionVO promotionVO);
+    // 根据营销策略ID更新策略
+    public ResultMessage update(long id);
 
+    // 根据用户类型显示营销策略列表
+    public ArrayList<PromotionVO> showList(long creator);
 
 
 }
