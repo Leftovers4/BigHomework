@@ -36,4 +36,19 @@ public class HotelController implements HotelBLService{
         return null;
     }
 
+    @Override
+    public ArrayList<RoomVO> getRooms() {
+        return null;
+    }
+
+    @Override
+    public ArrayList<RoomVO> setRooms() {
+        return null;
+    }
+
+    @Override
+    public double getScore() {
+        return 0;
+    }
+
 }

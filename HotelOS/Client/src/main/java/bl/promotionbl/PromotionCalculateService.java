@@ -1,4 +1,4 @@
-package blservice.promotionblservice;
+package bl.promotionbl;
 
 import vo.order.OrderVO;
 

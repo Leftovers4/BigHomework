@@ -1,4 +1,4 @@
-package blservice.hotelblservice;
+package bl.hotelbl;
 
 import vo.hotel.RoomVO;
 

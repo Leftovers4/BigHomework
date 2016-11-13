@@ -1,6 +1,5 @@
 package bl.promotionbl;
 
-import blservice.promotionblservice.PromotionCalculateService;
 import vo.order.OrderVO;
 
 /**
