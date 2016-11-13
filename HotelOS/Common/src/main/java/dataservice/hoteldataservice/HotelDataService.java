@@ -30,6 +30,7 @@ public interface HotelDataService extends DataServiceParent {
     // 获取房间类型及数量
     public ArrayList<RoomPO> findRooms(long HotelID) throws RemoteException;
 
-
+    // 获得酒店平均评分
+    public double getScore();
 
 }

@@ -24,6 +24,11 @@ public class EvaluationVO {
     public Date evaluateTime;
 
     /**
+     * 评分
+     */
+    private int score;
+
+    /**
      * 评价内容
      */
     public String evaluation;

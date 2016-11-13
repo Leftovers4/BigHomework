@@ -29,6 +29,11 @@ public class EvaluationPO implements Serializable {
     private Date evaluateTime;
 
     /**
+     * 评分
+     */
+    private int score;
+
+    /**
      * 评价内容
      */
     private String evaluation;
@@ -36,12 +41,14 @@ public class EvaluationPO implements Serializable {
 
     public EvaluationPO(){}
 
+
     /**
      * 用于客户评价
      */
     public EvaluationPO(String username, long hotelID, Date evaluateTime, String evaluation) {
         super();
         this.username = username;
+
         this.hotelID = hotelID;
         this.evaluateTime = evaluateTime;
         this.evaluation = evaluation;
@@ -69,6 +76,14 @@ public class EvaluationPO implements Serializable {
 
     public void setEvaluateTime(Date evaluateTime) {
         this.evaluateTime = evaluateTime;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public String getEvaluation() {

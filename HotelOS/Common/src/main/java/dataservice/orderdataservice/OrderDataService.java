@@ -30,4 +30,6 @@ public interface OrderDataService extends DataServiceParent {
     // 根据酒店id获得订单评价列表
     public ArrayList<EvaluationPO> findEvaluationListByHotelID(long hotelID) throws RemoteException;
 
+    // 根据酒店ID获得评分列表
+
 }

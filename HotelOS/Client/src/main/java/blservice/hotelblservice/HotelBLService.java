@@ -31,5 +31,7 @@ public interface HotelBLService {
     // 改变房间类型及数量
     public ArrayList<RoomVO> setRooms();
 
+    // 获得酒店平均评分
+    public double getScore();
 
 }
