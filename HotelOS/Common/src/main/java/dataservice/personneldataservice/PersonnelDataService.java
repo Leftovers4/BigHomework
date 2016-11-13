@@ -26,7 +26,7 @@ public interface PersonnelDataService {
     public void update(PersonnelPO personnelPO) throws RemoteException;
 
     // 根据ID查找员工
-    public void findByPersonnelID(long personnelID) throws RemoteException;
+    public PersonnelPO findByPersonnelID(long personnelID) throws RemoteException;
 
 
 

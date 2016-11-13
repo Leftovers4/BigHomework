@@ -23,7 +23,7 @@ public interface PersonnelBLService {
     public ResultMessage add(PersonnelVO personnelVO);
 
     // 删除员工
-    public ResultMessage del(PersonnelVO personnelVO);
+    public ResultMessage del(long personnelID);
 
     // 修改员工信息
     public ResultMessage modify(PersonnelVO personnelVO);
