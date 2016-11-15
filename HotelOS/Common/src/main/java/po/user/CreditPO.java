@@ -26,7 +26,7 @@ public class CreditPO implements Serializable {
     /**
      * 信用记录（增加/扣除）
      */
-    private ArrayList<Double> creditRecord;
+    private ArrayList<CreditRecordPO> creditRecord;
 
 
     public CreditPO(){}
@@ -34,10 +34,11 @@ public class CreditPO implements Serializable {
     /**
      * 用于创建信用类
      */
-    public CreditPO(String username, double credit, ArrayList<Double> creditRecord) {
+    public CreditPO(String username, double credit, ArrayList<CreditRecordPO> creditRecord) {
         super();
         this.username = username;
         this.credit = credit;
+        this.creditRecord = creditRecord;
     }
 
     public String getUsername() {
@@ -56,13 +57,13 @@ public class CreditPO implements Serializable {
         this.credit = credit;
     }
 
-    public ArrayList<Double> getCreditRecord() {
+    public ArrayList<CreditRecordPO> getCreditRecord() {
         return creditRecord;
     }
 
-    public void setCreditRecord(ArrayList<Double> creditRecord) {
+    public void setCreditRecord(ArrayList<CreditRecordPO> creditRecord) {
         this.creditRecord = creditRecord;
     }
-
-
 }
+
+

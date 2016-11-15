@@ -20,9 +20,14 @@ public class RoomPO implements Serializable {
     private RoomType roomType;
 
     /**
-     * 数量
+     * 总数量
      */
-    private int amount;
+    private int total;
+
+    /**
+     * 可用客房数量
+     */
+    private int available;
 
     /**
      * 价格
@@ -35,12 +40,15 @@ public class RoomPO implements Serializable {
     /**
      * 用于增加房间类型
      */
-    public RoomPO(RoomType roomType, int amount, double price){
-        super();
+    public RoomPO(RoomType roomType, int total, int available, double price) {
         this.roomType = roomType;
-        this.amount = amount;
+        this.total = total;
+        this.available = available;
         this.price = price;
     }
+
+
+
 
     public RoomType getRoomType() {
         return roomType;
@@ -50,12 +58,20 @@ public class RoomPO implements Serializable {
         this.roomType = roomType;
     }
 
-    public int getAmount() {
-        return amount;
+    public int getTotal() {
+        return total;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public int getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(int available) {
+        this.available = available;
     }
 
     public double getPrice() {
