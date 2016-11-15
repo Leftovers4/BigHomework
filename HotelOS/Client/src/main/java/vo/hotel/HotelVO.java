@@ -2,7 +2,7 @@ package vo.hotel;
 
 import util.Address;
 import util.TradingArea;
-import vo.order.EvaluationVO;
+import vo.order.ReviewVO;
 
 import java.util.ArrayList;
 
@@ -54,7 +54,7 @@ public class HotelVO {
     /**
      * 历史评价
      */
-    public ArrayList<EvaluationVO> evaluations;
+    public ArrayList<ReviewVO> reviews;
 
 
     /**

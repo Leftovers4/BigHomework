@@ -38,8 +38,8 @@ public class OrderBLService_Driver {
     }
 
     @Test
-    public void evaluate() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.evaluate(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null)));
+    public void review() throws Exception {
+        assertEquals(ResultMessage.SUCCESS, tested.review(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null)));
     }
 
     @Test
@@ -71,6 +71,6 @@ public class OrderBLService_Driver {
         System.out.println(orderVO.orderTimeVO.executeTime);
         System.out.println(orderVO.orderTimeVO.expectedLeaveTime);
         System.out.println(orderVO.orderTimeVO.cancelTime);
-        System.out.println(orderVO.evaluationVO.evaluation);
+        System.out.println(orderVO.reviewVO.review);
     }
 }

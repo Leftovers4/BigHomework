@@ -54,4 +54,9 @@ public class HotelDataService_Stub implements HotelDataService {
     public ArrayList<RoomPO> findRooms(long HotelID) throws RemoteException {
         return null;
     }
+
+    @Override
+    public double getRating() {
+        return 0;
+    }
 }

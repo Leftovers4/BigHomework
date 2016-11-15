@@ -1,7 +1,7 @@
 package dataservice_stub;
 
 import dataservice.orderdataservice.OrderDataService;
-import po.order.EvaluationPO;
+import po.order.ReviewPO;
 import po.order.OrderPO;
 
 import java.rmi.RemoteException;
@@ -44,7 +44,7 @@ public class OrderDataService_Stub implements OrderDataService {
     }
 
     @Override
-    public ArrayList<EvaluationPO> findEvaluationListByHotelID(long hotelID) throws RemoteException {
+    public ArrayList<ReviewPO> findReviewListByHotelID(long hotelID) throws RemoteException {
         return null;
     }
 }

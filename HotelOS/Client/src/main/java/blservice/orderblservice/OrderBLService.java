@@ -20,7 +20,7 @@ public interface OrderBLService {
     public ResultMessage modify(OrderVO orderVO);
 
     // 评价订单
-    public ResultMessage evaluate(OrderVO orderVO);
+    public ResultMessage review(OrderVO orderVO);
 
     // 撤销订单
     public ResultMessage cancel();
@@ -37,7 +37,7 @@ public interface OrderBLService {
     public ArrayList<OrderVO> showListByUsername_orderType(String username, OrderType orderType);
 
     // 根据酒店id获得订单评价列表
-    public ArrayList<CreditVO> showEvaluationListByHotelID(long hotelID);
+    public ArrayList<CreditVO> showReviewListByHotelID(long hotelID);
 
     // 改变订单类型
     public ResultMessage changeOrderType(String orderID);

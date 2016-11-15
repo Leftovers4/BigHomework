@@ -49,4 +49,9 @@ public class HotelBLService_Stub implements HotelBLService {
     public ArrayList<RoomVO> setRooms() {
         return null;
     }
+
+    @Override
+    public double getRating() {
+        return 0;
+    }
 }

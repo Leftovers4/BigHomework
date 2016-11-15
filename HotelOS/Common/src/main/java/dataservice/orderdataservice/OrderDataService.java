@@ -1,7 +1,7 @@
 package dataservice.orderdataservice;
 
 import dataservice.DataServiceParent;
-import po.order.EvaluationPO;
+import po.order.ReviewPO;
 import po.order.OrderPO;
 
 import java.rmi.RemoteException;
@@ -28,7 +28,7 @@ public interface OrderDataService extends DataServiceParent {
     // public ArrayList<OrderPO> getList() throws RemoteException;
 
     // 根据酒店id获得订单评价列表
-    public ArrayList<EvaluationPO> findEvaluationListByHotelID(long hotelID) throws RemoteException;
+    public ArrayList<ReviewPO> findReviewListByHotelID(long hotelID) throws RemoteException;
 
     // 根据酒店ID获得评分列表
 

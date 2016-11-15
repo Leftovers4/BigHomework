@@ -67,7 +67,7 @@ public class OrderPO implements Serializable {
     /**
      * 评价
      */
-    private EvaluationPO evaluationPO;
+    private ReviewPO reviewPO;
 
 
     /**
@@ -161,12 +161,12 @@ public class OrderPO implements Serializable {
         this.withChildren = withChildren;
     }
 
-    public EvaluationPO getEvaluationPO() {
-        return evaluationPO;
+    public ReviewPO getReviewPO() {
+        return reviewPO;
     }
 
-    public void setEvaluationPO(EvaluationPO evaluationPO) {
-        this.evaluationPO = evaluationPO;
+    public void setReviewPO(ReviewPO reviewPO) {
+        this.reviewPO = reviewPO;
     }
 
     public OrderTimePO getOrderTimePO() {

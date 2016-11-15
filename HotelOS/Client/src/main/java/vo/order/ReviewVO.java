@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by Hiki on 2016/10/16.
  */
-public class EvaluationVO {
+public class ReviewVO {
 
 
     /**
@@ -21,29 +21,30 @@ public class EvaluationVO {
     /**
      * 评价时间
      */
-    public Date evaluateTime;
+    public Date reviewTime;
 
     /**
      * 评分
      */
-    private int score;
+    private int rating;
 
     /**
      * 评价内容
      */
-    public String evaluation;
+    public String review;
 
 
-    public EvaluationVO(){}
+    public ReviewVO(){}
 
     /**
      * 用于客户评价
      */
-    public EvaluationVO(String username, long hotelID, Date evaluateTime, String evaluation) {
+    public ReviewVO(String username, long hotelID, Date reviewTime, int rating, String review) {
         super();
         this.username = username;
         this.hotelID = hotelID;
-        this.evaluateTime = evaluateTime;
-        this.evaluation = evaluation;
+        this.reviewTime = reviewTime;
+        this.rating = rating;
+        this.review = review;
     }
 }

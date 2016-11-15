@@ -61,7 +61,7 @@ public class OrderVO {
     /**
      * 评价
      */
-    public EvaluationVO evaluationVO;
+    public ReviewVO reviewVO;
 
 
     /**

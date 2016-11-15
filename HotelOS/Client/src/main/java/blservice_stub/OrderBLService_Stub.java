@@ -28,7 +28,7 @@ public class OrderBLService_Stub implements OrderBLService {
     }
 
     @Override
-    public ResultMessage evaluate(OrderVO orderVO) {
+    public ResultMessage review(OrderVO orderVO) {
         return ResultMessage.SUCCESS;
     }
 
@@ -55,7 +55,7 @@ public class OrderBLService_Stub implements OrderBLService {
     }
 
     @Override
-    public ArrayList<CreditVO> showEvaluationListByHotelID(long hotelID) {
+    public ArrayList<CreditVO> showReviewListByHotelID(long hotelID) {
         return null;
     }
 

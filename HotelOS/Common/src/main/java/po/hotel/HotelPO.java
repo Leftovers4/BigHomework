@@ -1,6 +1,6 @@
 package po.hotel;
 
-import po.order.EvaluationPO;
+import po.order.ReviewPO;
 import util.Address;
 import util.TradingArea;
 
@@ -60,7 +60,7 @@ public class HotelPO implements Serializable{
     /**
      * 历史评价
      */
-    private ArrayList<EvaluationPO> evaluations;
+    private ArrayList<ReviewPO> reviews;
 
 
 
@@ -138,11 +138,11 @@ public class HotelPO implements Serializable{
         this.rooms = rooms;
     }
 
-    public ArrayList<EvaluationPO> getEvaluations() {
-        return evaluations;
+    public ArrayList<ReviewPO> getReviews() {
+        return reviews;
     }
 
-    public void setEvaluations(ArrayList<EvaluationPO> evaluations) {
-        this.evaluations = evaluations;
+    public void setReviews(ArrayList<ReviewPO> reviews) {
+        this.reviews = reviews;
     }
 }

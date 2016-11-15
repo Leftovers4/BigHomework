@@ -58,6 +58,6 @@ public class OrderDataService_Driver {
         System.out.println(orderPO.getOrderTimePO().getExecuteTime());
         System.out.println(orderPO.getOrderTimePO().getExpectedLeaveTime());
         System.out.println(orderPO.getOrderTimePO().getCancelTime());
-        System.out.println(orderPO.getEvaluationPO().getEvaluation());
+        System.out.println(orderPO.getReviewPO().getReview());
     }
 }

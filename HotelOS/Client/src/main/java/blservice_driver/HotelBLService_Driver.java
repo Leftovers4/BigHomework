@@ -53,6 +53,11 @@ public class HotelBLService_Driver {
         assertEquals(ResultMessage.SUCCESS, tested.modify(new HotelVO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null)));
     }
 
+    @Test
+    public void getRating() throws Exception {
+        assertEquals(0, tested.getRating());
+    }
+
     private void printHotelVO(HotelVO hotelVO){
         System.out.println(hotelVO.HotelID);
         System.out.println(hotelVO.hotelName);
@@ -60,6 +65,6 @@ public class HotelBLService_Driver {
         System.out.println(hotelVO.tradingArea);
         System.out.println(hotelVO.rooms.get(0).roomType);
         System.out.println(hotelVO.description);
-        System.out.println(hotelVO.evaluations.get(0).evaluation);
+        System.out.println(hotelVO.reviews.get(0).review);
     }
 }

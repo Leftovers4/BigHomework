@@ -32,6 +32,6 @@ public interface HotelBLService {
     public ArrayList<RoomVO> setRooms();
 
     // 获得酒店平均评分
-    public double getScore();
+    public double getRating();
 
 }

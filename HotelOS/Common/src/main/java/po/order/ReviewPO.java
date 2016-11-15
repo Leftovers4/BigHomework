@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * Created by Hiki on 2016/10/16.
  */
-public class EvaluationPO implements Serializable {
+public class ReviewPO implements Serializable {
 
     /**
      * 序列化UID
@@ -26,31 +26,32 @@ public class EvaluationPO implements Serializable {
     /**
      * 评价时间
      */
-    private Date evaluateTime;
+    private Date reviewTime;
 
     /**
      * 评分
      */
-    private int score;
+    private int rating;
 
     /**
      * 评价内容
      */
-    private String evaluation;
+    private String review;
 
 
-    public EvaluationPO(){}
+    public ReviewPO(){}
 
 
     /**
      * 用于客户评价
      */
-    public EvaluationPO(String username, long hotelID, Date evaluateTime, String evaluation) {
+    public ReviewPO(String username, long hotelID, Date reviewTime, int rating, String review) {
         super();
         this.username = username;
         this.hotelID = hotelID;
-        this.evaluateTime = evaluateTime;
-        this.evaluation = evaluation;
+        this.reviewTime = reviewTime;
+        this.rating = rating;
+        this.review = review;
     }
 
     public String getUsername() {
@@ -69,27 +70,27 @@ public class EvaluationPO implements Serializable {
         this.hotelID = hotelID;
     }
 
-    public Date getEvaluateTime() {
-        return evaluateTime;
+    public Date getReviewTime() {
+        return reviewTime;
     }
 
-    public void setEvaluateTime(Date evaluateTime) {
-        this.evaluateTime = evaluateTime;
+    public void setReviewTime(Date reviewTime) {
+        this.reviewTime = reviewTime;
     }
 
-    public int getScore() {
-        return score;
+    public int getRating() {
+        return rating;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
-    public String getEvaluation() {
-        return evaluation;
+    public String getReview() {
+        return review;
     }
 
-    public void setEvaluation(String evaluation) {
-        this.evaluation = evaluation;
+    public void setReview(String review) {
+        this.review = review;
     }
 }

@@ -9,6 +9,8 @@ import util.TradingArea;
 
 import java.util.ArrayList;
 
+import static junit.framework.TestCase.assertEquals;
+
 /**
  * Created by kevin on 2016/10/16.
  */
@@ -49,6 +51,11 @@ public class HotelDataService_Driver {
 
     }
 
+    @Test
+    public void getRating() throws Exception {
+        assertEquals(0, tested.getRating());
+    }
+
     private void printHotelPO(HotelPO hotelPO){
         System.out.println(hotelPO.getHotelID());
         System.out.println(hotelPO.getHotelName());
@@ -56,6 +63,6 @@ public class HotelDataService_Driver {
         System.out.println(hotelPO.getTradingArea());
         System.out.println(hotelPO.getRooms().get(0).getRoomType());
         System.out.println(hotelPO.getDescription());
-        System.out.println(hotelPO.getEvaluations().get(0).getEvaluation());
+        System.out.println(hotelPO.getReviews().get(0).getReview());
     }
 }
