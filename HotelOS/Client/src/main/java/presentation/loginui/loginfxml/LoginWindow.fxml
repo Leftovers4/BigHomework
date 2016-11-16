@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?language javascript?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<Pane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginui.logincontroller.LoginWindowController">
+
+   <children>
+      <Button id="minimum" fx:id="minimum" layoutX="530.0" layoutY="5.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#minimizeWindow" prefHeight="30.0" prefWidth="30.0" stylesheets="@../logincss/style.css">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/login/minimize.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button id="close" fx:id="close" layoutX="565.0" layoutY="5.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="30.0" prefWidth="30.0" stylesheets="@../logincss/style.css">
+         <graphic>
+            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/login/exit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label id="slider" fx:id="slider" layoutX="236.0" layoutY="179.0" maxHeight="4.0" minHeight="4.0" prefHeight="4.0" prefWidth="35.0" stylesheets="@../logincss/style.css" />
+      <VBox id="logo" fx:id="logo" layoutX="200.0" prefHeight="400.0" prefWidth="200.0" stylesheets="@../logincss/style.css">
+         <children>
+            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+               <children>
+                  <Button id="changeToLogin" fx:id="changeToLogin" alignment="CENTER" onAction="#changeToLogin" stylesheets="@../logincss/style.css" text="登录" />
+                  <Button fx:id="changeToRegister" onAction="#changeToRegister" stylesheets="@../logincss/style.css" text="注册">
+                     <HBox.margin>
+                        <Insets left="40.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="140.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/login/logo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nameLabel" layoutX="165.0" layoutY="220.0" text="用户名：" visible="false" />
+      <ImageView fx:id="namePic" fitHeight="25.0" fitWidth="25.0" layoutX="190.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/login/username.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="passwordLabel" layoutX="180.0" layoutY="270.0" text="密码：" visible="false" />
+      <ImageView fx:id="passwordPic" fitHeight="25.0" fitWidth="25.0" layoutX="190.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/login/password.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="loginUsername" layoutX="235.0" layoutY="215.0" prefWidth="170.0" stylesheets="@../logincss/style.css" />
+      <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="235.0" layoutY="265.0" prefWidth="170.0" stylesheets="@../logincss/style.css" />
+      <Button id="buttonLogin" fx:id="buttonLogin" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="320.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../logincss/style.css" text="登录" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor></Button>
+      <Button id="buttonRegister" fx:id="buttonRegister" layoutX="200.0" layoutY="320.0" minHeight="35.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" stylesheets="@../logincss/style.css" text="注册" visible="false" />
+      <Button id="managerEntrance" fx:id="managerEntrance" alignment="CENTER" contentDisplay="RIGHT" layoutX="475.0" layoutY="370.0" onAction="#changeToManager" stylesheets="@../logincss/style.css" text="工作人员入口">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/login/entrance.png" />
+               </image></ImageView>
+         </graphic></Button>
+      <Button id="userEntrance" fx:id="userEntrance" contentDisplay="RIGHT" layoutX="495.0" layoutY="370.0" mnemonicParsing="false" onAction="#changeToUser" stylesheets="@../logincss/style.css" text="客户入口" visible="false">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/login/entrance.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</Pane>
