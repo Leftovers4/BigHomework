@@ -1,0 +1,115 @@
+// 数据库格式：用户名：root 密码：123456
+
+USE hotelos;
+
+CREATE TABLE user(
+username VARCHAR(20) NOT NULL,
+password CHAR(20) NOT NULL,
+name VARCHAR(20) NOT NULL,
+gender TINYINT NOT NULL,
+phone VARCHAR(20) NOT NULL,
+member_type TINYINT NOT NULL,
+level INT UNSIGNED NOT NULL,
+birthday DATE,
+enterprise CHAR(80),
+PRIMARY KEY(username)
+)ENGINE=InnoDB;
+
+CREATE TABLE credit_record(
+record_id INT NOT NULL AUTO_INCREMENT,
+username VARCHAR(20) NOT NULL,
+current_credit DECIMAL(8,2) NOT NULL,
+changed_credit DECIMAL(8,2) NOT NULL,
+changed_time DATETIME NOT NULL,
+cause INT NOT NULL,
+order_id CHAR(20) NOT NULL,
+PRIMARY KEY(record_id)
+)ENGINE=InnoDB;
+
+CREATE TABLE personnel(
+personnel_id BIGINT ZEROFILL NOT NULL,
+password CHAR(20) NOT NULL,
+hotel_id BIGINT,
+PRIMARY KEY(personnel_id)
+)ENGINE=InnoDB;
+
+CREATE TABLE hotel(
+hotel_id BIGINT ZEROFILL NOT NULL,
+hotel_name CHAR(60) NOT NULL,
+star INT UNSIGNED NOT NULL,
+address VARCHAR(60) NOT NULL,
+trading_area VARCHAR(40) NOT NULL,
+description TEXT,
+service TEXT,
+PRIMARY KEY(hotel_id)
+)ENGINE=InnoDB;
+
+CREATE TABLE room(
+hotel_id BIGINT ZEROFILL NOT NULL,
+room_type TINYINT NOT NULL,
+total INT UNSIGNED NOT NULL,
+available INT UNSIGNED NOT NULL,
+price DECIMAL(8,2) NOT NULL,
+PRIMARY KEY(hotel_id, room_type)
+)ENGINE=InnoDB;
+
+CREATE TABLE order_info(
+order_id VARCHAR(20) NOT NULL,
+hotel_id BIGINT ZEROFILL NOT NULL,
+username VARCHAR(20) NOT NULL,
+order_type TINYINT NOT NULL,
+hotel_name CHAR(60) NOT NULL,
+room_type TINYINT NOT NULL,
+room_amount INT UNSIGNED NOT NULL,
+room_number VARCHAR(20),
+person_amount INT UNSIGNED NOT NULL,
+with_children TINYINT NOT NULL,
+generate_time DATETIME NOT NULL,
+expected_checkin_time DATETIME NOT NULL,
+checkin_time DATETIME,
+expected_leave_time DATETIME,
+actual_leave_time DATETIME,
+last_execute_time DATETIME NOT NULL,
+cancel_time DATETIME,
+original_price DECIMAL(8,2) NOT NULL,
+actual_price DECIMAL(8,2) NOT NULL,
+review_time DATETIME,
+rating INT UNSIGNED,
+review TEXT,
+hr_time DATETIME,
+hr_type TINYINT,
+PRIMARY KEY(order_id)
+)ENGINE=InnoDB;
+
+CREATE TABLE promotion(
+promotion_id BIGINT ZEROFILL NOT NULL,
+promotion_type INT NOT NULL,
+discount DOUBLE,
+least_rooms INT UNSIGNED,
+begin_time DATETIME,
+end_time DATETIME,
+threshold DECIMAL(8,2),
+reduction DECIMAL(8,2),
+PRIMARY KEY(promotion_id)
+)ENGINE=InnoDB;
+
+CREATE TABLE enterprise(
+match_id INT NOT NULL AUTO_INCREMENT,
+hotel_id BIGINT NOT NULL,
+enterprise CHAR(60) NOT NULL,
+PRIMARY KEY(match_id)
+)ENGINE=InnoDB;
+
+CREATE TABLE member_regulation(
+level INT NOT NULL AUTO_INCREMENT,
+credit DECIMAL(8,2) NOT NULL,
+discount DOUBLE,
+PRIMARY KEY(level)
+)ENGINE=InnoDB;
+
+CREATE TABLE address(
+address VARCHAR(60) NOT NULL,
+trading_area VARCHAR(40) NOT NULL,
+discount DOUBLE,
+PRIMARY KEY(address, trading_area)
+)ENGINE=InnoDB;
