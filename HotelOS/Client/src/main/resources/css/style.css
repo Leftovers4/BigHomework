@@ -1,0 +1,72 @@
+* {
+    -fx-font-family: "微软雅黑";
+}
+
+Button:hover {
+    -fx-cursor: hand;
+}
+
+#changeToLogin {
+    -fx-font-size: 1.1em;
+    -fx-text-fill: deepskyblue;
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+}
+#changeToRegister {
+    -fx-font-size: 1.1em;
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+}
+
+#slider {
+    -fx-background-color: #00bfff;
+}
+
+#loginUsername {
+    -fx-background-radius: 7px;
+}
+#loginPassword {
+    -fx-background-radius: 7px;
+}
+
+#buttonLogin {
+    -fx-background-color: #00bfff;
+    -fx-background-radius: 9px;
+    -fx-text-fill: white;
+}
+#buttonRegister {
+    -fx-background-color: #00bfff;
+    -fx-background-radius: 9px;
+    -fx-text-fill: white;
+}
+#managerEntrance {
+    -fx-underline: true;
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+}
+
+#buttonLogin:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 6, 2.0, 0, 0);
+}
+#buttonLogin:armed {
+    -fx-effect: none;
+}
+#buttonRegister:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 6, 2.0, 0, 0);
+}
+#buttonRegister:armed {
+    -fx-effect: none;
+}
+#close {
+    -fx-background-color: transparent;
+    -fx-border-style: none;
+}
+#minimum {
+    -fx-background-color: transparent;
+    -fx-border-style: none;
+}
+#userEntrance {
+    -fx-underline: true;
+    -fx-background-color: transparent;
+    -fx-border-style: none;
+}

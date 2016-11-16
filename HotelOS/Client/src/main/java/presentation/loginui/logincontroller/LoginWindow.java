@@ -15,7 +15,7 @@ public class LoginWindow extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("@../loginfxml/LoginWindow.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/LoginWindow.fxml"));
         Parent root= fxmlLoader.load();
         LoginWindowController controller = fxmlLoader.getController();
         controller.setStage(primaryStage);
