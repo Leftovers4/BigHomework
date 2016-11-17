@@ -1,5 +1,6 @@
 * {
     -fx-font-family: "微软雅黑";
+    -fx-font-size: 18px;
 }
 
 #userLeftArea {
@@ -7,24 +8,20 @@
     -fx-background-color: #32323A;
 }
 
-.button{
+.sideButton{
     -fx-border-style: none;
     -fx-background-color: transparent;
     -fx-text-fill: white;
 }
 
-#userInfoBtn:hover {
+.sideButton:hover{
     -fx-background-color: deepskyblue;
 }
-#userInfoBtn:focused {
 
+.topbarButton{
+    -fx-border-style: none;
+    -fx-background-color: transparent;
 }
-#orderListBtn:hover {
-    -fx-background-color: deepskyblue;
-}
-#searchHotelBtn:hover {
-    -fx-background-color: deepskyblue;
-}
-#hotelRegisteredBtn:hover {
-    -fx-background-color: deepskyblue;
+
+#editInfoBtn{
 }
