@@ -1,30 +1,49 @@
 * {
     -fx-font-family: "微软雅黑";
 }
-
+.panel {
+    -fx-background-color: #E8F1F5;
+}
 #userLeftArea {
     /*-fx-background-color: #090723;*/
     -fx-background-color: #32323A;
 }
-
+#topBar {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(one-pass-box, #0F1034, 2, 1.0, 0, 0);
+}
+#stateBar {
+    -fx-background-color: white;
+}
 .button{
     -fx-border-style: none;
     -fx-background-color: transparent;
     -fx-text-fill: white;
+    -fx-font-size: 1.2em;
+    -fx-cursor: hand;
 }
 
 #userInfoBtn:hover {
     -fx-background-color: deepskyblue;
 }
 #userInfoBtn:focused {
-
+    -fx-background-color: deepskyblue;
 }
 #orderListBtn:hover {
+    -fx-background-color: deepskyblue;
+}
+#orderListBtn:focused {
     -fx-background-color: deepskyblue;
 }
 #searchHotelBtn:hover {
     -fx-background-color: deepskyblue;
 }
+#searchHotelBtn:focused {
+    -fx-background-color: deepskyblue;
+}
 #hotelRegisteredBtn:hover {
+    -fx-background-color: deepskyblue;
+}
+#hotelRegisteredBtn:focused {
     -fx-background-color: deepskyblue;
 }

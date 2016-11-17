@@ -8,26 +8,27 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" styleClass="panel" stylesheets="@../../css/user/userstyle.css" xmlns="http://javafx.com/javafx/8.0.112-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.UserSceneController">
    <children>
       <VBox id="userLeftArea" fx:id="user_left_area" prefHeight="690.0" prefWidth="230.0" stylesheets="@../../css/user/userstyle.css">
          <children>
-            <ImageView fitHeight="230.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/login/logo.png" />
-               </image>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </ImageView>
-            <Button id="userInfoBtn" mnemonicParsing="false" prefHeight="45.0" prefWidth="230.0" stylesheets="@../usercss/userstyle.css" text="基本信息">
+            <Button fx:id="indexBtn" onAction="#index" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="230.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/login/logo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="userInfoBtn" fx:id="userInfoBtn" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#userInfo" prefHeight="45.0" prefWidth="230.0" stylesheets="@../../css/user/userstyle.css" text="基本信息">
                <VBox.margin>
                   <Insets top="150.0" />
                </VBox.margin>
             </Button>
-            <Button id="orderListBtn" mnemonicParsing="false" prefHeight="45.0" prefWidth="230.0" stylesheets="@../usercss/userstyle.css" text="订单列表" />
-            <Button id="searchHotelBtn" mnemonicParsing="false" prefHeight="45.0" prefWidth="230.0" stylesheets="@../usercss/userstyle.css" text="搜索酒店" />
-            <Button id="hotelRegisteredBtn" mnemonicParsing="false" prefHeight="45.0" prefWidth="230.0" stylesheets="@../usercss/userstyle.css" text="预订过的酒店" />
+            <Button id="orderListBtn" fx:id="orderListBtn" mnemonicParsing="false" onAction="#orderList" prefHeight="45.0" prefWidth="230.0" stylesheets="@../../css/user/userstyle.css" text="订单列表" />
+            <Button id="searchHotelBtn" fx:id="searchHotelBtn" mnemonicParsing="false" onAction="#searchHotel" prefHeight="45.0" prefWidth="230.0" stylesheets="@../../css/user/userstyle.css" text="搜索酒店" />
+            <Button id="hotelRegisteredBtn" fx:id="hotelRegisteredBtn" mnemonicParsing="false" onAction="#hotelRegistered" prefHeight="45.0" prefWidth="230.0" stylesheets="@../../css/user/userstyle.css" text="预订过的酒店" />
          </children></VBox>
       <HBox id="topBar" layoutX="230.0" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
          <children>
@@ -38,8 +39,11 @@
                         <Image url="@../../img/common/back.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
-            <Button mnemonicParsing="false" stylesheets="@../../css/user/userstyle.css">
+               </graphic>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin></Button>
+            <Button mnemonicParsing="false" onAction="#minimizeWindow" stylesheets="@../../css/user/userstyle.css">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -48,9 +52,9 @@
                   </ImageView>
                </graphic>
                <HBox.margin>
-                  <Insets left="690.0" top="5.0" />
+                  <Insets left="680.0" top="5.0" />
                </HBox.margin></Button>
-            <Button mnemonicParsing="false" stylesheets="@../../css/user/userstyle.css">
+            <Button mnemonicParsing="false" onAction="#closeWindow" stylesheets="@../../css/user/userstyle.css">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -62,6 +66,11 @@
                   <Insets top="5.0" />
                </HBox.margin></Button>
          </children></HBox>
-      <HBox layoutY="690.0" prefHeight="30.0" prefWidth="1080.0" />
+      <HBox id="stateBar" layoutY="690.0" prefHeight="30.0" prefWidth="1080.0" stylesheets="@../../css/user/userstyle.css" />
+      <ImageView fx:id="leftBarSlider" fitHeight="56.0" fitWidth="56.0" layoutX="193.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">
+         <image>
+            <Image url="@../../img/common/triangle2.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
