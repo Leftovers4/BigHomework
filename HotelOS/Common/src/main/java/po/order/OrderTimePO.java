@@ -22,9 +22,27 @@ public class OrderTimePO implements Serializable{
 
 
     /**
+     * 预计入住时间
+     */
+    private Date expectedCheckinTime;
+
+
+    /**
+     * 入住时间
+     */
+    private Date checkinTime;
+
+
+    /**
      * 预计离开时间
      */
     private Date expectedLeaveTime;
+
+
+    /**
+     * 离开（退房）时间
+     */
+    private Date leaveTime;
 
 
     /**
@@ -45,12 +63,16 @@ public class OrderTimePO implements Serializable{
     private Date cancelTime;
 
 
-    public OrderTimePO(Date generateTime, Date expectedLeaveTime, Date lastExecuteTime){
+    public OrderTimePO(Date generateTime, Date expectedCheckinTime, Date checkinTime, Date expectedLeaveTime, Date leaveTime, Date lastExecuteTime, Date executeTime, Date cancelTime) {
         this.generateTime = generateTime;
+        this.expectedCheckinTime = expectedCheckinTime;
+        this.checkinTime = checkinTime;
         this.expectedLeaveTime = expectedLeaveTime;
+        this.leaveTime = leaveTime;
         this.lastExecuteTime = lastExecuteTime;
+        this.executeTime = executeTime;
+        this.cancelTime = cancelTime;
     }
-
 
     public Date getGenerateTime() {
         return generateTime;
@@ -93,8 +115,27 @@ public class OrderTimePO implements Serializable{
     }
 
 
+    public Date getExpectedCheckinTime() {
+        return expectedCheckinTime;
+    }
 
+    public void setExpectedCheckinTime(Date expectedCheckinTime) {
+        this.expectedCheckinTime = expectedCheckinTime;
+    }
 
+    public Date getCheckinTime() {
+        return checkinTime;
+    }
 
+    public void setCheckinTime(Date checkinTime) {
+        this.checkinTime = checkinTime;
+    }
 
+    public Date getLeaveTime() {
+        return leaveTime;
+    }
+
+    public void setLeaveTime(Date leaveTime) {
+        this.leaveTime = leaveTime;
+    }
 }

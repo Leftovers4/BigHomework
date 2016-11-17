@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-11-17 15:36:31
+Date: 2016-11-17 17:16:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -118,7 +118,7 @@ CREATE TABLE `order_info` (
   `expected_checkin_time` datetime NOT NULL,
   `checkin_time` datetime DEFAULT NULL,
   `expected_leave_time` datetime DEFAULT NULL,
-  `actual_leave_time` datetime DEFAULT NULL,
+  `leave_time` datetime DEFAULT NULL,
   `last_execute_time` datetime NOT NULL,
   `cancel_time` datetime DEFAULT NULL,
   `original_price` decimal(8,2) NOT NULL,
@@ -126,8 +126,8 @@ CREATE TABLE `order_info` (
   `review_time` datetime DEFAULT NULL,
   `rating` int(10) unsigned DEFAULT NULL,
   `review` text,
-  `hr_time` datetime DEFAULT NULL,
-  `hr_type` tinyint(4) DEFAULT NULL,
+  `ha_time` datetime DEFAULT NULL,
+  `ha_result` tinyint(4) DEFAULT NULL,
   PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

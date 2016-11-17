@@ -20,7 +20,7 @@ public class HotelPO implements Serializable{
     /**
      * ID
      */
-    private long HotelID;
+    private long hotelID;
 
     /**
      * 名称
@@ -83,11 +83,11 @@ public class HotelPO implements Serializable{
     }
 
     public long getHotelID() {
-        return HotelID;
+        return hotelID;
     }
 
     public void setHotelID(long hotelID) {
-        HotelID = hotelID;
+        hotelID = hotelID;
     }
 
     public String getHotelName() {

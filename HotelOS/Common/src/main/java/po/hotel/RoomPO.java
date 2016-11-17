@@ -15,6 +15,16 @@ public class RoomPO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * 房间ID
+     */
+    private long roomId;
+
+    /**
+     * 酒店ID
+     */
+    private long hotelId;
+
+    /**
      * 房间类型
      */
     private RoomType roomType;
@@ -40,15 +50,30 @@ public class RoomPO implements Serializable {
     /**
      * 用于增加房间类型
      */
-    public RoomPO(RoomType roomType, int total, int available, double price) {
+    public RoomPO(long roomId, long hotelId, RoomType roomType, int total, int available, double price) {
+        this.roomId = roomId;
+        this.hotelId = hotelId;
         this.roomType = roomType;
         this.total = total;
         this.available = available;
         this.price = price;
     }
 
+    public long getRoomId() {
+        return roomId;
+    }
 
+    public void setRoomId(long roomId) {
+        this.roomId = roomId;
+    }
 
+    public long getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(long hotelId) {
+        this.hotelId = hotelId;
+    }
 
     public RoomType getRoomType() {
         return roomType;
@@ -81,4 +106,6 @@ public class RoomPO implements Serializable {
     public void setPrice(double price) {
         this.price = price;
     }
+
+
 }

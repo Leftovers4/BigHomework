@@ -14,9 +14,27 @@ public class OrderTimeVO {
 
 
     /**
+     * 预计入住时间
+     */
+    public Date expectedCheckinTime;
+
+
+    /**
+     * 入住时间
+     */
+    public Date checkinTime;
+
+
+    /**
      * 预计离开时间
      */
     public Date expectedLeaveTime;
+
+
+    /**
+     * 离开（退房）时间
+     */
+    public Date leaveTime;
 
 
     /**
@@ -36,11 +54,14 @@ public class OrderTimeVO {
      */
     public Date cancelTime;
 
-
-    public OrderTimeVO(Date generateTime, Date expectedLeaveTime, Date lastExecuteTime){
+    public OrderTimeVO(Date generateTime, Date expectedCheckinTime, Date checkinTime, Date expectedLeaveTime, Date leaveTime, Date lastExecuteTime, Date executeTime, Date cancelTime) {
         this.generateTime = generateTime;
+        this.expectedCheckinTime = expectedCheckinTime;
+        this.checkinTime = checkinTime;
         this.expectedLeaveTime = expectedLeaveTime;
+        this.leaveTime = leaveTime;
         this.lastExecuteTime = lastExecuteTime;
+        this.executeTime = executeTime;
+        this.cancelTime = cancelTime;
     }
-
 }

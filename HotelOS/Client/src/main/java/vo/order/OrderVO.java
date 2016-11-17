@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public class OrderVO {
 
+
     /**
      * 订单ID
      */
@@ -47,7 +48,14 @@ public class OrderVO {
 
 
     /**
-     * 人数
+     * 房间号
+     * 说明：房间号只有show的功能，故只要用string存储，用空格隔开多个房间
+     */
+    public String roomNumber;
+
+
+    /**
+     * 入住人数
      */
     public int personAmount;
 
@@ -77,17 +85,27 @@ public class OrderVO {
 
 
     /**
+     * 申诉信息
+     */
+    public OrderHandleAppealVO orderHandleAppealVO;
+
+
+    /**
      * 用于生成订单
      */
-    public OrderVO(String orderID, long hotelID, String username, String hotelName, ArrayList<RoomVO> rooms, int personAmount, boolean withChildren, OrderTimeVO orderTimeVO, OrderPriceVO orderPriceVO) {
-        super();
+    public OrderVO(String orderID, long hotelID, String username, OrderType orderType, String hotelName, ArrayList<RoomVO> rooms, String roomNumber, int personAmount, boolean withChildren, ReviewVO reviewVO, OrderTimeVO orderTimeVO, OrderPriceVO orderPriceVO, OrderHandleAppealVO orderHandleAppealVO) {
         this.orderID = orderID;
         this.hotelID = hotelID;
         this.username = username;
+        this.orderType = orderType;
         this.hotelName = hotelName;
         this.rooms = rooms;
+        this.roomNumber = roomNumber;
         this.personAmount = personAmount;
         this.withChildren = withChildren;
+        this.reviewVO = reviewVO;
         this.orderTimeVO = orderTimeVO;
+        this.orderPriceVO = orderPriceVO;
+        this.orderHandleAppealVO = orderHandleAppealVO;
     }
 }

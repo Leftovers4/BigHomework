@@ -1,13 +1,13 @@
-package po.user;
+package vo.user;
 
 import util.CreditChangedCause;
 
 import java.util.Date;
 
 /**
- * Created by Hiki on 11/15/2016.
+ * Created by Hiki on 11/17/2016.
  */
-class CreditRecordPO {
+public class CreditRecordVO {
 
     /**
      * 信用记录id
@@ -38,5 +38,4 @@ class CreditRecordPO {
      * 订单id
      */
     String orderID;
-
 }

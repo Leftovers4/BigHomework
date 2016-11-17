@@ -20,17 +20,17 @@ public class CreditVO {
     /**
      * 信用记录（增加/扣除）
      */
-    public ArrayList<Double> creditRecord;
+    public ArrayList<CreditRecordVO> creditRecord;
 
 
-    public CreditVO(){}
 
     /**
      * 用于创建信用类
      */
-    public CreditVO(String username, double credit, ArrayList<Double> creditRecord) {
+    public CreditVO(String username, double credit, ArrayList<CreditRecordVO> creditRecord) {
         super();
         this.username = username;
         this.credit = credit;
+        this.creditRecord = creditRecord;
     }
 }

@@ -7,15 +7,31 @@ import util.RoomType;
  */
 public class RoomVO {
 
+
+    /**
+     * 房间ID
+     */
+    public long roomId;
+
+    /**
+     * 酒店ID
+     */
+    public long hotelId;
+
     /**
      * 房间类型
      */
     public RoomType roomType;
 
     /**
-     * 数量
+     * 总数量
      */
-    public int amount;
+    public int total;
+
+    /**
+     * 可用客房数量
+     */
+    public int available;
 
     /**
      * 价格
@@ -25,13 +41,16 @@ public class RoomVO {
 
     public RoomVO(){}
 
+
     /**
      * 用于增加房间类型
      */
-    public RoomVO(RoomType roomType, int amount, double price){
-        super();
+    public RoomVO(long roomId, long hotelId, RoomType roomType, int total, int available, double price) {
+        this.roomId = roomId;
+        this.hotelId = hotelId;
         this.roomType = roomType;
-        this.amount = amount;
+        this.total = total;
+        this.available = available;
         this.price = price;
     }
 }

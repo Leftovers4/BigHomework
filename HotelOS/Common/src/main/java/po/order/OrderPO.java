@@ -16,6 +16,7 @@ public class OrderPO implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
+
     /**
      * 订单ID
      */
@@ -53,7 +54,14 @@ public class OrderPO implements Serializable {
 
 
     /**
-     * 人数
+     * 房间号
+     * 说明：房间号只有show的功能，故只要用string存储，用空格隔开多个房间
+     */
+    private String roomNumber;
+
+
+    /**
+     * 入住人数
      */
     private int personAmount;
 
@@ -83,19 +91,30 @@ public class OrderPO implements Serializable {
 
 
     /**
+     * 申诉信息
+     */
+    private OrderHandleAppealPO orderHandleAppealPO;
+
+
+    /**
      * 用于生成订单
      */
-    public OrderPO(String orderID, long hotelID, String username, String hotelName, ArrayList<RoomPO> rooms, int personAmount, boolean withChildren, OrderTimePO orderTimePO, OrderPricePO orderPricePO) {
-        super();
+    public OrderPO(String orderID, long hotelID, String username, OrderType orderType, String hotelName, ArrayList<RoomPO> rooms, String roomNumber, int personAmount, boolean withChildren, ReviewPO reviewPO, OrderTimePO orderTimePO, OrderPricePO orderPricePO, OrderHandleAppealPO orderHandleAppealPO) {
         this.orderID = orderID;
         this.hotelID = hotelID;
         this.username = username;
+        this.orderType = orderType;
         this.hotelName = hotelName;
         this.rooms = rooms;
+        this.roomNumber = roomNumber;
         this.personAmount = personAmount;
         this.withChildren = withChildren;
+        this.reviewPO = reviewPO;
         this.orderTimePO = orderTimePO;
+        this.orderPricePO = orderPricePO;
+        this.orderHandleAppealPO = orderHandleAppealPO;
     }
+
 
     public String getOrderID() {
         return orderID;
@@ -183,5 +202,21 @@ public class OrderPO implements Serializable {
 
     public void setOrderPricePO(OrderPricePO orderPricePO) {
         this.orderPricePO = orderPricePO;
+    }
+
+    public String getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
+    }
+
+    public OrderHandleAppealPO getOrderHandleAppealPO() {
+        return orderHandleAppealPO;
+    }
+
+    public void setOrderHandleAppealPO(OrderHandleAppealPO orderHandleAppealPO) {
+        this.orderHandleAppealPO = orderHandleAppealPO;
     }
 }
