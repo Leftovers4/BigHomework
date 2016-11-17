@@ -3,6 +3,7 @@ package dataservice_stub;
 import dataservice.orderdataservice.OrderDataService;
 import po.order.ReviewPO;
 import po.order.OrderPO;
+import util.OrderType;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -23,13 +24,14 @@ public class OrderDataService_Stub implements OrderDataService {
 
     @Override
     public OrderPO findByOrderID(String orderID) throws RemoteException {
-        return new OrderPO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null);
+//        return new OrderPO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null);
+        return null;
     }
 
     @Override
     public ArrayList<OrderPO> find(OrderPO orderPO) throws RemoteException {
         ArrayList<OrderPO> list = new ArrayList<>();
-        list.add(new OrderPO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null));
+        list.add(new OrderPO("12345620161111001", 123456,"张三", OrderType.ABNORMAL,"如家", null,null, 2, false, null, null,null,null));
         return list;
     }
 

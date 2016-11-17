@@ -3,6 +3,7 @@ package blservice_driver;
 import blservice.orderblservice.OrderBLService;
 import org.junit.Before;
 import org.junit.Test;
+import util.OrderType;
 import util.ResultMessage;
 import vo.order.OrderVO;
 
@@ -29,17 +30,17 @@ public class OrderBLService_Driver {
 
     @Test
     public void add() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.add(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null)));
+        assertEquals(ResultMessage.SUCCESS, tested.add(new OrderVO("12345620161111001", 123456,"张三", OrderType.ABNORMAL,"如家", null,null, 2, false, null, null,null,null)));
     }
 
     @Test
     public void modify() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.modify(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null)));
+        assertEquals(ResultMessage.SUCCESS, tested.modify(new OrderVO("12345620161111001", 123456,"张三", OrderType.ABNORMAL,"如家", null,null, 2, false, null, null,null,null)));
     }
 
     @Test
     public void review() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.review(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null)));
+        assertEquals(ResultMessage.SUCCESS, tested.review(new OrderVO("12345620161111001", 123456,"张三", OrderType.ABNORMAL,"如家", null,null, 2, false, null, null,null,null)));
     }
 
     @Test
@@ -49,7 +50,7 @@ public class OrderBLService_Driver {
 
     @Test
     public void showList() throws Exception {
-        ArrayList<OrderVO> res = tested.showList(new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null));
+        ArrayList<OrderVO> res = tested.showList(new OrderVO("12345620161111001", 123456,"张三", OrderType.ABNORMAL,"如家", null,null, 2, false, null, null,null,null));
         for (int i = 0; i < res.size(); i++) {
             printOrderVO(res.get(i));
         }

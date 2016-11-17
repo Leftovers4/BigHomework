@@ -16,7 +16,7 @@ import javafx.util.Duration;
 /**
  * Created by wyj on 2016/11/6.
  */
-public class LoginWindowController {
+public class LoginSceneController {
 
     @FXML private Button changeToLogin;
     @FXML private Button changeToRegister;

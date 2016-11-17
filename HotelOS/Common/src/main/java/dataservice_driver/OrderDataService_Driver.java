@@ -4,6 +4,7 @@ import dataservice.orderdataservice.OrderDataService;
 import org.junit.Before;
 import org.junit.Test;
 import po.order.OrderPO;
+import util.OrderType;
 
 import java.util.ArrayList;
 
@@ -26,7 +27,7 @@ public class OrderDataService_Driver {
 
     @Test
     public void find() throws Exception {
-        ArrayList<OrderPO> res = tested.find(new OrderPO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null));
+        ArrayList<OrderPO> res = tested.find(new OrderPO("12345620161111001", 123456,"张三", OrderType.ABNORMAL,"如家", null,null, 2, false, null, null,null,null));
         for (int i = 0; i < res.size(); i++) {
             printOrderPO(res.get(i));
         }
