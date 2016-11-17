@@ -24,13 +24,13 @@ public interface UserDataService extends DataServiceParent {
     public ArrayList<UserPO> findByType(UserType userType) throws RemoteException;
 
     // 增加一个用户
-    public void insert(UserPO UserPO) throws RemoteException;
+    public void insert(UserPO userPO) throws RemoteException;
 
     // 删除一个用户
-    public void delete(UserPO UserPO) throws RemoteException;
+    public void delete(UserPO userPO) throws RemoteException;
 
     // 更新一个用户
-    public void update(UserPO UserPO) throws RemoteException;
+    public void update(UserPO userPO) throws RemoteException;
 
     // 显示用户列表
     public ArrayList<UserPO> getList() throws RemoteException;

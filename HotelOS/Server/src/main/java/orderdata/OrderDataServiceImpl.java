@@ -1,54 +1,44 @@
-package dataservice_stub;
+package orderdata;
 
 import dataservice.orderdataservice.OrderDataService;
-import po.order.ReviewPO;
 import po.order.OrderPO;
+import po.order.ReviewPO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
- * Created by kevin on 2016/10/16.
+ * Created by kevin on 2016/11/16.
  */
-public class OrderDataService_Stub implements OrderDataService {
-    @Override
+public class OrderDataServiceImpl implements OrderDataService {
     public void initial() throws RemoteException {
-
+        
     }
 
-    @Override
     public void finish() throws RemoteException {
 
     }
 
-    @Override
     public OrderPO findByOrderID(String orderID) throws RemoteException {
-        return new OrderPO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null);
+        return null;
     }
 
-    @Override
     public ArrayList<OrderPO> find(OrderPO orderPO) throws RemoteException {
-        ArrayList<OrderPO> list = new ArrayList<>();
-        list.add(new OrderPO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null));
-        return list;
+        return null;
     }
 
-    @Override
     public void insert(OrderPO orderPO) throws RemoteException {
 
     }
 
-    @Override
     public void update(OrderPO orderPO) throws RemoteException {
 
     }
 
-    @Override
     public ArrayList<OrderPO> getList() throws RemoteException {
         return null;
     }
 
-    @Override
     public ArrayList<ReviewPO> findReviewListByHotelID(long hotelID) throws RemoteException {
         return null;
     }

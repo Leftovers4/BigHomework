@@ -8,7 +8,7 @@ package dataservice;
  */
 
 
-public interface DataServiceParent {
+public interface DataServiceParent extends Remote {
 
     // 初始化数据
     public void initial() throws RemoteException;

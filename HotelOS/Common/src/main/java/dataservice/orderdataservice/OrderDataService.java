@@ -25,7 +25,7 @@ public interface OrderDataService extends DataServiceParent {
     public void update(OrderPO orderPO) throws RemoteException;
 
     // 显示订单列表
-    // public ArrayList<OrderPO> getList() throws RemoteException;
+    public ArrayList<OrderPO> getList() throws RemoteException;
 
     // 根据酒店id获得订单评价列表
     public ArrayList<ReviewPO> findReviewListByHotelID(long hotelID) throws RemoteException;

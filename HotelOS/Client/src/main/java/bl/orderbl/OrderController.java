@@ -31,11 +31,6 @@ public class OrderController implements OrderBLService{
     public ResultMessage review(OrderVO orderVO) {
         return null;
     }
-//
-//    @Override
-//    public ResultMessage evaluate(OrderVO orderVO) {
-//        return null;
-//    }
 
     @Override
     public ResultMessage cancel() {
@@ -61,11 +56,6 @@ public class OrderController implements OrderBLService{
     public ArrayList<CreditVO> showReviewListByHotelID(long hotelID) {
         return null;
     }
-
-//    @Override
-//    public ArrayList<CreditVO> showEvaluationListByHotelID(long hotelID) {
-//        return null;
-//    }
 
     @Override
     public ResultMessage changeOrderType(String orderID) {

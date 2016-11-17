@@ -28,9 +28,9 @@ public interface HotelDataService extends DataServiceParent {
     public void update(HotelPO hotelPO) throws RemoteException;
 
     // 获取房间类型及数量
-    public ArrayList<RoomPO> findRooms(long HotelID) throws RemoteException;
+    public ArrayList<RoomPO> findRooms(long hotelID) throws RemoteException;
 
     // 获得酒店平均评分
-    public double getRating();
+    public double getRating() throws RemoteException;
 
 }

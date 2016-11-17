@@ -1,4 +1,4 @@
-package dataservice_stub;
+package personneldata;
 
 import dataservice.personneldataservice.PersonnelDataService;
 import po.personnel.PersonnelPO;
@@ -7,52 +7,37 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
- * Created by kevin on 2016/11/13.
+ * Created by kevin on 2016/11/16.
  */
-public class PersonnelDataService_Stub implements PersonnelDataService{
-    @Override
+public class PersonnelDataServiceImpl implements PersonnelDataService {
     public boolean canLogin(PersonnelPO personnelPO) throws RemoteException {
-        return true;
+        return false;
     }
 
-    @Override
     public ArrayList<PersonnelPO> getList() throws RemoteException {
-        ArrayList<PersonnelPO> personnelPOs = new ArrayList<>();
-
-        PersonnelPO personnelPO = new PersonnelPO(1, "123456");
-
-        personnelPOs.add(personnelPO);
-
-        return personnelPOs;
+        return null;
     }
 
-    @Override
     public void insert(PersonnelPO personnelPO) throws RemoteException {
 
     }
 
-    @Override
     public void delete(PersonnelPO personnelPO) throws RemoteException {
 
     }
 
-    @Override
     public void update(PersonnelPO personnelPO) throws RemoteException {
 
     }
 
-    @Override
     public PersonnelPO findByPersonnelID(long personnelID) throws RemoteException {
-        PersonnelPO personnelPO = new PersonnelPO(1, "123456");
-        return personnelPO;
+        return null;
     }
 
-    @Override
     public void initial() throws RemoteException {
 
     }
 
-    @Override
     public void finish() throws RemoteException {
 
     }
