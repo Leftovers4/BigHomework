@@ -1,0 +1,30 @@
+* {
+    -fx-font-family: "微软雅黑";
+}
+
+#userLeftArea {
+    /*-fx-background-color: #090723;*/
+    -fx-background-color: #32323A;
+}
+
+.button{
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+#userInfoBtn:hover {
+    -fx-background-color: deepskyblue;
+}
+#userInfoBtn:focused {
+
+}
+#orderListBtn:hover {
+    -fx-background-color: deepskyblue;
+}
+#searchHotelBtn:hover {
+    -fx-background-color: deepskyblue;
+}
+#hotelRegisteredBtn:hover {
+    -fx-background-color: deepskyblue;
+}
