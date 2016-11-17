@@ -64,7 +64,7 @@
       </ImageView>
       <TextField fx:id="loginUsername" layoutX="235.0" layoutY="215.0" prefWidth="170.0" stylesheets="@../../css/login/style.css" />
       <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="235.0" layoutY="265.0" prefWidth="170.0" stylesheets="@../../css/login/style.css" />
-      <Button id="buttonLogin" fx:id="buttonLogin" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="320.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/login/style.css" text="登录" textAlignment="CENTER">
+      <Button id="buttonLogin" fx:id="buttonLogin" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="320.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" stylesheets="@../../css/login/style.css" onAction="#Login" text="登录" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor></Button>
