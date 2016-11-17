@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-11-16 21:54:12
+Date: 2016-11-17 15:36:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,10 +20,11 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `address`;
 CREATE TABLE `address` (
+  `address_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `address` varchar(60) NOT NULL,
   `trading_area` varchar(40) NOT NULL,
   `discount` double DEFAULT NULL,
-  PRIMARY KEY (`address`,`trading_area`)
+  PRIMARY KEY (`address_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -55,7 +56,7 @@ CREATE TABLE `credit_record` (
 DROP TABLE IF EXISTS `enterprise`;
 CREATE TABLE `enterprise` (
   `match_id` int(11) NOT NULL AUTO_INCREMENT,
-  `hotel_id` bigint(20) NOT NULL,
+  `hotel_id` bigint(6) unsigned zerofill NOT NULL,
   `enterprise` char(60) NOT NULL,
   PRIMARY KEY (`match_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -69,7 +70,7 @@ CREATE TABLE `enterprise` (
 -- ----------------------------
 DROP TABLE IF EXISTS `hotel`;
 CREATE TABLE `hotel` (
-  `hotel_id` bigint(20) unsigned zerofill NOT NULL,
+  `hotel_id` bigint(6) unsigned zerofill NOT NULL,
   `hotel_name` char(60) NOT NULL,
   `star` int(10) unsigned NOT NULL,
   `address` varchar(60) NOT NULL,
@@ -104,7 +105,7 @@ CREATE TABLE `member_regulation` (
 DROP TABLE IF EXISTS `order_info`;
 CREATE TABLE `order_info` (
   `order_id` varchar(20) NOT NULL,
-  `hotel_id` bigint(20) unsigned zerofill NOT NULL,
+  `hotel_id` bigint(6) unsigned zerofill NOT NULL,
   `username` varchar(20) NOT NULL,
   `order_type` tinyint(4) NOT NULL,
   `hotel_name` char(60) NOT NULL,
@@ -139,9 +140,9 @@ CREATE TABLE `order_info` (
 -- ----------------------------
 DROP TABLE IF EXISTS `personnel`;
 CREATE TABLE `personnel` (
-  `personnel_id` bigint(20) unsigned zerofill NOT NULL,
+  `personnel_id` bigint(6) unsigned zerofill NOT NULL,
   `password` char(20) NOT NULL,
-  `hotel_id` bigint(20) DEFAULT NULL,
+  `hotel_id` bigint(6) unsigned zerofill DEFAULT NULL,
   PRIMARY KEY (`personnel_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -154,7 +155,7 @@ CREATE TABLE `personnel` (
 -- ----------------------------
 DROP TABLE IF EXISTS `promotion`;
 CREATE TABLE `promotion` (
-  `promotion_id` bigint(20) unsigned zerofill NOT NULL,
+  `promotion_id` bigint(6) unsigned zerofill NOT NULL,
   `promotion_type` int(11) NOT NULL,
   `discount` double DEFAULT NULL,
   `least_rooms` int(10) unsigned DEFAULT NULL,
@@ -174,12 +175,13 @@ CREATE TABLE `promotion` (
 -- ----------------------------
 DROP TABLE IF EXISTS `room`;
 CREATE TABLE `room` (
-  `hotel_id` bigint(20) unsigned zerofill NOT NULL,
+  `room_id` bigint(6) NOT NULL AUTO_INCREMENT,
+  `hotel_id` bigint(6) unsigned zerofill NOT NULL,
   `room_type` tinyint(4) NOT NULL,
   `total` int(10) unsigned NOT NULL,
   `available` int(10) unsigned NOT NULL,
   `price` decimal(8,2) NOT NULL,
-  PRIMARY KEY (`hotel_id`,`room_type`)
+  PRIMARY KEY (`room_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------

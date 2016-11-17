@@ -27,14 +27,14 @@ PRIMARY KEY(record_id)
 )ENGINE=InnoDB;
 
 CREATE TABLE personnel(
-personnel_id BIGINT ZEROFILL NOT NULL,
+personnel_id BIGINT(6) ZEROFILL NOT NULL,
 password CHAR(20) NOT NULL,
-hotel_id BIGINT,
+hotel_id BIGINT(6) ZEROFILL NOT NULL
 PRIMARY KEY(personnel_id)
 )ENGINE=InnoDB;
 
 CREATE TABLE hotel(
-hotel_id BIGINT ZEROFILL NOT NULL,
+hotel_id BIGINT(6) ZEROFILL NOT NULL,
 hotel_name CHAR(60) NOT NULL,
 star INT UNSIGNED NOT NULL,
 address VARCHAR(60) NOT NULL,
@@ -45,17 +45,18 @@ PRIMARY KEY(hotel_id)
 )ENGINE=InnoDB;
 
 CREATE TABLE room(
-hotel_id BIGINT ZEROFILL NOT NULL,
+room_id BIGINT(6) NOT NULL AUTO_INCREMENT,
+hotel_id BIGINT(6) ZEROFILL NOT NULL,
 room_type TINYINT NOT NULL,
 total INT UNSIGNED NOT NULL,
 available INT UNSIGNED NOT NULL,
 price DECIMAL(8,2) NOT NULL,
-PRIMARY KEY(hotel_id, room_type)
+PRIMARY KEY(room_id)
 )ENGINE=InnoDB;
 
 CREATE TABLE order_info(
 order_id VARCHAR(20) NOT NULL,
-hotel_id BIGINT ZEROFILL NOT NULL,
+hotel_id BIGINT(6) ZEROFILL NOT NULL,
 username VARCHAR(20) NOT NULL,
 order_type TINYINT NOT NULL,
 hotel_name CHAR(60) NOT NULL,
@@ -82,7 +83,7 @@ PRIMARY KEY(order_id)
 )ENGINE=InnoDB;
 
 CREATE TABLE promotion(
-promotion_id BIGINT ZEROFILL NOT NULL,
+promotion_id BIGINT(6) ZEROFILL NOT NULL,
 promotion_type INT NOT NULL,
 discount DOUBLE,
 least_rooms INT UNSIGNED,
@@ -95,7 +96,7 @@ PRIMARY KEY(promotion_id)
 
 CREATE TABLE enterprise(
 match_id INT NOT NULL AUTO_INCREMENT,
-hotel_id BIGINT NOT NULL,
+hotel_id BIGINT(6) ZEROFILL NOT NULL,
 enterprise CHAR(60) NOT NULL,
 PRIMARY KEY(match_id)
 )ENGINE=InnoDB;
@@ -108,8 +109,9 @@ PRIMARY KEY(level)
 )ENGINE=InnoDB;
 
 CREATE TABLE address(
+address_id BIGINT NOT NULL AUTO_INCREMENT,
 address VARCHAR(60) NOT NULL,
 trading_area VARCHAR(40) NOT NULL,
 discount DOUBLE,
-PRIMARY KEY(address, trading_area)
+PRIMARY KEY(address_id)
 )ENGINE=InnoDB;
