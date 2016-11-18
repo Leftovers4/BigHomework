@@ -1,14 +1,16 @@
 package presentation.userui.usercontroller;
 
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import presentation.userui.userscene.UserInfoScene;
 
 /**
  * Created by wyj on 2016/11/17.
  */
-public class UserSceneController {
+public class UserIndexSceneController {
 
     @FXML private Button indexBtn;
     @FXML private Button userInfoBtn;

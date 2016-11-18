@@ -6,21 +6,20 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.userui.usercontroller.UserIndexSceneController;
-import presentation.userui.usercontroller.UserInfoSceneController;
 
 import java.io.IOException;
 
 /**
- * Created by wyj on 2016/11/18.
+ * Created by wyj on 2016/11/17.
  */
-public class UserInfoScene extends Scene {
+public class UserIndexScene extends Scene {
 
     private double xOffset = 0;
     private double yOffset = 0;
 
-    public UserInfoScene(Parent parent, Stage primaryStage) {
+    public UserIndexScene(Parent parent, Stage primaryStage) {
         super(parent);
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/UserInfo.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/UserCommon.fxml"));
         Parent root= null;
         try {
             root = fxmlLoader.load();
@@ -30,8 +29,8 @@ public class UserInfoScene extends Scene {
         this.setRoot(root);
 
         //配置控制器
-        UserInfoSceneController userInfoSceneController = fxmlLoader.getController();
-        userInfoSceneController.setStage(primaryStage);
+        UserIndexSceneController loginSceneController = fxmlLoader.getController();
+        loginSceneController.setStage(primaryStage);
 
         //实现窗口可拖动
         enableWindowDrag(root,primaryStage);

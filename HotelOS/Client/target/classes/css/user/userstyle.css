@@ -1,5 +1,6 @@
 * {
     -fx-font-family: "微软雅黑";
+    -fx-font-size: 1.2em;
 }
 .panel {
     -fx-background-color: #E8F1F5;
@@ -19,7 +20,6 @@
     -fx-border-style: none;
     -fx-background-color: transparent;
     -fx-text-fill: white;
-    -fx-font-size: 1.2em;
     -fx-cursor: hand;
 }
 
