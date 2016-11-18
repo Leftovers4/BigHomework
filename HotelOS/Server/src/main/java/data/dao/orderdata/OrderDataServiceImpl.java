@@ -1,4 +1,4 @@
-package orderdata;
+package data.dao.orderdata;
 
 import dataservice.orderdataservice.OrderDataService;
 import po.order.OrderPO;

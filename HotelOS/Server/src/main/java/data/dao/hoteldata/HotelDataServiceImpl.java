@@ -1,4 +1,4 @@
-package hoteldata;
+package data.dao.hoteldata;
 
 import dataservice.hoteldataservice.HotelDataService;
 import po.hotel.HotelPO;

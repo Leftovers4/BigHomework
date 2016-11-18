@@ -5,11 +5,11 @@ import dataservice.orderdataservice.OrderDataService;
 import dataservice.personneldataservice.PersonnelDataService;
 import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.userdataservice.UserDataService;
-import hoteldata.HotelDataServiceImpl;
-import orderdata.OrderDataServiceImpl;
-import personneldata.PersonnelDataServiceImpl;
-import promotiondata.PromotionDataServiceImpl;
-import userdata.UserDataServiceImpl;
+import data.dao.hoteldata.HotelDataServiceImpl;
+import data.dao.orderdata.OrderDataServiceImpl;
+import data.dao.personneldata.PersonnelDataServiceImpl;
+import data.dao.promotiondata.PromotionDataServiceImpl;
+import data.dao.userdata.UserDataServiceImpl;
 
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;

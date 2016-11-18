@@ -1,4 +1,4 @@
-package promotiondata;
+package data.dao.promotiondata;
 
 import dataservice.promotiondataservice.PromotionDataService;
 import po.promotion.PromotionPO;

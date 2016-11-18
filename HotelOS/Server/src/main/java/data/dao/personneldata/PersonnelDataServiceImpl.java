@@ -1,4 +1,4 @@
-package personneldata;
+package data.dao.personneldata;
 
 import dataservice.personneldataservice.PersonnelDataService;
 import po.personnel.PersonnelPO;
