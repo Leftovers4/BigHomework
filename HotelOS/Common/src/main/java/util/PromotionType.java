@@ -43,6 +43,12 @@ public enum PromotionType {
     /**
      * Level strategy web promotion type.
      */
-    LEVEL_STRATEGY_WP
+    LEVEL_STRATEGY_WP,
+
+    BirthdayPromotion,
+
+    UserLevelPromotion,
+
+    MultipleRoomPromotion
 
 }

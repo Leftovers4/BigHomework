@@ -34,3 +34,9 @@
 #editInfoBtn:hover{
     -fx-background-color: deepskyblue;
 }
+
+
+.tab{
+    -fx-cell-size: 100px;
+    -fx-tab-min-width: 100px;
+}

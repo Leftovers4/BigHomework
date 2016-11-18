@@ -1,14 +1,12 @@
 package bl.promotionbl;
 
-import bl.userbl.MockUser;
-import bl.userbl.User;
 import util.PromotionType;
 import vo.order.OrderVO;
 
 /**
  * Created by kevin on 2016/11/6.
  */
-public class MockBirthdayHP extends BirthdayHP {
+public class MockBirthdayPromotion{
 
     /**
      * 营销策略ID
@@ -32,7 +30,7 @@ public class MockBirthdayHP extends BirthdayHP {
      * @param promotionType the promotion type
      * @param discount      the discount
      */
-    public MockBirthdayHP(long promotionID, PromotionType promotionType, double discount) {
+    public MockBirthdayPromotion(long promotionID, PromotionType promotionType, double discount) {
         this.promotionID = promotionID;
         this.promotionType = promotionType;
         this.discount = discount;
