@@ -8,6 +8,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -79,23 +81,79 @@
       <Label layoutX="510.0" layoutY="115.0" text="商圈：" />
       <TextField layoutX="160.0" layoutY="165.0" prefHeight="34.0" prefWidth="410.0" text="酒店名称" />
       <Button layoutX="580.0" layoutY="165.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" text="搜索酒店" />
-      <Pane layoutX="160.0" layoutY="220.0" prefHeight="235.0" prefWidth="528.0">
+      <Pane layoutX="160.0" layoutY="243.0" prefHeight="253.0" prefWidth="528.0">
          <children>
-            <Label layoutX="10.0" layoutY="50.0" text="房间类型：" />
-            <Button layoutX="100.0" layoutY="45.0" mnemonicParsing="false" text="不限" />
-            <CheckBox layoutX="165.0" layoutY="50.0" mnemonicParsing="false" text="单人间" />
-            <CheckBox layoutX="274.0" layoutY="50.0" mnemonicParsing="false" text="标准间" />
-            <CheckBox layoutX="384.0" layoutY="50.0" mnemonicParsing="false" text="多床间" />
-            <CheckBox layoutX="165.0" layoutY="90.0" mnemonicParsing="false" text="标准套间" />
-            <CheckBox layoutX="274.0" layoutY="90.0" mnemonicParsing="false" text="豪华套间" />
-            <CheckBox layoutX="384.0" layoutY="90.0" mnemonicParsing="false" text="其他" />
+            <Pane prefHeight="170.0" prefWidth="528.0" visible="false">
+               <children>
+                  <Label layoutX="25.0" layoutY="25.0" text="星级：" />
+                  <Button layoutX="80.0" layoutY="20.0" mnemonicParsing="false" text="不限" />
+                  <CheckBox layoutX="265.0" layoutY="25.0" mnemonicParsing="false" text="三星级" />
+                  <CheckBox layoutX="352.0" layoutY="25.0" mnemonicParsing="false" text="四星级" />
+                  <CheckBox layoutX="435.0" layoutY="25.0" mnemonicParsing="false" text="五星级" />
+                  <CheckBox layoutX="146.0" layoutY="25.0" mnemonicParsing="false" text="二星级以下" />
+                  <Label layoutX="25.0" layoutY="80.0" text="评分：" />
+                  <Button layoutX="80.0" layoutY="75.0" mnemonicParsing="false" text="不限" />
+                  <CheckBox layoutX="146.0" layoutY="80.0" mnemonicParsing="false" text="大于4.5" />
+                  <CheckBox layoutX="338.0" layoutY="80.0" mnemonicParsing="false" text="3.0-4.0" />
+                  <CheckBox layoutX="435.0" layoutY="80.0" mnemonicParsing="false" text="小于3.0" />
+                  <CheckBox layoutX="242.0" layoutY="80.0" mnemonicParsing="false" text="4.0-4.5" />
+                  <CheckBox layoutX="25.0" layoutY="126.0" mnemonicParsing="false" text="只查看已经预定过的酒店" />
+               </children>
+            </Pane>
+            <Button layoutX="197.0" layoutY="224.0" mnemonicParsing="false" text="星级、评分等">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/common/moreChoice.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="227.0" layoutY="224.0" mnemonicParsing="false" text="收起" visible="false">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                     <image>
+                        <Image url="@../../img/common/moreChoice.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="172.0" layoutY="186.0" mnemonicParsing="false" prefWidth="70.0" text="重置" />
+            <Button layoutX="286.0" layoutY="186.0" mnemonicParsing="false" prefWidth="70.0" text="确认" />
+         </children>
+      </Pane>
+      <Pane layoutX="160.0" layoutY="220.0" prefHeight="200.0" prefWidth="528.0">
+         <children>
+            <Label layoutX="10.0" layoutY="55.0" text="房间类型：" />
+            <Button layoutX="100.0" layoutY="50.0" mnemonicParsing="false" text="不限" />
+            <CheckBox layoutX="165.0" layoutY="55.0" mnemonicParsing="false" text="单人间" />
+            <CheckBox layoutX="274.0" layoutY="55.0" mnemonicParsing="false" text="标准间" />
+            <CheckBox layoutX="384.0" layoutY="55.0" mnemonicParsing="false" text="多床间" />
+            <CheckBox layoutX="165.0" layoutY="95.0" mnemonicParsing="false" text="标准套间" />
+            <CheckBox layoutX="274.0" layoutY="95.0" mnemonicParsing="false" text="豪华套间" />
+            <CheckBox layoutX="384.0" layoutY="95.0" mnemonicParsing="false" text="其他" />
             <Label layoutX="10.0" layoutY="10.0" text="入住：" />
             <DatePicker layoutX="71.0" layoutY="5.0" prefHeight="30.0" prefWidth="140.0" />
             <Label layoutX="264.0" layoutY="10.0" text="退房：" />
             <DatePicker layoutX="324.0" layoutY="5.0" prefHeight="30.0" prefWidth="140.0" />
-            <Label layoutX="36.0" layoutY="125.0" text="价格：" />
-            <Button layoutX="100.0" layoutY="120.0" mnemonicParsing="false" text="不限" />
+            <Label layoutX="36.0" layoutY="135.0" text="价格：" />
+            <Button layoutX="100.0" layoutY="130.0" mnemonicParsing="false" text="不限" />
+            <CheckBox layoutX="165.0" layoutY="135.0" mnemonicParsing="false" text="¥200以下" />
+            <CheckBox layoutX="275.0" layoutY="135.0" mnemonicParsing="false" text="¥200-400" />
+            <CheckBox layoutX="384.0" layoutY="135.0" mnemonicParsing="false" text="¥400-600" />
+            <CheckBox layoutX="165.0" layoutY="175.0" mnemonicParsing="false" text="¥600-800" />
+            <CheckBox layoutX="275.0" layoutY="175.0" mnemonicParsing="false" text="¥800以上" />
          </children>
       </Pane>
+      <TableView layoutX="159.0" layoutY="532.0" prefHeight="100.0" prefWidth="528.0">
+        <columns>
+          <TableColumn prefWidth="149.0" text="酒店名称" />
+          <TableColumn prefWidth="137.0" text="地址/商圈" />
+            <TableColumn prefWidth="45.0" text="评分" />
+            <TableColumn prefWidth="70.0" text="预订记录" />
+            <TableColumn prefWidth="67.0" text="价格区间" />
+            <TableColumn prefWidth="59.0" />
+        </columns>
+      </TableView>
    </children>
 </Pane>

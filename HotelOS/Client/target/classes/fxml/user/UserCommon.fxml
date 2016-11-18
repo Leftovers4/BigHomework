@@ -12,7 +12,7 @@
    <children>
       <VBox id="userLeftArea" fx:id="user_left_area" prefHeight="690.0" prefWidth="230.0" stylesheets="@../../css/user/userstyle.css">
          <children>
-            <Button fx:id="indexBtn" onAction="#index" mnemonicParsing="false">
+            <Button fx:id="indexBtn" mnemonicParsing="false" onAction="#index">
                <graphic>
                   <ImageView fitHeight="230.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -30,42 +30,6 @@
             <Button id="searchHotelBtn" fx:id="searchHotelBtn" mnemonicParsing="false" onAction="#searchHotel" prefHeight="45.0" prefWidth="230.0" stylesheets="@../../css/user/userstyle.css" text="搜索酒店" />
             <Button id="hotelRegisteredBtn" fx:id="hotelRegisteredBtn" mnemonicParsing="false" onAction="#hotelRegistered" prefHeight="45.0" prefWidth="230.0" stylesheets="@../../css/user/userstyle.css" text="预订过的酒店" />
          </children></VBox>
-      <HBox id="topBar" layoutX="230.0" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
-         <children>
-            <Button mnemonicParsing="false" stylesheets="@../../css/user/userstyle.css">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/common/back.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin></Button>
-            <Button mnemonicParsing="false" onAction="#minimizeWindow" stylesheets="@../../css/user/userstyle.css">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/common/minimize.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="680.0" top="5.0" />
-               </HBox.margin></Button>
-            <Button mnemonicParsing="false" onAction="#closeWindow" stylesheets="@../../css/user/userstyle.css">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/common/exit.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin></Button>
-         </children></HBox>
       <HBox id="stateBar" layoutY="690.0" prefHeight="30.0" prefWidth="1080.0" stylesheets="@../../css/user/userstyle.css" />
       <ImageView fx:id="leftBarSlider" fitHeight="56.0" fitWidth="56.0" layoutX="193.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">
          <image>
