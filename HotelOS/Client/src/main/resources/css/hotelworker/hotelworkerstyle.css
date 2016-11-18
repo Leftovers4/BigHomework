@@ -2,12 +2,15 @@
     -fx-font-family: "微软雅黑";
     -fx-font-size: 18px;
 }
-
-#userLeftArea {
-    /*-fx-background-color: #090723;*/
+/*显示的panel 位于Pane内*/
+.panel {
+    -fx-background-color: #E8F1F5;
+}
+/*左侧栏*/
+#LeftArea {
     -fx-background-color: #32323A;
 }
-
+/*左侧按钮*/
 .sideButton{
     -fx-border-style: none;
     -fx-background-color: transparent;
@@ -17,11 +20,17 @@
 .sideButton:hover{
     -fx-background-color: deepskyblue;
 }
-
+/*顶侧*/
+#topBar {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(one-pass-box, #0F1034, 2, 1.0, 0, 0);
+}
+/*顶侧按钮*/
 .topbarButton{
     -fx-border-style: none;
     -fx-background-color: transparent;
 }
-
-#editInfoBtn{
+/*编辑按钮*/
+#editInfoBtn:hover{
+    -fx-background-color: deepskyblue;
 }

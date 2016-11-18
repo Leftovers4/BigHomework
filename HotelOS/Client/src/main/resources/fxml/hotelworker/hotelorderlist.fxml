@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
+            <children>
+                <Button mnemonicParsing="false" stylesheets="@../../css/user/userstyle.css">
+                    <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/common/back.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <HBox.margin>
+                        <Insets left="10.0" />
+                    </HBox.margin>
+                </Button>
+                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../img/hotelworker/initialPhoto.png" />
+                    </image>
+                    <HBox.margin>
+                        <Insets left="480.0" top="10.0" />
+                    </HBox.margin>
+                </ImageView>
+                <SplitMenuButton maxWidth="120.0" mnemonicParsing="false" text="name">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="退出登录" />
+                    </items>
+                    <HBox.margin>
+                        <Insets left="10.0" top="8.0" />
+                    </HBox.margin>
+                </SplitMenuButton>
+                <Button mnemonicParsing="false">
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/common/minimize.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <HBox.margin>
+                        <Insets left="60.0" top="5.0" />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false">
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/common/exit.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <HBox.margin>
+                        <Insets top="5.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+      <TabPane layoutX="213.0" layoutY="245.0" prefHeight="200.0" prefWidth="584.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Untitled Tab 1">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+          <Tab text="Untitled Tab 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+    </children>
+</fx:root>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../../css/hotelworker/hotelworkerstyle.css"
+      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.CommonSceneController">
+    <children>
+        <VBox id="LeftArea" fx:id="leftArea" prefHeight="690.0" prefWidth="230.0">
+            <children>
+                <ImageView fitHeight="230.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../img/hotelworker/logo.png" />
+                    </image>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </ImageView>
+                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="基本信息">
+                    <VBox.margin>
+                        <Insets top="150.0" />
+                    </VBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="订单列表" />
+                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="录入可用客房" />
+                <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="制定促销策略" />
+                <Button layoutX="10.0" layoutY="410.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="更新入住信息" />
+                <Button layoutX="10.0" layoutY="455.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="更新退房信息" />
+            </children></VBox>
+        <HBox layoutY="690.0" prefHeight="30.0" prefWidth="1080.0" />
+        <Pane fx:id="mainPane" layoutX="230.0" prefHeight="690.0" prefWidth="850.0" styleClass="panel" />
+    </children>
+</Pane>
