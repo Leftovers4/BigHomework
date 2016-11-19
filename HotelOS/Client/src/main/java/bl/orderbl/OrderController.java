@@ -61,4 +61,9 @@ public class OrderController implements OrderBLService{
     public ResultMessage changeOrderType(String orderID) {
         return null;
     }
+
+    @Override
+    public ResultMessage handleAppeal(String orderID, double credit) {
+        return null;
+    }
 }

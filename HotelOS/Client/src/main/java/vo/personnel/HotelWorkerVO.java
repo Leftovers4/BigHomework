@@ -1,5 +1,6 @@
 package vo.personnel;
 
+import util.PersonnelType;
 import vo.user.UserVO;
 
 /**
@@ -10,7 +11,7 @@ public class HotelWorkerVO extends PersonnelVO {
     public long hotelID;
 
     public HotelWorkerVO(long hotelworkerID, String password, long hotelID) {
-        super(hotelworkerID, password);
+        super(hotelworkerID, password, PersonnelType.HOTEL_WORKER);
         this.hotelID = hotelID;
     }
 

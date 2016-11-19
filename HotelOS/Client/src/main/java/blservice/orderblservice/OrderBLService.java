@@ -42,7 +42,8 @@ public interface OrderBLService {
     // 改变订单类型
     public ResultMessage changeOrderType(String orderID);
 
-
+    //处理订单申诉
+    public ResultMessage handleAppeal(String orderID, double credit);
 
 
 }

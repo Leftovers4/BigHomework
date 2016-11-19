@@ -3,6 +3,7 @@ package blservice_driver;
 import blservice.personnelblservice.PersonnelBLService;
 import org.junit.Before;
 import org.junit.Test;
+import util.PersonnelType;
 import util.ResultMessage;
 import vo.personnel.PersonnelVO;
 
@@ -23,7 +24,7 @@ public class PersonnelBLService_Driver {
 
     @Test
     public void login() throws Exception {
-        PersonnelVO personnelVO = new PersonnelVO(1, "123456");
+        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HOTEL_WORKER);
         assertEquals(ResultMessage.SUCCESS, tested.login(personnelVO));
     }
 
@@ -42,7 +43,7 @@ public class PersonnelBLService_Driver {
 
     @Test
     public void add() throws Exception {
-        PersonnelVO personnelVO = new PersonnelVO(1, "123456");
+        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HOTEL_WORKER);
         assertEquals(ResultMessage.SUCCESS, tested.add(personnelVO));
     }
 
@@ -53,7 +54,7 @@ public class PersonnelBLService_Driver {
 
     @Test
     public void modify() throws Exception {
-        PersonnelVO personnelVO = new PersonnelVO(1, "123456");
+        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HOTEL_WORKER);
         assertEquals(ResultMessage.SUCCESS, tested.modify(personnelVO));
     }
 

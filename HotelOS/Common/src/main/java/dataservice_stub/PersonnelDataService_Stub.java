@@ -2,6 +2,7 @@ package dataservice_stub;
 
 import dataservice.personneldataservice.PersonnelDataService;
 import po.personnel.PersonnelPO;
+import util.PersonnelType;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -24,6 +25,11 @@ public class PersonnelDataService_Stub implements PersonnelDataService{
         personnelPOs.add(personnelPO);
 
         return personnelPOs;
+    }
+
+    @Override
+    public ArrayList<PersonnelPO> getListByType(PersonnelType personnelType) throws RemoteException {
+        return null;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package blservice_stub;
 
 import blservice.personnelblservice.PersonnelBLService;
+import util.PersonnelType;
 import util.ResultMessage;
 import vo.personnel.PersonnelVO;
 
@@ -24,11 +25,16 @@ public class PersonnelBLService_Stub implements PersonnelBLService{
     public ArrayList<PersonnelVO> showList() {
         ArrayList<PersonnelVO> personnelVOs = new ArrayList<PersonnelVO>();
 
-        PersonnelVO personnelVO = new PersonnelVO(1, "123456");
+        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HOTEL_WORKER);
 
         personnelVOs.add(personnelVO);
 
         return personnelVOs;
+    }
+
+    @Override
+    public ArrayList<PersonnelVO> showListByType(PersonnelType personnelType) {
+        return null;
     }
 
     @Override
@@ -48,7 +54,7 @@ public class PersonnelBLService_Stub implements PersonnelBLService{
 
     @Override
     public PersonnelVO find(long personnelID) {
-        PersonnelVO personnelVO = new PersonnelVO(1, "123456");
+        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HOTEL_WORKER);
         return personnelVO;
     }
 }
