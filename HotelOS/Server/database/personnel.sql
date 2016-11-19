@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `personnel`;
 CREATE TABLE `personnel` (
   `personnel_id` bigint(6) unsigned zerofill NOT NULL,
   `password` char(20) NOT NULL,
-  `personnel_type` tinyint(4) DEFAULT NULL,
+  `personnel_type` varchar(20) DEFAULT NULL,
   `hotel_id` bigint(6) unsigned zerofill DEFAULT NULL,
   PRIMARY KEY (`personnel_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

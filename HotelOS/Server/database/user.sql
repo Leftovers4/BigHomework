@@ -25,7 +25,7 @@ CREATE TABLE `user` (
   `name` varchar(20) NOT NULL,
   `gender` tinyint(4) NOT NULL,
   `phone` varchar(20) NOT NULL,
-  `member_type` tinyint(4) NOT NULL,
+  `member_type` varchar(20) NOT NULL,
   `level` int(10) unsigned NOT NULL,
   `birthday` date DEFAULT NULL,
   `enterprise` char(80) DEFAULT NULL,

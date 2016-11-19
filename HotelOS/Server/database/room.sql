@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `room`;
 CREATE TABLE `room` (
   `room_id` bigint(6) NOT NULL AUTO_INCREMENT,
   `hotel_id` bigint(6) unsigned zerofill NOT NULL,
-  `room_type` tinyint(4) NOT NULL,
+  `room_type` varchar(20) NOT NULL,
   `total` int(10) unsigned NOT NULL,
   `available` int(10) unsigned NOT NULL,
   `price` decimal(8,2) NOT NULL,

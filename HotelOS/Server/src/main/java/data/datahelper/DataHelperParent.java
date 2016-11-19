@@ -1,5 +1,7 @@
 package data.datahelper;
 
+import util.ResultMessage;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,14 +47,11 @@ public class DataHelperParent {
     protected int affectedRows;
 
     /**
-     * tableName与依赖性高的数据库操作的map表
+     * 表名 —> 列
      */
-    private final static Map<String, Map<String, String>> TBNAME_TO_SQL = new HashMap<String, Map<String, String>>();
+    private final static Map<String, ArrayList<String>> TB_TO_COL = new HashMap<String, ArrayList<String>>();
 
-    /**
-     * PO与各个表数据库列名的map表，再与tableName匹配
-     */
-    private final static Map<String, Map<String, String>> TBNAME_TO_COLNAME = new HashMap<String, Map<String, String>>();
+
 
     /**
      * 将两个map表初始化
@@ -61,6 +60,66 @@ public class DataHelperParent {
 
 
     }
+
+
+    public DataHelperParent(){
+        // 连接数据库
+        this.conn = DBInit.connect();
+        System.out.println("Succeed to connect database...");
+    }
+
+
+    /**
+     * 往表中添加一条数据
+     * @param tableName 表名
+     * @param parameters 参数
+     * @return
+     */
+    public ResultMessage addToSQL(String tableName, String... parameters){
+        return ResultMessage.FAIL;
+
+    }
+
+
+    /**
+     * 从表中删除一条数据（根据ID/username）
+     * @param tableName 表名
+     * @param id 主键
+     * @return
+     */
+    public ResultMessage delFromSQL(String tableName, String id){
+        return ResultMessage.FAIL;
+    }
+
+
+    /**
+     * 从数据库中更新一条数据（根据ID/username）
+     * @param tableName
+     * @param newParameters
+     * @return
+     */
+    public ResultMessage updateFromSQL(String tableName, String... newParameters){
+        return ResultMessage.FAIL;
+
+    }
+
+    /**
+     * 从数据库中获得一条数据（根据ID/username）
+     * @param tableName
+     * @param id
+     * @return
+     */
+    public ArrayList<String> findFromSQLById(String tableName, String id){
+        return null;
+    }
+
+    public ArrayList<ArrayList<String>> findFromSQLByType(String tableName, String type){
+        return null;
+    }
+
+
+
+
 
 
 

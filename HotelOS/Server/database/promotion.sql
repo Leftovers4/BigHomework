@@ -21,7 +21,7 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `promotion`;
 CREATE TABLE `promotion` (
   `promotion_id` bigint(6) unsigned zerofill NOT NULL,
-  `promotion_type` int(11) NOT NULL,
+  `promotion_type` varchar(20) NOT NULL,
   `discount` double DEFAULT NULL,
   `least_rooms` int(10) unsigned DEFAULT NULL,
   `begin_time` datetime DEFAULT NULL,
