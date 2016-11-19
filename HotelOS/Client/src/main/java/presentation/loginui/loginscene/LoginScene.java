@@ -6,13 +6,11 @@ import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.loginui.logincontroller.LoginSceneController;
+import presentation.util.EnableWindowDrag;
 
 import java.io.IOException;
 
 public class LoginScene extends Scene {
-
-    private double xOffset = 0;
-    private double yOffset = 0;
 
     public LoginScene(Parent parent,Stage primaryStage) {
         super(parent);
@@ -30,25 +28,7 @@ public class LoginScene extends Scene {
         loginSceneController.setStage(primaryStage);
 
         //实现窗口可拖动
-        enableWindowDrag(root,primaryStage);
-    }
-
-    /**
-     * 实现窗口可拖动
-     * @param root
-     * @param primaryStage
-     */
-    private void enableWindowDrag(Parent root, Stage primaryStage) {
-        root.setOnMousePressed((MouseEvent event) -> {
-            event.consume();
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
-        });
-        root.setOnMouseDragged((MouseEvent event) -> {
-            event.consume();
-            primaryStage.setX(event.getScreenX() - xOffset);
-            primaryStage.setY(event.getScreenY() - yOffset);
-        });
+        new EnableWindowDrag(root, primaryStage);
     }
 
 }

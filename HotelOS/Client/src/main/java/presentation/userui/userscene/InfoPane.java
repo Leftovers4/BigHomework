@@ -18,7 +18,7 @@ public class InfoPane extends Pane{
     }
 
     private void loadFxml(Stage primaryStage) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/userinfo.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/userInfo.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

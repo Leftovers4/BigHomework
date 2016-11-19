@@ -5,7 +5,7 @@ import javafx.scene.Group;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import presentation.loginui.loginscene.LoginScene;
-import presentation.util.CommonController;
+import presentation.util.EnableWindowDrag;
 
 /**
  * Created by Hitiger on 2016/11/17.
@@ -19,8 +19,7 @@ public class Leftovers extends Application{
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setScene(new LoginScene(new Group(),primaryStage));
         primaryStage.show();
-        CommonController commonController = new CommonController();
-        commonController.setStage(primaryStage);
+
     }
 
     public static void main(String[] args) {
