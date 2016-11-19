@@ -13,7 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import presentation.userui.userscene.UserIndexScene;
+import presentation.userui.userscene.ComUserScene;
+import presentation.userui.userscene.InfoPane;
 
 /**
  * Created by wyj on 2016/11/6.
@@ -211,6 +212,6 @@ public class LoginSceneController {
     }
 
     public void Login() {
-        stage.setScene(new UserIndexScene(new Group(), stage));
+        stage.setScene(new ComUserScene(new Group(),stage));
     }
 }

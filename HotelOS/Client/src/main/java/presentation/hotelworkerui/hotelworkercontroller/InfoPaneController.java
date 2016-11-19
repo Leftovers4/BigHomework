@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 /**
  * Created by Hitiger on 2016/11/18.
- * Description : 酒店基本信息控制器，负责查看和编辑信息的跳转
+ * Description : 酒店基本信息控制器，负责查看和编辑信息界面的跳转
  */
 public class InfoPaneController {
     //查看评价、酒店名称、工作人员、编号

@@ -1,4 +1,4 @@
-package presentation.hotelworkerui.hotelworkerscene.commonscene;
+package presentation.hotelworkerui.hotelworkerscene;
 
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -14,7 +14,7 @@ public class TestLauncher extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setScene(new CommonScene(new Group(),primaryStage));
+        primaryStage.setScene(new ComWorkerScene(new Group(),primaryStage));
         primaryStage.show();
     }
 

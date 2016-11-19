@@ -35,8 +35,12 @@
     -fx-background-color: deepskyblue;
 }
 
+/*列表上方的工具栏*/
+#listTopBar{
+    -fx-background-color: #F0FBFF;
+}
 
-.tab{
-    -fx-cell-size: 100px;
-    -fx-tab-min-width: 100px;
+/*搜索框*/
+#searchField{
+    -fx-border-radius: 50%;
 }

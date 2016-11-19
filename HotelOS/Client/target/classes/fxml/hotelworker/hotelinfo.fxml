@@ -8,27 +8,27 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.InfoPaneController">
          <children>
-            <Label layoutX="100.0" layoutY="354.0" prefHeight="35.0" prefWidth="69.0" text="地址：" />
-            <ComboBox fx:id="cityBox" layoutX="210.0" layoutY="250.0" prefHeight="36.0" prefWidth="128.0" promptText="城市" />
-            <ComboBox fx:id="townBox" layoutX="355.0" layoutY="250.0" prefHeight="36.0" prefWidth="128.0" promptText="县区" visible="false" />
-            <TextField fx:id="detailPosField" alignment="CENTER" layoutX="506.0" layoutY="250.0" prefHeight="36.0" prefWidth="192.0" promptText="详细地址" visible="false" />
-            <Label fx:id="tradeArea" layoutX="611.0" layoutY="355.0" prefHeight="35.0" prefWidth="69.0" text="商圈：" />
-            <ComboBox fx:id="tradeAreaBox" layoutX="210.0" layoutY="320.0" prefHeight="36.0" prefWidth="128.0" promptText="商圈" visible="false" />
-            <Label layoutX="100.0" layoutY="414.0" prefHeight="35.0" prefWidth="69.0" text="简介：" />
-            <TextArea fx:id="simpleIntroArea" layoutX="211.0" layoutY="385.0" prefHeight="62.0" prefWidth="484.0" visible="false" />
-            <Label layoutX="100.0" layoutY="474.0" prefHeight="35.0" prefWidth="69.0" text="服务：" />
-            <TextArea fx:id="hotelServiceArea" layoutX="211.0" layoutY="474.0" prefHeight="68.0" prefWidth="484.0" visible="false" />
-            <Button id="cancelEditBtn" fx:id="cancelEditBtn" layoutX="623.0" layoutY="612.0" mnemonicParsing="false" onAction="#cancelEdit" prefHeight="36.0" prefWidth="69.0" text="取消" visible="false" />
-            <Hyperlink fx:id="showReviewLink" layoutX="716.0" layoutY="255.0" onAction="#showReview" text="查看评价" />
-            <Label layoutX="435.0" layoutY="113.0" prefHeight="35.0" text="名称：" />
-            <Label layoutX="435.0" layoutY="183.0" prefHeight="35.0" text="工作人员：" />
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="510.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="75.0" layoutY="344.0" prefHeight="35.0" prefWidth="69.0" text="地址：" />
+            <ComboBox fx:id="cityBox" layoutX="135.0" layoutY="344.0" prefHeight="36.0" prefWidth="100.0" promptText="南京" visible="false" />
+            <ComboBox fx:id="townBox" layoutX="248.0" layoutY="344.0" prefHeight="36.0" prefWidth="122.0" promptText="栖霞区" visible="false" />
+            <TextField fx:id="detailPosField" alignment="CENTER" layoutX="381.0" layoutY="345.0" prefHeight="36.0" prefWidth="188.0" promptText="详细地址" visible="false" />
+            <Label fx:id="tradeArea" layoutX="586.0" layoutY="345.0" prefHeight="35.0" prefWidth="69.0" text="商圈：" />
+            <ComboBox fx:id="tradeAreaBox" layoutX="642.0" layoutY="345.0" prefHeight="36.0" prefWidth="138.0" promptText="仙林商圈" visible="false" />
+            <Label layoutX="75.0" layoutY="409.0" prefHeight="35.0" prefWidth="69.0" text="简介：" />
+            <TextArea fx:id="simpleIntroArea" layoutX="135.0" layoutY="415.0" prefHeight="62.0" prefWidth="637.0" visible="false" />
+            <Label layoutX="75.0" layoutY="474.0" prefHeight="35.0" prefWidth="69.0" text="服务：" />
+            <TextArea fx:id="hotelServiceArea" layoutX="135.0" layoutY="484.0" prefHeight="82.0" prefWidth="637.0" visible="false" />
+            <Button id="cancelEditBtn" fx:id="cancelEditBtn" layoutX="708.0" layoutY="612.0" mnemonicParsing="false" onAction="#cancelEdit" prefHeight="36.0" prefWidth="69.0" text="取消" visible="false" />
+            <Hyperlink fx:id="showReviewLink" layoutX="701.0" layoutY="255.0" onAction="#showReview" text="查看评价" />
+            <Label layoutX="410.0" layoutY="113.0" prefHeight="35.0" text="名称：" />
+            <Label layoutX="410.0" layoutY="183.0" prefHeight="35.0" text="工作人员：" />
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="485.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/hotelworker/star.png" />
                </image>
             </ImageView>
-            <Label layoutX="435.0" layoutY="253.0" prefHeight="35.0" text="星级：" />
-            <Label layoutX="654.0" layoutY="112.0" prefHeight="35.0" text="编号：" />
+            <Label layoutX="410.0" layoutY="253.0" prefHeight="35.0" text="星级：" />
+            <Label layoutX="640.0" layoutY="112.0" prefHeight="35.0" text="编号：" />
             <HBox id="topBar" prefHeight="50.0" prefWidth="850.0">
                <children>
                   <Button fx:id="backBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#back" styleClass="topbarButton">
@@ -66,18 +66,18 @@
                   </Button>
                </children>
             </HBox>
-      <Label fx:id="hotelName" layoutX="513.0" layoutY="119.0" text="如家酒店" />
-      <Label fx:id="hotelID" layoutX="726.0" layoutY="118.0" text="123456" />
-      <Label fx:id="hotelWorkerName" layoutX="549.0" layoutY="189.0" text="路人乙" />
-      <Button id="saveEditBtn" fx:id="saveEditBtn" layoutX="514.0" layoutY="612.0" mnemonicParsing="false" onAction="#saveEdit" prefHeight="36.0" prefWidth="69.0" text="保存" visible="false" />
-      <Label fx:id="simpleIntroLabel" layoutX="160.0" layoutY="400.0" prefHeight="62.0" prefWidth="637.0" text="座落于半山园林美景之中，是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
-      <Label fx:id="hotelServiceLabel" layoutX="160.0" layoutY="470.0" prefHeight="91.0" prefWidth="637.0" text="为散客提供免费的WIFI。房间服务，接送服务（额外收费），24小时前台服务，货币兑换，行礼寄存，礼宾台，洗衣服务，干洗服务，熨衣服务是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
-      <Button fx:id="editBtn" layoutX="737.0" layoutY="612.0" mnemonicParsing="false" onAction="#editHotelInfo" text="编辑" />
-      <Label fx:id="tradeAreaLabel" layoutX="680.0" layoutY="361.0" text="仙林商圈" />
-      <Label fx:id="cityLabel" layoutX="160.0" layoutY="360.0" text="南京市" />
-      <Label fx:id="townLabel" layoutX="214.0" layoutY="360.0" text="栖霞区" />
-      <Label fx:id="detailPosLabel" layoutX="268.0" layoutY="360.0" text="仙林大道166号" />
-      <ImageView fitHeight="180.0" fitWidth="180.0" layoutX="160.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+      <Label fx:id="hotelName" layoutX="488.0" layoutY="119.0" text="如家酒店" />
+      <Label fx:id="hotelID" layoutX="712.0" layoutY="118.0" text="123456" />
+      <Label fx:id="hotelWorkerName" layoutX="524.0" layoutY="189.0" text="路人乙" />
+      <Button id="saveEditBtn" fx:id="saveEditBtn" layoutX="608.0" layoutY="612.0" mnemonicParsing="false" onAction="#saveEdit" prefHeight="36.0" prefWidth="69.0" text="保存" visible="false" />
+      <Label fx:id="simpleIntroLabel" layoutX="135.0" layoutY="395.0" prefHeight="62.0" prefWidth="637.0" text="座落于半山园林美景之中，是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
+      <Label fx:id="hotelServiceLabel" layoutX="135.0" layoutY="469.0" prefHeight="91.0" prefWidth="637.0" text="为散客提供免费的WIFI。房间服务，接送服务（额外收费），24小时前台服务，货币兑换，行礼寄存，礼宾台，洗衣服务，干洗服务，熨衣服务是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
+      <Button fx:id="editBtn" layoutX="718.0" layoutY="612.0" mnemonicParsing="false" onAction="#editHotelInfo" text="编辑" />
+      <Label fx:id="tradeAreaLabel" layoutX="643.0" layoutY="351.0" text="仙林商圈" />
+      <Label fx:id="cityLabel" layoutX="135.0" layoutY="351.0" text="南京市" />
+      <Label fx:id="townLabel" layoutX="189.0" layoutY="351.0" text="栖霞区" />
+      <Label fx:id="detailPosLabel" layoutX="243.0" layoutY="351.0" text="仙林大道166号" />
+      <ImageView fitHeight="180.0" fitWidth="180.0" layoutX="135.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/common/initialPhoto.png" />
          </image>

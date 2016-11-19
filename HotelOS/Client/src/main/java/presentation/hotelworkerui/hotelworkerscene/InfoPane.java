@@ -1,4 +1,4 @@
-package presentation.hotelworkerui.hotelworkerscene.hotelinfopane;
+package presentation.hotelworkerui.hotelworkerscene;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
