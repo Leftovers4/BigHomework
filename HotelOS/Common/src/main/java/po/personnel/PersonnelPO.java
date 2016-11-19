@@ -1,5 +1,7 @@
 package po.personnel;
 
+import util.PersonnelType;
+
 import java.io.Serializable;
 
 /**
@@ -21,6 +23,11 @@ public class PersonnelPO implements Serializable {
      * 密码
      */
     private String password;
+
+    /**
+     * 工作人员类型
+     */
+    private PersonnelType personnelType;
 
     public PersonnelPO(long personnelID, String password) {
         this.personnelID = personnelID;

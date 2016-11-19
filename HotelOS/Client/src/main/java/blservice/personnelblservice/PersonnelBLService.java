@@ -1,8 +1,10 @@
 package blservice.personnelblservice;
 
+import util.PersonnelType;
 import util.ResultMessage;
 import vo.personnel.PersonnelVO;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -18,6 +20,9 @@ public interface PersonnelBLService {
 
     // 显示员工列表 TODO 按类型
     public ArrayList<PersonnelVO> showList();
+
+    // 按类型显示员工列表
+    public ArrayList<PersonnelVO> showListByType(PersonnelType personnelType);
 
     // 增加员工
     public ResultMessage add(PersonnelVO personnelVO);

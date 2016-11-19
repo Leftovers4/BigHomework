@@ -11,7 +11,7 @@ public class SimpleSQLBuilder {
 
 
     /**
-     * 为每一个数据库表（有主键）建立增删改查的操作
+     * 为每一个数据库表建立增删改查的操作
      * @param tableName 表名
      * @param num 参数个数
      * @param parameters 参数

@@ -2,6 +2,7 @@ package dataservice.personneldataservice;
 
 import dataservice.DataServiceParent;
 import po.personnel.PersonnelPO;
+import util.PersonnelType;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -16,6 +17,9 @@ public interface PersonnelDataService extends DataServiceParent{
 
     // 显示员工列表
     public ArrayList<PersonnelPO> getList() throws RemoteException;
+
+    // 按类型显示员工列表
+    public ArrayList<PersonnelPO> getListByType(PersonnelType personnelType) throws RemoteException;
 
     // 新增员工
     public void insert(PersonnelPO personnelPO) throws RemoteException;
