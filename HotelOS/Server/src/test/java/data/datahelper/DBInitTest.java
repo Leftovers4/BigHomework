@@ -23,6 +23,9 @@ public class DBInitTest {
     @Test
     public void testConnection(){
         tested.connection();
+
+        if(tested.getConn() != null)
+            System.out.println("Connected successful...");
     }
 
     @Test

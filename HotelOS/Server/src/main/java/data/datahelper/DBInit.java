@@ -14,7 +14,7 @@ public class DBInit {
      * 确定连接相关参数
      */
     // private final static String URL = "jdbc:mysql://localhost:3306/hotelos?useUnicode=true&characterEncoding=UTF-8";
-    private final static String URL = "jdbc:mysql://localhost:3306/";
+    private final static String URL = "jdbc:mysql://localhost:3306/hotelos";
     private final static String USER = "root";
     private final static String PWD = "123456";
 
@@ -50,7 +50,7 @@ public class DBInit {
 
         // 获取连接
         try {
-            Connection connection = DriverManager.getConnection(URL, USER, PWD);
+            conn = DriverManager.getConnection(URL, USER, PWD);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -77,8 +77,8 @@ public class DBInit {
 
     }
 
-    public static void main(String[] args){
-        DBInit.connect();
+    public Connection getConn(){
+        return conn;
     }
 
 }

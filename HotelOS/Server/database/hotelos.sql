@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-11-18 14:18:56
+Date: 2016-11-20 00:28:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `address`;
 CREATE TABLE `address` (
-  `address_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `address_id` int(20) NOT NULL AUTO_INCREMENT,
   `address` varchar(60) NOT NULL,
   `trading_area` varchar(40) NOT NULL,
   `discount` double DEFAULT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE `enterprise` (
 -- ----------------------------
 DROP TABLE IF EXISTS `hotel`;
 CREATE TABLE `hotel` (
-  `hotel_id` bigint(6) unsigned zerofill NOT NULL,
+  `hotel_id` int(6) unsigned zerofill NOT NULL,
   `hotel_name` char(60) NOT NULL,
   `star` int(10) unsigned NOT NULL,
   `address` varchar(60) NOT NULL,
@@ -105,11 +105,11 @@ CREATE TABLE `member_regulation` (
 DROP TABLE IF EXISTS `order_info`;
 CREATE TABLE `order_info` (
   `order_id` varchar(20) NOT NULL,
-  `hotel_id` bigint(6) unsigned zerofill NOT NULL,
+  `hotel_id` int(6) unsigned zerofill NOT NULL,
   `username` varchar(20) NOT NULL,
-  `order_type` tinyint(4) NOT NULL,
+  `order_type` varchar(20) NOT NULL,
   `hotel_name` char(60) NOT NULL,
-  `room_type` tinyint(4) NOT NULL,
+  `room_type` varchar(20) NOT NULL,
   `room_amount` int(10) unsigned NOT NULL,
   `room_number` varchar(20) DEFAULT NULL,
   `person_amount` int(10) unsigned NOT NULL,
@@ -140,23 +140,27 @@ CREATE TABLE `order_info` (
 -- ----------------------------
 DROP TABLE IF EXISTS `personnel`;
 CREATE TABLE `personnel` (
-  `personnel_id` bigint(6) unsigned zerofill NOT NULL,
+  `personnel_id` int(6) unsigned zerofill NOT NULL,
   `password` char(20) NOT NULL,
-  `hotel_id` bigint(6) unsigned zerofill DEFAULT NULL,
+  `personnel_type` varchar(20) DEFAULT NULL,
+  `hotel_id` int(6) unsigned zerofill DEFAULT NULL,
   PRIMARY KEY (`personnel_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of personnel
 -- ----------------------------
+INSERT INTO `personnel` VALUES ('000119', 'password', 'HOTEL_WORKER', null);
+INSERT INTO `personnel` VALUES ('120110', 'password', 'HOTEL_WORKER', null);
+INSERT INTO `personnel` VALUES ('120120', 'pass', 'HOTEL_WORKER', null);
 
 -- ----------------------------
 -- Table structure for promotion
 -- ----------------------------
 DROP TABLE IF EXISTS `promotion`;
 CREATE TABLE `promotion` (
-  `promotion_id` bigint(6) unsigned zerofill NOT NULL,
-  `promotion_type` int(11) NOT NULL,
+  `promotion_id` int(6) unsigned zerofill NOT NULL,
+  `promotion_type` varchar(20) NOT NULL,
   `discount` double DEFAULT NULL,
   `least_rooms` int(10) unsigned DEFAULT NULL,
   `begin_time` datetime DEFAULT NULL,
@@ -175,9 +179,9 @@ CREATE TABLE `promotion` (
 -- ----------------------------
 DROP TABLE IF EXISTS `room`;
 CREATE TABLE `room` (
-  `room_id` bigint(6) NOT NULL AUTO_INCREMENT,
-  `hotel_id` bigint(6) unsigned zerofill NOT NULL,
-  `room_type` tinyint(4) NOT NULL,
+  `room_id` int(6) NOT NULL AUTO_INCREMENT,
+  `hotel_id` int(6) unsigned zerofill NOT NULL,
+  `room_type` varchar(20) NOT NULL,
   `total` int(10) unsigned NOT NULL,
   `available` int(10) unsigned NOT NULL,
   `price` decimal(8,2) NOT NULL,
@@ -198,7 +202,7 @@ CREATE TABLE `user` (
   `name` varchar(20) NOT NULL,
   `gender` tinyint(4) NOT NULL,
   `phone` varchar(20) NOT NULL,
-  `member_type` tinyint(4) NOT NULL,
+  `member_type` varchar(20) NOT NULL,
   `level` int(10) unsigned NOT NULL,
   `birthday` date DEFAULT NULL,
   `enterprise` char(80) DEFAULT NULL,
@@ -208,3 +212,4 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
+INSERT INTO `user` VALUES ('Hiki', '123456', 'GHB', '0', '110', 'NONE', '1', '2016-11-19', null);

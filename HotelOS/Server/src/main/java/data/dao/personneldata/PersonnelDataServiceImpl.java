@@ -2,6 +2,7 @@ package data.dao.personneldata;
 
 import dataservice.personneldataservice.PersonnelDataService;
 import po.personnel.PersonnelPO;
+import util.PersonnelType;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -15,6 +16,10 @@ public class PersonnelDataServiceImpl implements PersonnelDataService {
     }
 
     public ArrayList<PersonnelPO> getList() throws RemoteException {
+        return null;
+    }
+
+    public ArrayList<PersonnelPO> getListByType(PersonnelType personnelType) throws RemoteException {
         return null;
     }
 
