@@ -29,7 +29,8 @@ PRIMARY KEY(record_id)
 CREATE TABLE personnel(
 personnel_id BIGINT(6) ZEROFILL NOT NULL,
 password CHAR(20) NOT NULL,
-hotel_id BIGINT(6) ZEROFILL NOT NULL
+personnel_type TINYINT NOT NULL,
+hotel_id BIGINT(6) ZEROFILL NOT NULL,
 PRIMARY KEY(personnel_id)
 )ENGINE=InnoDB;
 

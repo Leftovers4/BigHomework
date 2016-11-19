@@ -1,7 +1,6 @@
 package data.datahelper;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -9,7 +8,7 @@ import java.sql.SQLException;
  * Created by Hiki on 11/18/2016.
  * 用于数据库初始化和连接
  */
-public class DBParent {
+public class DBInit {
 
     /**
      * 确定连接相关参数
@@ -52,10 +51,11 @@ public class DBParent {
         // 获取连接
         try {
             Connection connection = DriverManager.getConnection(URL, USER, PWD);
-            System.out.println("Connect success.");
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+
 
     }
 
@@ -64,17 +64,21 @@ public class DBParent {
      * 断开连接（程序结束时调用）
      */
     public static void disconnect(){
-        try{
-            conn.close();
-            conn = null;
-        }catch (SQLException e){
-            e.printStackTrace();
+        if(conn != null){
+            try{
+                conn.close();
+                conn = null;
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }else{
+            System.out.println("No connection to close!");
         }
 
     }
 
     public static void main(String[] args){
-        DBParent.connect();
+        DBInit.connect();
     }
 
 }

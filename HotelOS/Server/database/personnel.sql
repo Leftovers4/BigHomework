@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-11-18 14:19:44
+Date: 2016-11-19 08:31:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,6 +22,7 @@ DROP TABLE IF EXISTS `personnel`;
 CREATE TABLE `personnel` (
   `personnel_id` bigint(6) unsigned zerofill NOT NULL,
   `password` char(20) NOT NULL,
+  `personnel_type` tinyint(4) DEFAULT NULL,
   `hotel_id` bigint(6) unsigned zerofill DEFAULT NULL,
   PRIMARY KEY (`personnel_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
