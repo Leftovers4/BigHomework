@@ -2,6 +2,11 @@
     -fx-font-family: "微软雅黑";
     -fx-font-size: 18px;
 }
+
+.button{
+
+}
+
 /*显示的panel 位于Pane内*/
 .panel {
     -fx-background-color: #E8F1F5;
@@ -37,10 +42,26 @@
 
 /*列表上方的工具栏*/
 #listTopBar{
-    -fx-background-color: #F0FBFF;
+    -fx-background-color: #dee7eb;
 }
 
 /*搜索框*/
 #searchField{
-    -fx-border-radius: 50%;
+    -fx-background-radius: 10;
+}
+/*搜索按钮*/
+#searchOrderIDBtn{
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+    /*-fx-background-radius: 10;*/
+}
+
+/*线上入住按钮*/
+#checkinOnlineBtn{
+    -fx-background-color: transparent;
+}
+
+/*线下入住按钮*/
+#checkinOfflineBtn{
+    -fx-background-color: transparent;
 }

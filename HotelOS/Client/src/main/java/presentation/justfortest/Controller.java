@@ -24,7 +24,7 @@
 // */
 //public class Controller implements Initializable{
 //
-//    ObservableList<OrderPO> orderPoList;
+//    ObservableList<String> orderPoList;
 //
 //    Stage stage;
 //    @FXML private ComboBox comboBox;
@@ -76,7 +76,7 @@
 //        tableView.setItems(orderPoList);
 //
 //        addItemListener(tableView);
-//
+////
 //    }
 //    /*添加item监听事件
 //    * **/
@@ -126,8 +126,8 @@
 //        addItemListener(tableView);
 //    }
 //
-//    private ObservableList<OrderPO> getOrderPO(){
-//        ObservableList<OrderPO> list= FXCollections.observableArrayList();
+//    private ObservableList<String> getOrderPO(){
+//        ObservableList<String> list= FXCollections.observableArrayList();
 //        OrderPO order1=new OrderPO("12345678912345678",0,"user1",null,null,1,false,null,null);
 //        order1.setOrderType(OrderType.EXECUTED);
 //        OrderPO order2=new OrderPO("12345678912345679",0,"user2",null,null,1,false,null,null);
@@ -139,42 +139,42 @@
 //        list.add(order3);
 //        return list;
 //    }
-//    @FXML
-//    public void test() {
-//        System.out.println("666");
-//        stage.setScene(new Scene(new Group(),600,400));
-//
-//    }
-//
-//    class DetailsCell implements Callback<TableColumn<OrderPO, String>, TableCell<OrderPO, String>> {
-//
-//        @Override
-//        public TableCell<OrderPO, String> call(TableColumn<OrderPO, String> param) {
-//
-//            TableCell<OrderPO,String> cell = new TableCell<OrderPO, String>() {
-//
-//                Button btn = new Button( "查看详情" );
-//
-//
-//
-//                @Override
-//                public void updateItem( String item, boolean empty ) {
-//                    super.updateItem( item, empty );
-//                    if ( empty ) {
-//                        setGraphic( null );
-//                        setText( null );
-//                    } else {
-//                        btn.setOnAction(e -> {
-//                            stage.setScene(new DetailsScene(new Pane()));
-//                        });
-//                        setGraphic( btn );
-//                        setText( null );
-//                    }
-//                }
-//            };
-//            return cell;
-//        }
-//    }
+////    @FXML
+////    public void test() {
+////        System.out.println("666");
+////        stage.setScene(new Scene(new Group(),600,400));
+////
+////    }
+////
+////    class DetailsCell implements Callback<TableColumn<OrderPO, String>, TableCell<OrderPO, String>> {
+////
+////        @Override
+////        public TableCell<OrderPO, String> call(TableColumn<OrderPO, String> param) {
+////
+////            TableCell<OrderPO,String> cell = new TableCell<OrderPO, String>() {
+////
+////                Button btn = new Button( "查看详情" );
+////
+////
+////
+////                @Override
+////                public void updateItem( String item, boolean empty ) {
+////                    super.updateItem( item, empty );
+////                    if ( empty ) {
+////                        setGraphic( null );
+////                        setText( null );
+////                    } else {
+////                        btn.setOnAction(e -> {
+////                            stage.setScene(new DetailsScene(new Pane()));
+////                        });
+////                        setGraphic( btn );
+////                        setText( null );
+////                    }
+////                }
+////            };
+////            return cell;
+////        }
+////    }
 //
 //
 //    /*

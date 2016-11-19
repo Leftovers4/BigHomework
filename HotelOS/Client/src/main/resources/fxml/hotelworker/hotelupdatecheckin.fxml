@@ -64,33 +64,31 @@
                 </Button>
             </children>
         </HBox>
-        <TableView id="listTable" fx:id="listTable" layoutX="125.0" layoutY="203.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="600.0">
-            <columns>
-                <TableColumn id="idCol" fx:id="idCol" editable="false" prefWidth="200.0" text="类型" />
-                <TableColumn id="userCol" fx:id="userCol" editable="false" prefWidth="200.0" text="数量" />
-                <TableColumn id="amountCol" fx:id="amountCol" editable="false" prefWidth="200.0" text="原价（元/天）" />
-            </columns>
-        </TableView>
-        <HBox id="listTopBar" fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="125.0" layoutY="151.0" prefHeight="52.0" prefWidth="600.0">
-         <children>
-            <Button fx:id="addBtn" mnemonicParsing="false" text="增加">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="deleteBtn" layoutX="10.0" layoutY="18.0" mnemonicParsing="false" text="删除">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="editBtn" layoutX="162.0" layoutY="18.0" mnemonicParsing="false" text="修改">
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-        </HBox>
-      <Button id="saveRegisterBtn" fx:id="saveRegisterBtn" layoutX="571.0" layoutY="570.0" mnemonicParsing="false" text="保存" />
-      <Button id="cancelRegisterBtn" fx:id="cancelRegisterBtn" layoutX="665.0" layoutY="570.0" mnemonicParsing="false" text="取消" />
+      <Button id="checkinOnlineBtn" fx:id="checkinOnlineBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="180.0" layoutY="255.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" visible="false">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+               <image>
+                  <Image url="@../../img/hotelworker/upload.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button id="checkinOfflineBtn" fx:id="checkinOfflineBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="510.0" layoutY="255.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" visible="false">
+         <graphic>
+            <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/hotelworker/download.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label id="checkinOnlineLabel" fx:id="checkinOnlineLabel" layoutX="231.0" layoutY="442.0" text="线上入住" visible="false" />
+      <Label id="checkinOfflineLabel" fx:id="checkinOfflineLabel" layoutX="561.0" layoutY="442.0" text="线下入住" visible="false" />
     </children>
 </fx:root>

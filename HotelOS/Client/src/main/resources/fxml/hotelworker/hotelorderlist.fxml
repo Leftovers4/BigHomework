@@ -64,28 +64,59 @@
                 </Button>
             </children>
         </HBox>
-      <TableView layoutX="85.0" layoutY="202.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="713.0">
+      <TableView id="listTable" fx:id="listTable" layoutX="29.0" layoutY="176.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="796.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="订单号" />
-          <TableColumn prefWidth="75.0" text="客户" />
-            <TableColumn prefWidth="132.0" text="订单状态" />
-            <TableColumn prefWidth="132.0" text="人数" />
-            <TableColumn prefWidth="132.0" text="入住时间" />
-            <TableColumn prefWidth="132.0" text="离开时间" />
+          <TableColumn id="idCol" fx:id="idCol" editable="false" prefWidth="210.0" text="订单号" />
+          <TableColumn id="userCol" fx:id="userCol" editable="false" text="客户" />
+            <TableColumn id="amountCol" fx:id="amountCol" editable="false" text="人数" />
+            <TableColumn id="typeCol" fx:id="typeCol" editable="false" prefWidth="100.0" text="状态" />
+            <TableColumn id="exetimeCol" fx:id="exetimeCol" prefWidth="180.0" text="执行时间" />
+            <TableColumn id="opCol" fx:id="opCol" prefWidth="145.0" text="操作" />
+            <TableColumn id="userCol" editable="false" text="客户" />
+            <TableColumn id="amountCol" editable="false" text="人数" />
         </columns>
       </TableView>
-      <HBox id="listTopBar" fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="85.0" layoutY="150.0" prefHeight="52.0" prefWidth="713.0">
+      <HBox id="listTopBar" fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="29.0" layoutY="124.0" prefHeight="52.0" prefWidth="796.0">
          <children>
-            <TextField id="searchField" fx:id="searchField" />
-            <ComboBox promptText="所有订单">
+            <StackPane alignment="CENTER_RIGHT">
+               <children>
+                  <TextField id="searchField" fx:id="searchField" promptText="订单号" text="12345678912345678">
+                     <StackPane.margin>
+                        <Insets left="10.0" />
+                     </StackPane.margin>
+                  </TextField>
+                  <Button id="searchOrderIDBtn" fx:id="searchOrderIDBtn" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/hotelworker/searchInField.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <StackPane.margin>
+                        <Insets right="2.0" />
+                     </StackPane.margin>
+                  </Button>
+               </children>
+            </StackPane>
+            <ComboBox id="orderTypeBox" fx:id="orderTypeBox" promptText="所有订单">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
             </ComboBox>
+            <Label text="时间：">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+            <DatePicker prefHeight="36.0" prefWidth="160.0" />
+            <Label text="-">
+               <HBox.margin>
+                  <Insets left="1.0" right="1.0" />
+               </HBox.margin>
+            </Label>
+            <DatePicker layoutX="471.0" layoutY="18.0" prefHeight="36.0" prefWidth="160.0" />
          </children>
-         <padding>
-            <Insets left="20.0" />
-         </padding>
       </HBox>
     </children>
 </fx:root>
