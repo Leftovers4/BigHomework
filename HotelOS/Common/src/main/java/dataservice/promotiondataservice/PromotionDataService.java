@@ -25,7 +25,7 @@ public interface PromotionDataService extends DataServiceParent {
     public void insert(PromotionPO promotionPO) throws RemoteException;
 
     // 删除营销策略
-    public void delete(PromotionPO promotionPO) throws RemoteException;
+    public void delete(long promotionID) throws RemoteException;
 
     // 更新营销策略
     public void update(PromotionPO promotionPO) throws RemoteException;

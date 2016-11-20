@@ -11,39 +11,41 @@ import java.util.ArrayList;
  * Created by kevin on 2016/11/16.
  */
 public class HotelDataServiceImpl implements HotelDataService {
-    public void initial() throws RemoteException {
 
-    }
 
-    public void finish() throws RemoteException {
 
-    }
-
+    @Override
     public HotelPO findByHotelID(long hotelID) throws RemoteException {
         return null;
     }
 
+    @Override
     public ArrayList<HotelPO> findByHotelPO(HotelPO hotelPO) throws RemoteException {
         return null;
     }
 
+    @Override
     public void insert(HotelPO hotelPO) throws RemoteException {
 
     }
 
-    public void delete(HotelPO hotelPO) throws RemoteException {
+    @Override
+    public void delete(long hotelID) throws RemoteException {
 
     }
 
+    @Override
     public void update(HotelPO hotelPO) throws RemoteException {
 
     }
 
+    @Override
     public ArrayList<RoomPO> findRooms(long hotelID) throws RemoteException {
         return null;
     }
 
-    public double getRating() throws RemoteException{
+    @Override
+    public double getRating() throws RemoteException {
         return 0;
     }
 }

@@ -25,7 +25,7 @@ public interface PersonnelDataService extends DataServiceParent{
     public void insert(PersonnelPO personnelPO) throws RemoteException;
 
     // 删除员工
-    public void delete(PersonnelPO personnelPO) throws RemoteException;
+    public void delete(long PersonnelID) throws RemoteException;
 
     // 更新员工信息
     public void update(PersonnelPO personnelPO) throws RemoteException;

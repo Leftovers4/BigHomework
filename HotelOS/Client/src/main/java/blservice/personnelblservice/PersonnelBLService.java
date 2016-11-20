@@ -18,7 +18,7 @@ public interface PersonnelBLService {
     // 员工登出
     public ResultMessage logout();
 
-    // 显示员工列表 TODO 按类型
+    // 显示员工列表
     public ArrayList<PersonnelVO> showList();
 
     // 按类型显示员工列表

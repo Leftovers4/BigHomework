@@ -11,39 +11,41 @@ import java.util.ArrayList;
  * Created by kevin on 2016/11/16.
  */
 public class PersonnelDataServiceImpl implements PersonnelDataService {
+
+
+
+    @Override
     public boolean canLogin(PersonnelPO personnelPO) throws RemoteException {
         return false;
     }
 
+    @Override
     public ArrayList<PersonnelPO> getList() throws RemoteException {
         return null;
     }
 
+    @Override
     public ArrayList<PersonnelPO> getListByType(PersonnelType personnelType) throws RemoteException {
         return null;
     }
 
+    @Override
     public void insert(PersonnelPO personnelPO) throws RemoteException {
 
     }
 
-    public void delete(PersonnelPO personnelPO) throws RemoteException {
+    @Override
+    public void delete(long PersonnelID) throws RemoteException {
 
     }
 
+    @Override
     public void update(PersonnelPO personnelPO) throws RemoteException {
 
     }
 
+    @Override
     public PersonnelPO findByPersonnelID(long personnelID) throws RemoteException {
         return null;
-    }
-
-    public void initial() throws RemoteException {
-
-    }
-
-    public void finish() throws RemoteException {
-
     }
 }

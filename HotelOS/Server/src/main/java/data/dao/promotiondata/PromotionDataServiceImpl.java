@@ -11,34 +11,35 @@ import java.util.ArrayList;
  * Created by kevin on 2016/11/16.
  */
 public class PromotionDataServiceImpl implements PromotionDataService {
-    public void initial() throws RemoteException {
 
-    }
 
-    public void finish() throws RemoteException {
 
-    }
-
+    @Override
     public ArrayList<PromotionPO> findByHotelID(long hotelID) throws RemoteException {
         return null;
     }
 
+    @Override
     public ArrayList<PromotionPO> findByPromotionType(PromotionType type) throws RemoteException {
         return null;
     }
 
+    @Override
     public PromotionPO findByPromotionID(long promotionID) throws RemoteException {
         return null;
     }
 
+    @Override
     public void insert(PromotionPO promotionPO) throws RemoteException {
 
     }
 
-    public void delete(PromotionPO promotionPO) throws RemoteException {
+    @Override
+    public void delete(long promotionID) throws RemoteException {
 
     }
 
+    @Override
     public void update(PromotionPO promotionPO) throws RemoteException {
 
     }

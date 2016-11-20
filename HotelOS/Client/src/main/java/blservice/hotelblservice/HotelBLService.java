@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public interface HotelBLService {
 
-    // 根据酒店ID查找用户
+    // 根据酒店ID查找酒店
     public HotelVO find(long hotelID);
 
     // 根据条件显示酒店列表

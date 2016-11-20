@@ -32,4 +32,5 @@ public interface OrderDataService extends DataServiceParent {
 
     // 根据酒店ID获得评分列表
 
+
 }

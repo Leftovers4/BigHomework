@@ -22,7 +22,7 @@ public interface HotelDataService extends DataServiceParent {
     public void insert(HotelPO hotelPO) throws RemoteException;
 
     // 删除酒店
-    public void delete(HotelPO hotelPO) throws RemoteException;
+    public void delete(long hotelID) throws RemoteException;
 
     // 更新酒店信息
     public void update(HotelPO hotelPO) throws RemoteException;

@@ -24,7 +24,7 @@ public interface UserBLService {
     public ResultMessage add(UserVO userVO);
 
     // 删除账户
-    public ResultMessage del(UserVO userVO);
+    public ResultMessage del(String username);
 
     // 根据用户名查找用户
     public UserVO find(String username);
