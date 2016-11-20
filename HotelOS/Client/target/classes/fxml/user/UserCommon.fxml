@@ -11,7 +11,7 @@
    <children>
       <VBox id="userLeftArea" fx:id="user_left_area" prefHeight="690.0" prefWidth="230.0">
          <children>
-            <Button fx:id="indexBtn" mnemonicParsing="false" >
+            <Button fx:id="indexBtn" onAction="#index" mnemonicParsing="false" >
                <graphic>
                   <ImageView fitHeight="230.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -20,14 +20,14 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="userInfoBtn" fx:id="userInfoBtn" onAction="#userInfo" contentDisplay="RIGHT" mnemonicParsing="false"  prefHeight="45.0" prefWidth="230.0" text="基本信息">
+            <Button id="userInfoBtn" fx:id="userInfoBtn" onMouseEntered="#mouseOnUserInfo" onAction="#userInfo" contentDisplay="RIGHT" mnemonicParsing="false"  prefHeight="45.0" prefWidth="230.0" text="基本信息">
                <VBox.margin>
                   <Insets top="150.0" />
                </VBox.margin>
             </Button>
-            <Button id="orderListBtn" fx:id="orderListBtn" onAction="#orderList" mnemonicParsing="false"  prefHeight="45.0" prefWidth="230.0" text="订单列表" />
-            <Button id="searchHotelBtn" fx:id="searchHotelBtn" onAction="#searchHotel" mnemonicParsing="false"  prefHeight="45.0" prefWidth="230.0" text="搜索酒店" />
-            <Button id="hotelRegisteredBtn" fx:id="hotelRegisteredBtn" onAction="#hotelRegistered" mnemonicParsing="false"  prefHeight="45.0" prefWidth="230.0" text="预订过的酒店" />
+            <Button id="orderListBtn" fx:id="orderListBtn" onMouseEntered="#mouseOnorderList" onAction="#orderList" mnemonicParsing="false"  prefHeight="45.0" prefWidth="230.0" text="订单列表" />
+            <Button id="searchHotelBtn" fx:id="searchHotelBtn" onMouseEntered="#mouseOnSearchHotel" onAction="#searchHotel" mnemonicParsing="false"  prefHeight="45.0" prefWidth="230.0" text="搜索酒店" />
+            <Button id="hotelRegisteredBtn" fx:id="hotelRegisteredBtn" onMouseEntered="#mouseOnRegisteredHotel" onAction="#hotelRegistered" mnemonicParsing="false"  prefHeight="45.0" prefWidth="230.0" text="预订过的酒店" />
          </children></VBox>
       <HBox id="stateBar" layoutY="690.0" prefHeight="30.0" prefWidth="1080.0" />
       <ImageView fx:id="leftBarSlider" fitHeight="56.0" fitWidth="56.0" layoutX="193.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">

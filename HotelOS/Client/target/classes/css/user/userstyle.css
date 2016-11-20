@@ -20,27 +20,15 @@
     -fx-cursor: hand;
 }
 
-#userInfoBtn:hover {
-    -fx-background-color: deepskyblue;
-}
-#userInfoBtn:focused {
-    -fx-background-color: #0F81C7;
-}
-#orderListBtn:hover {
-    -fx-background-color: deepskyblue;
-}
-#orderListBtn:focused {
-    -fx-background-color: #0F81C7;
-}
-#searchHotelBtn:hover {
-    -fx-background-color: deepskyblue;
-}
-#searchHotelBtn:focused {
-    -fx-background-color: #0F81C7;
-}
-#hotelRegisteredBtn:hover {
-    -fx-background-color: deepskyblue;
-}
-#hotelRegisteredBtn:focused {
-    -fx-background-color: #0F81C7;
-}
+/*#userInfoBtn:hover {*/
+    /*-fx-background-color: deepskyblue;*/
+/*}*/
+/*#orderListBtn:hover {*/
+    /*-fx-background-color: deepskyblue;*/
+/*}*/
+/*#searchHotelBtn:hover {*/
+    /*-fx-background-color: deepskyblue;*/
+/*}*/
+/*#hotelRegisteredBtn:hover {*/
+    /*-fx-background-color: deepskyblue;*/
+/*}*/
