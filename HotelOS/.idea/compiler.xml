@@ -27,11 +27,11 @@
         <module name="Server" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Client" target="1.7" />
-      <module name="Common" target="1.7" />
-      <module name="HotelOS" target="1.7" />
-      <module name="Server" target="1.7" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="Client" target="1.8" />
+      <module name="Common" target="1.8" />
+      <module name="HotelOS" target="1.8" />
+      <module name="Server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
