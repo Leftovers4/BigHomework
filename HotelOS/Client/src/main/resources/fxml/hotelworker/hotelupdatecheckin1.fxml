@@ -90,5 +90,16 @@
       </Button>
       <Label id="checkinOnlineLabel" fx:id="checkinOnlineLabel" layoutX="231.0" layoutY="442.0" text="线上入住" visible="false" />
       <Label id="checkinOfflineLabel" fx:id="checkinOfflineLabel" layoutX="561.0" layoutY="442.0" text="线下入住" visible="false" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="350.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/hotelworker/searchOrder.png" />
+         </image>
+      </ImageView>
+      <TextField layoutX="304.0" layoutY="417.0" />
+      <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="543.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/hotelworker/search.png" />
+         </image>
+      </ImageView>
     </children>
 </fx:root>

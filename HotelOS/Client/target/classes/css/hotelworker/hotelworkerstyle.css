@@ -3,9 +3,6 @@
     -fx-font-size: 18px;
 }
 
-.button{
-
-}
 
 /*显示的panel 位于Pane内*/
 .panel {
@@ -63,5 +60,14 @@
 
 /*线下入住按钮*/
 #checkinOfflineBtn{
+    -fx-background-color: transparent;
+}
+/*线上退房按钮*/
+#outOnlineBtn{
+    -fx-background-color: transparent;
+}
+
+/*线下退房按钮*/
+#outOfflineBtn{
     -fx-background-color: transparent;
 }

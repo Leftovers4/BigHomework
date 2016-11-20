@@ -64,31 +64,31 @@
                 </Button>
             </children>
         </HBox>
-      <Button id="checkinOnlineBtn" fx:id="checkinOnlineBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="180.0" layoutY="255.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" visible="false">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
-               <image>
-                  <Image url="@../../img/hotelworker/upload.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button id="checkinOfflineBtn" fx:id="checkinOfflineBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="510.0" layoutY="255.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" visible="false">
-         <graphic>
-            <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/hotelworker/download.png" />
-               </image>
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Label id="checkinOnlineLabel" fx:id="checkinOnlineLabel" layoutX="231.0" layoutY="442.0" text="线上入住" visible="false" />
-      <Label id="checkinOfflineLabel" fx:id="checkinOfflineLabel" layoutX="561.0" layoutY="442.0" text="线下入住" visible="false" />
+        <Button id="outOnlineBtn" fx:id="outOnlineBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="180.0" layoutY="255.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" visible="false">
+            <graphic>
+                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                    <viewport>
+                        <Rectangle2D />
+                    </viewport>
+                    <image>
+                        <Image url="@../../img/hotelworker/upload.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button id="outOfflineBtn" fx:id="outOfflineBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="510.0" layoutY="255.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" visible="false">
+            <graphic>
+                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../img/hotelworker/download.png" />
+                    </image>
+                    <viewport>
+                        <Rectangle2D />
+                    </viewport>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Label id="outOnlineLabel" fx:id="outOnlineLabel" layoutX="231.0" layoutY="442.0" text="线上退房" visible="false" />
+        <Label id="outOfflineLabel" fx:id="outOfflineLabel" layoutX="561.0" layoutY="442.0" text="线下退房" visible="false" />
     </children>
 </fx:root>
