@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-11-20 00:28:12
+Date: 2016-11-20 12:11:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,7 +23,7 @@ CREATE TABLE `address` (
   `address_id` int(20) NOT NULL AUTO_INCREMENT,
   `address` varchar(60) NOT NULL,
   `trading_area` varchar(40) NOT NULL,
-  `discount` double DEFAULT NULL,
+  `discount` double NOT NULL DEFAULT '0',
   PRIMARY KEY (`address_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -75,8 +75,8 @@ CREATE TABLE `hotel` (
   `star` int(10) unsigned NOT NULL,
   `address` varchar(60) NOT NULL,
   `trading_area` varchar(40) NOT NULL,
-  `description` text,
-  `service` text,
+  `description` text NOT NULL,
+  `service` text NOT NULL,
   PRIMARY KEY (`hotel_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -91,7 +91,7 @@ DROP TABLE IF EXISTS `member_regulation`;
 CREATE TABLE `member_regulation` (
   `level` int(11) NOT NULL AUTO_INCREMENT,
   `credit` decimal(8,2) NOT NULL,
-  `discount` double DEFAULT NULL,
+  `discount` double NOT NULL DEFAULT '0',
   PRIMARY KEY (`level`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -111,23 +111,23 @@ CREATE TABLE `order_info` (
   `hotel_name` char(60) NOT NULL,
   `room_type` varchar(20) NOT NULL,
   `room_amount` int(10) unsigned NOT NULL,
-  `room_number` varchar(20) DEFAULT NULL,
+  `room_number` varchar(20) NOT NULL DEFAULT '',
   `person_amount` int(10) unsigned NOT NULL,
   `with_children` tinyint(4) NOT NULL,
   `generate_time` datetime NOT NULL,
   `expected_checkin_time` datetime NOT NULL,
-  `checkin_time` datetime DEFAULT NULL,
-  `expected_leave_time` datetime DEFAULT NULL,
-  `leave_time` datetime DEFAULT NULL,
+  `checkin_time` datetime NOT NULL,
+  `expected_leave_time` datetime NOT NULL,
+  `leave_time` datetime NOT NULL,
   `last_execute_time` datetime NOT NULL,
-  `cancel_time` datetime DEFAULT NULL,
+  `cancel_time` datetime NOT NULL,
   `original_price` decimal(8,2) NOT NULL,
   `actual_price` decimal(8,2) NOT NULL,
-  `review_time` datetime DEFAULT NULL,
-  `rating` int(10) unsigned DEFAULT NULL,
-  `review` text,
-  `ha_time` datetime DEFAULT NULL,
-  `ha_result` tinyint(4) DEFAULT NULL,
+  `review_time` datetime NOT NULL,
+  `rating` int(10) unsigned NOT NULL DEFAULT '0',
+  `review` text NOT NULL,
+  `ha_time` datetime NOT NULL,
+  `ha_result` varchar(20) NOT NULL DEFAULT '',
   PRIMARY KEY (`order_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -142,17 +142,17 @@ DROP TABLE IF EXISTS `personnel`;
 CREATE TABLE `personnel` (
   `personnel_id` int(6) unsigned zerofill NOT NULL,
   `password` char(20) NOT NULL,
-  `personnel_type` varchar(20) DEFAULT NULL,
-  `hotel_id` int(6) unsigned zerofill DEFAULT NULL,
+  `personnel_type` varchar(20) NOT NULL DEFAULT '',
+  `hotel_id` int(6) unsigned zerofill NOT NULL DEFAULT '000000',
   PRIMARY KEY (`personnel_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of personnel
 -- ----------------------------
-INSERT INTO `personnel` VALUES ('000119', 'password', 'HOTEL_WORKER', null);
-INSERT INTO `personnel` VALUES ('120110', 'password', 'HOTEL_WORKER', null);
-INSERT INTO `personnel` VALUES ('120120', 'pass', 'HOTEL_WORKER', null);
+INSERT INTO `personnel` VALUES ('119119', 'password', 'HOTEL_WORKER', '000000');
+INSERT INTO `personnel` VALUES ('120110', 'password', 'HOTEL_WORKER', '000000');
+INSERT INTO `personnel` VALUES ('120120', 'pass', 'HOTEL_WORKER', '000000');
 
 -- ----------------------------
 -- Table structure for promotion
@@ -160,13 +160,13 @@ INSERT INTO `personnel` VALUES ('120120', 'pass', 'HOTEL_WORKER', null);
 DROP TABLE IF EXISTS `promotion`;
 CREATE TABLE `promotion` (
   `promotion_id` int(6) unsigned zerofill NOT NULL,
-  `promotion_type` varchar(20) NOT NULL,
-  `discount` double DEFAULT NULL,
-  `least_rooms` int(10) unsigned DEFAULT NULL,
-  `begin_time` datetime DEFAULT NULL,
-  `end_time` datetime DEFAULT NULL,
-  `threshold` decimal(8,2) DEFAULT NULL,
-  `reduction` decimal(8,2) DEFAULT NULL,
+  `promotion_type` varchar(20) NOT NULL DEFAULT '',
+  `discount` double NOT NULL DEFAULT '0',
+  `least_rooms` int(10) unsigned NOT NULL DEFAULT '0',
+  `begin_time` datetime NOT NULL,
+  `end_time` datetime NOT NULL,
+  `threshold` decimal(8,2) NOT NULL DEFAULT '0.00',
+  `reduction` decimal(8,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`promotion_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -204,12 +204,12 @@ CREATE TABLE `user` (
   `phone` varchar(20) NOT NULL,
   `member_type` varchar(20) NOT NULL,
   `level` int(10) unsigned NOT NULL,
-  `birthday` date DEFAULT NULL,
-  `enterprise` char(80) DEFAULT NULL,
+  `birthday` date NOT NULL,
+  `enterprise` char(80) NOT NULL DEFAULT '',
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('Hiki', '123456', 'GHB', '0', '110', 'NONE', '1', '2016-11-19', null);
+INSERT INTO `user` VALUES ('Hiki', '123456', 'GHB', '0', '110', 'NONE', '1', '2016-11-19', '');

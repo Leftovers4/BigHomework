@@ -99,4 +99,40 @@ public class DataHelperParentTest {
 
     }
 
+    @Test
+    public void testFindFromSQLByType(){
+        ArrayList<ArrayList<Object>> resultContent = tested.findFromSQLByType("personnel", PersonnelType.HOTEL_WORKER.toString());
+        System.out.println(resultContent.get(0).get(2).toString());
+        System.out.println(resultContent.get(1).get(2).toString());
+        System.out.println(resultContent.get(2).get(2).toString());
+//        System.out.println(resultContent.get(3).get(2).toString());
+
+    }
+
+    @Test
+    @Ignore
+    public void testBuildFindByConditionsSQL(){
+        String sql = tested.buildFindByConditionsSQL("personnel");
+        System.out.println(sql);
+    }
+
+    @Test
+    public void testFindFromSQLByConditions(){
+        ArrayList<Object> input = new ArrayList<>();
+        input.add("%");
+        input.add("password");
+        input.add(PersonnelType.HOTEL_WORKER.toString());
+        input.add("%");
+        ArrayList<ArrayList<Object>> resultContent = tested.findFromSQLByConditions("personnel", input);
+        for (ArrayList<Object> each : resultContent) {
+            for (Object a: each) {
+                System.out.print(a.toString() + " ");
+            }
+            System.out.println();
+        }
+
+    }
+
+
+
 }

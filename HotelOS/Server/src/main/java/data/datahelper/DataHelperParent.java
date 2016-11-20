@@ -52,7 +52,7 @@ public class DataHelperParent {
      */
     private final static Map<String, ArrayList<String>> TB_TO_COL = new HashMap<String, ArrayList<String>>();
 
-//    private final static Map<String, Integer> TYPEMAP = new HashMap<String, Integer>();
+    private final static Map<String, String> TYPEMAP = new HashMap<String, String>();
 
     /**
      * 将map表初始化
@@ -72,6 +72,12 @@ public class DataHelperParent {
         TB_TO_COL.put("enterprise", strsToList("match_id", "hotel_id", "enterprise"));
         TB_TO_COL.put("member_regulation", strsToList("address_id", "address", "trading_area", "discount"));
 
+        // 初始化TYPEMAP
+        TYPEMAP.put("user", "member_type");
+        TYPEMAP.put("personnel", "personnel_type");
+        TYPEMAP.put("room", "room_type");
+        TYPEMAP.put("order_info", "order_type");
+        TYPEMAP.put("promotion", "promotion_type");
     }
 
 
@@ -254,25 +260,12 @@ public class DataHelperParent {
 
 
     /**
-     * TODO 根据条件获得信息
-     * 从数据库中获得n条数据（根据ID/username）
-     * @param tableName
-     * @return
-     */
-    public ArrayList<ArrayList<String>> findFromSQLByConditions(String tableName) {
-
-        return null;
-    }
-
-
-    /**
-     * 从数据库中获得n条数据（没有条件），注意跟上边的避免重复
+     * 从数据库中获得n条数据（没有条件）
      * @param tableName 表名
      * @return
      */
     public ArrayList<ArrayList<Object>> findFromSQL(String tableName){
-        // 确定参数个数，以便于遍历全部列的内容
-        int paraNum = TB_TO_COL.get(tableName).size();
+
         // 创建存放结果的容器
         ArrayList<ArrayList<Object>> resultContent = new ArrayList<>();
 
@@ -282,16 +275,7 @@ public class DataHelperParent {
 
             resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()){
-
-                result = new ArrayList<Object>(paraNum);
-
-                for (int i = 0; i < paraNum; i++) {
-                    result.add(resultSet.getObject(i+1));
-                }
-
-                resultContent.add(result);
-            }
+            resultContent = this.getInfoFromResultSet(tableName, resultSet);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -303,6 +287,75 @@ public class DataHelperParent {
 
     }
 
+
+    /**
+     * 从数据库中获得n条数据（根据类型）
+     * @param tableName 表名
+     * @param type 类型
+     * @return
+     */
+    public ArrayList<ArrayList<Object>> findFromSQLByType(String tableName, String type){
+
+        // 创建存放结果的容器
+        ArrayList<ArrayList<Object>> resultContent = new ArrayList<>();
+
+        try {
+            preparedStatement = conn.prepareStatement(this.buildFindByTypeSQL(tableName));
+
+            preparedStatement.setString(1, type);
+
+            System.out.println(preparedStatement.toString());
+
+            resultSet = preparedStatement.executeQuery();
+
+            resultContent = this.getInfoFromResultSet(tableName, resultSet);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultContent;
+
+    }
+
+
+    /**
+     * TODO 根据条件获得信息
+     * 从数据库中获得n条数据（根据ID/username）
+     * @param tableName
+     * @return
+     */
+    public ArrayList<ArrayList<Object>> findFromSQLByConditions(String tableName, ArrayList<Object> conditions) {
+
+        if(TB_TO_COL.get(tableName).size() != conditions.size()){
+            System.out.println("Wrong inputs' number to " + tableName + ".");
+        }
+
+        // 确定参数个数，以便于遍历全部列的内容
+        int paraNum = TB_TO_COL.get(tableName).size();
+
+        // 创建存放结果的容器
+        ArrayList<ArrayList<Object>> resultContent = new ArrayList<>();
+
+        try {
+            preparedStatement = conn.prepareStatement(this.buildFindByConditionsSQL(tableName));
+
+            for(int i = 0; i < paraNum; i++){
+                preparedStatement.setObject(i+1, conditions.get(i));
+            }
+            System.out.println(preparedStatement.toString());
+
+            resultSet = preparedStatement.executeQuery();
+
+            resultContent = this.getInfoFromResultSet(tableName, resultSet);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return resultContent;
+    }
 
     /* ---------------------------------------------------以下都为辅助类--------------------------------------------------------- */
 
@@ -403,6 +456,46 @@ public class DataHelperParent {
 
 
     /**
+     * 辅助方法，根据表名创建相应的findByType语句
+     * @param tableName 表名
+     * @return
+     */
+    private String buildFindByTypeSQL(String tableName){
+
+        StringBuffer buffer = new StringBuffer("SELECT * FROM `" + tableName + "` WHERE ");
+        buffer.append(TYPEMAP.get(tableName));
+        buffer.append(" = ?");
+
+        return buffer.toString();
+    }
+
+    /**
+     * 辅助方法，根据表名创建相应的findByConditions语句
+     * @param tableName 表名
+     * @return
+     */
+    public String buildFindByConditionsSQL(String tableName){
+
+        // 获取tableName相应的columns
+        ArrayList<String> colums = TB_TO_COL.get(tableName);
+        int length = colums.size();
+
+        StringBuffer buffer = new StringBuffer("SELECT * FROM `" + tableName + "` WHERE");
+        for(int i = 0; i < length; i++){
+            buffer.append(" " + colums.get(i) + " LIKE ? AND");
+        }
+        buffer.deleteCharAt(buffer.length()-1);
+        buffer.deleteCharAt(buffer.length()-1);
+        buffer.deleteCharAt(buffer.length()-1);
+
+        return buffer.toString();
+    }
+
+
+    /* ---------------------------------------------------数据转换处理辅助方法--------------------------------------------------------- */
+
+
+    /**
      * 辅助方法，用于将strings转成ArrayList<String>
      * @param parameters
      * @return
@@ -421,7 +514,34 @@ public class DataHelperParent {
         return result;
     }
 
+    /**
+     * 辅助类，用于获取resultSet里面的信息
+     * @param tableName
+     * @param resultSet
+     * @return
+     */
+    private ArrayList<ArrayList<Object>> getInfoFromResultSet(String tableName, ResultSet resultSet){
+        // 确定参数个数，以便于遍历全部列的内容
+        int paraNum = TB_TO_COL.get(tableName).size();
+        // 创建存放结果的容器
+        ArrayList<ArrayList<Object>> resultContent = new ArrayList<>();
 
+        try {
+            while (resultSet.next()){
+                result = new ArrayList<Object>(paraNum);
+
+                for (int i = 0; i < paraNum; i++) {
+                    result.add(resultSet.getObject(i+1));
+                }
+
+                resultContent.add(result);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultContent;
+    }
 
 
 }
