@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
+            <children>
+                <Button mnemonicParsing="false" stylesheets="@../../css/user/userstyle.css">
+                    <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/common/back.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <HBox.margin>
+                        <Insets left="10.0" />
+                    </HBox.margin>
+                </Button>
+                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../img/hotelworker/initialPhoto.png" />
+                    </image>
+                    <HBox.margin>
+                        <Insets left="480.0" top="10.0" />
+                    </HBox.margin>
+                </ImageView>
+                <SplitMenuButton maxWidth="120.0" mnemonicParsing="false" text="name">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="退出登录" />
+                    </items>
+                    <HBox.margin>
+                        <Insets left="10.0" top="8.0" />
+                    </HBox.margin>
+                </SplitMenuButton>
+                <Button mnemonicParsing="false">
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/common/minimize.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <HBox.margin>
+                        <Insets left="60.0" top="5.0" />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false">
+                    <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../img/common/exit.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <HBox.margin>
+                        <Insets top="5.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+      <Label layoutX="254.0" layoutY="107.0" text="订单号：" />
+      <Label layoutX="350.0" layoutY="107.0" text="12345678912345678" />
+      <Label layoutX="232.0" layoutY="298.0" text="入住人数：" />
+      <Label layoutX="366.0" layoutY="298.0" text="1" />
+      <Label layoutX="254.0" layoutY="369.0" text="儿童：" />
+      <Label layoutX="236.0" layoutY="173.0" text="入住时间：" />
+      <Label layoutX="200.0" layoutY="234.0" text="预计离开时间：" />
+      <Label layoutX="227.0" layoutY="428.0" text="房间类型：" />
+      <Label layoutX="263.0" layoutY="486.0" text="数量：" />
+      <Label layoutX="356.0" layoutY="173.0" text="2016-10-29" />
+      <Label layoutX="477.0" layoutY="173.0" text="16:30" />
+      <Label layoutX="482.0" layoutY="234.0" text="16:30" />
+      <Label layoutX="356.0" layoutY="234.0" text="2016-10-29" />
+      <Label layoutX="241.0" layoutY="541.0" text="房间号：" />
+      <Button layoutX="567.0" layoutY="618.0" mnemonicParsing="false" text="提交" />
+      <Button layoutX="671.0" layoutY="618.0" mnemonicParsing="false" text="取消" />
+      <RadioButton graphicTextGap="0.0" layoutX="356.0" layoutY="369.0" mnemonicParsing="false" text="无">
+         <padding>
+            <Insets left="100.0" />
+         </padding>
+      </RadioButton>
+      <RadioButton layoutX="356.0" layoutY="369.0" mnemonicParsing="false" selected="true" text="有" />
+      <Label layoutX="366.0" layoutY="430.0" text="单人房" />
+      <Label layoutX="361.0" layoutY="486.0" text="1" />
+      <Label layoutX="366.0" layoutY="541.0" text="A110" />
+      <DatePicker layoutX="342.0" layoutY="167.0" prefHeight="36.0" prefWidth="165.0" promptText="2016-10-29" visible="false" />
+      <TextField layoutX="528.0" layoutY="167.0" prefHeight="36.0" prefWidth="78.0" promptText="16:30" visible="false" />
+      <TextField layoutX="528.0" layoutY="228.0" prefHeight="36.0" prefWidth="78.0" promptText="16:30" visible="false" />
+      <DatePicker layoutX="342.0" layoutY="228.0" prefHeight="36.0" prefWidth="165.0" promptText="2016-10-29" visible="false" />
+      <TextField alignment="CENTER" layoutX="350.0" layoutY="538.0" prefHeight="36.0" prefWidth="100.0" promptText="A110" visible="false" />
+    </children>
+</fx:root>

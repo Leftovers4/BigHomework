@@ -6,7 +6,8 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="presentation.hotelworkerui.hotelworkercontroller.UpdateCheckInPaneController">
     <children>
         <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
             <children>
@@ -90,16 +91,20 @@
       </Button>
       <Label id="checkinOnlineLabel" fx:id="checkinOnlineLabel" layoutX="231.0" layoutY="442.0" text="线上入住" visible="false" />
       <Label id="checkinOfflineLabel" fx:id="checkinOfflineLabel" layoutX="561.0" layoutY="442.0" text="线下入住" visible="false" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="350.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="findOrderImg" fitHeight="150.0" fitWidth="200.0" layoutX="350.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../img/hotelworker/searchOrder.png" />
          </image>
       </ImageView>
-      <TextField layoutX="304.0" layoutY="417.0" />
-      <ImageView fitHeight="36.0" fitWidth="36.0" layoutX="543.0" layoutY="417.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/hotelworker/search.png" />
-         </image>
-      </ImageView>
+      <TextField id="idorNameField" fx:id="idorNameField" layoutX="288.0" layoutY="417.0" promptText="订单号/客户名" visible="false" />
+      <Button id="findByIDorNameBtn" fx:id="findByIDorNameBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="527.0" layoutY="417.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" visible="false">
+         <graphic>
+            <ImageView id="seaOrderNameImg" fx:id="seaOrderNameImg" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/hotelworker/search.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
     </children>
 </fx:root>
