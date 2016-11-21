@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-11-20 12:11:13
+Date: 2016-11-21 14:24:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -143,6 +143,7 @@ CREATE TABLE `personnel` (
   `personnel_id` int(6) unsigned zerofill NOT NULL,
   `password` char(20) NOT NULL,
   `personnel_type` varchar(20) NOT NULL DEFAULT '',
+  `name` varchar(20) NOT NULL,
   `hotel_id` int(6) unsigned zerofill NOT NULL DEFAULT '000000',
   PRIMARY KEY (`personnel_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -150,9 +151,9 @@ CREATE TABLE `personnel` (
 -- ----------------------------
 -- Records of personnel
 -- ----------------------------
-INSERT INTO `personnel` VALUES ('119119', 'password', 'HOTEL_WORKER', '000000');
-INSERT INTO `personnel` VALUES ('120110', 'password', 'HOTEL_WORKER', '000000');
-INSERT INTO `personnel` VALUES ('120120', 'pass', 'HOTEL_WORKER', '000000');
+INSERT INTO `personnel` VALUES ('119119', 'password', 'HOTEL_WORKER', '', '000000');
+INSERT INTO `personnel` VALUES ('120110', 'password', 'HOTEL_WORKER', '', '000000');
+INSERT INTO `personnel` VALUES ('120120', 'pass', 'HOTEL_WORKER', '', '000000');
 
 -- ----------------------------
 -- Table structure for promotion

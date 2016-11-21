@@ -47,8 +47,15 @@ public enum PromotionType {
 
     BirthdayPromotion,
 
+    MultipleRoomPromotion,
+
+    SpecialTimePromotion,
+
     UserLevelPromotion,
 
-    MultipleRoomPromotion
+    VIPSpecialAreaPromotion,
+
+    EnterprisePromotion,
+
 
 }

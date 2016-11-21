@@ -29,9 +29,17 @@ public class PersonnelPO implements Serializable {
      */
     private PersonnelType personnelType;
 
-    public PersonnelPO(long personnelID, String password) {
+    /**
+     * 工作人员名字
+     */
+    private String name;
+
+
+    public PersonnelPO(long personnelID, String password, PersonnelType personnelType, String name) {
         this.personnelID = personnelID;
         this.password = password;
+        this.personnelType = personnelType;
+        this.name = name;
     }
 
     public long getPersonnelID() {
@@ -48,5 +56,21 @@ public class PersonnelPO implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public PersonnelType getPersonnelType() {
+        return personnelType;
+    }
+
+    public void setPersonnelType(PersonnelType personnelType) {
+        this.personnelType = personnelType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

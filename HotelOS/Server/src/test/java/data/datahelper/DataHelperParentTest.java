@@ -122,6 +122,7 @@ public class DataHelperParentTest {
         input.add("%");
         input.add("password");
         input.add(PersonnelType.HOTEL_WORKER.toString());
+        input.add("dog");
         input.add("%");
         ArrayList<ArrayList<Object>> resultContent = tested.findFromSQLByConditions("personnel", input);
         for (ArrayList<Object> each : resultContent) {

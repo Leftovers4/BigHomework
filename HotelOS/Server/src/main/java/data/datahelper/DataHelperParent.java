@@ -61,7 +61,7 @@ public class DataHelperParent {
         // 初始化TB_TO_COL
         TB_TO_COL.put("user", strsToList("username", "password", "name", "gender", "phone", "member_type", "level", "birthday", "enterprise"));
         TB_TO_COL.put("credit_record", strsToList("record_id", "username", "current_credit", "changed_credit", "changed_time", "cause", "order_id"));
-        TB_TO_COL.put("personnel", strsToList("personnel_id", "password", "personnel_type", "hotel_id"));
+        TB_TO_COL.put("personnel", strsToList("personnel_id", "password", "personnel_type", "name", "hotel_id"));
         TB_TO_COL.put("hotel", strsToList("hotel_id", "hotel_name", "star", "address", "trading_area", "description", "service"));
         TB_TO_COL.put("room", strsToList("room_id", "hotel_id", "room_type", "total", "available", "price"));
         TB_TO_COL.put("order_info", strsToList("order_id", "hotel_id", "username", "order_type", "hotel_name", "room_type", "room_amount",

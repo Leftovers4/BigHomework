@@ -1,5 +1,7 @@
 package po.personnel;
 
+import util.PersonnelType;
+
 import java.io.Serializable;
 
 /**
@@ -19,8 +21,8 @@ public class HotelWorkerPO extends PersonnelPO implements Serializable{
     private long hotelID;
 
 
-    public HotelWorkerPO(long hotelWorkerID, String password, long hotelID) {
-        super(hotelWorkerID, password);
+    public HotelWorkerPO(long personnelID, String password, PersonnelType personnelType, String name, long hotelID) {
+        super(personnelID, password, personnelType, name);
         this.hotelID = hotelID;
     }
 
