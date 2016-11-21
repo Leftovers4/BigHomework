@@ -62,7 +62,7 @@ public class ComWorkerSceneController {
 
     @FXML
     private void showUpdateCheckIn(){
-        changePane(new UpdateCheckInPane(stage));
+        changePane(new UpdateCheckInPane(stage,mainPane));
     }
 
     @FXML
