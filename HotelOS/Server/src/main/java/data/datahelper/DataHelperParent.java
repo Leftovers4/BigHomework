@@ -97,7 +97,7 @@ public class DataHelperParent {
      * @param parameters 参数
      * @return
      */
-    public ResultMessage addToSQL(String tableName, ArrayList<Object> parameters){
+    protected ResultMessage insertToSQL(String tableName, ArrayList<Object> parameters){
 
         if(TB_TO_COL.get(tableName).size() != parameters.size()){
             System.out.println("Wrong inputs' number to " + tableName + ".");
@@ -139,7 +139,7 @@ public class DataHelperParent {
      * @param id 主键
      * @return
      */
-    public ResultMessage delFromSQL(String tableName, Object id){
+    protected ResultMessage delFromSQL(String tableName, Object id){
 
         try {
             // 将参数传进preparedStatement来构造完整的SQL语句
@@ -170,7 +170,7 @@ public class DataHelperParent {
      * @param newParameters
      * @return
      */
-    public ResultMessage updateFromSQL(String tableName, ArrayList<Object> newParameters){
+    protected ResultMessage updateFromSQL(String tableName, ArrayList<Object> newParameters){
 
         if(TB_TO_COL.get(tableName).size() != newParameters.size()){
             System.out.println("Wrong inputs' number to " + tableName + ".");
@@ -219,18 +219,14 @@ public class DataHelperParent {
      * @param id
      * @return
      */
-    public ArrayList<Object> findFromSQLById(String tableName, String id){
+    protected ArrayList<Object> findFromSQLById(String tableName, Object id){
         // 确定参数个数，以便于遍历全部列的内容
         int paraNum = TB_TO_COL.get(tableName).size();
 
         try {
             preparedStatement = conn.prepareStatement(this.buildFindByIdSQL(tableName));
 
-            if(tableName == "user"){
-                preparedStatement.setObject(1, id);
-            }else{
-                preparedStatement.setLong(1, Long.parseLong(id));
-            }
+            preparedStatement.setObject(1, id);
 
             System.out.println(preparedStatement.toString());
             resultSet = preparedStatement.executeQuery();
@@ -264,7 +260,7 @@ public class DataHelperParent {
      * @param tableName 表名
      * @return
      */
-    public ArrayList<ArrayList<Object>> findFromSQL(String tableName){
+    protected ArrayList<ArrayList<Object>> findFromSQL(String tableName){
 
         // 创建存放结果的容器
         ArrayList<ArrayList<Object>> resultContent = new ArrayList<>();
@@ -294,7 +290,7 @@ public class DataHelperParent {
      * @param type 类型
      * @return
      */
-    public ArrayList<ArrayList<Object>> findFromSQLByType(String tableName, String type){
+    protected ArrayList<ArrayList<Object>> findFromSQLByType(String tableName, String type){
 
         // 创建存放结果的容器
         ArrayList<ArrayList<Object>> resultContent = new ArrayList<>();
@@ -320,12 +316,12 @@ public class DataHelperParent {
 
 
     /**
-     * TODO 根据条件获得信息
-     * 从数据库中获得n条数据（根据ID/username）
+     * 从数据库中获得n条数据（根据条件）
+     * 关于条件的说明：参数列表与数据库表保持一致，不构成条件的元素用"%"代替
      * @param tableName
      * @return
      */
-    public ArrayList<ArrayList<Object>> findFromSQLByConditions(String tableName, ArrayList<Object> conditions) {
+    protected ArrayList<ArrayList<Object>> findFromSQLByConditions(String tableName, ArrayList<Object> conditions) {
 
         if(TB_TO_COL.get(tableName).size() != conditions.size()){
             System.out.println("Wrong inputs' number to " + tableName + ".");

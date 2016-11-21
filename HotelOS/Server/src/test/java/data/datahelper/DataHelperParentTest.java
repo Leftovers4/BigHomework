@@ -29,7 +29,7 @@ public class DataHelperParentTest {
         input.add("password");
         input.add(PersonnelType.HOTEL_WORKER.toString());
         input.add(null);
-        ResultMessage result = tested.addToSQL("personnel", input);
+        ResultMessage result = tested.insertToSQL("personnel", input);
         System.out.println(result.toString());
     }
 
@@ -45,7 +45,7 @@ public class DataHelperParentTest {
         input.add(1);
         input.add(new Date());
         input.add(null);
-        ResultMessage result = tested.addToSQL("user", input);
+        ResultMessage result = tested.insertToSQL("user", input);
         System.out.println(result.toString());
 
 
