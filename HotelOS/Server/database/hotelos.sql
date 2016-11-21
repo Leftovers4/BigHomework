@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-11-21 14:24:42
+Date: 2016-11-21 22:33:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -143,7 +143,7 @@ CREATE TABLE `personnel` (
   `personnel_id` int(6) unsigned zerofill NOT NULL,
   `password` char(20) NOT NULL,
   `personnel_type` varchar(20) NOT NULL DEFAULT '',
-  `name` varchar(20) NOT NULL,
+  `name` varchar(20) NOT NULL DEFAULT '',
   `hotel_id` int(6) unsigned zerofill NOT NULL DEFAULT '000000',
   PRIMARY KEY (`personnel_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -162,6 +162,7 @@ DROP TABLE IF EXISTS `promotion`;
 CREATE TABLE `promotion` (
   `promotion_id` int(6) unsigned zerofill NOT NULL,
   `promotion_type` varchar(20) NOT NULL DEFAULT '',
+  `hotel_id` int(6) NOT NULL,
   `discount` double NOT NULL DEFAULT '0',
   `least_rooms` int(10) unsigned NOT NULL DEFAULT '0',
   `begin_time` datetime NOT NULL,

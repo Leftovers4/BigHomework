@@ -12,7 +12,7 @@ public interface PromotionDataHelper {
 
     /**
      * 根据hotelID在从promotion表中查找促销策略列表
-     * TODO 特殊的促销策略必须访问多个表
+     * TODO 特殊的促销策略必须访问多个表，交给dao处理
      * @param hotelID
      * @return
      */
@@ -57,6 +57,51 @@ public interface PromotionDataHelper {
      * @return
      */
     public ResultMessage updateFromSQL(ArrayList<Object> promotionInfo);
+
+
+    /*-----------------------------------------------------------以下方法访问有自己的表的promotion表-----------------------------------------------------------------*/
+
+
+    /**
+     * 地址&商圈 WP
+     */
+
+    public ResultMessage insertAddressToSQL(ArrayList<Object> addInfo);
+
+    public ResultMessage deleteAddressFromSQL(long addressID);
+
+    public ResultMessage updateAddressFromSQL(ArrayList<Object> addInfo);
+
+    public ArrayList<ArrayList<Object>> findAddressFromSQL();
+
+    public ArrayList<Object> findAddressByIdFromSQL(long addressID);
+
+    /**
+     * 企业信息 HP
+     */
+    public ResultMessage insertEnterpriseToSQL(ArrayList<Object> entInfo);
+
+    public ResultMessage deleteEnterpriseFromSQL(long match_id);
+
+    public ResultMessage updateEnterpriseFromSQL(ArrayList<Object> entInfo);
+
+    public ArrayList<ArrayList<Object>> findEnterpriseFromSQL();
+
+    public ArrayList<Object> findEnterpriseByIdFromSQL(long match_id);
+
+    /**
+     * 会员等级信息 WP
+     */
+    public ResultMessage insertMRToSQL(ArrayList<Object> mrInfo);
+
+    public ResultMessage deleteMRFromSQL(long level);
+
+    public ResultMessage updateMRFromSQL(ArrayList<Object> mrInfo);
+
+    public ArrayList<ArrayList<Object>> findMRFromSQL();
+
+    public ArrayList<Object> findMRByLevelFromSQL(long level);
+
 
 
 }

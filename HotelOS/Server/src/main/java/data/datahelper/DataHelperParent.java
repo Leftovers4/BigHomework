@@ -68,7 +68,7 @@ public class DataHelperParent {
                                                "room_number", "person_amount", "with_children", "generate_time", "expected_checkin_time",
                                                "checkin_time", "leave_time", "last_execute_time", "cancel_time", "original_price", "actual_price",
                                                "review_time", "rating", "review", "ha_time", "ha_result"));
-        TB_TO_COL.put("promotion", strsToList("promotion_id", "promotion_type", "discount", "least_rooms", "begin_time", "end_time", "threshold", "reduction"));
+        TB_TO_COL.put("promotion", strsToList("promotion_id", "promotion_type", "hotel_id", "discount", "least_rooms", "begin_time", "end_time", "threshold", "reduction"));
         TB_TO_COL.put("enterprise", strsToList("match_id", "hotel_id", "enterprise"));
         TB_TO_COL.put("member_regulation", strsToList("address_id", "address", "trading_area", "discount"));
 

@@ -25,6 +25,11 @@ public class PromotionPO implements Serializable {
     private PromotionType promotionType;
 
     /**
+     * 酒店ID
+      */
+    private long hotelID;
+
+    /**
      * 时间
      */
     private PromotionTimePO promotionTimePO;
@@ -45,12 +50,21 @@ public class PromotionPO implements Serializable {
     /**
      * 用于增加营销策略
      */
-    public PromotionPO(PromotionType promotionType, PromotionTimePO promotionTimePO, double discount, int leastRooms) {
-        super();
+    public PromotionPO(long promotionID, PromotionType promotionType, long hotelID, PromotionTimePO promotionTimePO, double discount, int leastRooms) {
+        this.promotionID = promotionID;
         this.promotionType = promotionType;
+        this.hotelID = hotelID;
         this.promotionTimePO = promotionTimePO;
         this.discount = discount;
         this.leastRooms = leastRooms;
+    }
+
+    public long getHotelID() {
+        return hotelID;
+    }
+
+    public void setHotelID(long hotelID) {
+        this.hotelID = hotelID;
     }
 
     public long getPromotionID() {
