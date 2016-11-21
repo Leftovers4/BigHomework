@@ -70,7 +70,8 @@ public class DataHelperParent {
                                                "review_time", "rating", "review", "ha_time", "ha_result"));
         TB_TO_COL.put("promotion", strsToList("promotion_id", "promotion_type", "hotel_id", "discount", "least_rooms", "begin_time", "end_time", "threshold", "reduction"));
         TB_TO_COL.put("enterprise", strsToList("match_id", "hotel_id", "enterprise"));
-        TB_TO_COL.put("member_regulation", strsToList("address_id", "address", "trading_area", "discount"));
+        TB_TO_COL.put("address", strsToList("address_id", "address", "trading_area", "discount"));
+        TB_TO_COL.put("member_regulation", strsToList("level", "credit", "discount"));
 
         // 初始化TYPEMAP
         TYPEMAP.put("user", "member_type");

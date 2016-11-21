@@ -10,9 +10,10 @@ import java.util.ArrayList;
  */
 public interface UserDataHelper {
 
+    // 格式："username", "password", "name", "gender", "phone", "member_type", "level", "birthday", "enterprise"
+
     /**
      * 根据用户名在user表中查找一条用户信息
-     * 返回格式："username", "password", "name", "gender", "phone", "member_type", "level", "birthday", "enterprise"
      * @param username
      * @return
      */
@@ -20,7 +21,6 @@ public interface UserDataHelper {
 
     /**
      * 在user表中插入一条用户信息
-     * 输入格式："username", "password", "name", "gender", "phone", "member_type", "level", "birthday", "enterprise"
      * @param userInfo
      * @return
      */
@@ -48,7 +48,6 @@ public interface UserDataHelper {
 
     /**
      * 在credit_record表中插入一条信用记录
-     * 输入格式："record_id", "username", "current_credit", "changed_credit", "changed_time", "cause", "order_id"
      * @param creditRecord
      * @return
      */

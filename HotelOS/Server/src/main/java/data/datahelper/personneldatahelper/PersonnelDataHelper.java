@@ -10,9 +10,10 @@ import java.util.ArrayList;
  */
 public interface PersonnelDataHelper {
 
+    // 格式："personnel_id", "password", "personnel_type", "hotel_id"
+
     /**
      * 根据ID从personnel表查找一个员工
-     * 返回格式："personnel_id", "password", "personnel_type", "hotel_id"
      * @param personnelID
      * @return
      */
@@ -33,7 +34,6 @@ public interface PersonnelDataHelper {
 
     /**
      * 在personnel表中插入一条员工数据
-     * 输入格式："personnel_id", "password", "personnel_type", "hotel_id"
      * @param personnelInfo
      * @return
      */
@@ -48,7 +48,6 @@ public interface PersonnelDataHelper {
 
     /**
      * 在personnel表中更新一条员工数据
-     * 输入格式："personnel_id", "password", "personnel_type", "hotel_id"
      * @param personnelInfo
      * @return
      */

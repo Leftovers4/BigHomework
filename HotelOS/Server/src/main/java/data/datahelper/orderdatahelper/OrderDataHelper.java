@@ -9,12 +9,13 @@ import java.util.ArrayList;
  */
 public interface OrderDataHelper {
 
+    // 格式："order_id", "hotel_id", "username", "order_type", "hotel_name", "room_type", "room_amount",
+    //      "room_number", "person_amount", "with_children", "generate_time", "expected_checkin_time",
+    //      "checkin_time", "leave_time", "last_execute_time", "cancel_time", "original_price", "actual_price",
+    //      "review_time", "rating", "review", "ha_time", "ha_result"
+
     /**
      * 根据id在order表中查找一条订单信息
-     * 返回格式："order_id", "hotel_id", "username", "order_type", "hotel_name", "room_type", "room_amount",
-                "room_number", "person_amount", "with_children", "generate_time", "expected_checkin_time",
-                "checkin_time", "leave_time", "last_execute_time", "cancel_time", "original_price", "actual_price",
-                "review_time", "rating", "review", "ha_time", "ha_result"
      * @param orderID
      * @return
      */

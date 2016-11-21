@@ -9,9 +9,10 @@ import java.util.ArrayList;
  */
 public interface HotelDataHelper {
 
+    // 格式："hotel_id", "hotel_name", "star", "address", "trading_area", "description", "service"
+
     /**
      * 根据酒店ID从hotel表中查找酒店信息
-     * 返回格式："hotel_id", "hotel_name", "star", "address", "trading_area", "description", "service"
      * @param hotelID
      * @return
      */
@@ -27,7 +28,6 @@ public interface HotelDataHelper {
 
     /**
      * 往hotel表中添加一条酒店信息
-     * 输入格式："hotel_id", "hotel_name", "star", "address", "trading_area", "description", "service"
      * @param hotelInfo
      * @return
      */
@@ -49,7 +49,6 @@ public interface HotelDataHelper {
 
     /**
      * 根据hotelID在room表中查找相应的rooms列表
-     * 返回格式："room_id", "hotel_id", "room_type", "total", "available", "price"
      * @param hotelID
      * @return
      */
