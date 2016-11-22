@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
 
 /**
  * Created by Hitiger on 2016/11/20.
@@ -32,7 +33,10 @@ public class UpdateOutPaneController {
     }
 
     @FXML
-    private void outOnline(){}
+    private void outOnline(){
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new FindOrderPane(stage,mainPane,false));
+    }
 
     @FXML
     private void outOffline(){}

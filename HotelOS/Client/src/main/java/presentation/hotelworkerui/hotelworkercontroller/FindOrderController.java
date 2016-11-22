@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateCheckInPane;
+import presentation.hotelworkerui.hotelworkerscene.UpdateOrderInfoPane;
 
 /**
  * Created by Hitiger on 2016/11/21.
@@ -20,9 +21,11 @@ public class FindOrderController {
     @FXML private Button findByIDorNameBtn;
     private Stage stage;
     private Pane mainPane;
-    public void launch(Stage primaryStage, Pane mainPane) {
+    private Boolean isCheckIn;
+    public void launch(Stage primaryStage, Pane mainPane,Boolean isCheckIn) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
+        this.isCheckIn = isCheckIn;
     }
 
     @FXML private void closeWindow(){
@@ -43,6 +46,6 @@ public class FindOrderController {
      */
     @FXML private void findOrder(){
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new OrderDetailPane(stage,mainPane));
+        mainPane.getChildren().add(new UpdateOrderInfoPane(stage,mainPane,isCheckIn));
     }
 }

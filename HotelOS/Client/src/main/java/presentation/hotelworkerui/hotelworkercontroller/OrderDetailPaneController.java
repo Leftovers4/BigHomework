@@ -32,7 +32,7 @@ public class OrderDetailPaneController {
 
     @FXML
     private void back(){
-        mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new FindOrderPane(stage,mainPane));
+//        mainPane.getChildren().remove(0);
+//        mainPane.getChildren().add(new FindOrderPane(stage,mainPane));
     }
 }

@@ -12,33 +12,33 @@ import javafx.stage.Stage;
 public class ManagePromotionPaneController {
 
     //生日优惠
-    @FXML Button addBirthBtn;
-    @FXML Button modifyBirthBtn;
-    @FXML Button deleteBirthBtn;
-    @FXML Button confirmBirthBtn;
-    @FXML Button cancelBirthBtn;
-    @FXML HBox   addBirthHBox;
+    @FXML private Button addBirthBtn;
+    @FXML private Button modifyBirthBtn;
+    @FXML private Button deleteBirthBtn;
+    @FXML private Button confirmBirthBtn;
+    @FXML private Button cancelBirthBtn;
+    @FXML private HBox   addBirthHBox;
     //多间预订优惠
-    @FXML Button addRoomsBtn;
-    @FXML Button modifyRoomsBtn;
-    @FXML Button deleteRoomsBtn;
-    @FXML Button confirmRoomsBtn;
-    @FXML Button cancelRoomsBtn;
-    @FXML HBox   addRoomsHBox;
+    @FXML private Button addRoomsBtn;
+    @FXML private Button modifyRoomsBtn;
+    @FXML private Button deleteRoomsBtn;
+    @FXML private Button confirmRoomsBtn;
+    @FXML private Button cancelRoomsBtn;
+    @FXML private HBox   addRoomsHBox;
     //特定期间优惠
-    @FXML Button addTimeBtn;
-    @FXML Button modifyTimeBtn;
-    @FXML Button deleteTimeBtn;
-    @FXML Button confirmTimeBtn;
-    @FXML Button cancelTimeBtn;
-    @FXML HBox   addTimeHBox;
+    @FXML private Button addTimeBtn;
+    @FXML private Button modifyTimeBtn;
+    @FXML private Button deleteTimeBtn;
+    @FXML private Button confirmTimeBtn;
+    @FXML private Button cancelTimeBtn;
+    @FXML private HBox   addTimeHBox;
     //合作企业优惠
-    @FXML Button addComBtn;
-    @FXML Button modifyComBtn;
-    @FXML Button deleteComBtn;
-    @FXML Button confirmComBtn;
-    @FXML Button cancelComBtn;
-    @FXML HBox   addComHBox;
+    @FXML private Button addComBtn;
+    @FXML private Button modifyComBtn;
+    @FXML private Button deleteComBtn;
+    @FXML private Button confirmComBtn;
+    @FXML private Button cancelComBtn;
+    @FXML private HBox   addComHBox;
 
     private Stage stage;
 

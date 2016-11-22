@@ -49,7 +49,7 @@ public class UpdateCheckInPaneController {
     @FXML
     private void checkinOnline(){
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new FindOrderPane(stage,mainPane));
+        mainPane.getChildren().add(new FindOrderPane(stage,mainPane,true));
     }
 
     /**
