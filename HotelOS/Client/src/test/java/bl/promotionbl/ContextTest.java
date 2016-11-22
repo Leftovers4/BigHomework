@@ -21,7 +21,7 @@ public class ContextTest {
 
     @Test
     public void getActualPrice() throws Exception {
-        promotionPO = new PromotionPO(PromotionType.MultipleRoomPromotion, null, 0.9, 1);
+        promotionPO = new PromotionPO(110110, PromotionType.MultipleRoomPromotion, 522000, null, 0.9, 1);
         context = new Context(promotionPO);
         ArrayList<RoomVO> roomVOs = new ArrayList<>();
         roomVOs.add(new RoomVO(1, 1, RoomType.COUPLE, 0, 0, 0));

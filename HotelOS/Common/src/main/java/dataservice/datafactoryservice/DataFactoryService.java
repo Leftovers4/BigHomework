@@ -15,7 +15,7 @@ import dataservice.DataServiceParent;
  * @author Hiki
  * @version 2016年10月16日
  */
-public interface DataFactoryService extends DataServiceParent{
+public interface DataFactoryService {
 
 	public UserDataService getUserDataService() throws RemoteException;
 

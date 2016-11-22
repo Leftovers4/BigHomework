@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by Hiki on 2016/10/16.
  */
-public interface OrderDataService extends DataServiceParent {
+public interface OrderDataService {
 
     // 根据订单ID查找订单
     public OrderPO findByOrderID(String orderID) throws RemoteException;

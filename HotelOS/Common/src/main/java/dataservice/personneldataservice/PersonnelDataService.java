@@ -3,6 +3,7 @@ package dataservice.personneldataservice;
 import dataservice.DataServiceParent;
 import po.personnel.PersonnelPO;
 import util.PersonnelType;
+import util.ResultMessage;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -10,10 +11,10 @@ import java.util.ArrayList;
 /**
  * Created by Hiki on 2016/11/6.
  */
-public interface PersonnelDataService extends DataServiceParent{
+public interface PersonnelDataService {
 
     // 判断员工是否能够登录
-    public boolean canLogin(PersonnelPO personnelPO) throws RemoteException;
+    public ResultMessage login(PersonnelPO personnelPO) throws RemoteException;
 
     // 显示员工列表
     public ArrayList<PersonnelPO> getList() throws RemoteException;

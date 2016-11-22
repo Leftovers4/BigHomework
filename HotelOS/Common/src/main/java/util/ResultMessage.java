@@ -17,6 +17,16 @@ public enum ResultMessage {
     FAIL,
 
     /**
+     * 登录失败：用户名不存在
+     */
+    USERNAME_EXISTED,
+
+    /**
+     * 登录失败：密码错误
+     */
+    PASSWORD_WRONG,
+
+    /**
      * 中断
      */
     PAUSE,

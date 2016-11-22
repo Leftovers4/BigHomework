@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by Hiki on 2016/10/16.
  */
-public interface HotelDataService extends DataServiceParent {
+public interface HotelDataService{
 
     // 根据酒店ID查找酒店
     public HotelPO findByHotelID(long hotelID) throws RemoteException;

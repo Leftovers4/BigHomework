@@ -30,7 +30,7 @@ public class UserBLService_Stub implements UserBLService {
     }
 
     @Override
-    public ResultMessage del(UserVO userVO) {
+    public ResultMessage del(String username) {
         return ResultMessage.SUCCESS;
     }
 

@@ -14,7 +14,6 @@ public interface PromotionDataHelper {
 
     /**
      * 根据hotelID在从promotion表中查找促销策略列表
-     * TODO 特殊的促销策略必须访问多个表，逻辑交给dao处理
      * @param hotelID
      * @return
      */
@@ -22,7 +21,6 @@ public interface PromotionDataHelper {
 
     /**
      * 根据promotionType从promotion表中查找促销策略列表
-     * TODO 特殊的促销策略必须访问多个表
      * @param promotionType
      * @return
      */
@@ -30,7 +28,6 @@ public interface PromotionDataHelper {
 
     /**
      * 根据promotionID从promotion表中查找一条促销策略
-     * TODO 特殊的促销策略必须访问多个表
      * @param promotionID
      * @return
      */
@@ -38,7 +35,6 @@ public interface PromotionDataHelper {
 
     /**
      * 在promotion表中插入一条促销策略
-     * 输入格式：TODO 可能会有不一样
      * @param promotionInfo
      * @return
      */
@@ -53,7 +49,6 @@ public interface PromotionDataHelper {
 
     /**
      * 在promotion表中更新一条促销策略
-     * TODO：有些促销策略需要更新多个表
      * @param promotionInfo
      * @return
      */

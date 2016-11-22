@@ -4,6 +4,7 @@ import dataservice.userdataservice.UserDataService;
 import po.user.CreditPO;
 import po.user.MemberPO;
 import po.user.UserPO;
+import util.ResultMessage;
 import util.UserType;
 
 import java.rmi.RemoteException;
@@ -15,6 +16,10 @@ import java.util.ArrayList;
 public class UserDataServiceImpl implements UserDataService {
 
 
+    @Override
+    public ResultMessage login(UserPO userPO) throws RemoteException {
+        return null;
+    }
 
     @Override
     public UserPO findByUsername(String username) throws RemoteException {

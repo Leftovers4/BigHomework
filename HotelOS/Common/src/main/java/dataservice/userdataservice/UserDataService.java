@@ -5,6 +5,7 @@ import dataservice.DataServiceParent;
 import po.user.CreditPO;
 import po.user.MemberPO;
 import po.user.UserPO;
+import util.ResultMessage;
 import util.UserType;
 
 import java.rmi.RemoteException;
@@ -13,7 +14,10 @@ import java.util.ArrayList;
 /**
  * Created by Hiki on 2016/10/16.
  */
-public interface UserDataService extends DataServiceParent {
+public interface UserDataService {
+
+    // 登录
+    public ResultMessage login(UserPO userPO) throws RemoteException;
 
     // 根据用户名查找用户
     public UserPO findByUsername(String username) throws RemoteException;

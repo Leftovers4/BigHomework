@@ -3,6 +3,7 @@ package data.dao.personneldata;
 import dataservice.personneldataservice.PersonnelDataService;
 import po.personnel.PersonnelPO;
 import util.PersonnelType;
+import util.ResultMessage;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -12,11 +13,12 @@ import java.util.ArrayList;
  */
 public class PersonnelDataServiceImpl implements PersonnelDataService {
 
-
-
     @Override
-    public boolean canLogin(PersonnelPO personnelPO) throws RemoteException {
-        return false;
+    public ResultMessage login(PersonnelPO personnelPO) throws RemoteException {
+
+        ArrayList<Object> personnelInfo = new ArrayList<>();
+
+        return ResultMessage.FAIL;
     }
 
     @Override

@@ -39,7 +39,7 @@ public class UserBLService_Driver {
 
     @Test
     public void del() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.del(new UserVO("zhangsan", "123456", "张三", true, "110", null, null)));
+        assertEquals(ResultMessage.SUCCESS, tested.del("zhangsan"));
     }
 
     @Test
