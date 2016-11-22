@@ -6,7 +6,6 @@ import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkercontroller.UpdateCheckInPaneController;
 
 import java.io.IOException;
-import java.io.PipedReader;
 
 /**
  * Created by Hitiger on 2016/11/20.
@@ -20,7 +19,7 @@ public class UpdateCheckInPane extends Pane {
     }
 
     private void loadFxml(Stage primaryStage,Pane mainPane) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelupdatecheckin1.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelupdatecheckin.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

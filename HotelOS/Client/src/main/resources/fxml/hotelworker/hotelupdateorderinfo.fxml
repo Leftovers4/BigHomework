@@ -65,35 +65,37 @@
                 </Button>
             </children>
         </HBox>
-      <Label layoutX="95.0" layoutY="83.0" text="订单号：" />
-      <Label layoutX="181.0" layoutY="83.0" text="12345678912345678" />
-      <Label layoutX="91.0" layoutY="463.0" text="入住人数：" />
-      <Label layoutX="218.0" layoutY="463.0" text="1" />
-      <Label layoutX="127.0" layoutY="513.0" text="儿童：" />
-      <Label layoutX="91.0" layoutY="285.0" text="入住时间：" />
-      <Label layoutX="447.0" layoutY="285.0" text="预计离开时间：" />
-      <Label layoutX="210.0" layoutY="285.0" text="2016-10-29" />
-      <Label layoutX="333.0" layoutY="285.0" text="16:30" />
-      <Label layoutX="728.0" layoutY="285.0" text="16:30" />
-      <Label layoutX="604.0" layoutY="285.0" text="2016-10-29" />
-      <Label layoutX="91.0" layoutY="222.0" text="生成时间：" />
-      <Label layoutX="333.0" layoutY="222.0" text="16:30" />
-      <Label layoutX="447.0" layoutY="222.0" text="最晚执行时间：" />
-      <Label layoutX="728.0" layoutY="222.0" text="16:30" />
-      <Label layoutX="604.0" layoutY="222.0" text="2016-10-29" />
-      <Label layoutX="210.0" layoutY="222.0" text="2016-10-29" />
-      <Label layoutX="214.0" layoutY="513.0" text="有" />
-      <TableView layoutX="265.0" layoutY="442.0" prefHeight="132.0" prefWidth="521.0">
+      <Label layoutX="56.0" layoutY="83.0" text="订单号：" />
+      <Label layoutX="142.0" layoutY="83.0" text="12345678912345678" />
+      <Label layoutX="92.0" layoutY="464.0" text="入住人数：" />
+      <Label layoutX="128.0" layoutY="514.0" text="儿童：" />
+      <Label layoutX="56.0" layoutY="293.0" text="入住时间：" />
+      <Label layoutX="425.0" layoutY="293.0" text="预计离开时间：" />
+      <Label layoutX="56.0" layoutY="230.0" text="生成时间：" />
+      <Label layoutX="298.0" layoutY="230.0" text="16:30" />
+      <Label layoutX="425.0" layoutY="230.0" text="最晚执行时间：" />
+      <Label layoutX="706.0" layoutY="230.0" text="16:30" />
+      <Label layoutX="582.0" layoutY="230.0" text="2016-10-29" />
+      <Label layoutX="175.0" layoutY="230.0" text="2016-10-29" />
+      <Label layoutX="204.0" layoutY="514.0" text="有" />
+      <TableView layoutX="266.0" layoutY="443.0" prefHeight="132.0" prefWidth="521.0">
         <columns>
           <TableColumn prefWidth="148.0" text="客房类型" />
             <TableColumn prefWidth="79.0" text="数量" />
           <TableColumn prefWidth="293.0" text="房间号" />
         </columns>
       </TableView>
-      <Label layoutX="91.0" layoutY="155.0" text="订单状态：" />
-      <Label layoutX="210.0" layoutY="155.0" text="未执行" />
-      <Label layoutX="447.0" layoutY="348.0" text="实际离开时间：" />
-      <Label layoutX="728.0" layoutY="348.0" text="16:30" />
-      <Label layoutX="604.0" layoutY="348.0" text="2016-10-29" />
+      <Label layoutX="56.0" layoutY="163.0" text="订单状态：" />
+      <Label layoutX="175.0" layoutY="163.0" text="未执行" />
+      <Label layoutX="425.0" layoutY="356.0" text="实际离开时间：" />
+      <DatePicker layoutX="144.0" layoutY="287.0" prefHeight="36.0" prefWidth="161.0" promptText="2016-10-29" />
+      <TextField layoutX="313.0" layoutY="287.0" prefHeight="36.0" prefWidth="88.0" promptText="16：30" />
+      <TextField layoutX="720.0" layoutY="287.0" prefHeight="36.0" prefWidth="88.0" promptText="16：30" />
+      <DatePicker layoutX="551.0" layoutY="287.0" prefHeight="36.0" prefWidth="161.0" promptText="2016-10-29" />
+      <TextField layoutX="189.0" layoutY="458.0" prefHeight="36.0" prefWidth="47.0" promptText="10" />
+      <Button layoutX="652.0" layoutY="617.0" mnemonicParsing="false" text="提交" />
+      <Button layoutX="748.0" layoutY="617.0" mnemonicParsing="false" text="取消" />
+      <DatePicker layoutX="551.0" layoutY="350.0" prefHeight="36.0" prefWidth="161.0" promptText="2016-10-29" />
+      <TextField layoutX="720.0" layoutY="350.0" prefHeight="36.0" prefWidth="88.0" promptText="16：30" />
     </children>
 </fx:root>

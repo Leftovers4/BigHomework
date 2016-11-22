@@ -6,29 +6,16 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="presentation.hotelworkerui.hotelworkercontroller.UpdateOutPaneController">
+<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.UpdateOutPaneController">
     <children>
-        <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
+        <HBox id="topBar" alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
             <children>
-                <Button mnemonicParsing="false" stylesheets="@../../css/user/userstyle.css">
-                    <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../img/common/back.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <HBox.margin>
-                        <Insets left="10.0" />
-                    </HBox.margin>
-                </Button>
                 <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../img/hotelworker/initialPhoto.png" />
                     </image>
                     <HBox.margin>
-                        <Insets left="480.0" top="10.0" />
+                        <Insets />
                     </HBox.margin>
                 </ImageView>
                 <SplitMenuButton maxWidth="120.0" mnemonicParsing="false" text="name">
@@ -36,10 +23,10 @@
                         <MenuItem mnemonicParsing="false" text="退出登录" />
                     </items>
                     <HBox.margin>
-                        <Insets left="10.0" top="8.0" />
+                        <Insets left="10.0" />
                     </HBox.margin>
                 </SplitMenuButton>
-                <Button mnemonicParsing="false">
+                <Button mnemonicParsing="false" onAction="#minWindow">
                     <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -48,10 +35,10 @@
                         </ImageView>
                     </graphic>
                     <HBox.margin>
-                        <Insets left="60.0" top="5.0" />
+                        <Insets left="60.0" />
                     </HBox.margin>
                 </Button>
-                <Button mnemonicParsing="false">
+                <Button mnemonicParsing="false" onAction="#closeWindow">
                     <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -60,25 +47,13 @@
                         </ImageView>
                     </graphic>
                     <HBox.margin>
-                        <Insets top="5.0" />
+                        <Insets />
                     </HBox.margin>
                 </Button>
             </children>
         </HBox>
-        <Button id="outOnlineBtn" fx:id="outOnlineBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="180.0" layoutY="255.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" visible="false">
-            <graphic>
-                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                    <viewport>
-                        <Rectangle2D />
-                    </viewport>
-                    <image>
-                        <Image url="@../../img/hotelworker/upload.png" />
-                    </image>
-                </ImageView>
-            </graphic>
-        </Button>
-        <Button id="outOfflineBtn" fx:id="outOfflineBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="510.0" layoutY="255.0" mnemonicParsing="false" prefHeight="140.0" prefWidth="140.0" visible="false">
-            <graphic>
+      <Button id="outOfflineBtn" fx:id="outOfflineBtn" contentDisplay="TOP" graphicTextGap="10.0" layoutX="512.0" layoutY="216.0" mnemonicParsing="false" onAction="#outOffline" text="线下退房">
+         <graphic>
                 <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../img/hotelworker/download.png" />
@@ -87,9 +62,19 @@
                         <Rectangle2D />
                     </viewport>
                 </ImageView>
-            </graphic>
+         </graphic>
+      </Button>
+        <Button id="outOnlineBtn" fx:id="outOnlineBtn" contentDisplay="TOP" graphicTextGap="10.0" layoutX="159.0" layoutY="216.0" mnemonicParsing="false" onAction="#outOnline" prefHeight="140.0" prefWidth="140.0" text="线上退房">
+         <graphic>
+                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                    <viewport>
+                        <Rectangle2D />
+                    </viewport>
+                    <image>
+                        <Image url="@../../img/hotelworker/upload.png" />
+                    </image>
+                </ImageView>
+         </graphic>
         </Button>
-        <Label id="outOnlineLabel" fx:id="outOnlineLabel" layoutX="231.0" layoutY="442.0" text="线上退房" visible="false" />
-        <Label id="outOfflineLabel" fx:id="outOfflineLabel" layoutX="561.0" layoutY="442.0" text="线下退房" visible="false" />
     </children>
 </fx:root>

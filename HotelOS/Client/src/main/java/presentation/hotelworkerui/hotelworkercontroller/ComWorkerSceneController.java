@@ -67,7 +67,7 @@ public class ComWorkerSceneController {
 
     @FXML
     private void showUpdateOut(){
-        changePane(new UpdateOutPane(stage));
+        changePane(new UpdateOutPane(stage,mainPane));
     }
 
 
