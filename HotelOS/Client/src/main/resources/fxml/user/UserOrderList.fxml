@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root type="Pane" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="presentation.userui.usercontroller.UserOrderListController" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
          <children>
@@ -81,4 +81,4 @@
         </columns>
       </TableView>
    </children>
-</Pane>
+</fx:root>

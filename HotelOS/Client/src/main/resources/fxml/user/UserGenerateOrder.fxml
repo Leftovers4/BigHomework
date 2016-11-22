@@ -17,30 +17,28 @@
    <children>
       <Pane prefHeight="690.0" prefWidth="850.0">
          <children>
-            <Label layoutX="195.0" layoutY="180.0" text="预计入住时间：" />
-            <Label layoutX="195.0" layoutY="235.0" text="预计离开时间：" />
-            <DatePicker layoutX="305.0" layoutY="175.0" prefHeight="30.0" prefWidth="150.0" />
-            <DatePicker layoutX="305.0" layoutY="230.0" prefHeight="30.0" prefWidth="151.0" />
-            <ComboBox layoutX="475.0" layoutY="175.0" prefHeight="30.0" prefWidth="80.0" />
-            <ComboBox layoutX="570.0" layoutY="175.0" prefHeight="30.0" prefWidth="80.0" />
-            <ComboBox layoutX="475.0" layoutY="230.0" prefHeight="30.0" prefWidth="80.0" />
-            <ComboBox layoutX="570.0" layoutY="230.0" prefHeight="30.0" prefWidth="80.0" />
-            <Label layoutX="198.0" layoutY="290.0" text="入  住  酒  店：" />
-            <Label layoutX="305.0" layoutY="290.0" text="酒店名" />
-            <Label layoutX="198.0" layoutY="345.0" text="房  间  类  型：" />
-            <ComboBox layoutX="305.0" layoutY="340.0" prefHeight="30.0" prefWidth="125.0" />
-            <ComboBox layoutX="305.0" layoutY="395.0" prefHeight="30.0" prefWidth="125.0" />
-            <Label layoutX="198.0" layoutY="400.0" text="房  间  数  量：" />
-            <Label layoutX="225.0" layoutY="455.0" text="有无儿童：" />
-            <RadioButton layoutX="305.0" layoutY="455.0" mnemonicParsing="false" text="有" />
-            <RadioButton layoutX="380.0" layoutY="455.0" mnemonicParsing="false" text="无" />
-            <ImageView fitHeight="140.0" fitWidth="140.0" layoutX="510.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+            <Label layoutX="325.0" layoutY="180.0" text="预计入住时间：" />
+            <Label layoutX="325.0" layoutY="235.0" text="预计离开时间：" />
+            <DatePicker layoutX="435.0" layoutY="175.0" prefHeight="30.0" prefWidth="150.0" visible="false" />
+            <DatePicker layoutX="435.0" layoutY="230.0" prefHeight="30.0" prefWidth="151.0" visible="false" />
+            <ComboBox layoutX="605.0" layoutY="175.0" prefHeight="30.0" prefWidth="80.0" visible="false" />
+            <ComboBox layoutX="700.0" layoutY="175.0" prefHeight="30.0" prefWidth="80.0" visible="false" />
+            <ComboBox layoutX="605.0" layoutY="230.0" prefHeight="30.0" prefWidth="80.0" visible="false" />
+            <ComboBox layoutX="700.0" layoutY="230.0" prefHeight="30.0" prefWidth="80.0" visible="false" />
+            <Label layoutX="328.0" layoutY="290.0" text="房  间  类  型：" />
+            <ComboBox layoutX="435.0" layoutY="285.0" prefHeight="30.0" prefWidth="125.0" visible="false" />
+            <ComboBox layoutX="435.0" layoutY="340.0" prefHeight="30.0" prefWidth="125.0" visible="false" />
+            <Label layoutX="328.0" layoutY="345.0" text="房  间  数  量：" />
+            <Label layoutX="556.0" layoutY="400.0" text="有  无  儿  童：" />
+            <RadioButton layoutX="663.0" layoutY="400.0" mnemonicParsing="false" text="有" visible="false" />
+            <RadioButton layoutX="729.0" layoutY="400.0" mnemonicParsing="false" text="无" visible="false" />
+            <ImageView fitHeight="168.0" fitWidth="161.0" layoutX="69.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/common/initialPhoto.png" />
                </image>
             </ImageView>
-            <Label layoutX="195.0" layoutY="510.0" text="预计入住人数：" />
-            <ComboBox layoutX="305.0" layoutY="505.0" prefHeight="30.0" prefWidth="60.0" />
+            <Label layoutX="325.0" layoutY="400.0" text="预计入住人数：" />
+            <ComboBox layoutX="435.0" layoutY="395.0" prefHeight="30.0" prefWidth="60.0" visible="false" />
             <Label layoutX="220.0" layoutY="110.0" text="填写订单信息" />
             <ImageView fitHeight="40.0" fitWidth="150.0" layoutX="330.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -54,7 +52,24 @@
                </image>
             </ImageView>
             <Label layoutX="560.0" layoutY="110.0" text="提交订单" />
-            <Button layoutX="510.0" layoutY="567.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" text="下一步" />
+            <Button layoutX="450.0" layoutY="579.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="140.0" text="下一步" visible="false" />
+            <Label layoutX="328.0" layoutY="455.0" text="最  优  优  惠：" />
+            <Label layoutX="435.0" layoutY="455.0" text="Label" />
+            <Label layoutX="69.0" layoutY="358.0" text="酒店名" />
+            <Label layoutX="69.0" layoutY="393.0" text="酒店地址" />
+            <Label layoutX="69.0" layoutY="433.0" text="酒店设施" />
+            <Label layoutX="325.0" layoutY="510.0" text="价  格  总  计：" />
+            <Label layoutX="435.0" layoutY="510.0" text="Label" />
+            <Button layoutX="532.0" layoutY="579.0" mnemonicParsing="false" text="确认并提交订单" />
+            <Button layoutX="448.0" layoutY="579.0" mnemonicParsing="false" text="返回" />
+            <Label layoutX="440.0" layoutY="180.0" text="日期" />
+            <Label layoutX="510.0" layoutY="180.0" text="时间" />
+            <Label layoutX="440.0" layoutY="235.0" text="日期" />
+            <Label layoutX="510.0" layoutY="235.0" text="时间" />
+            <Label layoutX="440.0" layoutY="290.0" text="类型" />
+            <Label layoutX="440.0" layoutY="345.0" text="数量" />
+            <Label layoutX="440.0" layoutY="400.0" text="人数" />
+            <Label layoutX="666.0" layoutY="400.0" text="有无" />
          </children>
       </Pane>
       <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
@@ -113,5 +128,6 @@
             </Button>
          </children>
       </HBox>
+      <Pane layoutX="225.0" layoutY="195.0" prefHeight="300.0" prefWidth="400.0" />
    </children>
 </Pane>

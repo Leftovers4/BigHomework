@@ -6,8 +6,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
 import presentation.userui.userscene.InfoPane;
 import presentation.userui.userscene.SearchHotelPane;
+import presentation.userui.userscene.UserOrderListPane;
 
 /**
  * Created by Hitiger on 2016/11/19.
@@ -58,6 +60,8 @@ public class ComUserSceneController {
         leftBarSlider.setVisible(true);
         leftBarSlider.setLayoutY(305);
         leftBarSlider.setLayoutX(193);
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new UserOrderListPane(stage));
         orderListBtn.setStyle("-fx-background-color: #0F81C7");
         userInfoBtn.setStyle("-fx-background-color: transparent");
         searchHotelBtn.setStyle("-fx-background-color: transparent");
