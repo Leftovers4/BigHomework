@@ -12,15 +12,7 @@ import java.util.ArrayList;
  * Created by kevin on 2016/10/16.
  */
 public class OrderDataService_Stub implements OrderDataService {
-    @Override
-    public void initial() throws RemoteException {
 
-    }
-
-    @Override
-    public void finish() throws RemoteException {
-
-    }
 
     @Override
     public OrderPO findByOrderID(String orderID) throws RemoteException {

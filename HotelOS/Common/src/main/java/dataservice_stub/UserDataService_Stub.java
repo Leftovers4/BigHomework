@@ -15,40 +15,37 @@ import java.util.Date;
  * Created by kevin on 2016/10/16.
  */
 public class UserDataService_Stub implements UserDataService {
-    @Override
-    public void initial() throws RemoteException {
-
-    }
-
-    @Override
-    public void finish() throws RemoteException {
-
-    }
+//    @Override
+//    public void initial() throws RemoteException {
+//
+//    }
+//
+//    @Override
+//    public void finish() throws RemoteException {
+//
+//    }
 
     @Override
     public UserPO findByUsername(String username) throws RemoteException {
         return new UserPO("张三", "123456", "李四", true, "12345678999", new MemberPO("张三", MemberType.NORMAL_MEMBER, 1, new Date(), null), new CreditPO("张三", 1000, null));
     }
 
-    @Override
-    public ArrayList<UserPO> findByType(UserType userType) throws RemoteException {
-        ArrayList<UserPO> list = new ArrayList<>();
-        list.add(new UserPO("张三", "123456", "李四", true, "12345678999", new MemberPO("张三", MemberType.NORMAL_MEMBER, 1, new Date(), null), new CreditPO("张三", 1000, null)));
-        return list;
-    }
+
 
     @Override
     public void update(UserPO UserPO) throws RemoteException {
 
     }
 
+
+
     @Override
-    public void delete(UserPO UserPO) throws RemoteException {
+    public void insert(UserPO UserPO) throws RemoteException {
 
     }
 
     @Override
-    public void insert(UserPO UserPO) throws RemoteException {
+    public void delete(String username) throws RemoteException {
 
     }
 
@@ -60,24 +57,10 @@ public class UserDataService_Stub implements UserDataService {
     }
 
     @Override
-    public void addCredit(String username, double amount) throws RemoteException {
+    public void changeCredit(CreditPO creditPO) throws RemoteException {
 
     }
 
-    @Override
-    public void deductCredit(String username, double amount) throws RemoteException {
-
-    }
-
-    @Override
-    public void insertMember(MemberPO memberPO) throws RemoteException {
-
-    }
-
-    @Override
-    public void deleteMember(String username) throws RemoteException {
-
-    }
 
     @Override
     public void update(MemberPO memberPO) throws RemoteException {

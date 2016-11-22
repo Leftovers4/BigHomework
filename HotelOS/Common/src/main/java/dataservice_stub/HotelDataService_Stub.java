@@ -13,15 +13,7 @@ import java.util.ArrayList;
  * Created by kevin on 2016/10/16.
  */
 public class HotelDataService_Stub implements HotelDataService {
-    @Override
-    public void initial() throws RemoteException {
 
-    }
-
-    @Override
-    public void finish() throws RemoteException {
-
-    }
 
     @Override
     public HotelPO findByHotelID(long hotelID) throws RemoteException {
@@ -41,7 +33,7 @@ public class HotelDataService_Stub implements HotelDataService {
     }
 
     @Override
-    public void delete(HotelPO hotelPO) throws RemoteException {
+    public void delete(long hotelID) throws RemoteException {
 
     }
 

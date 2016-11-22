@@ -19,6 +19,12 @@ public interface HotelDataHelper {
     public ArrayList<Object> findByIdFromSQL(long hotelID);
 
     /**
+     * 根据条件从hotel表中获取所有酒店列表
+     * @return
+     */
+    public ArrayList<ArrayList<Object>> findFromSQL();
+
+    /**
      * 根据条件从hotel表中查找酒店列表
      * 输入格式：用Object包装列表信息，若HotelPO中有条件未提及，则用'%'表示
      * @param hotelInfo
@@ -47,12 +53,6 @@ public interface HotelDataHelper {
      */
     public ResultMessage updateFromSQL(ArrayList<Object> hotelInfo);
 
-    /**
-     * 根据hotelID在room表中查找相应的rooms列表
-     * @param hotelID
-     * @return
-     */
-    public ArrayList<ArrayList<Object>> findRoomsByHotelIdFromSQL(long hotelID);
 
 
 }

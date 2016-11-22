@@ -20,7 +20,7 @@ public class PersonnelDataService_Stub implements PersonnelDataService{
     public ArrayList<PersonnelPO> getList() throws RemoteException {
         ArrayList<PersonnelPO> personnelPOs = new ArrayList<>();
 
-        PersonnelPO personnelPO = new PersonnelPO(1, "123456");
+        PersonnelPO personnelPO = new PersonnelPO(1, "123456", PersonnelType.WEB_MARKETER, "A");
 
         personnelPOs.add(personnelPO);
 
@@ -38,9 +38,14 @@ public class PersonnelDataService_Stub implements PersonnelDataService{
     }
 
     @Override
-    public void delete(PersonnelPO personnelPO) throws RemoteException {
+    public void delete(long PersonnelID) throws RemoteException {
 
     }
+
+//    @Override
+//    public void delete(PersonnelPO personnelPO) throws RemoteException {
+//
+//    }
 
     @Override
     public void update(PersonnelPO personnelPO) throws RemoteException {
@@ -49,17 +54,17 @@ public class PersonnelDataService_Stub implements PersonnelDataService{
 
     @Override
     public PersonnelPO findByPersonnelID(long personnelID) throws RemoteException {
-        PersonnelPO personnelPO = new PersonnelPO(1, "123456");
+        PersonnelPO personnelPO = new PersonnelPO(1, "123456", PersonnelType.WEB_MARKETER, "A");
         return personnelPO;
     }
 
-    @Override
-    public void initial() throws RemoteException {
-
-    }
-
-    @Override
-    public void finish() throws RemoteException {
-
-    }
+//    @Override
+//    public void initial() throws RemoteException {
+//
+//    }
+//
+//    @Override
+//    public void finish() throws RemoteException {
+//
+//    }
 }

@@ -11,12 +11,18 @@ import java.util.ArrayList;
  */
 public class HotelDataHelperImpl extends DataHelperParent implements HotelDataHelper{
 
+    // 格式："hotel_id", "hotel_name", "star", "address", "trading_area", "description", "service"
+
     private static final String HOTEL_TABLENAME = TableName.hotel.toString();
-    private static final String ROOM_TABLENAME = TableName.room.toString();
 
     @Override
     public ArrayList<Object> findByIdFromSQL(long hotelID) {
         return findFromSQLById(HOTEL_TABLENAME, hotelID);
+    }
+
+    @Override
+    public ArrayList<ArrayList<Object>> findFromSQL() {
+        return findFromSQL(HOTEL_TABLENAME);
     }
 
     @Override
@@ -39,17 +45,5 @@ public class HotelDataHelperImpl extends DataHelperParent implements HotelDataHe
         return updateFromSQL(HOTEL_TABLENAME, hotelInfo);
     }
 
-    @Override
-    public ArrayList<ArrayList<Object>> findRoomsByHotelIdFromSQL(long hotelID) {
-        // TODO 注意此处依赖与room具体表的列的内容
-        ArrayList<Object> builtConditions = new ArrayList<>();
-        builtConditions.add("%");
-        builtConditions.add(hotelID);
-        builtConditions.add("%");
-        builtConditions.add("%");
-        builtConditions.add("%");
-        builtConditions.add("%");
 
-        return findFromSQLByConditions(ROOM_TABLENAME, builtConditions);
-    }
 }

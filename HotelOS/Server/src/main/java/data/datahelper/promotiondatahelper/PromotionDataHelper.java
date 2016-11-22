@@ -14,7 +14,7 @@ public interface PromotionDataHelper {
 
     /**
      * 根据hotelID在从promotion表中查找促销策略列表
-     * TODO 特殊的促销策略必须访问多个表，交给dao处理
+     * TODO 特殊的促销策略必须访问多个表，逻辑交给dao处理
      * @param hotelID
      * @return
      */

@@ -4,6 +4,7 @@ import dataservice.personneldataservice.PersonnelDataService;
 import org.junit.Before;
 import org.junit.Test;
 import po.personnel.PersonnelPO;
+import util.PersonnelType;
 
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ public class PersonnelDataService_Driver {
 
     @Test
     public void canLogin() throws Exception {
-        PersonnelPO personnelPO = new PersonnelPO(1, "123456");
+        PersonnelPO personnelPO = new PersonnelPO(1, "123456", PersonnelType.WEB_MARKETER, "A");
         assertEquals(true, tested.canLogin(personnelPO));
     }
 

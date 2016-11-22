@@ -17,15 +17,15 @@ import dataservice.DataServiceParent;
  */
 public interface DataFactoryService extends DataServiceParent{
 
-	public UserDataService getUserDataImpl() throws RemoteException;
+	public UserDataService getUserDataService() throws RemoteException;
 
-	public PersonnelDataService getPersonnelDataImpl() throws RemoteException;
+	public PersonnelDataService getPersonnelDataService() throws RemoteException;
 
-	public HotelDataService getHotelDataImpl() throws RemoteException;
+	public HotelDataService getHotelDataService() throws RemoteException;
 
-	public OrderDataService getOrderDataImpl() throws RemoteException;
+	public OrderDataService getOrderDataService() throws RemoteException;
 
-	public PromotionDataService getPromotionDataImpl() throws RemoteException;
+	public PromotionDataService getPromotionDataService() throws RemoteException;
 
 
 }

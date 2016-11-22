@@ -82,7 +82,7 @@ public class DataHelperParent {
     }
 
 
-    public DataHelperParent(){
+    protected DataHelperParent(){
         // 连接数据库
         this.conn = DBInit.connect();
         if(conn != null)
@@ -120,6 +120,7 @@ public class DataHelperParent {
             affectedRows = preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
+            // TODO 以后要注释掉
             e.printStackTrace();
             return ResultMessage.FAIL;
         }
@@ -153,6 +154,7 @@ public class DataHelperParent {
             affectedRows = preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
+            // TODO 以后要注释掉
             e.printStackTrace();
             return ResultMessage.FAIL;
         }
@@ -199,6 +201,7 @@ public class DataHelperParent {
             affectedRows = preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
+            // TODO 以后要注释掉
             e.printStackTrace();
             return ResultMessage.FAIL;
         }
@@ -246,6 +249,7 @@ public class DataHelperParent {
             }
 
         } catch (SQLException e) {
+            // TODO 以后要注释掉
             e.printStackTrace();
         }
 
@@ -275,6 +279,7 @@ public class DataHelperParent {
             resultContent = this.getInfoFromResultSet(tableName, resultSet);
 
         } catch (SQLException e) {
+            // TODO 以后要注释掉
             e.printStackTrace();
         }
 
@@ -308,6 +313,7 @@ public class DataHelperParent {
             resultContent = this.getInfoFromResultSet(tableName, resultSet);
 
         } catch (SQLException e) {
+            // TODO 以后要注释掉
             e.printStackTrace();
         }
 
@@ -347,6 +353,7 @@ public class DataHelperParent {
             resultContent = this.getInfoFromResultSet(tableName, resultSet);
 
         } catch (SQLException e) {
+            // TODO 以后要注释掉
             e.printStackTrace();
         }
 

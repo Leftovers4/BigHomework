@@ -14,7 +14,7 @@ public class DBInit {
      * 确定连接相关参数
      */
     // private final static String URL = "jdbc:mysql://localhost:3306/hotelos?useUnicode=true&characterEncoding=UTF-8";
-    private final static String URL = "jdbc:mysql://localhost:3306/hotelos";
+    private final static String URL = "jdbc:mysql://localhost:3306/hotelos?useUnicode=true&characterEncoding=UTF-8";
     private final static String USER = "root";
     private final static String PWD = "123456";
 

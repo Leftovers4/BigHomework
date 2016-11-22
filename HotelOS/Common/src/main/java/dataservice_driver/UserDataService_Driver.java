@@ -25,13 +25,6 @@ public class UserDataService_Driver {
         printUserPO(res);
     }
 
-    @Test
-    public void findByType() throws Exception {
-        ArrayList<UserPO> res = tested.findByType(UserType.WEB_ADMINISTRATOR);
-        for (int i = 0; i < res.size(); i++) {
-            printUserPO(res.get(i));
-        }
-    }
 
     @Test
     public void insert() throws Exception {
