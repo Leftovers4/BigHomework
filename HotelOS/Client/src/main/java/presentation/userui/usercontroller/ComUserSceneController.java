@@ -7,7 +7,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
+import presentation.hotelworkerui.hotelworkerscene.RegisterRoomPane;
 import presentation.userui.userscene.InfoPane;
+import presentation.userui.userscene.RegisteredHotelPane;
 import presentation.userui.userscene.SearchHotelPane;
 import presentation.userui.userscene.UserOrderListPane;
 
@@ -86,6 +88,8 @@ public class ComUserSceneController {
         leftBarSlider.setVisible(true);
         leftBarSlider.setLayoutY(395);
         leftBarSlider.setLayoutX(193);
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new RegisteredHotelPane(stage));
         hotelRegisteredBtn.setStyle("-fx-background-color: #0F81C7");
         userInfoBtn.setStyle("-fx-background-color: transparent");
         orderListBtn.setStyle("-fx-background-color: transparent");
