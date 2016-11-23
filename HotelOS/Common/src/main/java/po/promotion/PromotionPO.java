@@ -3,6 +3,7 @@ package po.promotion;
 import util.Address;
 import util.PromotionType;
 import util.TradingArea;
+import util.UserLevel;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -137,18 +138,18 @@ public class PromotionPO implements Serializable {
     }
 
     private void initialize(){
-        hotelID = -1;
+        hotelID = 0;
         leastRooms = 0;
         discount = 1;
         promotionTimePO = new PromotionTimePO(null, null);
         promotionTraAreaPO = new PromotionTraAreaPO(null, null);
         enterprises = new ArrayList<>();
         levelCredits = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < UserLevel.MAX_LEVEL; i++) {
             levelCredits.add(0.0);
         }
         levelDiscounts  = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < UserLevel.MAX_LEVEL; i++) {
             levelDiscounts.add(1.0);
         }
     }
