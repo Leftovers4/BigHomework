@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
+import presentation.hotelworkerui.hotelworkerscene.UpdateOfflinePane;
 
 /**
  * Created by Hitiger on 2016/11/20.
@@ -39,5 +40,8 @@ public class UpdateOutPaneController {
     }
 
     @FXML
-    private void outOffline(){}
+    private void outOffline(){
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new UpdateOfflinePane(stage,mainPane));
+    }
 }

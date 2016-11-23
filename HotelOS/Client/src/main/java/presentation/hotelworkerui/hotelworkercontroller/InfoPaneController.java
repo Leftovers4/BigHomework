@@ -3,7 +3,10 @@ package presentation.hotelworkerui.hotelworkercontroller;
 import blservice_stub.HotelBLService_Stub;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
+import vo.hotel.HotelVO;
 
 /**
  * Created by Hitiger on 2016/11/18.
@@ -44,13 +47,23 @@ public class InfoPaneController {
 
     private HotelBLService_Stub hotelBLServiceStub;
     private Stage stage;
+    private Pane mainPane;
 
-    public void launch(Stage primaryStage) {
+    public void launch(Stage primaryStage, Pane mainPane) {
         this.stage = primaryStage;
+        this.mainPane = mainPane;
+
         hotelBLServiceStub = new HotelBLService_Stub();
 
         //初始化数据
+        initInfo();
         setCheckInfoComponentsVisible(true);
+    }
+
+    private void initInfo() {
+        HotelVO hotelVO = hotelBLServiceStub.find(123456);
+
+        hotelName.setText(hotelVO.hotelName);
     }
 
     /**
@@ -88,7 +101,10 @@ public class InfoPaneController {
     private void cancelEdit(){}
 
     @FXML
-    private void showReview(){}
+    private void showReview(){
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new ReviewPane(stage,mainPane));
+    }
 
     private void setEditInfoComponentsVisible(Boolean isVisible){
         cityBox.setVisible(isVisible);

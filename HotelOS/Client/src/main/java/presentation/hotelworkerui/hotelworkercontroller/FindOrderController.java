@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateCheckInPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateOrderInfoPane;
+import presentation.hotelworkerui.hotelworkerscene.UpdateOutPane;
 
 /**
  * Created by Hitiger on 2016/11/21.
@@ -38,7 +39,11 @@ public class FindOrderController {
 
     @FXML private void back(){
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new UpdateCheckInPane(stage,mainPane));
+        if(isCheckIn){
+            mainPane.getChildren().add(new UpdateCheckInPane(stage,mainPane));
+        }else {
+            mainPane.getChildren().add(new UpdateOutPane(stage,mainPane));
+        }
     }
 
     /**

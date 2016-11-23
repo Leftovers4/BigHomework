@@ -26,7 +26,7 @@ public class ComWorkerSceneController {
 
     public void launch(Stage primaryStage){
         stage = primaryStage;
-        mainPane.getChildren().add(new InfoPane(stage));
+        mainPane.getChildren().add(new InfoPane(stage,mainPane));
     }
 
     /**
@@ -39,7 +39,7 @@ public class ComWorkerSceneController {
 
     @FXML
     private void showHotelInfo(){
-        changePane(new InfoPane(stage));
+        changePane(new InfoPane(stage,mainPane));
     }
 
     /**

@@ -64,19 +64,16 @@
                 </Button>
             </children>
         </HBox>
-      <TableView id="listTable" fx:id="listTable" layoutX="29.0" layoutY="176.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="796.0">
+      <TableView id="listTable" fx:id="orderlistTable" layoutX="25.0" layoutY="141.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="500.0" prefWidth="800.0">
         <columns>
-          <TableColumn id="idCol" fx:id="idCol" editable="false" prefWidth="210.0" text="订单号" />
-          <TableColumn id="userCol" fx:id="userCol" editable="false" text="客户" />
-            <TableColumn id="amountCol" fx:id="amountCol" editable="false" text="人数" />
-            <TableColumn id="typeCol" fx:id="typeCol" editable="false" prefWidth="100.0" text="状态" />
-            <TableColumn id="exetimeCol" fx:id="exetimeCol" prefWidth="180.0" text="执行时间" />
-            <TableColumn id="opCol" fx:id="opCol" prefWidth="145.0" text="操作" />
-            <TableColumn id="userCol" editable="false" text="客户" />
-            <TableColumn id="amountCol" editable="false" text="人数" />
+          <TableColumn id="idCol" fx:id="idCol" editable="false" prefWidth="232.0" text="12345678912345678" />
+          <TableColumn id="userCol" fx:id="userCol" editable="false" prefWidth="124.0" text="客户" />
+            <TableColumn id="amountCol" fx:id="amountCol" editable="false" prefWidth="72.0" text="人数" />
+            <TableColumn id="typeCol" fx:id="typeCol" editable="false" prefWidth="151.0" text="状态" />
+            <TableColumn id="exetimeCol" fx:id="exetimeCol" prefWidth="198.0" text="执行时间" />
         </columns>
       </TableView>
-      <HBox id="listTopBar" fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="29.0" layoutY="124.0" prefHeight="52.0" prefWidth="796.0">
+      <HBox id="listTopBar" fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="25.0" layoutY="89.0" prefHeight="52.0" prefWidth="800.0">
          <children>
             <StackPane alignment="CENTER_RIGHT">
                <children>
@@ -109,13 +106,13 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Label>
-            <DatePicker prefHeight="36.0" prefWidth="160.0" />
+            <DatePicker fx:id="createDatePicker" prefHeight="36.0" prefWidth="160.0" promptText="生成时间" />
             <Label text="-">
                <HBox.margin>
                   <Insets left="1.0" right="1.0" />
                </HBox.margin>
             </Label>
-            <DatePicker layoutX="471.0" layoutY="18.0" prefHeight="36.0" prefWidth="160.0" />
+            <DatePicker fx:id="exeDatePicker" layoutX="471.0" layoutY="18.0" prefHeight="36.0" prefWidth="160.0" promptText="执行时间" />
          </children>
       </HBox>
     </children>

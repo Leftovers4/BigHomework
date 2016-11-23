@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
 
 /**
  * Created by Hitiger on 2016/11/22.
@@ -60,7 +61,10 @@ public class UpdateOrderInfoPaneController {
     }
 
     @FXML
-    private void back(){}
+    private void back(){
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new FindOrderPane(stage,mainPane,isCheckIn));
+    }
 
     private void setActLeaveTimeComponentsVisible(Boolean isVisible){
         actLeaveTimeLabel.setVisible(isVisible);
