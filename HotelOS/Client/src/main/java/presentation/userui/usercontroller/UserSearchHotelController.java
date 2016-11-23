@@ -2,10 +2,12 @@ package presentation.userui.usercontroller;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.hotelworkerui.hotelworkerscene.InfoPane;
 
 /**
  * Created by wyj on 2016/11/19.
@@ -18,6 +20,7 @@ public class UserSearchHotelController {
     @FXML private Pane upMoreInfo;
     @FXML private TableView hotelList;
     @FXML private Pane downMoreInfo;
+    @FXML private Button searchHotelButton;
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
@@ -56,4 +59,5 @@ public class UserSearchHotelController {
         upMoreInfo.setVisible(false);
         upMoreInfo.setDisable(true);
     }
+
 }

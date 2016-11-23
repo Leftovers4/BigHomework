@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
-import presentation.hotelworkerui.hotelworkerscene.RegisterRoomPane;
 import presentation.userui.userscene.InfoPane;
 import presentation.userui.userscene.RegisteredHotelPane;
 import presentation.userui.userscene.SearchHotelPane;
@@ -42,7 +39,7 @@ public class ComUserSceneController {
         orderListBtn.setStyle("-fx-background-color: transparent");
         searchHotelBtn.setStyle("-fx-background-color: transparent");
         hotelRegisteredBtn.setStyle("-fx-background-color: transparent");
-        currentBtn = indexBtn;
+        currentBtn = null;
     }
     @FXML
     private void userInfo() {
@@ -174,6 +171,35 @@ public class ComUserSceneController {
             searchHotelBtn.setStyle("-fx-background-color: transparent");
         } else {
             searchHotelBtn.setStyle("-fx-background-color: #0F81C7");
+        }
+    }
+
+    @FXML
+    private void mouseOutUserInfoBtn() {
+        userInfoBtn.setStyle("-fx-background-color: transparent");
+        if (currentBtn!=null) {
+            currentBtn.setStyle("-fx-background-color: #0F81C7");
+        }
+    }
+    @FXML
+    private void mouseOutOrderListBtn() {
+        orderListBtn.setStyle("-fx-background-color: transparent");
+        if (currentBtn!=null) {
+            currentBtn.setStyle("-fx-background-color: #0F81C7");
+        }
+    }
+    @FXML
+    private void mouseOutSearchHotelBtn() {
+        searchHotelBtn.setStyle("-fx-background-color: transparent");
+        if (currentBtn!=null) {
+            currentBtn.setStyle("-fx-background-color: #0F81C7");
+        }
+    }
+    @FXML
+    private void mouseOutHotelRegisteredBtn() {
+        hotelRegisteredBtn.setStyle("-fx-background-color: transparent");
+        if (currentBtn!=null) {
+            currentBtn.setStyle("-fx-background-color: #0F81C7");
         }
     }
 }
