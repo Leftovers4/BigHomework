@@ -66,6 +66,6 @@ public class UserDataService_Driver {
         System.out.println(userPO.getName());
         System.out.println(userPO.isGender());
         System.out.println(userPO.getPhone());
-        System.out.println(userPO.getCreditPO().getCredit());
+//        System.out.println(userPO.getCreditRecordPOs().get(0));
     }
 }

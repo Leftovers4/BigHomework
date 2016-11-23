@@ -25,10 +25,19 @@ public class PromotionTimePO implements Serializable{
      */
     private LocalDateTime endTime;
 
+    public PromotionTimePO(){
+        initial();
+    }
 
     public PromotionTimePO(LocalDateTime beginTime, LocalDateTime endTime) {
+        initial();
         this.beginTime = beginTime;
         this.endTime = endTime;
+    }
+
+    private void initial(){
+        this.beginTime = null;
+        this.endTime = null;
     }
 
     public LocalDateTime getBeginTime() {

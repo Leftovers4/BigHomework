@@ -45,12 +45,18 @@ public class RoomPO implements Serializable {
     private double price;
 
 
-    public RoomPO(){}
+    /**
+     * 无条件构造器
+     */
+    public RoomPO(){
+        this.initial();
+    }
 
     /**
      * 用于增加房间类型
      */
     public RoomPO(long roomId, long hotelId, RoomType roomType, int total, int available, double price) {
+        initial();
         this.roomId = roomId;
         this.hotelId = hotelId;
         this.roomType = roomType;
@@ -58,6 +64,22 @@ public class RoomPO implements Serializable {
         this.available = available;
         this.price = price;
     }
+
+
+    /**
+     * 初始化
+     */
+    private void initial(){
+        this.roomId = 0;
+        this.hotelId = 0;
+        this.roomType = null;
+        this.total = 0;
+        this.available = 0;
+        this.price = 0.0;
+    }
+
+
+
 
     public long getRoomId() {
         return roomId;

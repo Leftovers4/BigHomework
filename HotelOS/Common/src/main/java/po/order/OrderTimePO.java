@@ -64,7 +64,12 @@ public class OrderTimePO implements Serializable{
     private LocalDateTime cancelTime;
 
 
+    public OrderTimePO(){
+        initial();
+    }
+
     public OrderTimePO(LocalDateTime generateTime, LocalDateTime expectedCheckinTime, LocalDateTime checkinTime, LocalDateTime expectedLeaveTime, LocalDateTime leaveTime, LocalDateTime lastExecuteTime, LocalDateTime executeTime, LocalDateTime cancelTime) {
+        initial();
         this.generateTime = generateTime;
         this.expectedCheckinTime = expectedCheckinTime;
         this.checkinTime = checkinTime;
@@ -73,6 +78,17 @@ public class OrderTimePO implements Serializable{
         this.lastExecuteTime = lastExecuteTime;
         this.executeTime = executeTime;
         this.cancelTime = cancelTime;
+    }
+
+    private void initial(){
+        this.generateTime = null;
+        this.expectedCheckinTime = null;
+        this.checkinTime = null;
+        this.expectedLeaveTime = null;
+        this.leaveTime = null;
+        this.lastExecuteTime = null;
+        this.executeTime = null;
+        this.cancelTime = null;
     }
 
     public LocalDateTime getGenerateTime() {

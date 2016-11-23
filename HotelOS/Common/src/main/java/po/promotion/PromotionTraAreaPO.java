@@ -8,29 +8,38 @@ import util.TradingArea;
  */
 public class PromotionTraAreaPO {
 
-    private Address address;
+    private String address;
 
-    private TradingArea tradingArea;
+    private String tradingArea;
 
-    public PromotionTraAreaPO(Address address, TradingArea tradingArea) {
+    public PromotionTraAreaPO(){
+        initial();
+    }
+
+    public PromotionTraAreaPO(String address, String tradingArea) {
+        initial();
         this.address = address;
         this.tradingArea = tradingArea;
     }
 
-    public Address getAddress() {
+    public void initial(){
+        this.address = "";
+        this.tradingArea = "";
+    }
+
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public TradingArea getTradingArea() {
+    public String getTradingArea() {
         return tradingArea;
     }
 
-    public void setTradingArea(TradingArea tradingArea) {
+    public void setTradingArea(String tradingArea) {
         this.tradingArea = tradingArea;
     }
-
 }

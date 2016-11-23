@@ -17,13 +17,13 @@ public class HotelDataService_Stub implements HotelDataService {
 
     @Override
     public HotelPO findByHotelID(long hotelID) throws RemoteException {
-        return new HotelPO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null);
+        return new HotelPO(0,"如家", 3, "Nanjing", "Xianli_Center", "好", "Wifi", null, null);
     }
 
     @Override
     public ArrayList<HotelPO> findByHotelPO(HotelPO hotelPO) throws RemoteException {
         ArrayList<HotelPO> list = new ArrayList<>();
-        list.add(new HotelPO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null));
+        list.add(new HotelPO(0,"如家", 3, "Nanjing", "Xianli_Center", "好", "Wifi", null, null));
         return list;
     }
 

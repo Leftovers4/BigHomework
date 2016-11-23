@@ -13,10 +13,22 @@ public class OrderHandleAppealPO {
 
     private HandleAppealResult ha_result;
 
+
+    public OrderHandleAppealPO(){
+        initial();
+    }
+
     public OrderHandleAppealPO(Date haTime, HandleAppealResult ha_result) {
+        initial();
         this.haTime = haTime;
         this.ha_result = ha_result;
     }
+
+    private void initial(){
+        this.haTime = null;
+        this.ha_result = null;
+    }
+
 
     public Date getHaTime() {
         return haTime;

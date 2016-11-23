@@ -1,12 +1,11 @@
 package dataservice_stub;
 
 import dataservice.userdataservice.UserDataService;
-import po.user.CreditPO;
+import po.user.CreditRecordPO;
 import po.user.MemberPO;
 import po.user.UserPO;
 import util.MemberType;
 import util.ResultMessage;
-import util.UserType;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class UserDataService_Stub implements UserDataService {
 
     @Override
     public UserPO findByUsername(String username) throws RemoteException {
-        return new UserPO("张三", "123456", "李四", true, "12345678999", new MemberPO("张三", MemberType.NORMAL_MEMBER, 1, new Date(), null), new CreditPO("张三", 1000, null));
+        return new UserPO("张三", "123456", "李四", true, "12345678999", new MemberPO("张三", MemberType.NORMAL_MEMBER, 1, new Date(), null), null);
     }
 
 
@@ -58,12 +57,12 @@ public class UserDataService_Stub implements UserDataService {
     @Override
     public ArrayList<UserPO> getList() throws RemoteException {
         ArrayList<UserPO> list = new ArrayList<>();
-        list.add(new UserPO("张三", "123456", "李四", true, "12345678999", new MemberPO("张三", MemberType.NORMAL_MEMBER, 1, new Date(), null), new CreditPO("张三", 1000, null)));
+        list.add(new UserPO("张三", "123456", "李四", true, "12345678999", new MemberPO("张三", MemberType.NORMAL_MEMBER, 1, new Date(), null), null));
         return list;
     }
 
     @Override
-    public void changeCredit(CreditPO creditPO) throws RemoteException {
+    public void changeCredit(ArrayList<CreditRecordPO> creditRecordPOs) throws RemoteException {
 
     }
 

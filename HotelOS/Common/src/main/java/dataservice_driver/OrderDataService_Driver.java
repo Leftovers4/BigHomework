@@ -50,7 +50,7 @@ public class OrderDataService_Driver {
         System.out.println(orderPO.getHotelID());
         System.out.println(orderPO.getHotelName());
         System.out.println(orderPO.getPersonAmount());
-        System.out.println(orderPO.getRooms().get(0).getRoomType());
+        System.out.println(orderPO.getRoom().getRoomType());
         System.out.println(orderPO.isWithChildren());
         System.out.println(orderPO.getOrderPricePO().getActualPrice());
         System.out.println(orderPO.getOrderPricePO().getOriginPrice());

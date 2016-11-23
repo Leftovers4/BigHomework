@@ -35,12 +35,12 @@ public class HotelPO implements Serializable{
     /**
      * 地址
      */
-    private Address address;
+    private String address;
 
     /**
      * 商圈
      */
-    private TradingArea tradingArea;
+    private String tradingArea;
 
     /**
      * 简介
@@ -63,24 +63,50 @@ public class HotelPO implements Serializable{
     private ArrayList<ReviewPO> reviews;
 
 
+    public HotelPO(){
+        initial();
+    }
 
     /**
      * 用于网站管理人员对酒店信息的查看和修改
-     *
-     *
-     *
-     **/
-    public HotelPO(String hotelName, Address address, TradingArea tradingArea, String description,
-                   String service, ArrayList<RoomPO> rooms) {
-        super();
+     * @param hotelID
+     * @param hotelName
+     * @param star
+     * @param address
+     * @param tradingArea
+     * @param description
+     * @param service
+     * @param rooms
+     * @param reviews
+     */
+    public HotelPO(long hotelID, String hotelName, int star, String address, String tradingArea, String description, String service, ArrayList<RoomPO> rooms, ArrayList<ReviewPO> reviews) {
+        initial();
+        this.hotelID = hotelID;
         this.hotelName = hotelName;
+        this.star = star;
         this.address = address;
         this.tradingArea = tradingArea;
         this.description = description;
         this.service = service;
         this.rooms = rooms;
+        this.reviews = reviews;
+    }
+
+
+
+    private void initial(){
+        this.hotelID = 0;
+        this.hotelName = "";
+        this.star = 0;
+        this.address = "";
+        this.tradingArea = "";
+        this.description = "";
+        this.service = "";
+        this.rooms = null;
+        this.reviews = null;
 
     }
+
 
     public long getHotelID() {
         return hotelID;
@@ -98,19 +124,27 @@ public class HotelPO implements Serializable{
         this.hotelName = hotelName;
     }
 
-    public Address getAddress() {
+    public int getStar() {
+        return star;
+    }
+
+    public void setStar(int star) {
+        this.star = star;
+    }
+
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public TradingArea getTradingArea() {
+    public String getTradingArea() {
         return tradingArea;
     }
 
-    public void setTradingArea(TradingArea tradingArea) {
+    public void setTradingArea(String tradingArea) {
         this.tradingArea = tradingArea;
     }
 

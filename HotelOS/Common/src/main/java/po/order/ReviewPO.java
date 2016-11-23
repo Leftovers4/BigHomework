@@ -39,20 +39,31 @@ public class ReviewPO implements Serializable {
     private String review;
 
 
-    public ReviewPO(){}
+    public ReviewPO(){
+        initial();
+    }
 
 
     /**
      * 用于客户评价
      */
     public ReviewPO(String username, long hotelID, Date reviewTime, int rating, String review) {
-        super();
+        initial();
         this.username = username;
         this.hotelID = hotelID;
         this.reviewTime = reviewTime;
         this.rating = rating;
         this.review = review;
     }
+
+    private void initial(){
+        this.username = "";
+        this.hotelID = 0;
+        this.reviewTime = null;
+        this.rating = 0;
+        this.review = "";
+    }
+
 
     public String getUsername() {
         return username;

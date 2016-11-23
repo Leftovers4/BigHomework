@@ -50,7 +50,7 @@ public class OrderPO implements Serializable {
     /**
      * 房间类型及数量
      */
-    private ArrayList<RoomPO> rooms;
+    private RoomPO room;
 
 
     /**
@@ -96,16 +96,21 @@ public class OrderPO implements Serializable {
     private OrderHandleAppealPO orderHandleAppealPO;
 
 
+    public OrderPO(){
+        initial();
+    }
+
     /**
      * 用于生成订单
      */
-    public OrderPO(String orderID, long hotelID, String username, OrderType orderType, String hotelName, ArrayList<RoomPO> rooms, String roomNumber, int personAmount, boolean withChildren, ReviewPO reviewPO, OrderTimePO orderTimePO, OrderPricePO orderPricePO, OrderHandleAppealPO orderHandleAppealPO) {
+    public OrderPO(String orderID, long hotelID, String username, OrderType orderType, String hotelName, RoomPO room, String roomNumber, int personAmount, boolean withChildren, ReviewPO reviewPO, OrderTimePO orderTimePO, OrderPricePO orderPricePO, OrderHandleAppealPO orderHandleAppealPO) {
+        initial();
         this.orderID = orderID;
         this.hotelID = hotelID;
         this.username = username;
         this.orderType = orderType;
         this.hotelName = hotelName;
-        this.rooms = rooms;
+        this.room = room;
         this.roomNumber = roomNumber;
         this.personAmount = personAmount;
         this.withChildren = withChildren;
@@ -113,6 +118,22 @@ public class OrderPO implements Serializable {
         this.orderTimePO = orderTimePO;
         this.orderPricePO = orderPricePO;
         this.orderHandleAppealPO = orderHandleAppealPO;
+    }
+
+    private void initial(){
+        this.orderID = "";
+        this.hotelID = 0;
+        this.username = "";
+        this.orderType = null;
+        this.hotelName = "";
+        this.room = new RoomPO();
+        this.roomNumber = "";
+        this.personAmount = 0;
+        this.withChildren = false;
+        this.reviewPO = new ReviewPO();
+        this.orderTimePO = new OrderTimePO();
+        this.orderPricePO = new OrderPricePO();
+        this.orderHandleAppealPO = new OrderHandleAppealPO();
     }
 
 
@@ -156,12 +177,12 @@ public class OrderPO implements Serializable {
         this.hotelName = hotelName;
     }
 
-    public ArrayList<RoomPO> getRooms() {
-        return rooms;
+    public RoomPO getRoom() {
+        return room;
     }
 
-    public void setRooms(ArrayList<RoomPO> rooms) {
-        this.rooms = rooms;
+    public void setRoom(RoomPO room) {
+        this.room = room;
     }
 
     public int getPersonAmount() {

@@ -1,5 +1,6 @@
 package data.datahelper;
 
+import javafx.util.converter.LocalDateStringConverter;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -7,6 +8,8 @@ import util.MemberType;
 import util.PersonnelType;
 import util.ResultMessage;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -36,20 +39,41 @@ public class DataHelperParentTest {
     @Test
     public void testAddToSQL2(){
         ArrayList<Object> input = new ArrayList<Object>();
-        input.add("Hiki");
+        input.add("Hikii");
         input.add("123456");
         input.add("GHB");
-        input.add(0);
+        input.add(true);
         input.add("110");
         input.add(MemberType.NONE.toString());
         input.add(1);
-        input.add(new Date());
-        input.add(null);
+        input.add(LocalDate.now().toString());
+        input.add("");
         ResultMessage result = tested.insertToSQL("user", input);
         System.out.println(result.toString());
 
+    }
+
+    @Test
+    public void testAddToSQL3(){
+        ArrayList<Object> input = new ArrayList<Object>();
+        input.add(123456);
+        input.add("WP");
+        input.add(522000);
+        input.add(1);
+        input.add(1);
+
+        input.add(LocalDateTime.now().toString());
+        input.add(LocalDateTime.now().toString());
+
+        input.add(0.1);
+        input.add(0.1);
+
+        ResultMessage result = tested.insertToSQL("promotion", input);
+        System.out.println(result.toString());
 
     }
+
+
 
 
     @Test

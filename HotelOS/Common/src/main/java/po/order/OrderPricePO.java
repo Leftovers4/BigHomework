@@ -24,9 +24,19 @@ public class OrderPricePO implements Serializable{
      */
     private double actualPrice;
 
+    public OrderPricePO(){
+        initial();
+    }
+
     public OrderPricePO(double originPrice, double actualPrice) {
+        this.initial();
         this.originPrice = originPrice;
         this.actualPrice = actualPrice;
+    }
+
+    private void initial(){
+        this.originPrice = 0.0;
+        this.actualPrice = 0.0;
     }
 
     public double getOriginPrice() {

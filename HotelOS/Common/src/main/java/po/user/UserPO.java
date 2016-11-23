@@ -3,6 +3,7 @@ package po.user;
 import util.MemberType;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
 /**
@@ -48,17 +49,32 @@ public class UserPO implements Serializable {
     /**
      * 信用（包括信用值，信用记录）
      */
-    private CreditPO creditPO;
+    private ArrayList<CreditRecordPO> creditRecordPOs;
 
 
-    public UserPO(String username, String password, String name, boolean gender, String phone, MemberPO memberPO, CreditPO creditPO) {
+    public UserPO(){
+        initial();
+    }
+
+    public UserPO(String username, String password, String name, boolean gender, String phone, MemberPO memberPO, ArrayList<CreditRecordPO> creditRecordPOs) {
+        initial();
         this.username = username;
         this.password = password;
         this.name = name;
         this.gender = gender;
         this.phone = phone;
         this.memberPO = memberPO;
-        this.creditPO = creditPO;
+        this.creditRecordPOs = creditRecordPOs;
+    }
+
+    private void initial(){
+        this.username = "";
+        this.password = "";
+        this.name = "";
+        this.gender = false;
+        this.phone = "";
+        this.memberPO = new MemberPO();
+        this.creditRecordPOs = null;
     }
 
     public String getUsername() {
@@ -109,12 +125,12 @@ public class UserPO implements Serializable {
         this.memberPO = memberPO;
     }
 
-    public CreditPO getCreditPO() {
-        return creditPO;
+    public ArrayList<CreditRecordPO> getCreditRecordPOs() {
+        return creditRecordPOs;
     }
 
-    public void setCreditPO(CreditPO creditPO) {
-        this.creditPO = creditPO;
+    public void setCreditRecordPOs(ArrayList<CreditRecordPO> creditRecordPOs) {
+        this.creditRecordPOs = creditRecordPOs;
     }
 }
 

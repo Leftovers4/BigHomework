@@ -1,14 +1,12 @@
 package dataservice.userdataservice;
 
-import dataservice.DataServiceParent;
 //TODO 有俩个memberpo
-import po.user.CreditPO;
+import po.user.CreditRecordPO;
 import po.user.MemberPO;
 import po.user.UserPO;
 import util.ResultMessage;
-import util.UserType;
 
-import java.rmi.RemoteException;
+        import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -38,7 +36,7 @@ public interface UserDataService {
     public ArrayList<UserPO> getList() throws RemoteException;
 
     // 改变用户信用记录
-    public void changeCredit(CreditPO creditPO) throws RemoteException;
+    public void changeCredit(ArrayList<CreditRecordPO> creditRecordPOs) throws RemoteException;
 
 //    // 注册会员
 //    public void insertMember(MemberPO memberPO) throws RemoteException;

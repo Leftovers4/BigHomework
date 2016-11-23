@@ -2,6 +2,7 @@ package dataservice_driver;
 
 import dataservice.hoteldataservice.HotelDataService;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import po.hotel.HotelPO;
 import util.Address;
@@ -28,13 +29,14 @@ public class HotelDataService_Driver {
         printHotelPO(res);
     }
 
-    @Test
-    public void findByHotelPO() throws Exception {
-        ArrayList<HotelPO> res = tested.findByHotelPO(new HotelPO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null));
-        for (int i = 0; i < res.size(); i++) {
-            printHotelPO(res.get(i));
-        }
-    }
+//    @Test
+//    @Ignore
+//    public void findByHotelPO() throws Exception {
+//        ArrayList<HotelPO> res = tested.findByHotelPO(new HotelPO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null));
+//        for (int i = 0; i < res.size(); i++) {
+//            printHotelPO(res.get(i));
+//        }
+//    }
 
     @Test
     public void insert() throws Exception {

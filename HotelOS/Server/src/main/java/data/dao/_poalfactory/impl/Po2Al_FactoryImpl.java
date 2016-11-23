@@ -14,6 +14,9 @@ import java.util.ArrayList;
  * Created by Hiki on 11/22/2016.
  */
 public class Po2Al_FactoryImpl implements Po2Al_Factory{
+
+    // TODO 注意初始值的设定
+    // TODO 类似memberpo 初始值不能为null
     @Override
     public ArrayList<Object> toUserAl(UserPO userPO) {
         ArrayList<Object> userInfoContent = new ArrayList<>();
@@ -32,7 +35,13 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
 
     @Override
     public ArrayList<Object> toPersonnelAl(PersonnelPO personnelPO) {
-        return null;
+        ArrayList<Object> personnelInfoContent = new ArrayList<>();
+        personnelInfoContent.add(personnelPO.getPersonnelID());
+        personnelInfoContent.add(personnelPO.getPassword());
+        personnelInfoContent.add(personnelPO.getPersonnelType());
+        personnelInfoContent.add(personnelPO.getName());
+        personnelInfoContent.add(personnelPO.getHotelID());
+
     }
 
     @Override

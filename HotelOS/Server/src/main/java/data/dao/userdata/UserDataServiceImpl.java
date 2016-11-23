@@ -1,11 +1,9 @@
 package data.dao.userdata;
 
 import dataservice.userdataservice.UserDataService;
-import po.user.CreditPO;
 import po.user.MemberPO;
 import po.user.UserPO;
 import util.ResultMessage;
-import util.UserType;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

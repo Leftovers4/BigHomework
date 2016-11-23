@@ -33,7 +33,10 @@ public class Lot {
         LocalDateTime qingming = LocalDateTime.of(2015, 4, 5, 12, 30, 30, 30);
         System.out.println(qingming);
 
+        System.out.println(qingming.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
         LocalDateTime qingmingParsed = LocalDateTime.parse("2015/04/05 12:30:30", DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+
 
         System.out.println(qingmingParsed.toString());
 
