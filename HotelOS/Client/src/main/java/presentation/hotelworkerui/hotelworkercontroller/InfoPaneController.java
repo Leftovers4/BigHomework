@@ -1,5 +1,6 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
+import blservice_stub.HotelBLService_Stub;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -39,11 +40,17 @@ public class InfoPaneController {
     @FXML private Button editBtn;
     @FXML private Button saveEditBtn;
     @FXML private Button cancelEditBtn;
+    @FXML private Button backBtn;
 
+    private HotelBLService_Stub hotelBLServiceStub;
     private Stage stage;
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
+        hotelBLServiceStub = new HotelBLService_Stub();
+
+        //初始化数据
+        setCheckInfoComponentsVisible(true);
     }
 
     /**
@@ -92,6 +99,7 @@ public class InfoPaneController {
         hotelServiceArea.setVisible(isVisible);
         saveEditBtn.setVisible(isVisible);
         cancelEditBtn.setVisible(isVisible);
+        backBtn.setVisible(isVisible);
     }
 
     private void setCheckInfoComponentsVisible(Boolean isVisible){
@@ -103,6 +111,7 @@ public class InfoPaneController {
         hotelServiceLabel.setVisible(isVisible);
         editBtn.setVisible(isVisible);
         showReviewLink.setVisible(isVisible);
+        backBtn.setVisible(!isVisible);
     }
 
 

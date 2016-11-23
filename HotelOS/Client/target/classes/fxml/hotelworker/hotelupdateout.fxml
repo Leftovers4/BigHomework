@@ -52,7 +52,7 @@
                 </Button>
             </children>
         </HBox>
-      <Button id="outOfflineBtn" fx:id="outOfflineBtn" contentDisplay="TOP" graphicTextGap="10.0" layoutX="512.0" layoutY="216.0" mnemonicParsing="false" onAction="#outOffline" text="线下退房">
+      <Button id="outOfflineBtn" fx:id="outOfflineBtn" contentDisplay="TOP" graphicTextGap="10.0" layoutX="510.0" layoutY="255.0" mnemonicParsing="false" onAction="#outOffline" text="线下退房">
          <graphic>
                 <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -64,7 +64,7 @@
                 </ImageView>
          </graphic>
       </Button>
-        <Button id="outOnlineBtn" fx:id="outOnlineBtn" contentDisplay="TOP" graphicTextGap="10.0" layoutX="159.0" layoutY="216.0" mnemonicParsing="false" onAction="#outOnline" prefHeight="140.0" prefWidth="140.0" text="线上退房">
+        <Button id="outOnlineBtn" fx:id="outOnlineBtn" contentDisplay="TOP" graphicTextGap="10.0" layoutX="180.0" layoutY="255.0" mnemonicParsing="false" onAction="#outOnline" prefHeight="140.0" prefWidth="140.0" text="线上退房">
          <graphic>
                 <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                     <viewport>

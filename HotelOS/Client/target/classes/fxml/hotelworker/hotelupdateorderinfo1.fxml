@@ -92,10 +92,15 @@
       <TextField fx:id="checkinTimeField" layoutX="313.0" layoutY="287.0" prefHeight="36.0" prefWidth="88.0" promptText="16：30" />
       <TextField fx:id="expLeaveTimeField" layoutX="720.0" layoutY="287.0" prefHeight="36.0" prefWidth="88.0" promptText="16：30" />
       <DatePicker fx:id="expLeaveTimeDatePicker" layoutX="551.0" layoutY="287.0" prefHeight="36.0" prefWidth="161.0" promptText="2016-10-29" />
-      <TextField layoutX="189.0" layoutY="458.0" prefHeight="36.0" prefWidth="47.0" promptText="10" />
+      <TextField fx:id="peopleAmountField" layoutX="189.0" layoutY="458.0" prefHeight="36.0" prefWidth="47.0" promptText="10" />
       <Button layoutX="652.0" layoutY="617.0" mnemonicParsing="false" text="提交" />
       <Button layoutX="748.0" layoutY="617.0" mnemonicParsing="false" text="取消" />
       <DatePicker fx:id="actLeaveTimeDatePicker" layoutX="551.0" layoutY="350.0" prefHeight="36.0" prefWidth="161.0" promptText="2016-10-29" />
       <TextField fx:id="actLeaveTimeField" layoutX="720.0" layoutY="350.0" prefHeight="36.0" prefWidth="88.0" promptText="16：30" />
+      <Label fx:id="checkinTimeDayLabel" layoutX="175.0" layoutY="293.0" text="2016-10-29" visible="false" />
+      <Label fx:id="checkinTimeMinLabel" layoutX="298.0" layoutY="293.0" text="16:30" visible="false" />
+      <Label fx:id="expLeaveTimeMinLabel" layoutX="706.0" layoutY="293.0" text="16:30" visible="false" />
+      <Label fx:id="expLeaveTimeDayLabel" layoutX="582.0" layoutY="293.0" text="2016-10-29" visible="false" />
+      <Label fx:id="peopleAmountLabel" layoutX="202.0" layoutY="464.0" text="10" visible="false" />
     </children>
 </fx:root>

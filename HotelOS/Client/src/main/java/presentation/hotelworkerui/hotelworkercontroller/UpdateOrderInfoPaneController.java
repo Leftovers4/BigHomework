@@ -22,11 +22,19 @@ public class UpdateOrderInfoPaneController {
     @FXML private Label      checkinTimeLabel;
     @FXML private DatePicker checkinTimeDatePicker;
     @FXML private TextField  checkinTimeField;
+    @FXML private Label  checkinTimeDayLabel;
+    @FXML private Label  checkinTimeMinLabel;
 
     //预计离开时间
     @FXML private Label      expLeaveTimeLabel;
     @FXML private DatePicker expLeaveTimeDatePicker;
     @FXML private TextField  expLeaveTimeField;
+    @FXML private Label  expLeaveTimeDayLabel;
+    @FXML private Label  expLeaveTimeMinLabel;
+
+    //入住人数
+    @FXML private TextField  peopleAmountField;
+    @FXML private Label  peopleAmountLabel;
 
     private Stage stage;
     private Pane mainPane;
@@ -39,6 +47,7 @@ public class UpdateOrderInfoPaneController {
         setActLeaveTimeComponentsVisible(!isCheckIn);
         setCheckinTimeComponentsVisible(isCheckIn);
         setExpLeaveTimeComponentsVisible(isCheckIn);
+        setPeopleAmountComponentsVisible(isCheckIn);
     }
     @FXML
     private void closeWindow(){
@@ -60,14 +69,23 @@ public class UpdateOrderInfoPaneController {
     }
 
     private void setCheckinTimeComponentsVisible(Boolean isVisible){
-        checkinTimeLabel.setVisible(isVisible);
         checkinTimeDatePicker.setVisible(isVisible);
         checkinTimeField.setVisible(isVisible);
+
+        checkinTimeDayLabel.setVisible(!isVisible);
+        checkinTimeMinLabel.setVisible(!isVisible);
     }
 
     private void setExpLeaveTimeComponentsVisible(Boolean isVisible){
-        expLeaveTimeLabel.setVisible(isVisible);
         expLeaveTimeDatePicker.setVisible(isVisible);
         expLeaveTimeField.setVisible(isVisible);
+
+        expLeaveTimeDayLabel.setVisible(!isVisible);
+        expLeaveTimeMinLabel.setVisible(!isVisible);
+    }
+
+    private void setPeopleAmountComponentsVisible(Boolean isVisible){
+        peopleAmountField.setVisible(isVisible);
+        peopleAmountLabel.setVisible(!isVisible);
     }
 }
