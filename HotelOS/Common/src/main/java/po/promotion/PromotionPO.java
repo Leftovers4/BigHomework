@@ -62,7 +62,7 @@ public class PromotionPO implements Serializable {
      * 用于增加营销策略
      */
     public PromotionPO(long promotionID, PromotionType promotionType, long hotelID, double discount) {
-        initialize();
+        initial();
         this.promotionID = promotionID;
         this.promotionType = promotionType;
         this.hotelID = hotelID;
@@ -70,32 +70,15 @@ public class PromotionPO implements Serializable {
     }
 
     public PromotionPO(long promotionID, PromotionType promotionType, long hotelID, int leastRooms, double discount) {
-        initialize();
-        this.promotionID = promotionID;
+        initial();        this.promotionID = promotionID;
         this.promotionType = promotionType;
         this.hotelID = hotelID;
         this.leastRooms = leastRooms;
         this.discount = discount;
     }
 
-    public PromotionTimePO getPromotionTimePO() {
-        return promotionTimePO;
-    }
-
-    public void setPromotionTimePO(PromotionTimePO promotionTimePO) {
-        this.promotionTimePO = promotionTimePO;
-    }
-
-    public PromotionTraAreaPO getPromotionTraAreaPO() {
-        return promotionTraAreaPO;
-    }
-
-    public void setPromotionTraAreaPO(PromotionTraAreaPO promotionTraAreaPO) {
-        this.promotionTraAreaPO = promotionTraAreaPO;
-    }
-
     public PromotionPO(long promotionID, PromotionType promotionType, long hotelID, LocalDateTime beginTime, LocalDateTime endTime, double discount) {
-        initialize();
+        initial();
         this.promotionID = promotionID;
         this.promotionType = promotionType;
         this.hotelID = hotelID;
@@ -104,7 +87,7 @@ public class PromotionPO implements Serializable {
     }
 
     public PromotionPO(long promotionID, PromotionType promotionType, long hotelID, PromotionTimePO promotionTimePO, double discount, int leastRooms) {
-        initialize();
+        initial();
         this.promotionID = promotionID;
         this.promotionType = promotionType;
         this.hotelID = hotelID;
@@ -114,7 +97,7 @@ public class PromotionPO implements Serializable {
     }
 
     public PromotionPO(long promotionID, PromotionType promotionType, List<String> enterprises, double discount) {
-        initialize();
+        initial();
         this.promotionID = promotionID;
         this.promotionType = promotionType;
         this.enterprises = enterprises;
@@ -122,22 +105,22 @@ public class PromotionPO implements Serializable {
     }
 
     public PromotionPO(long promotionID, PromotionType promotionType, List<Double> levelCredits, List<Double> levelDiscounts) {
-        initialize();
+        initial();
         this.promotionID = promotionID;
         this.promotionType = promotionType;
         this.levelCredits = levelCredits;
         this.levelDiscounts = levelDiscounts;
     }
 
-    public PromotionPO(long promotionID, PromotionType promotionType, Address address, TradingArea tradingArea, List<Double> levelDiscounts) {
-        initialize();
+    public PromotionPO(long promotionID, PromotionType promotionType, String address, String tradingArea, List<Double> levelDiscounts) {
+        initial();
         this.promotionID = promotionID;
         this.promotionType = promotionType;
         this.promotionTraAreaPO = new PromotionTraAreaPO(address, tradingArea);
         this.levelDiscounts = levelDiscounts;
     }
 
-    private void initialize(){
+    private void initial(){
         hotelID = 0;
         leastRooms = 0;
         discount = 1;
@@ -207,18 +190,6 @@ public class PromotionPO implements Serializable {
         this.promotionTimePO.setEndTime(endTime);
     }
 
-    public Address getAddress() {
-        return promotionTraAreaPO.getAddress();
-    }
-
-    public TradingArea getTradingArea() {
-        return promotionTraAreaPO.getTradingArea();
-    }
-
-    public void setPromotionTraAreaPO(Address address, TradingArea tradingArea) {
-        this.promotionTraAreaPO.setAddress(address);
-        this.promotionTraAreaPO.setTradingArea(tradingArea);
-    }
 
 
     public List<String> getEnterprises() {
