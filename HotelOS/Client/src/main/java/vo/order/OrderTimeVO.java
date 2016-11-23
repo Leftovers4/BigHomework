@@ -1,6 +1,7 @@
 package vo.order;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -11,43 +12,43 @@ public class OrderTimeVO {
     /**
      * 生成订单时间
      */
-    public LocalDate generateTime;
+    public LocalDateTime generateTime;
 
 
     /**
      * 预计入住时间
      */
-    public LocalDate expectedCheckinTime;
+    public LocalDateTime expectedCheckinTime;
 
 
     /**
      * 入住时间
      */
-    public LocalDate checkinTime;
+    public LocalDateTime checkinTime;
 
 
     /**
      * 预计离开时间
      */
-    public LocalDate expectedLeaveTime;
+    public LocalDateTime expectedLeaveTime;
 
 
     /**
      * 离开（退房）时间
      */
-    public LocalDate leaveTime;
+    public LocalDateTime leaveTime;
 
 
     /**
      * 最晚执行时间
      */
-    public LocalDate lastExecuteTime;
+    public LocalDateTime lastExecuteTime;
 
 
     /**
      * 执行订单时间
      */
-    public LocalDate executeTime;
+    public LocalDateTime executeTime;
 
 
     /**
@@ -55,7 +56,7 @@ public class OrderTimeVO {
      */
     public LocalDate cancelTime;
 
-    public OrderTimeVO(LocalDate generateTime, LocalDate expectedCheckinTime, LocalDate checkinTime, LocalDate expectedLeaveTime, LocalDate leaveTime, LocalDate lastExecuteTime, LocalDate executeTime, LocalDate cancelTime) {
+    public OrderTimeVO(LocalDateTime generateTime, LocalDateTime expectedCheckinTime, LocalDateTime checkinTime, LocalDateTime expectedLeaveTime, LocalDateTime leaveTime, LocalDateTime lastExecuteTime, LocalDateTime executeTime, LocalDate cancelTime) {
         this.generateTime = generateTime;
         this.expectedCheckinTime = expectedCheckinTime;
         this.checkinTime = checkinTime;

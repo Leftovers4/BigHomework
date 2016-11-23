@@ -16,7 +16,18 @@ import java.util.ArrayList;
 public class Po2Al_FactoryImpl implements Po2Al_Factory{
     @Override
     public ArrayList<Object> toUserAl(UserPO userPO) {
-        return null;
+        ArrayList<Object> userInfoContent = new ArrayList<>();
+        userInfoContent.add(userPO.getUsername());
+        userInfoContent.add(userPO.getPassword());
+        userInfoContent.add(userPO.getName());
+        userInfoContent.add(userPO.isGender());
+        userInfoContent.add(userPO.getPhone());
+        userInfoContent.add(userPO.getMemberPO().getMemberType());
+        userInfoContent.add(userPO.getMemberPO().getLevel());
+        userInfoContent.add(userPO.getMemberPO().getBirthday());
+        userInfoContent.add(userPO.getMemberPO().getMemberType());
+
+        return userInfoContent;
     }
 
     @Override

@@ -20,15 +20,68 @@
     -fx-cursor: hand;
 }
 
-/*#userInfoBtn:hover {*/
-    /*-fx-background-color: deepskyblue;*/
-/*}*/
-/*#orderListBtn:hover {*/
-    /*-fx-background-color: deepskyblue;*/
-/*}*/
-/*#searchHotelBtn:hover {*/
-    /*-fx-background-color: deepskyblue;*/
-/*}*/
-/*#hotelRegisteredBtn:hover {*/
-    /*-fx-background-color: deepskyblue;*/
-/*}*/
+#changePhotoBtn {
+    -fx-background-color: deepskyblue;
+}
+#changePhotoBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#changePhotoBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
+
+#registerCommonvipBtn {
+    -fx-background-color: deepskyblue;
+}
+#registerCommonvipBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#registerCommonvipBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
+
+#registerCompanyvipBtn {
+    -fx-background-color: deepskyblue;
+}
+#registerCompanyvipBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#registerCompanyvipBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
+
+#saveInfo {
+    -fx-background-color: deepskyblue;
+}
+#saveInfo:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#saveInfo:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
+
+#cleanAllBtn {
+    -fx-background-color: deepskyblue;
+}
+#cleanAllBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#cleanAllBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
+
+#editInfoBtn {
+    -fx-background-color: deepskyblue;
+}
+#editInfoBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#editInfoBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}

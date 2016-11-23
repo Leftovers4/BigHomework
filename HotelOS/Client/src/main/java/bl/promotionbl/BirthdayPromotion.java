@@ -5,6 +5,7 @@ import po.promotion.PromotionPO;
 import vo.order.OrderVO;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Created by kevin on 2016/11/6.
@@ -21,7 +22,7 @@ public class BirthdayPromotion implements Sale{
         //todo get user
         User user = null;
         double price = orderVO.orderPriceVO.originPrice;
-        LocalDate today = orderVO.orderTimeVO.generateTime;
+        LocalDateTime today = orderVO.orderTimeVO.generateTime;
 
         //todo confirm birthday
         if (true){

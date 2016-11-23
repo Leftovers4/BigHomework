@@ -1,6 +1,7 @@
 package po.order;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -18,52 +19,52 @@ public class OrderTimePO implements Serializable{
     /**
      * 生成订单时间
      */
-    private Date generateTime;
+    private LocalDateTime generateTime;
 
 
     /**
      * 预计入住时间
      */
-    private Date expectedCheckinTime;
+    private LocalDateTime expectedCheckinTime;
 
 
     /**
      * 入住时间
      */
-    private Date checkinTime;
+    private LocalDateTime checkinTime;
 
 
     /**
      * 预计离开时间
      */
-    private Date expectedLeaveTime;
+    private LocalDateTime expectedLeaveTime;
 
 
     /**
      * 离开（退房）时间
      */
-    private Date leaveTime;
+    private LocalDateTime leaveTime;
 
 
     /**
      * 最晚执行时间
      */
-    private Date lastExecuteTime;
+    private LocalDateTime lastExecuteTime;
 
 
     /**
      * 执行订单时间
      */
-    private Date executeTime;
+    private LocalDateTime executeTime;
 
 
     /**
      * 撤销订单时间
      */
-    private Date cancelTime;
+    private LocalDateTime cancelTime;
 
 
-    public OrderTimePO(Date generateTime, Date expectedCheckinTime, Date checkinTime, Date expectedLeaveTime, Date leaveTime, Date lastExecuteTime, Date executeTime, Date cancelTime) {
+    public OrderTimePO(LocalDateTime generateTime, LocalDateTime expectedCheckinTime, LocalDateTime checkinTime, LocalDateTime expectedLeaveTime, LocalDateTime leaveTime, LocalDateTime lastExecuteTime, LocalDateTime executeTime, LocalDateTime cancelTime) {
         this.generateTime = generateTime;
         this.expectedCheckinTime = expectedCheckinTime;
         this.checkinTime = checkinTime;
@@ -74,68 +75,67 @@ public class OrderTimePO implements Serializable{
         this.cancelTime = cancelTime;
     }
 
-    public Date getGenerateTime() {
+    public LocalDateTime getGenerateTime() {
         return generateTime;
     }
 
-    public void setGenerateTime(Date generateTime) {
+    public void setGenerateTime(LocalDateTime generateTime) {
         this.generateTime = generateTime;
     }
 
-    public Date getExpectedLeaveTime() {
-        return expectedLeaveTime;
-    }
-
-    public void setExpectedLeaveTime(Date expectedLeaveTime) {
-        this.expectedLeaveTime = expectedLeaveTime;
-    }
-
-    public Date getLastExecuteTime() {
-        return lastExecuteTime;
-    }
-
-    public void setLastExecuteTime(Date lastExecuteTime) {
-        this.lastExecuteTime = lastExecuteTime;
-    }
-
-    public Date getExecuteTime() {
-        return executeTime;
-    }
-
-    public void setExecuteTime(Date executeTime) {
-        this.executeTime = executeTime;
-    }
-
-    public Date getCancelTime() {
-        return cancelTime;
-    }
-
-    public void setCancelTime(Date cancelTime) {
-        this.cancelTime = cancelTime;
-    }
-
-
-    public Date getExpectedCheckinTime() {
+    public LocalDateTime getExpectedCheckinTime() {
         return expectedCheckinTime;
     }
 
-    public void setExpectedCheckinTime(Date expectedCheckinTime) {
+    public void setExpectedCheckinTime(LocalDateTime expectedCheckinTime) {
         this.expectedCheckinTime = expectedCheckinTime;
     }
 
-    public Date getCheckinTime() {
+    public LocalDateTime getCheckinTime() {
         return checkinTime;
     }
 
-    public void setCheckinTime(Date checkinTime) {
+    public void setCheckinTime(LocalDateTime checkinTime) {
         this.checkinTime = checkinTime;
     }
 
-    public Date getLeaveTime() {
+    public LocalDateTime getExpectedLeaveTime() {
+        return expectedLeaveTime;
+    }
+
+    public void setExpectedLeaveTime(LocalDateTime expectedLeaveTime) {
+        this.expectedLeaveTime = expectedLeaveTime;
+    }
+
+    public LocalDateTime getLeaveTime() {
         return leaveTime;
     }
 
-    public void setLeaveTime(Date leaveTime) {
+    public void setLeaveTime(LocalDateTime leaveTime) {
         this.leaveTime = leaveTime;
+    }
+
+    public LocalDateTime getLastExecuteTime() {
+        return lastExecuteTime;
+    }
+
+    public void setLastExecuteTime(LocalDateTime lastExecuteTime) {
+        this.lastExecuteTime = lastExecuteTime;
+    }
+
+    public LocalDateTime getExecuteTime() {
+        return executeTime;
+    }
+
+    public void setExecuteTime(LocalDateTime executeTime) {
+        this.executeTime = executeTime;
+    }
+
+    public LocalDateTime getCancelTime() {
+        return cancelTime;
+    }
+
+    public void setCancelTime(LocalDateTime cancelTime) {
+        this.cancelTime = cancelTime;
     }
 }

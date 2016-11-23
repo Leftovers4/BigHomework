@@ -2,6 +2,7 @@ package po.promotion;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Created by Hiki on 2016/10/27.
@@ -17,32 +18,32 @@ public class PromotionTimePO implements Serializable{
     /**
      * 开始时间
      */
-    private LocalDate beginTime;
+    private LocalDateTime beginTime;
 
     /**
      * 结束时间
      */
-    private LocalDate endTime;
+    private LocalDateTime endTime;
 
 
-    public PromotionTimePO(LocalDate beginTime, LocalDate endTime) {
+    public PromotionTimePO(LocalDateTime beginTime, LocalDateTime endTime) {
         this.beginTime = beginTime;
         this.endTime = endTime;
     }
 
-    public LocalDate getBeginTime() {
+    public LocalDateTime getBeginTime() {
         return beginTime;
     }
 
-    public void setBeginTime(LocalDate beginTime) {
+    public void setBeginTime(LocalDateTime beginTime) {
         this.beginTime = beginTime;
     }
 
-    public LocalDate getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDate endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 }

@@ -5,6 +5,7 @@ import po.user.CreditPO;
 import po.user.MemberPO;
 import po.user.UserPO;
 import util.MemberType;
+import util.ResultMessage;
 import util.UserType;
 
 import java.rmi.RemoteException;
@@ -24,6 +25,11 @@ public class UserDataService_Stub implements UserDataService {
 //    public void finish() throws RemoteException {
 //
 //    }
+
+    @Override
+    public ResultMessage login(UserPO userPO) throws RemoteException {
+        return null;
+    }
 
     @Override
     public UserPO findByUsername(String username) throws RemoteException {
