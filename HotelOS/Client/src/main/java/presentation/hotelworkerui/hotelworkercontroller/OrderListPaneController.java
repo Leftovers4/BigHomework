@@ -58,7 +58,7 @@ public class OrderListPaneController {
     private ObservableList<OrderVO> getOrderVoList() {
         ObservableList<OrderVO> list= FXCollections.observableArrayList();
         for (int i = 0; i< 30 ; i++) {
-            list.add(new OrderVO("12345678912345678", 123456, "user1", OrderType.ABNORMAL, "如家", null, "5", 2, false, null, null, null, null));
+            list.add(new OrderVO("12345678912345678", 123456, "user1", OrderType.Abnormal, "如家", null, "5", 2, false, null, null, null, null));
         }
         return list;
     }

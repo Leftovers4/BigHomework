@@ -1,4 +1,4 @@
-//package dataservice_stub;
+package dataservice_stub;//package dataservice_stub;
 //
 //import dataservice.hoteldataservice.HotelDataService;
 //import po.hotel.HotelPO;

@@ -8,17 +8,31 @@ public enum PersonnelType {
     /**
      * 酒店工作人员
      */
-    HOTEL_WORKER,
+    HotelWorker,
 
     /**
      * 网站营销人员
      */
-    WEB_MARKETER,
+    WebMarketer,
 
     /**
      * 网站管理人员
      */
-    WEB_ADMINISTRATOR,
+    WebAdministrator;
+
+    public static PersonnelType getType(String name) {
+        switch (name) {
+            case "HotelWorker":
+                return PersonnelType.HotelWorker;
+            case "WebMarketer":
+                return PersonnelType.WebMarketer;
+            case "WebAdministrator":
+                return PersonnelType.WebAdministrator;
+
+        }
+        // TODO：这种方式可能会导致错误，需要对输入有极高的准确性要求
+        return null;
+    }
 
 
 }

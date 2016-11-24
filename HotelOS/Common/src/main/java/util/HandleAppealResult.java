@@ -8,17 +8,17 @@ public enum HandleAppealResult {
     /**
      * 驳回 TODO 是否要实现这个功能
      */
-    REJECT,
+    Reject,
 
     /**
      * 恢复全部信用值
      */
-    ALL,
+    All,
 
     /**
      * 恢复一半信用值
      */
-    HALF
+    Half;
 
 
 }

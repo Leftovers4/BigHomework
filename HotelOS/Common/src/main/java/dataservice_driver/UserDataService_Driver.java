@@ -4,7 +4,6 @@ import dataservice.userdataservice.UserDataService;
 import org.junit.Before;
 import org.junit.Test;
 import po.user.UserPO;
-import util.UserType;
 
 import java.util.ArrayList;
 

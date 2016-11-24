@@ -29,8 +29,6 @@ public interface UserBLService {
     // 根据用户名查找用户
     public UserVO find(String username);
 
-    // 根据用户类型查找用户列表
-    public ArrayList<UserVO> showListByType(UserType userType);
 
     // 显示用户信息
     public UserVO getInfo(String username);

@@ -23,7 +23,7 @@ public class OrderDataService_Stub implements OrderDataService {
     @Override
     public ArrayList<OrderPO> find(OrderPO orderPO) throws RemoteException {
         ArrayList<OrderPO> list = new ArrayList<>();
-        list.add(new OrderPO("12345620161111001", 123456,"张三", OrderType.ABNORMAL,"如家", null,null, 2, false, null, null,null,null));
+        list.add(new OrderPO("12345620161111001", 123456,"张三", OrderType.Abnormal,"如家", null,null, 2, false, null, null,null,null));
         return list;
     }
 

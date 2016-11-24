@@ -38,7 +38,7 @@ public class RoomDataHelperImplTest {
         ArrayList<Object> input = new ArrayList<>();
         input.add(110111);
         input.add(522000);
-        input.add(RoomType.SINGLE.toString());
+        input.add(RoomType.Single.toString());
         input.add(5);
         input.add(3);
         input.add(52.0);
@@ -52,7 +52,7 @@ public class RoomDataHelperImplTest {
         ArrayList<Object> input = new ArrayList<>();
         input.add(110110);
         input.add(522000);
-        input.add(RoomType.SINGLE.toString());
+        input.add(RoomType.Single.toString());
         input.add(5);
         input.add(2);
         input.add(52.0);

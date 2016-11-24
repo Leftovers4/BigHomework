@@ -86,7 +86,7 @@ public class RegisterRoomPaneController {
 
     @FXML
     private void confirmAdd(){
-        RoomVO roomVO = new RoomVO(0,123456,RoomType.SINGLE,0,Integer.valueOf(roomAmountField.getText()),Double.valueOf(roomPriceField.getText()));
+        RoomVO roomVO = new RoomVO(0,123456,RoomType.Single,0,Integer.valueOf(roomAmountField.getText()),Double.valueOf(roomPriceField.getText()));
         roomTable.getItems().add(roomVO);
 
         roomAmountField.clear();

@@ -33,7 +33,7 @@ public class UserDataService_Stub implements UserDataService {
 
     @Override
     public UserPO findByUsername(String username) throws RemoteException {
-        return new UserPO("张三", "123456", "李四", true, "12345678999", new MemberPO("张三", MemberType.NORMAL_MEMBER, 1, LocalDate.now(), null), null);
+        return new UserPO("张三", "123456", "李四", true, "12345678999", new MemberPO("张三", MemberType.NormalMember, 1, LocalDate.now(), null), null);
     }
 
 
@@ -58,7 +58,7 @@ public class UserDataService_Stub implements UserDataService {
     @Override
     public ArrayList<UserPO> getList() throws RemoteException {
         ArrayList<UserPO> list = new ArrayList<>();
-        list.add(new UserPO("张三", "123456", "李四", true, "12345678999", new MemberPO("张三", MemberType.NORMAL_MEMBER, 1, LocalDate.now(), null), null));
+        list.add(new UserPO("张三", "123456", "李四", true, "12345678999", new MemberPO("张三", MemberType.NormalMember, 1, LocalDate.now(), null), null));
         return list;
     }
 

@@ -23,7 +23,7 @@ public class PersonnelDataService_Stub implements PersonnelDataService{
     public ArrayList<PersonnelPO> getList() throws RemoteException {
         ArrayList<PersonnelPO> personnelPOs = new ArrayList<>();
 
-        PersonnelPO personnelPO = new PersonnelPO(1, "123456", PersonnelType.WEB_MARKETER, "A");
+        PersonnelPO personnelPO = new PersonnelPO(1, "123456", PersonnelType.WebMarketer, "A");
 
         personnelPOs.add(personnelPO);
 
@@ -57,7 +57,7 @@ public class PersonnelDataService_Stub implements PersonnelDataService{
 
     @Override
     public PersonnelPO findByPersonnelID(long personnelID) throws RemoteException {
-        PersonnelPO personnelPO = new PersonnelPO(1, "123456", PersonnelType.WEB_MARKETER, "A");
+        PersonnelPO personnelPO = new PersonnelPO(1, "123456", PersonnelType.WebMarketer, "A");
         return personnelPO;
     }
 

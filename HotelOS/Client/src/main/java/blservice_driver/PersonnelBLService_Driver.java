@@ -24,7 +24,7 @@ public class PersonnelBLService_Driver {
 
     @Test
     public void login() throws Exception {
-        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HOTEL_WORKER);
+        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HotelWorker);
         assertEquals(ResultMessage.SUCCESS, tested.login(personnelVO));
     }
 
@@ -43,7 +43,7 @@ public class PersonnelBLService_Driver {
 
     @Test
     public void add() throws Exception {
-        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HOTEL_WORKER);
+        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HotelWorker);
         assertEquals(ResultMessage.SUCCESS, tested.add(personnelVO));
     }
 
@@ -54,7 +54,7 @@ public class PersonnelBLService_Driver {
 
     @Test
     public void modify() throws Exception {
-        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HOTEL_WORKER);
+        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HotelWorker);
         assertEquals(ResultMessage.SUCCESS, tested.modify(personnelVO));
     }
 
