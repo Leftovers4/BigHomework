@@ -2,6 +2,7 @@ package vo.user;
 
 import util.CreditChangedCause;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -27,7 +28,7 @@ public class CreditRecordVO {
     /**
      * 改变时间
      */
-    Date changedTime;
+    LocalDateTime changedTime;
 
     /**
      * 变更原因

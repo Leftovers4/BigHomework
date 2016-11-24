@@ -59,8 +59,8 @@ public class PromotionDataService_Driver {
     private void printPromotionPO(PromotionPO promotionPO){
         System.out.println(promotionPO.getPromotionID());
         System.out.println(promotionPO.getPromotionType());
-        System.out.println(promotionPO.getPromotionTimePO().getBeginTime());
-        System.out.println(promotionPO.getPromotionTimePO().getEndTime());
+        System.out.println(promotionPO.getBeginTime());
+        System.out.println(promotionPO.getEndTime());
         System.out.println(promotionPO.getDiscount());
     }
 }

@@ -2,6 +2,7 @@ package po.order;
 
 import util.HandleAppealResult;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -9,7 +10,7 @@ import java.util.Date;
  */
 public class OrderHandleAppealPO {
 
-    private Date haTime;
+    private LocalDateTime haTime;
 
     private HandleAppealResult ha_result;
 
@@ -18,7 +19,7 @@ public class OrderHandleAppealPO {
         initial();
     }
 
-    public OrderHandleAppealPO(Date haTime, HandleAppealResult ha_result) {
+    public OrderHandleAppealPO(LocalDateTime haTime, HandleAppealResult ha_result) {
         initial();
         this.haTime = haTime;
         this.ha_result = ha_result;
@@ -30,11 +31,11 @@ public class OrderHandleAppealPO {
     }
 
 
-    public Date getHaTime() {
+    public LocalDateTime getHaTime() {
         return haTime;
     }
 
-    public void setHaTime(Date haTime) {
+    public void setHaTime(LocalDateTime haTime) {
         this.haTime = haTime;
     }
 

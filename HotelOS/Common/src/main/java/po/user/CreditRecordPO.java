@@ -3,6 +3,7 @@ package po.user;
 import util.CreditChangedCause;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -38,7 +39,7 @@ public class CreditRecordPO implements Serializable {
     /**
      * 改变时间
      */
-    Date changedTime;
+    LocalDateTime changedTime;
 
     /**
      * 变更原因
@@ -54,7 +55,7 @@ public class CreditRecordPO implements Serializable {
         initial();
     }
 
-    public CreditRecordPO(int recordId, String username, double currentCredit, double changedCredit, Date changedTime, CreditChangedCause creditChangedCause, String orderID) {
+    public CreditRecordPO(int recordId, String username, double currentCredit, double changedCredit, LocalDateTime changedTime, CreditChangedCause creditChangedCause, String orderID) {
         initial();
         this.recordId = recordId;
         this.username = username;
@@ -108,11 +109,11 @@ public class CreditRecordPO implements Serializable {
         this.changedCredit = changedCredit;
     }
 
-    public Date getChangedTime() {
+    public LocalDateTime getChangedTime() {
         return changedTime;
     }
 
-    public void setChangedTime(Date changedTime) {
+    public void setChangedTime(LocalDateTime changedTime) {
         this.changedTime = changedTime;
     }
 

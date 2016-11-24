@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class HotelController implements HotelBLService{
     @Override
-    public HotelVO find(long hotelID) {
+    public HotelVO findByHotelID(long hotelID) {
         return null;
     }
 

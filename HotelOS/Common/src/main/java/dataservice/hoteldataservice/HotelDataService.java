@@ -4,13 +4,14 @@ import dataservice.DataServiceParent;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
  * Created by Hiki on 2016/10/16.
  */
-public interface HotelDataService{
+public interface HotelDataService extends Remote{
 
     // 根据酒店ID查找酒店
     public HotelPO findByHotelID(long hotelID) throws RemoteException;

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class HotelBLService_Stub implements HotelBLService {
     @Override
-    public HotelVO find(long hotelID) {
+    public HotelVO findByHotelID(long hotelID) {
         return new HotelVO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null);
     }
 

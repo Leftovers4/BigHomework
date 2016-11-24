@@ -25,7 +25,7 @@ public class VIPSpecialAreaPromotion implements Sale{
         double price = orderVO.orderPriceVO.originPrice;
         //todo get HotelBLService
         HotelBLService hotelBLService = new HotelBLService_Stub();
-        HotelVO hotel = hotelBLService.find(orderVO.hotelID);
+        HotelVO hotel = hotelBLService.findByHotelID(orderVO.hotelID);
         boolean checkTradingArea = hotel.tradingArea == tradingArea;
 
         if (checkTradingArea){

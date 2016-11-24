@@ -26,7 +26,7 @@ public class HotelBLService_Driver {
 
     @Test
     public void find() throws Exception {
-        HotelVO res = tested.find(123456);
+        HotelVO res = tested.findByHotelID(123456);
         printHotelVO(res);
     }
 

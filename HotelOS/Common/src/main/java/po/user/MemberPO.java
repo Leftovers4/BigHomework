@@ -3,6 +3,7 @@ package po.user;
 import util.MemberType;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -33,7 +34,7 @@ public class MemberPO implements Serializable {
     /**
      * 生日
      */
-    private Date birthday;
+    private LocalDate birthday;
 
     /**
      * 企业名称
@@ -48,7 +49,7 @@ public class MemberPO implements Serializable {
     /**
      * 用于注册会员
      */
-    public MemberPO(String username, MemberType memberType, int level, Date birthday, String enterprise) {
+    public MemberPO(String username, MemberType memberType, int level, LocalDate birthday, String enterprise) {
         initial();
         this.username = username;
         this.memberType = memberType;
@@ -89,11 +90,11 @@ public class MemberPO implements Serializable {
         this.level = level;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

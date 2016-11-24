@@ -1,5 +1,6 @@
 package vo.promotion;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -10,32 +11,16 @@ public class PromotionTimeVO {
     /**
      * 开始时间
      */
-    public Date beginTime;
+    public LocalDateTime beginTime;
 
     /**
      * 结束时间
      */
-    public Date endTime;
+    public LocalDateTime endTime;
 
 
-    public PromotionTimeVO(Date beginTime, Date endTime) {
+    public PromotionTimeVO(LocalDateTime beginTime, LocalDateTime endTime) {
         this.beginTime = beginTime;
-        this.endTime = endTime;
-    }
-
-    public Date getBeginTime() {
-        return beginTime;
-    }
-
-    public void setBeginTime(Date beginTime) {
-        this.beginTime = beginTime;
-    }
-
-    public Date getEndTime() {
-        return endTime;
-    }
-
-    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 }

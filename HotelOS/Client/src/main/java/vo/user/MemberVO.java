@@ -2,6 +2,7 @@ package vo.user;
 
 import util.MemberType;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -27,7 +28,7 @@ public class MemberVO {
     /**
      * 生日
      */
-    public Date birthday;
+    public LocalDate birthday;
 
     /**
      * 企业名称
@@ -38,7 +39,7 @@ public class MemberVO {
     /**
      * 用于注册会员
      */
-    public MemberVO(String username, MemberType memberType, int level, Date birthday, String enterprise) {
+    public MemberVO(String username, MemberType memberType, int level, LocalDate birthday, String enterprise) {
         super();
         this.username = username;
         this.memberType = memberType;

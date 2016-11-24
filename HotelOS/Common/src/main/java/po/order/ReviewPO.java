@@ -1,6 +1,7 @@
 package po.order;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -26,7 +27,7 @@ public class ReviewPO implements Serializable {
     /**
      * 评价时间
      */
-    private Date reviewTime;
+    private LocalDateTime reviewTime;
 
     /**
      * 评分
@@ -47,7 +48,7 @@ public class ReviewPO implements Serializable {
     /**
      * 用于客户评价
      */
-    public ReviewPO(String username, long hotelID, Date reviewTime, int rating, String review) {
+    public ReviewPO(String username, long hotelID, LocalDateTime reviewTime, int rating, String review) {
         initial();
         this.username = username;
         this.hotelID = hotelID;
@@ -81,11 +82,11 @@ public class ReviewPO implements Serializable {
         this.hotelID = hotelID;
     }
 
-    public Date getReviewTime() {
+    public LocalDateTime getReviewTime() {
         return reviewTime;
     }
 
-    public void setReviewTime(Date reviewTime) {
+    public void setReviewTime(LocalDateTime reviewTime) {
         this.reviewTime = reviewTime;
     }
 

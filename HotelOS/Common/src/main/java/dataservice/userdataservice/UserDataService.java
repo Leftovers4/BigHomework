@@ -6,13 +6,14 @@ import po.user.MemberPO;
 import po.user.UserPO;
 import util.ResultMessage;
 
-        import java.rmi.RemoteException;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
  * Created by Hiki on 2016/10/16.
  */
-public interface UserDataService {
+public interface UserDataService extends Remote{
 
     // 登录
     public ResultMessage login(UserPO userPO) throws RemoteException;

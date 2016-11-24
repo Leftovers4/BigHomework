@@ -2,6 +2,7 @@ package vo.order;
 
 import util.HandleAppealResult;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -9,11 +10,11 @@ import java.util.Date;
  */
 public class OrderHandleAppealVO {
 
-    public Date haTime;
+    public LocalDateTime haTime;
 
     public HandleAppealResult ha_result;
 
-    public OrderHandleAppealVO(Date haTime, HandleAppealResult ha_result) {
+    public OrderHandleAppealVO(LocalDateTime haTime, HandleAppealResult ha_result) {
         this.haTime = haTime;
         this.ha_result = ha_result;
     }

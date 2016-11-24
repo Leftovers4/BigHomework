@@ -61,7 +61,7 @@ public class InfoPaneController {
     }
 
     private void initInfo() {
-        HotelVO hotelVO = hotelBLServiceStub.find(123456);
+        HotelVO hotelVO = hotelBLServiceStub.findByHotelID(123456);
 
         hotelName.setText(hotelVO.hotelName);
     }

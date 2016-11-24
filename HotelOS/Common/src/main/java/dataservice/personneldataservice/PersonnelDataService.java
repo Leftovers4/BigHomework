@@ -5,14 +5,14 @@ import po.personnel.PersonnelPO;
 import util.PersonnelType;
 import util.ResultMessage;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
  * Created by Hiki on 2016/11/6.
  */
-public interface PersonnelDataService {
-
+public interface PersonnelDataService extends Remote{
     // 判断员工是否能够登录
     public ResultMessage login(PersonnelPO personnelPO) throws RemoteException;
 

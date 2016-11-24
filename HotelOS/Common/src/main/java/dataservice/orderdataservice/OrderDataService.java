@@ -4,13 +4,14 @@ import dataservice.DataServiceParent;
 import po.order.ReviewPO;
 import po.order.OrderPO;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
  * Created by Hiki on 2016/10/16.
  */
-public interface OrderDataService {
+public interface OrderDataService extends Remote{
 
     // 根据订单ID查找订单
     public OrderPO findByOrderID(String orderID) throws RemoteException;

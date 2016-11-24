@@ -54,9 +54,9 @@ public class OrderTimeVO {
     /**
      * 撤销订单时间
      */
-    public LocalDate cancelTime;
+    public LocalDateTime cancelTime;
 
-    public OrderTimeVO(LocalDateTime generateTime, LocalDateTime expectedCheckinTime, LocalDateTime checkinTime, LocalDateTime expectedLeaveTime, LocalDateTime leaveTime, LocalDateTime lastExecuteTime, LocalDateTime executeTime, LocalDate cancelTime) {
+    public OrderTimeVO(LocalDateTime generateTime, LocalDateTime expectedCheckinTime, LocalDateTime checkinTime, LocalDateTime expectedLeaveTime, LocalDateTime leaveTime, LocalDateTime lastExecuteTime, LocalDateTime executeTime, LocalDateTime cancelTime) {
         this.generateTime = generateTime;
         this.expectedCheckinTime = expectedCheckinTime;
         this.checkinTime = checkinTime;

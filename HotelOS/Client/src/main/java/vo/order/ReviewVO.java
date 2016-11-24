@@ -1,5 +1,6 @@
 package vo.order;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -21,7 +22,7 @@ public class ReviewVO {
     /**
      * 评价时间
      */
-    public Date reviewTime;
+    public LocalDateTime reviewTime;
 
     /**
      * 评分
@@ -39,7 +40,7 @@ public class ReviewVO {
     /**
      * 用于客户评价
      */
-    public ReviewVO(String username, long hotelID, Date reviewTime, int rating, String review) {
+    public ReviewVO(String username, long hotelID, LocalDateTime reviewTime, int rating, String review) {
         super();
         this.username = username;
         this.hotelID = hotelID;
