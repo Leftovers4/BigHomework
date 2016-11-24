@@ -50,13 +50,21 @@ public class PromotionPO implements Serializable {
      */
     private PromotionTimePO promotionTimePO;
 
+    /**
+     * 地址商圈
+     */
     private PromotionTraAreaPO promotionTraAreaPO;
 
+    /**
+     * 合作企业
+     */
     private List<String> enterprises;
 
-    private List<Double> levelCredits;
+    /**
+     * 会员等级制度
+     */
+    private List<PromotionMRPO> promotionMRPOs;
 
-    private List<Double> levelDiscounts;
 
     /**
      * 用于增加营销策略
@@ -104,37 +112,33 @@ public class PromotionPO implements Serializable {
         this.discount = discount;
     }
 
-    public PromotionPO(long promotionID, PromotionType promotionType, List<Double> levelCredits, List<Double> levelDiscounts) {
+    public PromotionPO(long promotionID, PromotionType promotionType, List<PromotionMRPO> promotionMRPOs) {
         initial();
         this.promotionID = promotionID;
         this.promotionType = promotionType;
-        this.levelCredits = levelCredits;
-        this.levelDiscounts = levelDiscounts;
+        this.promotionMRPOs = promotionMRPOs;
     }
 
-    public PromotionPO(long promotionID, PromotionType promotionType, String address, String tradingArea, List<Double> levelDiscounts) {
+    public PromotionPO(long promotionID, PromotionType promotionType, String address, String tradingArea, List<PromotionMRPO> promotionMRPOs) {
         initial();
         this.promotionID = promotionID;
         this.promotionType = promotionType;
         this.promotionTraAreaPO = new PromotionTraAreaPO(address, tradingArea);
-        this.levelDiscounts = levelDiscounts;
+        this.promotionMRPOs = promotionMRPOs;
     }
 
     private void initial(){
         hotelID = 0;
         leastRooms = 0;
         discount = 1;
-        promotionTimePO = new PromotionTimePO(null, null);
-        promotionTraAreaPO = new PromotionTraAreaPO(null, null);
+        promotionTimePO = new PromotionTimePO();
+        promotionTraAreaPO = new PromotionTraAreaPO();
         enterprises = new ArrayList<>();
-        levelCredits = new ArrayList<>();
-        for (int i = 0; i < UserLevel.MAX_LEVEL; i++) {
-            levelCredits.add(0.0);
+        promotionMRPOs = new ArrayList<>();
+        for(int i = 0; i < UserLevel.MAX_LEVEL; i++){
+            promotionMRPOs.add(new PromotionMRPO(i+1, 0.0, 0.0));
         }
-        levelDiscounts  = new ArrayList<>();
-        for (int i = 0; i < UserLevel.MAX_LEVEL; i++) {
-            levelDiscounts.add(1.0);
-        }
+
     }
 
     public long getPromotionID() {
@@ -191,7 +195,6 @@ public class PromotionPO implements Serializable {
     }
 
 
-
     public List<String> getEnterprises() {
         return enterprises;
     }
@@ -200,20 +203,27 @@ public class PromotionPO implements Serializable {
         this.enterprises = enterprises;
     }
 
-    public List<Double> getLevelCredits() {
-        return levelCredits;
+    public PromotionTimePO getPromotionTimePO() {
+        return promotionTimePO;
     }
 
-    public void setLevelCredits(List<Double> levelCredits) {
-        this.levelCredits = levelCredits;
+    public void setPromotionTimePO(PromotionTimePO promotionTimePO) {
+        this.promotionTimePO = promotionTimePO;
     }
 
-    public List<Double> getLevelDiscounts() {
-        return levelDiscounts;
+    public PromotionTraAreaPO getPromotionTraAreaPO() {
+        return promotionTraAreaPO;
     }
 
-    public void setLevelDiscounts(List<Double> levelDiscounts) {
-        this.levelDiscounts = levelDiscounts;
+    public void setPromotionTraAreaPO(PromotionTraAreaPO promotionTraAreaPO) {
+        this.promotionTraAreaPO = promotionTraAreaPO;
     }
 
+    public List<PromotionMRPO> getPromotionMRPOs() {
+        return promotionMRPOs;
+    }
+
+    public void setPromotionMRPOs(List<PromotionMRPO> promotionMRPOs) {
+        this.promotionMRPOs = promotionMRPOs;
+    }
 }
