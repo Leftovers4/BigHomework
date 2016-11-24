@@ -8,11 +8,11 @@ public enum RoomType {
     /**
      * 单人房
      */
-    SINGLE,
+    Single,
 
     /**
      * 双人房
      */
-    COUPLE
+    Couple,
 
 }

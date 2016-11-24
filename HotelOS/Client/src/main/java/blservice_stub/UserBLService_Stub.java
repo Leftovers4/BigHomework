@@ -3,7 +3,6 @@ package blservice_stub;
 import blservice.userblservice.UserBLService;
 import util.MemberType;
 import util.ResultMessage;
-import util.UserType;
 import vo.user.CreditVO;
 import vo.user.MemberVO;
 import vo.user.UserVO;
@@ -39,12 +38,6 @@ public class UserBLService_Stub implements UserBLService {
         return new UserVO("zhangsan", "123456", "张三", true, "110", null, null);
     }
 
-    @Override
-    public ArrayList<UserVO> showListByType(UserType userType) {
-        ArrayList<UserVO> list = new ArrayList<UserVO>();
-        list.add(new UserVO("zhangsan", "123456", "张三", true, "110", null, null));
-        return list;
-    }
 
     @Override
     public UserVO getInfo(String username) {
@@ -65,7 +58,7 @@ public class UserBLService_Stub implements UserBLService {
 
     @Override
     public MemberType getMemberType(String username) {
-        return MemberType.NORMAL_MEMBER;
+        return MemberType.NormalMember;
     }
 
     @Override

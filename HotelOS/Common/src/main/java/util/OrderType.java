@@ -9,21 +9,36 @@ public enum OrderType {
     /**
      * 未执行订单
      */
-    UNEXECUTED,
+    Unexecuted,
 
     /**
      * 已执行订单
      */
-    EXECUTED,
+    Executed,
 
     /**
      * 异常订单
      */
-    ABNORMAL,
+    Abnormal,
 
     /**
      * 已撤销订单
      */
-    CANCELED
+    Canceled;
+
+    public static OrderType getType(String name) {
+        switch (name) {
+            case "Unexecuted":
+                return OrderType.Unexecuted;
+            case "Executed":
+                return OrderType.Executed;
+            case "Abnormal":
+                return OrderType.Abnormal;
+            case "Canceled":
+                return OrderType.Canceled;
+        }
+        // TODO：这种方式可能会导致错误，需要对输入有极高的准确性要求
+        return null;
+    }
 
 }

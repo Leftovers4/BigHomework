@@ -4,7 +4,6 @@ import blservice.userblservice.UserBLService;
 import org.junit.Before;
 import org.junit.Test;
 import util.ResultMessage;
-import util.UserType;
 import vo.user.UserVO;
 
 import java.util.ArrayList;
@@ -48,13 +47,6 @@ public class UserBLService_Driver {
         printUserVO(res);
     }
 
-    @Test
-    public void showListByType() throws Exception {
-        ArrayList<UserVO> res = tested.showListByType(UserType.CLIENT);
-        for (int i = 0; i < res.size(); i++) {
-            printUserVO(res.get(i));
-        }
-    }
 
     @Test
     public void getInfo() throws Exception {

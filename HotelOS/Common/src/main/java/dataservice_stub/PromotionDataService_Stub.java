@@ -17,23 +17,23 @@ public class PromotionDataService_Stub implements PromotionDataService {
     @Override
     public ArrayList<PromotionPO> findByHotelID(long hotelID) throws RemoteException {
         ArrayList<PromotionPO> list = new ArrayList<>();
-        list.add(new PromotionPO(123456, PromotionType.BIRTHDAY_HP, 120120, new PromotionTimePO(null, null), 0.9, 1));
+        list.add(new PromotionPO(123456, PromotionType.BirthdayPromotion, 120120, new PromotionTimePO(null, null), 0.9, 1));
         return list;
     }
 
     @Override
     public ArrayList<PromotionPO> findByPromotionType(PromotionType type) throws RemoteException {
         ArrayList<PromotionPO> list = new ArrayList<>();
-        if (type == PromotionType.BIRTHDAY_HP)
-            list.add(new PromotionPO(123456, PromotionType.BIRTHDAY_HP, 120120, new PromotionTimePO(null, null), 0.9, 1));
+        if (type == PromotionType.BirthdayPromotion)
+            list.add(new PromotionPO(123456, PromotionType.BirthdayPromotion, 120120, new PromotionTimePO(null, null), 0.9, 1));
         else
-            list.add(new PromotionPO(123456, PromotionType.BIRTHDAY_HP, 120120, new PromotionTimePO(null, null), 0.9, 1));
+            list.add(new PromotionPO(123456, PromotionType.BirthdayPromotion, 120120, new PromotionTimePO(null, null), 0.9, 1));
         return list;
     }
 
     @Override
     public PromotionPO findByPromotionID(long promotionID) throws RemoteException {
-        return new PromotionPO(123456, PromotionType.BIRTHDAY_HP, 120120, new PromotionTimePO(null, null), 0.9, 1);
+        return new PromotionPO(123456, PromotionType.BirthdayPromotion, 120120, new PromotionTimePO(null, null), 0.9, 1);
     }
 
     @Override

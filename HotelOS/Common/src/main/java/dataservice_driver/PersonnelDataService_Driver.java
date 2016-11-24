@@ -23,7 +23,7 @@ public class PersonnelDataService_Driver {
 
     @Test
     public void canLogin() throws Exception {
-        PersonnelPO personnelPO = new PersonnelPO(1, "123456", PersonnelType.WEB_MARKETER, "A");
+        PersonnelPO personnelPO = new PersonnelPO(1, "123456", PersonnelType.WebMarketer, "A");
         assertEquals(true, tested.login(personnelPO));
     }
 

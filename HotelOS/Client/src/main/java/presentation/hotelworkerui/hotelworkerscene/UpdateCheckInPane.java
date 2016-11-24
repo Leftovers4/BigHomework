@@ -19,7 +19,7 @@ public class UpdateCheckInPane extends Pane {
     }
 
     private void loadFxml(Stage primaryStage,Pane mainPane) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelupdatecheckin1.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelupdatecheckin.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

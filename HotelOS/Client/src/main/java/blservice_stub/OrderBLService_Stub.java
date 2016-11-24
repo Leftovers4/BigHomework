@@ -41,7 +41,7 @@ public class OrderBLService_Stub implements OrderBLService {
     @Override
     public ArrayList<OrderVO> showList(OrderVO orderVO) {
         ArrayList<OrderVO> list = new ArrayList<OrderVO>();
-        list.add(new OrderVO("12345620161111001", 123456,"张三", OrderType.ABNORMAL,"如家", null,null, 2, false, null, null,null,null));
+        list.add(new OrderVO("12345620161111001", 123456,"张三", OrderType.Abnormal,"如家", null,null, 2, false, null, null,null,null));
         return list;
     }
 

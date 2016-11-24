@@ -29,7 +29,7 @@ public class PromotionDataService_Driver {
 
     @Test
     public void findByPromotionType() throws Exception {
-        ArrayList<PromotionPO> res = tested.findByPromotionType(PromotionType.BIRTHDAY_HP);
+        ArrayList<PromotionPO> res = tested.findByPromotionType(PromotionType.BirthdayPromotion);
         for (int i = 0; i < res.size(); i++) {
             printPromotionPO(res.get(i));
         }

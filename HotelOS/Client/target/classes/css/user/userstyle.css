@@ -30,7 +30,6 @@
     -fx-background-color: #0F81C7;
     -fx-effect: none;
 }
-
 #registerCommonvipBtn {
     -fx-background-color: deepskyblue;
 }
@@ -41,7 +40,6 @@
     -fx-background-color: #0F81C7;
     -fx-effect: none;
 }
-
 #registerCompanyvipBtn {
     -fx-background-color: deepskyblue;
 }
@@ -52,7 +50,6 @@
     -fx-background-color: #0F81C7;
     -fx-effect: none;
 }
-
 #saveInfo {
     -fx-background-color: deepskyblue;
 }
@@ -63,7 +60,6 @@
     -fx-background-color: #0F81C7;
     -fx-effect: none;
 }
-
 #cleanAllBtn {
     -fx-background-color: deepskyblue;
 }
@@ -74,7 +70,6 @@
     -fx-background-color: #0F81C7;
     -fx-effect: none;
 }
-
 #editInfoBtn {
     -fx-background-color: deepskyblue;
 }
@@ -84,4 +79,47 @@
 #editInfoBtn:armed {
     -fx-background-color: #0F81C7;
     -fx-effect: none;
+}
+
+#searchHotelButton {
+    -fx-background-color: deepskyblue;
+}
+#roomTypeBtn {
+    -fx-background-color: deepskyblue;
+}
+#priceBtn {
+    -fx-background-color: deepskyblue;
+}
+#showMoreChoiceBtn {
+    -fx-text-fill: #0F1034;
+    -fx-border-style: solid;
+    -fx-border-radius: 7px;
+}
+#resetShow {
+    -fx-background-color: deepskyblue;
+}
+#confirmShow {
+    -fx-background-color: deepskyblue;
+}
+#hotelStarBtn {
+    -fx-background-color: deepskyblue;
+}
+#hotelGradeBtn {
+    -fx-background-color: deepskyblue;
+}
+#hideMoreChoiceBtn1 {
+    -fx-text-fill: #0F1034;
+    -fx-border-style: solid;
+    -fx-border-radius: 7px;
+}
+#resetHide {
+    -fx-background-color: deepskyblue;
+}
+#confirmHide {
+    -fx-background-color: deepskyblue;
+}
+
+
+.scroll-pane {
+    -fx-border-style: none;
 }

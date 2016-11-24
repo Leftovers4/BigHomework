@@ -25,7 +25,7 @@ public class PersonnelBLService_Stub implements PersonnelBLService{
     public ArrayList<PersonnelVO> showList() {
         ArrayList<PersonnelVO> personnelVOs = new ArrayList<PersonnelVO>();
 
-        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HOTEL_WORKER);
+        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HotelWorker);
 
         personnelVOs.add(personnelVO);
 
@@ -54,7 +54,7 @@ public class PersonnelBLService_Stub implements PersonnelBLService{
 
     @Override
     public PersonnelVO find(long personnelID) {
-        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HOTEL_WORKER);
+        PersonnelVO personnelVO = new PersonnelVO(1, "123456", PersonnelType.HotelWorker);
         return personnelVO;
     }
 }

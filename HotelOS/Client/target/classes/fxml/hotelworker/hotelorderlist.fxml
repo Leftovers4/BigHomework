@@ -64,16 +64,16 @@
                 </Button>
             </children>
         </HBox>
-      <TableView id="listTable" fx:id="orderlistTable" layoutX="25.0" layoutY="141.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="500.0" prefWidth="800.0">
+      <TableView id="listTable" fx:id="orderlistTable" layoutX="25.0" layoutY="139.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="450.0" prefWidth="800.0">
         <columns>
-          <TableColumn id="idCol" fx:id="idCol" editable="false" prefWidth="232.0" text="12345678912345678" />
+          <TableColumn id="idCol" fx:id="idCol" editable="false" prefWidth="232.0" text="订单号" />
           <TableColumn id="userCol" fx:id="userCol" editable="false" prefWidth="124.0" text="客户" />
-            <TableColumn id="amountCol" fx:id="amountCol" editable="false" prefWidth="72.0" text="人数" />
-            <TableColumn id="typeCol" fx:id="typeCol" editable="false" prefWidth="151.0" text="状态" />
-            <TableColumn id="exetimeCol" fx:id="exetimeCol" prefWidth="198.0" text="执行时间" />
+            <TableColumn id="amountCol" fx:id="amountCol" editable="false" prefWidth="72.0" text="价值" />
+            <TableColumn id="typeCol" fx:id="typeCol" editable="false" prefWidth="200.0" text="入住时间" />
+            <TableColumn id="exetimeCol" fx:id="exetimeCol" prefWidth="150.0" text="状态" />
         </columns>
       </TableView>
-      <HBox id="listTopBar" fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="25.0" layoutY="89.0" prefHeight="52.0" prefWidth="800.0">
+      <HBox id="listTopBar" fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="25.0" layoutY="89.0" prefHeight="50.0" prefWidth="800.0">
          <children>
             <StackPane alignment="CENTER_RIGHT">
                <children>
@@ -106,13 +106,23 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Label>
-            <DatePicker prefHeight="36.0" prefWidth="160.0" />
+            <DatePicker fx:id="createDatePicker" prefHeight="36.0" prefWidth="160.0" promptText="生成时间" />
             <Label text="-">
                <HBox.margin>
                   <Insets left="1.0" right="1.0" />
                </HBox.margin>
             </Label>
-            <DatePicker layoutX="471.0" layoutY="18.0" prefHeight="36.0" prefWidth="160.0" />
+            <DatePicker fx:id="exeDatePicker" layoutX="471.0" layoutY="18.0" prefHeight="36.0" prefWidth="160.0" promptText="执行时间" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="25.0" layoutY="589.0" prefHeight="50.0" prefWidth="800.0">
+         <children>
+            <Button mnemonicParsing="false" text="查看详情" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="客户入住">
+               <HBox.margin>
+                  <Insets left="20.0" right="5.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
     </children>

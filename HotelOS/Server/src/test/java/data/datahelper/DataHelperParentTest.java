@@ -30,7 +30,7 @@ public class DataHelperParentTest {
         ArrayList<Object> input = new ArrayList<Object>();
         input.add(120110);
         input.add("password");
-        input.add(PersonnelType.HOTEL_WORKER.toString());
+        input.add(PersonnelType.HotelWorker.toString());
         input.add(null);
         ResultMessage result = tested.insertToSQL("personnel", input);
         System.out.println(result.toString());
@@ -44,7 +44,7 @@ public class DataHelperParentTest {
         input.add("GHB");
         input.add(true);
         input.add("110");
-        input.add(MemberType.NONE.toString());
+        input.add(MemberType.None.toString());
         input.add(1);
         input.add(LocalDate.now().toString());
         input.add("");
@@ -87,7 +87,7 @@ public class DataHelperParentTest {
         ArrayList<Object> input = new ArrayList<Object>();
         input.add(120120);
         input.add("pass");
-        input.add(PersonnelType.HOTEL_WORKER.toString());
+        input.add(PersonnelType.HotelWorker.toString());
         input.add(null);
 
         ResultMessage result = tested.updateFromSQL("personnel", input);
@@ -125,7 +125,7 @@ public class DataHelperParentTest {
 
     @Test
     public void testFindFromSQLByType(){
-        ArrayList<ArrayList<Object>> resultContent = tested.findFromSQLByType("personnel", PersonnelType.HOTEL_WORKER.toString());
+        ArrayList<ArrayList<Object>> resultContent = tested.findFromSQLByType("personnel", PersonnelType.HotelWorker.toString());
         System.out.println(resultContent.get(0).get(2).toString());
         System.out.println(resultContent.get(1).get(2).toString());
         System.out.println(resultContent.get(2).get(2).toString());
@@ -145,7 +145,7 @@ public class DataHelperParentTest {
         ArrayList<Object> input = new ArrayList<>();
         input.add("%");
         input.add("password");
-        input.add(PersonnelType.HOTEL_WORKER.toString());
+        input.add(PersonnelType.HotelWorker.toString());
         input.add("dog");
         input.add("%");
         ArrayList<ArrayList<Object>> resultContent = tested.findFromSQLByConditions("personnel", input);

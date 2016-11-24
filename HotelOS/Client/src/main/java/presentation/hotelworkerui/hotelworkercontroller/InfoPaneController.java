@@ -17,15 +17,10 @@ public class InfoPaneController {
     @FXML private Hyperlink showReviewLink;
     @FXML private Label hotelName;
     @FXML private Label hotelWorkerName;
-    @FXML private Label hotelID;
 
     //地址
-    @FXML private Label cityLabel;
-    @FXML private Label townLabel;
-    @FXML private Label detailPosLabel;
+    @FXML private Label    cityLabel;
     @FXML private ComboBox cityBox;
-    @FXML private ComboBox townBox;
-    @FXML private TextField detailPosField;
 
     //商圈
     @FXML private ComboBox tradeAreaBox;
@@ -56,14 +51,19 @@ public class InfoPaneController {
         hotelBLServiceStub = new HotelBLService_Stub();
 
         //初始化数据
-        initInfo();
+        initData();
         setCheckInfoComponentsVisible(true);
     }
 
-    private void initInfo() {
+    private void initData() {
         HotelVO hotelVO = hotelBLServiceStub.findByHotelID(123456);
 
         hotelName.setText(hotelVO.hotelName);
+
+        cityLabel.setText(String.valueOf(hotelVO.address));
+        tradeAreaLabel.setText(String.valueOf(hotelVO.tradingArea));
+        simpleIntroLabel.setText(hotelVO.description);
+        hotelServiceLabel.setText(hotelVO.service);
     }
 
     /**
@@ -93,12 +93,29 @@ public class InfoPaneController {
 
     @FXML
     private void saveEdit(){
+        //组件隐藏与显示
         setCheckInfoComponentsVisible(true);
         setEditInfoComponentsVisible(false);
+
+        //将编辑的内容显示到查看信息界面
+        cityLabel.setText(cityBox.getPromptText()+"市");
+        tradeAreaLabel.setText(tradeAreaBox.getPromptText());
+        simpleIntroLabel.setText(simpleIntroArea.getText());
+        hotelServiceLabel.setText(hotelServiceArea.getText());
+        cityBox.setValue(cityLabel.getText());
+        tradeAreaBox.setValue(tradeAreaLabel.getText());
+        simpleIntroArea.clear();
+        hotelServiceArea.clear();
     }
 
     @FXML
-    private void cancelEdit(){}
+    private void cancelEdit(){
+        simpleIntroArea.clear();
+        hotelServiceArea.clear();
+
+        setCheckInfoComponentsVisible(true);
+        setEditInfoComponentsVisible(false);
+    }
 
     @FXML
     private void showReview(){
@@ -108,8 +125,6 @@ public class InfoPaneController {
 
     private void setEditInfoComponentsVisible(Boolean isVisible){
         cityBox.setVisible(isVisible);
-        townBox.setVisible(isVisible);
-        detailPosField.setVisible(isVisible);
         tradeAreaBox.setVisible(isVisible);
         simpleIntroArea.setVisible(isVisible);
         hotelServiceArea.setVisible(isVisible);
@@ -120,16 +135,12 @@ public class InfoPaneController {
 
     private void setCheckInfoComponentsVisible(Boolean isVisible){
         cityLabel.setVisible(isVisible);
-        townLabel.setVisible(isVisible);
-        detailPosLabel.setVisible(isVisible);
         tradeAreaLabel.setVisible(isVisible);
         simpleIntroLabel.setVisible(isVisible);
         hotelServiceLabel.setVisible(isVisible);
         editBtn.setVisible(isVisible);
         showReviewLink.setVisible(isVisible);
-        backBtn.setVisible(!isVisible);
     }
-
 
 
 }

@@ -8,21 +8,38 @@ public enum MemberType {
     /**
      * 无
      */
-    NONE,
+    None,
 
     /**
      * 普通会员
      */
-    NORMAL_MEMBER,
+    NormalMember,
 
     /**
      * 企业会员
      */
-    ENTERPRISE_MEMBER,
+    EnterpriseMember,
 
     /**
      * 既是普通会员又是企业会员
      */
-    BOTH
+    Both;
+
+    public MemberType getType(String type){
+        switch(type){
+            case "None":
+                return MemberType.None;
+            case "NormalMember":
+                return MemberType.NormalMember;
+            case "EnterpriseMember":
+                return MemberType.EnterpriseMember;
+            case "Both":
+                return MemberType.Both;
+
+        }
+        // TODO：这种方式可能会导致错误，需要对输入有极高的准确性要求
+        return null;
+    }
+
 
 }
