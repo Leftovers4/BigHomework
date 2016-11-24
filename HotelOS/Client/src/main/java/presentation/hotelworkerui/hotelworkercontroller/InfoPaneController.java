@@ -1,10 +1,12 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
 import blservice_stub.HotelBLService_Stub;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.commonui.ExitAlert;
 import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
 import vo.hotel.HotelVO;
 
@@ -77,7 +79,13 @@ public class InfoPaneController {
 
     @FXML
     private void closeWindow(){
-        stage.close();
+        //提示框
+        ExitAlert exitAlert = new ExitAlert();
+        exitAlert.showAndWait();
+        final ButtonType rtn = exitAlert.getResult();
+        if (rtn == ButtonType.OK) {
+            Platform.exit();
+        }
     }
 
     @FXML
