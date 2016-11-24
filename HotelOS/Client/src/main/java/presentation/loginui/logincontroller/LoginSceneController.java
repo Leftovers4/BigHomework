@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import po.user.CreditPO;
+import po.user.CreditRecordPO;
 import po.user.MemberPO;
 import po.user.UserPO;
 import presentation.userui.userscene.ComUserScene;

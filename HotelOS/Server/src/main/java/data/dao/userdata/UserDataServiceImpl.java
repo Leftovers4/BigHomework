@@ -1,6 +1,7 @@
 package data.dao.userdata;
 
 import dataservice.userdataservice.UserDataService;
+import po.user.CreditRecordPO;
 import po.user.MemberPO;
 import po.user.UserPO;
 import util.ResultMessage;
@@ -45,7 +46,7 @@ public class UserDataServiceImpl implements UserDataService {
     }
 
     @Override
-    public void changeCredit(CreditPO creditPO) throws RemoteException {
+    public void changeCredit(ArrayList<CreditRecordPO> creditRecordPOs) throws RemoteException {
 
     }
 
