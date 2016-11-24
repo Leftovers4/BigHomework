@@ -102,5 +102,8 @@
       <Label layoutX="361.0" layoutY="527.0" text="3" />
       <TextField layoutX="510.0" layoutY="524.0" prefHeight="36.0" prefWidth="290.0" />
       <Label layoutX="517.0" layoutY="527.0" text="A110 A111 A112" />
+      <Label layoutX="544.0" layoutY="163.0" text="1200" />
+      <Label layoutX="425.0" layoutY="163.0" text="订单价值：" />
+      <Label layoutX="596.0" layoutY="163.0" text="元" />
     </children>
 </fx:root>
