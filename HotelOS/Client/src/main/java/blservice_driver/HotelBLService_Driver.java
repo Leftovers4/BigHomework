@@ -10,6 +10,7 @@ import util.TradingArea;
 import vo.hotel.HotelVO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -26,13 +27,13 @@ public class HotelBLService_Driver {
 
     @Test
     public void find() throws Exception {
-        HotelVO res = tested.findByHotelID(123456);
+        HotelVO res = tested.findHotelByID(123456);
         printHotelVO(res);
     }
 
     @Test
     public void showList() throws Exception {
-        ArrayList<HotelVO> res = tested.showList(new HotelVO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null));
+        List<HotelVO> res = tested.findHotelsByConditions(new HotelVO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null));
         for (int i = 0; i < res.size(); i++) {
             printHotelVO(res.get(i));
         }
@@ -40,22 +41,17 @@ public class HotelBLService_Driver {
 
     @Test
     public void add() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.add(new HotelVO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null)));
+        assertEquals(ResultMessage.SUCCESS, tested.addHotel(new HotelVO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null)));
     }
 
     @Test
     public void del() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.del(123456));
+        assertEquals(ResultMessage.SUCCESS, tested.deleteHotel(123456));
     }
 
     @Test
     public void modify() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.modify(new HotelVO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null)));
-    }
-
-    @Test
-    public void getRating() throws Exception {
-        assertEquals(0, tested.getRating());
+        assertEquals(ResultMessage.SUCCESS, tested.updateHotelInfo(new HotelVO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null)));
     }
 
     private void printHotelVO(HotelVO hotelVO){
