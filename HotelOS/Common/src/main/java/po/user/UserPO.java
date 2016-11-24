@@ -4,6 +4,7 @@ import util.MemberType;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -49,7 +50,7 @@ public class UserPO implements Serializable {
     /**
      * 信用（包括信用值，信用记录）
      */
-    private ArrayList<CreditRecordPO> creditRecordPOs;
+    private List<CreditRecordPO> creditRecordPOs;
 
 
     public UserPO(){
@@ -125,11 +126,11 @@ public class UserPO implements Serializable {
         this.memberPO = memberPO;
     }
 
-    public ArrayList<CreditRecordPO> getCreditRecordPOs() {
+    public List<CreditRecordPO> getCreditRecordPOs() {
         return creditRecordPOs;
     }
 
-    public void setCreditRecordPOs(ArrayList<CreditRecordPO> creditRecordPOs) {
+    public void setCreditRecordPOs(List<CreditRecordPO> creditRecordPOs) {
         this.creditRecordPOs = creditRecordPOs;
     }
 }

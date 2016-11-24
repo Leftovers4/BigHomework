@@ -25,7 +25,7 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         userInfoContent.add(userPO.getName());
         userInfoContent.add(userPO.isGender());
         userInfoContent.add(userPO.getPhone());
-        userInfoContent.add(userPO.getMemberPO().getMemberType());
+        userInfoContent.add(toString(userPO.getMemberPO().getMemberType()));
         userInfoContent.add(userPO.getMemberPO().getLevel());
         userInfoContent.add(userPO.getMemberPO().getBirthday());
         userInfoContent.add(userPO.getMemberPO().getMemberType());
@@ -42,6 +42,7 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         personnelInfoContent.add(personnelPO.getName());
         personnelInfoContent.add(personnelPO.getHotelID());
 
+        return personnelInfoContent;
     }
 
     @Override
@@ -63,4 +64,19 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
     public ArrayList<Object> toPromotionAl(PromotionPO promotionPO) {
         return null;
     }
+
+/*-------------------------------------------------辅助方法-------------------------------------------------------------*/
+
+    public String toString(Object input){
+        if(input == null){
+            return "";
+        }else{
+            return input.toString();
+        }
+    }
+
+
+
 }
+
+

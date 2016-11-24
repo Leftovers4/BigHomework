@@ -6,6 +6,7 @@ import util.TradingArea;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Hiki on 2016/10/16.
@@ -55,12 +56,12 @@ public class HotelPO implements Serializable{
     /**
      * 客房数量
      */
-    private ArrayList<RoomPO> rooms;
+    private List<RoomPO> rooms;
 
     /**
      * 历史评价
      */
-    private ArrayList<ReviewPO> reviews;
+    private List<ReviewPO> reviews;
 
 
     public HotelPO(){
@@ -102,8 +103,8 @@ public class HotelPO implements Serializable{
         this.tradingArea = "";
         this.description = "";
         this.service = "";
-        this.rooms = null;
-        this.reviews = null;
+        this.rooms = new ArrayList<>();
+        this.reviews = new ArrayList<>();
 
     }
 
@@ -164,19 +165,19 @@ public class HotelPO implements Serializable{
         this.service = service;
     }
 
-    public ArrayList<RoomPO> getRooms() {
+    public List<RoomPO> getRooms() {
         return rooms;
     }
 
-    public void setRooms(ArrayList<RoomPO> rooms) {
+    public void setRooms(List<RoomPO> rooms) {
         this.rooms = rooms;
     }
 
-    public ArrayList<ReviewPO> getReviews() {
+    public List<ReviewPO> getReviews() {
         return reviews;
     }
 
-    public void setReviews(ArrayList<ReviewPO> reviews) {
+    public void setReviews(List<ReviewPO> reviews) {
         this.reviews = reviews;
     }
 }
