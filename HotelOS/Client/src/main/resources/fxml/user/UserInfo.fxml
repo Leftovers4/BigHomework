@@ -80,12 +80,12 @@
       <Label layoutX="343.0" layoutY="415.0" text="信用值：" />
       <Hyperlink layoutX="487.0" layoutY="411.0" text="查看信用记录" />
       <Label layoutX="325.0" layoutY="475.0" text="会员信息：" />
-      <ImageView fitHeight="170.0" fitWidth="170.0" layoutX="80.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="userPhoto" fitHeight="170.0" fitWidth="170.0" layoutX="80.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/common/initialPhoto.png" />
          </image>
       </ImageView>
-      <Button fx:id="changePhotoBtn" layoutX="119.0" layoutY="316.0" mnemonicParsing="false" text="编辑头像" />
+      <Button fx:id="changePhotoBtn" layoutX="119.0" layoutY="316.0" mnemonicParsing="false" onAction="#changePhoto" text="编辑头像" />
       <TextField fx:id="userIdField" layoutX="435.0" layoutY="110.0" visible="false" />
       <TextField fx:id="userNameField" layoutX="435.0" layoutY="170.0" visible="false" />
       <RadioButton fx:id="sexMan" layoutX="435.0" layoutY="235.0" mnemonicParsing="false" text="男" visible="false" />

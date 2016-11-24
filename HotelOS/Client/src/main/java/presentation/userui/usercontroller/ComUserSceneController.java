@@ -5,10 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import presentation.userui.userscene.InfoPane;
-import presentation.userui.userscene.RegisteredHotelPane;
-import presentation.userui.userscene.SearchHotelPane;
-import presentation.userui.userscene.UserOrderListPane;
+import presentation.userui.userscene.*;
 
 /**
  * Created by Hitiger on 2016/11/19.
@@ -28,6 +25,8 @@ public class ComUserSceneController {
     @FXML private Button currentBtn = null;
 
     public void launch(Stage primaryStage){
+        primaryStage.setX(400);
+        primaryStage.setY(200);
         mainPane.getChildren().add(new InfoPane(primaryStage));
         this.stage = primaryStage;
     }
@@ -40,6 +39,8 @@ public class ComUserSceneController {
         searchHotelBtn.setStyle("-fx-background-color: transparent");
         hotelRegisteredBtn.setStyle("-fx-background-color: transparent");
         currentBtn = null;
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new UserGenerateOrderPane(stage));
     }
     @FXML
     private void userInfo() {

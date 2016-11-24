@@ -84,11 +84,32 @@
 #searchHotelButton {
     -fx-background-color: deepskyblue;
 }
+#searchHotelButton:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#searchHotelButton:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
 #roomTypeBtn {
     -fx-background-color: deepskyblue;
 }
+#roomTypeBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#roomTypeBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
 #priceBtn {
     -fx-background-color: deepskyblue;
+}
+#priceBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#priceBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
 }
 #showMoreChoiceBtn {
     -fx-text-fill: #0F1034;
@@ -98,14 +119,42 @@
 #resetShow {
     -fx-background-color: deepskyblue;
 }
+#resetShow:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#resetShow:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
 #confirmShow {
     -fx-background-color: deepskyblue;
+}
+#confirmShow:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#confirmShow:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
 }
 #hotelStarBtn {
     -fx-background-color: deepskyblue;
 }
+#hotelStarBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#hotelStarBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
 #hotelGradeBtn {
     -fx-background-color: deepskyblue;
+}
+#hotelGradeBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#hotelGradeBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
 }
 #hideMoreChoiceBtn1 {
     -fx-text-fill: #0F1034;
@@ -115,11 +164,26 @@
 #resetHide {
     -fx-background-color: deepskyblue;
 }
+#resetHide:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#resetHide:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
 #confirmHide {
     -fx-background-color: deepskyblue;
 }
-
-
-.scroll-pane {
-    -fx-border-style: none;
+#confirmHide:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
 }
+#confirmHide:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
+
+/*去除在scrollpane内点击时出现的蓝色边框*/
+.scroll-pane {
+    -fx-background-insets: 0;
+}
+

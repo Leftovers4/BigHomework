@@ -2,7 +2,16 @@ package presentation.userui.usercontroller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.*;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
+import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by Hitiger on 2016/11/19.
@@ -20,6 +29,8 @@ public class InfoPaneController {
     @FXML private TextField phoneField;
     @FXML private Button saveInfo;
     @FXML private Button cleanAllBtn;
+
+    @FXML private ImageView userPhoto;
 
     @FXML private Label userIdLabel;
     @FXML private Label usernameLabel;
@@ -95,4 +106,61 @@ public class InfoPaneController {
         sexWoman.setSelected(false);
         phoneField.setText("");
     }
+
+    @FXML
+    private void changePhoto() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("选择图片");
+        File selectedDirectory = fileChooser.showOpenDialog(stage);
+
+////        System.out.print(selectedDirectory.getAbsolutePath());
+//        String s = Class.class.getResource("/").getPath().toString();
+////        System.out.print(s);
+
+        if (selectedDirectory!=null) {
+            try {
+                String newpath = "C:/Leftovers/Cache/userPhoto/";
+                String fileName = newpath + selectedDirectory.getName().toString();
+                File testFile = new File(fileName);
+                if (!testFile.exists()) {
+                    File file = new File(newpath);
+                    file.mkdirs();
+                    FileInputStream input = null;
+                    FileOutputStream output = null;
+                    try {
+                        input = new FileInputStream(selectedDirectory);
+                        output = new FileOutputStream(fileName);
+
+                        byte[] b = new byte[1024 * 5];
+                        int len;
+                        while ((len = input.read(b)) != -1) {
+                            output.write(b, 0, len);
+                        }
+
+                        output.flush();
+                        output.close();
+                        input.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
+                }
+
+
+
+                Image image = new Image("file:///"+fileName);
+                userPhoto.setImage(image);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+        }
+
+
+
+
+    }
+
 }

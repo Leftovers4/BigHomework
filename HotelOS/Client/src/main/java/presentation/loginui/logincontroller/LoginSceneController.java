@@ -1,6 +1,5 @@
 package presentation.loginui.logincontroller;
 
-import dataservice_stub.UserDataService_Stub;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
