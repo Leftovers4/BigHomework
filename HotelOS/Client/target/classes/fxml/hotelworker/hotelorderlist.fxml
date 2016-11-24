@@ -106,13 +106,13 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Label>
-            <DatePicker prefHeight="36.0" prefWidth="160.0" />
+            <DatePicker fx:id="createDatePicker" prefHeight="36.0" prefWidth="160.0" promptText="生成时间" />
             <Label text="-">
                <HBox.margin>
                   <Insets left="1.0" right="1.0" />
                </HBox.margin>
             </Label>
-            <DatePicker layoutX="471.0" layoutY="18.0" prefHeight="36.0" prefWidth="160.0" />
+            <DatePicker fx:id="exeDatePicker" layoutX="471.0" layoutY="18.0" prefHeight="36.0" prefWidth="160.0" promptText="执行时间" />
          </children>
       </HBox>
     </children>

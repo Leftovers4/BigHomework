@@ -78,7 +78,7 @@
       </HBox>
       <ScrollPane layoutY="50.0" prefHeight="640.0" prefWidth="850.0">
          <content>
-            <FlowPane layoutY="50.0" prefHeight="640.0" prefWidth="830.0">
+            <FlowPane layoutY="50.0" prefHeight="630.0" prefWidth="830.0">
                <children>
                   <Label text="地址：">
                      <FlowPane.margin>
@@ -110,7 +110,7 @@
                         <Insets left="160.0" top="25.0" />
                      </FlowPane.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" text="搜索酒店">
+                  <Button fx:id="searchHotelButton" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" text="搜索酒店">
                      <FlowPane.margin>
                         <Insets left="13.0" top="25.0" />
                      </FlowPane.margin>
@@ -118,7 +118,7 @@
                   <Pane prefHeight="200.0" prefWidth="528.0">
                      <children>
                         <Label layoutX="10.0" layoutY="55.0" text="房间类型：" />
-                        <Button layoutX="100.0" layoutY="50.0" mnemonicParsing="false" text="不限" />
+                        <Button fx:id="roomTypeBtn" layoutX="100.0" layoutY="50.0" mnemonicParsing="false" text="不限" />
                         <CheckBox layoutX="165.0" layoutY="55.0" mnemonicParsing="false" text="单人间" />
                         <CheckBox layoutX="274.0" layoutY="55.0" mnemonicParsing="false" text="标准间" />
                         <CheckBox layoutX="384.0" layoutY="55.0" mnemonicParsing="false" text="多床间" />
@@ -130,7 +130,7 @@
                         <Label layoutX="264.0" layoutY="10.0" text="退房：" />
                         <DatePicker layoutX="324.0" layoutY="5.0" prefHeight="30.0" prefWidth="140.0" />
                         <Label layoutX="36.0" layoutY="135.0" text="价格：" />
-                        <Button layoutX="100.0" layoutY="130.0" mnemonicParsing="false" text="不限" />
+                        <Button fx:id="priceBtn" layoutX="100.0" layoutY="130.0" mnemonicParsing="false" text="不限" />
                         <CheckBox layoutX="165.0" layoutY="135.0" mnemonicParsing="false" text="¥200以下" />
                         <CheckBox layoutX="275.0" layoutY="135.0" mnemonicParsing="false" text="¥200-400" />
                         <CheckBox layoutX="384.0" layoutY="135.0" mnemonicParsing="false" text="¥400-600" />
@@ -155,20 +155,20 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="172.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" text="重置" />
-                        <Button layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" text="确认" />
+                        <Button fx:id="resetShow" layoutX="172.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" text="重置" />
+                        <Button fx:id="confirmShow" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" text="确认" />
                      </children>
                   </Pane>
                   <Pane fx:id="moreInfoChoice" disable="true" prefHeight="170.0" prefWidth="528.0" visible="false">
                      <children>
                         <Label layoutX="36.0" layoutY="25.0" text="星级：" />
-                        <Button layoutX="100.0" layoutY="20.0" mnemonicParsing="false" text="不限" />
+                        <Button fx:id="hotelStarBtn" layoutX="100.0" layoutY="20.0" mnemonicParsing="false" text="不限" />
                         <CheckBox layoutX="278.0" layoutY="25.0" mnemonicParsing="false" text="三星级" />
                         <CheckBox layoutX="359.0" layoutY="25.0" mnemonicParsing="false" text="四星级" />
                         <CheckBox layoutX="441.0" layoutY="25.0" mnemonicParsing="false" text="五星级" />
                         <CheckBox layoutX="165.0" layoutY="25.0" mnemonicParsing="false" text="二星级以下" />
                         <Label layoutX="36.0" layoutY="80.0" text="评分：" />
-                        <Button layoutX="100.0" layoutY="75.0" mnemonicParsing="false" text="不限" />
+                        <Button fx:id="hotelGradeBtn" layoutX="100.0" layoutY="75.0" mnemonicParsing="false" text="不限" />
                         <CheckBox layoutX="165.0" layoutY="80.0" mnemonicParsing="false" text="大于4.5" />
                         <CheckBox layoutX="350.0" layoutY="80.0" mnemonicParsing="false" text="3.0-4.0" />
                         <CheckBox layoutX="442.0" layoutY="80.0" mnemonicParsing="false" text="小于3.0" />
@@ -190,8 +190,8 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button layoutX="172.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" text="重置" />
-                        <Button layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" text="确认" />
+                        <Button fx:id="resetHide" layoutX="172.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" text="重置" />
+                        <Button fx:id="confirmHide" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" text="确认" />
                      </children>
                      <FlowPane.margin>
                         <Insets left="160.0" top="-15.0" />

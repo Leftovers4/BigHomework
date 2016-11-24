@@ -64,29 +64,34 @@
                 </Button>
             </children>
         </HBox>
-      <TabPane layoutX="16.0" layoutY="145.0" prefHeight="200.0" prefWidth="822.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="14.0" layoutY="124.0" prefHeight="485.0" prefWidth="822.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="生日优惠">
                <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox alignment="TOP_CENTER" fillWidth="false">
                      <children>
-                        <TableView prefHeight="200.0" prefWidth="766.0">
+                        <TableView prefHeight="395.0">
                           <columns>
                             <TableColumn prefWidth="230.0" text="客房类型" />
                             <TableColumn minWidth="0.0" prefWidth="322.0" text="折扣（%）" />
                               <TableColumn minWidth="0.0" prefWidth="269.0" text="优惠价（元/天）" />
                           </columns>
                         </TableView>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="47.0" prefWidth="766.0">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="822.0">
                            <children>
-                              <HBox fx:id="addBirthHBox" visible="false">
+                              <HBox fx:id="addBirthHBox" alignment="CENTER_LEFT" visible="false">
                                  <children>
-                                    <ComboBox prefHeight="36.0" prefWidth="151.0" promptText="客房类型" />
-                                    <TextField prefHeight="36.0" prefWidth="168.0" promptText="折扣（%）">
+                                    <Label text="折扣：" />
+                                    <TextField alignment="CENTER" prefHeight="36.0" prefWidth="50.0" promptText="70">
                                        <HBox.margin>
-                                          <Insets left="30.0" />
+                                          <Insets left="10.0" />
                                        </HBox.margin>
                                     </TextField>
+                                    <Label layoutX="10.0" layoutY="16.0" text="\%">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Label>
                                  </children>
                               </HBox>
                               <Pane prefHeight="200.0" prefWidth="200.0">
@@ -98,7 +103,7 @@
                                     <Button fx:id="cancelBirthBtn" layoutX="110.0" mnemonicParsing="false" onAction="#cancelBirthAdd" text="取消" visible="false" />
                                  </children>
                                  <HBox.margin>
-                                    <Insets left="250.0" />
+                                    <Insets left="50.0" />
                                  </HBox.margin>
                               </Pane>
                            </children>
@@ -115,9 +120,9 @@
           </Tab>
           <Tab text="多间预订优惠">
                <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox>
                      <children>
-                        <TableView prefHeight="200.0" prefWidth="766.0">
+                        <TableView prefHeight="395.0">
                            <columns>
                               <TableColumn prefWidth="230.0" text="客房类型" />
                               <TableColumn prefWidth="220.0" text="最少预订间数" />
@@ -125,24 +130,34 @@
                               <TableColumn minWidth="0.0" prefWidth="180.0" text="优惠价（元/天）" />
                            </columns>
                         </TableView>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="50.0">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <children>
-                              <HBox fx:id="addRoomsHBox" visible="false">
+                              <HBox fx:id="addRoomsHBox" alignment="CENTER_LEFT" visible="false">
                                  <children>
-                                    <ComboBox prefHeight="36.0" prefWidth="151.0" promptText="客房类型" />
-                                    <TextField prefHeight="36.0" prefWidth="168.0" promptText="最少预订间数">
+                                    <Label text="最少预订间数：" />
+                                    <TextField alignment="CENTER" prefHeight="36.0" prefWidth="50.0" promptText="5">
                                        <HBox.margin>
-                                          <Insets left="20.0" />
+                                          <Insets left="10.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <TextField layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="168.0" promptText="折扣（%）">
+                                    <Label layoutX="386.0" layoutY="16.0" text="折扣：">
                                        <HBox.margin>
-                                          <Insets left="20.0" />
+                                          <Insets left="40.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField alignment="CENTER" layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="50.0" promptText="80">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
                                        </HBox.margin>
                                     </TextField>
+                                    <Label layoutX="512.0" layoutY="16.0" text="\%">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Label>
                                  </children>
                               </HBox>
                               <Pane prefHeight="200.0" prefWidth="200.0">
@@ -154,7 +169,7 @@
                                     <Button fx:id="cancelRoomsBtn" layoutX="110.0" mnemonicParsing="false" onAction="#cancelRoomsAdd" text="取消" visible="false" />
                                  </children>
                                  <HBox.margin>
-                                    <Insets left="80.0" />
+                                    <Insets left="50.0" />
                                  </HBox.margin>
                               </Pane>
                            </children>
@@ -165,9 +180,9 @@
           </Tab>
             <Tab text="特定期间优惠">
                <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox>
                      <children>
-                        <TableView prefHeight="200.0" prefWidth="766.0">
+                        <TableView prefHeight="395.0">
                            <columns>
                               <TableColumn prefWidth="147.0" text="客房类型" />
                               <TableColumn prefWidth="210.0" text="开始日期" />
@@ -176,26 +191,38 @@
                               <TableColumn minWidth="0.0" prefWidth="143.0" text="优惠价（元/天）" />
                            </columns>
                         </TableView>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="50.0">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <children>
                               <HBox fx:id="addTimeHBox" alignment="CENTER_LEFT" visible="false">
                                  <children>
-                                    <ComboBox prefHeight="36.0" prefWidth="137.0" promptText="客房类型" />
-                                    <TextField layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="113.0" promptText="折扣（%）">
-                                       <HBox.margin>
-                                          <Insets left="5.0" />
-                                       </HBox.margin>
-                                    </TextField>
                                     <DatePicker prefHeight="36.0" prefWidth="163.0" promptText="开始日期">
                                        <HBox.margin>
                                           <Insets left="5.0" />
                                        </HBox.margin>
                                     </DatePicker>
-                                    <Label text="-" />
+                                    <Label text="-">
+                                       <HBox.margin>
+                                          <Insets left="2.0" right="2.0" />
+                                       </HBox.margin></Label>
                                     <DatePicker layoutX="319.0" layoutY="10.0" prefHeight="36.0" prefWidth="162.0" promptText="结束日期" />
+                                    <Label text="折扣：">
+                                       <HBox.margin>
+                                          <Insets left="80.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField alignment="CENTER" layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="50.0" promptText="80">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </TextField>
+                                    <Label layoutX="466.0" layoutY="16.0" text="\%">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Label>
                                  </children>
                               </HBox>
                               <Pane>
@@ -207,7 +234,7 @@
                                     <Button fx:id="cancelTimeBtn" layoutX="110.0" mnemonicParsing="false" onAction="#cancelTimeAdd" text="取消" visible="false" />
                                  </children>
                                  <HBox.margin>
-                                    <Insets left="20.0" />
+                                    <Insets left="50.0" />
                                  </HBox.margin>
                               </Pane>
                            </children>
@@ -218,9 +245,9 @@
             </Tab>
             <Tab text="合作企业优惠">
                <content>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox>
                      <children>
-                        <TableView prefHeight="200.0" prefWidth="766.0">
+                        <TableView prefHeight="395.0">
                            <columns>
                               <TableColumn prefWidth="261.0" text="客房类型" />
                               <TableColumn prefWidth="238.0" text="企业名称" />
@@ -228,24 +255,34 @@
                               <TableColumn minWidth="0.0" prefWidth="180.0" text="优惠价（元/天）" />
                            </columns>
                         </TableView>
-                        <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="CENTER_RIGHT" prefHeight="50.0">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                            <children>
-                              <HBox fx:id="addComHBox" visible="false">
+                              <HBox fx:id="addComHBox" alignment="CENTER" visible="false">
                                  <children>
-                                    <ComboBox prefHeight="36.0" prefWidth="151.0" promptText="客房类型" />
-                                    <TextField prefHeight="36.0" prefWidth="168.0" promptText="企业名称">
+                                    <Label text="企业名称：" />
+                                    <TextField prefHeight="36.0" prefWidth="168.0" promptText="南京大学">
                                        <HBox.margin>
-                                          <Insets left="20.0" />
+                                          <Insets left="10.0" />
                                        </HBox.margin>
                                     </TextField>
-                                    <TextField layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="168.0" promptText="折扣（%）">
+                                    <Label text="折扣：">
                                        <HBox.margin>
-                                          <Insets left="20.0" />
+                                          <Insets left="40.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <TextField alignment="CENTER" layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="50.0" promptText="80">
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
                                        </HBox.margin>
                                     </TextField>
+                                    <Label text="\%">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Label>
                                  </children>
                               </HBox>
                               <Pane prefHeight="200.0" prefWidth="200.0">
@@ -257,7 +294,7 @@
                                     <Button fx:id="cancelComBtn" layoutX="110.0" mnemonicParsing="false" onAction="#cancelComAdd" text="取消" visible="false" />
                                  </children>
                                  <HBox.margin>
-                                    <Insets left="80.0" />
+                                    <Insets left="50.0" />
                                  </HBox.margin>
                               </Pane>
                            </children>
@@ -265,11 +302,6 @@
                      </children>
                   </VBox>
                </content>
-            </Tab>
-            <Tab>
-               <graphic>
-                  <Button mnemonicParsing="false" text="+" />
-               </graphic>
             </Tab>
         </tabs>
       </TabPane>

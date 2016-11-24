@@ -17,14 +17,11 @@ public class InfoPaneController {
     @FXML private Hyperlink showReviewLink;
     @FXML private Label hotelName;
     @FXML private Label hotelWorkerName;
-    @FXML private Label hotelID;
 
     //地址
     @FXML private Label cityLabel;
-    @FXML private Label townLabel;
     @FXML private Label detailPosLabel;
     @FXML private ComboBox cityBox;
-    @FXML private ComboBox townBox;
     @FXML private TextField detailPosField;
 
     //商圈
@@ -108,7 +105,6 @@ public class InfoPaneController {
 
     private void setEditInfoComponentsVisible(Boolean isVisible){
         cityBox.setVisible(isVisible);
-        townBox.setVisible(isVisible);
         detailPosField.setVisible(isVisible);
         tradeAreaBox.setVisible(isVisible);
         simpleIntroArea.setVisible(isVisible);
@@ -120,7 +116,6 @@ public class InfoPaneController {
 
     private void setCheckInfoComponentsVisible(Boolean isVisible){
         cityLabel.setVisible(isVisible);
-        townLabel.setVisible(isVisible);
         detailPosLabel.setVisible(isVisible);
         tradeAreaLabel.setVisible(isVisible);
         simpleIntroLabel.setVisible(isVisible);

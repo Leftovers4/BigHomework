@@ -14,15 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import po.user.CreditPO;
-import po.user.MemberPO;
-import po.user.UserPO;
 import presentation.userui.userscene.ComUserScene;
-import presentation.userui.userscene.InfoPane;
-import util.MemberType;
-
-import java.rmi.RemoteException;
-import java.util.Date;
 
 /**
  * Created by wyj on 2016/11/6.
