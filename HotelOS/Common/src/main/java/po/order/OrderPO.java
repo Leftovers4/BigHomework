@@ -2,6 +2,7 @@ package po.order;
 
 import po.hotel.RoomPO;
 import util.OrderType;
+import util.RoomType;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -50,8 +51,12 @@ public class OrderPO implements Serializable {
     /**
      * 房间类型及数量
      */
-    private RoomPO room;
+    private RoomType roomType;
 
+    /**
+     * 房间数量
+     */
+    private int roomAmount;
 
     /**
      * 房间号
@@ -100,17 +105,15 @@ public class OrderPO implements Serializable {
         initial();
     }
 
-    /**
-     * 用于生成订单
-     */
-    public OrderPO(String orderID, long hotelID, String username, OrderType orderType, String hotelName, RoomPO room, String roomNumber, int personAmount, boolean withChildren, ReviewPO reviewPO, OrderTimePO orderTimePO, OrderPricePO orderPricePO, OrderHandleAppealPO orderHandleAppealPO) {
+    public OrderPO(String orderID, long hotelID, String username, OrderType orderType, String hotelName, RoomType roomType, int roomAmount, String roomNumber, int personAmount, boolean withChildren, ReviewPO reviewPO, OrderTimePO orderTimePO, OrderPricePO orderPricePO, OrderHandleAppealPO orderHandleAppealPO) {
         initial();
         this.orderID = orderID;
         this.hotelID = hotelID;
         this.username = username;
         this.orderType = orderType;
         this.hotelName = hotelName;
-        this.room = room;
+        this.roomType = roomType;
+        this.roomAmount = roomAmount;
         this.roomNumber = roomNumber;
         this.personAmount = personAmount;
         this.withChildren = withChildren;
@@ -120,13 +123,19 @@ public class OrderPO implements Serializable {
         this.orderHandleAppealPO = orderHandleAppealPO;
     }
 
+    /**
+     * 用于生成订单
+     */
+
+
     private void initial(){
         this.orderID = "";
         this.hotelID = 0;
         this.username = "";
         this.orderType = null;
         this.hotelName = "";
-        this.room = new RoomPO();
+        this.roomType = null;
+        this.roomAmount = 0;
         this.roomNumber = "";
         this.personAmount = 0;
         this.withChildren = false;
@@ -177,12 +186,20 @@ public class OrderPO implements Serializable {
         this.hotelName = hotelName;
     }
 
-    public RoomPO getRoom() {
-        return room;
+    public RoomType getRoomType() {
+        return roomType;
     }
 
-    public void setRoom(RoomPO room) {
-        this.room = room;
+    public void setRoomType(RoomType roomType) {
+        this.roomType = roomType;
+    }
+
+    public int getRoomAmount() {
+        return roomAmount;
+    }
+
+    public void setRoomAmount(int roomAmount) {
+        this.roomAmount = roomAmount;
     }
 
     public int getPersonAmount() {

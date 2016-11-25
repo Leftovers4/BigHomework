@@ -53,12 +53,6 @@ public class OrderTimePO implements Serializable{
 
 
     /**
-     * 执行订单时间
-     */
-    private LocalDateTime executeTime;
-
-
-    /**
      * 撤销订单时间
      */
     private LocalDateTime cancelTime;
@@ -68,7 +62,7 @@ public class OrderTimePO implements Serializable{
         initial();
     }
 
-    public OrderTimePO(LocalDateTime generateTime, LocalDateTime expectedCheckinTime, LocalDateTime checkinTime, LocalDateTime expectedLeaveTime, LocalDateTime leaveTime, LocalDateTime lastExecuteTime, LocalDateTime executeTime, LocalDateTime cancelTime) {
+    public OrderTimePO(LocalDateTime generateTime, LocalDateTime expectedCheckinTime, LocalDateTime checkinTime, LocalDateTime expectedLeaveTime, LocalDateTime leaveTime, LocalDateTime lastExecuteTime, LocalDateTime cancelTime) {
         initial();
         this.generateTime = generateTime;
         this.expectedCheckinTime = expectedCheckinTime;
@@ -76,7 +70,6 @@ public class OrderTimePO implements Serializable{
         this.expectedLeaveTime = expectedLeaveTime;
         this.leaveTime = leaveTime;
         this.lastExecuteTime = lastExecuteTime;
-        this.executeTime = executeTime;
         this.cancelTime = cancelTime;
     }
 
@@ -87,7 +80,6 @@ public class OrderTimePO implements Serializable{
         this.expectedLeaveTime = null;
         this.leaveTime = null;
         this.lastExecuteTime = null;
-        this.executeTime = null;
         this.cancelTime = null;
     }
 
@@ -137,14 +129,6 @@ public class OrderTimePO implements Serializable{
 
     public void setLastExecuteTime(LocalDateTime lastExecuteTime) {
         this.lastExecuteTime = lastExecuteTime;
-    }
-
-    public LocalDateTime getExecuteTime() {
-        return executeTime;
-    }
-
-    public void setExecuteTime(LocalDateTime executeTime) {
-        this.executeTime = executeTime;
     }
 
     public LocalDateTime getCancelTime() {

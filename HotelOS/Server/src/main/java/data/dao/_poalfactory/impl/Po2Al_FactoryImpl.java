@@ -64,8 +64,8 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
     @Override
     public ArrayList<Object> toRoomAl(RoomPO roomPO) {
         ArrayList<Object> roomInfoContent = new ArrayList<>();
-        roomInfoContent.add(roomPO.getRoomId());
-        roomInfoContent.add(roomPO.getHotelId());
+        roomInfoContent.add(roomPO.getroomID());
+        roomInfoContent.add(roomPO.gethotelID());
         roomInfoContent.add(toString(roomPO.getRoomType()));
         roomInfoContent.add(roomPO.getTotal());
         roomInfoContent.add(roomPO.getAvailable());

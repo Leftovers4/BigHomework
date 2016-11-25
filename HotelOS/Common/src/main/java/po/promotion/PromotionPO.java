@@ -53,17 +53,17 @@ public class PromotionPO implements Serializable {
     /**
      * 地址商圈
      */
-    private PromotionTraAreaPO promotionTraAreaPO;
+    private ArrayList<PromotionTraAreaPO> promotionTraAreaPOs;
 
     /**
      * 合作企业
      */
-    private List<String> enterprises;
+    private ArrayList<PromotionEntPO> promotionEntPOs;
 
     /**
      * 会员等级制度
      */
-    private List<PromotionMRPO> promotionMRPOs;
+    private ArrayList<PromotionMRPO> promotionMRPOs;
 
 
     /**
@@ -104,26 +104,41 @@ public class PromotionPO implements Serializable {
         this.leastRooms = leastRooms;
     }
 
-    public PromotionPO(long promotionID, PromotionType promotionType, List<String> enterprises, double discount) {
+    public PromotionPO(long promotionID, PromotionType promotionType, ArrayList<PromotionEntPO> enterprises, double discount) {
         initial();
         this.promotionID = promotionID;
         this.promotionType = promotionType;
-        this.enterprises = enterprises;
+        this.promotionEntPOs = enterprises;
         this.discount = discount;
     }
 
-    public PromotionPO(long promotionID, PromotionType promotionType, List<PromotionMRPO> promotionMRPOs) {
+    public PromotionPO(long promotionID, PromotionType promotionType, ArrayList<PromotionMRPO> promotionMRPOs) {
         initial();
         this.promotionID = promotionID;
         this.promotionType = promotionType;
         this.promotionMRPOs = promotionMRPOs;
     }
 
-    public PromotionPO(long promotionID, PromotionType promotionType, String address, String tradingArea, List<PromotionMRPO> promotionMRPOs) {
+    public PromotionPO(long promotionID, PromotionType promotionType, String address, String tradingArea, ArrayList<PromotionMRPO> promotionMRPOs) {
         initial();
         this.promotionID = promotionID;
         this.promotionType = promotionType;
-        this.promotionTraAreaPO = new PromotionTraAreaPO(address, tradingArea);
+        // TODO 传入的是地址商圈列表 需要修改的地方
+//        this.promotionTraAreaPO = new PromotionTraAreaPO(address, tradingArea);
+        this.promotionMRPOs = promotionMRPOs;
+    }
+
+    // 用于从数据库中读取出来一个po
+    public PromotionPO(long promotionID, PromotionType promotionType, long hotelID, int leastRooms, double discount, PromotionTimePO promotionTimePO, ArrayList<PromotionTraAreaPO> promotionTraAreaPOs, ArrayList<PromotionEntPO> promotionEntPOs, ArrayList<PromotionMRPO> promotionMRPOs) {
+        initial();
+        this.promotionID = promotionID;
+        this.promotionType = promotionType;
+        this.hotelID = hotelID;
+        this.leastRooms = leastRooms;
+        this.discount = discount;
+        this.promotionTimePO = promotionTimePO;
+        this.promotionTraAreaPOs = promotionTraAreaPOs;
+        this.promotionEntPOs = promotionEntPOs;
         this.promotionMRPOs = promotionMRPOs;
     }
 
@@ -132,8 +147,8 @@ public class PromotionPO implements Serializable {
         leastRooms = 0;
         discount = 1;
         promotionTimePO = new PromotionTimePO();
-        promotionTraAreaPO = new PromotionTraAreaPO();
-        enterprises = new ArrayList<>();
+        promotionTraAreaPOs = new ArrayList<>();
+        promotionEntPOs = new ArrayList<>();
         promotionMRPOs = new ArrayList<>();
         for(int i = 0; i < UserLevel.MAX_LEVEL; i++){
             promotionMRPOs.add(new PromotionMRPO(i+1, 0.0, 0.0));
@@ -195,14 +210,6 @@ public class PromotionPO implements Serializable {
     }
 
 
-    public List<String> getEnterprises() {
-        return enterprises;
-    }
-
-    public void setEnterprises(List<String> enterprises) {
-        this.enterprises = enterprises;
-    }
-
     public PromotionTimePO getPromotionTimePO() {
         return promotionTimePO;
     }
@@ -211,19 +218,27 @@ public class PromotionPO implements Serializable {
         this.promotionTimePO = promotionTimePO;
     }
 
-    public PromotionTraAreaPO getPromotionTraAreaPO() {
-        return promotionTraAreaPO;
+    public ArrayList<PromotionTraAreaPO> getPromotionTraAreaPOs() {
+        return promotionTraAreaPOs;
     }
 
-    public void setPromotionTraAreaPO(PromotionTraAreaPO promotionTraAreaPO) {
-        this.promotionTraAreaPO = promotionTraAreaPO;
+    public void setPromotionTraAreaPOs(ArrayList<PromotionTraAreaPO> promotionTraAreaPOs) {
+        this.promotionTraAreaPOs = promotionTraAreaPOs;
     }
 
-    public List<PromotionMRPO> getPromotionMRPOs() {
-        return promotionMRPOs;
+    public ArrayList<PromotionEntPO> getPromotionEntPOs() {
+        return promotionEntPOs;
     }
 
-    public void setPromotionMRPOs(List<PromotionMRPO> promotionMRPOs) {
+    public void setPromotionEntPOs(ArrayList<PromotionEntPO> promotionEntPOs) {
+        this.promotionEntPOs = promotionEntPOs;
+    }
+
+    public void setPromotionMRPOs(ArrayList<PromotionMRPO> promotionMRPOs) {
         this.promotionMRPOs = promotionMRPOs;
+    }
+
+    public ArrayList<PromotionMRPO> getPromotionMRPOs() {
+        return promotionMRPOs;
     }
 }
