@@ -19,7 +19,7 @@ public class CreditRecordPO implements Serializable {
     /**
      * 信用记录id
      */
-    int recordId;
+    long recordID;
 
     /**
      * 用户名
@@ -55,9 +55,9 @@ public class CreditRecordPO implements Serializable {
         initial();
     }
 
-    public CreditRecordPO(int recordId, String username, double currentCredit, double changedCredit, LocalDateTime changedTime, CreditChangedCause creditChangedCause, String orderID) {
+    public CreditRecordPO(long recordID, String username, double currentCredit, double changedCredit, LocalDateTime changedTime, CreditChangedCause creditChangedCause, String orderID) {
         initial();
-        this.recordId = recordId;
+        this.recordID = recordID;
         this.username = username;
         this.currentCredit = currentCredit;
         this.changedCredit = changedCredit;
@@ -67,7 +67,7 @@ public class CreditRecordPO implements Serializable {
     }
 
     private void initial(){
-        this.recordId = 0;
+        this.recordID = 0;
         this.username = "";
         this.currentCredit = 0.0;
         this.changedCredit = 0.0;
@@ -77,12 +77,12 @@ public class CreditRecordPO implements Serializable {
     }
 
 
-    public int getRecordId() {
-        return recordId;
+    public long getrecordID() {
+        return recordID;
     }
 
-    public void setRecordId(int recordId) {
-        this.recordId = recordId;
+    public void setrecordID(long recordID) {
+        this.recordID = recordID;
     }
 
     public String getUsername() {

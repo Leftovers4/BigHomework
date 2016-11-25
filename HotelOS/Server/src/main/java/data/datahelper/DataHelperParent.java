@@ -72,6 +72,7 @@ public class DataHelperParent {
         TB_TO_COL.put("enterprise", strsToList("match_id", "hotel_id", "enterprise"));
         TB_TO_COL.put("address", strsToList("address_id", "address", "trading_area", "discount"));
         TB_TO_COL.put("member_regulation", strsToList("level", "credit", "discount"));
+        TB_TO_COL.put("hotel_image", strsToList("hotel_id", "image_reference"));
 
         // 初始化TYPEMAP
         TYPEMAP.put("user", "member_type");

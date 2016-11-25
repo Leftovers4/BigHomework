@@ -15,5 +15,6 @@ public enum TableName {
     promotion,
     room,
     user,
+    hotel_image
 
 }

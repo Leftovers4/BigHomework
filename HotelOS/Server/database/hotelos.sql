@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-11-21 22:33:34
+Date: 2016-11-25 09:11:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -82,6 +82,23 @@ CREATE TABLE `hotel` (
 
 -- ----------------------------
 -- Records of hotel
+-- ----------------------------
+INSERT INTO `hotel` VALUES ('522000', '榕江小酒店', '1', '广东揭阳', '东山', '包吃包住', '没有特殊服务');
+INSERT INTO `hotel` VALUES ('522001', '榕江中酒店', '3', '广东潮汕', '东山', '包吃包住', '没有特殊服务');
+INSERT INTO `hotel` VALUES ('522002', '榕江大酒店', '5', '广东揭阳', '东山', '包吃包住', '没有特殊服务');
+
+-- ----------------------------
+-- Table structure for hotel_image
+-- ----------------------------
+DROP TABLE IF EXISTS `hotel_image`;
+CREATE TABLE `hotel_image` (
+  `hotel_id` int(6) unsigned NOT NULL DEFAULT '0',
+  `image_reference` char(80) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`hotel_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of hotel_image
 -- ----------------------------
 
 -- ----------------------------
@@ -175,6 +192,7 @@ CREATE TABLE `promotion` (
 -- ----------------------------
 -- Records of promotion
 -- ----------------------------
+INSERT INTO `promotion` VALUES ('123456', 'WP', '522000', '1', '1', '2016-11-23 09:54:29', '2016-11-23 09:54:29', '0.10', '0.10');
 
 -- ----------------------------
 -- Table structure for room
@@ -188,11 +206,12 @@ CREATE TABLE `room` (
   `available` int(10) unsigned NOT NULL,
   `price` decimal(8,2) NOT NULL,
   PRIMARY KEY (`room_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=110111 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of room
 -- ----------------------------
+INSERT INTO `room` VALUES ('110110', '522000', 'SINGLE', '5', '2', '52.00');
 
 -- ----------------------------
 -- Table structure for user
@@ -215,3 +234,4 @@ CREATE TABLE `user` (
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('Hiki', '123456', 'GHB', '0', '110', 'NONE', '1', '2016-11-19', '');
+INSERT INTO `user` VALUES ('Hikii', '123456', 'GHB', '1', '110', 'NONE', '1', '2016-11-23', '');

@@ -5,6 +5,7 @@ import po.hotel.RoomPO;
 import po.order.OrderPO;
 import po.personnel.PersonnelPO;
 import po.promotion.PromotionPO;
+import po.user.CreditRecordPO;
 import po.user.UserPO;
 
 import java.util.ArrayList;
@@ -25,6 +26,9 @@ public interface Po2Al_Factory {
     public ArrayList<Object> toOrderAl(OrderPO orderPO);
 
     public ArrayList<Object> toPromotionAl(PromotionPO promotionPO);
+
+    public ArrayList<Object> toCreditRecordAl(CreditRecordPO creditRecordPO);
+
 
     // TODO promotion类address等类的po创建问题
 

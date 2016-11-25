@@ -6,6 +6,7 @@ import po.hotel.RoomPO;
 import po.order.OrderPO;
 import po.personnel.PersonnelPO;
 import po.promotion.PromotionPO;
+import po.user.CreditRecordPO;
 import po.user.UserPO;
 
 import java.util.ArrayList;
@@ -119,7 +120,20 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
 
         return promotionInfoContent;
 
+    }
 
+    @Override
+    public ArrayList<Object> toCreditRecordAl(CreditRecordPO creditRecordPO) {
+        ArrayList<Object> crInfoContent = new ArrayList<>();
+        crInfoContent.add(creditRecordPO.getRecordId());
+        crInfoContent.add(creditRecordPO.getUsername());
+        crInfoContent.add(creditRecordPO.getCurrentCredit());
+        crInfoContent.add(creditRecordPO.getChangedCredit());
+        crInfoContent.add(toString(creditRecordPO.getChangedTime()));
+        crInfoContent.add(toString(creditRecordPO.getCreditChangedCause()));
+        crInfoContent.add(creditRecordPO.getOrderID());
+
+        return crInfoContent;
 
     }
 
@@ -130,7 +144,7 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
      * @param input
      * @return
      */
-    public String toString(Object input){
+    private static String toString(Object input){
         if(input == null){
             return "";
         }else{
