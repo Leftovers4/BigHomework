@@ -14,25 +14,27 @@ import java.util.List;
  */
 public class HotelBlServiceImpl implements HotelBLService{
 
+    HotelManager hotelManager;
     HotelList hotelList;
 
     public HotelBlServiceImpl(){
+        hotelManager = new HotelManager();
         hotelList = new HotelList();
     }
 
     @Override
     public ResultMessage addHotel(HotelVO hotelVO) {
-        return null;
+        return hotelManager.addHotel(hotelVO);
     }
 
     @Override
     public ResultMessage deleteHotel(long hotelID) {
-        return null;
+        return hotelManager.deleteHotel(hotelID);
     }
 
     @Override
     public ResultMessage updateHotelInfo(HotelVO hotelVO) {
-        return null;
+        return hotelManager.updateHotelInfo(hotelVO);
     }
 
     @Override
@@ -61,7 +63,7 @@ public class HotelBlServiceImpl implements HotelBLService{
     }
 
     @Override
-    public ResultMessage deleteRoom(RoomType roomType) {
+    public ResultMessage deleteRoom(long hotelID, RoomType roomType) {
         return null;
     }
 

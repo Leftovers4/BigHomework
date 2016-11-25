@@ -78,12 +78,13 @@ public interface HotelBLService {
     public ResultMessage addRoom(RoomVO roomVO);
 
     /**
-     * 删除已有的房间类型
+     * 删除某个酒店已有的房间类型
      *
+     * @param hotelID 酒店的id
      * @param roomType 房间类型，包括单人房和双人房
      * @return SUCCESS或者FAIL，FAIL表示不存在该房间类型
      */
-    public ResultMessage deleteRoom(RoomType roomType);
+    public ResultMessage deleteRoom(long hotelID, RoomType roomType);
 
     /**
      * 更新已有房间类型的信息
@@ -97,7 +98,7 @@ public interface HotelBLService {
      * 根据酒店的id查找该酒店的所有房间类型信息
      *
      * @param hotelID 酒店的id
-     * @return SUCCESS或者FAIL，FAIL表示不存在该酒店
+     * @return 对应的酒店的所有房间类型信息
      */
     public List<RoomVO> findRoomsByHotelID(long hotelID);
 

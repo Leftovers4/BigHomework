@@ -16,12 +16,17 @@ public class HotelVO {
     /**
      * ID
      */
-    public long HotelID;
+    public long hotelID;
 
     /**
      * 名称
      */
     public String hotelName;
+
+    /*
+     * 工作人员
+     */
+    public String hotelWorkerName;
 
     /**
      * 星级
@@ -31,12 +36,12 @@ public class HotelVO {
     /**
      * 地址
      */
-    public Address address;
+    public String address;
 
     /**
      * 商圈
      */
-    public TradingArea tradingArea;
+    public String tradingArea;
 
     /**
      * 简介
@@ -49,21 +54,6 @@ public class HotelVO {
     public String service;
 
     /**
-     * 客房数量
-     */
-    public List<RoomVO> rooms;
-
-    /**
-     * 历史评价
-     */
-    public ArrayList<ReviewVO> reviews;
-
-    /**
-     * 特定用户在该酒店的订单列表
-     */
-    public List<OrderVO> ordersByUserAndHotel;
-
-    /**
      * 浏览酒店时显示的酒店价格，是该酒店所有房间的最低价格，也是酒店列表排序的标准之一
      */
     public double price;
@@ -74,43 +64,66 @@ public class HotelVO {
     public double rating;
 
     /**
-     * 用于网站管理人员对酒店信息的查看和修改
+     * 房间类型
+     */
+    public List<RoomVO> rooms;
+
+    /**
+     * 历史评价
+     */
+    public List<ReviewVO> reviews;
+
+    /**
+     * 特定用户在该酒店的订单列表
+     */
+    public List<OrderVO> ordersByUserAndHotel;
+
+    /**
+     * 创建包含酒店工作人员查看酒店基本信息的界面信息的对象
      *
-     *
-     *
-     **/
-    public HotelVO(String hotelName, Address address, TradingArea tradingArea, String description,
-                   String service, ArrayList<RoomVO> rooms) {
-        super();
+     * @param hotelName     酒店名称
+     * @param hotelWorkerName 工作人员名称
+     * @param star          星级
+     * @param rating        评分
+     * @param address       地址
+     * @param tradingArea   商圈
+     * @param description   简介
+     * @param service       服务
+     */
+    public HotelVO(String hotelName, String hotelWorkerName, int star, double rating, String address, String tradingArea, String description, String service) {
         this.hotelName = hotelName;
+        this.hotelWorkerName = hotelWorkerName;
+        this.star = star;
+        this.rating = rating;
         this.address = address;
         this.tradingArea = tradingArea;
         this.description = description;
         this.service = service;
-        this.rooms = rooms;
-
     }
 
-
-
-    public HotelVO(long hotelID, String hotelName, int star, Address address, TradingArea tradingArea, String description, String service, List<RoomVO> rooms, ArrayList<ReviewVO> reviews, List<OrderVO> ordersByUserAndHotel, double price, double rating) {
-        HotelID = hotelID;
+    public HotelVO(long hotelID, String hotelName, String hotelWorkerName, int star, String address, String tradingArea, String description, String service, double price, double rating, List<RoomVO> rooms, List<ReviewVO> reviews, List<OrderVO> ordersByUserAndHotel) {
+        this.hotelID = hotelID;
         this.hotelName = hotelName;
+        this.hotelWorkerName = hotelWorkerName;
         this.star = star;
         this.address = address;
         this.tradingArea = tradingArea;
         this.description = description;
         this.service = service;
+        this.price = price;
+        this.rating = rating;
         this.rooms = rooms;
         this.reviews = reviews;
         this.ordersByUserAndHotel = ordersByUserAndHotel;
-        this.price = price;
-        this.rating = rating;
     }
 
+    /*
+     * 排序测试用构造器，别使用
+     */
     public HotelVO(int star, double price, double rating) {
         this.star = star;
         this.price = price;
         this.rating = rating;
     }
+
 }
