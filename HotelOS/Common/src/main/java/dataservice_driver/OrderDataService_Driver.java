@@ -27,7 +27,7 @@ public class OrderDataService_Driver {
 
     @Test
     public void find() throws Exception {
-        ArrayList<OrderPO> res = tested.find(new OrderPO("12345620161111001", 123456,"张三", OrderType.Abnormal,"如家", null,null, 2, false, null, null,null,null));
+        ArrayList<OrderPO> res = tested.find(new OrderPO("12345620161111001", 123456,"张三", OrderType.Abnormal,"如家", null, 0, null, 2, false, null, null,null,null));
         for (int i = 0; i < res.size(); i++) {
             printOrderPO(res.get(i));
         }
@@ -50,13 +50,13 @@ public class OrderDataService_Driver {
         System.out.println(orderPO.getHotelID());
         System.out.println(orderPO.getHotelName());
         System.out.println(orderPO.getPersonAmount());
-        System.out.println(orderPO.getRoom().getRoomType());
+        System.out.println(orderPO.getRoomType());
+        System.out.println(orderPO.getRoomAmount());
         System.out.println(orderPO.isWithChildren());
         System.out.println(orderPO.getOrderPricePO().getActualPrice());
         System.out.println(orderPO.getOrderPricePO().getOriginPrice());
         System.out.println(orderPO.getOrderTimePO().getGenerateTime());
         System.out.println(orderPO.getOrderTimePO().getLastExecuteTime());
-        System.out.println(orderPO.getOrderTimePO().getExecuteTime());
         System.out.println(orderPO.getOrderTimePO().getExpectedLeaveTime());
         System.out.println(orderPO.getOrderTimePO().getCancelTime());
         System.out.println(orderPO.getReviewPO().getReview());

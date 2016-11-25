@@ -20,10 +20,10 @@ public class PO2Al_FactoryImplTest {
         tested = new Po2Al_FactoryImpl();
     }
 
-    @Test
-    public void testTypeToString(){
-        System.out.println(tested.toString(LocalDateTime.now()));
-
-    }
+//    @Test
+//    public void testTypeToString(){
+//        System.out.println(tested.toString(LocalDateTime.now()));
+//
+//    }
 
 }

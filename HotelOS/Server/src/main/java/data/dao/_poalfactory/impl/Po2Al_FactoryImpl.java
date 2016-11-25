@@ -82,8 +82,8 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         orderInfoContent.add(orderPO.getUsername());
         orderInfoContent.add(toString(orderPO.getOrderType()));
         orderInfoContent.add(orderPO.getHotelName());
-        orderInfoContent.add(toString(orderPO.getRoom().getRoomType()));
-        orderInfoContent.add(orderPO.getRoom().getTotal());
+        orderInfoContent.add(toString(orderPO.getRoomType()));
+        orderInfoContent.add(orderPO.getRoomAmount());
         orderInfoContent.add(orderPO.getRoomNumber());
         orderInfoContent.add(orderPO.getPersonAmount());
         orderInfoContent.add(orderPO.isWithChildren());
