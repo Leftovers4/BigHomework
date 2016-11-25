@@ -17,12 +17,12 @@ public class RoomPO implements Serializable {
     /**
      * 房间ID
      */
-    private long roomId;
+    private long roomID;
 
     /**
      * 酒店ID
      */
-    private long hotelId;
+    private long hotelID;
 
     /**
      * 房间类型
@@ -55,10 +55,10 @@ public class RoomPO implements Serializable {
     /**
      * 用于增加房间类型
      */
-    public RoomPO(long roomId, long hotelId, RoomType roomType, int total, int available, double price) {
+    public RoomPO(long roomID, long hotelID, RoomType roomType, int total, int available, double price) {
         initial();
-        this.roomId = roomId;
-        this.hotelId = hotelId;
+        this.roomID = roomID;
+        this.hotelID = hotelID;
         this.roomType = roomType;
         this.total = total;
         this.available = available;
@@ -70,8 +70,8 @@ public class RoomPO implements Serializable {
      * 初始化
      */
     private void initial(){
-        this.roomId = 0;
-        this.hotelId = 0;
+        this.roomID = 0;
+        this.hotelID = 0;
         this.roomType = null;
         this.total = 0;
         this.available = 0;
@@ -81,20 +81,20 @@ public class RoomPO implements Serializable {
 
 
 
-    public long getRoomId() {
-        return roomId;
+    public long getroomID() {
+        return roomID;
     }
 
-    public void setRoomId(long roomId) {
-        this.roomId = roomId;
+    public void setroomID(long roomID) {
+        this.roomID = roomID;
     }
 
-    public long getHotelId() {
-        return hotelId;
+    public long gethotelID() {
+        return hotelID;
     }
 
-    public void setHotelId(long hotelId) {
-        this.hotelId = hotelId;
+    public void sethotelID(long hotelID) {
+        this.hotelID = hotelID;
     }
 
     public RoomType getRoomType() {

@@ -9,9 +9,7 @@ import po.promotion.PromotionPO;
 import po.user.CreditRecordPO;
 import po.user.MemberPO;
 import po.user.UserPO;
-import util.CreditChangedCause;
-import util.EnumFactory;
-import util.MemberType;
+import util.*;
 
 import java.lang.reflect.Member;
 import java.time.LocalDate;
@@ -66,7 +64,21 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
 
     @Override
     public PersonnelPO toPersonnelPO(Iterator<Object> personnelAL) {
-        return null;
+        // 若personnel表没有内容，则返回null
+        if(!personnelAL.hasNext()){
+            return null;
+        }
+        // 从personnel表中获取
+        long personnelID = (long) personnelAL.next();
+        String password = (String) personnelAL.next();
+        PersonnelType personnelType = (PersonnelType) EnumFactory.getEnum((String)personnelAL.next());
+        String name = (String) personnelAL.next();
+        long hotelID = (long) personnelAL.next();
+
+        PersonnelPO personnelPO = new PersonnelPO(personnelID, password, personnelType, name, hotelID);
+
+        return personnelPO;
+
     }
 
     @Override
@@ -76,7 +88,21 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
 
     @Override
     public RoomPO toRoomPO(Iterator<Object> roomAL) {
-        return null;
+        // 若room表没有内容，则返回null
+        if(!roomAL.hasNext()){
+            return null;
+        }
+        // 从room表中获取
+        long roomID = (long) roomAL.next();
+        long hotelID = (long) roomAL.next();
+        RoomType roomType = (RoomType) EnumFactory.getEnum((String)roomAL.next());
+        int total = (int) roomAL.next();
+        int available = (int) roomAL.next();
+        double price = (double) roomAL.next();
+
+        RoomPO roomPO = new RoomPO(roomID, hotelID, roomType, total, available, price);
+
+        return roomPO;
     }
 
     @Override

@@ -125,7 +125,7 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
     @Override
     public ArrayList<Object> toCreditRecordAl(CreditRecordPO creditRecordPO) {
         ArrayList<Object> crInfoContent = new ArrayList<>();
-        crInfoContent.add(creditRecordPO.getRecordId());
+        crInfoContent.add(creditRecordPO.getrecordID());
         crInfoContent.add(creditRecordPO.getUsername());
         crInfoContent.add(creditRecordPO.getCurrentCredit());
         crInfoContent.add(creditRecordPO.getChangedCredit());
