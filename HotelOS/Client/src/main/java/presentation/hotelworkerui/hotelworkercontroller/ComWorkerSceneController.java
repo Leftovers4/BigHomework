@@ -2,9 +2,14 @@ package presentation.hotelworkerui.hotelworkercontroller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.*;
+import presentation.util.LeftBarEffect;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Hitiger on 2016/11/18.
@@ -22,11 +27,20 @@ public class ComWorkerSceneController {
     @FXML private Button updateCheckInBtn;
     @FXML private Button updateOutBtn;
 
+    @FXML private ImageView slider;
+
+    private Button currentBtn = null;
+    //左边栏按钮集合
+    private ArrayList<Button> leftBarBtnArr;
+    LeftBarEffect leftBarEffect = new LeftBarEffect();
+
     private Stage stage;
 
     public void launch(Stage primaryStage){
         stage = primaryStage;
         mainPane.getChildren().add(new InfoPane(stage,mainPane));
+        leftBarBtnArr = new ArrayList<>(Arrays.asList(hotelInfoBtn, orderListBtn, registerRoomBtn,
+                managePromotionBtn, updateCheckInBtn, updateOutBtn));
     }
 
     /**
@@ -37,9 +51,20 @@ public class ComWorkerSceneController {
         mainPane.getChildren().add(newPane);
     }
 
+    /**
+     * 鼠标点击按钮效果
+     * @param button
+     */
+    private void leftBarBtnEffect(Button button) {
+        leftBarEffect.buttonActionEffect(button, leftBarBtnArr);
+    }
+
     @FXML
     private void showHotelInfo(){
+        leftBarBtnEffect(hotelInfoBtn);
+        changeSliderPos(260);
         changePane(new InfoPane(stage,mainPane));
+        currentBtn = hotelInfoBtn;
     }
 
     /**
@@ -47,28 +72,116 @@ public class ComWorkerSceneController {
      */
     @FXML
     private void showOrderList(){
+        leftBarBtnEffect(orderListBtn);
+        changeSliderPos(305);
         changePane(new OrderListPane(stage));
+        currentBtn = orderListBtn;
     }
 
     @FXML
     private void showRegisterRoom(){
+        leftBarBtnEffect(registerRoomBtn);
+        changeSliderPos(350);
         changePane(new RegisterRoomPane(stage));
+        currentBtn = registerRoomBtn;
     }
 
     @FXML
     private void showManagePromotion(){
+        leftBarBtnEffect(managePromotionBtn);
+        changeSliderPos(395);
         changePane(new ManagePromotionPane(stage));
+        currentBtn = managePromotionBtn;
     }
 
     @FXML
     private void showUpdateCheckIn(){
+        leftBarBtnEffect(updateCheckInBtn);
+        changeSliderPos(440);
         changePane(new UpdateCheckInPane(stage,mainPane));
+        currentBtn = updateCheckInBtn;
     }
 
     @FXML
     private void showUpdateOut(){
+        leftBarBtnEffect(updateOutBtn);
+        changeSliderPos(485);
         changePane(new UpdateOutPane(stage,mainPane));
+        currentBtn = updateOutBtn;
     }
 
 
+    /**
+     * 侧边栏滑块位置改变
+     * @param y
+     */
+    private void changeSliderPos(double y) {
+        slider.setVisible(true);
+        slider.setLayoutX(193);
+        slider.setLayoutY(y);
+    }
+
+    /**
+     * 鼠标悬停按钮效果
+     * @param button
+     */
+    private void mouseOnEffect(Button button) {
+        leftBarEffect.buttonMouseOnEffect(button, leftBarBtnArr, currentBtn);
+    }
+    @FXML
+    private void mouseOnHotelInfo() {
+        mouseOnEffect(hotelInfoBtn);
+    }
+    @FXML
+    private void mouseOnOrderList() {
+        mouseOnEffect(orderListBtn);
+    }
+    @FXML
+    private void mouseOnRegisterRoom() {
+        mouseOnEffect(registerRoomBtn);
+    }
+    @FXML
+    private void mouseOnManagePromotion() {
+        mouseOnEffect(managePromotionBtn);
+    }
+    @FXML
+    private void mouseOnUpdateCheckin() {
+        mouseOnEffect(updateCheckInBtn);
+    }
+    @FXML
+    private void mouseOnUpdateOut() {
+        mouseOnEffect(updateOutBtn);
+    }
+
+    /**
+     * 鼠标移出按钮效果
+     * @param button
+     */
+    private void mouseOutEffect(Button button) {
+        leftBarEffect.buttonMouseOutEffect(button, currentBtn);
+    }
+    @FXML
+    private void mouseOutHotelInfo() {
+        mouseOutEffect(hotelInfoBtn);
+    }
+    @FXML
+    private void mouseOutOrderList() {
+        mouseOutEffect(orderListBtn);
+    }
+    @FXML
+    private void mouseOutRegisterRoom() {
+        mouseOutEffect(registerRoomBtn);
+    }
+    @FXML
+    private void mouseOutManagePromotion() {
+        mouseOutEffect(managePromotionBtn);
+    }
+    @FXML
+    private void mouseOutUpdateCheckin() {
+        mouseOutEffect(updateCheckInBtn);
+    }
+    @FXML
+    private void mouseOutUpdateOut() {
+        mouseOutEffect(updateOutBtn);
+    }
 }

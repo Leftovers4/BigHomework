@@ -28,7 +28,7 @@
             <TableColumn prefWidth="75.0" />
         </columns>
       </TableView>
-      <Button layoutX="340.0" layoutY="125.0" mnemonicParsing="false">
+      <Button onAction="#cancelOrder" layoutX="340.0" layoutY="125.0" mnemonicParsing="false">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>

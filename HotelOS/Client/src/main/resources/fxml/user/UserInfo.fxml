@@ -30,7 +30,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Button>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="topBarPhoto" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/common/initialPhoto.png" />
                </image>
@@ -75,10 +75,10 @@
       <Label layoutX="345.0" layoutY="115.0" text="用户名：" />
       <Label layoutX="362.0" layoutY="175.0" text="姓名：" />
       <Label layoutX="362.0" layoutY="235.0" text="性别：" />
-      <Label layoutX="325.0" layoutY="355.0" text="联系方式：" />
-      <Label layoutX="325.0" layoutY="295.0" text="出生日期：" />
+      <Label layoutX="330.0" layoutY="355.0" text="联系方式：" />
+      <Label layoutX="331.0" layoutY="295.0" text="出生日期：" />
       <Label layoutX="343.0" layoutY="415.0" text="信用值：" />
-      <Hyperlink layoutX="487.0" layoutY="411.0" text="查看信用记录" />
+      <Hyperlink onAction="#checkCreditRecord" layoutX="487.0" layoutY="411.0" text="查看信用记录" />
       <Label layoutX="325.0" layoutY="475.0" text="会员信息：" />
       <ImageView fx:id="userPhoto" fitHeight="170.0" fitWidth="170.0" layoutX="80.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -104,6 +104,6 @@
       <Label fx:id="userSex" layoutX="435.0" layoutY="235.0" text="Label" />
       <Label fx:id="birthDate" layoutX="435.0" layoutY="295.0" text="Label" />
       <Label fx:id="phone" layoutX="435.0" layoutY="355.0" text="Label" />
-      <Button fx:id="editInfoBtn" layoutX="323.0" layoutY="596.0" mnemonicParsing="false" onAction="#editUserInfo" prefHeight="30.0" prefWidth="100.0" text="编辑" />
+      <Button fx:id="editInfoBtn" layoutX="490.0" layoutY="596.0" mnemonicParsing="false" onAction="#editUserInfo" prefHeight="30.0" prefWidth="100.0" text="编辑" />
    </children>
 </fx:root>

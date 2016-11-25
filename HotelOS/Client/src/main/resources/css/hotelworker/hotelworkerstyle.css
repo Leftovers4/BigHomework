@@ -3,6 +3,9 @@
     -fx-font-size: 18px;
 }
 
+.button {
+    -fx-cursor: hand;
+}
 
 /*显示的panel 位于Pane内*/
 .panel {

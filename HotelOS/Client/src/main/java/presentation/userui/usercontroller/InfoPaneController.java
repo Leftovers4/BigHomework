@@ -6,8 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import presentation.userui.userscene.CreditRecordPane;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -20,6 +22,7 @@ import java.net.URL;
 public class InfoPaneController {
 
     private Stage stage;
+    private Pane mainPane;
 
     @FXML private TextField userIdField;
     @FXML private TextField userNameField;
@@ -31,6 +34,7 @@ public class InfoPaneController {
     @FXML private Button cleanAllBtn;
 
     @FXML private ImageView userPhoto;
+    @FXML private ImageView topBarPhoto;
 
     @FXML private Label userIdLabel;
     @FXML private Label usernameLabel;
@@ -41,8 +45,9 @@ public class InfoPaneController {
     @FXML private Button registerCompanyvipBtn;
     @FXML private Button editInfoBtn;
 
-    public void launch(Stage primaryStage) {
+    public void launch(Stage primaryStage, Pane mainPane) {
         this.stage = primaryStage;
+        this.mainPane = mainPane;
     }
 
     @FXML
@@ -113,10 +118,6 @@ public class InfoPaneController {
         fileChooser.setTitle("选择图片");
         File selectedDirectory = fileChooser.showOpenDialog(stage);
 
-////        System.out.print(selectedDirectory.getAbsolutePath());
-//        String s = Class.class.getResource("/").getPath().toString();
-////        System.out.print(s);
-
         if (selectedDirectory!=null) {
             try {
                 String newpath = "C:/Leftovers/Cache/userPhoto/";
@@ -127,30 +128,23 @@ public class InfoPaneController {
                     file.mkdirs();
                     FileInputStream input = null;
                     FileOutputStream output = null;
-                    try {
-                        input = new FileInputStream(selectedDirectory);
-                        output = new FileOutputStream(fileName);
 
-                        byte[] b = new byte[1024 * 5];
-                        int len;
-                        while ((len = input.read(b)) != -1) {
-                            output.write(b, 0, len);
-                        }
+                    input = new FileInputStream(selectedDirectory);
+                    output = new FileOutputStream(fileName);
 
-                        output.flush();
-                        output.close();
-                        input.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    byte[] b = new byte[1024 * 5];
+                    int len;
+                    while ((len = input.read(b)) != -1) {
+                        output.write(b, 0, len);
                     }
 
-
+                    output.flush();
+                    output.close();
+                    input.close();
                 }
-
-
-
                 Image image = new Image("file:///"+fileName);
                 userPhoto.setImage(image);
+                topBarPhoto.setImage(image);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -161,6 +155,13 @@ public class InfoPaneController {
 
 
 
+    }
+
+
+    @FXML
+    private void checkCreditRecord() {
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new CreditRecordPane(stage));
     }
 
 }

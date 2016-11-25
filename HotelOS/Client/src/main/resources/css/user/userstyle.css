@@ -187,3 +187,17 @@
     -fx-background-insets: 0;
 }
 
+
+
+#nextBtn {
+    -fx-background-color: deepskyblue;
+}
+#confirmBtn {
+    -fx-background-color: deepskyblue;
+}
+#backToEdit {
+    -fx-background-color: deepskyblue;
+}
+#writeOrder {
+    -fx-text-fill: deepskyblue;
+}
