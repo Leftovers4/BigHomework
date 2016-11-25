@@ -192,12 +192,104 @@
 #nextBtn {
     -fx-background-color: deepskyblue;
 }
+#nextBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#nextBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
 #confirmBtn {
     -fx-background-color: deepskyblue;
+}
+#confirmBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#confirmBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
 }
 #backToEdit {
     -fx-background-color: deepskyblue;
 }
+#backToEdit:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#backToEdit:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
 #writeOrder {
     -fx-text-fill: deepskyblue;
+}
+
+
+
+#registerCommonBtn {
+    -fx-background-color: deepskyblue;
+    /*-fx-border-radius: 9px;*/
+    -fx-background-radius: 9px;
+}
+#registerCommonBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#registerCommonBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
+#registerCompanyBtn {
+    -fx-background-color: deepskyblue;
+    /*-fx-border-radius: 9px;*/
+    -fx-background-radius: 9px;
+}
+#registerCompanyBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#registerCompanyBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
+
+#cancelOrderBtn {
+    -fx-background-color: deepskyblue;
+}
+#cancelOrderBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#cancelOrderBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
+
+#evaluateBtn {
+    -fx-background-color: deepskyblue;
+}
+#evaluateBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#evaluateBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
+
+#evaluateCancel {
+    -fx-background-color: deepskyblue;
+}
+#evaluateCancel:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#evaluateCancel:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
+}
+
+#evalusteSubmit {
+    -fx-background-color: deepskyblue;
+}
+#evalusteSubmit:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+#evalusteSubmit:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
 }

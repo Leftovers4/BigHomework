@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
-<fx:root prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.RegisterCommonVIPController">
+<fx:root prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.RegisterCompanyVIPController">
    <children>
       <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
          <children>
@@ -75,18 +74,19 @@
       </HBox>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="132.0" layoutX="250.0" layoutY="84.0" stroke="BLACK" strokeType="INSIDE" width="351.0" />
       <Label layoutX="316.0" layoutY="260.0" text="姓名：" />
-      <Label layoutX="316.0" layoutY="320.0" text="性别：" />
-      <Label layoutX="286.0" layoutY="380.0" text="出生日期：" />
-      <Label layoutX="286.0" layoutY="440.0" text="联系方式：" />
-      <Label layoutX="288.0" layoutY="124.0" text="普通会员：" wrapText="true" />
-      <Label layoutX="373.0" layoutY="157.0" text="2、享受特定商圈专属折扣" />
-      <Label layoutX="373.0" layoutY="124.0" text="1、享受会员专属折扣" />
+      <Label layoutX="316.0" layoutY="310.0" text="性别：" />
+      <Label layoutX="286.0" layoutY="360.0" text="出生日期：" />
+      <Label layoutX="286.0" layoutY="410.0" text="联系方式：" />
+      <Label layoutX="288.0" layoutY="124.0" text="企业会员：" wrapText="true" />
+      <Label layoutX="373.0" layoutY="157.0" text="2、享受合作企业优惠" />
+      <Label layoutX="373.0" layoutY="124.0" text="1、享受企业会员专属折扣" />
       <TextField layoutX="376.0" layoutY="255.0" prefHeight="30.0" prefWidth="175.0" />
-      <RadioButton layoutX="376.0" layoutY="320.0" mnemonicParsing="false" text="男" />
-      <RadioButton layoutX="464.0" layoutY="320.0" mnemonicParsing="false" text="女" />
-      <DatePicker layoutX="376.0" layoutY="375.0" prefWidth="175.0" />
-      <TextField layoutX="375.0" layoutY="435.0" prefWidth="175.0" />
-      <Button fx:id="registerCommonBtn" disable="true" layoutX="315.0" layoutY="550.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="220.0" text="立即注册" />
-      <CheckBox fx:id="confirmCommonvipInfo" layoutX="352.0" layoutY="499.0" mnemonicParsing="false" onAction="#checkCommonvipInfo" text="我已核对信息无误" />
+      <RadioButton layoutX="377.0" layoutY="310.0" mnemonicParsing="false" text="男" />
+      <RadioButton layoutX="465.0" layoutY="310.0" mnemonicParsing="false" text="女" />
+      <DatePicker layoutX="376.0" layoutY="355.0" prefWidth="175.0" />
+      <TextField layoutX="376.0" layoutY="405.0" prefWidth="175.0" />
+      <Button fx:id="registerCompanyBtn" layoutX="315.0" layoutY="532.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="220.0" text="立即注册" />
+      <Label layoutX="286.0" layoutY="460.0" text="企业名称：" />
+      <TextField layoutX="377.0" layoutY="455.0" prefWidth="175.0" />
    </children>
 </fx:root>

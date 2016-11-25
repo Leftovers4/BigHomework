@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-
-<fx:root type="Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.EvaluateOrderController">
    <children>
       <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
          <children>
@@ -72,27 +71,27 @@
          </children>
       </HBox>
       <Label layoutX="371.0" layoutY="178.0" text="评分：" />
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="371.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView onMouseClicked="#star1event" onMouseEntered="#star1hover" onMouseExited="#star1out" fx:id="star1" fitHeight="40.0" fitWidth="40.0" layoutX="371.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/user/blankStar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="411.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView onMouseClicked="#star2event" onMouseEntered="#star2hover" onMouseExited="#star2out" fx:id="star2" fitHeight="40.0" fitWidth="40.0" layoutX="411.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/user/blankStar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="451.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView onMouseClicked="#star3event" onMouseEntered="#star3hover" onMouseExited="#star3out" fx:id="star3" fitHeight="40.0" fitWidth="40.0" layoutX="451.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/user/blankStar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="491.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView onMouseClicked="#star4event" onMouseEntered="#star4hover" onMouseExited="#star4out" fx:id="star4" fitHeight="40.0" fitWidth="40.0" layoutX="491.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/user/blankStar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="531.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView onMouseClicked="#star5event" onMouseEntered="#star5hover" onMouseExited="#star5out" fx:id="star5" fitHeight="40.0" fitWidth="40.0" layoutX="531.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/user/blankStar.png" />
          </image>
@@ -104,8 +103,8 @@
             <Image url="@../../img/common/initialPhoto.png" />
          </image>
       </ImageView>
-      <Button layoutX="574.0" layoutY="565.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" text="提交" />
+      <Button fx:id="evalusteSubmit" layoutX="574.0" layoutY="565.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" text="提交" />
       <CheckBox layoutX="254.0" layoutY="505.0" mnemonicParsing="false" text="匿名" />
-      <Button layoutX="459.0" layoutY="565.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" text="取消" />
+      <Button fx:id="evaluateCancel" layoutX="459.0" layoutY="565.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" text="取消" />
    </children>
 </fx:root>

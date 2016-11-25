@@ -95,8 +95,8 @@
       <Label layoutX="435.0" layoutY="415.0" text="0" />
       <Label layoutX="435.0" layoutY="475.0" text="普通会员：" />
       <Label layoutX="435.0" layoutY="525.0" text="企业会员：" />
-      <Button fx:id="registerCommonvipBtn" layoutX="540.0" layoutY="470.0" mnemonicParsing="false" text="注册" />
-      <Button fx:id="registerCompanyvipBtn" layoutX="540.0" layoutY="520.0" mnemonicParsing="false" text="注册" />
+      <Button fx:id="registerCommonvipBtn" onAction="#registerCommonvip" layoutX="540.0" layoutY="470.0" mnemonicParsing="false" text="注册" />
+      <Button fx:id="registerCompanyvipBtn" onAction="#registerCompanyvip" layoutX="540.0" layoutY="520.0" mnemonicParsing="false" text="注册" />
       <Button fx:id="saveInfo" layoutX="491.0" layoutY="596.0" mnemonicParsing="false" onAction="#saveUserInfo" prefWidth="70.0" text="保存" visible="false" />
       <Button fx:id="cleanAllBtn" layoutX="603.0" layoutY="596.0" mnemonicParsing="false" onAction="#cleanAll" prefWidth="70.0" text="重置" visible="false" />
       <Label fx:id="userIdLabel" layoutX="435.0" layoutY="115.0" text="name" />

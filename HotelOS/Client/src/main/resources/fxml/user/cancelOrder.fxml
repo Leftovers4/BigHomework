@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<fx:root type="Pane" fx:id="orderDetailPane" prefHeight="690.0" prefWidth="850.0" fx:controller="presentation.userui.usercontroller.CancelOrderController" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="orderDetailPane" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.CancelOrderController">
    <children>
       <Label layoutX="355.0" layoutY="116.0" text="预计入住时间：" />
       <Label layoutX="355.0" layoutY="171.0" text="预计离开时间：" />
@@ -40,7 +40,7 @@
       <Label fx:id="child1" layoutX="698.0" layoutY="336.0" text="有无" />
       <Label layoutX="355.0" layoutY="547.0" text="订  单  状  态：" />
       <Label layoutX="465.0" layoutY="547.0" text="状态" />
-      <Button layoutX="597.0" layoutY="542.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="102.0" text="撤销订单" />
+      <Button fx:id="cancelOrderBtn" layoutX="597.0" layoutY="542.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="撤销订单" />
       <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
          <children>
             <Button mnemonicParsing="false" stylesheets="@../../css/user/userstyle.css">

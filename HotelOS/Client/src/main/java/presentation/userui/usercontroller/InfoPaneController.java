@@ -10,6 +10,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import presentation.userui.userscene.CreditRecordPane;
+import presentation.userui.userscene.RegisterCommonVIPPane;
+import presentation.userui.userscene.RegisterCompanyVIPPane;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -164,4 +166,16 @@ public class InfoPaneController {
         mainPane.getChildren().add(new CreditRecordPane(stage));
     }
 
+
+    @FXML
+    private void registerCommonvip() {
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new RegisterCommonVIPPane(stage));
+    }
+
+    @FXML
+    private void registerCompanyvip() {
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new RegisterCompanyVIPPane(stage));
+    }
 }

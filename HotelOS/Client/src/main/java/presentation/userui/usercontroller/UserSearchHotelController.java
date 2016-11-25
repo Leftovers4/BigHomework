@@ -10,6 +10,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.InfoPane;
+import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
+import presentation.userui.userscene.OrderDetailUserPane;
 
 /**
  * Created by wyj on 2016/11/19.
@@ -17,14 +19,16 @@ import presentation.hotelworkerui.hotelworkerscene.InfoPane;
 public class UserSearchHotelController {
 
     private Stage stage;
+    private Pane mainPane;
 
     @FXML private Pane moreInfoChoice;
     @FXML private Pane upMoreInfo;
     @FXML private TableView hotelList;
     @FXML private Pane downMoreInfo;
 
-    public void launch(Stage primaryStage) {
+    public void launch(Stage primaryStage, Pane mainPane) {
         this.stage = primaryStage;
+        this.mainPane = mainPane;
     }
 
     @FXML
@@ -117,5 +121,19 @@ public class UserSearchHotelController {
         threeLess.setSelected(false);
         fourToFourPoFive.setSelected(false);
         onlyCheckRegistered.setSelected(false);
+    }
+
+
+
+
+
+
+
+
+    /***************临时方法***********************************/
+    @FXML
+    private void showOrderDetail() {
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane));
     }
 }

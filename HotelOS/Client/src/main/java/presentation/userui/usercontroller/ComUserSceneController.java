@@ -89,7 +89,7 @@ public class ComUserSceneController {
     private void searchHotel() {
         changeSliderPos(350);
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new SearchHotelPane(stage));
+        mainPane.getChildren().add(new SearchHotelPane(stage, mainPane));
         leftBarBtnEffect(searchHotelBtn);
         currentBtn = searchHotelBtn;
     }
