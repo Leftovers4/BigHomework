@@ -74,7 +74,7 @@ public class ComWorkerSceneController {
     private void showOrderList(){
         leftBarBtnEffect(orderListBtn);
         changeSliderPos(305);
-        changePane(new OrderListPane(stage));
+        changePane(new OrderListPane(stage,mainPane));
         currentBtn = orderListBtn;
     }
 
