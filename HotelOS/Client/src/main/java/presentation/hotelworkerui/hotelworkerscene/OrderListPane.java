@@ -18,7 +18,7 @@ public class OrderListPane extends Pane{
     }
 
     private void loadFxml(Stage primaryStage,Pane mainPane) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelorderlist.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelorderlist1.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

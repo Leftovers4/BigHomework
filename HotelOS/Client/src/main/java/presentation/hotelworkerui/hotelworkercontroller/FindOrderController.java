@@ -10,6 +10,12 @@ import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateCheckInPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateOrderInfoPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateOutPane;
+import util.OrderType;
+import vo.order.OrderPriceVO;
+import vo.order.OrderTimeVO;
+import vo.order.OrderVO;
+
+import java.time.LocalDateTime;
 
 /**
  * Created by Hitiger on 2016/11/21.
@@ -50,7 +56,11 @@ public class FindOrderController {
      * 搜索订单
      */
     @FXML private void findOrder(){
+        OrderPriceVO orderPriceVO = new OrderPriceVO(250,200);
+        OrderTimeVO orderTimeVO = new OrderTimeVO(LocalDateTime.of(2016,11,11,11,11),null,LocalDateTime.of(2016,11,12,8,00),LocalDateTime.of(2016,11,14,11,11),
+                LocalDateTime.of(2016,11,15,11,11),LocalDateTime.of(2016,11,12,11,11),null,null);
+        OrderVO orderVO = new OrderVO("12345678912345678", 123456, "user1", OrderType.Abnormal, "如家", null, "A110 A250", 2, false, null, orderTimeVO, orderPriceVO, null);
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new UpdateOrderInfoPane(stage,mainPane,isCheckIn));
+        mainPane.getChildren().add(new UpdateOrderInfoPane(stage,mainPane,isCheckIn,false,orderVO));
     }
 }

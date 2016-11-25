@@ -68,7 +68,7 @@
         <columns>
           <TableColumn id="idCol" fx:id="idCol" editable="false" prefWidth="232.0" text="订单号" />
           <TableColumn id="userCol" fx:id="userCol" editable="false" prefWidth="124.0" text="客户" />
-            <TableColumn id="amountCol" fx:id="amountCol" editable="false" prefWidth="72.0" text="价值" />
+            <TableColumn id="amountCol" fx:id="priceCol" editable="false" prefWidth="72.0" text="价值" />
             <TableColumn id="typeCol" fx:id="exetimeCol" editable="false" prefWidth="200.0" text="入住时间" />
             <TableColumn id="exetimeCol" fx:id="typeCol" prefWidth="145.0" text="状态" />
         </columns>

@@ -7,48 +7,87 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
+import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
+import vo.order.OrderVO;
 
 /**
  * Created by Hitiger on 2016/11/22.
  * Description :
  */
 public class UpdateOrderInfoPaneController {
+    //订单号、状态、价格
+    @FXML private Label orderIDLabel;
+    @FXML private Label orderTypeLabel;
+    @FXML private Label orderPriceLabel;
+
+    //生成时间
+    @FXML private Label generateTimeLabel;
+
+    //最晚执行时间
+    @FXML private Label exeLeastTimeLabel;
+
+    //入住时间
+    @FXML private Label      checkInTimeLabel;
+    @FXML private DatePicker checkinTimeDatePicker;
+    @FXML private TextField  checkinTimeField;
+
+    //预计离开时间
+    @FXML private Label      expLeaveTimeLabel;
+    @FXML private DatePicker expLeaveTimeDatePicker;
+    @FXML private TextField  expLeaveTimeField;
 
     //实际离开时间
     @FXML private Label      actLeaveTimeLabel;
     @FXML private DatePicker actLeaveTimeDatePicker;
     @FXML private TextField  actLeaveTimeField;
 
-    //入住时间
-    @FXML private Label      checkinTimeLabel;
-    @FXML private DatePicker checkinTimeDatePicker;
-    @FXML private TextField  checkinTimeField;
-    @FXML private Label      checkinTimeDayLabel;
-    @FXML private Label      checkinTimeMinLabel;
-
-    //预计离开时间
-    @FXML private Label      expLeaveTimeLabel;
-    @FXML private DatePicker expLeaveTimeDatePicker;
-    @FXML private TextField  expLeaveTimeField;
-    @FXML private Label  expLeaveTimeDayLabel;
-    @FXML private Label  expLeaveTimeMinLabel;
-
-    //入住人数
-    @FXML private TextField  peopleAmountField;
-    @FXML private Label  peopleAmountLabel;
+    //客户名、入住房间信息
+    @FXML private Label userNameLabel;
+    @FXML private Label peopleAmountLabel;
+    @FXML private Label withChildrenLabel;
+    @FXML private Label roomTypeLabel;
+    @FXML private Label roomAmountLabel;
+    @FXML private Label roomIDLabel;
+    @FXML private TextField roomIDField;
 
     private Stage stage;
     private Pane mainPane;
     private Boolean isCheckIn;
+    private Boolean isFromList;
 
-    public void launch(Stage primaryStage, Pane mainPane ,Boolean isCheckIn) {
+    public void launch(Stage primaryStage, Pane mainPane , Boolean isCheckIn,Boolean isFromList, OrderVO orderVO) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         this.isCheckIn = isCheckIn;
+        this.isFromList = isFromList;
+
         setActLeaveTimeComponentsVisible(!isCheckIn);
         setCheckinTimeComponentsVisible(isCheckIn);
         setExpLeaveTimeComponentsVisible(isCheckIn);
-        setPeopleAmountComponentsVisible(isCheckIn);
+        setRoomComponentsVisible(isCheckIn);
+
+        //初始化组件
+        initComponents(orderVO);
+    }
+
+    private void initComponents(OrderVO orderVO) {
+        orderIDLabel.setText(orderVO.orderID);
+        orderTypeLabel.setText(orderVO.orderType.toString());
+        orderPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
+
+        generateTimeLabel.setText(orderVO.orderTimeVO.generateTime.toString());
+        exeLeastTimeLabel.setText(orderVO.orderTimeVO.lastExecuteTime.toString());
+
+        userNameLabel.setText(orderVO.username);
+        peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
+        withChildrenLabel.setText(orderVO.withChildren ? "有" : "无");
+//        roomTypeLabel.setText();
+//        roomAmountLabel;
+    }
+
+    @FXML
+    private void submitUpdate(){
+
     }
     @FXML
     private void closeWindow(){
@@ -63,7 +102,11 @@ public class UpdateOrderInfoPaneController {
     @FXML
     private void back(){
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new FindOrderPane(stage,mainPane,isCheckIn));
+        if(isFromList){
+            mainPane.getChildren().add(new OrderListPane(stage,mainPane));
+        }else mainPane.getChildren().add(new FindOrderPane(stage,mainPane,isCheckIn));
+
+
     }
 
     private void setActLeaveTimeComponentsVisible(Boolean isVisible){
@@ -75,21 +118,14 @@ public class UpdateOrderInfoPaneController {
     private void setCheckinTimeComponentsVisible(Boolean isVisible){
         checkinTimeDatePicker.setVisible(isVisible);
         checkinTimeField.setVisible(isVisible);
-
-        checkinTimeDayLabel.setVisible(!isVisible);
-        checkinTimeMinLabel.setVisible(!isVisible);
     }
 
     private void setExpLeaveTimeComponentsVisible(Boolean isVisible){
         expLeaveTimeDatePicker.setVisible(isVisible);
         expLeaveTimeField.setVisible(isVisible);
-
-        expLeaveTimeDayLabel.setVisible(!isVisible);
-        expLeaveTimeMinLabel.setVisible(!isVisible);
     }
 
-    private void setPeopleAmountComponentsVisible(Boolean isVisible){
-        peopleAmountField.setVisible(isVisible);
-        peopleAmountLabel.setVisible(!isVisible);
+    private void setRoomComponentsVisible(Boolean isVisible){
+        roomIDField.setVisible(isVisible);
     }
 }

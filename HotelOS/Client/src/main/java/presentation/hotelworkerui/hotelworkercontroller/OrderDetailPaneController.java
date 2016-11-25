@@ -1,10 +1,12 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
+import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
 import vo.order.OrderVO;
 
 /**
@@ -19,34 +21,30 @@ public class OrderDetailPaneController {
     @FXML private Label orderPriceLabel;
 
     //生成时间
-    @FXML private Label createTimeDayLabel;
-    @FXML private Label createTimeMinLabel;
+    @FXML private Label generateTimeLabel;
 
-    //生成时间
-    @FXML private Label exeLeastTimeDayLabel;
-    @FXML private Label exeLeastTimeMinLabel;
+    //最晚执行时间
+    @FXML private Label exeLeastTimeLabel;
 
     //实际离开时间
-    @FXML private Label actLeaveTimeDayLabel;
-    @FXML private Label actLeaveTimeMinLabel;
-    @FXML private Label actLeaveTimeNullLabel;
+    @FXML private Label actLeaveTimeLabel;
 
     //入住时间
-    @FXML private Label checkInTimeDayLabel;
-    @FXML private Label checkInTimeMinLabel;
-    @FXML private Label checkInTimeNullLabel;
+    @FXML private Label checkInTimeLabel;
 
     //预计离开时间
-    @FXML private Label expLeaveTimeDayLabel;
-    @FXML private Label expLeaveTimeMinLabel;
-    @FXML private Label expLeaveTimeNullLabel;
+    @FXML private Label expLeaveTimeLabel;
 
-    //入住房间信息
-    @FXML private Label  peopleAmountLabel;
-    @FXML private Label  withChildrenLabel;
-    @FXML private Label  roomTypeLabel;
-    @FXML private Label  roomAmountLabel;
-    @FXML private Label  roomIDLabel;
+    //客户名、入住房间信息
+    @FXML private Label userNameLabel;
+    @FXML private Label peopleAmountLabel;
+    @FXML private Label withChildrenLabel;
+    @FXML private Label roomTypeLabel;
+    @FXML private Label roomAmountLabel;
+    @FXML private Label roomIDLabel;
+
+    //查看客户评价
+    @FXML private Hyperlink showReviewLink;
 
 
     private Stage stage;
@@ -58,7 +56,30 @@ public class OrderDetailPaneController {
         this.mainPane = mainPane;
         this.orderVO = orderVO;
 
+        //初始化便签
+        initOrderLabel(orderVO);
     }
+
+    private void initOrderLabel(OrderVO orderVO) {
+
+        orderIDLabel.setText(orderVO.orderID);
+        orderTypeLabel.setText(orderVO.orderType.toString());
+        orderPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
+
+        generateTimeLabel.setText(orderVO.orderTimeVO.generateTime.toString());
+        exeLeastTimeLabel.setText(orderVO.orderTimeVO.lastExecuteTime.toString());
+        checkInTimeLabel.setText(orderVO.orderTimeVO.checkinTime == null ? "尚未入住" : orderVO.orderTimeVO.checkinTime.toString());
+        expLeaveTimeLabel.setText(orderVO.orderTimeVO.expectedLeaveTime == null ? "尚未入住" : orderVO.orderTimeVO.expectedLeaveTime.toString());
+        actLeaveTimeLabel.setText(orderVO.orderTimeVO.leaveTime == null ? "尚未入住" : orderVO.orderTimeVO.leaveTime.toString());
+
+        userNameLabel.setText(orderVO.username);
+        peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
+        withChildrenLabel.setText(orderVO.withChildren ? "有" : "无");
+//        roomTypeLabel.setText();
+//        roomAmountLabel;
+        roomIDLabel.setText(orderVO.roomNumber);
+    }
+
 
     @FXML
     private void closeWindow(){
@@ -72,7 +93,7 @@ public class OrderDetailPaneController {
 
     @FXML
     private void back(){
-//        mainPane.getChildren().remove(0);
-//        mainPane.getChildren().add(new FindOrderPane(stage,mainPane));
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new OrderListPane(stage,mainPane));
     }
 }

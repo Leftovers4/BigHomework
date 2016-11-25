@@ -14,8 +14,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
+import presentation.hotelworkerui.hotelworkerscene.UpdateOrderInfoPane;
 import util.OrderType;
+import vo.order.OrderPriceVO;
+import vo.order.OrderTimeVO;
 import vo.order.OrderVO;
+
+import java.time.LocalDateTime;
 
 
 /**
@@ -29,7 +34,7 @@ public class OrderListPaneController {
     //列表栏
     @FXML private TableColumn idCol;
     @FXML private TableColumn userCol;
-    @FXML private TableColumn amountCol;
+    @FXML private TableColumn priceCol;
     @FXML private TableColumn typeCol;
     @FXML private TableColumn exetimeCol;
     //订单类型框
@@ -79,7 +84,7 @@ public class OrderListPaneController {
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         userCol.setCellValueFactory(new PropertyValueFactory<>("username"));
-        amountCol.setCellValueFactory(new PropertyValueFactory<>("personAmount"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("actualPrice"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
 
         orderTable.setItems(orderVoList);
@@ -87,9 +92,14 @@ public class OrderListPaneController {
 
     private ObservableList<OrderVO> getOrderVoList() {
         ObservableList<OrderVO> list= FXCollections.observableArrayList();
-        for (int i = 0; i< 30 ; i++) {
-            list.add(new OrderVO("12345678912345678", 123456, "user1", OrderType.Abnormal, "如家", null, "5", 2, false, null, null, null, null));
-        }
+//        for (int i = 0; i< 30 ; i++) {
+//
+//            list.add(new OrderVO("12345678912345678", 123456, "user1", OrderType.Abnormal, "如家", null, "A110", 2, false, null, null, null, null));
+//        }
+        OrderPriceVO orderPriceVO = new OrderPriceVO(250,200);
+        OrderTimeVO orderTimeVO = new OrderTimeVO(LocalDateTime.of(2016,11,11,11,11),null,LocalDateTime.of(2016,11,12,8,00),LocalDateTime.of(2016,11,14,11,11),
+                LocalDateTime.of(2016,11,15,11,11),LocalDateTime.of(2016,11,12,11,11),null,null);
+        list.add(new OrderVO("12345678912345678", 123456, "user1", OrderType.Abnormal, "如家", null, "A110 A250", 2, false, null, orderTimeVO, orderPriceVO, null));
         return list;
     }
 
@@ -108,7 +118,9 @@ public class OrderListPaneController {
      */
     @FXML
     private void checkIn(){
-
+        OrderVO orderVO = (OrderVO) orderTable.getSelectionModel().getSelectedItem();
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new UpdateOrderInfoPane(stage,mainPane,true,true,orderVO));
     }
 
     @FXML

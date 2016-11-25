@@ -151,6 +151,7 @@ public class RegisterRoomPaneController {
 
     @FXML
     private void cancelAdd(){
+        if(!isAdd) roomTable.setDisable(false);
         roomAmountField.clear();
         roomPriceField.clear();
 

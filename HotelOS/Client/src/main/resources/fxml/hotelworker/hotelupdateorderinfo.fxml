@@ -66,44 +66,41 @@
             </children>
         </HBox>
       <Label layoutX="56.0" layoutY="83.0" text="订单号：" />
-      <Label layoutX="142.0" layoutY="83.0" text="12345678912345678" />
-      <Label layoutX="56.0" layoutY="464.0" text="入住人数：" />
-      <Label layoutX="278.0" layoutY="464.0" text="儿童：" />
-      <Label fx:id="checkinTimeLabel" layoutX="56.0" layoutY="293.0" text="入住时间：" />
-      <Label fx:id="expLeaveTimeLabel" layoutX="425.0" layoutY="293.0" text="预计离开时间：" />
+      <Label fx:id="orderIDLabel" layoutX="142.0" layoutY="83.0" text="12345678912345678" />
+      <Label layoutX="56.0" layoutY="487.0" text="入住人数：" />
+      <Label layoutX="278.0" layoutY="487.0" text="儿童：" />
+      <Label layoutX="56.0" layoutY="293.0" text="入住时间：" />
+      <Label layoutX="425.0" layoutY="293.0" text="预计离开时间：" />
       <Label layoutX="56.0" layoutY="230.0" text="生成时间：" />
-      <Label layoutX="298.0" layoutY="230.0" text="16:30" />
       <Label layoutX="425.0" layoutY="230.0" text="最晚执行时间：" />
-      <Label layoutX="706.0" layoutY="230.0" text="16:30" />
-      <Label layoutX="582.0" layoutY="230.0" text="2016-10-29" />
-      <Label layoutX="175.0" layoutY="230.0" text="2016-10-29" />
-      <Label layoutX="357.0" layoutY="464.0" text="有" />
+      <Label fx:id="exeLeastTimeLabel" layoutX="582.0" layoutY="230.0" text="2016-10-29 16:30" />
+      <Label fx:id="generateTimeLabel" layoutX="175.0" layoutY="230.0" text="2016-10-29 16:30" />
+      <Label fx:id="withChildrenLabel" layoutX="357.0" layoutY="487.0" text="有" />
       <Label layoutX="56.0" layoutY="163.0" text="订单状态：" />
-      <Label layoutX="175.0" layoutY="163.0" text="未执行" />
+      <Label fx:id="orderTypeLabel" layoutX="175.0" layoutY="163.0" text="未执行" />
       <Label fx:id="actLeaveTimeLabel" layoutX="425.0" layoutY="356.0" text="实际离开时间：" />
-      <DatePicker fx:id="checkinTimeDatePicker" layoutX="144.0" layoutY="287.0" prefHeight="36.0" prefWidth="161.0" promptText="2016-10-29" />
-      <TextField fx:id="checkinTimeField" layoutX="313.0" layoutY="287.0" prefHeight="36.0" prefWidth="88.0" promptText="16：30" />
-      <TextField fx:id="expLeaveTimeField" layoutX="720.0" layoutY="287.0" prefHeight="36.0" prefWidth="88.0" promptText="16：30" />
-      <DatePicker fx:id="expLeaveTimeDatePicker" layoutX="551.0" layoutY="287.0" prefHeight="36.0" prefWidth="161.0" promptText="2016-10-29" />
-      <TextField fx:id="peopleAmountField" layoutX="160.0" layoutY="458.0" prefHeight="36.0" prefWidth="47.0" promptText="10" />
-      <Button layoutX="652.0" layoutY="617.0" mnemonicParsing="false" text="提交" />
+      <DatePicker fx:id="checkinTimeDatePicker" layoutX="144.0" layoutY="287.0" prefHeight="36.0" prefWidth="161.0" />
+      <TextField fx:id="checkinTimeField" alignment="CENTER" layoutX="313.0" layoutY="287.0" prefHeight="36.0" prefWidth="88.0" promptText="hh:mm" />
+      <TextField fx:id="expLeaveTimeField" alignment="CENTER" layoutX="720.0" layoutY="287.0" prefHeight="36.0" prefWidth="88.0" promptText="hh:mm" />
+      <DatePicker fx:id="expLeaveTimeDatePicker" layoutX="551.0" layoutY="287.0" prefHeight="36.0" prefWidth="161.0" />
+      <Button layoutX="652.0" layoutY="617.0" mnemonicParsing="false" onAction="#submitUpdate" text="提交" />
       <Button layoutX="748.0" layoutY="617.0" mnemonicParsing="false" text="取消" />
-      <DatePicker fx:id="actLeaveTimeDatePicker" layoutX="551.0" layoutY="350.0" prefHeight="36.0" prefWidth="161.0" promptText="2016-10-29" />
-      <TextField fx:id="actLeaveTimeField" layoutX="720.0" layoutY="350.0" prefHeight="36.0" prefWidth="88.0" promptText="16：30" />
-      <Label fx:id="checkinTimeDayLabel" layoutX="175.0" layoutY="293.0" text="2016-10-29" visible="false" />
-      <Label fx:id="checkinTimeMinLabel" layoutX="298.0" layoutY="293.0" text="16:30" visible="false" />
-      <Label fx:id="expLeaveTimeMinLabel" layoutX="706.0" layoutY="293.0" text="16:30" visible="false" />
-      <Label fx:id="expLeaveTimeDayLabel" layoutX="582.0" layoutY="293.0" text="2016-10-29" visible="false" />
-      <Label fx:id="peopleAmountLabel" layoutX="202.0" layoutY="464.0" text="10" visible="false" />
-      <Label layoutX="56.0" layoutY="527.0" text="客房类型：" />
-      <Label layoutX="278.0" layoutY="527.0" text="数量：" />
-      <Label layoutX="425.0" layoutY="527.0" text="房间号：" />
-      <Label layoutX="160.0" layoutY="527.0" text="单人房" />
-      <Label layoutX="361.0" layoutY="527.0" text="3" />
-      <TextField layoutX="510.0" layoutY="524.0" prefHeight="36.0" prefWidth="290.0" />
-      <Label layoutX="517.0" layoutY="527.0" text="A110 A111 A112" />
-      <Label layoutX="544.0" layoutY="163.0" text="1200" />
+      <DatePicker fx:id="actLeaveTimeDatePicker" layoutX="551.0" layoutY="350.0" prefHeight="36.0" prefWidth="161.0" />
+      <TextField fx:id="actLeaveTimeField" alignment="CENTER" layoutX="720.0" layoutY="350.0" prefHeight="36.0" prefWidth="88.0" promptText="hh:mm" />
+      <Label fx:id="checkInTimeLabel" layoutX="175.0" layoutY="293.0" text="2016-10-29" visible="false" />
+      <Label fx:id="expLeaveTimeLabel" layoutX="582.0" layoutY="293.0" text="2016-10-29" visible="false" />
+      <Label fx:id="peopleAmountLabel" layoutX="187.0" layoutY="487.0" text="10" />
+      <Label layoutX="56.0" layoutY="550.0" text="客房类型：" />
+      <Label layoutX="278.0" layoutY="550.0" text="数量：" />
+      <Label layoutX="425.0" layoutY="550.0" text="房间号：" />
+      <Label fx:id="roomTypeLabel" layoutX="177.0" layoutY="550.0" text="单人房" />
+      <Label fx:id="roomAmountLabel" layoutX="361.0" layoutY="550.0" text="3" />
+      <TextField fx:id="roomIDField" layoutX="510.0" layoutY="547.0" prefHeight="36.0" prefWidth="290.0" />
+      <Label fx:id="roomIDLabel" layoutX="517.0" layoutY="550.0" text="A110 A111 A112" visible="false" />
+      <Label fx:id="orderPriceLabel" layoutX="544.0" layoutY="163.0" text="1200" />
       <Label layoutX="425.0" layoutY="163.0" text="订单价值：" />
       <Label layoutX="596.0" layoutY="163.0" text="元" />
+      <Label layoutX="88.0" layoutY="425.0" text="客户：" />
+      <Label fx:id="userNameLabel" layoutX="174.0" layoutY="425.0" text="路人甲" />
     </children>
 </fx:root>
