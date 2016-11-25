@@ -23,8 +23,8 @@ public class UpdateOrderInfoPaneController {
     @FXML private Label      checkinTimeLabel;
     @FXML private DatePicker checkinTimeDatePicker;
     @FXML private TextField  checkinTimeField;
-    @FXML private Label  checkinTimeDayLabel;
-    @FXML private Label  checkinTimeMinLabel;
+    @FXML private Label      checkinTimeDayLabel;
+    @FXML private Label      checkinTimeMinLabel;
 
     //预计离开时间
     @FXML private Label      expLeaveTimeLabel;

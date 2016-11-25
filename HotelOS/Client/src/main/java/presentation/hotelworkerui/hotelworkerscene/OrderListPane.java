@@ -13,11 +13,11 @@ import java.io.IOException;
  */
 public class OrderListPane extends Pane{
 
-    public OrderListPane(Stage primaryStage) {
-        loadFxml(primaryStage);
+    public OrderListPane(Stage primaryStage,Pane mainPane) {
+        loadFxml(primaryStage,mainPane);
     }
 
-    private void loadFxml(Stage primaryStage) {
+    private void loadFxml(Stage primaryStage,Pane mainPane) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelorderlist.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -27,6 +27,6 @@ public class OrderListPane extends Pane{
         }
 
         OrderListPaneController orderListPaneController = fxmlLoader.getController();
-        orderListPaneController.launch(primaryStage);
+        orderListPaneController.launch(primaryStage,mainPane);
     }
 }

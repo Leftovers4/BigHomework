@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkercontroller.OrderDetailPaneController;
+import vo.order.OrderVO;
 
 import java.io.IOException;
 
@@ -13,11 +14,11 @@ import java.io.IOException;
  */
 public class OrderDetailPane extends Pane{
 
-    public OrderDetailPane(Stage primaryStage,Pane mainPane) {
-        loadFxml(primaryStage,mainPane);
+    public OrderDetailPane(Stage primaryStage, Pane mainPane, OrderVO orderVO) {
+        loadFxml(primaryStage,mainPane,orderVO);
     }
 
-    private void loadFxml(Stage primaryStage,Pane mainPane) {
+    private void loadFxml(Stage primaryStage,Pane mainPane, OrderVO orderVO) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelorderdetail.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -27,6 +28,6 @@ public class OrderDetailPane extends Pane{
         }
 
         OrderDetailPaneController orderDetailPaneController = fxmlLoader.getController();
-        orderDetailPaneController.launch(primaryStage,mainPane);
+        orderDetailPaneController.launch(primaryStage,mainPane,orderVO);
     }
 }
