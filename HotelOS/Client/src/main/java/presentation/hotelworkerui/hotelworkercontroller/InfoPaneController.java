@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import presentation.commonui.ExitAlert;
+import presentation.util.ConfirmAlert;
 import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
 import vo.hotel.HotelVO;
 
@@ -80,9 +80,9 @@ public class InfoPaneController {
     @FXML
     private void closeWindow(){
         //提示框
-        ExitAlert exitAlert = new ExitAlert();
-        exitAlert.showAndWait();
-        final ButtonType rtn = exitAlert.getResult();
+        ConfirmAlert confirmAlert = new ConfirmAlert("您确定要退出系统吗？","确认退出");
+        confirmAlert.showAndWait();
+        final ButtonType rtn = confirmAlert.getResult();
         if (rtn == ButtonType.OK) {
             Platform.exit();
         }

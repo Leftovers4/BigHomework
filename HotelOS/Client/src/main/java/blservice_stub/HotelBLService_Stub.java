@@ -15,6 +15,12 @@ import java.util.List;
  * Created by kevin on 2016/10/16.
  */
 public class HotelBLService_Stub implements HotelBLService {
+
+    List<RoomVO> list;
+    public HotelBLService_Stub(){
+         list = new ArrayList<>();
+    }
+
     @Override
     public ResultMessage addHotel(HotelVO hotelVO) {
         return ResultMessage.SUCCESS;
@@ -54,6 +60,7 @@ public class HotelBLService_Stub implements HotelBLService {
 
     @Override
     public ResultMessage addRoom(RoomVO roomVO) {
+        list.add(roomVO);
         return ResultMessage.SUCCESS;
     }
 
@@ -69,6 +76,12 @@ public class HotelBLService_Stub implements HotelBLService {
 
     @Override
     public List<RoomVO> findRoomsByHotelID(long hotelID) {
-        return null;
+
+        list.add(new RoomVO(0,hotelID,RoomType.Single,0,10,100));
+        list.add(new RoomVO(0,hotelID,RoomType.Single,0,20,200));
+        list.add(new RoomVO(0,hotelID,RoomType.Couple,0,10,300));
+        list.add(new RoomVO(0,hotelID,RoomType.Couple,0,20,400));
+        list.add(new RoomVO(0,hotelID,RoomType.Couple,0,30,500));
+        return list;
     }
 }

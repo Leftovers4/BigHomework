@@ -52,13 +52,13 @@
                 </Button>
             </children>
         </HBox>
-      <VBox layoutX="75.0" layoutY="164.0">
+      <VBox layoutX="45.0" layoutY="165.0">
          <children>
-              <TableView id="listTable" fx:id="roomTable" layoutX="125.0" layoutY="164.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="324.0" prefWidth="701.0">
+              <TableView id="listTable" fx:id="roomTable" layoutX="125.0" layoutY="164.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="324.0" prefWidth="760.0">
                   <columns>
                       <TableColumn id="idCol" fx:id="typeCol" editable="false" prefWidth="250.0" text="客房类型" />
-                      <TableColumn id="userCol" fx:id="amountCol" editable="false" prefWidth="177.0" text="数量" />
-                      <TableColumn id="amountCol" fx:id="priceCol" editable="false" prefWidth="272.0" text="原价（元/天）" />
+                      <TableColumn id="userCol" fx:id="amountCol" editable="false" prefWidth="220.0" text="数量" />
+                      <TableColumn id="amountCol" fx:id="priceCol" editable="false" prefWidth="288.0" text="原价（元/天）" />
                   </columns>
               </TableView>
               <HBox id="listTopBar" alignment="CENTER_RIGHT" layoutX="125.0" layoutY="364.0" prefHeight="50.0" prefWidth="600.0">
@@ -81,7 +81,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="roomPriceField" layoutX="204.0" layoutY="17.0" prefHeight="36.0" prefWidth="70.0">
+                        <TextField fx:id="roomPriceField" alignment="CENTER" layoutX="204.0" layoutY="17.0" prefHeight="36.0" prefWidth="102.0">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -105,7 +105,7 @@
                               <Insets left="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="addBtn" layoutY="7.0" mnemonicParsing="false" onAction="#addRoom" text="增加">
+                        <Button fx:id="addBtn" layoutY="7.0" mnemonicParsing="false" onAction="#addRoom" text="添加">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -114,7 +114,7 @@
                         <Button id="cancelRegisterBtn" fx:id="cancelBtn" layoutX="111.0" layoutY="7.0" mnemonicParsing="false" onAction="#cancelAdd" text="取消" visible="false" />
                      </children>
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets left="40.0" />
                      </HBox.margin>
                   </Pane>
                </children>
