@@ -17,6 +17,11 @@ public enum ResultMessage {
     FAIL,
 
     /**
+     * 连接服务器失败
+     */
+    CONNECTION_ERROR,
+
+    /**
      * 登录失败：用户名不存在
      */
     USERNAME_EXISTED,

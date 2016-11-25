@@ -129,7 +129,7 @@ public class RegisterRoomPaneController {
                 if(roomAmount > 0 && roomPrice > 0){
                     if(isAdd){
                         //添加客房
-                        RoomVO roomVO = new RoomVO(0,123456,RoomType.Single,0,roomAmount,roomPrice);
+                        RoomVO roomVO = new RoomVO(123456,RoomType.Single,0,roomAmount,roomPrice);
                         roomTable.getItems().add(roomVO);
                         hotelBLServiceStub.addRoom(roomVO);
                     }else {

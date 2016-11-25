@@ -13,7 +13,8 @@ public class PoHelper {
 
         switch (type){
             case "new hotel info":
-                res = new HotelPO(hotelVO.hotelName, hotelVO.star);
+                // TODO: 2016/11/26 编写新的构造器
+                //res = new HotelPO(hotelVO.hotelName, hotelVO.star);
                 break;
         }
 

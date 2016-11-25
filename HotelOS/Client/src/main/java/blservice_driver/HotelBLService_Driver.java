@@ -33,7 +33,7 @@ public class HotelBLService_Driver {
 
     @Test
     public void showList() throws Exception {
-        List<HotelVO> res = tested.findHotelsByConditions(new HotelVO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null));
+        List<HotelVO> res = tested.findHotelsByConditions(new HotelVO("如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi"));
         for (int i = 0; i < res.size(); i++) {
             printHotelVO(res.get(i));
         }
@@ -41,7 +41,7 @@ public class HotelBLService_Driver {
 
     @Test
     public void add() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.addHotel(new HotelVO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null)));
+        assertEquals(ResultMessage.SUCCESS, tested.addHotel(new HotelVO("如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi")));
     }
 
     @Test
@@ -51,11 +51,11 @@ public class HotelBLService_Driver {
 
     @Test
     public void modify() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.updateHotelInfo(new HotelVO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null)));
+        assertEquals(ResultMessage.SUCCESS, tested.updateHotelInfo(new HotelVO("如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi")));
     }
 
     private void printHotelVO(HotelVO hotelVO){
-        System.out.println(hotelVO.HotelID);
+        System.out.println(hotelVO.hotelID);
         System.out.println(hotelVO.hotelName);
         System.out.println(hotelVO.address);
         System.out.println(hotelVO.tradingArea);

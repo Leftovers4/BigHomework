@@ -24,7 +24,7 @@ public class ContextTest {
         promotionPO = new PromotionPO(110110, PromotionType.MultipleRoomPromotion, 522000, null, 0.9, 1);
         context = new Context(promotionPO);
         ArrayList<RoomVO> roomVOs = new ArrayList<>();
-        roomVOs.add(new RoomVO(1, 1, RoomType.Couple, 0, 0, 0));
+        roomVOs.add(new RoomVO(1, RoomType.Couple, 0, 0, 0));
         OrderPriceVO orderPriceVO = new OrderPriceVO(100, 0);
         orderVO = new OrderVO("12345620161111001", 123456,"张三", OrderType.Abnormal,"如家", roomVOs,null, 2, false, null, null,orderPriceVO,null);
 

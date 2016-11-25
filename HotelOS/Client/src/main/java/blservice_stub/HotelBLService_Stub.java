@@ -38,13 +38,13 @@ public class HotelBLService_Stub implements HotelBLService {
 
     @Override
     public HotelVO findHotelByID(long hotelID) {
-        return new HotelVO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null);
+        return new HotelVO("如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi");
     }
 
     @Override
     public List<HotelVO> findHotelsByConditions(HotelVO hotelVO) {
         ArrayList<HotelVO> list = new ArrayList<HotelVO>();
-        list.add(new HotelVO("如家", Address.NANJING, TradingArea.XIANLIN_CENTER, "好", "Wifi", null));
+        list.add(new HotelVO("如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi"));
         return list;
     }
 
@@ -65,7 +65,7 @@ public class HotelBLService_Stub implements HotelBLService {
     }
 
     @Override
-    public ResultMessage deleteRoom(RoomType roomType) {
+    public ResultMessage deleteRoom(long hotelID, RoomType roomType) {
         return ResultMessage.SUCCESS;
     }
 
@@ -77,11 +77,11 @@ public class HotelBLService_Stub implements HotelBLService {
     @Override
     public List<RoomVO> findRoomsByHotelID(long hotelID) {
 
-        list.add(new RoomVO(0,hotelID,RoomType.Single,0,10,100));
-        list.add(new RoomVO(0,hotelID,RoomType.Single,0,20,200));
-        list.add(new RoomVO(0,hotelID,RoomType.Couple,0,10,300));
-        list.add(new RoomVO(0,hotelID,RoomType.Couple,0,20,400));
-        list.add(new RoomVO(0,hotelID,RoomType.Couple,0,30,500));
+        list.add(new RoomVO(hotelID,RoomType.Single,0,10,100));
+        list.add(new RoomVO(hotelID,RoomType.Single,0,20,200));
+        list.add(new RoomVO(hotelID,RoomType.Couple,0,10,300));
+        list.add(new RoomVO(hotelID,RoomType.Couple,0,20,400));
+        list.add(new RoomVO(hotelID,RoomType.Couple,0,30,500));
         return list;
     }
 }
