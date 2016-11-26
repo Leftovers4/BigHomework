@@ -36,10 +36,19 @@ public interface HotelBLService {
     public ResultMessage updateHotelInfo(HotelVO hotelVO);
 
     /**
+     * 根据酒店id获得酒店工作人员查看的酒店的基本信息
+     *
+     * @param hotelID 酒店的id
+     * @return SUCCESS或者FAIL，FAIL表示不存在该酒店
+     */
+    public HotelVO getBasicHotelInfo(long hotelID);
+
+    /**
      * 根据酒店id查找酒店
      *
      * @param hotelID 酒店的id
      * @return 酒店的详细信息
+     * @deprecated
      */
     public HotelVO findHotelByID(long hotelID);
 

@@ -22,7 +22,7 @@ public class CreditVO {
      */
     public ArrayList<CreditRecordVO> creditRecord;
 
-
+    public CreditVO(){}
 
     /**
      * 用于创建信用类
@@ -33,4 +33,5 @@ public class CreditVO {
         this.credit = credit;
         this.creditRecord = creditRecord;
     }
+
 }

@@ -33,7 +33,7 @@ public class RoomVO {
     public double price;
 
     /**
-     * 创建包含酒店工作人员录入可用客房界面信息的对象
+     * 传给逻辑：创建包含酒店工作人员录入可用客房界面信息的对象
      *
      * @param hotelId  房间所属酒店的id
      * @param roomType 房间类型，有Single（单人房），Couple（双人房）

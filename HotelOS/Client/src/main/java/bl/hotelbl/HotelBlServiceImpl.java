@@ -38,6 +38,11 @@ public class HotelBlServiceImpl implements HotelBLService{
     }
 
     @Override
+    public HotelVO getBasicHotelInfo(long hotelID) {
+        return null;
+    }
+
+    @Override
     public HotelVO findHotelByID(long hotelID) {
         return null;
     }

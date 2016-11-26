@@ -35,6 +35,7 @@ public class MemberVO {
      */
     public String enterprise;
 
+    public MemberVO(){}
 
     /**
      * 用于注册会员
@@ -47,4 +48,5 @@ public class MemberVO {
         this.birthday = birthday;
         this.enterprise = enterprise;
     }
+
 }
