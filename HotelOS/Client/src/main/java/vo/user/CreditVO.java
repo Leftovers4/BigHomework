@@ -1,16 +1,12 @@
 package vo.user;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Hiki on 2016/10/16.
  */
 public class CreditVO {
-
-    /**
-     * 用户名
-     */
-    public String username;
 
     /**
      * 信用值
@@ -20,18 +16,17 @@ public class CreditVO {
     /**
      * 信用记录（增加/扣除）
      */
-    public ArrayList<CreditRecordVO> creditRecord;
+    public List<CreditRecordVO> creditRecords;
 
     public CreditVO(){}
 
     /**
      * 用于创建信用类
      */
-    public CreditVO(String username, double credit, ArrayList<CreditRecordVO> creditRecord) {
+    public CreditVO(double credit, List<CreditRecordVO> creditRecords) {
         super();
-        this.username = username;
         this.credit = credit;
-        this.creditRecord = creditRecord;
+        this.creditRecords = creditRecords;
     }
 
 }

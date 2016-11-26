@@ -1,64 +1,82 @@
 package blservice.userblservice;
 import util.*;
+import vo.user.CreditRecordVO;
 import vo.user.CreditVO;
 import vo.user.MemberVO;
 import vo.user.UserVO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * Created by Hiki on 2016/10/15.
  */
-
-
 public interface UserBLService {
 
-    // 用户登录
-    public ResultMessage login(UserVO userVO);
+    /**
+     * 客户登入
+     *
+     * @param username 用户名
+     * @param password 密码
+     * @return SUCCESS, FAIL
+     */
+    ResultMessage login(String username, String password);
 
-    // 用户登出
-    public ResultMessage logout();
+    /**
+     * 客户登出
+     *
+     * @param username 用户名
+     * @return the result message
+     */
+    ResultMessage logout(String username);
 
-    // 添加账户
-    public ResultMessage add(UserVO userVO);
+    /**
+     * 客户查看个人基本信息
+     *
+     * @param username 用户名
+     * @return 客户个人基本信息
+     */
+    UserVO getBasicUserInfo(String username);
 
-    // 删除账户
-    public ResultMessage del(String username);
+    /**
+     * 客户修改个人基本信息
+     *
+     * @param userVO 客户个人基本信息中可修改的信息
+     * @return the result message
+     */
+    ResultMessage updateBasicUserInfo(UserVO userVO);
 
-    // 根据用户名查找用户
-    public UserVO find(String username);
+    /**
+     * 客户查看自己的信用变化记录
+     *
+     * @param username 用户名
+     * @return 客户的信用变化记录
+     */
+    List<CreditRecordVO> getCreditRecordsByUsername(String username);
 
+    /**
+     * 客户注册普通会员
+     *
+     * @param userVO the user vo
+     * @return the result message
+     */
+    ResultMessage registerNormalMember(UserVO userVO);
 
-    // 显示用户信息
-    public UserVO getInfo(String username);
+    /**
+     * 客户注册企业会员
+     *
+     * @param userVO the user vo
+     * @return the result message
+     */
+    ResultMessage registerEnterpriseMember(UserVO userVO);
 
-    // 修改用户信息
-    public ResultMessage setInfo(UserVO userVO);
-
-    // 显示用户列表
-    public ArrayList<UserVO> showList();
-
-    // 显示用户会员类型
-    public MemberType getMemberType(String username);
-
-    // 注册会员
-    public ResultMessage register(MemberVO memberVO);
-
-    // 删除会员
-    public ResultMessage delete(String username);
-
-    // 显示会员信息
-    public MemberVO showInfo(String username);
-
-    // 增加用户信用值
-    public ResultMessage addCredit(String username, double amount);
-
-    // 扣除用户信用值
-    public ResultMessage deductCredit(String username, double amount);
-
-    // 显示信用记录
-    public CreditVO showCreditRecord (String username);
-
+    /**
+     * 网站营销人员为客户充值
+     *
+     * @param creditRecordVO 
+     * @return the result message
+     */
+    ResultMessage topup(CreditRecordVO creditRecordVO);
 
 }

@@ -29,5 +29,4 @@ public class PersonnelVO {
         this.personnelType = personnelType;
     }
 
-
 }
