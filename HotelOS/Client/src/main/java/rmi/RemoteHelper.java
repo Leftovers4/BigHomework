@@ -27,7 +27,7 @@ public class RemoteHelper {
         RemoteHelper remoteHelper = RemoteHelper.getInstance();
         HotelDataService hotelDAO = remoteHelper.getHotelDAO();
         ;
-        System.out.println(hotelDAO.getRating());
+        System.out.println(hotelDAO.delete(1));
     }
 
     private RemoteHelper(){

@@ -37,14 +37,19 @@ public class HotelBLService_Stub implements HotelBLService {
     }
 
     @Override
+    public HotelVO getBasicHotelInfo(long hotelID) {
+        return new HotelVO(1,"如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi");
+    }
+
+    @Override
     public HotelVO findHotelByID(long hotelID) {
-        return new HotelVO("如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi");
+        return new HotelVO(1,"如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi");
     }
 
     @Override
     public List<HotelVO> findHotelsByConditions(HotelVO hotelVO) {
         ArrayList<HotelVO> list = new ArrayList<HotelVO>();
-        list.add(new HotelVO("如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi"));
+        list.add(new HotelVO(1, "如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi"));
         return list;
     }
 

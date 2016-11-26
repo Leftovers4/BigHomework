@@ -3,91 +3,57 @@ package blservice_stub;
 import blservice.userblservice.UserBLService;
 import util.MemberType;
 import util.ResultMessage;
+import vo.user.CreditRecordVO;
 import vo.user.CreditVO;
 import vo.user.MemberVO;
 import vo.user.UserVO;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kevin on 2016/10/16.
  */
 public class UserBLService_Stub implements UserBLService {
     @Override
-    public ResultMessage login(UserVO userVO) {
+    public ResultMessage login(String username, String password) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ResultMessage logout() {
+    public ResultMessage logout(String username) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ResultMessage add(UserVO userVO) {
+    public UserVO getBasicUserInfo(String username) {
+        return new UserVO("zhangsan", "张三", true, LocalDate.now(), "13112345678", 1000, 2, "华为");
+    }
+
+    @Override
+    public ResultMessage updateBasicUserInfo(UserVO userVO) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ResultMessage del(String username) {
-        return ResultMessage.SUCCESS;
-    }
-
-    @Override
-    public UserVO find(String username) {
-        return new UserVO("zhangsan", "123456", "张三", true, "110", null, null);
-    }
-
-
-    @Override
-    public UserVO getInfo(String username) {
-        return new UserVO("zhangsan", "123456", "张三", true, "110", null, null);
-    }
-
-    @Override
-    public ResultMessage setInfo(UserVO userVO) {
-        return ResultMessage.SUCCESS;
-    }
-
-    @Override
-    public ArrayList<UserVO> showList() {
-        ArrayList<UserVO> list = new ArrayList<UserVO>();
-        list.add(new UserVO("zhangsan", "123456", "张三", true, "110", null, null));
-        return list;
-    }
-
-    @Override
-    public MemberType getMemberType(String username) {
-        return MemberType.NormalMember;
-    }
-
-    @Override
-    public ResultMessage register(MemberVO memberVO) {
+    public List<CreditRecordVO> getCreditRecordsByUsername(String username) {
         return null;
     }
 
     @Override
-    public ResultMessage delete(String username) {
-        return null;
-    }
-
-    @Override
-    public MemberVO showInfo(String username) {
-        return null;
-    }
-
-    @Override
-    public ResultMessage addCredit(String username, double amount) {
+    public ResultMessage registerNormalMember(UserVO userVO) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public ResultMessage deductCredit(String username, double amount) {
+    public ResultMessage registerEnterpriseMember(UserVO userVO) {
         return ResultMessage.SUCCESS;
     }
 
     @Override
-    public CreditVO showCreditRecord(String username) {
-        return null;
+    public ResultMessage topup(CreditRecordVO creditRecordVO) {
+        return ResultMessage.SUCCESS;
     }
+
 }
