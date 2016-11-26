@@ -24,6 +24,19 @@ public class OrderDataHelperImpl extends DataHelperParent implements OrderDataHe
     }
 
     @Override
+    public ArrayList<ArrayList<Object>> findByHotelIDFromSQL(long hotelID) {
+        // TODO 注意此处依赖与order具体表的列的内容
+        ArrayList<Object> builtConditions = new ArrayList<>();
+        builtConditions.add("%");
+        builtConditions.add(hotelID);
+        for(int i = 0; i < 22; i++){
+            builtConditions.add("%");
+        }
+        return findFromSQLByConditions(ORDER_TABLENAME, builtConditions);
+
+    }
+
+    @Override
     public ResultMessage insertToSQL(ArrayList<Object> orderInfo) {
         return insertToSQL(ORDER_TABLENAME, orderInfo);
     }
@@ -37,4 +50,6 @@ public class OrderDataHelperImpl extends DataHelperParent implements OrderDataHe
     public ArrayList<ArrayList<Object>> findFromSQL() {
         return findFromSQL(ORDER_TABLENAME);
     }
+
+
 }

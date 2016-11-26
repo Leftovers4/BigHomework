@@ -65,13 +65,14 @@ public class DataHelperParent {
         TB_TO_COL.put("hotel", strsToList("hotel_id", "hotel_name", "star", "address", "trading_area", "description", "service"));
         TB_TO_COL.put("room", strsToList("room_id", "hotel_id", "room_type", "total", "available", "price"));
         TB_TO_COL.put("order_info", strsToList("order_id", "hotel_id", "username", "order_type", "hotel_name", "room_type", "room_amount",
-                                               "room_number", "person_amount", "with_children", "generate_time", "expected_checkin_time",
-                                               "checkin_time", "leave_time", "last_execute_time", "cancel_time", "original_price", "actual_price",
+                                               "room_number",  "person_amount", "with_children", "generate_time", "expected_checkin_time",
+                                               "checkin_time", "expected_leave_time", "leave_time", "last_execute_time", "cancel_time", "original_price", "actual_price",
                                                "review_time", "rating", "review", "ha_time", "ha_result"));
         TB_TO_COL.put("promotion", strsToList("promotion_id", "promotion_type", "hotel_id", "discount", "least_rooms", "begin_time", "end_time", "threshold", "reduction"));
         TB_TO_COL.put("enterprise", strsToList("match_id", "hotel_id", "enterprise"));
         TB_TO_COL.put("address", strsToList("address_id", "address", "trading_area", "discount"));
         TB_TO_COL.put("member_regulation", strsToList("level", "credit", "discount"));
+        TB_TO_COL.put("user_image", strsToList("username", "image_reference"));
         TB_TO_COL.put("hotel_image", strsToList("hotel_id", "image_reference"));
 
         // 初始化TYPEMAP
@@ -102,7 +103,7 @@ public class DataHelperParent {
     protected ResultMessage insertToSQL(String tableName, ArrayList<Object> parameters){
 
         if(TB_TO_COL.get(tableName).size() != parameters.size()){
-            System.out.println("Wrong inputs' number to " + tableName + ".");
+            System.out.println("Wrong inputs' number to " + tableName + ". Expected " + TB_TO_COL.get(tableName).size() + " .But " + parameters.size() + ".");
         }
 
         // 确定参数个数

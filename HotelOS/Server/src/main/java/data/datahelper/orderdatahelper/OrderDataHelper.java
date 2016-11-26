@@ -14,6 +14,7 @@ public interface OrderDataHelper {
     //      "checkin_time", "leave_time", "last_execute_time", "cancel_time", "original_price", "actual_price",
     //      "review_time", "rating", "review", "ha_time", "ha_result"
 
+
     /**
      * 根据id在order表中查找一条订单信息
      * @param orderID
@@ -28,6 +29,14 @@ public interface OrderDataHelper {
      * @return
      */
     public ArrayList<ArrayList<Object>> findByConditionsFromSQL(ArrayList<Object> orderInfo);
+
+    /**
+     * 根据hotelID在order表中查找订单列表
+     * 调用findByConditionsFromSQL
+     * @param hotelID
+     * @return
+     */
+    public ArrayList<ArrayList<Object>> findByHotelIDFromSQL(long hotelID);
 
     /**
      * 在order表中插入一条订单数据
@@ -48,6 +57,7 @@ public interface OrderDataHelper {
      * @return
      */
     public ArrayList<ArrayList<Object>> findFromSQL();
+
 
 
 }

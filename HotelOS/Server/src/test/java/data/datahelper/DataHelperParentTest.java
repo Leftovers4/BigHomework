@@ -39,7 +39,7 @@ public class DataHelperParentTest {
     @Test
     public void testAddToSQL2(){
         ArrayList<Object> input = new ArrayList<Object>();
-        input.add("Hikii");
+        input.add("Hikiii");
         input.add("123456");
         input.add("GHB");
         input.add(true);
