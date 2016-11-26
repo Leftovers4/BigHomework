@@ -11,6 +11,7 @@ import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
 import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
 import presentation.util.AlertController;
+import util.OrderType;
 import vo.order.OrderTimeVO;
 import vo.order.OrderVO;
 
@@ -124,22 +125,31 @@ public class UpdateOrderInfoPaneController {
         userNameLabel.setText(orderVO.username);
         peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
         withChildrenLabel.setText(orderVO.withChildren ? "有" : "无");
-
+        //TODO roomIDLabel.setText();
     }
 
     @FXML
     private void submitUpdate(){
         if(checkInput()){
             //输入合法
-            LocalDateTime checkinTime = LocalDateTime.of(checkInTimeDatePicker.getValue(), LocalTime.of((int) (checkInTimeHourBox.getValue()),(int)(checkInTimeMinBox.getValue())));
-            orderVO.orderTimeVO.checkinTime = checkinTime;
-            LocalDateTime expectedLeaveTime = LocalDateTime.of(expLeaveTimeDatePicker.getValue(), LocalTime.of((int) (expLeaveTimeHourBox.getValue()),(int)(expLeaveTimeMinBox.getValue())));
-            orderVO.orderTimeVO.expectedLeaveTime = expectedLeaveTime;
-            String roomNumber = roomIDField.getText();
-            orderVO.roomNumber = roomNumber;
+            if(isCheckIn){
+                //更新入住信息
+                LocalDateTime checkinTime = LocalDateTime.of(checkInTimeDatePicker.getValue(), LocalTime.of((int) (checkInTimeHourBox.getValue()),(int)(checkInTimeMinBox.getValue())));
+                orderVO.orderTimeVO.checkinTime = checkinTime;
+                LocalDateTime expectedLeaveTime = LocalDateTime.of(expLeaveTimeDatePicker.getValue(), LocalTime.of((int) (expLeaveTimeHourBox.getValue()),(int)(expLeaveTimeMinBox.getValue())));
+                orderVO.orderTimeVO.expectedLeaveTime = expectedLeaveTime;
+                String roomNumber = roomIDField.getText();
+                orderVO.roomNumber = roomNumber;
+                orderVO.orderType = OrderType.Executed;
+            }else{
+                //更新退房信息
+                LocalDateTime actLeaveTime = LocalDateTime.of(actLeaveTimeDatePicker.getValue(), LocalTime.of((int) (actLeaveTimeHourBox.getValue()),(int)(actLeaveTimeMinBox.getValue())));
+                orderVO.orderTimeVO.leaveTime = actLeaveTime;
+            }
+
 
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailPane(stage,mainPane,orderVO));
+            mainPane.getChildren().add(new OrderDetailPane(stage,mainPane,isCheckIn,isFromList,orderVO));
         }else {
             //输入不合法
             alertController.showInputWrongAlert("请将入住信息填写完整","提交失败");
@@ -151,9 +161,15 @@ public class UpdateOrderInfoPaneController {
      * @return
      */
     private boolean checkInput() {
-        if(checkInTimeDatePicker.getValue() == null || expLeaveTimeDatePicker.getValue() == null
-                || roomIDField.getText().isEmpty()){
-            return false;
+        if(isCheckIn){
+            //检查入住时间，预计离开时间，房间号
+            if(checkInTimeDatePicker.getValue() == null || expLeaveTimeDatePicker.getValue() == null
+                    || roomIDField.getText().isEmpty()){
+                return false;
+            }
+        }else{
+            //检查实际离开时间
+            if(actLeaveTimeDatePicker.getValue() == null) return false;
         }
         return true;
     }

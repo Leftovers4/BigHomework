@@ -6,26 +6,31 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateOfflinePane;
+import presentation.util.AlertController;
 
 /**
  * Created by Hitiger on 2016/11/20.
  * Description :
  */
 public class UpdateOutPaneController {
-    private Stage stage;
-    private Pane mainPane;
+
 
     //选择入住方式的组件
     @FXML Button outOnlineBtn;
     @FXML Button outOfflineBtn;
 
+    private Stage stage;
+    private Pane mainPane;
+    private AlertController alertController;
+
     public void launch(Stage primaryStage,Pane mainPane) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
+        alertController = new AlertController();
     }
     @FXML
     private void closeWindow(){
-        stage.close();
+        if(alertController.showConfirmExitAlert()) stage.close();
     }
 
     @FXML

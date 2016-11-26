@@ -75,7 +75,7 @@ public class RegisterRoomPaneController {
 
     @FXML
     private void closeWindow(){
-        stage.close();
+        if(alertController.showConfirmExitAlert()) stage.close();
     }
 
     @FXML

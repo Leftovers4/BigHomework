@@ -6,7 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="690.0" maxWidth="850.0" minHeight="690.0" minWidth="850.0" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.ReviewPaneController">
+<fx:root maxHeight="690.0" maxWidth="850.0" minHeight="690.0" minWidth="850.0" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.ReviewPaneController">
     <children>
         <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
             <children>
@@ -64,9 +64,9 @@
                 </Button>
             </children>
         </HBox>
-      <ScrollPane layoutY="50.0" prefHeight="640.0" prefWidth="850.0">
+      <ScrollPane hmax="0.0" layoutY="50.0" prefHeight="640.0" prefWidth="850.0" vmax="0.0">
          <content>
-            <VBox prefHeight="450.0" prefWidth="848.0">
+            <VBox prefWidth="848.0" styleClass="panel">
                <children>
                   <Label text="酒店评价">
                      <VBox.margin>
@@ -74,7 +74,7 @@
                      </VBox.margin>
                   </Label>
                   <Separator prefWidth="200.0" />
-                  <Pane prefHeight="131.0" prefWidth="848.0">
+                  <Pane prefHeight="130.0" prefWidth="848.0" styleClass="panel">
                      <children>
                         <Label layoutX="48.0" layoutY="28.0" text="评分" />
                         <Label layoutX="145.0" layoutY="28.0" text="4.8" />
@@ -110,13 +110,13 @@
                         <ComboBox layoutX="721.0" layoutY="81.0" prefHeight="36.0" prefWidth="103.0" promptText="评分" />
                      </children>
                   </Pane>
-                  <TableView fx:id="reviewTable" prefHeight="261.0" prefWidth="848.0">
+                  <TableView fx:id="reviewTable" prefWidth="848.0">
                     <columns>
-                      <TableColumn prefWidth="418.0" text="评价内容" />
-                      <TableColumn prefWidth="71.0" text="评分" />
-                        <TableColumn prefWidth="88.0" text="客房类型" />
-                        <TableColumn prefWidth="195.0" text="发布时间" />
-                        <TableColumn prefWidth="75.0" text="客户名" />
+                      <TableColumn fx:id="reviewContentCol" prefWidth="410.0" text="评价内容" />
+                      <TableColumn fx:id="reviewRatingCol" prefWidth="71.0" text="评分" />
+                        <TableColumn fx:id="roomTypeCol" prefWidth="91.0" text="客房类型" />
+                        <TableColumn fx:id="reviewTimeCol" prefWidth="193.0" text="发布时间" />
+                        <TableColumn fx:id="userNameCol" prefWidth="73.0" text="客户名" />
                     </columns>
                   </TableView>
                </children>

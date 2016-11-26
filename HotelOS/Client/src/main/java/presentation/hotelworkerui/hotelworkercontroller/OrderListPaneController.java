@@ -175,7 +175,7 @@ public class OrderListPaneController {
         if(orderVO == null) alertController.showUnSelectItemAlert("请选择订单","查看失败");
         else {
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailPane(stage,mainPane,orderVO));
+            mainPane.getChildren().add(new OrderDetailPane(stage,mainPane,false,true,orderVO));
         }
     }
 

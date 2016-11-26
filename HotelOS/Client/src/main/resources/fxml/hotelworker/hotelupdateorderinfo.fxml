@@ -70,40 +70,40 @@
       <Label layoutX="56.0" layoutY="487.0" text="入住人数：" />
       <Label layoutX="278.0" layoutY="487.0" text="儿童：" />
       <Label layoutX="56.0" layoutY="293.0" text="入住时间：" />
-      <Label layoutX="425.0" layoutY="293.0" text="预计离开时间：" />
+      <Label layoutX="430.0" layoutY="293.0" text="预计离开时间：" />
       <Label layoutX="56.0" layoutY="230.0" text="生成时间：" />
-      <Label layoutX="425.0" layoutY="230.0" text="最晚执行时间：" />
-      <Label fx:id="exeLeastTimeLabel" layoutX="582.0" layoutY="230.0" text="2016-10-29 16:30" />
+      <Label layoutX="430.0" layoutY="230.0" text="最晚执行时间：" />
+      <Label fx:id="exeLeastTimeLabel" layoutX="587.0" layoutY="230.0" text="2016-10-29 16:30" />
       <Label fx:id="generateTimeLabel" layoutX="175.0" layoutY="230.0" text="2016-10-29 16:30" />
       <Label fx:id="withChildrenLabel" layoutX="357.0" layoutY="487.0" text="有" />
       <Label layoutX="56.0" layoutY="163.0" text="订单状态：" />
       <Label fx:id="orderTypeLabel" layoutX="175.0" layoutY="163.0" text="未执行" />
-      <Label fx:id="actLeaveTimeLabel" layoutX="425.0" layoutY="356.0" text="实际离开时间：" />
+      <Label fx:id="actLeaveTimeLabel" layoutX="430.0" layoutY="356.0" text="实际离开时间：" />
       <DatePicker fx:id="checkInTimeDatePicker" editable="false" layoutX="137.0" layoutY="287.0" prefHeight="36.0" prefWidth="163.0" styleClass="DatePicker" />
-      <DatePicker fx:id="expLeaveTimeDatePicker" editable="false" layoutX="541.0" layoutY="287.0" prefHeight="36.0" prefWidth="163.0" styleClass="DatePicker" />
+      <DatePicker fx:id="expLeaveTimeDatePicker" editable="false" layoutX="546.0" layoutY="287.0" prefHeight="36.0" prefWidth="163.0" styleClass="DatePicker" />
       <Button layoutX="652.0" layoutY="617.0" mnemonicParsing="false" onAction="#submitUpdate" text="提交" />
       <Button layoutX="748.0" layoutY="617.0" mnemonicParsing="false" onAction="#cancelUpdate" text="取消" />
-      <DatePicker fx:id="actLeaveTimeDatePicker" editable="false" layoutX="541.0" layoutY="350.0" prefHeight="36.0" prefWidth="163.0" styleClass="DatePicker" />
+      <DatePicker fx:id="actLeaveTimeDatePicker" editable="false" layoutX="546.0" layoutY="350.0" prefHeight="36.0" prefWidth="163.0" styleClass="DatePicker" />
       <Label fx:id="checkInTimeLabel" layoutX="175.0" layoutY="293.0" text="2016-10-29" visible="false" />
-      <Label fx:id="expLeaveTimeLabel" layoutX="582.0" layoutY="293.0" text="2016-10-29" visible="false" />
+      <Label fx:id="expLeaveTimeLabel" layoutX="587.0" layoutY="293.0" text="2016-10-29" visible="false" />
       <Label fx:id="peopleAmountLabel" layoutX="187.0" layoutY="487.0" text="10" />
       <Label layoutX="56.0" layoutY="550.0" text="客房类型：" />
       <Label layoutX="278.0" layoutY="550.0" text="数量：" />
-      <Label layoutX="425.0" layoutY="550.0" text="房间号：" />
+      <Label layoutX="430.0" layoutY="550.0" text="房间号：" />
       <Label fx:id="roomTypeLabel" layoutX="177.0" layoutY="550.0" text="单人房" />
       <Label fx:id="roomAmountLabel" layoutX="361.0" layoutY="550.0" text="3" />
-      <TextField fx:id="roomIDField" layoutX="510.0" layoutY="547.0" prefHeight="36.0" prefWidth="290.0" />
-      <Label fx:id="roomIDLabel" layoutX="517.0" layoutY="550.0" text="A110 A111 A112" visible="false" />
-      <Label fx:id="orderPriceLabel" layoutX="544.0" layoutY="163.0" text="1200" />
-      <Label layoutX="425.0" layoutY="163.0" text="订单价值：" />
-      <Label layoutX="596.0" layoutY="163.0" text="元" />
+      <TextField fx:id="roomIDField" layoutX="515.0" layoutY="547.0" prefHeight="36.0" prefWidth="290.0" />
+      <Label fx:id="roomIDLabel" layoutX="515.0" layoutY="550.0" text="A110 A111 A112" visible="false" />
+      <Label fx:id="orderPriceLabel" layoutX="549.0" layoutY="163.0" text="1200" />
+      <Label layoutX="430.0" layoutY="163.0" text="订单价值：" />
+      <Label layoutX="601.0" layoutY="163.0" text="元" />
       <Label layoutX="88.0" layoutY="425.0" text="客户：" />
       <Label fx:id="userNameLabel" layoutX="174.0" layoutY="425.0" text="路人甲" />
       <ComboBox fx:id="checkInTimeHourBox" layoutX="289.0" layoutY="287.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
       <ComboBox fx:id="checkInTimeMinBox" layoutX="350.0" layoutY="287.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
-      <ComboBox fx:id="expLeaveTimeHourBox" layoutX="693.0" layoutY="287.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
-      <ComboBox fx:id="expLeaveTimeMinBox" layoutX="754.0" layoutY="287.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
-      <ComboBox fx:id="actLeaveTimeHourBox" layoutX="693.0" layoutY="350.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
-      <ComboBox fx:id="actLeaveTimeMinBox" layoutX="754.0" layoutY="350.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
+      <ComboBox fx:id="expLeaveTimeHourBox" layoutX="698.0" layoutY="287.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
+      <ComboBox fx:id="expLeaveTimeMinBox" layoutX="759.0" layoutY="287.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
+      <ComboBox fx:id="actLeaveTimeHourBox" layoutX="698.0" layoutY="350.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
+      <ComboBox fx:id="actLeaveTimeMinBox" layoutX="759.0" layoutY="350.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
     </children>
 </fx:root>

@@ -7,6 +7,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
 import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
+import presentation.util.AlertController;
+import util.OrderType;
 import vo.order.OrderVO;
 
 /**
@@ -49,12 +51,20 @@ public class OrderDetailPaneController {
 
     private Stage stage;
     private Pane mainPane;
+    private AlertController alertController;
     private OrderVO orderVO;
+    //是否从更新入住信息进入
+    private Boolean isCheckIn;
+    //是否从订单列表进入
+    private Boolean isFromList;
 
-    public void launch(Stage primaryStage, Pane mainPane,OrderVO orderVO) {
+    public void launch(Stage primaryStage, Pane mainPane,Boolean isCheckIn,Boolean isFromList,OrderVO orderVO) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         this.orderVO = orderVO;
+        this.isFromList = isFromList;
+        this.isCheckIn = isCheckIn;
+        alertController = new AlertController();
 
         //初始化便签
         initOrderLabel(orderVO);
@@ -70,7 +80,7 @@ public class OrderDetailPaneController {
         exeLeastTimeLabel.setText(orderVO.orderTimeVO.lastExecuteTime.toString());
         checkInTimeLabel.setText(orderVO.orderTimeVO.checkinTime == null ? "尚未入住" : orderVO.orderTimeVO.checkinTime.toString());
         expLeaveTimeLabel.setText(orderVO.orderTimeVO.expectedLeaveTime == null ? "尚未入住" : orderVO.orderTimeVO.expectedLeaveTime.toString());
-        actLeaveTimeLabel.setText(orderVO.orderTimeVO.leaveTime == null ? "尚未入住" : orderVO.orderTimeVO.leaveTime.toString());
+        actLeaveTimeLabel.setText(orderVO.orderTimeVO.leaveTime == null ? (orderVO.orderType == OrderType.Executed ? "尚未退房" : "尚未入住") : orderVO.orderTimeVO.leaveTime.toString());
 
         userNameLabel.setText(orderVO.username);
         peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
@@ -81,7 +91,7 @@ public class OrderDetailPaneController {
 
     @FXML
     private void closeWindow(){
-        stage.close();
+        if(alertController.showConfirmExitAlert()) stage.close();
     }
 
     @FXML
@@ -92,6 +102,7 @@ public class OrderDetailPaneController {
     @FXML
     private void back(){
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new OrderListPane(stage,mainPane));
+        if(isFromList) mainPane.getChildren().add(new OrderListPane(stage,mainPane));
+        else mainPane.getChildren().add(new FindOrderPane(stage,mainPane,isCheckIn));
     }
 }

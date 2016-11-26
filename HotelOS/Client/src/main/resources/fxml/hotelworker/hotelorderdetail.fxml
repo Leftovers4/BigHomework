@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -65,35 +63,35 @@
                 </Button>
             </children>
         </HBox>
-      <Label layoutX="95.0" layoutY="83.0" text="订单号：" />
-      <Label fx:id="orderIDLabel" layoutX="181.0" layoutY="83.0" text="12345678912345678" />
-      <Label layoutX="91.0" layoutY="285.0" text="入住时间：" />
-      <Label layoutX="447.0" layoutY="285.0" text="预计离开时间：" />
-      <Label fx:id="checkInTimeLabel" layoutX="210.0" layoutY="285.0" text="2016-10-29 16:30" />
-      <Label fx:id="expLeaveTimeLabel" layoutX="604.0" layoutY="285.0" text="2016-10-29 16:30" />
-      <Label layoutX="91.0" layoutY="222.0" text="生成时间：" />
-      <Label layoutX="447.0" layoutY="222.0" text="最晚执行时间：" />
-      <Label fx:id="exeLeastTimeLabel" layoutX="604.0" layoutY="222.0" text="2016-10-29 16:30" />
-      <Label fx:id="generateTimeLabel" layoutX="210.0" layoutY="222.0" text="2016-10-29 16:30" />
-      <Label layoutX="91.0" layoutY="155.0" text="订单状态：" />
-      <Label fx:id="orderTypeLabel" layoutX="210.0" layoutY="155.0" text="未执行" />
-      <Label layoutX="447.0" layoutY="348.0" text="实际离开时间：" />
-      <Label fx:id="actLeaveTimeLabel" layoutX="604.0" layoutY="348.0" text="2016-10-29 16:30" />
-      <Label fx:id="roomAmountLabel" layoutX="396.0" layoutY="571.0" text="3" />
-      <Label fx:id="roomTypeLabel" layoutX="195.0" layoutY="571.0" text="单人房" />
-      <Label layoutX="447.0" layoutY="571.0" text="房间号：" />
-      <Label layoutX="313.0" layoutY="571.0" text="数量：" />
-      <Label layoutX="91.0" layoutY="571.0" text="客房类型：" />
-      <Label fx:id="withChildrenLabel" layoutX="392.0" layoutY="508.0" text="有" />
-      <Label layoutX="313.0" layoutY="508.0" text="儿童：" />
-      <Label layoutX="91.0" layoutY="508.0" text="入住人数：" />
-      <Label fx:id="roomIDLabel" layoutX="539.0" layoutY="571.0" text="A110 A111 A112" />
-      <Label fx:id="orderPriceLabel" layoutX="566.0" layoutY="155.0" text="1200" />
-      <Label layoutX="447.0" layoutY="155.0" text="订单价值：" />
-      <Label layoutX="618.0" layoutY="155.0" text="元" />
-      <Label fx:id="peopleAmountLabel" layoutX="217.0" layoutY="508.0" text="5" />
-      <Label layoutX="127.0" layoutY="445.0" text="客户：" />
-      <Hyperlink fx:id="showReviewLink" layoutX="309.0" layoutY="441.0" text="查看客户评价" />
-      <Label fx:id="userNameLabel" layoutX="201.0" layoutY="445.0" text="路人乙" />
+      <Label layoutX="56.0" layoutY="83.0" text="订单号：" />
+      <Label fx:id="orderIDLabel" layoutX="142.0" layoutY="83.0" text="12345678912345678" />
+      <Label layoutX="56.0" layoutY="293.0" text="入住时间：" />
+      <Label layoutX="430.0" layoutY="293.0" text="预计离开时间：" />
+      <Label fx:id="checkInTimeLabel" layoutX="175.0" layoutY="293.0" text="2016-10-29 16:30" />
+      <Label fx:id="expLeaveTimeLabel" layoutX="587.0" layoutY="293.0" text="2016-10-29 16:30" />
+      <Label layoutX="56.0" layoutY="230.0" text="生成时间：" />
+      <Label layoutX="430.0" layoutY="230.0" text="最晚执行时间：" />
+      <Label fx:id="exeLeastTimeLabel" layoutX="587.0" layoutY="230.0" text="2016-10-29 16:30" />
+      <Label fx:id="generateTimeLabel" layoutX="175.0" layoutY="230.0" text="2016-10-29 16:30" />
+      <Label layoutX="56.0" layoutY="163.0" text="订单状态：" />
+      <Label fx:id="orderTypeLabel" layoutX="175.0" layoutY="163.0" text="未执行" />
+      <Label layoutX="430.0" layoutY="356.0" text="实际离开时间：" />
+      <Label fx:id="actLeaveTimeLabel" layoutX="587.0" layoutY="356.0" text="2016-10-29 16:30" />
+      <Label fx:id="roomAmountLabel" layoutX="361.0" layoutY="550.0" text="3" />
+      <Label fx:id="roomTypeLabel" layoutX="177.0" layoutY="550.0" text="单人房" />
+      <Label layoutX="430.0" layoutY="550.0" text="房间号：" />
+      <Label layoutX="278.0" layoutY="550.0" text="数量：" />
+      <Label layoutX="56.0" layoutY="550.0" text="客房类型：" />
+      <Label fx:id="withChildrenLabel" layoutX="357.0" layoutY="487.0" text="有" />
+      <Label layoutX="278.0" layoutY="487.0" text="儿童：" />
+      <Label layoutX="56.0" layoutY="487.0" text="入住人数：" />
+      <Label fx:id="roomIDLabel" layoutX="515.0" layoutY="550.0" text="A110 A111 A112" />
+      <Label fx:id="orderPriceLabel" layoutX="549.0" layoutY="163.0" text="1200" />
+      <Label layoutX="430.0" layoutY="163.0" text="订单价值：" />
+      <Label layoutX="601.0" layoutY="163.0" text="元" />
+      <Label fx:id="peopleAmountLabel" layoutX="187.0" layoutY="487.0" text="5" />
+      <Label layoutX="88.0" layoutY="425.0" text="客户：" />
+      <Hyperlink fx:id="showReviewLink" layoutX="277.0" layoutY="423.0" text="查看客户评价" />
+      <Label fx:id="userNameLabel" layoutX="174.0" layoutY="425.0" text="路人乙" />
     </children>
 </fx:root>

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import presentation.util.AlertController;
 
 /**
  * Created by Hitiger on 2016/11/20.
@@ -41,14 +42,16 @@ public class ManagePromotionPaneController {
     @FXML private HBox   addComHBox;
 
     private Stage stage;
+    private AlertController alertController;
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
+        alertController = new AlertController();
     }
 
     @FXML
     private void closeWindow(){
-        stage.close();
+        if(alertController.showConfirmExitAlert()) stage.close();
     }
 
     @FXML

@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
 import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateOfflinePane;
+import presentation.util.AlertController;
 
 /**
  * Created by Hitiger on 2016/11/20.
@@ -23,14 +24,16 @@ public class UpdateCheckInPaneController {
 
     private Stage stage;
     private Pane mainPane;
+    private AlertController alertController;
 
     public void launch(Stage primaryStage,Pane mainPane) {
         this.mainPane = mainPane;
         this.stage = primaryStage;
+        alertController = new AlertController();
     }
     @FXML
     private void closeWindow(){
-        stage.close();
+        if(alertController.showConfirmExitAlert()) stage.close();
     }
 
     @FXML
