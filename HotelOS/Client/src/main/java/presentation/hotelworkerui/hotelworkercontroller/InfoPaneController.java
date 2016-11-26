@@ -68,7 +68,7 @@ public class InfoPaneController {
         hotelNameLabel.setText(hotelVO.hotelName);
         hotelWorkerNameLabel.setText(hotelVO.hotelWorkerName);
         hotelRatingLabel.setText(String.valueOf(hotelVO.rating));
-        cityLabel.setText(String.valueOf(hotelVO.address));
+        cityLabel.setText(String.valueOf(hotelVO.address)+"市");
         tradeAreaLabel.setText(String.valueOf(hotelVO.tradingArea));
         simpleIntroLabel.setText(hotelVO.description);
         hotelServiceLabel.setText(hotelVO.service);
@@ -81,7 +81,7 @@ public class InfoPaneController {
     private void editHotelInfo(){
         setCheckInfoComponentsVisible(false);
         setEditInfoComponentsVisible(true);
-        cityBox.setValue(cityLabel.getText());
+        cityBox.setValue(cityLabel.getText().substring(0,cityLabel.getText().length()-1));
         tradeAreaBox.setValue(tradeAreaLabel.getText());
     }
 

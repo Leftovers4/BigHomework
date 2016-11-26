@@ -79,14 +79,11 @@
       <Label layoutX="56.0" layoutY="163.0" text="订单状态：" />
       <Label fx:id="orderTypeLabel" layoutX="175.0" layoutY="163.0" text="未执行" />
       <Label fx:id="actLeaveTimeLabel" layoutX="425.0" layoutY="356.0" text="实际离开时间：" />
-      <DatePicker fx:id="checkinTimeDatePicker" layoutX="144.0" layoutY="287.0" prefHeight="36.0" prefWidth="161.0" />
-      <TextField fx:id="checkinTimeField" alignment="CENTER" layoutX="313.0" layoutY="287.0" prefHeight="36.0" prefWidth="88.0" promptText="hh:mm" />
-      <TextField fx:id="expLeaveTimeField" alignment="CENTER" layoutX="720.0" layoutY="287.0" prefHeight="36.0" prefWidth="88.0" promptText="hh:mm" />
-      <DatePicker fx:id="expLeaveTimeDatePicker" layoutX="551.0" layoutY="287.0" prefHeight="36.0" prefWidth="161.0" />
+      <DatePicker fx:id="checkInTimeDatePicker" editable="false" layoutX="137.0" layoutY="287.0" prefHeight="36.0" prefWidth="163.0" styleClass="DatePicker" />
+      <DatePicker fx:id="expLeaveTimeDatePicker" editable="false" layoutX="541.0" layoutY="287.0" prefHeight="36.0" prefWidth="163.0" styleClass="DatePicker" />
       <Button layoutX="652.0" layoutY="617.0" mnemonicParsing="false" onAction="#submitUpdate" text="提交" />
-      <Button layoutX="748.0" layoutY="617.0" mnemonicParsing="false" text="取消" />
-      <DatePicker fx:id="actLeaveTimeDatePicker" layoutX="551.0" layoutY="350.0" prefHeight="36.0" prefWidth="161.0" />
-      <TextField fx:id="actLeaveTimeField" alignment="CENTER" layoutX="720.0" layoutY="350.0" prefHeight="36.0" prefWidth="88.0" promptText="hh:mm" />
+      <Button layoutX="748.0" layoutY="617.0" mnemonicParsing="false" onAction="#cancelUpdate" text="取消" />
+      <DatePicker fx:id="actLeaveTimeDatePicker" editable="false" layoutX="541.0" layoutY="350.0" prefHeight="36.0" prefWidth="163.0" styleClass="DatePicker" />
       <Label fx:id="checkInTimeLabel" layoutX="175.0" layoutY="293.0" text="2016-10-29" visible="false" />
       <Label fx:id="expLeaveTimeLabel" layoutX="582.0" layoutY="293.0" text="2016-10-29" visible="false" />
       <Label fx:id="peopleAmountLabel" layoutX="187.0" layoutY="487.0" text="10" />
@@ -102,5 +99,11 @@
       <Label layoutX="596.0" layoutY="163.0" text="元" />
       <Label layoutX="88.0" layoutY="425.0" text="客户：" />
       <Label fx:id="userNameLabel" layoutX="174.0" layoutY="425.0" text="路人甲" />
+      <ComboBox fx:id="checkInTimeHourBox" layoutX="289.0" layoutY="287.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
+      <ComboBox fx:id="checkInTimeMinBox" layoutX="350.0" layoutY="287.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
+      <ComboBox fx:id="expLeaveTimeHourBox" layoutX="693.0" layoutY="287.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
+      <ComboBox fx:id="expLeaveTimeMinBox" layoutX="754.0" layoutY="287.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
+      <ComboBox fx:id="actLeaveTimeHourBox" layoutX="693.0" layoutY="350.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
+      <ComboBox fx:id="actLeaveTimeMinBox" layoutX="754.0" layoutY="350.0" prefHeight="36.0" prefWidth="72.0" styleClass="TimeComboBox" visibleRowCount="8" />
     </children>
 </fx:root>

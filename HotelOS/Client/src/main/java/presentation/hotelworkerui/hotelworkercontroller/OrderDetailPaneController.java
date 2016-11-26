@@ -75,8 +75,6 @@ public class OrderDetailPaneController {
         userNameLabel.setText(orderVO.username);
         peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
         withChildrenLabel.setText(orderVO.withChildren ? "有" : "无");
-//        roomTypeLabel.setText();
-//        roomAmountLabel;
         roomIDLabel.setText(orderVO.roomNumber);
     }
 

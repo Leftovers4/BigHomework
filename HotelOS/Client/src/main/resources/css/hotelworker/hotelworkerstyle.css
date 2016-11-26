@@ -1,9 +1,15 @@
 * {
     -fx-font-family: "微软雅黑";
+}
+.label{
     -fx-font-size: 18px;
 }
 
+.text-field{
+    -fx-font-size: 18px
+}
 .button {
+    -fx-font-size: 18px;
     -fx-cursor: hand;
 }
 
@@ -73,4 +79,17 @@
 /*线下退房按钮*/
 #outOfflineBtn{
     -fx-background-color: transparent;
+}
+
+/**
+*订单详情界面
+ */
+
+/*时间，分钟ComboBox*/
+.TimeComboBox{
+    -fx-scale-x :0.8;
+}
+
+.DatePicker{
+    -fx-scale-x :0.9;
 }

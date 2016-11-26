@@ -10,18 +10,6 @@
     <children>
         <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
             <children>
-                <Button fx:id="backBtn" mnemonicParsing="false" onAction="#back" stylesheets="@../../css/user/userstyle.css">
-                    <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../img/common/back.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <HBox.margin>
-                        <Insets left="10.0" />
-                    </HBox.margin>
-                </Button>
                 <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../img/hotelworker/initialPhoto.png" />
@@ -106,13 +94,13 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </Label>
-            <DatePicker fx:id="createDatePicker" prefHeight="36.0" prefWidth="160.0" promptText="生成时间" />
+            <DatePicker fx:id="createDatePicker" editable="false" prefHeight="36.0" prefWidth="163.0" promptText="生成时间" />
             <Label text="-">
                <HBox.margin>
                   <Insets left="1.0" right="1.0" />
                </HBox.margin>
             </Label>
-            <DatePicker fx:id="exeDatePicker" layoutX="471.0" layoutY="18.0" prefHeight="36.0" prefWidth="160.0" promptText="执行时间" />
+            <DatePicker fx:id="exeDatePicker" editable="false" layoutX="471.0" layoutY="18.0" prefHeight="36.0" prefWidth="163.0" promptText="执行时间" />
          </children>
       </HBox>
       <HBox alignment="CENTER_RIGHT" layoutX="25.0" layoutY="589.0" prefHeight="50.0" prefWidth="800.0">
