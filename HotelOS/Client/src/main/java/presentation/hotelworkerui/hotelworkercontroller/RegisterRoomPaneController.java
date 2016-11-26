@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import presentation.util.AlertController;
 import presentation.util.ConfirmAlert;
 import presentation.util.InputWrongAlert;
 import presentation.util.UnselectedAlert;
@@ -45,12 +46,15 @@ public class RegisterRoomPaneController {
     private Stage stage;
     private ObservableList<RoomVO> roomVoList;
     private HotelBLService_Stub hotelBLServiceStub;
+    //提示框控制器
+    private AlertController alertController;
     //是修改操作还是添加操作
     private Boolean isAdd;
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
-        this.hotelBLServiceStub = new HotelBLService_Stub();
+        hotelBLServiceStub = new HotelBLService_Stub();
+        alertController = new AlertController();
         initData();
     }
 
@@ -91,7 +95,7 @@ public class RegisterRoomPaneController {
         RoomVO modifiedItem = (RoomVO) roomTable.getSelectionModel().getSelectedItem();
 
         if(modifiedItem == null){
-            showUnSelectItemAlert("请先选择要修改的客房","修改失败");
+            alertController.showUnSelectItemAlert("请先选择要修改的客房","修改失败");
         }else {
             roomTable.setDisable(true);
             setAddComponentsVisible(true);
@@ -105,16 +109,18 @@ public class RegisterRoomPaneController {
         RoomVO deletedItem = (RoomVO) roomTable.getSelectionModel().getSelectedItem();
 
         if(deletedItem == null)
-            showUnSelectItemAlert("请先选择要删除的客房","删除失败");
+            alertController.showUnSelectItemAlert("请先选择要删除的客房","删除失败");
         else
-            showConfirmDeleteAlert(deletedItem);
+            if(alertController.showConfirmDeleteAlert("您确定要删除此类客房吗？","确认删除"))
+                roomTable.getItems().remove(deletedItem);
     }
 
 
 
     @FXML
     private void confirmAdd(){
-        if(roomAmountField.getText().equals("") || roomPriceField.getText().equals("")) showInputNullAlert();
+        if(roomAmountField.getText().equals("") || roomPriceField.getText().equals(""))
+            alertController.showInputWrongAlert("请输入客房数量和价格","添加失败");
         else {
             //用正则表达式判断输入格式，非数字报错
             Pattern pattern = Pattern.compile("^[0-9.]*$");
@@ -144,8 +150,8 @@ public class RegisterRoomPaneController {
                     roomPriceField.clear();
                     setAddComponentsVisible(false);
 
-                }else showFormatWrongAlert();
-            }else showFormatWrongAlert();
+                }else alertController.showInputWrongAlert("客房数量和价格输入格式有误，请重新输入","添加失败");
+            }else alertController.showInputWrongAlert("客房数量和价格输入格式有误，请重新输入","添加失败");
         }
     }
 
@@ -168,26 +174,4 @@ public class RegisterRoomPaneController {
         deleteBtn.setVisible(!isVisible);
     }
 
-    private void showFormatWrongAlert(){
-        InputWrongAlert inputWrongAlert = new InputWrongAlert("客房数量和价格输入格式有误，请重新输入","添加失败");
-        inputWrongAlert.showAndWait();
-    }
-
-    private void showInputNullAlert(){
-        InputWrongAlert inputWrongAlert = new InputWrongAlert("请输入客房数量和价格","添加失败");
-        inputWrongAlert.showAndWait();
-    }
-    private void showConfirmDeleteAlert(RoomVO deletedItem){
-        ConfirmAlert confirmAlert = new ConfirmAlert("您确定要删除此类客房吗？","确认删除");
-        confirmAlert.showAndWait();
-        final ButtonType rtn = confirmAlert.getResult();
-        if (rtn == ButtonType.OK) {
-            roomTable.getItems().remove(deletedItem);
-        }
-    }
-
-    private void showUnSelectItemAlert(String contentText, String title) {
-        UnselectedAlert unselectedAlert = new UnselectedAlert(contentText,title);
-        unselectedAlert.showAndWait();
-    }
 }

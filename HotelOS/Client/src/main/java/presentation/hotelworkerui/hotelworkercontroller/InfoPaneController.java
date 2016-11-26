@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.util.AlertController;
 import presentation.util.ConfirmAlert;
 import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
 import vo.hotel.HotelVO;
@@ -17,8 +18,9 @@ import vo.hotel.HotelVO;
 public class InfoPaneController {
     //查看评价、酒店名称、工作人员、编号
     @FXML private Hyperlink showReviewLink;
-    @FXML private Label hotelName;
-    @FXML private Label hotelWorkerName;
+    @FXML private Label hotelNameLabel;
+    @FXML private Label hotelWorkerNameLabel;
+    @FXML private Label hotelRatingLabel;
 
     //地址
     @FXML private Label    cityLabel;
@@ -45,23 +47,27 @@ public class InfoPaneController {
     private HotelBLService_Stub hotelBLServiceStub;
     private Stage stage;
     private Pane mainPane;
+    //提示框控制器
+    private AlertController alertController;
 
     public void launch(Stage primaryStage, Pane mainPane) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
 
         hotelBLServiceStub = new HotelBLService_Stub();
-
+        alertController = new AlertController();
         //初始化数据
         initData();
+        //显示查看信息界面
         setCheckInfoComponentsVisible(true);
     }
 
     private void initData() {
         HotelVO hotelVO = hotelBLServiceStub.findHotelByID(123456);
 
-        hotelName.setText(hotelVO.hotelName);
-
+        hotelNameLabel.setText(hotelVO.hotelName);
+        hotelWorkerNameLabel.setText(hotelVO.hotelWorkerName);
+        hotelRatingLabel.setText(String.valueOf(hotelVO.rating));
         cityLabel.setText(String.valueOf(hotelVO.address));
         tradeAreaLabel.setText(String.valueOf(hotelVO.tradingArea));
         simpleIntroLabel.setText(hotelVO.description);
@@ -75,17 +81,13 @@ public class InfoPaneController {
     private void editHotelInfo(){
         setCheckInfoComponentsVisible(false);
         setEditInfoComponentsVisible(true);
+        cityBox.setValue(cityLabel.getText());
+        tradeAreaBox.setValue(tradeAreaLabel.getText());
     }
 
     @FXML
     private void closeWindow(){
-        //提示框
-        ConfirmAlert confirmAlert = new ConfirmAlert("您确定要退出系统吗？","确认退出");
-        confirmAlert.showAndWait();
-        final ButtonType rtn = confirmAlert.getResult();
-        if (rtn == ButtonType.OK) {
-            Platform.exit();
-        }
+        if(alertController.showConfirmExitAlert()) stage.close();
     }
 
     @FXML
@@ -106,23 +108,22 @@ public class InfoPaneController {
         setEditInfoComponentsVisible(false);
 
         //将编辑的内容显示到查看信息界面
-        cityLabel.setText(cityBox.getPromptText()+"市");
-        tradeAreaLabel.setText(tradeAreaBox.getPromptText());
+        cityLabel.setText(cityBox.getValue()+"市");
+        tradeAreaLabel.setText(tradeAreaBox.getValue()+"");
         simpleIntroLabel.setText(simpleIntroArea.getText());
         hotelServiceLabel.setText(hotelServiceArea.getText());
-        cityBox.setValue(cityLabel.getText());
-        tradeAreaBox.setValue(tradeAreaLabel.getText());
         simpleIntroArea.clear();
         hotelServiceArea.clear();
     }
 
     @FXML
     private void cancelEdit(){
-        simpleIntroArea.clear();
-        hotelServiceArea.clear();
-
-        setCheckInfoComponentsVisible(true);
-        setEditInfoComponentsVisible(false);
+        if(alertController.showConfirmCancelAlert()){
+            simpleIntroArea.clear();
+            hotelServiceArea.clear();
+            setCheckInfoComponentsVisible(true);
+            setEditInfoComponentsVisible(false);
+        }
     }
 
     @FXML
@@ -149,6 +150,5 @@ public class InfoPaneController {
         editBtn.setVisible(isVisible);
         showReviewLink.setVisible(isVisible);
     }
-
 
 }

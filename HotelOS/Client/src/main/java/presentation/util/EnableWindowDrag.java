@@ -7,7 +7,7 @@ import javafx.stage.Stage;
 
 /**
  * Created by Hitiger on 2016/11/16.
- * Description : 具有控制窗口关闭、最小化；返回的控制器
+ * Description : 实现窗口可拖动
  */
 public class EnableWindowDrag {
 
