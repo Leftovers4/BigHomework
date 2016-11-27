@@ -28,20 +28,20 @@ public interface HotelBLService {
     public ResultMessage deleteHotel(long hotelID);
 
     /**
-     * 更新酒店的基本信息
-     *
-     * @param hotelVO 酒店信息
-     * @return SUCCESS或者FAIL，FAIL表示不存在该酒店
-     */
-    public ResultMessage updateHotelInfo(HotelVO hotelVO);
-
-    /**
-     * 根据酒店id获得酒店工作人员查看的酒店的基本信息
+     * 酒店工作人员查看酒店的基本信息
      *
      * @param hotelID 酒店的id
      * @return SUCCESS或者FAIL，FAIL表示不存在该酒店
      */
     public HotelVO getBasicHotelInfo(long hotelID);
+
+    /**
+     * 酒店工作人员更新酒店的基本信息
+     *
+     * @param hotelVO 酒店信息
+     * @return SUCCESS或者FAIL，FAIL表示不存在该酒店
+     */
+    public ResultMessage updateBasicHotelInfo(HotelVO hotelVO);
 
     /**
      * 根据酒店id查找酒店
@@ -53,7 +53,7 @@ public interface HotelBLService {
     public HotelVO findHotelByID(long hotelID);
 
     /**
-     * 根据筛选条件显示酒店列表，需要先明确地址和商圈
+     * 客户根据筛选条件搜索酒店，需要先明确地址和商圈
      *
      * @param hotelVO 筛选条件，地址和商圈不能为空
      * @return 符合筛选条件的所有酒店的列表
@@ -87,13 +87,12 @@ public interface HotelBLService {
     public ResultMessage addRoom(RoomVO roomVO);
 
     /**
-     * 删除某个酒店已有的房间类型
+     * 删除已有的房间类型
      *
-     * @param hotelID 酒店的id
-     * @param roomType 房间类型，包括单人房和双人房
+     * @param roomID 房间类型id，房间类型的唯一标识
      * @return SUCCESS或者FAIL，FAIL表示不存在该房间类型
      */
-    public ResultMessage deleteRoom(long hotelID, RoomType roomType);
+    public ResultMessage deleteRoom(long roomID);
 
     /**
      * 更新已有房间类型的信息
@@ -104,7 +103,7 @@ public interface HotelBLService {
     public ResultMessage updateRoomInfo(RoomVO roomVO);
 
     /**
-     * 根据酒店的id查找该酒店的所有房间类型信息
+     * 查看酒店的所有房间类型信息
      *
      * @param hotelID 酒店的id
      * @return 对应的酒店的所有房间类型信息

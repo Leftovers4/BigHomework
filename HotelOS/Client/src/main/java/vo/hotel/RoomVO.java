@@ -8,12 +8,17 @@ import util.RoomType;
 public class RoomVO {
 
     /**
-     * 酒店ID
+     * 房间类型id，房间类型的唯一标识
      */
-    public long hotelId;
+    public long roomID;
 
     /**
-     * 房间类型
+     * 酒店ID
+     */
+    public long hotelID;
+
+    /**
+     * 房间类型，有Single（单人房），Couple（双人房）
      */
     public RoomType roomType;
 
@@ -31,37 +36,5 @@ public class RoomVO {
      * 价格
      */
     public double price;
-
-    /**
-     * 传给逻辑：创建包含酒店工作人员录入可用客房界面信息的对象
-     *
-     * @param hotelId  房间所属酒店的id
-     * @param roomType 房间类型，有Single（单人房），Couple（双人房）
-     * @param total    该类型房间的总数量
-     * @param price    价格
-     */
-    public RoomVO(long hotelId, RoomType roomType, int total, double price) {
-        this.hotelId = hotelId;
-        this.roomType = roomType;
-        this.total = total;
-        this.price = price;
-    }
-
-    /**
-     * 创建包含所有房间类型信息的对象
-     *
-     * @param hotelId   房间所属酒店的id
-     * @param roomType  房间类型，有Single（单人房），Couple（双人房）
-     * @param total     该类型房间的总数量
-     * @param available 该类型房间的可用数量
-     * @param price     价格
-     */
-    public RoomVO(long hotelId, RoomType roomType, int total, int available, double price) {
-        this.hotelId = hotelId;
-        this.roomType = roomType;
-        this.total = total;
-        this.available = available;
-        this.price = price;
-    }
 
 }

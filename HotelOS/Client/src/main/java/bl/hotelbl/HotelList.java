@@ -2,6 +2,7 @@ package bl.hotelbl;
 
 import vo.hotel.HotelVO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,7 +10,17 @@ import java.util.List;
  */
 public class HotelList {
 
-    public void sort(List<HotelVO> hotelVOs, String key, int mode){
+    private List<HotelVO> hotelVOs;
+
+    public HotelList(){
+        hotelVOs = new ArrayList<>();
+    }
+
+    public HotelList(List<HotelVO> hotelVOs){
+        this.hotelVOs = hotelVOs;
+    }
+
+    public void sort(String key, int mode){
         int hotelVONum = hotelVOs.size();
 
         for (int i = 0; i < hotelVONum - 1; i++) {

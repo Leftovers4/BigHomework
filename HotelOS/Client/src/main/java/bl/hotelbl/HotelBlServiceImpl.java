@@ -15,11 +15,9 @@ import java.util.List;
 public class HotelBlServiceImpl implements HotelBLService{
 
     HotelManager hotelManager;
-    HotelList hotelList;
 
     public HotelBlServiceImpl(){
         hotelManager = new HotelManager();
-        hotelList = new HotelList();
     }
 
     @Override
@@ -33,18 +31,18 @@ public class HotelBlServiceImpl implements HotelBLService{
     }
 
     @Override
-    public ResultMessage updateHotelInfo(HotelVO hotelVO) {
+    public ResultMessage updateBasicHotelInfo(HotelVO hotelVO) {
         return hotelManager.updateHotelInfo(hotelVO);
     }
 
     @Override
-    public HotelVO getBasicHotelInfo(long hotelID) {
-        return null;
+    public HotelVO findHotelByID(long hotelID) {
+        return hotelManager.getBasicHotelInfo(hotelID);
     }
 
     @Override
-    public HotelVO findHotelByID(long hotelID) {
-        return null;
+    public HotelVO getBasicHotelInfo(long hotelID) {
+        return hotelManager.getBasicHotelInfo(hotelID);
     }
 
     @Override
@@ -59,27 +57,28 @@ public class HotelBlServiceImpl implements HotelBLService{
 
     @Override
     public void sortHotels(List<HotelVO> hotelVOs, String key, int mode) {
-        hotelList.sort(hotelVOs, key, mode);
+        HotelList hotelList = new HotelList(hotelVOs);
+        hotelList.sort(key, mode);
     }
 
     @Override
     public ResultMessage addRoom(RoomVO roomVO) {
-        return null;
+        return hotelManager.addRoom(roomVO);
     }
 
     @Override
-    public ResultMessage deleteRoom(long hotelID, RoomType roomType) {
-        return null;
+    public ResultMessage deleteRoom(long roomID) {
+        return hotelManager.deleteRoom(roomID);
     }
 
     @Override
     public ResultMessage updateRoomInfo(RoomVO roomVO) {
-        return null;
+        return hotelManager.updateRoomInfo(roomVO);
     }
 
     @Override
     public List<RoomVO> findRoomsByHotelID(long hotelID) {
-        return null;
+        return hotelManager.findRoomsByHotelID(hotelID);
     }
 
 }

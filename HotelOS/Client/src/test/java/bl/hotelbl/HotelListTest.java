@@ -19,7 +19,6 @@ public class HotelListTest {
 
     @Before
     public void setUp() throws Exception {
-        tested = new HotelList();
         hotelVOs = new ArrayList<>();
 
         HotelVO hotelVO1 = new HotelVO(1, 200, 4.5);
@@ -29,6 +28,7 @@ public class HotelListTest {
         HotelVO hotelVO5 = new HotelVO(5, 90, 4.9);
         HotelVO hotelVO6 = new HotelVO(6, 500, 1.7);
         HotelVO hotelVO7 = new HotelVO(7, 1000, 3.8);
+
         hotelVOs.add(hotelVO1);
         hotelVOs.add(hotelVO2);
         hotelVOs.add(hotelVO3);
@@ -40,7 +40,8 @@ public class HotelListTest {
 
     @Test
     public void sort() throws Exception {
-        tested.sort(hotelVOs, "price", 0);
+        tested = new HotelList(hotelVOs);
+        tested.sort("price", 0);
     }
 
 }
