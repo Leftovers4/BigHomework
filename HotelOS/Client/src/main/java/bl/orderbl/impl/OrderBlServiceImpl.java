@@ -4,6 +4,7 @@ import bl.orderbl.OrderBLService;
 import util.OrderType;
 import util.ResultMessage;
 import vo.order.OrderVO;
+import vo.order.ReviewVO;
 import vo.user.CreditVO;
 
 import java.util.ArrayList;
@@ -12,33 +13,39 @@ import java.util.ArrayList;
  * Created by kevin on 2016/11/6.
  */
 public class OrderBlServiceImpl implements OrderBLService {
+
     @Override
-    public OrderVO find(String orderID) {
+    public ResultMessage addOrder(OrderVO orderVO) {
         return null;
     }
 
     @Override
-    public ResultMessage add(OrderVO orderVO) {
+    public ResultMessage updateOrder(OrderVO orderVO) {
         return null;
     }
 
     @Override
-    public ResultMessage modify(OrderVO orderVO) {
+    public ResultMessage executeOrder(String orderID) {
         return null;
     }
 
     @Override
-    public ResultMessage review(OrderVO orderVO) {
+    public ResultMessage cancelOrder(String orderID) {
         return null;
     }
 
     @Override
-    public ResultMessage cancel() {
+    public ResultMessage reviewOrder(ReviewVO reviewVO) {
         return null;
     }
 
     @Override
-    public ArrayList<OrderVO> showList(OrderVO orderVO) {
+    public OrderVO searchOrderByID(String orderID) {
+        return null;
+    }
+
+    @Override
+    public ArrayList<OrderVO> viewOrderList(OrderVO orderVO) {
         return null;
     }
 
