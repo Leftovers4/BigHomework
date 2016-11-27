@@ -61,7 +61,7 @@
             <Label layoutX="325.0" layoutY="510.0" text="价  格  总  计：" />
             <Label layoutX="435.0" layoutY="510.0" text="Label" />
             <Button fx:id="confirmBtn" layoutX="532.0" layoutY="579.0" mnemonicParsing="false" onAction="#submitBtnEvent" text="确认并提交订单" visible="false" />
-            <Button fx:id="backToEdit" layoutX="448.0" layoutY="579.0" mnemonicParsing="false" text="返回" visible="false" />
+            <Button onAction="#backToEdit" fx:id="backToEdit" layoutX="448.0" layoutY="579.0" mnemonicParsing="false" text="返回" visible="false" />
             <Label fx:id="checkIndateLabel" layoutX="440.0" layoutY="180.0" text="日期" visible="false" />
             <Label fx:id="checkInTimeLabel" layoutX="510.0" layoutY="180.0" text="时间" visible="false" />
             <Label fx:id="checkOutDateLabel" layoutX="440.0" layoutY="235.0" text="日期" visible="false" />

@@ -61,7 +61,7 @@ public class InfoPaneController {
     }
 
     private void initialData() {
-        UserVO userVO = userBLService_stub.find("lisi");
+        UserVO userVO = userBLService_stub.getBasicUserInfo("lisi");
 
         userIdLabel.setText(userVO.username);
         usernameLabel.setText(userVO.name);
@@ -70,7 +70,7 @@ public class InfoPaneController {
         } else {
             userSex.setText("女");
         }
-//        birthDate.setText(userVO.memberVO.birthday.toString());
+        birthDate.setText(userVO.memberVO.birthday.toString());
         phone.setText(userVO.phone);
     }
 
