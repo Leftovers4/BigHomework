@@ -3,6 +3,9 @@ package presentation.userui.usercontroller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import presentation.util.CancelDateBefore;
+
+import java.time.LocalDate;
 
 /**
  * Created by wyj on 2016/11/24.
@@ -10,20 +13,6 @@ import javafx.stage.Stage;
 public class UserGenerateOrderController {
 
     private Stage stage;
-
-    public void launch(Stage primaryStage) {
-        this.stage = primaryStage;
-    }
-
-    @FXML
-    private void closeWindow(){
-        stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
 
     @FXML private DatePicker checkInDatePicker;
     @FXML private DatePicker checkOutDatePicker;
@@ -53,7 +42,46 @@ public class UserGenerateOrderController {
     @FXML private Label peopleNumLabel;
     @FXML private Label child;
 
+    private LocalDate date;
 
+    public void launch(Stage primaryStage) {
+        this.stage = primaryStage;
+
+        initial();
+    }
+
+    private void initial() {
+        for (int i = 0; i<24; i++) {
+            checkInHour.getItems().add(i);
+            checkOutHour.getItems().add(i);
+        }
+        for (int i = 0; i<60; i++) {
+            checkInMin.getItems().add(i);
+            checkOutMin.getItems().add(i);
+        }
+        roomType.getItems().add("单人间");
+        roomType.getItems().add("标准间");
+        roomType.getItems().add("多床房");
+        roomType.getItems().add("标准套间");
+        roomType.getItems().add("豪华套间");
+        roomType.getItems().add("其他");
+        checkInDatePicker.setDayCellFactory(new CancelDateBefore(checkInDatePicker));
+        checkOutDatePicker.setDayCellFactory(new CancelDateBefore(checkOutDatePicker));
+    }
+
+
+    @FXML
+    private void closeWindow(){
+        stage.close();
+    }
+    @FXML
+    private void minWindow(){
+        stage.setIconified(true);
+    }
+
+    /**
+     * 下一步，确认促销优惠
+     */
     @FXML
     private void nextBtnEvent() {
         checkInDatePicker.setVisible(false);
@@ -83,9 +111,18 @@ public class UserGenerateOrderController {
         child.setVisible(true);
     }
 
+    private boolean judgeBlank() {
+        boolean checkindate = checkInDatePicker.getValue().equals("");
+        boolean chec
+    }
+
+    /**
+     * 提交并生成订单
+     */
     @FXML
     private void submitBtnEvent() {
         submit.setStyle("-fx-text-fill: deepskyblue");
         confirmPromotion.setStyle("-fx-text-fill: black");
     }
+
 }

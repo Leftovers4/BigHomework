@@ -41,9 +41,9 @@
       <Label layoutX="355.0" layoutY="547.0" text="订  单  状  态：" />
       <Label layoutX="465.0" layoutY="547.0" text="状态" />
       <Button fx:id="cancelOrderBtn" layoutX="597.0" layoutY="542.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="撤销订单" />
-      <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
+      <HBox id="topBar" prefHeight="50.0" prefWidth="850.0">
          <children>
-            <Button mnemonicParsing="false" stylesheets="@../../css/user/userstyle.css">
+            <Button mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -71,7 +71,7 @@
                   <Insets left="10.0" top="8.0" />
                </HBox.margin>
             </SplitMenuButton>
-            <Button mnemonicParsing="false" onAction="#minWindow" stylesheets="@../../css/user/userstyle.css">
+            <Button mnemonicParsing="false" onAction="#minWindow">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -83,7 +83,7 @@
                   <Insets left="60.0" top="5.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#closeWindow" stylesheets="@../../css/user/userstyle.css">
+            <Button mnemonicParsing="false" onAction="#closeWindow">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>

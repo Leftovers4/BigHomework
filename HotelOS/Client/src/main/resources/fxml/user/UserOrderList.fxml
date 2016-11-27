@@ -41,9 +41,9 @@
       <DatePicker layoutX="454.0" layoutY="130.0" prefWidth="135.0" />
       <Label layoutX="605.0" layoutY="135.0" text="至" />
       <DatePicker layoutX="634.0" layoutY="130.0" prefWidth="135.0" />
-      <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
+      <HBox id="topBar" prefHeight="50.0" prefWidth="850.0">
          <children>
-            <Button mnemonicParsing="false" stylesheets="@../../css/user/userstyle.css">
+            <Button mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -71,7 +71,7 @@
                   <Insets left="10.0" top="8.0" />
                </HBox.margin>
             </SplitMenuButton>
-            <Button mnemonicParsing="false" stylesheets="@../../css/user/userstyle.css">
+            <Button mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -83,7 +83,7 @@
                   <Insets left="60.0" top="5.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" stylesheets="@../../css/user/userstyle.css">
+            <Button mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -50,7 +50,7 @@
                   <Insets left="10.0" top="10.0" />
                </HBox.margin>
             </SplitMenuButton>
-            <Button onAction="#minWindow" mnemonicParsing="false" stylesheets="@../../css/user/userstyle.css">
+            <Button onAction="#minWindow" mnemonicParsing="false">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -62,7 +62,7 @@
                   <Insets left="60.0" top="5.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#closeWindow" stylesheets="@../../css/user/userstyle.css">
+            <Button mnemonicParsing="false" onAction="#closeWindow">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -9,13 +9,16 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<fx:root prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.InfoPaneController">
+<fx:root prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.InfoPaneController">
    <children>
+      <Label fx:id="vipCompany" layoutX="523.0" layoutY="525.0" text="company" visible="false" />
+      <Label fx:id="vipLevel" layoutX="524.0" layoutY="475.0" text="level" visible="false" />
       <HBox id="topBar" prefHeight="50.0" prefWidth="850.0">
          <children>
             <Button mnemonicParsing="false">
@@ -78,7 +81,7 @@
       <Label layoutX="330.0" layoutY="355.0" text="联系方式：" />
       <Label layoutX="331.0" layoutY="295.0" text="出生日期：" />
       <Label layoutX="343.0" layoutY="415.0" text="信用值：" />
-      <Hyperlink onAction="#checkCreditRecord" layoutX="487.0" layoutY="411.0" text="查看信用记录" />
+      <Hyperlink layoutX="487.0" layoutY="411.0" onAction="#checkCreditRecord" text="查看信用记录" />
       <Label layoutX="325.0" layoutY="475.0" text="会员信息：" />
       <ImageView fx:id="userPhoto" fitHeight="170.0" fitWidth="170.0" layoutX="80.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -88,21 +91,24 @@
       <Button fx:id="changePhotoBtn" layoutX="119.0" layoutY="316.0" mnemonicParsing="false" onAction="#changePhoto" text="编辑头像" />
       <TextField fx:id="userIdField" layoutX="435.0" layoutY="110.0" visible="false" />
       <TextField fx:id="userNameField" layoutX="435.0" layoutY="170.0" visible="false" />
-      <RadioButton fx:id="sexMan" layoutX="435.0" layoutY="235.0" mnemonicParsing="false" text="男" visible="false" />
-      <RadioButton fx:id="sexWoman" layoutX="540.0" layoutY="235.0" mnemonicParsing="false" text="女" visible="false" />
-      <DatePicker fx:id="birthPicker" layoutX="435.0" layoutY="290.0" prefHeight="34.0" prefWidth="238.0" visible="false" />
+      <RadioButton fx:id="sexMan" layoutX="435.0" layoutY="235.0" mnemonicParsing="false" text="男" visible="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="sexGroup" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="sexWoman" layoutX="540.0" layoutY="235.0" mnemonicParsing="false" text="女" toggleGroup="$sexGroup" visible="false" />
+      <DatePicker fx:id="birthPicker" editable="false" layoutX="435.0" layoutY="290.0" prefHeight="34.0" prefWidth="201.0" visible="false" />
       <TextField fx:id="phoneField" layoutX="435.0" layoutY="350.0" visible="false" />
       <Label layoutX="435.0" layoutY="415.0" text="0" />
       <Label layoutX="435.0" layoutY="475.0" text="普通会员：" />
       <Label layoutX="435.0" layoutY="525.0" text="企业会员：" />
-      <Button fx:id="registerCommonvipBtn" onAction="#registerCommonvip" layoutX="540.0" layoutY="470.0" mnemonicParsing="false" text="注册" />
-      <Button fx:id="registerCompanyvipBtn" onAction="#registerCompanyvip" layoutX="540.0" layoutY="520.0" mnemonicParsing="false" text="注册" />
+      <Button fx:id="registerCommonvipBtn" layoutX="540.0" layoutY="470.0" mnemonicParsing="false" onAction="#registerCommonvip" text="注册" />
+      <Button fx:id="registerCompanyvipBtn" layoutX="540.0" layoutY="520.0" mnemonicParsing="false" onAction="#registerCompanyvip" text="注册" />
       <Button fx:id="saveInfo" layoutX="491.0" layoutY="596.0" mnemonicParsing="false" onAction="#saveUserInfo" prefWidth="70.0" text="保存" visible="false" />
       <Button fx:id="cleanAllBtn" layoutX="603.0" layoutY="596.0" mnemonicParsing="false" onAction="#cleanAll" prefWidth="70.0" text="重置" visible="false" />
       <Label fx:id="userIdLabel" layoutX="435.0" layoutY="115.0" text="name" />
       <Label fx:id="usernameLabel" layoutX="435.0" layoutY="175.0" text="Label" />
       <Label fx:id="userSex" layoutX="435.0" layoutY="235.0" text="Label" />
-      <Label fx:id="birthDate" layoutX="435.0" layoutY="295.0" text="Label" />
+      <Label fx:id="birthDate" layoutX="435.0" layoutY="295.0" text="2016-09-12" />
       <Label fx:id="phone" layoutX="435.0" layoutY="355.0" text="Label" />
       <Button fx:id="editInfoBtn" layoutX="490.0" layoutY="596.0" mnemonicParsing="false" onAction="#editUserInfo" prefHeight="30.0" prefWidth="100.0" text="编辑" />
    </children>
