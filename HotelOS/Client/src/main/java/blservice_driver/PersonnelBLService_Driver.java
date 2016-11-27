@@ -1,6 +1,6 @@
 package blservice_driver;
 
-import blservice.personnelblservice.PersonnelBLService;
+import bl.personnelbl.PersonnelBLService;
 import org.junit.Before;
 import org.junit.Test;
 import util.PersonnelType;

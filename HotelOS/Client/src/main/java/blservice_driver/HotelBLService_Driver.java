@@ -1,16 +1,13 @@
 package blservice_driver;
 
-import blservice.hotelblservice.HotelBLService;
+import bl.hotelbl.HotelBLService;
 import blservice_stub.HotelBLService_Stub;
 import org.junit.Before;
 import org.junit.Test;
-import util.Address;
 import util.ResultMessage;
-import util.TradingArea;
 import vo.hotel.HotelVO;
 import vo.hotel.ViewVOHelper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;

@@ -1,35 +1,35 @@
-package blservice_stub;
+package bl.userbl.impl;
 
 import bl.userbl.UserBLService;
 import util.ResultMessage;
 import vo.user.CreditRecordVO;
 import vo.user.UserVO;
 
-import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Created by kevin on 2016/10/16.
+ * Created by kevin on 2016/11/6.
  */
-public class UserBLService_Stub implements UserBLService {
+public class UserBlServiceImpl implements UserBLService {
+
     @Override
     public ResultMessage login(String username, String password) {
-        return ResultMessage.SUCCESS;
+        return null;
     }
 
     @Override
     public ResultMessage logout(String username) {
-        return ResultMessage.SUCCESS;
+        return null;
     }
 
     @Override
     public UserVO getBasicUserInfo(String username) {
-        return new UserVO("zhangsan", "张三", true, LocalDate.now(), "13112345678", 1000, 2, "华为");
+        return null;
     }
 
     @Override
     public ResultMessage updateBasicUserInfo(UserVO userVO) {
-        return ResultMessage.SUCCESS;
+        return null;
     }
 
     @Override
@@ -39,17 +39,17 @@ public class UserBLService_Stub implements UserBLService {
 
     @Override
     public ResultMessage registerNormalMember(UserVO userVO) {
-        return ResultMessage.SUCCESS;
+        return null;
     }
 
     @Override
     public ResultMessage registerEnterpriseMember(UserVO userVO) {
-        return ResultMessage.SUCCESS;
+        return null;
     }
 
     @Override
     public ResultMessage topup(CreditRecordVO creditRecordVO) {
-        return ResultMessage.SUCCESS;
+        return null;
     }
 
 }

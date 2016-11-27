@@ -15,6 +15,7 @@ import java.rmi.RemoteException;
  * Created by kevin on 2016/11/16.
  */
 public class RemoteHelper {
+
     public static RemoteHelper remoteHelper;
     private String networkAddress;
     private HotelDataService hotelDAO;
@@ -108,4 +109,5 @@ public class RemoteHelper {
         }
         return userDAO;
     }
+
 }

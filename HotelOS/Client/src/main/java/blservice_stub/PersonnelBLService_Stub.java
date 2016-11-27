@@ -1,6 +1,6 @@
 package blservice_stub;
 
-import blservice.personnelblservice.PersonnelBLService;
+import bl.personnelbl.PersonnelBLService;
 import util.PersonnelType;
 import util.ResultMessage;
 import vo.personnel.PersonnelVO;

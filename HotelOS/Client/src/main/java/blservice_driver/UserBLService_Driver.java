@@ -1,12 +1,10 @@
 package blservice_driver;
 
-import blservice.userblservice.UserBLService;
+import bl.userbl.UserBLService;
 import org.junit.Before;
 import org.junit.Test;
 import util.ResultMessage;
 import vo.user.UserVO;
-
-import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
 

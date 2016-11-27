@@ -1,4 +1,4 @@
-package blservice_stub;
+package bl.promotionbl.impl;
 
 import bl.promotionbl.PromotionBLService;
 import util.ResultMessage;
@@ -7,30 +7,27 @@ import vo.promotion.PromotionVO;
 import java.util.ArrayList;
 
 /**
- * Created by kevin on 2016/10/16.
+ * Created by kevin on 2016/11/6.
  */
-public class PromotionBLService_Stub implements PromotionBLService {
-
+public class PromotionController implements PromotionBLService {
 
     @Override
     public ResultMessage create(PromotionVO promotionVO) {
-        return ResultMessage.SUCCESS;
+        return null;
     }
 
     @Override
     public ResultMessage delete(long id) {
-        return ResultMessage.SUCCESS;
+        return null;
     }
 
     @Override
     public ResultMessage update(long id) {
-        return ResultMessage.SUCCESS;
+        return null;
     }
 
     @Override
     public ArrayList<PromotionVO> showList(long creator) {
-        ArrayList<PromotionVO> list = new ArrayList<PromotionVO>();
-        list.add(new PromotionVO(1, "生日特惠", "折扣： 0.9"));
-        return list;
+        return null;
     }
 }

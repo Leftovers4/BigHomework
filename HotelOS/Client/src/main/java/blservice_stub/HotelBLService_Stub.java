@@ -1,11 +1,8 @@
 package blservice_stub;
 
-import blservice.hotelblservice.HotelBLService;
-import po.hotel.HotelPO;
-import util.Address;
+import bl.hotelbl.HotelBLService;
 import util.ResultMessage;
 import util.RoomType;
-import util.TradingArea;
 import vo.hotel.HotelVO;
 import vo.hotel.LogicVOHelper;
 import vo.hotel.RoomVO;

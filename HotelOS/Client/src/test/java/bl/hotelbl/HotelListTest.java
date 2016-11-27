@@ -1,5 +1,6 @@
 package bl.hotelbl;
 
+import bl.hotelbl.impl.HotelList;
 import org.junit.Before;
 import org.junit.Test;
 import vo.hotel.HotelVO;
@@ -7,8 +8,6 @@ import vo.hotel.LogicVOHelper;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by kevin on 2016/11/25.

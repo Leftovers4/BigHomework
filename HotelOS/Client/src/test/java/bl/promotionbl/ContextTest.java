@@ -1,5 +1,6 @@
 package bl.promotionbl;
 
+import bl.promotionbl.impl.Context;
 import org.junit.Test;
 import po.promotion.PromotionPO;
 import util.OrderType;

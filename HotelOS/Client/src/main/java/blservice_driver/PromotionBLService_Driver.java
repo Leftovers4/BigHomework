@@ -1,13 +1,11 @@
 package blservice_driver;
 
-import blservice.promotionblservice.PromotionBLService;
+import bl.promotionbl.PromotionBLService;
 import blservice_stub.PromotionBLService_Stub;
 import org.junit.Before;
 import org.junit.Test;
 import util.ResultMessage;
 import vo.promotion.PromotionVO;
-
-import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertEquals;
 

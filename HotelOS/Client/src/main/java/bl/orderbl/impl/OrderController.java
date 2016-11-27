@@ -1,4 +1,4 @@
-package blservice_stub;
+package bl.orderbl.impl;
 
 import bl.orderbl.OrderBLService;
 import util.OrderType;
@@ -9,40 +9,37 @@ import vo.user.CreditVO;
 import java.util.ArrayList;
 
 /**
- * Created by kevin on 2016/10/16.
+ * Created by kevin on 2016/11/6.
  */
-public class OrderBLService_Stub implements OrderBLService {
+public class OrderController implements OrderBLService {
     @Override
     public OrderVO find(String orderID) {
-//        return new OrderVO("12345620161111001", 123456, "如家", "张三", null, 2, false, null, null);
         return null;
     }
 
     @Override
     public ResultMessage add(OrderVO orderVO) {
-        return ResultMessage.SUCCESS;
+        return null;
     }
 
     @Override
     public ResultMessage modify(OrderVO orderVO) {
-        return ResultMessage.SUCCESS;
+        return null;
     }
 
     @Override
     public ResultMessage review(OrderVO orderVO) {
-        return ResultMessage.SUCCESS;
+        return null;
     }
 
     @Override
     public ResultMessage cancel() {
-        return ResultMessage.SUCCESS;
+        return null;
     }
 
     @Override
     public ArrayList<OrderVO> showList(OrderVO orderVO) {
-        ArrayList<OrderVO> list = new ArrayList<OrderVO>();
-        list.add(new OrderVO("12345620161111001", 123456,"张三", OrderType.Abnormal,"如家", null,null, 2, false, null, null,null,null));
-        return list;
+        return null;
     }
 
     @Override
