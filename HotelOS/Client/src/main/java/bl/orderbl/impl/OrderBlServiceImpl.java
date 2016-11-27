@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by kevin on 2016/11/6.
  */
-public class OrderController implements OrderBLService {
+public class OrderBlServiceImpl implements OrderBLService {
     @Override
     public OrderVO find(String orderID) {
         return null;

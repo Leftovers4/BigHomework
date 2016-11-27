@@ -5,6 +5,6 @@ import bl.hotelbl.impl.RoomInfoService;
 /**
  * Created by kevin on 2016/11/6.
  */
-public class Order {
+public class OrderManager {
     RoomInfoService roomInfoService;
 }

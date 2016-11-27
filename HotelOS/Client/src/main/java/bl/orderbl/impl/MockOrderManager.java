@@ -5,7 +5,7 @@ import util.OrderType;
 /**
  * Created by kevin on 2016/11/6.
  */
-public class MockOrder extends Order {
+public class MockOrderManager extends OrderManager {
 
     /**
      * 订单ID
@@ -41,7 +41,7 @@ public class MockOrder extends Order {
      * @param orderType   the order type
      * @param actualPrice the actual price
      */
-    public MockOrder(String orderID, long hotelID, String username, OrderType orderType, double actualPrice) {
+    public MockOrderManager(String orderID, long hotelID, String username, OrderType orderType, double actualPrice) {
         this.orderID = orderID;
         this.hotelID = hotelID;
         this.username = username;

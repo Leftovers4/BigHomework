@@ -1,6 +1,7 @@
 package bl.orderbl;
 import util.*;
 import vo.order.OrderVO;
+import vo.order.ReviewVO;
 import vo.user.CreditVO;
 
 import java.util.ArrayList;
@@ -10,40 +11,41 @@ import java.util.ArrayList;
  */
 public interface OrderBLService {
 
-    // 根据订单ID查找订单
-    public OrderVO find(String orderID);
-
     // 添加订单
-    public ResultMessage add(OrderVO orderVO);
+    ResultMessage addOrder(OrderVO orderVO);
 
     // 修改订单
-    public ResultMessage modify(OrderVO orderVO);
+    ResultMessage updateOrder(OrderVO orderVO);
 
-    // 评价订单
-    public ResultMessage review(OrderVO orderVO);
+    ResultMessage executeOrder(String orderID);
 
     // 撤销订单
-    public ResultMessage cancel();
+    ResultMessage cancelOrder(String orderID);
+
+    // 评价订单
+    ResultMessage reviewOrder(ReviewVO reviewVO);
+
+    // 根据订单ID查找订单
+    OrderVO searchOrderByID(String orderID);
 
     // 根据条件显示订单列表
     // (待推敲) 根据用户、酒店、类型查找订单
     // (待推敲) 根据用户查找预定过的酒店
-    public ArrayList<OrderVO> showList(OrderVO orderVO);
+    ArrayList<OrderVO> viewOrderList(OrderVO orderVO);
 
     // 根据用户名查找订单列表
-    public ArrayList<OrderVO> showListByUsername(String username);
+    ArrayList<OrderVO> showListByUsername(String username);
 
     // 根据用户名、订单类型查找订单列表（分类型查找用户历史订单列表）
-    public ArrayList<OrderVO> showListByUsername_orderType(String username, OrderType orderType);
+    ArrayList<OrderVO> showListByUsername_orderType(String username, OrderType orderType);
 
     // 根据酒店id获得订单评价列表
-    public ArrayList<CreditVO> showReviewListByHotelID(long hotelID);
+    ArrayList<CreditVO> showReviewListByHotelID(long hotelID);
 
     // 改变订单类型
-    public ResultMessage changeOrderType(String orderID);
+    ResultMessage changeOrderType(String orderID);
 
     //处理订单申诉
-    public ResultMessage handleAppeal(String orderID, double credit);
-
+    ResultMessage handleAppeal(String orderID, double credit);
 
 }
