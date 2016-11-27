@@ -47,6 +47,6 @@ public class UpdateOutPaneController {
     @FXML
     private void outOffline(){
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new UpdateOfflinePane(stage,mainPane));
+        mainPane.getChildren().add(new UpdateOfflinePane(stage,mainPane,false));
     }
 }

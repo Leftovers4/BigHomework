@@ -10,18 +10,6 @@
     <children>
         <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
             <children>
-                <Button fx:id="backBtn" mnemonicParsing="false" onAction="#back" stylesheets="@../../css/user/userstyle.css">
-                    <graphic>
-                        <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../img/common/back.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <HBox.margin>
-                        <Insets left="10.0" />
-                    </HBox.margin>
-                </Button>
                 <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../img/hotelworker/initialPhoto.png" />
@@ -64,11 +52,14 @@
                 </Button>
             </children>
         </HBox>
-      <ComboBox layoutX="426.0" layoutY="213.0" prefHeight="36.0" prefWidth="140.0" promptText="单人房" />
-      <Label layoutX="274.0" layoutY="219.0" text="客房类型：" />
-      <ComboBox layoutX="426.0" layoutY="289.0" prefHeight="36.0" prefWidth="100.0" promptText="1" />
-      <Label layoutX="308.0" layoutY="295.0" text="数量：" />
-      <Button layoutX="425.0" layoutY="377.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="60.0" text="入住" />
-      <Button layoutX="425.0" layoutY="377.0" mnemonicParsing="false" text="退房" />
+      <ComboBox fx:id="roomTypeBox" layoutX="297.0" layoutY="341.0" prefHeight="36.0" prefWidth="100.0" promptText="单人房" />
+      <Label layoutX="225.0" layoutY="347.0" text="类型：" />
+      <ComboBox fx:id="roomAmountBox" layoutX="525.0" layoutY="341.0" prefHeight="36.0" prefWidth="100.0" promptText="1" />
+      <Label layoutX="446.0" layoutY="347.0" text="数量：" />
+      <Button fx:id="checkInBtn" layoutX="565.0" layoutY="450.0" mnemonicParsing="false" onAction="#checkIn" prefHeight="24.0" prefWidth="60.0" text="入住" />
+      <Button fx:id="checkOutBtn" layoutX="535.0" layoutY="450.0" mnemonicParsing="false" onAction="#checkOut" text="退房" visible="false" />
+      <Label layoutX="225.0" layoutY="271.0" text="线下已入住客房间数：" />
+      <Label fx:id="busyRoomLabel" layoutX="424.0" layoutY="271.0" text="12" />
+      <Label layoutX="455.0" layoutY="271.0" text="间" />
     </children>
 </fx:root>

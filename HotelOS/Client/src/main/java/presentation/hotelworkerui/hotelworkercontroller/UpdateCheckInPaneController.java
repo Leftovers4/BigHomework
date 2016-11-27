@@ -57,7 +57,7 @@ public class UpdateCheckInPaneController {
     @FXML
     private void checkinOffline(){
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new UpdateOfflinePane(stage,mainPane));
+        mainPane.getChildren().add(new UpdateOfflinePane(stage,mainPane,true));
     }
 
 }
