@@ -14,6 +14,7 @@ import presentation.util.InputWrongAlert;
 import presentation.util.UnselectedAlert;
 import util.RoomType;
 import vo.hotel.RoomVO;
+import vo.hotel.ViewVOHelper;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -135,7 +136,7 @@ public class RegisterRoomPaneController {
                 if(roomAmount > 0 && roomPrice > 0){
                     if(isAdd){
                         //添加客房
-                        RoomVO roomVO = new RoomVO(123456,RoomType.Single,0,roomAmount,roomPrice);
+                        RoomVO roomVO = new ViewVOHelper().create(123456,RoomType.Single,roomAmount,roomPrice);
                         roomTable.getItems().add(roomVO);
                         hotelBLServiceStub.addRoom(roomVO);
                     }else {

@@ -8,6 +8,7 @@ import util.Address;
 import util.ResultMessage;
 import util.TradingArea;
 import vo.hotel.HotelVO;
+import vo.hotel.ViewVOHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +20,12 @@ import static junit.framework.TestCase.assertEquals;
  */
 public class HotelBLService_Driver {
     HotelBLService tested;
+    ViewVOHelper viewVOHelper;
 
     @Before
     public void setUp() throws Exception {
         tested = new HotelBLService_Stub();
+        viewVOHelper = new ViewVOHelper();
     }
 
     @Test
@@ -33,7 +36,7 @@ public class HotelBLService_Driver {
 
     @Test
     public void showList() throws Exception {
-        List<HotelVO> res = tested.findHotelsByConditions(new HotelVO(1, "如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi"));
+        List<HotelVO> res = tested.findHotelsByConditions(viewVOHelper.create("如家", 4));
         for (int i = 0; i < res.size(); i++) {
             printHotelVO(res.get(i));
         }
@@ -41,7 +44,7 @@ public class HotelBLService_Driver {
 
     @Test
     public void add() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.addHotel(new HotelVO(1, "如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi")));
+        assertEquals(ResultMessage.SUCCESS, tested.addHotel(viewVOHelper.create("如家", 4)));
     }
 
     @Test
@@ -51,7 +54,7 @@ public class HotelBLService_Driver {
 
     @Test
     public void modify() throws Exception {
-        assertEquals(ResultMessage.SUCCESS, tested.updateHotelInfo(new HotelVO(1, "如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi")));
+        assertEquals(ResultMessage.SUCCESS, tested.updateBasicHotelInfo(viewVOHelper.create("如家", 4)));
     }
 
     private void printHotelVO(HotelVO hotelVO){
