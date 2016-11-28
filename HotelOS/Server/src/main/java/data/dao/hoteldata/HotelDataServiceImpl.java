@@ -164,6 +164,11 @@ public class HotelDataServiceImpl implements HotelDataService {
     }
 
     @Override
+    public ResultMessage updateRoom(RoomPO roomPO) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public byte[] getImage(long hotelID) throws RemoteException {
         return new byte[0];
     }
