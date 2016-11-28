@@ -53,12 +53,22 @@ public class UserGenerateOrderController {
 
     private void initial() {
         for (int i = 0; i<24; i++) {
-            checkInHour.getItems().add(i);
-            checkOutHour.getItems().add(i);
+            if (i<10) {
+                checkInHour.getItems().add("0" +i);
+                checkOutHour.getItems().add("0" +i);
+            } else {
+                checkInHour.getItems().add(i);
+                checkOutHour.getItems().add(i);
+            }
         }
         for (int i = 0; i<60; i++) {
-            checkInMin.getItems().add(i);
-            checkOutMin.getItems().add(i);
+            if (i<10) {
+                checkInMin.getItems().add("0" + i);
+                checkOutMin.getItems().add("0" + i);
+            } else {
+                checkInMin.getItems().add(i);
+                checkOutMin.getItems().add(i);
+            }
         }
         roomType.getItems().add("单人间");
         roomType.getItems().add("标准间");
@@ -197,6 +207,7 @@ public class UserGenerateOrderController {
     private void submitBtnEvent() {
         submit.setStyle("-fx-text-fill: deepskyblue");
         confirmPromotion.setStyle("-fx-text-fill: black");
+        backToEdit.setVisible(false);
     }
 
 }
