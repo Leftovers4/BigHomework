@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/webmarketer/webmarketerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmarketerui.webmarketercontroller.AddCreditPaneController">
+   <children>
+      <HBox id="topBar" prefHeight="50.0" prefWidth="850.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#back">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/common/back.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
+            <ImageView fx:id="topBarPhoto" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/common/initialPhoto.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="480.0" top="10.0" />
+               </HBox.margin>
+            </ImageView>
+            <SplitMenuButton maxWidth="120.0" mnemonicParsing="false" text="name">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="退出登录" />
+               </items>
+               <HBox.margin>
+                  <Insets left="10.0" top="8.0" />
+               </HBox.margin>
+            </SplitMenuButton>
+            <Button mnemonicParsing="false" onAction="#minWindow">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/common/minimize.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="60.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#closeWindow">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/common/exit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <ImageView fx:id="userPhoto" fitHeight="170.0" fitWidth="170.0" layoutX="80.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/common/initialPhoto.png" />
+         </image>
+      </ImageView>
+      <GridPane alignment="CENTER" hgap="50.0" layoutX="320.0" layoutY="121.0" vgap="30.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="用户名：" />
+            <Label fx:id="userIdLabel" text="网红" GridPane.columnIndex="1" />
+            <Label text="姓名：" GridPane.rowIndex="1" />
+            <Label fx:id="usernameLabel" text="路人乙" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="性别：" GridPane.rowIndex="2" />
+            <Label fx:id="userSex" text="男" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="出生日期：" GridPane.rowIndex="3" />
+            <Label fx:id="birthDate" text="2016-09-12" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="联系方式：" GridPane.rowIndex="4" />
+            <Label fx:id="phone" text="12345678910" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="信用值：" GridPane.rowIndex="5" />
+            <Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         </children>
+      </GridPane>
+      <Label layoutX="327.0" layoutY="492.0" text="会员信息：" />
+      <Label fx:id="vipCompany" layoutX="514.0" layoutY="535.0" text="company" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="471.0" layoutY="489.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/webmarketer/member.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="471.0" layoutY="532.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/webmarketer/company.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="327.0" layoutY="600.0" text="充值额度：" />
+      <TextField alignment="CENTER" layoutX="484.0" layoutY="596.0" prefHeight="36.0" prefWidth="90.0" promptText="1000" />
+      <Button layoutX="688.0" layoutY="594.0" mnemonicParsing="false" text="充值" />
+      <Label id="creditPrompt" layoutX="469.0" layoutY="643.0" text="信用值=充值额度*100" />
+   </children>
+</fx:root>

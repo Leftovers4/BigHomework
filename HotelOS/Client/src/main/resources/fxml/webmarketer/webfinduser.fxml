@@ -6,22 +6,10 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.FindOrderPaneController">
+<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/webmarketer/webmarketerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmarketerui.webmarketercontroller.FindUserPaneController">
    <children>
       <HBox id="topBar" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
          <children>
-            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#back" stylesheets="@../../css/user/userstyle.css">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/common/back.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </Button>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/hotelworker/initialPhoto.png" />
@@ -66,11 +54,11 @@
       </HBox>
       <ImageView fx:id="findOrderImg" fitHeight="150.0" fitWidth="200.0" layoutX="350.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../img/hotelworker/searchOrder.png" />
+            <Image url="@../../img/webmarketer/credit.png" />
          </image>
       </ImageView>
-      <TextField id="idorNameField" fx:id="idorNameField" layoutX="288.0" layoutY="417.0" promptText="订单号/客户名" />
-      <Button id="findByIDorNameBtn" fx:id="findByIDorNameBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="527.0" layoutY="417.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#findOrder" prefHeight="36.0" prefWidth="36.0">
+      <TextField id="idorNameField" fx:id="idorNameField" layoutX="288.0" layoutY="417.0" promptText="客户名" />
+      <Button id="findByIDorNameBtn" fx:id="findByIDorNameBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="527.0" layoutY="417.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#findUser" prefHeight="36.0" prefWidth="36.0">
          <graphic>
             <ImageView id="seaOrderNameImg" fx:id="seaOrderNameImg" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>

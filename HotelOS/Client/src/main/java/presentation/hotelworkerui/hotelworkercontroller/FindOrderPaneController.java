@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
  * Created by Hitiger on 2016/11/21.
  * Description :
  */
-public class FindOrderController {
+public class FindOrderPaneController {
     //选择线上入住后显现的组件
     @FXML private ImageView findOrderImg;
     @FXML private TextField idorNameField;

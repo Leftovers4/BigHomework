@@ -3,7 +3,7 @@ package presentation.hotelworkerui.hotelworkerscene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import presentation.hotelworkerui.hotelworkercontroller.FindOrderController;
+import presentation.hotelworkerui.hotelworkercontroller.FindOrderPaneController;
 
 import java.io.IOException;
 
@@ -26,7 +26,7 @@ public class FindOrderPane extends Pane{
             e.printStackTrace();
         }
 
-        FindOrderController findOrderController = fxmlLoader.getController();
-        findOrderController.launch(primaryStage,mainPane,isCheckIn);
+        FindOrderPaneController findOrderPaneController = fxmlLoader.getController();
+        findOrderPaneController.launch(primaryStage,mainPane,isCheckIn);
     }
 }

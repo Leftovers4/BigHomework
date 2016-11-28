@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../../css/webmarketer/webmarketerstyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmarketerui.webmarketercontroller.ComMarketerSceneController">
+    <children>
+        <VBox id="LeftArea" fx:id="leftArea" prefHeight="690.0" prefWidth="230.0">
+            <children>
+                <ImageView fitHeight="230.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../img/hotelworker/logo.png" />
+                    </image>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </ImageView>
+                <Button fx:id="managePromotionBtn" mnemonicParsing="false" onAction="#showManagePromotion" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="制定促销策略">
+                    <VBox.margin>
+                        <Insets top="150.0" />
+                    </VBox.margin>
+                </Button>
+                <Button fx:id="orderListBtn" mnemonicParsing="false" onAction="#showOrderList" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="订单列表" />
+                <Button fx:id="appealOrderBtn" mnemonicParsing="false" onAction="#showAppealOrder" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="订单申诉" />
+                <Button fx:id="addCreditBtn" mnemonicParsing="false" onAction="#showAddCredit" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="信用充值" />
+            </children></VBox>
+        <Pane fx:id="mainPane" layoutX="230.0" maxHeight="690.0" maxWidth="850.0" minHeight="690.0" minWidth="850.0" prefHeight="690.0" prefWidth="850.0" styleClass="panel" />
+        <HBox layoutY="690.0" prefHeight="30.0" prefWidth="1080.0" />
+      <ImageView fx:id="slider" fitHeight="56.0" fitWidth="56.0" layoutX="194.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">
+         <image>
+            <Image url="@../../img/common/triangle2.png" />
+         </image>
+      </ImageView>
+    </children>
+</Pane>
