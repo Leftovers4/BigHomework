@@ -16,10 +16,12 @@ import dataservice.hoteldataservice.HotelDataService;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
 import util.ResultMessage;
+import util.TableName;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by kevin on 2016/11/16.
@@ -39,8 +41,6 @@ public class HotelDataServiceImpl implements HotelDataService {
 
     private Po2Al_Factory paFactory;
 
-    // 持有的对象
-    private HotelPO hotelPO;
 
 
 
@@ -68,7 +68,7 @@ public class HotelDataServiceImpl implements HotelDataService {
         Iterator<Iterator<Object>> orderInfos = ctFactory.alsToItrs(orderALs);
 
         // 将hotelInfo转换成po
-        hotelPO = apFactory.toHotelPO(hotelInfo, roomInfos, orderInfos);
+        HotelPO hotelPO = apFactory.toHotelPO(hotelInfo, roomInfos, orderInfos);
 
         return hotelPO;
 
@@ -76,7 +76,25 @@ public class HotelDataServiceImpl implements HotelDataService {
 
     @Override
     public ArrayList<HotelPO> findByConditions(HotelPO hotelPO) throws RemoteException {
-        return null;
+        // 将hotelpo转换成al
+        ArrayList<Object> hotelConditionAl = paFactory.toHotelAl(hotelPO);
+        // 将hotelal转换成sql能查询的格式
+        ArrayList<Object> hotelToFindAl = ctFactory.adaptToSQL(hotelConditionAl, TableName.hotel);
+
+        // 查询hotel表
+        ArrayList<ArrayList<Object>> hotelALs = hotelDataHelper.findByConditionsFromSQL(hotelToFindAl);
+
+        // 将获取的hotel表行转换成Iterator
+        Iterator<Iterator<Object>> hotelInfos = ctFactory.alsToItrs(hotelALs);
+
+        // 将每个hotelInfo中的hotelID取出，并生成HotelPO，加到hotelPOs里面去
+        ArrayList<HotelPO> hotelPOs = new ArrayList<>();
+        while(hotelInfos.hasNext()){
+            long hotelID = getIDFromHotelInfo(hotelInfos.next());
+            hotelPOs.add(findByHotelID(hotelID));
+        }
+
+        return hotelPOs;
     }
 
     @Override
@@ -104,11 +122,9 @@ public class HotelDataServiceImpl implements HotelDataService {
     public ResultMessage insert(HotelPO hotelPO) throws RemoteException {
 
         // 将po转换成hotel表行
-        Po2Al_Factory factory = new Po2Al_FactoryImpl();
-        ArrayList<Object> hotelInfo = factory.toHotelAl(hotelPO);
+        ArrayList<Object> hotelInfo = paFactory.toHotelAl(hotelPO);
 
         // 写入hotelpo
-        HotelDataHelper hotelDataHelper = new HotelDataHelperImpl();
         ResultMessage result = hotelDataHelper.insertToSQL(hotelInfo);
 
         return result;
@@ -116,12 +132,20 @@ public class HotelDataServiceImpl implements HotelDataService {
 
     @Override
     public ResultMessage delete(long hotelID) throws RemoteException {
-        return null;
+        return hotelDataHelper.deleteFromSQL(hotelID);
     }
 
     @Override
     public ResultMessage update(HotelPO hotelPO) throws RemoteException {
-        return null;
+
+        // 将po转换成hotel表行
+        ArrayList<Object> hotelInfo = paFactory.toHotelAl(hotelPO);
+
+        // 更新hotelpo
+        ResultMessage result = hotelDataHelper.updateFromSQL(hotelInfo);
+
+        return result;
+
     }
 
     @Override

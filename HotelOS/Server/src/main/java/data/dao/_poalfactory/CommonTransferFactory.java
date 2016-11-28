@@ -1,5 +1,7 @@
 package data.dao._poalfactory;
 
+import util.TableName;
+
 import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -16,13 +18,23 @@ public interface CommonTransferFactory {
      * @param als
      * @return
      */
-    public Iterator<Object> alToItr(ArrayList<Object> als);
+    public Iterator<Object> alToItr(List<Object> als);
 
 
     /**
      * 将List<List<Object>>转换成Iterator<Iterator<Object>>
      * @return
      */
-    public Iterator<Iterator<Object>> alsToItrs(ArrayList<ArrayList<Object>> als);
+    public Iterator<Iterator<Object>> alsToItrs(List<ArrayList<Object>> als);
+
+
+    /**
+     * 将传入的al对象转换成能够被数据库查询，默认值要改成'%'
+     * @param conditionAl
+     * @param tableName
+     * @return
+     */
+    public ArrayList<Object> adaptToSQL(List<Object> conditionAl, TableName tableName);
+
 
 }

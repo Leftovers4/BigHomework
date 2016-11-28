@@ -126,10 +126,15 @@ public class DataHelperParentTest {
     @Test
     public void testFindFromSQLByType(){
         ArrayList<ArrayList<Object>> resultContent = tested.findFromSQLByType("personnel", PersonnelType.HotelWorker.toString());
-        System.out.println(resultContent.get(0).get(2).toString());
-        System.out.println(resultContent.get(1).get(2).toString());
-        System.out.println(resultContent.get(2).get(2).toString());
-//        System.out.println(resultContent.get(3).get(2).toString());
+        if(!resultContent.isEmpty()){
+            System.out.println(resultContent.get(0).get(2).toString());
+            System.out.println(resultContent.get(1).get(2).toString());
+            System.out.println(resultContent.get(2).get(2).toString());
+            System.out.println(resultContent.get(3).get(2).toString());
+        }
+
+
+
 
     }
 
