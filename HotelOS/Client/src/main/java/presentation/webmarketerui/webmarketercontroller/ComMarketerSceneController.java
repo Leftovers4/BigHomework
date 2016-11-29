@@ -20,14 +20,20 @@ import java.util.ArrayList;
 public class ComMarketerSceneController {
 
 
-    @FXML private Pane mainPane;
+    @FXML
+    private Pane mainPane;
 
-    @FXML private Button managePromotionBtn;
-    @FXML private Button orderListBtn;
-    @FXML private Button appealOrderBtn;
-    @FXML private Button addCreditBtn;
+    @FXML
+    private Button managePromotionBtn;
+    @FXML
+    private Button orderListBtn;
+    @FXML
+    private Button appealOrderBtn;
+    @FXML
+    private Button addCreditBtn;
 
-    @FXML private ImageView slider;
+    @FXML
+    private ImageView slider;
 
     private Button currentBtn = null;
     //左边栏按钮集合
@@ -36,7 +42,7 @@ public class ComMarketerSceneController {
 
     private Stage stage;
 
-    public void launch(Stage primaryStage){
+    public void launch(Stage primaryStage) {
         stage = primaryStage;
         mainPane.getChildren().add(new ManagePromotionPane(stage));
 //        leftBarBtnArr = new ArrayList<>(Arrays.asList(hotelInfoBtn, orderListBtn, registerRoomBtn,
@@ -46,21 +52,21 @@ public class ComMarketerSceneController {
     /**
      * 更换Pane
      */
-    private void changePane(Pane newPane){
+    private void changePane(Pane newPane) {
         mainPane.getChildren().remove(0);
         mainPane.getChildren().add(newPane);
     }
 
     /**
      * 鼠标点击按钮效果
+     *
      * @param button
      */
 //    private void leftBarBtnEffect(Button button) {
 //        leftBarEffect.buttonActionEffect(button, leftBarBtnArr);
 //    }
-
     @FXML
-    private void showManagePromotion(){
+    private void showManagePromotion() {
 //        leftBarBtnEffect(managePromotionBtn);
 //        changeSliderPos(395);
         changePane(new ManagePromotionPane(stage));
@@ -71,32 +77,29 @@ public class ComMarketerSceneController {
      * 显示订单列表
      */
     @FXML
-    private void showOrderList(){
+    private void showOrderList() {
 //        leftBarBtnEffect(orderListBtn);
 //        changeSliderPos(305);
-        changePane(new OrderListPane(stage,mainPane));
+        changePane(new OrderListPane(stage, mainPane));
 //        currentBtn = orderListBtn;
     }
 
 
     @FXML
-    private void showAppealOrder(){
+    private void showAppealOrder() {
 //        leftBarBtnEffect(registerRoomBtn);
 //        changeSliderPos(350);
-        changePane(new FindOrderPane(stage,mainPane));
+        changePane(new FindOrderPane(stage, mainPane));
 //        currentBtn = registerRoomBtn;
     }
 
     @FXML
-    private void showAddCredit(){
+    private void showAddCredit() {
 //        leftBarBtnEffect(hotelInfoBtn);
 //        changeSliderPos(260);
-        changePane(new FindUserPane(stage,mainPane));
+        changePane(new FindUserPane(stage, mainPane));
 //        currentBtn = hotelInfoBtn;
     }
-
-
-
 
 
 //    /**

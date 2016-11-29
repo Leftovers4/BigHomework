@@ -1,5 +1,6 @@
 * {
     -fx-font-family: "微软雅黑";
+    -fx-text-fill: #37474F;
 }
 .label{
     -fx-font-size: 18px;
@@ -9,14 +10,13 @@
     -fx-font-size: 18px
 }
 .button {
+    -fx-border-radius: 5px;
     -fx-font-size: 18px;
     -fx-cursor: hand;
 }
 
-/*显示的panel 位于Pane内*/
-.panel {
-    -fx-background-color: #E8F1F5;
-}
+
+
 /*左侧栏*/
 #LeftArea {
     -fx-background-color: #32323A;
@@ -31,20 +31,8 @@
 .sideButton:hover{
     -fx-background-color: deepskyblue;
 }
-/*顶侧*/
-#topBar {
-    -fx-background-color: white;
-    -fx-effect: dropshadow(one-pass-box, #0F1034, 2, 1.0, 0, 0);
-}
-/*顶侧按钮*/
-.topbarButton{
-    -fx-border-style: none;
-    -fx-background-color: transparent;
-}
-/*编辑按钮*/
-#editInfoBtn:hover{
-    -fx-background-color: deepskyblue;
-}
+
+
 
 /*列表上方的工具栏*/
 #listTopBar{
@@ -93,3 +81,135 @@
 .DatePicker{
     -fx-scale-x :0.9;
 }
+
+
+/*
+通用
+ */
+
+/*显示的panel mainPane*/
+
+/*关闭按钮*/
+.CloseButton{
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+}
+.CloseButton:hover{
+    -fx-background-color:#e74c3c;
+    -fx-graphic: url("../../img/hotelworker/close_hover.png");
+}
+
+/*最小化按钮*/
+.MinButton{
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+}
+.MinButton:hover{
+    -fx-background-color:#E5E5E5;
+}
+
+/*被更换的底部Panel*/
+.panel {
+    -fx-background-color: #F5F4F1;
+}
+
+/*底部栏*/
+#bottomHBox{
+    -fx-background-color: white;
+}
+
+/*内容Panel*/
+.BackgroundPanel{
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, mintcream, 1.0, 0.0, 1, 1);
+}
+
+/*顶侧栏*/
+#topBar {
+    -fx-background-color: white;
+}
+
+/*ComboBox*/
+.combo-box{
+    -fx-font-size: 18px;
+    -fx-background-color: #95a5a6;
+}
+.combo-box .cell:selected{
+    -fx-text-fill: white;
+    -fx-background-color: #95a5a6;
+}
+.combo-box .cell:hover{
+    -fx-text-fill: white;
+    -fx-background-color: #bdc3c7;
+}
+
+.combo-box .arrow{
+    -fx-background-color: white;
+}
+
+
+/**
+基本信息界面
+ */
+
+
+
+/*查看评价链接*/
+#reviewLink{
+    -fx-font-size: 18px;
+    -fx-text-fill: #55acee;
+
+}
+
+/*评分*/
+#hotelRatingLabel{
+    -fx-text-fill: #fe4f00;
+}
+
+/*编辑按钮*/
+#editInfoBtn{
+    -fx-border-color: #55acee;
+    -fx-background-color: #55acee;
+    -fx-text-fill:white;
+}
+#editInfoBtn:hover{
+    -fx-border-color: #49BCFF;
+    -fx-background-color: #49BCFF;
+}
+
+/*保存按钮*/
+#saveEditBtn{
+    -fx-background-color: #2fe17f;
+    -fx-text-fill:white;
+}
+#saveEditBtn:hover{
+    -fx-background-color: rgba(48, 255, 152, 0.80);
+}
+
+/*取消按钮*/
+#cancelEditBtn{
+    -fx-background-color: rgba(233, 77, 61, 0.8);
+    -fx-text-fill:white;
+}
+#cancelEditBtn:hover{
+    -fx-background-color: rgba(255, 83, 67, 0.8);
+}
+/**
+订单列表
+ */
+
+/**
+录入可用客房
+ */
+
+/**
+制定促销策略
+ */
+
+/**
+更新入住信息
+ */
+
+/**
+更新退房信息
+ */

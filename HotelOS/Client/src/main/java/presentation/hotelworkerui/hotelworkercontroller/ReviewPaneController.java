@@ -66,21 +66,6 @@ public class ReviewPaneController {
        }
         return list;
     }
-    @FXML
-    private void closeWindow(){
-        if(alertController.showConfirmExitAlert()) stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
-
-    @FXML
-    private void back(){
-        mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new InfoPane(stage,mainPane));
-    }
 
 
 }

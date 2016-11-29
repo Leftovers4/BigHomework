@@ -14,21 +14,25 @@ public class AppealOrderPaneController {
     private Stage stage;
     private Pane mainPane;
     private AlertController alertController;
-    public void launch(Stage primaryStage,Pane mainPane){
+
+    public void launch(Stage primaryStage, Pane mainPane) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         alertController = new AlertController();
     }
 
     @FXML
-    private void closeWindow(){ if(alertController.showConfirmExitAlert()) stage.close();}
+    private void closeWindow() {
+        if (alertController.showConfirmExitAlert()) stage.close();
+    }
 
     @FXML
-    private void minWindow(){}
+    private void minWindow() {
+    }
 
     @FXML
-    private void back(){
+    private void back() {
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new FindOrderPane(stage,mainPane));
+        mainPane.getChildren().add(new FindOrderPane(stage, mainPane));
     }
 }

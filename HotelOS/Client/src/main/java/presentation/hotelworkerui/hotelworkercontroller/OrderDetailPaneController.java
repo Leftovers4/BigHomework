@@ -89,20 +89,4 @@ public class OrderDetailPaneController {
     }
 
 
-    @FXML
-    private void closeWindow(){
-        if(alertController.showConfirmExitAlert()) stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
-
-    @FXML
-    private void back(){
-        mainPane.getChildren().remove(0);
-        if(isFromList) mainPane.getChildren().add(new OrderListPane(stage,mainPane));
-        else mainPane.getChildren().add(new FindOrderPane(stage,mainPane,isCheckIn));
-    }
 }

@@ -38,22 +38,6 @@ public class FindOrderPaneController {
         alertController = new AlertController();
     }
 
-    @FXML private void closeWindow(){
-        if(alertController.showConfirmExitAlert()) stage.close();
-    }
-
-    @FXML private void minWindow(){
-        stage.setIconified(true);
-    }
-
-    @FXML private void back(){
-        mainPane.getChildren().remove(0);
-        if(isCheckIn){
-            mainPane.getChildren().add(new UpdateCheckInPane(stage,mainPane));
-        }else {
-            mainPane.getChildren().add(new UpdateOutPane(stage,mainPane));
-        }
-    }
 
     /**
      * 搜索订单

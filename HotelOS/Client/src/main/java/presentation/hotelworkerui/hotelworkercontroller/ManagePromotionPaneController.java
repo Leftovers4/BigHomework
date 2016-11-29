@@ -50,20 +50,6 @@ public class ManagePromotionPaneController {
     }
 
     @FXML
-    private void closeWindow(){
-        if(alertController.showConfirmExitAlert()) stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
-
-    @FXML void back(){
-
-    }
-
-    @FXML
     private void addBirthPromotion(){
         setAddBirthComponentsVisible(true);
         setOriBirthComponentsVisible(false);

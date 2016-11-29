@@ -8,81 +8,80 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.InfoPaneController">
          <children>
-            <Label layoutX="75.0" layoutY="344.0" prefHeight="35.0" prefWidth="69.0" text="地址：" />
-            <ComboBox fx:id="cityBox" layoutX="135.0" layoutY="344.0" prefHeight="36.0" prefWidth="100.0" promptText="南京" visible="false" />
-            <ComboBox fx:id="tradeAreaBox" layoutX="255.0" layoutY="344.0" prefHeight="36.0" prefWidth="180.0" promptText="仙林商圈" visible="false" />
-            <Label layoutX="75.0" layoutY="409.0" prefHeight="35.0" prefWidth="69.0" text="简介：" />
-            <TextArea fx:id="simpleIntroArea" layoutX="135.0" layoutY="415.0" prefHeight="62.0" prefWidth="637.0" visible="false" wrapText="true" />
-            <Label layoutX="75.0" layoutY="474.0" prefHeight="35.0" prefWidth="69.0" text="服务：" />
-            <TextArea fx:id="hotelServiceArea" layoutX="135.0" layoutY="484.0" prefHeight="82.0" prefWidth="637.0" visible="false" wrapText="true" />
-            <Button id="cancelEditBtn" fx:id="cancelEditBtn" layoutX="708.0" layoutY="612.0" mnemonicParsing="false" onAction="#cancelEdit" prefHeight="36.0" prefWidth="69.0" text="取消" visible="false" />
-            <Hyperlink fx:id="showReviewLink" layoutX="701.0" layoutY="259.0" onAction="#showReview" text="查看评价" />
-            <Label layoutX="410.0" layoutY="113.0" prefHeight="35.0" text="名称：" />
-            <Label layoutX="608.0" layoutY="114.0" prefHeight="35.0" text="工作人员：" />
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="487.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/hotelworker/star.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="412.0" layoutY="184.0" prefHeight="35.0" text="星级：" />
-            <HBox id="topBar" prefHeight="50.0" prefWidth="850.0">
+      <Pane layoutX="98.0" layoutY="338.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="271.0" prefWidth="667.0" styleClass="BackgroundPanel">
+         <children>
+                  <Label layoutX="20.0" layoutY="170.0" text="服务：" />
+            <Label fx:id="cityLabel" layoutX="80.0" layoutY="20.0" text="南京市" />
+                  <Label layoutX="20.0" layoutY="95.0" text="简介：" />
+            <Label fx:id="hotelServiceLabel" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="80.0" layoutY="170.0" prefHeight="90.0" prefWidth="578.0" text="为散客提供免费的WIFI。房间服务，接送服务（额外收费），24小时前台服务，货币兑换，行礼寄存，礼宾台，洗衣服务，干洗服务，熨衣服务是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
+            <Label fx:id="simpleIntroLabel" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="80.0" layoutY="95.0" prefHeight="62.0" prefWidth="578.0" text="座落于半山园林美景之中，是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
+                  <TextArea fx:id="simpleIntroArea" layoutX="80.0" layoutY="95.0" prefHeight="62.0" prefWidth="578.0" visible="false" wrapText="true" />
+                  <TextArea fx:id="hotelServiceArea" layoutX="80.0" layoutY="170.0" prefHeight="82.0" prefWidth="578.0" visible="false" wrapText="true" />
+                  <Label layoutX="20.0" layoutY="20.0" text="地址：" />
+                  <ComboBox fx:id="cityBox" layoutX="80.0" layoutY="14.0" prefHeight="36.0" prefWidth="100.0" promptText="南京" visible="false" />
+                  <ComboBox fx:id="tradeAreaBox" layoutX="200.0" layoutY="14.0" prefHeight="36.0" prefWidth="180.0" promptText="仙林商圈" visible="false" />
+            <Label fx:id="tradeAreaLabel" layoutX="134.0" layoutY="20.0" text="仙林商圈" />
+         </children>
+      </Pane>
+      <Pane layoutX="365.0" layoutY="110.0" prefHeight="200.0" prefWidth="400.0" styleClass="BackgroundPanel">
+         <children>
+            <Label fx:id="hotelRatingLabel" layoutX="90.0" layoutY="155.0" text="4.8" />
+                  <Hyperlink id="reviewLink" fx:id="showReviewLink" layoutX="291.0" layoutY="151.0" onAction="#showReview" text="查看评价" />
+            <Label fx:id="hotelNameLabel" layoutX="90.0" layoutY="15.0" text="如家酒店" />
+                  <Label layoutX="200.0" layoutY="15.0" text="工作人员：" />
+                  <Label layoutX="15.0" layoutY="15.0" text="名称：" />
+            <Label layoutX="15.0" layoutY="155.0" text="评分：" />
+            <Label fx:id="hotelWorkerNameLabel" layoutX="306.0" layoutY="15.0" text="路人乙" />
+                  <Label layoutX="15.0" layoutY="85.0" text="星级：" />
+            <Label layoutX="126.0" layoutY="155.0" text="分" />
+            <GridPane layoutX="90.0" layoutY="80.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
                <children>
-                  <Button fx:id="backBtn" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#back" styleClass="topbarButton" visible="false">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="star1" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/common/back.png" />
+                              <Image url="@../../img/hotelworker/star.png" />
                            </image>
                         </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="minWindowBtn" mnemonicParsing="false" onAction="#minWindow" styleClass="topbarButton">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../img/common/minimize.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <HBox.margin>
-                        <Insets left="690.0" top="5.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button fx:id="closeWindowBtn" mnemonicParsing="false" onAction="#closeWindow" styleClass="topbarButton">
-                     <graphic>
-                        <ImageView fx:id="close" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../img/common/exit.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <HBox.margin>
-                        <Insets top="5.0" />
-                     </HBox.margin>
-                  </Button>
+                  <ImageView fx:id="star2" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@../../img/hotelworker/star.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star3" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                     <image>
+                        <Image url="@../../img/hotelworker/star.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star4" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+                     <image>
+                        <Image url="@../../img/hotelworker/star.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star5" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+                     <image>
+                        <Image url="@../../img/hotelworker/star.png" />
+                     </image>
+                  </ImageView>
                </children>
-            </HBox>
-      <Label fx:id="hotelNameLabel" layoutX="488.0" layoutY="119.0" text="如家酒店" />
-      <Label fx:id="hotelWorkerNameLabel" layoutX="722.0" layoutY="120.0" text="路人乙" />
-      <Button id="saveEditBtn" fx:id="saveEditBtn" layoutX="608.0" layoutY="612.0" mnemonicParsing="false" onAction="#saveEdit" prefHeight="36.0" prefWidth="69.0" text="保存" visible="false" />
-      <Label fx:id="simpleIntroLabel" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="135.0" layoutY="415.0" prefHeight="62.0" prefWidth="637.0" text="座落于半山园林美景之中，是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
-      <Label fx:id="hotelServiceLabel" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="135.0" layoutY="480.0" prefHeight="91.0" prefWidth="637.0" text="为散客提供免费的WIFI。房间服务，接送服务（额外收费），24小时前台服务，货币兑换，行礼寄存，礼宾台，洗衣服务，干洗服务，熨衣服务是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
-      <Button fx:id="editBtn" layoutX="718.0" layoutY="612.0" mnemonicParsing="false" onAction="#editHotelInfo" text="编辑" />
-      <Label fx:id="tradeAreaLabel" layoutX="189.0" layoutY="351.0" text="仙林商圈" />
-      <Label fx:id="cityLabel" layoutX="135.0" layoutY="351.0" text="南京市" />
-      <Label alignment="CENTER" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="135.0" layoutY="111.0">
-         <graphic>
-            <ImageView fitHeight="180.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/common/initialPhoto.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <tooltip>
-            <Tooltip text="更换头像" />
-         </tooltip>
-      </Label>
-      <Label layoutX="412.0" layoutY="254.0" prefHeight="35.0" text="评分：" />
-      <Label fx:id="hotelRatingLabel" layoutX="497.0" layoutY="254.0" prefHeight="35.0" text="4.8分" />
+            </GridPane>
+         </children>
+      </Pane>
+            <Button id="cancelEditBtn" fx:id="cancelEditBtn" layoutX="695.0" layoutY="630.0" mnemonicParsing="false" onAction="#cancelEdit" prefWidth="70.0" text="取消" visible="false" />
+      <Button id="saveEditBtn" fx:id="saveEditBtn" layoutX="600.0" layoutY="630.0" mnemonicParsing="false" onAction="#saveEdit" prefHeight="36.0" prefWidth="70.0" text="保存" visible="false" />
+      <Button id="editInfoBtn" fx:id="editBtn" layoutX="695.0" layoutY="630.0" mnemonicParsing="false" onAction="#editHotelInfo" prefWidth="70.0" text="编辑" />
+      <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="119.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/common/initialPhoto.png" />
+         </image>
+      </ImageView>
          </children>
 </fx:root>

@@ -28,15 +28,6 @@ public class UpdateOutPaneController {
         this.mainPane = mainPane;
         alertController = new AlertController();
     }
-    @FXML
-    private void closeWindow(){
-        if(alertController.showConfirmExitAlert()) stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
 
     @FXML
     private void outOnline(){
