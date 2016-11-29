@@ -13,21 +13,14 @@ import java.util.ArrayList;
  */
 public class PersonnelDataServiceImpl implements PersonnelDataService {
 
-    @Override
-    public ResultMessage login(PersonnelPO personnelPO) throws RemoteException {
-
-        ArrayList<Object> personnelInfo = new ArrayList<>();
-
-        return ResultMessage.Fail;
-    }
 
     @Override
-    public ArrayList<PersonnelPO> getList() throws RemoteException {
+    public ArrayList<PersonnelPO> findAll() throws RemoteException {
         return null;
     }
 
     @Override
-    public ArrayList<PersonnelPO> getListByType(PersonnelType personnelType) throws RemoteException {
+    public ArrayList<PersonnelPO> findByType(PersonnelType personnelType) throws RemoteException {
         return null;
     }
 

@@ -18,6 +18,7 @@ import po.hotel.RoomPO;
 import util.ResultMessage;
 import util.TableName;
 
+import java.lang.reflect.Array;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -148,33 +149,63 @@ public class HotelDataServiceImpl implements HotelDataService {
 
     @Override
     public ArrayList<RoomPO> findRoomsByHotelID(long hotelID) throws RemoteException {
-        return null;
+        ArrayList<ArrayList<Object>> roomALs = roomDataHelper.findRoomsByHotelIdFromSQL(hotelID);
+
+        // 将获取的hotel表行转换成Iterator
+        Iterator<Iterator<Object>> roomInfos = ctFactory.alsToItrs(roomALs);
+
+        // 将roomInfos中每一个roomInfo转换成po存到roomPOs中
+        ArrayList<RoomPO> roomPOs = new ArrayList<>();
+        while(roomInfos.hasNext()){
+            roomPOs.add(apFactory.toRoomPO(roomInfos.next()));
+        }
+
+        return roomPOs;
+
     }
 
     @Override
     public ResultMessage insertRoom(RoomPO roomPO) throws RemoteException {
-        return null;
+        // 将roomPO转换成roomAL
+        ArrayList<Object> roomAL = paFactory.toRoomAl(roomPO);
+
+        // 将roomAL存到room表中
+        return roomDataHelper.insertToSQL(roomAL);
+
     }
 
     @Override
     public ResultMessage deleteRoom(long roomID) throws RemoteException {
-        return null;
+        return roomDataHelper.deleteFromSQL(roomID);
     }
 
     @Override
     public ResultMessage updateRoom(RoomPO roomPO) throws RemoteException {
-        return null;
+        // 将roomPO转换成roomAL
+        ArrayList<Object> roomAL = paFactory.toRoomAl(roomPO);
+
+        // 在room表中更新
+        return roomDataHelper.updateFromSQL(roomAL);
+
     }
 
     @Override
+    //TODO
     public byte[] getImage(long hotelID) throws RemoteException {
         return new byte[0];
     }
 
     @Override
+    //TODO
     public ResultMessage setImage(long hotelID, byte[] image) throws RemoteException {
         return null;
     }
+
+
+    /*--------------------------------------------辅助类---------------------------------------------------*/
+
+
+
 
     /**
      * 从hotel表中取出的hotelInfo获取hotelID
@@ -185,5 +216,17 @@ public class HotelDataServiceImpl implements HotelDataService {
         long hotelID = (long) hotelInfo.next();
         return hotelID;
     }
+
+    /**
+     * 从room表中取出的roomInfo获取roomID
+     * @param roomInfo
+     * @return
+     */
+    private long getIDFromRoomInfo(Iterator<Object> roomInfo){
+        long roomID = (long) roomInfo.next();
+        return roomID;
+    }
+
+
 
 }

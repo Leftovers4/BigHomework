@@ -200,8 +200,8 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
         int leastRooms = (int) promotionAL.next();
         LocalDateTime beginTime = toDateTime((String)promotionAL.next());
         LocalDateTime endTime = toDateTime((String) promotionAL.next());
-        double threshold = (double) promotionAL.next();
-        double reduction = (double) promotionAL.next();
+//        double threshold = (double) promotionAL.next();
+//        double reduction = (double) promotionAL.next();
 
         // 从address表中获取
         ArrayList<PromotionTraAreaPO> promotionTraAreaPOs = new ArrayList<>();

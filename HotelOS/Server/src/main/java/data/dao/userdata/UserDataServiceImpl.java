@@ -16,28 +16,23 @@ public class UserDataServiceImpl implements UserDataService {
 
 
     @Override
-    public ResultMessage login(UserPO userPO) throws RemoteException {
-        return null;
-    }
-
-    @Override
     public UserPO findByUsername(String username) throws RemoteException {
         return null;
     }
 
     @Override
-    public void insert(UserPO userPO) throws RemoteException {
-
+    public ResultMessage insert(UserPO userPO) throws RemoteException {
+        return null;
     }
 
     @Override
-    public void delete(String username) throws RemoteException {
-
+    public ResultMessage delete(String username) throws RemoteException {
+        return null;
     }
 
     @Override
-    public void update(UserPO userPO) throws RemoteException {
-
+    public ResultMessage update(UserPO userPO) throws RemoteException {
+        return null;
     }
 
     @Override
@@ -46,12 +41,12 @@ public class UserDataServiceImpl implements UserDataService {
     }
 
     @Override
-    public void changeCredit(ArrayList<CreditRecordPO> creditRecordPOs) throws RemoteException {
-
+    public ResultMessage changeCredit(ArrayList<CreditRecordPO> creditRecordPOs) throws RemoteException {
+        return null;
     }
 
     @Override
-    public void update(MemberPO memberPO) throws RemoteException {
-
+    public ResultMessage update(MemberPO memberPO) throws RemoteException {
+        return null;
     }
 }

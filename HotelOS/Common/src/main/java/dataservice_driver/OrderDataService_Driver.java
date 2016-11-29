@@ -27,7 +27,7 @@ public class OrderDataService_Driver {
 
     @Test
     public void find() throws Exception {
-        ArrayList<OrderPO> res = tested.find(new OrderPO("12345620161111001", 123456,"张三", OrderType.Abnormal,"如家", null, 0, null, 2, false, null, null,null,null));
+        ArrayList<OrderPO> res = tested.findByConditions(new OrderPO("12345620161111001", 123456,"张三", OrderType.Abnormal,"如家", null, 0, null, 2, false, null, null,null,null));
         for (int i = 0; i < res.size(); i++) {
             printOrderPO(res.get(i));
         }

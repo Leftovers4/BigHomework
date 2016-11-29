@@ -13,14 +13,15 @@ import java.util.ArrayList;
  * Created by Hiki on 2016/11/6.
  */
 public interface PersonnelDataService extends Remote{
+
     // 判断员工是否能够登录
-    public ResultMessage login(PersonnelPO personnelPO) throws RemoteException;
+//    public ResultMessage login(PersonnelPO personnelPO) throws RemoteException;
 
     // 显示员工列表
-    public ArrayList<PersonnelPO> getList() throws RemoteException;
+    public ArrayList<PersonnelPO> findAll() throws RemoteException;
 
     // 按类型显示员工列表
-    public ArrayList<PersonnelPO> getListByType(PersonnelType personnelType) throws RemoteException;
+    public ArrayList<PersonnelPO> findByType(PersonnelType personnelType) throws RemoteException;
 
     // 新增员工
     public void insert(PersonnelPO personnelPO) throws RemoteException;

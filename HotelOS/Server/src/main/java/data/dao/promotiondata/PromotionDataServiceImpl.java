@@ -3,6 +3,7 @@ package data.dao.promotiondata;
 import dataservice.promotiondataservice.PromotionDataService;
 import po.promotion.PromotionPO;
 import util.PromotionType;
+import util.ResultMessage;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -13,14 +14,18 @@ import java.util.ArrayList;
 public class PromotionDataServiceImpl implements PromotionDataService {
 
 
-
     @Override
     public ArrayList<PromotionPO> findByHotelID(long hotelID) throws RemoteException {
         return null;
     }
 
     @Override
-    public ArrayList<PromotionPO> findByPromotionType(PromotionType type) throws RemoteException {
+    public ArrayList<PromotionPO> findAllWebPromotion() throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<PromotionPO> findByHotelIDAndType(long hotelID, PromotionType promotionType) throws RemoteException {
         return null;
     }
 
@@ -30,17 +35,17 @@ public class PromotionDataServiceImpl implements PromotionDataService {
     }
 
     @Override
-    public void insert(PromotionPO promotionPO) throws RemoteException {
-
+    public ResultMessage insert(PromotionPO promotionPO) throws RemoteException {
+        return null;
     }
 
     @Override
-    public void delete(long promotionID) throws RemoteException {
-
+    public ResultMessage delete(long promotionID) throws RemoteException {
+        return null;
     }
 
     @Override
-    public void update(PromotionPO promotionPO) throws RemoteException {
-
+    public ResultMessage update(PromotionPO promotionPO) throws RemoteException {
+        return null;
     }
 }

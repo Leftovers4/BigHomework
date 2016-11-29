@@ -15,12 +15,7 @@ public class PersonnelDataService_Stub implements PersonnelDataService{
 
 
     @Override
-    public ResultMessage login(PersonnelPO personnelPO) throws RemoteException {
-        return null;
-    }
-
-    @Override
-    public ArrayList<PersonnelPO> getList() throws RemoteException {
+    public ArrayList<PersonnelPO> findAll() throws RemoteException {
         ArrayList<PersonnelPO> personnelPOs = new ArrayList<>();
 
         PersonnelPO personnelPO = new PersonnelPO(1, "123456", PersonnelType.WebMarketer, "A");
@@ -31,9 +26,10 @@ public class PersonnelDataService_Stub implements PersonnelDataService{
     }
 
     @Override
-    public ArrayList<PersonnelPO> getListByType(PersonnelType personnelType) throws RemoteException {
+    public ArrayList<PersonnelPO> findByType(PersonnelType personnelType) throws RemoteException {
         return null;
     }
+
 
     @Override
     public void insert(PersonnelPO personnelPO) throws RemoteException {
