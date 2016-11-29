@@ -38,7 +38,7 @@ public class HotelManager implements RoomInfoService{
             return hotelDao.insert(logicPOHelper.create(hotelVO));
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.CONNECTION_ERROR;
+            return ResultMessage.ConnectionError;
         }
     }
 
@@ -47,7 +47,7 @@ public class HotelManager implements RoomInfoService{
             return hotelDao.delete(hotelID);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.CONNECTION_ERROR;
+            return ResultMessage.ConnectionError;
         }
     }
 
@@ -57,7 +57,7 @@ public class HotelManager implements RoomInfoService{
             return hotelDao.update(logicPOHelper.create(originHotelPO, hotelVO));
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.CONNECTION_ERROR;
+            return ResultMessage.ConnectionError;
         }
     }
 
@@ -89,7 +89,7 @@ public class HotelManager implements RoomInfoService{
             return hotelDao.insertRoom(logicPOHelper.create(roomVO));
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.CONNECTION_ERROR;
+            return ResultMessage.ConnectionError;
         }
     }
 
@@ -98,13 +98,13 @@ public class HotelManager implements RoomInfoService{
             return hotelDao.deleteRoom(roomID);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.CONNECTION_ERROR;
+            return ResultMessage.ConnectionError;
         }
     }
 
     public ResultMessage updateRoomInfo(RoomVO roomVO) {
         // TODO: 2016/11/27
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     public List<RoomVO> findRoomsByHotelID(long hotelID) {

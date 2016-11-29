@@ -18,7 +18,7 @@ public class PersonnelDataServiceImpl implements PersonnelDataService {
 
         ArrayList<Object> personnelInfo = new ArrayList<>();
 
-        return ResultMessage.FAIL;
+        return ResultMessage.Fail;
     }
 
     @Override

@@ -21,27 +21,27 @@ public class OrderBLService_Stub implements OrderBLService {
 
     @Override
     public ResultMessage addOrder(OrderVO orderVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage updateOrder(OrderVO orderVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage executeOrder(String orderID) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage reviewOrder(ReviewVO reviewVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage cancelOrder(String orderID) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override

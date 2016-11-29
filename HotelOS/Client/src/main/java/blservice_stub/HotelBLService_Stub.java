@@ -25,17 +25,17 @@ public class HotelBLService_Stub implements HotelBLService {
 
     @Override
     public ResultMessage addHotel(HotelVO hotelVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage deleteHotel(long hotelID) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage updateBasicHotelInfo(HotelVO hotelVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
@@ -68,17 +68,17 @@ public class HotelBLService_Stub implements HotelBLService {
     @Override
     public ResultMessage addRoom(RoomVO roomVO) {
         list.add(roomVO);
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage deleteRoom(long roomID) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage updateRoomInfo(RoomVO roomVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override

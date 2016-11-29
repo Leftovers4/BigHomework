@@ -13,12 +13,12 @@ import java.util.ArrayList;
 public class PersonnelBLService_Stub implements PersonnelBLService{
     @Override
     public ResultMessage login(PersonnelVO personnelVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage logout() {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
@@ -39,17 +39,17 @@ public class PersonnelBLService_Stub implements PersonnelBLService{
 
     @Override
     public ResultMessage add(PersonnelVO personnelVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage del(long personnelID) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage modify(PersonnelVO personnelVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override

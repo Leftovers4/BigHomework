@@ -9,52 +9,52 @@ public enum ResultMessage {
     /**
      * 成功
      */
-    SUCCESS,
+    Success,
 
     /**
      * 失败
      */
-    FAIL,
+    Fail,
 
     /**
      * 连接服务器失败
      */
-    CONNECTION_ERROR,
+    ConnectionError,
 
     /**
      * 登录失败：用户名不存在
      */
-    USERNAME_EXISTED,
+    UsernameNotExisted,
 
     /**
      * 登录失败：密码错误
      */
-    PASSWORD_WRONG,
+    PasswordWrong,
 
     /**
      * 中断
      */
-    PAUSE,
+    Pause,
 
     /**
      * 数据已存在
      */
-    HAS_EXIST,
+    DataExisted,
 
     /**
      * 数据不存在
      */
-    NOT_EXIST,
+    DataNotExisted,
 
     /**
      * 数据库错误
      */
-    SQL_ERROR,
+    SqlError,
 
     /**
      * 信用值不足
      */
-    CREDIT_NOT_ENOUGH;
+    CreditNotEnough;
 
 
 

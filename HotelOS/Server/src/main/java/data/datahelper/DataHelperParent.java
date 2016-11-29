@@ -124,15 +124,15 @@ public class DataHelperParent {
         } catch (SQLException e) {
             // TODO 以后要注释掉
             e.printStackTrace();
-            return ResultMessage.FAIL;
+            return ResultMessage.DataExisted;
         }
 
 
         if(affectedRows == 0){
-            return ResultMessage.FAIL;
+            return ResultMessage.Fail;
         }
 
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
 
     }
 
@@ -158,14 +158,14 @@ public class DataHelperParent {
         } catch (SQLException e) {
             // TODO 以后要注释掉
             e.printStackTrace();
-            return ResultMessage.FAIL;
+            return ResultMessage.DataNotExisted;
         }
 
         if(affectedRows == 0){
-            return ResultMessage.FAIL;
+            return ResultMessage.Fail;
         }
 
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
 
@@ -205,15 +205,15 @@ public class DataHelperParent {
         } catch (SQLException e) {
             // TODO 以后要注释掉
             e.printStackTrace();
-            return ResultMessage.FAIL;
+            return ResultMessage.DataNotExisted;
         }
 
 
         if(affectedRows == 0){
-            return ResultMessage.FAIL;
+            return ResultMessage.Fail;
         }
 
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
 
 
     }

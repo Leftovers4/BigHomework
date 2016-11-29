@@ -14,12 +14,12 @@ import java.util.List;
 public class UserBLService_Stub implements UserBLService {
     @Override
     public ResultMessage login(String username, String password) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage logout(String username) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class UserBLService_Stub implements UserBLService {
 
     @Override
     public ResultMessage updateBasicUserInfo(UserVO userVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
@@ -39,17 +39,17 @@ public class UserBLService_Stub implements UserBLService {
 
     @Override
     public ResultMessage registerNormalMember(UserVO userVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage registerEnterpriseMember(UserVO userVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage topup(CreditRecordVO creditRecordVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
 }

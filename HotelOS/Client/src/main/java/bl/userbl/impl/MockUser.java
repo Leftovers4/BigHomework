@@ -69,7 +69,7 @@ public class MockUser extends User {
      */
     public ResultMessage addCredit(double credit){
         this.credit += credit;
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     /**
@@ -80,10 +80,10 @@ public class MockUser extends User {
      */
     public ResultMessage deductCredit(double credit){
         if (this.credit < credit){
-            return ResultMessage.CREDIT_NOT_ENOUGH;
+            return ResultMessage.CreditNotEnough;
         }else {
             this.credit -= credit;
-            return ResultMessage.SUCCESS;
+            return ResultMessage.Success;
         }
     }
 

@@ -42,8 +42,6 @@ public class HotelDataServiceImpl implements HotelDataService {
     private Po2Al_Factory paFactory;
 
 
-
-
     // 将需要调用的底层类初始化
     public HotelDataServiceImpl() {
         hotelDataHelper = new HotelDataHelperImpl();

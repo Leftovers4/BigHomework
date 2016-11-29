@@ -14,17 +14,17 @@ public class PromotionBLService_Stub implements PromotionBLService {
 
     @Override
     public ResultMessage create(PromotionVO promotionVO) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage delete(long id) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
     public ResultMessage update(long id) {
-        return ResultMessage.SUCCESS;
+        return ResultMessage.Success;
     }
 
     @Override
