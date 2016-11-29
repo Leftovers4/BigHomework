@@ -1,0 +1,14 @@
+* {
+    -fx-font-family: "微乳雅黑";
+}
+
+.button {
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+#left_area {
+    -fx-background-color: #32323A;
+}

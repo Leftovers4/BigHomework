@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import presentation.userui.userscene.ComUserScene;
+import presentation.webmanagerui.webmanagerscene.WebmanagerComScene;
 
 /**
  * Created by wyj on 2016/11/6.
@@ -212,5 +213,9 @@ public class LoginSceneController {
 
     public void Login() {
         stage.setScene(new ComUserScene(new Group(),stage));
+    }
+
+    public void webmanagerLogin() {
+        stage.setScene(new WebmanagerComScene(new Group(), stage));
     }
 }
