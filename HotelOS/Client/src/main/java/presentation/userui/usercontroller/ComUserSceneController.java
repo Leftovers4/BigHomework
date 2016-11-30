@@ -43,6 +43,15 @@ public class ComUserSceneController {
                 hotelRegisteredBtn, indexBtn));
     }
 
+    @FXML
+    private void closeWindow(){
+        stage.close();
+    }
+    @FXML
+    private void minWindow(){
+        stage.setIconified(true);
+    }
+
     /**
      * 滑块位置改变
      * @param y

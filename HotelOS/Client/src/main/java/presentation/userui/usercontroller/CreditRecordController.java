@@ -1,6 +1,5 @@
 package presentation.userui.usercontroller;
 
-import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
 /**
@@ -8,19 +7,11 @@ import javafx.stage.Stage;
  */
 public class CreditRecordController {
 
+
     private Stage stage;
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
     }
 
-    @FXML
-    private void closeWindow(){
-        stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
 }

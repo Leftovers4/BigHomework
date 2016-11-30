@@ -35,7 +35,16 @@ public class WebmanagerComController {
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
         buttons = new ArrayList<>(Arrays.asList(hotelManageBtn, userBtn, hotelworkerBtn, webmarketerBtn));
-        mainPane.getChildren().add(new HotelManagePane(stage));
+        mainPane.getChildren().add(new HotelManagePane(stage, mainPane));
+    }
+
+    @FXML
+    private void closeWindow(){
+        stage.close();
+    }
+    @FXML
+    private void minWindow(){
+        stage.setIconified(true);
     }
 
     /**
@@ -57,7 +66,7 @@ public class WebmanagerComController {
         leftBarEffect.buttonActionEffect(hotelManageBtn, buttons);
         changeSliderPos(260);
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new HotelManagePane(stage));
+        mainPane.getChildren().add(new HotelManagePane(stage, mainPane));
     }
     @FXML
     private void userManageEvent() {
@@ -73,7 +82,7 @@ public class WebmanagerComController {
         leftBarEffect.buttonActionEffect(hotelworkerBtn, buttons);
         changeSliderPos(350);
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new HotelworkerManagePane(stage));
+        mainPane.getChildren().add(new HotelworkerManagePane(stage, mainPane));
     }
     @FXML
     private void webMarketerEvent() {

@@ -30,16 +30,6 @@ public class EvaluateOrderController {
         starGroup = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
     }
 
-    @FXML
-    private void closeWindow(){
-        stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
-
 
     private void starHover(ImageView star) {
         isClicked = false;

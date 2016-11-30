@@ -1,6 +1,8 @@
 package presentation.webmanagerui.webmanagercontroller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -10,17 +12,28 @@ public class WebmarketerManageController {
 
     private Stage stage;
 
+    @FXML private Pane addwebmarketerPane;
+    @FXML private TableView webmarketerlist;
+
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
     }
 
+    /**
+     * 添加网站管理人员
+     */
     @FXML
-    private void closeWindow(){
-        stage.close();
+    private void addWebMarketerEvent() {
+        addwebmarketerPane.setVisible(true);
+        webmarketerlist.setPrefHeight(200);
     }
 
+    /**
+     * 保存添加
+     */
     @FXML
-    private void minWindow(){
-        stage.setIconified(true);
+    private void saveWebMarketerInfo() {
+        addwebmarketerPane.setVisible(false);
+        webmarketerlist.setPrefHeight(400);
     }
 }

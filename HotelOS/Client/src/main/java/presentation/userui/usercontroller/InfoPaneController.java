@@ -36,9 +36,9 @@ public class InfoPaneController {
     @FXML private TextField phoneField;
     @FXML private Button saveInfo;
     @FXML private Button cleanAllBtn;
+    @FXML private Hyperlink checkcreditentrance;
 
     @FXML private ImageView userPhoto;
-    @FXML private ImageView topBarPhoto;
 
     @FXML private Label userIdLabel;
     @FXML private Label usernameLabel;
@@ -76,18 +76,6 @@ public class InfoPaneController {
 
 
 
-
-    @FXML
-    private void closeWindow(){
-        stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
-
-
     /**
      * 编辑基本信息
      */
@@ -102,6 +90,7 @@ public class InfoPaneController {
         saveInfo.setVisible(true);
         cleanAllBtn.setVisible(true);
 
+
         userIdLabel.setVisible(false);
         usernameLabel.setVisible(false);
         userSex.setVisible(false);
@@ -110,6 +99,7 @@ public class InfoPaneController {
         registerCommonvipBtn.setVisible(false);
         registerCompanyvipBtn.setVisible(false);
         editInfoBtn.setVisible(false);
+        checkcreditentrance.setVisible(false);
 
         userIdField.setText(userIdLabel.getText());
         userNameField.setText(usernameLabel.getText());
@@ -164,6 +154,7 @@ public class InfoPaneController {
             saveInfo.setVisible(false);
             cleanAllBtn.setVisible(false);
 
+            checkcreditentrance.setVisible(true);
             userIdLabel.setVisible(true);
             usernameLabel.setVisible(true);
             userSex.setVisible(true);
@@ -267,7 +258,7 @@ public class InfoPaneController {
                 }
                 Image image = new Image("file:///"+fileName);
                 userPhoto.setImage(image);
-                topBarPhoto.setImage(image);
+//                topBarPhoto.setImage(image);
             } catch (Exception e) {
                 e.printStackTrace();
             }

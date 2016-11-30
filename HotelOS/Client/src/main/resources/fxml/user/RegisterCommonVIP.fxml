@@ -1,78 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
 <fx:root prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.RegisterCommonVIPController">
    <children>
-      <HBox id="topBar" prefHeight="50.0" prefWidth="850.0">
-         <children>
-            <Button mnemonicParsing="false">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/common/back.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </Button>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/common/initialPhoto.png" />
-               </image>
-               <HBox.margin>
-                  <Insets left="480.0" top="10.0" />
-               </HBox.margin>
-            </ImageView>
-            <SplitMenuButton maxWidth="120.0" mnemonicParsing="false" text="name">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="退出登录" />
-               </items>
-               <HBox.margin>
-                  <Insets left="10.0" top="8.0" />
-               </HBox.margin>
-            </SplitMenuButton>
-            <Button mnemonicParsing="false" onAction="#minWindow">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/common/minimize.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="60.0" top="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#closeWindow">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/common/exit.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="132.0" layoutX="250.0" layoutY="84.0" stroke="BLACK" strokeType="INSIDE" width="351.0" />
       <Label layoutX="316.0" layoutY="260.0" text="姓名：" />
       <Label layoutX="316.0" layoutY="320.0" text="性别：" />
@@ -86,7 +24,7 @@
       <RadioButton layoutX="464.0" layoutY="320.0" mnemonicParsing="false" text="女" />
       <DatePicker layoutX="376.0" layoutY="375.0" prefWidth="175.0" />
       <TextField layoutX="375.0" layoutY="435.0" prefWidth="175.0" />
-      <Button fx:id="registerCommonBtn" disable="true" layoutX="315.0" layoutY="550.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="220.0" text="立即注册" />
+      <Button fx:id="registerCommonBtn" disable="true" layoutX="315.0" layoutY="550.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="220.0" styleClass="actionBtn" text="立即注册" />
       <CheckBox fx:id="confirmCommonvipInfo" layoutX="352.0" layoutY="499.0" mnemonicParsing="false" onAction="#checkCommonvipInfo" text="我已核对信息无误" />
    </children>
 </fx:root>

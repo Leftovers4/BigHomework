@@ -6,76 +6,17 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.UserSearchHotelController">
    <children>
-      <HBox prefHeight="50.0" prefWidth="850.0">
-         <children>
-            <Button mnemonicParsing="false">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/common/back.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </Button>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/common/initialPhoto.png" />
-               </image>
-               <HBox.margin>
-                  <Insets left="480.0" top="10.0" />
-               </HBox.margin>
-            </ImageView>
-            <SplitMenuButton maxWidth="120.0" mnemonicParsing="false" text="name">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="退出登录" />
-               </items>
-               <HBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </HBox.margin>
-            </SplitMenuButton>
-            <Button onAction="#minWindow" mnemonicParsing="false">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/common/minimize.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="60.0" top="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#closeWindow">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/common/exit.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
       <ScrollPane layoutY="50.0" prefHeight="640.0" prefWidth="850.0">
          <content>
             <FlowPane layoutY="50.0" prefHeight="630.0" prefWidth="830.0">
@@ -110,7 +51,7 @@
                         <Insets left="160.0" top="25.0" />
                      </FlowPane.margin>
                   </TextField>
-                  <Button onAction="#showOrderDetail" fx:id="searchHotelButton" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" text="搜索酒店">
+                  <Button fx:id="searchHotelButton" mnemonicParsing="false" onAction="#showOrderDetail" prefHeight="34.0" prefWidth="106.0" styleClass="actionBtn" text="搜索酒店">
                      <FlowPane.margin>
                         <Insets left="13.0" top="25.0" />
                      </FlowPane.margin>
@@ -118,7 +59,7 @@
                   <Pane prefHeight="200.0" prefWidth="528.0">
                      <children>
                         <Label layoutX="10.0" layoutY="55.0" text="房间类型：" />
-                        <Button fx:id="roomTypeBtn" layoutX="100.0" layoutY="50.0" mnemonicParsing="false" text="不限" />
+                        <Button fx:id="roomTypeBtn" layoutX="100.0" layoutY="50.0" mnemonicParsing="false" styleClass="actionBtn" text="不限" />
                         <CheckBox fx:id="simgleRoomCB" layoutX="165.0" layoutY="55.0" mnemonicParsing="false" text="单人间" />
                         <CheckBox fx:id="standardRoomCB" layoutX="274.0" layoutY="55.0" mnemonicParsing="false" text="标准间" />
                         <CheckBox fx:id="moreBedsRoomCB" layoutX="384.0" layoutY="55.0" mnemonicParsing="false" text="多床间" />
@@ -130,7 +71,7 @@
                         <Label layoutX="264.0" layoutY="10.0" text="退房：" />
                         <DatePicker fx:id="checkOutDate" layoutX="324.0" layoutY="5.0" prefHeight="30.0" prefWidth="140.0" />
                         <Label layoutX="36.0" layoutY="135.0" text="价格：" />
-                        <Button fx:id="priceBtn" layoutX="100.0" layoutY="130.0" mnemonicParsing="false" text="不限" />
+                        <Button fx:id="priceBtn" layoutX="100.0" layoutY="130.0" mnemonicParsing="false" styleClass="actionBtn" text="不限" />
                         <CheckBox fx:id="twoHundredLess" layoutX="165.0" layoutY="135.0" mnemonicParsing="false" text="¥200以下" />
                         <CheckBox fx:id="twoToFourHundred" layoutX="275.0" layoutY="135.0" mnemonicParsing="false" text="¥200-400" />
                         <CheckBox fx:id="fourToSixHundred" layoutX="384.0" layoutY="135.0" mnemonicParsing="false" text="¥400-600" />
@@ -155,20 +96,20 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button onAction="#resetChoice" fx:id="resetShow" layoutX="172.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" text="重置" />
-                        <Button fx:id="confirmShow" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" text="确认" />
+                        <Button fx:id="resetShow" layoutX="172.0" layoutY="10.0" mnemonicParsing="false" onAction="#resetChoice" prefWidth="70.0" styleClass="actionBtn" text="重置" />
+                        <Button fx:id="confirmShow" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" styleClass="actionBtn" text="确认" />
                      </children>
                   </Pane>
                   <Pane fx:id="moreInfoChoice" disable="true" prefHeight="170.0" prefWidth="528.0" visible="false">
                      <children>
                         <Label layoutX="36.0" layoutY="25.0" text="星级：" />
-                        <Button fx:id="hotelStarBtn" layoutX="100.0" layoutY="20.0" mnemonicParsing="false" text="不限" />
+                        <Button fx:id="hotelStarBtn" layoutX="100.0" layoutY="20.0" mnemonicParsing="false" styleClass="actionBtn" text="不限" />
                         <CheckBox fx:id="threeStar" layoutX="278.0" layoutY="25.0" mnemonicParsing="false" text="三星级" />
                         <CheckBox fx:id="fourStar" layoutX="359.0" layoutY="25.0" mnemonicParsing="false" text="四星级" />
                         <CheckBox fx:id="fiveStar" layoutX="441.0" layoutY="25.0" mnemonicParsing="false" text="五星级" />
                         <CheckBox fx:id="twoStarLess" layoutX="165.0" layoutY="25.0" mnemonicParsing="false" text="二星级以下" />
                         <Label layoutX="36.0" layoutY="80.0" text="评分：" />
-                        <Button fx:id="hotelGradeBtn" layoutX="100.0" layoutY="75.0" mnemonicParsing="false" text="不限" />
+                        <Button fx:id="hotelGradeBtn" layoutX="100.0" layoutY="75.0" mnemonicParsing="false" styleClass="actionBtn" text="不限" />
                         <CheckBox fx:id="fourPoFiveMore" layoutX="165.0" layoutY="80.0" mnemonicParsing="false" text="大于4.5" />
                         <CheckBox fx:id="threeToFour" layoutX="350.0" layoutY="80.0" mnemonicParsing="false" text="3.0-4.0" />
                         <CheckBox fx:id="threeLess" layoutX="442.0" layoutY="80.0" mnemonicParsing="false" text="小于3.0" />
@@ -190,8 +131,8 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button onAction="#resetChoice" fx:id="resetHide" layoutX="172.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" text="重置" />
-                        <Button fx:id="confirmHide" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" text="确认" />
+                        <Button fx:id="resetHide" layoutX="172.0" layoutY="10.0" mnemonicParsing="false" onAction="#resetChoice" prefWidth="70.0" styleClass="actionBtn" text="重置" />
+                        <Button fx:id="confirmHide" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" styleClass="actionBtn" text="确认" />
                      </children>
                      <FlowPane.margin>
                         <Insets left="160.0" top="-15.0" />

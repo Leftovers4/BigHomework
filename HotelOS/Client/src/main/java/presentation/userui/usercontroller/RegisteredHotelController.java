@@ -14,13 +14,4 @@ public class RegisteredHotelController {
         this.stage = primaryStage;
     }
 
-    @FXML
-    private void closeWindow(){
-        stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
 }

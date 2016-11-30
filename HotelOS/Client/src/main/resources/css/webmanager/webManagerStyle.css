@@ -2,6 +2,10 @@
     -fx-font-family: "微乳雅黑";
 }
 
+#topbar {
+    -fx-background-color: white;
+}
+
 .button {
     -fx-border-style: none;
     -fx-background-color: transparent;
@@ -11,4 +15,17 @@
 
 #left_area {
     -fx-background-color: #32323A;
+}
+
+
+.actionBtn {
+    -fx-background-color: deepskyblue;
+    -fx-border-radius: 7px;
+}
+.actionBtn:hover {
+    -fx-effect: dropshadow(one-pass-box, deepskyblue, 10, 1.0, 0, 0);
+}
+.actionBtn:armed {
+    -fx-background-color: #0F81C7;
+    -fx-effect: none;
 }

@@ -18,15 +18,6 @@ public class OrderDetailUserController {
         this.mainPane = mainPane;
     }
 
-    @FXML
-    private void closeWindow(){
-        stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
 
     @FXML
     private void evaluateOrder() {

@@ -81,15 +81,6 @@ public class UserGenerateOrderController {
     }
 
 
-    @FXML
-    private void closeWindow(){
-        stage.close();
-    }
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
-
     /**
      * 下一步，确认促销优惠
      */

@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
 <fx:root fx:id="orderDetailPane" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.CancelOrderController">
@@ -40,62 +36,6 @@
       <Label fx:id="child1" layoutX="698.0" layoutY="336.0" text="有无" />
       <Label layoutX="355.0" layoutY="547.0" text="订  单  状  态：" />
       <Label layoutX="465.0" layoutY="547.0" text="状态" />
-      <Button fx:id="cancelOrderBtn" layoutX="597.0" layoutY="542.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" text="撤销订单" />
-      <HBox id="topBar" prefHeight="50.0" prefWidth="850.0">
-         <children>
-            <Button mnemonicParsing="false">
-               <graphic>
-                  <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/common/back.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="10.0" />
-               </HBox.margin>
-            </Button>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/common/initialPhoto.png" />
-               </image>
-               <HBox.margin>
-                  <Insets left="480.0" top="10.0" />
-               </HBox.margin>
-            </ImageView>
-            <SplitMenuButton maxWidth="120.0" mnemonicParsing="false" text="name">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="退出登录" />
-               </items>
-               <HBox.margin>
-                  <Insets left="10.0" top="8.0" />
-               </HBox.margin>
-            </SplitMenuButton>
-            <Button mnemonicParsing="false" onAction="#minWindow">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/common/minimize.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="60.0" top="5.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#closeWindow">
-               <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/common/exit.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets top="5.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
+      <Button fx:id="cancelOrderBtn" layoutX="597.0" layoutY="542.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="110.0" styleClass="actionBtn" text="撤销订单" />
    </children>
 </fx:root>
