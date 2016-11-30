@@ -1,5 +1,9 @@
 package data.dao.orderdata;
 
+import data.dao.DataServiceImplParent;
+import data.datahelper.orderdatahelper.OrderDataHelper;
+import data.datahelper.userdatahelper.CreditRecordDataHelper;
+import data.datahelper.userdatahelper.UserDataHelper;
 import dataservice.orderdataservice.OrderDataService;
 import po.order.OrderPO;
 import po.order.ReviewPO;
@@ -12,7 +16,16 @@ import java.util.ArrayList;
 /**
  * Created by kevin on 2016/11/16.
  */
-public class OrderDataServiceImpl implements OrderDataService {
+public class OrderDataServiceImpl extends DataServiceImplParent implements OrderDataService {
+
+    // 需要调用的DataHelper
+    private OrderDataHelper orderDataHelper;
+
+    // 将需要调用的底层类初始化
+    public OrderDataServiceImpl(){
+        super();
+        orderDataHelper = dhFactory.getOrderDataHelper();
+    }
 
 
     @Override
@@ -59,4 +72,16 @@ public class OrderDataServiceImpl implements OrderDataService {
     public ArrayList<OrderPO> findByUsernameAndHotelID(String username, long hotelID) throws RemoteException {
         return null;
     }
+
+    @Override
+    public ArrayList<ReviewPO> findReviewByHotelID(long hotelID) throws RemoteException{
+        return null;
+    }
+
+    @Override
+    public ArrayList<ReviewPO> findAllReviews() throws RemoteException {
+        return null;
+    }
+
+
 }

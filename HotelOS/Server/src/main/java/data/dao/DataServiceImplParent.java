@@ -6,8 +6,10 @@ import data.dao._poalfactory.Po2Al_Factory;
 import data.dao._poalfactory.impl.Al2Po_FactoryImpl;
 import data.dao._poalfactory.impl.CommonTransferFactoryImpl;
 import data.dao._poalfactory.impl.Po2Al_FactoryImpl;
+import data.dao.datafactory.DataFactoryServiceImpl;
 import data.datahelper.datahelperfactory.DataHelperFactory;
 import data.datahelper.datahelperfactory.DataHelperFactoryImpl;
+import dataservice.datafactoryservice.DataFactoryService;
 
 
 /**
@@ -24,12 +26,14 @@ public class DataServiceImplParent {
 
     protected DataHelperFactory dhFactory;
 
+    protected DataFactoryService dsFactory;
+
     public DataServiceImplParent(){
         this.ctFactory = new CommonTransferFactoryImpl();
         this.apFactory = new Al2Po_FactoryImpl();
         this.paFactory = new Po2Al_FactoryImpl();
         this.dhFactory = new DataHelperFactoryImpl();
-
+        this.dsFactory = new DataFactoryServiceImpl();
 
     }
 

@@ -69,26 +69,7 @@ public class HotelDataHelperImplTest {
         }
     }
 
-    @Test
-    public void testFindByConditionsFromSQL(){
-        ArrayList<Object> input = new ArrayList<>();
-        input.add("%");
-        input.add("%");
-        input.add("%");
-        input.add("广东揭阳");
-        input.add("%");
-        input.add("包吃包住");
-        input.add("%");
 
-        ArrayList<ArrayList<Object>> output = tested.findByConditionsFromSQL(input);
-        for (ArrayList<Object> each : output) {
-            for (Object a : each) {
-                System.out.print(a.toString() + " ");
-            }
-            System.out.println();
-        }
-
-    }
 
 
 

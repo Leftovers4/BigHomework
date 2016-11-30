@@ -62,5 +62,10 @@ public class PromotionDataService_Stub implements PromotionDataService {
         return null;
     }
 
+    @Override
+    public ArrayList<PromotionPO> findAll() throws RemoteException {
+        return null;
+    }
+
 
 }

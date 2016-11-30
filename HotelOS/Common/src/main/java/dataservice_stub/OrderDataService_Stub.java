@@ -22,11 +22,40 @@ public class OrderDataService_Stub implements OrderDataService {
     }
 
     @Override
-    public ArrayList<OrderPO> findByConditions(OrderPO orderPO) throws RemoteException {
-        ArrayList<OrderPO> list = new ArrayList<>();
-        list.add(new OrderPO("12345620161111001", 123456,"张三", OrderType.Abnormal,"如家", null, 0, null, 2, false, null, null,null,null));
-        return list;
+    public ArrayList<OrderPO> findByHotelID(long hotelID) throws RemoteException {
+        return null;
     }
+
+    @Override
+    public ArrayList<OrderPO> findByHotelIDAndType(long hotelID, OrderType orderType) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<OrderPO> findByUsername(String username) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<OrderPO> findByUsernameAndType(String username, OrderType orderType) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<OrderPO> findByUsernameAndHotelID(String username, long hotelID) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<ReviewPO> findReviewByHotelID(long hotelID) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<ReviewPO> findAllReviews() throws RemoteException {
+        return null;
+    }
+
 
     @Override
     public ResultMessage insert(OrderPO orderPO) throws RemoteException {

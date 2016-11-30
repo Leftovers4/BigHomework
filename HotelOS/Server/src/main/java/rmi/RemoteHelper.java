@@ -28,7 +28,7 @@ public class RemoteHelper {
     private PromotionDataService promotionDAO;
     private UserDataService userDAO;
 
-    public RemoteHelper() {
+    public RemoteHelper() throws RemoteException{
         hotelDAO = new HotelDataServiceImpl();
         orderDAO = new OrderDataServiceImpl();
         personnelDAO = new PersonnelDataServiceImpl();

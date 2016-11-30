@@ -9,6 +9,7 @@ import data.datahelper.promotiondatahelper.PromotionDataHelper;
 import data.datahelper.promotiondatahelper.PromotionExtraInfoHelper.AddressDataHelper;
 import data.datahelper.promotiondatahelper.PromotionExtraInfoHelper.EnterpriseDataHelper;
 import data.datahelper.promotiondatahelper.PromotionExtraInfoHelper.MemberRegulationDataHelper;
+import data.datahelper.userdatahelper.CreditRecordDataHelper;
 import data.datahelper.userdatahelper.UserDataHelper;
 import data.datahelper.userdatahelper.UserImageHelper;
 
@@ -42,6 +43,8 @@ public interface DataHelperFactory {
 
     // User
     public UserDataHelper getUserDataHelper();
+
+    public CreditRecordDataHelper getCreditRecordDataHelper();
 
     public UserImageHelper getUserImageHelper();
 }

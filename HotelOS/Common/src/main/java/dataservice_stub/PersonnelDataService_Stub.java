@@ -15,6 +15,21 @@ public class PersonnelDataService_Stub implements PersonnelDataService{
 
 
     @Override
+    public ResultMessage insert(PersonnelPO personnelPO) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ResultMessage delete(long personnelID) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ResultMessage update(PersonnelPO personnelPO) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public ArrayList<PersonnelPO> findAll() throws RemoteException {
         ArrayList<PersonnelPO> personnelPOs = new ArrayList<>();
 
@@ -31,25 +46,13 @@ public class PersonnelDataService_Stub implements PersonnelDataService{
     }
 
 
-    @Override
-    public void insert(PersonnelPO personnelPO) throws RemoteException {
 
-    }
-
-    @Override
-    public void delete(long PersonnelID) throws RemoteException {
-
-    }
 
 //    @Override
 //    public void delete(PersonnelPO personnelPO) throws RemoteException {
 //
 //    }
 
-    @Override
-    public void update(PersonnelPO personnelPO) throws RemoteException {
-
-    }
 
     @Override
     public PersonnelPO findByPersonnelID(long personnelID) throws RemoteException {

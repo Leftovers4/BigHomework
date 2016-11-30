@@ -33,6 +33,16 @@ public class UserDataService_Stub implements UserDataService {
     }
 
     @Override
+    public ResultMessage insertCreditRecord(CreditRecordPO creditRecordPO) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<CreditRecordPO> findCreditRecordsByUsername(String username) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public ResultMessage insert(UserPO userPO) throws RemoteException {
         return null;
     }
@@ -47,23 +57,14 @@ public class UserDataService_Stub implements UserDataService {
         return null;
     }
 
-
     @Override
-    public ArrayList<UserPO> getList() throws RemoteException {
+    public ArrayList<UserPO> findAll() throws RemoteException {
         ArrayList<UserPO> list = new ArrayList<>();
         list.add(new UserPO("张三", "123456", "李四", true, "12345678999", new MemberPO("张三", MemberType.NormalMember, 1, LocalDate.now(), null), null));
         return list;
     }
 
-    @Override
-    public ResultMessage changeCredit(ArrayList<CreditRecordPO> creditRecordPOs) throws RemoteException {
-        return null;
-    }
 
-    @Override
-    public ResultMessage update(MemberPO memberPO) throws RemoteException {
-        return null;
-    }
 
 
 }

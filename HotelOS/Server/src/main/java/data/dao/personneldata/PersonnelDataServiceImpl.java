@@ -27,6 +27,31 @@ public class PersonnelDataServiceImpl extends DataServiceImplParent implements P
 
 
     @Override
+    public ResultMessage insert(PersonnelPO personnelPO) throws RemoteException {
+        // 将personnelPO转换成personnelAL
+        ArrayList<Object> personnelAL = paFactory.toPersonnelAl(personnelPO);
+
+        // 将AL存到personnel表中
+        return personnelDataHelper.insertToSQL(personnelAL);
+
+    }
+
+    @Override
+    public ResultMessage delete(long personnelID) throws RemoteException {
+        return personnelDataHelper.deleteFromSQL(personnelID);
+    }
+
+    @Override
+    public ResultMessage update(PersonnelPO personnelPO) throws RemoteException {
+        // 将personnelPO转换成personnelAL
+        ArrayList<Object> personnelAL = paFactory.toPersonnelAl(personnelPO);
+
+        // 在personnel表中更新personnelAL
+        return personnelDataHelper.updateFromSQL(personnelAL);
+
+    }
+
+    @Override
     public ArrayList<PersonnelPO> findAll() throws RemoteException {
         // 将所有personnelAL取出
         ArrayList<ArrayList<Object>> personnelALs = personnelDataHelper.findFromSQL();
@@ -66,31 +91,6 @@ public class PersonnelDataServiceImpl extends DataServiceImplParent implements P
     }
 
     @Override
-    public ResultMessage insert(PersonnelPO personnelPO) throws RemoteException {
-        // 将personnelPO转换成personnelAL
-        ArrayList<Object> personnelAL = paFactory.toPersonnelAl(personnelPO);
-
-        // 将AL存到personnel表中
-        return personnelDataHelper.insertToSQL(personnelAL);
-
-    }
-
-    @Override
-    public ResultMessage delete(long personnelID) throws RemoteException {
-        return personnelDataHelper.deleteFromSQL(personnelID);
-    }
-
-    @Override
-    public ResultMessage update(PersonnelPO personnelPO) throws RemoteException {
-        // 将personnelPO转换成personnelAL
-        ArrayList<Object> personnelAL = paFactory.toPersonnelAl(personnelPO);
-
-        // 在personnel表中更新personnelAL
-        return personnelDataHelper.updateFromSQL(personnelAL);
-
-    }
-
-    @Override
     public PersonnelPO findByPersonnelID(long personnelID) throws RemoteException {
         // 将personnelAL取出来
         ArrayList<Object> personnelAL = personnelDataHelper.findByIdFromSQL(personnelID);
@@ -98,7 +98,7 @@ public class PersonnelDataServiceImpl extends DataServiceImplParent implements P
         // 构造personnelAL的迭代器
         Iterator<Object> personnelInfo = ctFactory.alToItr(personnelAL);
 
-        // 将取出来的AL转换成po
+        // 将取出来的AL转换成PO
         PersonnelPO personnelPO = apFactory.toPersonnelPO(personnelInfo);
 
         return personnelPO;

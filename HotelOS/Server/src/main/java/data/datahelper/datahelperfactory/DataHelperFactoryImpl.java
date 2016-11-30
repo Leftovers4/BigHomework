@@ -13,10 +13,7 @@ import data.datahelper.promotiondatahelper.PromotionExtraInfoHelper.MemberRegula
 import data.datahelper.promotiondatahelper.PromotionExtraInfoHelper.impl.AddressDataHelperImpl;
 import data.datahelper.promotiondatahelper.PromotionExtraInfoHelper.impl.EnterpriseDataHelperImpl;
 import data.datahelper.promotiondatahelper.PromotionExtraInfoHelper.impl.MemberRegulationDataHelperImpl;
-import data.datahelper.userdatahelper.UserDataHelper;
-import data.datahelper.userdatahelper.UserDataHelperImpl;
-import data.datahelper.userdatahelper.UserImageHelper;
-import data.datahelper.userdatahelper.UserImageHelperImpl;
+import data.datahelper.userdatahelper.*;
 
 /**
  * Created by Hiki on 11/20/2016.
@@ -72,6 +69,11 @@ public class DataHelperFactoryImpl implements DataHelperFactory{
     @Override
     public UserDataHelper getUserDataHelper() {
         return new UserDataHelperImpl();
+    }
+
+    @Override
+    public CreditRecordDataHelper getCreditRecordDataHelper() {
+        return new CreditRecordDataHelperImpl();
     }
 
     @Override

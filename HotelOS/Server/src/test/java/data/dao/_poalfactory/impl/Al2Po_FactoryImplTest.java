@@ -48,7 +48,7 @@ public class Al2Po_FactoryImplTest {
         ArrayList<Iterator<Object>> crInfos = new ArrayList<>();
         crInfos.add(crInfo.iterator());
 
-        UserPO userPO = tested.toUserPO(userInfo.iterator(), crInfos.iterator());
+        UserPO userPO = tested.toUserPO(userInfo.iterator());
 
         System.out.println(userPO.getUsername() + " " + userPO.getPassword() + " " + userPO.getName() + " " + userPO.getPhone());
         System.out.println(userPO.getMemberPO().getMemberType().toString());

@@ -30,11 +30,12 @@ public interface UserDataService extends Remote{
     // 根据用户名查找用户
     public UserPO findByUsername(String username) throws RemoteException;
 
-    // 改变用户信用记录
-    public ResultMessage changeCredit(ArrayList<CreditRecordPO> creditRecordPOs) throws RemoteException;
+    // 插入新的用户信用记录
+    public ResultMessage insertCreditRecord(CreditRecordPO creditRecordPO) throws RemoteException;
 
-    // 更新会员信息
-    public ResultMessage update(MemberPO memberPO) throws RemoteException;
+    // 根据用户名查找信用记录列表
+    public ArrayList<CreditRecordPO> findCreditRecordsByUsername(String username) throws RemoteException;
+
 
 
 }

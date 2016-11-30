@@ -45,7 +45,10 @@ public interface OrderDataService extends Remote{
 //    // 根据筛选条件（订单类型、用户名、酒店ID）查找订单
 //    public ArrayList<OrderPO> findByConditions(OrderPO orderPO) throws RemoteException;
 
+    // 根据hotelID获得订单中的reviews
+    public ArrayList<ReviewPO> findReviewByHotelID(long hotelID) throws RemoteException;
 
-
+    // 获得所有订单的reviews
+    public ArrayList<ReviewPO> findAllReviews() throws RemoteException;
 
 }

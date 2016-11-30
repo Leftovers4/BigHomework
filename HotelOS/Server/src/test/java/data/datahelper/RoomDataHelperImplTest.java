@@ -20,18 +20,6 @@ public class RoomDataHelperImplTest {
         tested = new RoomDataHelperImpl();
     }
 
-    @Test
-    public void testFindRoomsByHotelIdFromSQL(){
-
-        ArrayList<ArrayList<Object>> output = tested.findRoomsByHotelIdFromSQL(522000);
-        for (ArrayList<Object> each : output) {
-            for (Object a : each) {
-                System.out.print(a.toString() + " ");
-            }
-            System.out.println();
-        }
-
-    }
 
     @Test
     public void testInsertToSQL(){
