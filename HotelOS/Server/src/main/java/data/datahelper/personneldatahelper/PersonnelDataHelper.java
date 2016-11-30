@@ -25,12 +25,12 @@ public interface PersonnelDataHelper {
      */
     public ArrayList<ArrayList<Object>> findFromSQL();
 
-    /**
-     * 根据type从personnel表查找员工列表
-     * @param personnelType
-     * @return
-     */
-    public ArrayList<ArrayList<Object>> findByTypeFromSQL(PersonnelType personnelType);
+//    /**
+//     * 根据type从personnel表查找员工列表
+//     * @param personnelType
+//     * @return
+//     */
+//    public ArrayList<ArrayList<Object>> findByTypeFromSQL(PersonnelType personnelType);
 
     /**
      * 在personnel表中插入一条员工数据

@@ -24,13 +24,13 @@ public interface PersonnelDataService extends Remote{
     public ArrayList<PersonnelPO> findByType(PersonnelType personnelType) throws RemoteException;
 
     // 新增员工
-    public void insert(PersonnelPO personnelPO) throws RemoteException;
+    public ResultMessage insert(PersonnelPO personnelPO) throws RemoteException;
 
     // 删除员工
-    public void delete(long PersonnelID) throws RemoteException;
+    public ResultMessage delete(long personnelID) throws RemoteException;
 
     // 更新员工信息
-    public void update(PersonnelPO personnelPO) throws RemoteException;
+    public ResultMessage update(PersonnelPO personnelPO) throws RemoteException;
 
     // 根据ID查找员工
     public PersonnelPO findByPersonnelID(long personnelID) throws RemoteException;

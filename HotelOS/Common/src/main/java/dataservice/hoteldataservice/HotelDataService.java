@@ -17,8 +17,8 @@ public interface HotelDataService extends Remote{
     // 根据酒店ID查找酒店
     public HotelPO findByHotelID(long hotelID) throws RemoteException;
 
-    // 根据筛选条件显示酒店列表
-    public ArrayList<HotelPO> findByConditions(HotelPO hotelPO) throws RemoteException;
+//    // 根据筛选条件显示酒店列表
+//    public ArrayList<HotelPO> findByConditions(HotelPO hotelPO) throws RemoteException;
 
     // 显示酒店列表
     public ArrayList<HotelPO> findAll() throws RemoteException;

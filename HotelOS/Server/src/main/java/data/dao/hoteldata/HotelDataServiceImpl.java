@@ -1,5 +1,6 @@
 package data.dao.hoteldata;
 
+import data.dao.DataServiceImplParent;
 import data.dao._poalfactory.Al2Po_Factory;
 import data.dao._poalfactory.CommonTransferFactory;
 import data.dao._poalfactory.Po2Al_Factory;
@@ -27,30 +28,23 @@ import java.util.List;
 /**
  * Created by kevin on 2016/11/16.
  */
-public class HotelDataServiceImpl implements HotelDataService {
+public class HotelDataServiceImpl extends DataServiceImplParent implements HotelDataService {
 
-    // 实现需要调用的底层类
+    // 需要调用的DataHelper
     private HotelDataHelper hotelDataHelper;
 
     private RoomDataHelper roomDataHelper;
 
+    // 构成ReviewPO
     private OrderDataHelper orderDataHelper;
-
-    private CommonTransferFactory ctFactory;
-
-    private Al2Po_Factory apFactory;
-
-    private Po2Al_Factory paFactory;
-
 
     // 将需要调用的底层类初始化
     public HotelDataServiceImpl() {
-        hotelDataHelper = new HotelDataHelperImpl();
-        roomDataHelper = new RoomDataHelperImpl();
+        super();
+        hotelDataHelper = dhFactory.getHotelDataHelper();
+        roomDataHelper = dhFactory.getRoomDataHelper();
         orderDataHelper = new OrderDataHelperImpl();
-        ctFactory = new CommonTransferFactoryImpl();
-        apFactory = new Al2Po_FactoryImpl();
-        paFactory = new Po2Al_FactoryImpl();
+
     }
 
     @Override
@@ -73,28 +67,28 @@ public class HotelDataServiceImpl implements HotelDataService {
 
     }
 
-    @Override
-    public ArrayList<HotelPO> findByConditions(HotelPO hotelPO) throws RemoteException {
-        // 将hotelpo转换成al
-        ArrayList<Object> hotelConditionAl = paFactory.toHotelAl(hotelPO);
-        // 将hotelal转换成sql能查询的格式
-        ArrayList<Object> hotelToFindAl = ctFactory.adaptToSQL(hotelConditionAl, TableName.hotel);
-
-        // 查询hotel表
-        ArrayList<ArrayList<Object>> hotelALs = hotelDataHelper.findByConditionsFromSQL(hotelToFindAl);
-
-        // 将获取的hotel表行转换成Iterator
-        Iterator<Iterator<Object>> hotelInfos = ctFactory.alsToItrs(hotelALs);
-
-        // 将每个hotelInfo中的hotelID取出，并生成HotelPO，加到hotelPOs里面去
-        ArrayList<HotelPO> hotelPOs = new ArrayList<>();
-        while(hotelInfos.hasNext()){
-            long hotelID = getIDFromHotelInfo(hotelInfos.next());
-            hotelPOs.add(findByHotelID(hotelID));
-        }
-
-        return hotelPOs;
-    }
+//    @Override
+//    public ArrayList<HotelPO> findByConditions(HotelPO hotelPO) throws RemoteException {
+//        // 将hotelpo转换成al
+//        ArrayList<Object> hotelConditionAl = paFactory.toHotelAl(hotelPO);
+//        // 将hotelal转换成sql能查询的格式
+//        ArrayList<Object> hotelToFindAl = ctFactory.adaptToSQL(hotelConditionAl, TableName.hotel);
+//
+//        // 查询hotel表
+//        ArrayList<ArrayList<Object>> hotelALs = hotelDataHelper.findByConditionsFromSQL(hotelToFindAl);
+//
+//        // 将获取的hotel表行转换成Iterator
+//        Iterator<Iterator<Object>> hotelInfos = ctFactory.alsToItrs(hotelALs);
+//
+//        // 将每个hotelInfo中的hotelID取出，并生成HotelPO，加到hotelPOs里面去
+//        ArrayList<HotelPO> hotelPOs = new ArrayList<>();
+//        while(hotelInfos.hasNext()){
+//            long hotelID = getIDFromHotelInfo(hotelInfos.next());
+//            hotelPOs.add(findByHotelID(hotelID));
+//        }
+//
+//        return hotelPOs;
+//    }
 
     @Override
     public ArrayList<HotelPO> findAll() throws RemoteException {

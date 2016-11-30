@@ -24,10 +24,10 @@ public class PersonnelDataHelperImpl extends DataHelperParent implements Personn
         return findFromSQL(PERSONNEL_TABLENAME);
     }
 
-    @Override
-    public ArrayList<ArrayList<Object>> findByTypeFromSQL(PersonnelType personnelType) {
-        return findFromSQLByType(PERSONNEL_TABLENAME, personnelType.toString());
-    }
+//    @Override
+//    public ArrayList<ArrayList<Object>> findByTypeFromSQL(PersonnelType personnelType) {
+//        return findFromSQLByType(PERSONNEL_TABLENAME, personnelType.toString());
+//    }
 
     @Override
     public ResultMessage insertToSQL(ArrayList<Object> personnelInfo) {
