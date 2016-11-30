@@ -15,6 +15,26 @@ public class PromotionDataServiceImpl implements PromotionDataService {
 
 
     @Override
+    public ResultMessage insert(PromotionPO promotionPO) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ResultMessage delete(long promotionID) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ResultMessage update(PromotionPO promotionPO) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<PromotionPO> findAll() throws RemoteException {
+        return null;
+    }
+
+    @Override
     public ArrayList<PromotionPO> findByHotelID(long hotelID) throws RemoteException {
         return null;
     }
@@ -31,21 +51,6 @@ public class PromotionDataServiceImpl implements PromotionDataService {
 
     @Override
     public PromotionPO findByPromotionID(long promotionID) throws RemoteException {
-        return null;
-    }
-
-    @Override
-    public ResultMessage insert(PromotionPO promotionPO) throws RemoteException {
-        return null;
-    }
-
-    @Override
-    public ResultMessage delete(long promotionID) throws RemoteException {
-        return null;
-    }
-
-    @Override
-    public ResultMessage update(PromotionPO promotionPO) throws RemoteException {
         return null;
     }
 }

@@ -43,7 +43,7 @@ public interface MemberRegulationDataHelper {
      * @param level
      * @return
      */
-    public ArrayList<Object> findByLevelFromSQL(long level);
+    public ArrayList<Object> findByIDFromSQL(long level);
 
 
 }

@@ -17,7 +17,7 @@ public interface UserDataHelper {
      * @param username
      * @return
      */
-    public ArrayList<Object> findByUserNameFromSQL(String username);
+    public ArrayList<Object> findByIDFromSQL(String username);
 
     /**
      * 在user表中插入一条用户信息
@@ -46,12 +46,7 @@ public interface UserDataHelper {
      */
     public ArrayList<ArrayList<Object>> findFromSQL();
 
-    /**
-     * 在credit_record表中插入一条信用记录
-     * @param creditRecord
-     * @return
-     */
-    public ResultMessage insertCRToSQL(ArrayList<Object> creditRecord);
+
 
 
 }

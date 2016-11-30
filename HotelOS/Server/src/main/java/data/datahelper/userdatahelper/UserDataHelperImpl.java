@@ -12,10 +12,10 @@ import java.util.ArrayList;
 public class UserDataHelperImpl extends DataHelperParent implements UserDataHelper{
 
     private final static String USER_TABLENAME = TableName.user.toString();
-    private final static String CR_TABLENAME = TableName.credit_record.toString();
+
 
     @Override
-    public ArrayList<Object> findByUserNameFromSQL(String username) {
+    public ArrayList<Object> findByIDFromSQL(String username) {
         return findFromSQLById(USER_TABLENAME, username);
     }
 
@@ -39,8 +39,5 @@ public class UserDataHelperImpl extends DataHelperParent implements UserDataHelp
         return findFromSQL(USER_TABLENAME);
     }
 
-    @Override
-    public ResultMessage insertCRToSQL(ArrayList<Object> creditRecord) {
-        return insertToSQL(CR_TABLENAME, creditRecord);
-    }
+
 }

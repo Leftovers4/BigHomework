@@ -14,29 +14,6 @@ public class PromotionDataHelperImpl extends DataHelperParent implements Promoti
 
     private final static String PROMOTION_TABLENAME = TableName.promotion.toString();
 
-    @Override
-    public ArrayList<ArrayList<Object>> findByHotelIdFromSQL(long hotelID) {
-
-        // 构造出条件列表
-        ArrayList<Object> conditions = new ArrayList<>();
-        conditions.add("%"); conditions.add("%");
-        conditions.add(hotelID);
-        conditions.add("%"); conditions.add("%"); conditions.add("%"); conditions.add("%");
-
-        return findFromSQLByConditions(PROMOTION_TABLENAME, conditions);
-
-
-    }
-
-    @Override
-    public ArrayList<ArrayList<Object>> findByTypeFromSQL(PromotionType promotionType) {
-        return findFromSQLByType(PROMOTION_TABLENAME, promotionType.toString());
-    }
-
-    @Override
-    public ArrayList<Object> findByIdFromSQL(long promotionID) {
-        return findFromSQLById(PROMOTION_TABLENAME, promotionID);
-    }
 
     @Override
     public ResultMessage insertToSQL(ArrayList<Object> promotionInfo) {
@@ -52,4 +29,35 @@ public class PromotionDataHelperImpl extends DataHelperParent implements Promoti
     public ResultMessage updateFromSQL(ArrayList<Object> promotionInfo) {
         return updateFromSQL(PROMOTION_TABLENAME, promotionInfo);
     }
+
+    @Override
+    public ArrayList<ArrayList<Object>> findFromSQL() {
+        return findFromSQL(PROMOTION_TABLENAME);
+    }
+
+    @Override
+    public ArrayList<Object> findByIdFromSQL(long promotionID) {
+        return findFromSQLById(PROMOTION_TABLENAME, promotionID);
+    }
+
+
+
+//    @Override
+//    public ArrayList<ArrayList<Object>> findByHotelIdFromSQL(long hotelID) {
+//
+//        // 构造出条件列表
+//        ArrayList<Object> conditions = new ArrayList<>();
+//        conditions.add("%"); conditions.add("%");
+//        conditions.add(hotelID);
+//        conditions.add("%"); conditions.add("%"); conditions.add("%"); conditions.add("%");
+//
+//        return findFromSQLByConditions(PROMOTION_TABLENAME, conditions);
+//
+//
+//    }
+
+//    @Override
+//    public ArrayList<ArrayList<Object>> findByTypeFromSQL(PromotionType promotionType) {
+//        return findFromSQLByType(PROMOTION_TABLENAME, promotionType.toString());
+//    }
 }

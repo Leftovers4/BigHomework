@@ -15,15 +15,6 @@ import java.util.ArrayList;
  */
 public interface UserDataService extends Remote{
 
-    // 登录
-//    public ResultMessage login(UserPO userPO) throws RemoteException;
-
-    // 根据用户名查找用户
-    public UserPO findByUsername(String username) throws RemoteException;
-
-    // 判断用户能否登录（判断是否能同时登录）
-    // public boolean canLogin(UserPO userPO) throws RemoteException;
-
     // 增加一个用户
     public ResultMessage insert(UserPO userPO) throws RemoteException;
 
@@ -33,8 +24,11 @@ public interface UserDataService extends Remote{
     // 更新一个用户
     public ResultMessage update(UserPO userPO) throws RemoteException;
 
-    // 显示用户列表
-    public ArrayList<UserPO> getList() throws RemoteException;
+    // 查找所有用户
+    public ArrayList<UserPO> findAll() throws RemoteException;
+
+    // 根据用户名查找用户
+    public UserPO findByUsername(String username) throws RemoteException;
 
     // 改变用户信用记录
     public ResultMessage changeCredit(ArrayList<CreditRecordPO> creditRecordPOs) throws RemoteException;

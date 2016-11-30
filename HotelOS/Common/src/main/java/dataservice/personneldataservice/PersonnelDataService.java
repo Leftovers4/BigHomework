@@ -14,15 +14,6 @@ import java.util.ArrayList;
  */
 public interface PersonnelDataService extends Remote{
 
-    // 判断员工是否能够登录
-//    public ResultMessage login(PersonnelPO personnelPO) throws RemoteException;
-
-    // 显示员工列表
-    public ArrayList<PersonnelPO> findAll() throws RemoteException;
-
-    // 按类型显示员工列表
-    public ArrayList<PersonnelPO> findByType(PersonnelType personnelType) throws RemoteException;
-
     // 新增员工
     public ResultMessage insert(PersonnelPO personnelPO) throws RemoteException;
 
@@ -32,10 +23,14 @@ public interface PersonnelDataService extends Remote{
     // 更新员工信息
     public ResultMessage update(PersonnelPO personnelPO) throws RemoteException;
 
+    // 显示员工列表
+    public ArrayList<PersonnelPO> findAll() throws RemoteException;
+
+    // 按类型显示员工列表
+    public ArrayList<PersonnelPO> findByType(PersonnelType personnelType) throws RemoteException;
+
     // 根据ID查找员工
     public PersonnelPO findByPersonnelID(long personnelID) throws RemoteException;
-
-
 
 
 }

@@ -14,6 +14,18 @@ import java.util.ArrayList;
  */
 public interface PromotionDataService extends Remote{
 
+    // 增加营销策略
+    public ResultMessage insert(PromotionPO promotionPO) throws RemoteException;
+
+    // 删除营销策略
+    public ResultMessage delete(long promotionID) throws RemoteException;
+
+    // 更新营销策略
+    public ResultMessage update(PromotionPO promotionPO) throws RemoteException;
+
+    // 查找所有营销策略
+    public ArrayList<PromotionPO> findAll() throws RemoteException;
+
     // 根据酒店ID显示营销策略列表
     public ArrayList<PromotionPO> findByHotelID(long hotelID) throws RemoteException;
 
@@ -26,14 +38,7 @@ public interface PromotionDataService extends Remote{
     // 根据营销策略ID查找营销策略
     public PromotionPO findByPromotionID(long promotionID) throws RemoteException;
 
-    // 增加营销策略
-    public ResultMessage insert(PromotionPO promotionPO) throws RemoteException;
 
-    // 删除营销策略
-    public ResultMessage delete(long promotionID) throws RemoteException;
-
-    // 更新营销策略
-    public ResultMessage update(PromotionPO promotionPO) throws RemoteException;
 
 
 

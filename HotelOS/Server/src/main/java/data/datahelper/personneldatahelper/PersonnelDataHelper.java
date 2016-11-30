@@ -13,26 +13,6 @@ public interface PersonnelDataHelper {
     // 格式："personnel_id", "password", "personnel_type", "hotel_id"
 
     /**
-     * 根据ID从personnel表查找一个员工
-     * @param personnelID
-     * @return
-     */
-    public ArrayList<Object> findByIdFromSQL(Long personnelID);
-
-    /**
-     * 从personnel表获取所有员工
-     * @return
-     */
-    public ArrayList<ArrayList<Object>> findFromSQL();
-
-//    /**
-//     * 根据type从personnel表查找员工列表
-//     * @param personnelType
-//     * @return
-//     */
-//    public ArrayList<ArrayList<Object>> findByTypeFromSQL(PersonnelType personnelType);
-
-    /**
      * 在personnel表中插入一条员工数据
      * @param personnelInfo
      * @return
@@ -52,6 +32,29 @@ public interface PersonnelDataHelper {
      * @return
      */
     public ResultMessage updateFromSQL(ArrayList<Object> personnelInfo);
+
+
+    /**
+     * 从personnel表获取所有员工
+     * @return
+     */
+    public ArrayList<ArrayList<Object>> findFromSQL();
+
+    /**
+     * 根据ID从personnel表查找一个员工
+     * @param personnelID
+     * @return
+     */
+    public ArrayList<Object> findByIdFromSQL(Long personnelID);
+
+//    /**
+//     * 根据type从personnel表查找员工列表
+//     * @param personnelType
+//     * @return
+//     */
+//    public ArrayList<ArrayList<Object>> findByTypeFromSQL(PersonnelType personnelType);
+
+
 
 
 

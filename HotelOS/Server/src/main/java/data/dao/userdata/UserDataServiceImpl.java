@@ -16,11 +16,6 @@ public class UserDataServiceImpl implements UserDataService {
 
 
     @Override
-    public UserPO findByUsername(String username) throws RemoteException {
-        return null;
-    }
-
-    @Override
     public ResultMessage insert(UserPO userPO) throws RemoteException {
         return null;
     }
@@ -36,7 +31,12 @@ public class UserDataServiceImpl implements UserDataService {
     }
 
     @Override
-    public ArrayList<UserPO> getList() throws RemoteException {
+    public ArrayList<UserPO> findAll() throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public UserPO findByUsername(String username) throws RemoteException {
         return null;
     }
 

@@ -35,7 +35,7 @@ public class MemberRegulationDataHelperImpl extends DataHelperParent implements 
     }
 
     @Override
-    public ArrayList<Object> findByLevelFromSQL(long level) {
+    public ArrayList<Object> findByIDFromSQL(long level) {
         return findFromSQLById(MR_TABLENAME, level);
     }
 }

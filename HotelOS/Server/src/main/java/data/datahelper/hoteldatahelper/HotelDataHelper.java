@@ -12,27 +12,6 @@ public interface HotelDataHelper {
     // 格式："hotel_id", "hotel_name", "star", "address", "trading_area", "description", "service"
 
     /**
-     * 根据酒店ID从hotel表中查找酒店信息
-     * @param hotelID
-     * @return
-     */
-    public ArrayList<Object> findByIdFromSQL(long hotelID);
-
-    /**
-     * 根据条件从hotel表中获取所有酒店列表
-     * @return
-     */
-    public ArrayList<ArrayList<Object>> findFromSQL();
-
-    /**
-     * 根据条件从hotel表中查找酒店列表
-     * 输入格式：用Object包装列表信息，若HotelPO中有条件未提及，则用'%'表示
-     * @param hotelInfo
-     * @return
-     */
-    public ArrayList<ArrayList<Object>> findByConditionsFromSQL(ArrayList<Object> hotelInfo);
-
-    /**
      * 往hotel表中添加一条酒店信息
      * @param hotelInfo
      * @return
@@ -41,7 +20,7 @@ public interface HotelDataHelper {
 
     /**
      * 在hotel表中删除一条酒店信息
-     * @param hotelID 
+     * @param hotelID
      * @return
      */
     public ResultMessage deleteFromSQL(long hotelID);
@@ -52,6 +31,29 @@ public interface HotelDataHelper {
      * @return
      */
     public ResultMessage updateFromSQL(ArrayList<Object> hotelInfo);
+
+    /**
+     * 根据条件从hotel表中获取所有酒店列表
+     * @return
+     */
+    public ArrayList<ArrayList<Object>> findFromSQL();
+
+    /**
+     * 根据酒店ID从hotel表中查找酒店信息
+     * @param hotelID
+     * @return
+     */
+    public ArrayList<Object> findByIdFromSQL(long hotelID);
+
+//    /**
+//     * 根据条件从hotel表中查找酒店列表
+//     * 输入格式：用Object包装列表信息，若HotelPO中有条件未提及，则用'%'表示
+//     * @param hotelInfo
+//     * @return
+//     */
+//    public ArrayList<ArrayList<Object>> findByConditionsFromSQL(ArrayList<Object> hotelInfo);
+
+
 
 
 

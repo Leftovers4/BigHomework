@@ -15,12 +15,6 @@ import java.util.ArrayList;
  */
 public interface OrderDataService extends Remote{
 
-    // 根据订单ID查找订单
-    public OrderPO findByOrderID(String orderID) throws RemoteException;
-
-    // 根据筛选条件（订单类型、用户名、酒店ID）查找订单
-    public ArrayList<OrderPO> findByConditions(OrderPO orderPO) throws RemoteException;
-
     // 增加订单
     public ResultMessage insert(OrderPO orderPO) throws RemoteException;
 
@@ -29,6 +23,29 @@ public interface OrderDataService extends Remote{
 
     // 显示订单列表
     public ArrayList<OrderPO> findAll() throws RemoteException;
+
+    // 根据ID查找订单
+    public OrderPO findByOrderID(String orderID) throws RemoteException;
+
+    // 根据hotelID查找订单
+    public ArrayList<OrderPO> findByHotelID(long hotelID) throws RemoteException;
+
+    // 根据hotelID和OrderType查找订单
+    public ArrayList<OrderPO> findByHotelIDAndType(long hotelID, OrderType orderType) throws RemoteException;
+
+    // 根据username查找订单
+    public ArrayList<OrderPO> findByUsername(String username) throws RemoteException;
+
+    // 根据username和OrderType查找订单
+    public ArrayList<OrderPO> findByUsernameAndType(String username, OrderType orderType) throws RemoteException;
+
+    // 根据username和hotelID查找订单
+    public ArrayList<OrderPO> findByUsernameAndHotelID(String username, long hotelID) throws RemoteException;
+
+//    // 根据筛选条件（订单类型、用户名、酒店ID）查找订单
+//    public ArrayList<OrderPO> findByConditions(OrderPO orderPO) throws RemoteException;
+
+
 
 
 }

@@ -16,6 +16,8 @@ import data.datahelper.orderdatahelper.OrderDataHelperImpl;
 import dataservice.hoteldataservice.HotelDataService;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
+import po.order.OrderPO;
+import po.order.ReviewPO;
 import util.ResultMessage;
 import util.TableName;
 
@@ -52,16 +54,27 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
 
         // 根据ID获得构造hotelpo需要用到的三个表的信息
         ArrayList<Object> hotelAL = hotelDataHelper.findByIdFromSQL(hotelID);
-        ArrayList<ArrayList<Object>> roomALs = roomDataHelper.findRoomsByHotelIdFromSQL(hotelID);
-        ArrayList<ArrayList<Object>> orderALs = orderDataHelper.findByHotelIDFromSQL(hotelID);
-
-        // 将三个表的信息整理成Iterator
+        // 构造hotelAL的迭代器
         Iterator<Object> hotelInfo = ctFactory.alToItr(hotelAL);
-        Iterator<Iterator<Object>> roomInfos = ctFactory.alsToItrs(roomALs);
-        Iterator<Iterator<Object>> orderInfos = ctFactory.alsToItrs(orderALs);
-
         // 将hotelInfo转换成po
-        HotelPO hotelPO = apFactory.toHotelPO(hotelInfo, roomInfos, orderInfos);
+        HotelPO hotelPO = apFactory.toHotelPO(hotelInfo);
+
+        // 根据hotelID获取roomPOs，reviewPOs
+        ArrayList<RoomPO> roomPOs = findRoomsByHotelID(hotelID);
+        ArrayList<ReviewPO> reviewPOs = new ArrayList<>();
+//        ArrayList<OrderPO> orderPOs =
+
+
+//        ArrayList<ArrayList<Object>> roomALs = roomDataHelper.findRoomsByHotelIdFromSQL(hotelID);
+//        ArrayList<ArrayList<Object>> orderALs = orderDataHelper.findByHotelIDFromSQL(hotelID);
+//
+//        // 将三个表的信息整理成Iterator
+//
+//        Iterator<Iterator<Object>> roomInfos = ctFactory.alsToItrs(roomALs);
+//        Iterator<Iterator<Object>> orderInfos = ctFactory.alsToItrs(orderALs);
+//
+//        // 将hotelInfo转换成po
+//        HotelPO hotelPO = apFactory.toHotelPO(hotelInfo, roomInfos, orderInfos);
 
         return hotelPO;
 
@@ -143,18 +156,20 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
 
     @Override
     public ArrayList<RoomPO> findRoomsByHotelID(long hotelID) throws RemoteException {
-        ArrayList<ArrayList<Object>> roomALs = roomDataHelper.findRoomsByHotelIdFromSQL(hotelID);
 
-        // 将获取的hotel表行转换成Iterator
-        Iterator<Iterator<Object>> roomInfos = ctFactory.alsToItrs(roomALs);
+        // 调用findAllRooms
+        ArrayList<RoomPO> roomPOs = findAllRooms();
 
-        // 将roomInfos中每一个roomInfo转换成po存到roomPOs中
-        ArrayList<RoomPO> roomPOs = new ArrayList<>();
-        while(roomInfos.hasNext()){
-            roomPOs.add(apFactory.toRoomPO(roomInfos.next()));
+        // 根据hotelID取出rooms
+        ArrayList<RoomPO> result = new ArrayList<>();
+
+        for (RoomPO each : roomPOs) {
+            if(each.gethotelID() == hotelID){
+                result.add(each);
+            }
         }
 
-        return roomPOs;
+        return result;
 
     }
 
@@ -198,6 +213,27 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
 
     /*--------------------------------------------辅助类---------------------------------------------------*/
 
+
+    /**
+     * 在room表中查找所有的roomALs，并转换成po
+     * @return
+     */
+    private ArrayList<RoomPO> findAllRooms(){
+
+        // 在room表中取出所有的roomALs
+        ArrayList<ArrayList<Object>> roomALs = roomDataHelper.findFromSQL();
+
+        // 将获取的hotel表行转换成Iterator
+        Iterator<Iterator<Object>> roomInfos = ctFactory.alsToItrs(roomALs);
+
+        // 将roomInfos中每一个roomInfo转换成po存到roomPOs中
+        ArrayList<RoomPO> roomPOs = new ArrayList<>();
+        while(roomInfos.hasNext()){
+            roomPOs.add(apFactory.toRoomPO(roomInfos.next()));
+        }
+
+        return roomPOs;
+    }
 
 
 
