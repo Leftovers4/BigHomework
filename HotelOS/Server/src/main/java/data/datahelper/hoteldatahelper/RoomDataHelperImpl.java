@@ -15,22 +15,13 @@ public class RoomDataHelperImpl extends DataHelperParent implements RoomDataHelp
 
 
     @Override
-    public ArrayList<ArrayList<Object>> findRoomsByHotelIdFromSQL(long hotelID) {
-        // TODO 注意此处依赖与room具体表的列的内容
-        ArrayList<Object> builtConditions = new ArrayList<>();
-        builtConditions.add("%");
-        builtConditions.add(hotelID);
-        builtConditions.add("%");
-        builtConditions.add("%");
-        builtConditions.add("%");
-        builtConditions.add("%");
-
-        return findFromSQLByConditions(ROOM_TABLENAME, builtConditions);
+    public ResultMessage insertToSQL(ArrayList<Object> roomInfo) {
+        return insertToSQL(ROOM_TABLENAME, roomInfo);
     }
 
     @Override
-    public ResultMessage insertToSQL(ArrayList<Object> roomInfo) {
-        return insertToSQL(ROOM_TABLENAME, roomInfo);
+    public ResultMessage deleteFromSQL(long roomID) {
+        return delFromSQL(ROOM_TABLENAME, roomID);
     }
 
     @Override
@@ -39,7 +30,27 @@ public class RoomDataHelperImpl extends DataHelperParent implements RoomDataHelp
     }
 
     @Override
-    public ResultMessage deleteFromSQL(long roomID) {
-        return delFromSQL(ROOM_TABLENAME, roomID);
+    public ArrayList<ArrayList<Object>> findFromSQL() {
+        return findFromSQL(ROOM_TABLENAME);
     }
+
+
+//    @Override
+//    public ArrayList<ArrayList<Object>> findRoomsByHotelIdFromSQL(long hotelID) {
+//        // TODO 注意此处依赖与room具体表的列的内容
+//        ArrayList<Object> builtConditions = new ArrayList<>();
+//        builtConditions.add("%");
+//        builtConditions.add(hotelID);
+//        builtConditions.add("%");
+//        builtConditions.add("%");
+//        builtConditions.add("%");
+//        builtConditions.add("%");
+//
+//        return findFromSQLByConditions(ROOM_TABLENAME, builtConditions);
+//    }
+
+
+
+
+
 }

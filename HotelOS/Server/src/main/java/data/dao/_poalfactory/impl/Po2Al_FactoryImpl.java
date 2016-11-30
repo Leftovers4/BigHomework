@@ -115,8 +115,8 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         promotionInfoContent.add(toString(promotionPO.getBeginTime()));
         promotionInfoContent.add(toString(promotionPO.getEndTime()));
         // TODO：满减还不用做
-        promotionInfoContent.add(0);
-        promotionInfoContent.add(0);
+//        promotionInfoContent.add(0);
+//        promotionInfoContent.add(0);
 
         return promotionInfoContent;
 

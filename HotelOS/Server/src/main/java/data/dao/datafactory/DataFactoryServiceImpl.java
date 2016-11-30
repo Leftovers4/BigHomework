@@ -43,4 +43,6 @@ public class DataFactoryServiceImpl implements DataFactoryService{
     public PromotionDataService getPromotionDataService() throws RemoteException {
         return new PromotionDataServiceImpl();
     }
+
+
 }

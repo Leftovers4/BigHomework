@@ -20,17 +20,17 @@ import java.util.Iterator;
  */
 public interface Al2Po_Factory {
 
-    public UserPO toUserPO(Iterator<Object> userAL, Iterator<Iterator<Object>> creditRecordALs);
+    public UserPO toUserPO(Iterator<Object> userAL);
 
     public PersonnelPO toPersonnelPO(Iterator<Object> personnelAL);
 
-    public HotelPO toHotelPO(Iterator<Object> hotelAL, Iterator<Iterator<Object>> roomALs, Iterator<Iterator<Object>> order_reviewALs);
+    public HotelPO toHotelPO(Iterator<Object> hotelAL);
 
     public RoomPO toRoomPO(Iterator<Object> roomAL);
 
     public OrderPO toOrderPO(Iterator<Object> orderAL);
 
-    public PromotionPO toPromotionPO(Iterator<Object> promotionAL, Iterator<Iterator<Object>> addressALs, Iterator<Iterator<Object>> enterpriseALs, Iterator<Iterator<Object>> mrALs);
+    public PromotionPO toPromotionPO(Iterator<Object> promotionAL);
 
     public CreditRecordPO toCreditRecordPO(Iterator<Object> creditRecordAL);
 
@@ -39,6 +39,7 @@ public interface Al2Po_Factory {
     public PromotionMRPO toPromotionMRPO(Iterator<Object> mrAL);
 
     public PromotionEntPO toPromotionEntPO(Iterator<Object> entAL);
+
 
 
     // TODO promotion类enterprise等类的po创建问题

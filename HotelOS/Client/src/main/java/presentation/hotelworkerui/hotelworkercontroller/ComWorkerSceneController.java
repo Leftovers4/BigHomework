@@ -6,6 +6,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.*;
+import presentation.util.AlertController;
 import presentation.util.LeftBarEffect;
 
 import java.util.ArrayList;
@@ -35,9 +36,11 @@ public class ComWorkerSceneController {
     LeftBarEffect leftBarEffect = new LeftBarEffect();
 
     private Stage stage;
+    private AlertController alertController;
 
     public void launch(Stage primaryStage){
-        stage = primaryStage;
+        this.stage = primaryStage;
+        alertController = new AlertController();
         mainPane.getChildren().add(new InfoPane(stage,mainPane));
         leftBarBtnArr = new ArrayList<>(Arrays.asList(hotelInfoBtn, orderListBtn, registerRoomBtn,
                 managePromotionBtn, updateCheckInBtn, updateOutBtn));
@@ -108,6 +111,16 @@ public class ComWorkerSceneController {
         changeSliderPos(485);
         changePane(new UpdateOutPane(stage,mainPane));
         currentBtn = updateOutBtn;
+    }
+
+    @FXML
+    private void closeWindow(){
+        if(alertController.showConfirmExitAlert()) stage.close();
+    }
+
+    @FXML
+    private void minWindow(){
+        stage.setIconified(true);
     }
 
 

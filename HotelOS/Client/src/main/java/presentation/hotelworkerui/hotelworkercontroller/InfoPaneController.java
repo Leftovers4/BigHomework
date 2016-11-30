@@ -42,7 +42,6 @@ public class InfoPaneController {
     @FXML private Button editBtn;
     @FXML private Button saveEditBtn;
     @FXML private Button cancelEditBtn;
-    @FXML private Button backBtn;
 
     private HotelBLService_Stub hotelBLServiceStub;
     private Stage stage;
@@ -60,6 +59,9 @@ public class InfoPaneController {
         initData();
         //显示查看信息界面
         setCheckInfoComponentsVisible(true);
+
+        cityBox.getItems().addAll("南京","苏州","无锡");
+        tradeAreaBox.getItems().addAll("仙林商圈","新街口商圈");
     }
 
     private void initData() {
@@ -72,6 +74,8 @@ public class InfoPaneController {
         tradeAreaLabel.setText(String.valueOf(hotelVO.tradingArea));
         simpleIntroLabel.setText(hotelVO.description);
         hotelServiceLabel.setText(hotelVO.service);
+
+
     }
 
     /**
@@ -85,21 +89,7 @@ public class InfoPaneController {
         tradeAreaBox.setValue(tradeAreaLabel.getText());
     }
 
-    @FXML
-    private void closeWindow(){
-        if(alertController.showConfirmExitAlert()) stage.close();
-    }
 
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
-
-    @FXML
-    private void back(){
-        setCheckInfoComponentsVisible(true);
-        setEditInfoComponentsVisible(false);
-    }
 
     @FXML
     private void saveEdit(){
@@ -139,7 +129,6 @@ public class InfoPaneController {
         hotelServiceArea.setVisible(isVisible);
         saveEditBtn.setVisible(isVisible);
         cancelEditBtn.setVisible(isVisible);
-        backBtn.setVisible(isVisible);
     }
 
     private void setCheckInfoComponentsVisible(Boolean isVisible){

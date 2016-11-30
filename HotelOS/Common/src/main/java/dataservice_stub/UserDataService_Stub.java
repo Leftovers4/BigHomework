@@ -26,50 +26,45 @@ public class UserDataService_Stub implements UserDataService {
 //
 //    }
 
-    @Override
-    public ResultMessage login(UserPO userPO) throws RemoteException {
-        return null;
-    }
 
     @Override
     public UserPO findByUsername(String username) throws RemoteException {
         return new UserPO("张三", "123456", "李四", true, "12345678999", new MemberPO("张三", MemberType.NormalMember, 1, LocalDate.now(), null), null);
     }
 
-
-
     @Override
-    public void update(UserPO UserPO) throws RemoteException {
-
-    }
-
-
-
-    @Override
-    public void insert(UserPO UserPO) throws RemoteException {
-
+    public ResultMessage insertCreditRecord(CreditRecordPO creditRecordPO) throws RemoteException {
+        return null;
     }
 
     @Override
-    public void delete(String username) throws RemoteException {
-
+    public ArrayList<CreditRecordPO> findCreditRecordsByUsername(String username) throws RemoteException {
+        return null;
     }
 
     @Override
-    public ArrayList<UserPO> getList() throws RemoteException {
+    public ResultMessage insert(UserPO userPO) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ResultMessage delete(String username) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ResultMessage update(UserPO userPO) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<UserPO> findAll() throws RemoteException {
         ArrayList<UserPO> list = new ArrayList<>();
         list.add(new UserPO("张三", "123456", "李四", true, "12345678999", new MemberPO("张三", MemberType.NormalMember, 1, LocalDate.now(), null), null));
         return list;
     }
 
-    @Override
-    public void changeCredit(ArrayList<CreditRecordPO> creditRecordPOs) throws RemoteException {
-
-    }
 
 
-    @Override
-    public void update(MemberPO memberPO) throws RemoteException {
 
-    }
 }

@@ -31,15 +31,6 @@ public class UpdateCheckInPaneController {
         this.stage = primaryStage;
         alertController = new AlertController();
     }
-    @FXML
-    private void closeWindow(){
-        if(alertController.showConfirmExitAlert()) stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
 
 
     /**

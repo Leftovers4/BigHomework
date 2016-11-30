@@ -31,16 +31,7 @@ public class OrderDataHelperImplTest {
 
     }
 
-    @Test
-    public void findByHotelIDFromSQL() throws Exception {
-        ArrayList<ArrayList<Object>> orderInfos = tested.findByHotelIDFromSQL(522000);
-        for (ArrayList<Object> each : orderInfos){
-            for (Object a : each){
-                System.out.print(a.toString() + " ");
-            }
-            System.out.println();
-        }
-    }
+
 
     @Test
     public void insertToSQL() throws Exception {

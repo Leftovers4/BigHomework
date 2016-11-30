@@ -8,50 +8,6 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.UpdateOutPaneController">
     <children>
-        <HBox id="topBar" alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css">
-            <children>
-                <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../img/hotelworker/initialPhoto.png" />
-                    </image>
-                    <HBox.margin>
-                        <Insets />
-                    </HBox.margin>
-                </ImageView>
-                <SplitMenuButton maxWidth="120.0" mnemonicParsing="false" text="name">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="退出登录" />
-                    </items>
-                    <HBox.margin>
-                        <Insets left="10.0" />
-                    </HBox.margin>
-                </SplitMenuButton>
-                <Button mnemonicParsing="false" onAction="#minWindow">
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../img/common/minimize.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <HBox.margin>
-                        <Insets left="60.0" />
-                    </HBox.margin>
-                </Button>
-                <Button mnemonicParsing="false" onAction="#closeWindow">
-                    <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../img/common/exit.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <HBox.margin>
-                        <Insets />
-                    </HBox.margin>
-                </Button>
-            </children>
-        </HBox>
       <Button id="outOfflineBtn" fx:id="outOfflineBtn" contentDisplay="TOP" graphicTextGap="10.0" layoutX="510.0" layoutY="255.0" mnemonicParsing="false" onAction="#outOffline" text="线下退房">
          <graphic>
                 <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">

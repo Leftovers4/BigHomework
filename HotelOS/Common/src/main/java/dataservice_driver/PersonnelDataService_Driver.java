@@ -21,15 +21,10 @@ public class PersonnelDataService_Driver {
 
     }
 
-    @Test
-    public void canLogin() throws Exception {
-        PersonnelPO personnelPO = new PersonnelPO(1, "123456", PersonnelType.WebMarketer, "A");
-        assertEquals(true, tested.login(personnelPO));
-    }
 
     @Test
     public void getList() throws Exception {
-        ArrayList<PersonnelPO> personnelPOs = tested.getList();
+        ArrayList<PersonnelPO> personnelPOs = tested.findAll();
         for (int i = 0; i < personnelPOs.size(); i++) {
             printPersonnelPO(personnelPOs.get(i));
         }

@@ -11,6 +11,7 @@ public class DefaultAl {
 
     private final static ArrayList<Object> hotelDefaultAl = new ArrayList<>();
 
+
     static {
         // 酒店默认的AL
         // 格式："hotel_id", "hotel_name", "star", "address", "trading_area", "description", "service"

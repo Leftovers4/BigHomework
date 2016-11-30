@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-11-25 09:11:58
+Date: 2016-11-29 20:47:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,7 +36,7 @@ CREATE TABLE `address` (
 -- ----------------------------
 DROP TABLE IF EXISTS `credit_record`;
 CREATE TABLE `credit_record` (
-  `record_id` int(11) NOT NULL AUTO_INCREMENT,
+  `record_id` int(6) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `current_credit` decimal(8,2) NOT NULL,
   `changed_credit` decimal(8,2) NOT NULL,
@@ -93,7 +93,7 @@ INSERT INTO `hotel` VALUES ('522002', '榕江大酒店', '5', '广东揭阳', '�
 DROP TABLE IF EXISTS `hotel_image`;
 CREATE TABLE `hotel_image` (
   `hotel_id` int(6) unsigned NOT NULL DEFAULT '0',
-  `image_reference` char(80) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `image_reference` varchar(80) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`hotel_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -151,6 +151,7 @@ CREATE TABLE `order_info` (
 -- ----------------------------
 -- Records of order_info
 -- ----------------------------
+INSERT INTO `order_info` VALUES ('45454148498', '522000', 'Hiki', 'Abnormal', '榕江大酒店', 'Single', '1', '511', '2', '1', '2012-12-12 11:11:11', '2012-12-12 11:11:11', '2012-12-12 11:11:11', '2012-12-12 11:11:11', '2012-12-12 11:11:11', '2012-12-12 11:11:11', '2012-12-12 11:11:11', '100.00', '80.00', '2012-12-12 11:11:11', '1', 'Good', '2012-12-12 11:11:11', 'All');
 
 -- ----------------------------
 -- Table structure for personnel
@@ -184,15 +185,13 @@ CREATE TABLE `promotion` (
   `least_rooms` int(10) unsigned NOT NULL DEFAULT '0',
   `begin_time` datetime NOT NULL,
   `end_time` datetime NOT NULL,
-  `threshold` decimal(8,2) NOT NULL DEFAULT '0.00',
-  `reduction` decimal(8,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`promotion_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of promotion
 -- ----------------------------
-INSERT INTO `promotion` VALUES ('123456', 'WP', '522000', '1', '1', '2016-11-23 09:54:29', '2016-11-23 09:54:29', '0.10', '0.10');
+INSERT INTO `promotion` VALUES ('123456', 'WP', '522000', '1', '1', '2016-11-23 09:54:29', '2016-11-23 09:54:29');
 
 -- ----------------------------
 -- Table structure for room
@@ -206,12 +205,12 @@ CREATE TABLE `room` (
   `available` int(10) unsigned NOT NULL,
   `price` decimal(8,2) NOT NULL,
   PRIMARY KEY (`room_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=110111 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=110112 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of room
 -- ----------------------------
-INSERT INTO `room` VALUES ('110110', '522000', 'SINGLE', '5', '2', '52.00');
+INSERT INTO `room` VALUES ('110110', '522000', 'Single', '5', '2', '52.00');
 
 -- ----------------------------
 -- Table structure for user
@@ -235,3 +234,18 @@ CREATE TABLE `user` (
 -- ----------------------------
 INSERT INTO `user` VALUES ('Hiki', '123456', 'GHB', '0', '110', 'NONE', '1', '2016-11-19', '');
 INSERT INTO `user` VALUES ('Hikii', '123456', 'GHB', '1', '110', 'NONE', '1', '2016-11-23', '');
+INSERT INTO `user` VALUES ('Hikiii', '123456', 'GHB', '1', '110', 'None', '1', '2016-11-26', '');
+
+-- ----------------------------
+-- Table structure for user_image
+-- ----------------------------
+DROP TABLE IF EXISTS `user_image`;
+CREATE TABLE `user_image` (
+  `username` varchar(20) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `image_reference` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of user_image
+-- ----------------------------

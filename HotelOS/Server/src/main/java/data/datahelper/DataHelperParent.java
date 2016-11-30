@@ -52,7 +52,7 @@ public class DataHelperParent {
      */
     private final static Map<String, ArrayList<String>> TB_TO_COL = new HashMap<String, ArrayList<String>>();
 
-    private final static Map<String, String> TYPEMAP = new HashMap<String, String>();
+//    private final static Map<String, String> TYPEMAP = new HashMap<String, String>();
 
     /**
      * 将map表初始化
@@ -68,19 +68,19 @@ public class DataHelperParent {
                                                "room_number",  "person_amount", "with_children", "generate_time", "expected_checkin_time",
                                                "checkin_time", "expected_leave_time", "leave_time", "last_execute_time", "cancel_time", "original_price", "actual_price",
                                                "review_time", "rating", "review", "ha_time", "ha_result"));
-        TB_TO_COL.put("promotion", strsToList("promotion_id", "promotion_type", "hotel_id", "discount", "least_rooms", "begin_time", "end_time", "threshold", "reduction"));
+        TB_TO_COL.put("promotion", strsToList("promotion_id", "promotion_type", "hotel_id", "discount", "least_rooms", "begin_time", "end_time"));
         TB_TO_COL.put("enterprise", strsToList("match_id", "hotel_id", "enterprise"));
         TB_TO_COL.put("address", strsToList("address_id", "address", "trading_area", "discount"));
         TB_TO_COL.put("member_regulation", strsToList("level", "credit", "discount"));
         TB_TO_COL.put("user_image", strsToList("username", "image_reference"));
         TB_TO_COL.put("hotel_image", strsToList("hotel_id", "image_reference"));
 
-        // 初始化TYPEMAP
-        TYPEMAP.put("user", "member_type");
-        TYPEMAP.put("personnel", "personnel_type");
-        TYPEMAP.put("room", "room_type");
-        TYPEMAP.put("order_info", "order_type");
-        TYPEMAP.put("promotion", "promotion_type");
+//        // 初始化TYPEMAP
+//        TYPEMAP.put("user", "member_type");
+//        TYPEMAP.put("personnel", "personnel_type");
+//        TYPEMAP.put("room", "room_type");
+//        TYPEMAP.put("order_info", "order_type");
+//        TYPEMAP.put("promotion", "promotion_type");
     }
 
 
@@ -292,36 +292,36 @@ public class DataHelperParent {
     }
 
 
-    /**
-     * 从数据库中获得n条数据（根据类型）
-     * @param tableName 表名
-     * @param type 类型
-     * @return
-     */
-    protected ArrayList<ArrayList<Object>> findFromSQLByType(String tableName, String type){
-
-        // 创建存放结果的容器
-        ArrayList<ArrayList<Object>> resultContent = new ArrayList<>();
-
-        try {
-            preparedStatement = conn.prepareStatement(this.buildFindByTypeSQL(tableName));
-
-            preparedStatement.setString(1, type);
-
-            System.out.println(preparedStatement.toString());
-
-            resultSet = preparedStatement.executeQuery();
-
-            resultContent = this.getInfoFromResultSet(tableName, resultSet);
-
-        } catch (SQLException e) {
-            // TODO 以后要注释掉
-            e.printStackTrace();
-        }
-
-        return resultContent;
-
-    }
+//    /**
+//     * 从数据库中获得n条数据（根据类型）
+//     * @param tableName 表名
+//     * @param type 类型
+//     * @return
+//     */
+//    protected ArrayList<ArrayList<Object>> findFromSQLByType(String tableName, String type){
+//
+//        // 创建存放结果的容器
+//        ArrayList<ArrayList<Object>> resultContent = new ArrayList<>();
+//
+//        try {
+//            preparedStatement = conn.prepareStatement(this.buildFindByTypeSQL(tableName));
+//
+//            preparedStatement.setString(1, type);
+//
+//            System.out.println(preparedStatement.toString());
+//
+//            resultSet = preparedStatement.executeQuery();
+//
+//            resultContent = this.getInfoFromResultSet(tableName, resultSet);
+//
+//        } catch (SQLException e) {
+//            // TODO 以后要注释掉
+//            e.printStackTrace();
+//        }
+//
+//        return resultContent;
+//
+//    }
 
 
     /**
@@ -461,19 +461,19 @@ public class DataHelperParent {
     }
 
 
-    /**
-     * 辅助方法，根据表名创建相应的findByType语句
-     * @param tableName 表名
-     * @return
-     */
-    private String buildFindByTypeSQL(String tableName){
-
-        StringBuffer buffer = new StringBuffer("SELECT * FROM `" + tableName + "` WHERE ");
-        buffer.append(TYPEMAP.get(tableName));
-        buffer.append(" = ?");
-
-        return buffer.toString();
-    }
+//    /**
+//     * 辅助方法，根据表名创建相应的findByType语句
+//     * @param tableName 表名
+//     * @return
+//     */
+//    private String buildFindByTypeSQL(String tableName){
+//
+//        StringBuffer buffer = new StringBuffer("SELECT * FROM `" + tableName + "` WHERE ");
+//        buffer.append(TYPEMAP.get(tableName));
+//        buffer.append(" = ?");
+//
+//        return buffer.toString();
+//    }
 
     /**
      * 辅助方法，根据表名创建相应的findByConditions语句

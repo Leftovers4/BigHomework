@@ -13,26 +13,31 @@ public class OrderListPaneController {
     private Stage stage;
     private Pane mainPane;
     private AlertController alertController;
-    public void launch(Stage primaryStage,Pane mainPane){
+
+    public void launch(Stage primaryStage, Pane mainPane) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         alertController = new AlertController();
     }
 
     @FXML
-    private void checkOrderDetail(){}
-
-    @FXML
-    private void appealOrder(){}
-
-    @FXML
-    private void closeWindow(){
-        if(alertController.showConfirmExitAlert()) stage.close();
+    private void checkOrderDetail() {
     }
 
     @FXML
-    private void minWindow(){}
+    private void appealOrder() {
+    }
 
     @FXML
-    private void back(){}
+    private void closeWindow() {
+        if (alertController.showConfirmExitAlert()) stage.close();
+    }
+
+    @FXML
+    private void minWindow() {
+    }
+
+    @FXML
+    private void back() {
+    }
 }

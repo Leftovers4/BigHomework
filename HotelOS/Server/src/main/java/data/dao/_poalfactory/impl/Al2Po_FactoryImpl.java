@@ -29,7 +29,7 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
 
 
     @Override
-    public UserPO toUserPO(Iterator<Object> userAL, Iterator<Iterator<Object>> creditRecordALs) {
+    public UserPO toUserPO(Iterator<Object> userAL) {
 
         // 若user表没有内容，则返回null
         if(!userAL.hasNext()){
@@ -47,14 +47,11 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
         LocalDate birthday = toDate((String)userAL.next());
         String enterprise = (String) userAL.next();
 
-        // 从credit_record表中获取
-        ArrayList<CreditRecordPO> creditRecordPOs = new ArrayList<>();
-
-        while(creditRecordALs.hasNext()){
-            creditRecordPOs.add(toCreditRecordPO(creditRecordALs.next()));
-        }
-
+        // 构造MemberPO
         MemberPO memberPO = new MemberPO(username, memberType, level, birthday, enterprise);
+
+        // 初始化CreditRecordPOs
+        ArrayList<CreditRecordPO> creditRecordPOs = new ArrayList<>();
 
         UserPO userPO = new UserPO(username, password, name, gender, phone, memberPO, creditRecordPOs);
 
@@ -82,7 +79,7 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
     }
 
     @Override
-    public HotelPO toHotelPO(Iterator<Object> hotelAL, Iterator<Iterator<Object>> roomALs, Iterator<Iterator<Object>> order_reviewALs) {
+    public HotelPO toHotelPO(Iterator<Object> hotelAL) {
         // 若hotel表没有内容，则返回null
         if(!hotelAL.hasNext()){
             return null;
@@ -97,18 +94,11 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
         String description = (String) hotelAL.next();
         String service = (String) hotelAL.next();
 
-        // 从room表中获取
+        // 初始化roomPOs
         ArrayList<RoomPO> roomPOs = new ArrayList<>();
-        while(roomALs.hasNext()){
-            roomPOs.add(toRoomPO(roomALs.next()));
-        }
 
-        // 从order表中获取
+        // 初始化reviewPOs
         ArrayList<ReviewPO> reviewPOs = new ArrayList<>();
-        while(order_reviewALs.hasNext()){
-            OrderPO orderPO = toOrderPO(order_reviewALs.next());
-            reviewPOs.add(orderPO.getReviewPO());
-        }
 
         HotelPO hotelPO = new HotelPO(hotelID, hotelName, star, address, tradingArea, description, service, roomPOs, reviewPOs);
 
@@ -186,7 +176,7 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
     }
 
     @Override
-    public PromotionPO toPromotionPO(Iterator<Object> promotionAL, Iterator<Iterator<Object>> addressALs, Iterator<Iterator<Object>> entALs, Iterator<Iterator<Object>> mrALs) {
+    public PromotionPO toPromotionPO(Iterator<Object> promotionAL) {
         // 若promotion表没有内容，则返回null
         if(!promotionAL.hasNext()){
             return null;
@@ -200,30 +190,21 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
         int leastRooms = (int) promotionAL.next();
         LocalDateTime beginTime = toDateTime((String)promotionAL.next());
         LocalDateTime endTime = toDateTime((String) promotionAL.next());
-        double threshold = (double) promotionAL.next();
-        double reduction = (double) promotionAL.next();
+//        double threshold = (double) promotionAL.next();
+//        double reduction = (double) promotionAL.next();
 
-        // 从address表中获取
+        // 初始化promotionTraAreaPOs
         ArrayList<PromotionTraAreaPO> promotionTraAreaPOs = new ArrayList<>();
-        while(addressALs.hasNext()){
-            promotionTraAreaPOs.add(toPromotionTraAreaPO(addressALs.next()));
-        }
 
-        // 从enterprise表中获取
+        // 初始化promotionEntPOs
         ArrayList<PromotionEntPO> promotionEntPOs = new ArrayList<>();
-        while(entALs.hasNext()){
-            promotionEntPOs.add(toPromotionEntPO(entALs.next()));
-        }
 
         // 构造promotionTimePO
         PromotionTimePO promotionTimePO = new PromotionTimePO(beginTime, endTime);
 
 
-        // 从member_regulation表中获取
+        // 初始化promotionMRPOs
         ArrayList<PromotionMRPO> promotionMRPOs = new ArrayList<>();
-        while(mrALs.hasNext()){
-            promotionMRPOs.add(toPromotionMRPO(mrALs.next()));
-        }
 
         PromotionPO promotionPO = new PromotionPO(promotionID, promotionType, hotelID, leastRooms, discount, promotionTimePO, promotionTraAreaPOs, promotionEntPOs, promotionMRPOs);
 

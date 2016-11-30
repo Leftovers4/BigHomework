@@ -2,6 +2,7 @@ package bl.hotelbl.impl;
 
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
+import util.IDProducer;
 import vo.hotel.HotelVO;
 import vo.hotel.RoomVO;
 
@@ -21,7 +22,7 @@ public class LogicPOHelper {
     public HotelPO create(HotelVO hotelVO) {
         HotelPO res = new HotelPO();
 
-        res.setHotelID(new Random().nextInt(900000) + 100000);
+        res.setHotelID(IDProducer.produceHotelID());
         res.setHotelName(hotelVO.hotelName);
         res.setStar(hotelVO.star);
 
@@ -56,7 +57,7 @@ public class LogicPOHelper {
     public RoomPO create(RoomVO roomVO){
         RoomPO res = new RoomPO();
 
-        res.setroomID(new Random().nextInt(900000) + 100000);
+        res.setroomID(IDProducer.produceGeneralID());
         res.sethotelID(roomVO.hotelID);
         res.setRoomType(roomVO.roomType);
         res.setTotal(roomVO.total);

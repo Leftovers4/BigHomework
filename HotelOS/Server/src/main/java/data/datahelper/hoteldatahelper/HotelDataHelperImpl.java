@@ -15,20 +15,6 @@ public class HotelDataHelperImpl extends DataHelperParent implements HotelDataHe
 
     private static final String HOTEL_TABLENAME = TableName.hotel.toString();
 
-    @Override
-    public ArrayList<Object> findByIdFromSQL(long hotelID) {
-        return findFromSQLById(HOTEL_TABLENAME, hotelID);
-    }
-
-    @Override
-    public ArrayList<ArrayList<Object>> findFromSQL() {
-        return findFromSQL(HOTEL_TABLENAME);
-    }
-
-    @Override
-    public ArrayList<ArrayList<Object>> findByConditionsFromSQL(ArrayList<Object> hotelInfo) {
-        return findFromSQLByConditions(HOTEL_TABLENAME, hotelInfo);
-    }
 
     @Override
     public ResultMessage insertToSQL(ArrayList<Object> hotelInfo) {
@@ -44,6 +30,25 @@ public class HotelDataHelperImpl extends DataHelperParent implements HotelDataHe
     public ResultMessage updateFromSQL(ArrayList<Object> hotelInfo) {
         return updateFromSQL(HOTEL_TABLENAME, hotelInfo);
     }
+
+    @Override
+    public ArrayList<ArrayList<Object>> findFromSQL() {
+        return findFromSQL(HOTEL_TABLENAME);
+    }
+
+    @Override
+    public ArrayList<Object> findByIdFromSQL(long hotelID) {
+        return findFromSQLById(HOTEL_TABLENAME, hotelID);
+    }
+
+
+
+
+
+    //    @Override
+//    public ArrayList<ArrayList<Object>> findByConditionsFromSQL(ArrayList<Object> hotelInfo) {
+//        return findFromSQLByConditions(HOTEL_TABLENAME, hotelInfo);
+//    }
 
 
 }

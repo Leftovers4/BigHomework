@@ -4,6 +4,7 @@ import dataservice.orderdataservice.OrderDataService;
 import po.order.ReviewPO;
 import po.order.OrderPO;
 import util.OrderType;
+import util.ResultMessage;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -21,29 +22,55 @@ public class OrderDataService_Stub implements OrderDataService {
     }
 
     @Override
-    public ArrayList<OrderPO> find(OrderPO orderPO) throws RemoteException {
-        ArrayList<OrderPO> list = new ArrayList<>();
-        list.add(new OrderPO("12345620161111001", 123456,"张三", OrderType.Abnormal,"如家", null, 0, null, 2, false, null, null,null,null));
-        return list;
-    }
-
-    @Override
-    public void insert(OrderPO orderPO) throws RemoteException {
-
-    }
-
-    @Override
-    public void update(OrderPO orderPO) throws RemoteException {
-
-    }
-
-    @Override
-    public ArrayList<OrderPO> getList() throws RemoteException {
+    public ArrayList<OrderPO> findByHotelID(long hotelID) throws RemoteException {
         return null;
     }
 
     @Override
-    public ArrayList<ReviewPO> findReviewListByHotelID(long hotelID) throws RemoteException {
+    public ArrayList<OrderPO> findByHotelIDAndType(long hotelID, OrderType orderType) throws RemoteException {
         return null;
     }
+
+    @Override
+    public ArrayList<OrderPO> findByUsername(String username) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<OrderPO> findByUsernameAndType(String username, OrderType orderType) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<OrderPO> findByUsernameAndHotelID(String username, long hotelID) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<ReviewPO> findReviewByHotelID(long hotelID) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<ReviewPO> findAllReviews() throws RemoteException {
+        return null;
+    }
+
+
+    @Override
+    public ResultMessage insert(OrderPO orderPO) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ResultMessage update(OrderPO orderPO) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<OrderPO> findAll() throws RemoteException {
+        return null;
+    }
+
+
 }

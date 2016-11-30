@@ -16,29 +16,6 @@ public interface OrderDataHelper {
 
 
     /**
-     * 根据id在order表中查找一条订单信息
-     * @param orderID
-     * @return
-     */
-    public ArrayList<Object> findByIdFromSQL(String orderID);
-
-    /**
-     * 根据输入的条件在order表中查找订单列表
-     * 用Object包装列表信息，若OrderPO中有条件未提及，则用'%'表示
-     * @param orderInfo
-     * @return
-     */
-    public ArrayList<ArrayList<Object>> findByConditionsFromSQL(ArrayList<Object> orderInfo);
-
-    /**
-     * 根据hotelID在order表中查找订单列表
-     * 调用findByConditionsFromSQL
-     * @param hotelID
-     * @return
-     */
-    public ArrayList<ArrayList<Object>> findByHotelIDFromSQL(long hotelID);
-
-    /**
      * 在order表中插入一条订单数据
      * @param orderInfo
      * @return
@@ -57,6 +34,31 @@ public interface OrderDataHelper {
      * @return
      */
     public ArrayList<ArrayList<Object>> findFromSQL();
+
+    /**
+     * 根据id在order表中查找一条订单信息
+     * @param orderID
+     * @return
+     */
+    public ArrayList<Object> findByIdFromSQL(String orderID);
+
+//    /**
+//     * 根据输入的条件在order表中查找订单列表
+//     * 用Object包装列表信息，若OrderPO中有条件未提及，则用'%'表示
+//     * @param orderInfo
+//     * @return
+//     */
+//    public ArrayList<ArrayList<Object>> findByConditionsFromSQL(ArrayList<Object> orderInfo);
+
+//    /**
+//     * 根据hotelID在order表中查找订单列表
+//     * 调用findByConditionsFromSQL
+//     * @param hotelID
+//     * @return
+//     */
+//    public ArrayList<ArrayList<Object>> findByHotelIDFromSQL(long hotelID);
+
+
 
 
 

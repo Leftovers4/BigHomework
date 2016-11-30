@@ -51,16 +51,4 @@ public class UpdateOfflinePaneController {
         else alertController.showInputWrongAlert("请选择客房类型和数量","退房失败");
     }
 
-    @FXML
-    private void closeWindow(){
-        if(alertController.showConfirmExitAlert()) stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
-
-    @FXML
-    private void back(){}
 }

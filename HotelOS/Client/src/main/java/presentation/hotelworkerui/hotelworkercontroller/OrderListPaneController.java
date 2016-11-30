@@ -192,15 +192,6 @@ public class OrderListPaneController {
         }
     }
 
-    @FXML
-    private void closeWindow(){
-        if(alertController.showConfirmExitAlert()) stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
 
 
 
