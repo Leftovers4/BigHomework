@@ -8,65 +8,60 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.OrderListPaneController">
     <children>
-      <TableView id="listTable" fx:id="orderTable" layoutX="25.0" layoutY="139.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="450.0" prefWidth="800.0">
+      <TableView id="listTable" fx:id="orderTable" layoutX="43.0" layoutY="125.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="500.0" prefWidth="765.0">
         <columns>
-          <TableColumn id="idCol" fx:id="idCol" editable="false" prefWidth="232.0" text="订单号" />
-          <TableColumn id="userCol" fx:id="userCol" editable="false" prefWidth="124.0" text="客户" />
-            <TableColumn id="amountCol" fx:id="priceCol" editable="false" prefWidth="72.0" text="价值" />
-            <TableColumn id="typeCol" fx:id="exetimeCol" editable="false" prefWidth="200.0" text="入住时间" />
-            <TableColumn id="exetimeCol" fx:id="typeCol" prefWidth="145.0" text="状态" />
+          <TableColumn id="idCol" fx:id="idCol" editable="false" prefWidth="180.0" sortable="false" text="订单号" />
+          <TableColumn id="userCol" fx:id="userCol" editable="false" prefWidth="90.0" sortable="false" text="客户" />
+            <TableColumn id="checkInTimeCol" fx:id="checkInTimeCol" editable="false" prefWidth="180.0" text="入住时间" />
+            <TableColumn id="priceCol" fx:id="priceCol" editable="false" prefWidth="90.0" text="价值" />
+            <TableColumn id="typeCol" fx:id="typeCol" editable="false" prefWidth="105.0" sortable="false" text="状态" />
+            <TableColumn id="opCol" fx:id="opCol" editable="false" prefWidth="95.0" sortable="false" text="操作" />
         </columns>
       </TableView>
-      <HBox id="listTopBar" fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="25.0" layoutY="89.0" prefHeight="50.0" prefWidth="800.0">
+      <HBox fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="43.0" layoutY="65.0" prefHeight="60.0" prefWidth="765.0" styleClass="listTopBar">
          <children>
+            <ComboBox id="orderTypeBox" fx:id="orderTypeBox" prefHeight="36.0" prefWidth="158.0">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </ComboBox>
+            <DatePicker fx:id="createDatePicker" editable="false" prefHeight="36.0" prefWidth="163.0" promptText="生成时间" styleClass="DatePicker">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin></DatePicker>
+            <Label text="-">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Label>
+            <DatePicker fx:id="exeDatePicker" editable="false" layoutX="471.0" layoutY="18.0" prefHeight="36.0" prefWidth="163.0" promptText="执行时间" styleClass="DatePicker" />
             <StackPane alignment="CENTER_RIGHT">
                <children>
-                  <TextField id="searchField" fx:id="searchField" prefHeight="36.0" promptText="订单号" text="12345678912345678">
+                  <TextField id="searchField" fx:id="searchField" prefHeight="36.0" prefWidth="222.0" promptText="订单号">
                      <StackPane.margin>
-                        <Insets left="5.0" />
+                        <Insets />
                      </StackPane.margin>
+                     <padding>
+                        <Insets left="8.0" right="30.0" />
+                     </padding>
                   </TextField>
-                  <Button id="searchOrderIDBtn" fx:id="searchOrderIDBtn" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0">
+                  <Button id="searchOrderIDBtn" fx:id="searchOrderIDBtn" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0">
                      <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../img/hotelworker/searchInField.png" />
                            </image>
                         </ImageView>
                      </graphic>
                      <StackPane.margin>
-                        <Insets right="2.0" />
+                        <Insets right="5.0" />
                      </StackPane.margin>
                   </Button>
                </children>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
             </StackPane>
-            <ComboBox id="orderTypeBox" fx:id="orderTypeBox" prefHeight="36.0" prefWidth="153.0" promptText="所有订单">
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-            </ComboBox>
-            <Label text="时间：">
-               <HBox.margin>
-                  <Insets left="5.0" />
-               </HBox.margin>
-            </Label>
-            <DatePicker fx:id="createDatePicker" editable="false" prefHeight="36.0" prefWidth="163.0" promptText="生成时间" />
-            <Label text="-">
-               <HBox.margin>
-                  <Insets left="1.0" right="1.0" />
-               </HBox.margin>
-            </Label>
-            <DatePicker fx:id="exeDatePicker" editable="false" layoutX="471.0" layoutY="18.0" prefHeight="36.0" prefWidth="163.0" promptText="执行时间" />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER_RIGHT" layoutX="25.0" layoutY="589.0" prefHeight="50.0" prefWidth="800.0">
-         <children>
-            <Button mnemonicParsing="false" onAction="#checkOrderDetail" text="查看详情" />
-            <Button fx:id="checkInBtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#checkIn" text="客户入住">
-               <HBox.margin>
-                  <Insets left="20.0" right="5.0" />
-               </HBox.margin>
-            </Button>
          </children>
       </HBox>
     </children>

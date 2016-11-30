@@ -146,36 +146,36 @@
 ////
 ////    }
 ////
-////    class DetailsCell implements Callback<TableColumn<OrderPO, String>, TableCell<OrderPO, String>> {
-////
-////        @Override
-////        public TableCell<OrderPO, String> call(TableColumn<OrderPO, String> param) {
-////
-////            TableCell<OrderPO,String> cell = new TableCell<OrderPO, String>() {
-////
-////                Button btn = new Button( "查看详情" );
-////
-////
-////
-////                @Override
-////                public void updateItem( String item, boolean empty ) {
-////                    super.updateItem( item, empty );
-////                    if ( empty ) {
-////                        setGraphic( null );
-////                        setText( null );
-////                    } else {
-////                        btn.setOnAction(e -> {
-////                            stage.setScene(new DetailsScene(new Pane()));
-////                        });
-////                        setGraphic( btn );
-////                        setText( null );
-////                    }
-////                }
-////            };
-////            return cell;
-////        }
-////    }
+//    class DetailsCell implements Callback<TableColumn<OrderPO, String>, TableCell<OrderPO, String>> {
 //
+//        @Override
+//        public TableCell<OrderPO, String> call(TableColumn<OrderPO, String> param) {
+//
+//            TableCell<OrderPO,String> cell = new TableCell<OrderPO, String>() {
+//
+//                Button btn = new Button( "查看详情" );
+//
+//
+//
+//                @Override
+//                public void updateItem( String item, boolean empty ) {
+//                    super.updateItem( item, empty );
+//                    if ( empty ) {
+//                        setGraphic( null );
+//                        setText( null );
+//                    } else {
+//                        btn.setOnAction(e -> {
+//                            stage.setScene(new DetailsScene(new Pane()));
+//                        });
+//                        setGraphic( btn );
+//                        setText( null );
+//                    }
+//                }
+//            };
+//            return cell;
+//        }
+//    }
+
 //
 //    /*
 //    *查看详情界面

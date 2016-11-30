@@ -14,8 +14,10 @@ import java.time.LocalDate;
 public class CancelDateBefore implements Callback<DatePicker, DateCell> {
 
     private DatePicker datePicker;
-    public CancelDateBefore(DatePicker datePicker){
+    private LocalDate localDate;
+    public CancelDateBefore(DatePicker datePicker,LocalDate localDate){
         this.datePicker = datePicker;
+        this.localDate = localDate;
     }
     @Override
     public DateCell call(final DatePicker datepicker) {
@@ -25,7 +27,7 @@ public class CancelDateBefore implements Callback<DatePicker, DateCell> {
                 super.updateItem(item, empty);
 
                 if (item.isBefore(
-                        LocalDate.now())
+                        localDate)
                         ) {
                     setDisable(true);
                     setStyle("-fx-background-color: #ffc0cb;");

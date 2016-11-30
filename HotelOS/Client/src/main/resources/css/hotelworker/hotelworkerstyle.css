@@ -34,15 +34,7 @@
 
 
 
-/*列表上方的工具栏*/
-#listTopBar{
-    -fx-background-color: #dee7eb;
-}
 
-/*搜索框*/
-#searchField{
-    -fx-background-radius: 10;
-}
 /*搜索按钮*/
 #searchOrderIDBtn{
     -fx-border-style: none;
@@ -84,7 +76,7 @@
 
 
 /*
-通用
+公用-------------------------------------------------------------------------------------------------
  */
 
 /*显示的panel mainPane*/
@@ -132,15 +124,18 @@
 /*ComboBox*/
 .combo-box{
     -fx-font-size: 18px;
-    -fx-background-color: #95a5a6;
+    -fx-background-color: #b3c2c3;
+}
+.combo-box:hover{
+    -fx-background-color: #95a5a6
 }
 .combo-box .cell:selected{
-    -fx-text-fill: white;
-    -fx-background-color: #95a5a6;
+    -fx-text-fill: #ffffff;
+    -fx-background-color: #b3c2c3;
 }
 .combo-box .cell:hover{
     -fx-text-fill: white;
-    -fx-background-color: #bdc3c7;
+    -fx-background-color: #95a5a6
 }
 
 .combo-box .arrow{
@@ -149,7 +144,7 @@
 
 
 /**
-基本信息界面
+基本信息界面----------------------------------------------------------------------
  */
 
 
@@ -194,10 +189,115 @@
 #cancelEditBtn:hover{
     -fx-background-color: rgba(255, 83, 67, 0.8);
 }
+
+
+
 /**
-订单列表
+订单列表--------------------------------------------------------------------------------------------
  */
 
+/*列表上方的工具栏*/
+.listTopBar{
+    -fx-background-color: #f7f7f7;
+    -fx-border-color: #dddddd #F5F4F1 #F5F4F1 #F5F4F1;
+}
+
+/*搜索框*/
+#searchField{
+    -fx-background-radius: 10;
+    -fx-font-size: 15px;
+}
+
+/*订单列表*/
+#listTable{
+    -fx-background-color: white;
+    -fx-border-color: white;
+    -fx-font-size: 15px;
+}
+#listTable .column-header, .filler{
+    -fx-background-color: white;
+    -fx-border-color: white white #dddddd white;
+}
+#listTable .column-header .label{
+    -fx-background-color: white;
+    -fx-border-color: white white #dddddd white;
+    -fx-text-fill: #7E7E7E;
+    -fx-font-weight: 400;
+}
+#listTable .table-row-cell{
+    -fx-border-color: transparent;
+}
+#listTable .table-column{
+    -fx-border-color: transparent;
+}
+#listTable .table-row-cell:selected{
+    -fx-background-color: #F6FAFF;
+
+}
+#listTable .table-row-cell:hover{
+    -fx-background-color: #F6FAFF;
+}
+/*.root .table-view{*/
+    /*-fx-control-inner-background: #AB4642;*/
+/*}*/
+/*订单号列表栏*/
+#listTable .column-header#idCol .label{
+    -fx-alignment: center-left;
+}
+#listTable #idCol{
+    -fx-alignment: center-left;
+}
+/*客户列表栏*/
+#listTable .column-header#userCol .label{
+    -fx-alignment: center-left;
+}
+#listTable #userCol{
+    -fx-alignment: center-left;
+}
+/*价格列表栏*/
+#listTable .column-header#priceCol .label{
+    -fx-alignment: center-right;
+}
+#listTable .column-header#priceCol .arrow{
+    -fx-background-color: black;
+}
+#listTable #priceCol{
+    -fx-alignment: center-right;
+}
+/*入住时间列表栏*/
+#listTable .column-header#checkInTimeCol .label{
+    -fx-alignment: center-left;
+}
+#listTable .column-header#checkInTimeCol .arrow{
+    -fx-background-color: black;
+}
+#listTable #checkInTimeCol{
+    -fx-alignment: center-left;
+}
+/*订单状态列表栏*/
+#listTable .column-header#typeCol .label{
+    -fx-alignment: center-left;
+}
+#listTable #typeCol{
+    -fx-alignment: center-left;
+}
+/*操作按钮*/
+#listTable .column-header#opCol .label{
+    -fx-alignment: center-left;
+}
+.TableButtonCell{
+    -fx-background-radius: 50%;
+    -fx-cursor: hand;
+    -fx-background-color: #55acee;
+    /*-fx-padding: 8px;*/
+    -fx-pref-width: 32px;
+    -fx-pref-height: 32px;
+    -fx-min-width: 32px;
+    -fx-min-height: 32px;
+}
+.TableButtonCell:hover{
+    -fx-background-color: #49BCFF;
+}
 /**
 录入可用客房
  */
