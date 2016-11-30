@@ -40,16 +40,13 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
 
     private OrderDataHelper orderDataHelper;
 
-    // 需要合作的DataService
-    private OrderDataService orderDataService;
 
     // 将需要调用的底层类初始化
-    public HotelDataServiceImpl() throws RemoteException {
+    public HotelDataServiceImpl() {
         super();
         hotelDataHelper = dhFactory.getHotelDataHelper();
         roomDataHelper = dhFactory.getRoomDataHelper();
         orderDataHelper = dhFactory.getOrderDataHelper();
-        orderDataService = dsFactory.getOrderDataService();
     }
 
     @Override
@@ -101,17 +98,19 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
 
         // 在表中获得所有的rooms和reviews
         ArrayList<RoomPO> roomPOs = findAllRooms();
-        ArrayList<ReviewPO> reviewPOs = orderDataService.findAllReviews();
+        ArrayList<ReviewPO> reviewPOs = findAllReviews();
 
         // 对每个hotelpo获取相应的roomPOs和reviewPOs
         // TODO: 待测试，foreach循环是否可以set
+        ArrayList<HotelPO> setHotelPOs = new ArrayList<>();
         for(HotelPO each : hotelPOs){
             each.setRooms(getRoomsByHotelID(roomPOs, each.getHotelID()));
             each.setReviews(getReviewByHotelID(reviewPOs, each.getHotelID()));
+            setHotelPOs.add(each);
         }
 
 
-        return hotelPOs;
+        return setHotelPOs;
 
 
     }
@@ -128,7 +127,7 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
 
         // 根据hotelID获取roomPOs，reviewPOs
         ArrayList<RoomPO> roomPOs = findRoomsByHotelID(hotelID);
-        ArrayList<ReviewPO> reviewPOs = orderDataService.findReviewByHotelID(hotelID);
+        ArrayList<ReviewPO> reviewPOs = findReviewByHotelID(hotelID);
 
         // 补充hotelPO中的信息
         hotelPO.setRooms(roomPOs);
@@ -244,6 +243,51 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
         return roomPOs;
     }
 
+    /**
+     * 根据hotelID查找reviewPOs
+     * TODO：写在这里是避免dataservice层之间的相互调用，但又貌似违背了单一原则？
+     * @param hotelID
+     * @return
+     */
+    private ArrayList<ReviewPO> findReviewByHotelID(long hotelID){
+        // 调用findAllReviews
+        ArrayList<ReviewPO> reviewPOs = findAllReviews();
+        // 选择出相应的reviewPOs
+        ArrayList<ReviewPO> selectedReviewPOs = new ArrayList<>();
+        for (ReviewPO each : reviewPOs) {
+            if(each.getHotelID() == hotelID){
+                selectedReviewPOs.add(each);
+            }
+        }
+
+        return selectedReviewPOs;
+    }
+
+    /**
+     * 查找所有reviewPOs
+     * TODO：写在这里是避免dataservice层之间的相互调用，但又貌似违背了单一原则？
+     * @return
+     */
+    private ArrayList<ReviewPO> findAllReviews(){
+        // 在order表中取出所有的orderALs
+        ArrayList<ArrayList<Object>> orderALs = orderDataHelper.findFromSQL();
+
+        // 构造orderALs的迭代器
+        Iterator<Iterator<Object>> orderInfos = ctFactory.alsToItrs(orderALs);
+
+        // 转换成orderPOs
+        ArrayList<OrderPO> orderPOs = new ArrayList<>();
+        while (orderInfos.hasNext()) {
+            orderPOs.add(apFactory.toOrderPO(orderInfos.next()));
+        }
+
+        // 获得所有reviews
+        ArrayList<ReviewPO> reviewPOs = new ArrayList<>();
+        for (OrderPO each : orderPOs) {
+            reviewPOs.add(each.getReviewPO());
+        }
+        return reviewPOs;
+    }
 
 
     /**

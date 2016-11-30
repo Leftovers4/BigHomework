@@ -32,6 +32,16 @@ public enum ResultMessage {
     PasswordWrong,
 
     /**
+     * 传入值为null
+      */
+    NullInput,
+
+    /**
+     * 传入值为空
+     */
+    EmptyInput,
+
+    /**
      * 中断
      */
     Pause,

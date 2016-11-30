@@ -41,7 +41,4 @@ public interface Al2Po_Factory {
     public PromotionEntPO toPromotionEntPO(Iterator<Object> entAL);
 
 
-
-    // TODO promotion类enterprise等类的po创建问题
-
 }

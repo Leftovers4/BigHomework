@@ -71,11 +71,13 @@ public class UserDataServiceImpl extends DataServiceImplParent implements UserDa
 
         // 对每个userPO设置相应的creditRecordPOs
         // TODO: 待测试，foreach循环是否可以set
+        ArrayList<UserPO> setUserPOs = new ArrayList<>();
         for (UserPO each : userPOs) {
             each.setCreditRecordPOs(getCreditRecordsByUsername(findAllCreditRecord(), each.getUsername()));
+            setUserPOs.add(each);
         }
 
-        return userPOs;
+        return setUserPOs;
 
 
     }

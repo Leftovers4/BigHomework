@@ -75,7 +75,7 @@ public class UserPO implements Serializable {
         this.gender = false;
         this.phone = "";
         this.memberPO = new MemberPO();
-        this.creditRecordPOs = null;
+        this.creditRecordPOs = new ArrayList<>();
     }
 
     public String getUsername() {

@@ -102,6 +102,14 @@ public class DataHelperParent {
      */
     protected ResultMessage insertToSQL(String tableName, ArrayList<Object> parameters){
 
+        if(parameters == null){
+            return ResultMessage.NullInput;
+        }
+
+        if(parameters.isEmpty()){
+            return ResultMessage.EmptyInput;
+        }
+
         if(TB_TO_COL.get(tableName).size() != parameters.size()){
             System.out.println("Wrong inputs' number to " + tableName + ". Expected " + TB_TO_COL.get(tableName).size() + " .But " + parameters.size() + ".");
         }
@@ -176,6 +184,14 @@ public class DataHelperParent {
      * @return
      */
     protected ResultMessage updateFromSQL(String tableName, ArrayList<Object> newParameters){
+
+        if(newParameters == null){
+            return ResultMessage.NullInput;
+        }
+
+        if(newParameters.isEmpty()){
+            return ResultMessage.EmptyInput;
+        }
 
         if(TB_TO_COL.get(tableName).size() != newParameters.size()){
             System.out.println("Wrong inputs' number to " + tableName + ".");

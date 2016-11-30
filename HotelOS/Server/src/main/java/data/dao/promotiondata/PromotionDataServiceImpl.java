@@ -34,6 +34,10 @@ public class PromotionDataServiceImpl extends DataServiceImplParent implements P
     // 将需要调用的底层类初始化
     public PromotionDataServiceImpl(){
         super();
+        promotionDataHelper = dhFactory.getPromotionDataHelper();
+        addDataHelper = dhFactory.getAddressDataHelper();
+        entDataHelper = dhFactory.getEnterpriseDataHelper();
+        mrDataHelper = dhFactory.getMemberRegulationDataHelper();
 
     }
 
