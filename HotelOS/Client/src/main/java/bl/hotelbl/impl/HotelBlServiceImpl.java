@@ -1,46 +1,55 @@
 package bl.hotelbl.impl;
 
 import bl.hotelbl.HotelBLService;
+import bl.orderbl.impl.Order;
+import bl.orderbl.impl.OrderData;
+import bl.orderbl.impl.OrderList;
+import bl.personnelbl.impl.Personnel;
+import bl.personnelbl.impl.PersonnelData;
+import util.Address;
 import util.ResultMessage;
+import util.TradingArea;
 import vo.hotel.HotelVO;
+import vo.hotel.LogicVOHelper;
 import vo.hotel.RoomVO;
+import vo.order.OrderVOCreator;
+import vo.order.ReviewVO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by kevin on 2016/11/6.
  */
-public class HotelBlServiceImpl implements HotelBLService{
+public class HotelBlServiceImpl implements HotelBLService {
 
-    HotelManager hotelManager;
+    HotelData hotelData;
+    PersonnelData personnelData;
+    OrderData orderData;
+    LogicVOHelper logicVOHelper;
+    OrderVOCreator orderVOCreator;
 
-    public HotelBlServiceImpl(){
-        hotelManager = new HotelManager();
+    public HotelBlServiceImpl() {
+        hotelData = new HotelData();
+        personnelData = new PersonnelData();
+        orderData = new OrderData();
+        logicVOHelper = new LogicVOHelper();
+        orderVOCreator = new OrderVOCreator();
     }
 
     @Override
     public ResultMessage addHotel(HotelVO hotelVO) {
-        return hotelManager.addHotel(hotelVO);
+        return hotelData.addHotel(hotelVO);
     }
 
     @Override
     public ResultMessage deleteHotel(long hotelID) {
-        return hotelManager.deleteHotel(hotelID);
-    }
-
-    @Override
-    public ResultMessage updateBasicHotelInfo(HotelVO hotelVO) {
-        return hotelManager.updateHotelInfo(hotelVO);
+        return hotelData.deleteHotel(hotelID);
     }
 
     @Override
     public HotelVO findHotelByID(long hotelID) {
-        return hotelManager.getBasicHotelInfo(hotelID);
-    }
-
-    @Override
-    public HotelVO getBasicHotelInfo(long hotelID) {
-        return hotelManager.getBasicHotelInfo(hotelID);
+        return hotelData.getBasicHotelInfo(hotelID);
     }
 
     @Override
@@ -61,22 +70,60 @@ public class HotelBlServiceImpl implements HotelBLService{
 
     @Override
     public ResultMessage addRoom(RoomVO roomVO) {
-        return hotelManager.addRoom(roomVO);
+        return hotelData.addRoom(roomVO);
     }
 
     @Override
     public ResultMessage deleteRoom(long roomID) {
-        return hotelManager.deleteRoom(roomID);
+        return hotelData.deleteRoom(roomID);
     }
 
     @Override
     public ResultMessage updateRoomInfo(RoomVO roomVO) {
-        return hotelManager.updateRoomInfo(roomVO);
+        return hotelData.updateRoomInfo(roomVO);
     }
 
     @Override
     public List<RoomVO> findRoomsByHotelID(long hotelID) {
-        return hotelManager.findRoomsByHotelID(hotelID);
+        return hotelData.findRoomsByHotelID(hotelID);
+    }
+
+
+
+    @Override
+    public HotelVO viewBasicHotelInfo(long hotelID) {
+        Hotel hotel = hotelData.find(hotelID);
+        Personnel personnel = personnelData.findByHotelID(hotelID);
+        double rating = orderData.find(hotelID).getRating();
+
+        return logicVOHelper.create(hotel, personnel, rating);
+    }
+
+    @Override
+    public List<ReviewVO> viewHotelReviews(long hotelID) {
+        List<ReviewVO> res = new ArrayList<>();
+        OrderList orderList = orderData.find(hotelID);
+
+        for (int i = 0; i < orderList.size(); i++) {
+            Order order = orderList.get(i);
+
+            if (order.hasReview())
+                res.add(orderVOCreator.create(order));
+        }
+
+        return res;
+    }
+
+    @Override
+    public ResultMessage updateBasicHotelInfo(long hotelID, String address, String tradingArea, String description, String service) {
+        Hotel hotel = hotelData.find(hotelID);
+
+        hotel.setAddress(address);
+        hotel.setTradingArea(tradingArea);
+        hotel.setDescription(description);
+        hotel.setService(service);
+
+        return hotelData.update(hotel);
     }
 
 }

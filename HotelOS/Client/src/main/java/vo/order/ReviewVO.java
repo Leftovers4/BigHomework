@@ -1,5 +1,7 @@
 package vo.order;
 
+import util.RoomType;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -8,16 +10,25 @@ import java.util.Date;
  */
 public class ReviewVO {
 
+    /*
+     * 订单id
+     */
+    public long orderID;
 
     /**
-     * 用户名
+     * 评价内容
      */
-    public String username;
+    public String review;
 
     /**
-     * 酒店ID
+     * 评分
      */
-    public long hotelID;
+    public int rating;
+
+    /*
+     * 房间类型
+     */
+    public RoomType roomType;
 
     /**
      * 评价时间
@@ -25,27 +36,10 @@ public class ReviewVO {
     public LocalDateTime reviewTime;
 
     /**
-     * 评分
+     * 用户名
      */
-    private int rating;
-
-    /**
-     * 评价内容
-     */
-    public String review;
-
+    public String username;
 
     public ReviewVO(){}
 
-    /**
-     * 用于客户评价
-     */
-    public ReviewVO(String username, long hotelID, LocalDateTime reviewTime, int rating, String review) {
-        super();
-        this.username = username;
-        this.hotelID = hotelID;
-        this.reviewTime = reviewTime;
-        this.rating = rating;
-        this.review = review;
-    }
 }

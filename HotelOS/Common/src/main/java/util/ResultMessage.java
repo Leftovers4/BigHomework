@@ -19,7 +19,7 @@ public enum ResultMessage {
     /**
      * 连接服务器失败
      */
-    ConnectionError,
+    ServerConnectionFail,
 
     /**
      * 登录失败：用户名不存在

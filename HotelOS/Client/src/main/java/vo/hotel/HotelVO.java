@@ -23,11 +23,6 @@ public class HotelVO {
      */
     public String hotelName;
 
-    /*
-     * 工作人员
-     */
-    public String hotelWorkerName;
-
     /**
      * 星级
      */
@@ -53,6 +48,8 @@ public class HotelVO {
      */
     public String service;
 
+/*--------------------------------------------------------------------------------------------------------------------*/
+
     /**
      * 浏览酒店时显示的酒店价格，是该酒店所有房间的最低价格，也是酒店列表排序的标准之一
      */
@@ -77,5 +74,17 @@ public class HotelVO {
      * 特定用户在该酒店的订单列表
      */
     public List<OrderVO> ordersByUserAndHotel;
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+    /*
+     * 工作人员id
+     */
+    public long hotelWorkerID;
+
+    /*
+     * 工作人员名字
+     */
+    public String hotelWorkerName;
 
 }

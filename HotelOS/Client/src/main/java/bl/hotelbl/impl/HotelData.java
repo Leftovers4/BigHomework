@@ -4,9 +4,7 @@ import dataservice.hoteldataservice.HotelDataService;
 import dataservice.personneldataservice.PersonnelDataService;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
-import po.personnel.PersonnelPO;
 import rmi.RemoteHelper;
-import util.PersonnelType;
 import util.ResultMessage;
 import vo.hotel.HotelVO;
 import vo.hotel.RoomVO;
@@ -19,23 +17,50 @@ import java.util.List;
 /**
  * Created by kevin on 2016/11/6.
  */
-public class HotelManager implements RoomInfoService{
+public class HotelData implements RoomInfoService{
+
 
     private HotelDataService hotelDao;
+    private HotelPOCreator hotelPOCreator;
+
+    public HotelData(){
+        hotelDao = RemoteHelper.getInstance().getHotelDAO();
+        hotelPOCreator = new HotelPOCreator();
+    }
+
+    public Hotel find(long hotelID){
+        try {
+            return (Hotel)(hotelDao.findByHotelID(hotelID));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ResultMessage update(Hotel hotel){
+        try {
+            return hotelDao.update(hotel);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return ResultMessage.ServerConnectionFail;
+        }
+    }
+
+
+
     private PersonnelDataService personnelDao;
     private LogicVOHelper logicVOHelper;
-    private LogicPOHelper logicPOHelper;
 
-    public HotelManager(){
+    public HotelData(int i){
         hotelDao = RemoteHelper.getInstance().getHotelDAO();
         personnelDao = RemoteHelper.getInstance().getPersonnelDAO();
         logicVOHelper = new LogicVOHelper();
-        logicPOHelper = new LogicPOHelper();
+        hotelPOCreator = new HotelPOCreator();
     }
 
     public ResultMessage addHotel(HotelVO hotelVO){
         try {
-            return hotelDao.insert(logicPOHelper.create(hotelVO));
+            return hotelDao.insert(hotelPOCreator.create(hotelVO));
         } catch (RemoteException e) {
             e.printStackTrace();
             return ResultMessage.ConnectionError;
@@ -54,25 +79,10 @@ public class HotelManager implements RoomInfoService{
     public ResultMessage updateHotelInfo(HotelVO hotelVO) {
         try {
             HotelPO originHotelPO = hotelDao.findByHotelID(hotelVO.hotelID);
-            return hotelDao.update(logicPOHelper.create(originHotelPO, hotelVO));
+            return hotelDao.update(hotelPOCreator.create(originHotelPO, hotelVO));
         } catch (RemoteException e) {
             e.printStackTrace();
             return ResultMessage.ConnectionError;
-        }
-    }
-
-    public HotelVO getBasicHotelInfo(long hotelID) {
-        try {
-            // TODO: 2016/11/26 personnel接口，order提供计算评分的接口
-            HotelPO hotelPO = hotelDao.findByHotelID(hotelID);
-            PersonnelPO personnelPO = new PersonnelPO(0, "", PersonnelType.HotelWorker, "工作人员");//personnelDao.findByHotelID(hotelID);
-            double rating = 0;
-
-            HotelVO hotelVO = logicVOHelper.create(hotelPO, personnelPO, rating);
-            return hotelVO;
-        } catch (RemoteException e) {
-            e.printStackTrace();
-            return null;
         }
     }
 
@@ -86,7 +96,7 @@ public class HotelManager implements RoomInfoService{
 
     public ResultMessage addRoom(RoomVO roomVO) {
         try {
-            return hotelDao.insertRoom(logicPOHelper.create(roomVO));
+            return hotelDao.insertRoom(hotelPOCreator.create(roomVO));
         } catch (RemoteException e) {
             e.printStackTrace();
             return ResultMessage.ConnectionError;

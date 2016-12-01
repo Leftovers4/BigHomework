@@ -11,7 +11,7 @@ import java.util.Random;
 /**
  * Created by kevin on 2016/11/25.
  */
-public class LogicPOHelper {
+public class HotelPOCreator {
 
     /**
      * 传给数据：创建包含网站管理人员添加新酒店信息的po

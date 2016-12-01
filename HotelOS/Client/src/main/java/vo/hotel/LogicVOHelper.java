@@ -1,5 +1,7 @@
 package vo.hotel;
 
+import bl.hotelbl.impl.Hotel;
+import bl.personnelbl.impl.Personnel;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
 import po.personnel.PersonnelPO;
@@ -13,23 +15,26 @@ public class LogicVOHelper {
     /**
      * 传给界面：创建包含酒店工作人员查看酒店基本信息的界面信息的vo
      *
-     * @param hotelPO     数据库中取出的hotelPO
-     * @param personnelPO 数据库中取出的personnelPO
+     * @param hotel     包含数据库中取出的hotelPO的信息
+     * @param personnel 包含数据库中取出的personnelPO的信息
      * @param rating      评分
      * @return 包含酒店工作人员查看酒店基本信息的界面信息的vo
      */
-    public HotelVO create(HotelPO hotelPO, PersonnelPO personnelPO, double rating) {
+    public HotelVO create(Hotel hotel, Personnel personnel, double rating) {
         HotelVO res = new HotelVO();
 
-        res.hotelID = hotelPO.getHotelID();
-        res.hotelName = hotelPO.getHotelName();
-        res.hotelWorkerName = personnelPO.getName();
-        res.star = hotelPO.getStar();
+        res.hotelID = hotel.getHotelID();
+        res.hotelName = hotel.getHotelName();
+        res.star = hotel.getStar();
+        res.address = hotel.getAddress();
+        res.tradingArea = hotel.getTradingArea();
+        res.description = hotel.getDescription();
+        res.service = hotel.getService();
+
+        res.hotelWorkerID = personnel.getPersonnelID();
+        res.hotelWorkerName = personnel.getName();
+
         res.rating = rating;
-        res.address = hotelPO.getAddress();
-        res.tradingArea = hotelPO.getTradingArea();
-        res.description = hotelPO.getDescription();
-        res.service = hotelPO.getService();
 
         return res;
     }

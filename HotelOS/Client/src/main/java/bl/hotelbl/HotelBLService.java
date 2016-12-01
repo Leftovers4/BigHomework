@@ -2,6 +2,7 @@ package bl.hotelbl;
 import util.*;
 import vo.hotel.HotelVO;
 import vo.hotel.RoomVO;
+import vo.order.ReviewVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,29 +28,13 @@ public interface HotelBLService {
      */
     ResultMessage deleteHotel(long hotelID);
 
-    /**
-     * 酒店工作人员查看酒店的基本信息
-     *
-     * @param hotelID 酒店的id
-     * @return SUCCESS或者FAIL，FAIL表示不存在该酒店
-     */
-    HotelVO getBasicHotelInfo(long hotelID);
-
-    /**
-     * 酒店工作人员更新酒店的基本信息
-     *
-     * @param hotelVO 酒店信息
-     * @return SUCCESS或者FAIL，FAIL表示不存在该酒店
-     */
-    ResultMessage updateBasicHotelInfo(HotelVO hotelVO);
-
-    /**
-     * 根据酒店id查找酒店
-     *
-     * @param hotelID 酒店的id
-     * @return 酒店的详细信息
-     * @deprecated
-     */
+        /**
+         * 根据酒店id查找酒店
+         *
+         * @param hotelID 酒店的id
+         * @return 酒店的详细信息
+         * @deprecated
+         */
     HotelVO findHotelByID(long hotelID);
 
     /**
@@ -109,5 +94,27 @@ public interface HotelBLService {
      * @return 对应的酒店的所有房间类型信息
      */
     List<RoomVO> findRoomsByHotelID(long hotelID);
+
+
+
+
+
+    /**
+     * 酒店工作人员查看酒店的基本信息
+     *
+     * @param hotelID 酒店的id
+     * @return SUCCESS或者FAIL，FAIL表示不存在该酒店
+     */
+    HotelVO viewBasicHotelInfo(long hotelID);
+
+    List<ReviewVO> viewHotelReviews(long hotelID);
+
+    /**
+     * 酒店工作人员更新酒店的基本信息
+     *
+     *
+     * @return SUCCESS或者FAIL，FAIL表示不存在该酒店
+     */
+    ResultMessage updateBasicHotelInfo(long hotelID, String address, String tradingArea, String description, String service);
 
 }
