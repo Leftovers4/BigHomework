@@ -5,7 +5,9 @@ import po.hotel.HotelPO;
 import po.hotel.RoomPO;
 import po.order.OrderPO;
 import po.personnel.PersonnelPO;
+import po.promotion.PromotionMRPO;
 import po.promotion.PromotionPO;
+import po.promotion.PromotionTraAreaPO;
 import po.user.CreditRecordPO;
 import po.user.UserPO;
 
@@ -112,8 +114,25 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         promotionInfoContent.add(promotionPO.getLeastRooms());
         promotionInfoContent.add(promotionPO.getDiscount());
         promotionInfoContent.add(promotionPO.getLeastRooms());
-        promotionInfoContent.add(toString(promotionPO.getBeginTime()));
-        promotionInfoContent.add(toString(promotionPO.getEndTime()));
+        // 起止时间
+        promotionInfoContent.add(toString(promotionPO.getPromotionTimePO().getBeginTime()));
+        promotionInfoContent.add(toString(promotionPO.getPromotionTimePO().getEndTime()));
+        // 合作企业
+        for (String eachEnt : promotionPO.getPromotionEnterprises()) {
+            promotionInfoContent.add(eachEnt);
+        }
+        // 商圈优惠
+        for (PromotionTraAreaPO eachTra : promotionPO.getPromotionTraAreaPOs()) {
+            promotionInfoContent.add(eachTra.getTradingArea());
+            promotionInfoContent.add(eachTra.getTraDiscount());
+        }
+        // 会员等级优惠
+        for (PromotionMRPO eachMr : promotionPO.getPromotionMRPOs()) {
+            promotionInfoContent.add(eachMr.getCredit());
+            promotionInfoContent.add(eachMr.getMemberDiscount());
+        }
+
+
         // TODO：满减还不用做
 //        promotionInfoContent.add(0);
 //        promotionInfoContent.add(0);

@@ -3,16 +3,13 @@ package data.dao._poalfactory;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
 import po.order.OrderPO;
-import po.order.ReviewPO;
 import po.personnel.PersonnelPO;
-import po.promotion.PromotionEntPO;
 import po.promotion.PromotionMRPO;
 import po.promotion.PromotionPO;
 import po.promotion.PromotionTraAreaPO;
 import po.user.CreditRecordPO;
 import po.user.UserPO;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -34,11 +31,7 @@ public interface Al2Po_Factory {
 
     public CreditRecordPO toCreditRecordPO(Iterator<Object> creditRecordAL);
 
-    public PromotionTraAreaPO toPromotionTraAreaPO(Iterator<Object> addressAL);
 
-    public PromotionMRPO toPromotionMRPO(Iterator<Object> mrAL);
-
-    public PromotionEntPO toPromotionEntPO(Iterator<Object> entAL);
 
 
 }

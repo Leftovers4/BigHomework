@@ -190,23 +190,32 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
         int leastRooms = (int) promotionAL.next();
         LocalDateTime beginTime = toDateTime((String)promotionAL.next());
         LocalDateTime endTime = toDateTime((String) promotionAL.next());
-//        double threshold = (double) promotionAL.next();
-//        double reduction = (double) promotionAL.next();
 
-        // 初始化promotionTraAreaPOs
-        ArrayList<PromotionTraAreaPO> promotionTraAreaPOs = new ArrayList<>();
+        // 合作企业
+        ArrayList<String> promotionEnterprises = new ArrayList<>(Const.MaxPromotionEntpriseAmount);
+        for(int i = 0; i < promotionEnterprises.size(); i++){
+            promotionEnterprises.add((String) promotionAL.next());
+        }
 
-        // 初始化promotionEntPOs
-        ArrayList<PromotionEntPO> promotionEntPOs = new ArrayList<>();
+        // 商圈优惠
+        ArrayList<PromotionTraAreaPO> promotionTraAreaPOs = new ArrayList<>(Const.MaxPromotionAddressAmount);
+        for(int i = 0; i < promotionTraAreaPOs.size(); i++){
+            promotionTraAreaPOs.add(new PromotionTraAreaPO((String)promotionAL.next(), (double)promotionAL.next()));
+        }
+
+        // 会员优惠
+        ArrayList<PromotionMRPO> promotionMRPOs = new ArrayList<>(Const.MaxMemberLevel);
+        for(int i = 0; i < promotionMRPOs.size(); i++){
+            promotionMRPOs.add(new PromotionMRPO((double) promotionAL.next(), (double) promotionAL.next()));
+        }
 
         // 构造promotionTimePO
         PromotionTimePO promotionTimePO = new PromotionTimePO(beginTime, endTime);
 
+//        double threshold = (double) promotionAL.next();
+//        double reduction = (double) promotionAL.next();
 
-        // 初始化promotionMRPOs
-        ArrayList<PromotionMRPO> promotionMRPOs = new ArrayList<>();
-
-        PromotionPO promotionPO = new PromotionPO(promotionID, promotionType, hotelID, leastRooms, discount, promotionTimePO, promotionTraAreaPOs, promotionEntPOs, promotionMRPOs);
+        PromotionPO promotionPO = new PromotionPO(promotionID, promotionType, hotelID, discount, leastRooms,  promotionTimePO, promotionEnterprises, promotionTraAreaPOs, promotionMRPOs);
 
         return promotionPO;
 
@@ -230,53 +239,40 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
 
     }
 
-    @Override
-    public PromotionTraAreaPO toPromotionTraAreaPO(Iterator<Object> addressAL) {
-        if(!addressAL.hasNext()){
-            return null;
-        }
+//    @Override
+//    public PromotionTraAreaPO toPromotionTraAreaPO(Iterator<Object> addressAL) {
+//        if(!addressAL.hasNext()){
+//            return null;
+//        }
+//
+//        // 从address表获取
+//        long addressID = (long) addressAL.next();
+//        String address = (String) addressAL.next();
+//        String tradingArea = (String) addressAL.next();
+//        double discount = (double) addressAL.next();
+//
+//        PromotionTraAreaPO promotionTraAreaPO = new PromotionTraAreaPO(addressID, address, tradingArea, discount);
+//
+//        return promotionTraAreaPO;
+//    }
 
-        // 从address表获取
-        long addressID = (long) addressAL.next();
-        String address = (String) addressAL.next();
-        String tradingArea = (String) addressAL.next();
-        double discount = (double) addressAL.next();
+//    @Override
+//    public PromotionMRPO toPromotionMRPO(Iterator<Object> mrAls) {
+//        if(!mrAls.hasNext()){
+//            return null;
+//        }
+//
+//        // 从member_regulation表中获取
+//        int level = (int) mrAls.next();
+//        double credit = (double) mrAls.next();
+//        double discount = (double) mrAls.next();
+//
+//        PromotionMRPO promotionMRPO = new PromotionMRPO(level, credit, discount);
+//
+//        return promotionMRPO;
+//    }
 
-        PromotionTraAreaPO promotionTraAreaPO = new PromotionTraAreaPO(addressID, address, tradingArea, discount);
 
-        return promotionTraAreaPO;
-    }
-
-    @Override
-    public PromotionMRPO toPromotionMRPO(Iterator<Object> mrAls) {
-        if(!mrAls.hasNext()){
-            return null;
-        }
-
-        // 从member_regulation表中获取
-        int level = (int) mrAls.next();
-        double credit = (double) mrAls.next();
-        double discount = (double) mrAls.next();
-
-        PromotionMRPO promotionMRPO = new PromotionMRPO(level, credit, discount);
-
-        return promotionMRPO;
-    }
-
-    @Override
-    public PromotionEntPO toPromotionEntPO(Iterator<Object> entAls) {
-        if(!entAls.hasNext()){
-            return null;
-        }
-
-        long matchID = (long) entAls.next();
-        long hotelID = (long) entAls.next();
-        String enterprise = (String) entAls.next();
-
-        PromotionEntPO promotionEntPO = new PromotionEntPO(matchID, hotelID, enterprise);
-
-        return promotionEntPO;
-    }
 
 
 /*---------------------------------------辅助方法-------------------------------------------------*/

@@ -46,15 +46,6 @@ public class OrderDataService_Stub implements OrderDataService {
         return null;
     }
 
-    @Override
-    public ArrayList<ReviewPO> findReviewByHotelID(long hotelID) throws RemoteException {
-        return null;
-    }
-
-    @Override
-    public ArrayList<ReviewPO> findAllReviews() throws RemoteException {
-        return null;
-    }
 
 
     @Override

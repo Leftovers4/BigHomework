@@ -8,47 +8,23 @@ import util.TradingArea;
  */
 public class PromotionTraAreaPO {
 
-    private long addressID;
-
-    private String address;
-
     private String tradingArea;
 
-    private double discount;
+    private double traDiscount;
 
     public PromotionTraAreaPO(){
         initial();
     }
 
-    public PromotionTraAreaPO(long addressID, String address, String tradingArea, double discount) {
+    public PromotionTraAreaPO(String tradingArea, double traDiscount) {
         initial();
-        this.addressID = addressID;
-        this.address = address;
         this.tradingArea = tradingArea;
-        this.discount = discount;
+        this.traDiscount = traDiscount;
     }
 
     public void initial(){
-        this.addressID = 0;
-        this.address = "";
         this.tradingArea = "";
-        this.discount = 0.0;
-    }
-
-    public long getAddressID() {
-        return addressID;
-    }
-
-    public void setAddressID(long addressID) {
-        this.addressID = addressID;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+        this.traDiscount = 1.0;
     }
 
     public String getTradingArea() {
@@ -59,11 +35,11 @@ public class PromotionTraAreaPO {
         this.tradingArea = tradingArea;
     }
 
-    public double getDiscount() {
-        return discount;
+    public double getTraDiscount() {
+        return traDiscount;
     }
 
-    public void setDiscount(double discount) {
-        this.discount = discount;
+    public void setTraDiscount(double traDiscount) {
+        this.traDiscount = traDiscount;
     }
 }

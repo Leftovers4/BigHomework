@@ -36,23 +36,23 @@ public class Al2Po_FactoryImplTest {
         userInfo.add("2007-07-07");
         userInfo.add("BAT");
 
-        ArrayList<Object> crInfo = new ArrayList<>();
-        crInfo.add((long)123123);
-        crInfo.add("Hiki");
-        crInfo.add(11.11);
-        crInfo.add(11.11);
-        crInfo.add("2010-10-10 11:11:11");
-        crInfo.add("Recharge");
-        crInfo.add("56465151651651");
+//        ArrayList<Object> crInfo = new ArrayList<>();
+//        crInfo.add((long)123123);
+//        crInfo.add("Hiki");
+//        crInfo.add(11.11);
+//        crInfo.add(11.11);
+//        crInfo.add("2010-10-10 11:11:11");
+//        crInfo.add("Recharge");
+//        crInfo.add("56465151651651");
 
-        ArrayList<Iterator<Object>> crInfos = new ArrayList<>();
-        crInfos.add(crInfo.iterator());
+//        ArrayList<Iterator<Object>> crInfos = new ArrayList<>();
+//        crInfos.add(crInfo.iterator());
 
         UserPO userPO = tested.toUserPO(userInfo.iterator());
 
         System.out.println(userPO.getUsername() + " " + userPO.getPassword() + " " + userPO.getName() + " " + userPO.getPhone());
         System.out.println(userPO.getMemberPO().getMemberType().toString());
-        System.out.println(userPO.getCreditRecordPOs().get(0).getChangedTime());
+//        System.out.println(userPO.getCreditRecordPOs().get(0).getChangedTime());
 
     }
 

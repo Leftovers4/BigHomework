@@ -14,8 +14,8 @@ public class SpecialTimePromotion implements Sale{
     private double discount;
 
     public SpecialTimePromotion(PromotionPO promotionPO) {
-        this.beginTime = promotionPO.getBeginTime();
-        this.endTime = promotionPO.getEndTime();
+        this.beginTime = promotionPO.getPromotionTimePO().getBeginTime();
+        this.endTime = promotionPO.getPromotionTimePO().getEndTime();
         this.discount = promotionPO.getDiscount();
     }
 

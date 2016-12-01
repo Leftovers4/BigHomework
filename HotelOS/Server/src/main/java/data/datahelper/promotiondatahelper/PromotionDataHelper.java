@@ -10,7 +10,10 @@ import java.util.ArrayList;
  */
 public interface PromotionDataHelper {
 
-    // 格式："promotion_id", "promotion_type", "discount", "least_rooms", "begin_time", "end_time", "threshold", "reduction"
+//    格式："promotion_id", "promotion_type", "hotel_id", "discount", "least_rooms", "begin_time", "end_time",
+//         "enterprise1", "enterprise2", "enterprise3", "enterprise4", "enterprise5",
+//         "trading_area1", "tra_discount1", "trading_area2", "tra_discount2", "trading_area3", "tra_discount3", "trading_area4", "tra_discount4", "trading_area5", "tra_discount5",
+//         "credit1", "mem_discount1", "credit2", "mem_discount2", "credit3", "mem_discount3", "credit4", "mem_discount4", "credit5", "mem_discount", "credit6", "mem_discount6"
 
     /**
      * 在promotion表中插入一条促销策略

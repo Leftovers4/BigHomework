@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-11-29 20:47:58
+Date: 2016-12-02 00:11:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -185,13 +185,40 @@ CREATE TABLE `promotion` (
   `least_rooms` int(10) unsigned NOT NULL DEFAULT '0',
   `begin_time` datetime NOT NULL,
   `end_time` datetime NOT NULL,
+  `enterprise1` varchar(60) NOT NULL DEFAULT '',
+  `enterprise2` varchar(60) NOT NULL DEFAULT '',
+  `enterprise3` varchar(60) NOT NULL DEFAULT '',
+  `enterprise4` varchar(60) NOT NULL DEFAULT '',
+  `enterprise5` varchar(60) NOT NULL DEFAULT '',
+  `trading_area1` varchar(40) NOT NULL DEFAULT '',
+  `tra_discount1` double NOT NULL,
+  `trading_area2` varchar(40) NOT NULL DEFAULT '',
+  `tra_discount2` double NOT NULL,
+  `trading_area3` varchar(40) NOT NULL DEFAULT '',
+  `tra_discount3` double NOT NULL,
+  `trading_area4` varchar(40) NOT NULL DEFAULT '',
+  `tra_discount4` double NOT NULL,
+  `trading_area5` varchar(40) NOT NULL DEFAULT '',
+  `tra_discount5` double NOT NULL,
+  `credit1` decimal(8,2) NOT NULL,
+  `mem_discount1` double NOT NULL,
+  `credit2` decimal(8,2) NOT NULL,
+  `mem_discount2` double NOT NULL,
+  `credit3` decimal(8,2) NOT NULL,
+  `mem_discount3` double NOT NULL,
+  `credit4` decimal(8,2) NOT NULL,
+  `mem_discount4` double NOT NULL,
+  `credit5` decimal(8,2) NOT NULL,
+  `mem_discount5` double NOT NULL,
+  `credit6` decimal(8,2) NOT NULL,
+  `mem_discount6` double NOT NULL,
   PRIMARY KEY (`promotion_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of promotion
 -- ----------------------------
-INSERT INTO `promotion` VALUES ('123456', 'WP', '522000', '1', '1', '2016-11-23 09:54:29', '2016-11-23 09:54:29');
+INSERT INTO `promotion` VALUES ('123456', 'WP', '522000', '1', '1', '2016-11-23 09:54:29', '2016-11-23 09:54:29', '', '', '', '', '', '', '0', '', '0', '', '0', '', '0', '', '0', '0.00', '0', '0.00', '0', '0.00', '0', '0.00', '0', '0.00', '0', '0.00', '0');
 
 -- ----------------------------
 -- Table structure for room

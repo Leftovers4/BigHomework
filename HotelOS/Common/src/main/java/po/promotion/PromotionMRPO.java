@@ -8,10 +8,7 @@ import java.util.ArrayList;
  */
 public class PromotionMRPO {
 
-    /**
-     * 会员等级
-     */
-    private int level;
+
 
     /**
      * 信用值
@@ -21,33 +18,26 @@ public class PromotionMRPO {
     /**
      * 折扣
      */
-    private double discount;
+    private double memberDiscount;
 
 
     public PromotionMRPO(){
         initial();
     }
 
-    public PromotionMRPO(int level, double credit, double discount) {
+    public PromotionMRPO(double credit, double memberDiscount) {
         initial();
-        this.level = level;
+
         this.credit = credit;
-        this.discount = discount;
+        this.memberDiscount = memberDiscount;
     }
 
     private void initial(){
-        this.level = 0;
         this.credit = 0.0;
-        this.discount = 1;
+        this.memberDiscount = 1.0;
     }
 
-    public int getLevel() {
-        return level;
-    }
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
 
     public double getCredit() {
         return credit;
@@ -57,11 +47,11 @@ public class PromotionMRPO {
         this.credit = credit;
     }
 
-    public double getDiscount() {
-        return discount;
+    public double getMemberDiscount() {
+        return memberDiscount;
     }
 
-    public void setDiscount(double discount) {
-        this.discount = discount;
+    public void setMemberDiscount(double memberDiscount) {
+        this.memberDiscount = memberDiscount;
     }
 }
