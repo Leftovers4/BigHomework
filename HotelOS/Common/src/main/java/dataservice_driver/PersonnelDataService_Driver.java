@@ -22,13 +22,13 @@ public class PersonnelDataService_Driver {
     }
 
 
-    @Test
-    public void getList() throws Exception {
-        ArrayList<PersonnelPO> personnelPOs = tested.findAll();
-        for (int i = 0; i < personnelPOs.size(); i++) {
-            printPersonnelPO(personnelPOs.get(i));
-        }
-    }
+//    @Test
+//    public void getList() throws Exception {
+//        ArrayList<PersonnelPO> personnelPOs = tested.findAll();
+//        for (int i = 0; i < personnelPOs.size(); i++) {
+//            printPersonnelPO(personnelPOs.get(i));
+//        }
+//    }
 
     @Test
     public void insert() throws Exception {
@@ -45,11 +45,11 @@ public class PersonnelDataService_Driver {
 
     }
 
-    @Test
-    public void findByPersonnelID() throws Exception {
-        PersonnelPO personnelPO = tested.findByPersonnelID(1);
-        printPersonnelPO(personnelPO);
-    }
+//    @Test
+//    public void findByPersonnelID() throws Exception {
+//        PersonnelPO personnelPO = tested.findByPersonnelID(1);
+//        printPersonnelPO(personnelPO);
+//    }
 
     private void printPersonnelPO(PersonnelPO personnelPO){
         System.out.println("--------------------------------------");

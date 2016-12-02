@@ -42,6 +42,8 @@ public interface HotelDataService extends Remote{
     // 根据酒店获取房间类型及数量
     public ArrayList<RoomPO> findRoomsByHotelID(long hotelID) throws RemoteException;
 
+    // 根据房间ID查找房间
+    public RoomPO findRoomsByID(long roomID) throws RemoteException;
 
     // 获得酒店图片，以二进制字符串传输
     public byte[] getImage(long hotelID) throws RemoteException;

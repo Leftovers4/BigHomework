@@ -42,6 +42,12 @@ public interface RoomDataHelper {
     public ArrayList<ArrayList<Object>> findFromSQL();
 
 
+    /**
+     * 在room表中根据ID查找room
+     * @return
+     */
+    public ArrayList<Object> findByIDFromSQL(long roomID);
+
 
 
 }

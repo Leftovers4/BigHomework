@@ -19,11 +19,11 @@ public class OrderDataService_Driver {
 
     }
 
-    @Test
-    public void findByOrderID() throws Exception {
-        OrderPO res = tested.findByOrderID("12345620161111001");
-        printOrderPO(res);
-    }
+//    @Test
+//    public void findByOrderID() throws Exception {
+//        OrderPO res = tested.findByOrderID("12345620161111001");
+//        printOrderPO(res);
+//    }
 
 
     @Test

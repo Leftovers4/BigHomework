@@ -159,6 +159,17 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
     }
 
     @Override
+    public RoomPO findRoomsByID(long roomID) throws RemoteException {
+        // 在room表中根据id取出roomAL
+        ArrayList<Object> roomAL = roomDataHelper.findByIDFromSQL(roomID);
+        // 构造roomAL的迭代器
+        Iterator<Object> roomInfo = ctFactory.alToItr(roomAL);
+        // 转换成po
+        return apFactory.toRoomPO(roomInfo);
+
+    }
+
+    @Override
     public ResultMessage insertRoom(RoomPO roomPO) throws RemoteException {
         // 将roomPO转换成roomAL
         ArrayList<Object> roomAL = paFactory.toRoomAl(roomPO);

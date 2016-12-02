@@ -18,11 +18,11 @@ public class UserDataService_Driver {
 
     }
 
-    @Test
-    public void findByUsername() throws Exception {
-        UserPO res = tested.findByUsername("张三");
-        printUserPO(res);
-    }
+//    @Test
+//    public void findByUsername() throws Exception {
+//        UserPO res = tested.findByUsername("张三");
+//        printUserPO(res);
+//    }
 
 
     @Test
@@ -40,13 +40,13 @@ public class UserDataService_Driver {
 
     }
 
-    @Test
-    public void getList() throws Exception {
-        ArrayList<UserPO> res = tested.findAll();
-        for (int i = 0; i < res.size(); i++) {
-            printUserPO(res.get(i));
-        }
-    }
+//    @Test
+//    public void getList() throws Exception {
+//        ArrayList<UserPO> res = tested.findAll();
+//        for (int i = 0; i < res.size(); i++) {
+//            printUserPO(res.get(i));
+//        }
+//    }
 
     @Test
     public void addCredit() throws Exception {

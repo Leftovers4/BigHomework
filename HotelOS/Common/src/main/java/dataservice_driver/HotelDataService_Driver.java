@@ -23,11 +23,11 @@ public class HotelDataService_Driver {
 
     }
 
-    @Test
-    public void findByHotelID() throws Exception {
-        HotelPO res = tested.findByHotelID(123456);
-        printHotelPO(res);
-    }
+//    @Test
+//    public void findByHotelID() throws Exception {
+//        HotelPO res = tested.findByHotelID(123456);
+//        printHotelPO(res);
+//    }
 
 //    @Test
 //    @Ignore

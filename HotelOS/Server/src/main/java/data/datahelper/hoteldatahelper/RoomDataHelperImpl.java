@@ -34,6 +34,11 @@ public class RoomDataHelperImpl extends DataHelperParent implements RoomDataHelp
         return findFromSQL(ROOM_TABLENAME);
     }
 
+    @Override
+    public ArrayList<Object> findByIDFromSQL(long roomID) {
+        return findFromSQLById(ROOM_TABLENAME, roomID);
+    }
+
 
 //    @Override
 //    public ArrayList<ArrayList<Object>> findRoomsByHotelIdFromSQL(long hotelID) {
