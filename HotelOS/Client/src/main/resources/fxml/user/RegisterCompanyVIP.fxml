@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
@@ -23,8 +24,9 @@
       <RadioButton layoutX="465.0" layoutY="310.0" mnemonicParsing="false" text="女" />
       <DatePicker layoutX="376.0" layoutY="355.0" prefWidth="175.0" />
       <TextField layoutX="376.0" layoutY="405.0" prefWidth="175.0" />
-      <Button fx:id="registerCompanyBtn" layoutX="315.0" layoutY="532.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="220.0" styleClass="actionBtn" text="立即注册" />
+      <Button fx:id="registerCompanyBtn" disable="true" layoutX="315.0" layoutY="553.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="220.0" styleClass="actionBtn" text="立即注册" />
       <Label layoutX="286.0" layoutY="460.0" text="企业名称：" />
       <TextField layoutX="377.0" layoutY="455.0" prefWidth="175.0" />
+      <CheckBox onMouseClicked="#checkCompanyvipInfo" fx:id="confirmCompanyvipInfo" layoutX="362.0" layoutY="509.0" mnemonicParsing="false" onAction="#checkCommonvipInfo" text="我已核对信息无误" />
    </children>
 </fx:root>

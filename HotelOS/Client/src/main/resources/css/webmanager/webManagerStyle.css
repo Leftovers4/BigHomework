@@ -4,6 +4,7 @@
 
 #topbar {
     -fx-background-color: white;
+    -fx-effect: dropshadow(one-pass-box, #0F1034, 2, 1.0, 0, 0);
 }
 
 .button {
@@ -29,3 +30,4 @@
     -fx-background-color: #0F81C7;
     -fx-effect: none;
 }
+

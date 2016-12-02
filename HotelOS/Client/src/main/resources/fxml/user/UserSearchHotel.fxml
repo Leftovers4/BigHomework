@@ -56,7 +56,7 @@
                         <Insets left="13.0" top="25.0" />
                      </FlowPane.margin>
                   </Button>
-                  <Pane prefHeight="200.0" prefWidth="528.0">
+                  <Pane prefHeight="200.0" prefWidth="528.0" styleClass="contentPane">
                      <children>
                         <Label layoutX="10.0" layoutY="55.0" text="房间类型：" />
                         <Button fx:id="roomTypeBtn" layoutX="100.0" layoutY="50.0" mnemonicParsing="false" styleClass="actionBtn" text="不限" />
@@ -82,7 +82,7 @@
                         <Insets left="160.0" top="40.0" />
                      </FlowPane.margin>
                   </Pane>
-                  <Pane fx:id="downMoreInfo" prefHeight="100.0" prefWidth="528.0">
+                  <Pane fx:id="downMoreInfo" prefHeight="60.0" prefWidth="528.0" styleClass="contentPane">
                      <FlowPane.margin>
                         <Insets left="160.0" />
                      </FlowPane.margin>
@@ -100,7 +100,7 @@
                         <Button fx:id="confirmShow" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" styleClass="actionBtn" text="确认" />
                      </children>
                   </Pane>
-                  <Pane fx:id="moreInfoChoice" disable="true" prefHeight="170.0" prefWidth="528.0" visible="false">
+                  <Pane fx:id="moreInfoChoice" disable="true" prefHeight="170.0" prefWidth="528.0" styleClass="contentPane" visible="false">
                      <children>
                         <Label layoutX="36.0" layoutY="25.0" text="星级：" />
                         <Button fx:id="hotelStarBtn" layoutX="100.0" layoutY="20.0" mnemonicParsing="false" styleClass="actionBtn" text="不限" />
@@ -120,7 +120,7 @@
                         <Insets left="160.0" top="-160.0" />
                      </FlowPane.margin>
                   </Pane>
-                  <Pane fx:id="upMoreInfo" disable="true" prefHeight="100.0" prefWidth="528.0">
+                  <Pane fx:id="upMoreInfo" disable="true" prefHeight="100.0" prefWidth="528.0" styleClass="contentPane" visible="false">
                      <children>
                         <Button fx:id="hideMoreChoiceBtn1" layoutX="227.0" layoutY="60.0" mnemonicParsing="false" onAction="#hideMoreChoice" text="收起">
                            <graphic>
@@ -148,7 +148,7 @@
                         <TableColumn prefWidth="59.0" />
                      </columns>
                      <FlowPane.margin>
-                        <Insets left="160.0" top="-90.0" />
+                        <Insets left="160.0" top="-35.0" />
                      </FlowPane.margin>
                   </TableView>
                </children>

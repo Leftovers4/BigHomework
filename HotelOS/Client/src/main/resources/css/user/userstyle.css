@@ -2,14 +2,18 @@
     -fx-font-family: "微软雅黑";
     /*-fx-font-size: 1.2em;*/
 }
+
+/*左边栏*/
 #userLeftArea {
     /*-fx-background-color: #090723;*/
     -fx-background-color: #32323A;
 }
+/*顶栏*/
 #topBar {
     -fx-background-color: white;
     -fx-effect: dropshadow(one-pass-box, #0F1034, 2, 1.0, 0, 0);
 }
+/*底部状态栏*/
 #stateBar {
     -fx-background-color: white;
 }
@@ -36,7 +40,9 @@
 #showMoreChoiceBtn {
     -fx-text-fill: #0F1034;
     -fx-border-style: solid;
-    -fx-border-radius: 7px;
+    -fx-border-radius: 0px 0px 5px 5px;
+    -fx-background-color: white;
+    -fx-border-color: transparent #0F1034 #0F1034 #0F1034;
 }
 
 #hideMoreChoiceBtn1 {
@@ -53,4 +59,29 @@
 
 #writeOrder {
     -fx-text-fill: deepskyblue;
+}
+
+
+
+#changePhotoBtn {
+    -fx-background-color: transparent;
+    -fx-text-fill: deepskyblue;
+    -fx-underline: true;
+}
+
+
+.table-view {
+    -fx-background-insets: 0;
+}
+
+
+
+
+.combo-box {
+    -fx-background-color: #b3c2c3;
+}
+
+.contentPane {
+    -fx-background-color: white;
+    /*-fx-border-color: #0F1034 #0F1034 white #0F1034;*/
 }

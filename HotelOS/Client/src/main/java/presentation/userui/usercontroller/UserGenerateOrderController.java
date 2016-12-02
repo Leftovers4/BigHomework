@@ -76,8 +76,8 @@ public class UserGenerateOrderController {
         roomType.getItems().add("标准套间");
         roomType.getItems().add("豪华套间");
         roomType.getItems().add("其他");
-        checkInDatePicker.setDayCellFactory(new CancelDateBefore(checkInDatePicker));
-        checkOutDatePicker.setDayCellFactory(new CancelDateBefore(checkOutDatePicker));
+        checkInDatePicker.setDayCellFactory(new CancelDateBefore(checkInDatePicker, LocalDate.now()));
+        checkOutDatePicker.setDayCellFactory(new CancelDateBefore(checkOutDatePicker, LocalDate.now()));
     }
 
 

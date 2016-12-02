@@ -22,8 +22,8 @@
       <Label layoutX="358.0" layoutY="391.0" text="最优优惠：" />
       <Label layoutX="451.0" layoutY="391.0" text="Label" />
       <Label layoutX="99.0" layoutY="294.0" text="酒店名" />
-      <Label layoutX="99.0" layoutY="329.0" text="酒店地址" />
-      <Label layoutX="99.0" layoutY="369.0" text="酒店设施" />
+      <Label layoutX="99.0" layoutY="346.0" text="酒店地址" />
+      <Label layoutX="99.0" layoutY="426.0" text="酒店设施" />
       <Label layoutX="355.0" layoutY="446.0" text="价格总计：" />
       <Label layoutX="450.0" layoutY="446.0" text="Label" />
       <Label fx:id="checkIndateLabel1" layoutX="454.0" layoutY="116.0" text="日期" />

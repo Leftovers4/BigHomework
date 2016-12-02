@@ -7,7 +7,7 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.CreditRecordController">
    <children>
-      <TableView fx:id="table" layoutX="125.0" layoutY="150.0" maxHeight="450.0" prefWidth="600.0">
+      <TableView fx:id="recordtable" layoutX="125.0" layoutY="150.0" maxHeight="450.0" prefWidth="600.0">
         <columns>
           <TableColumn fx:id="time" prefWidth="90.0" text="时间" />
           <TableColumn prefWidth="143.0" text="订单号" />
