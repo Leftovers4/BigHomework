@@ -6,7 +6,7 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.RegisteredHotelController">
    <children>
-      <TableView layoutX="125.0" layoutY="145.0" maxHeight="450.0" prefWidth="600.0">
+      <TableView layoutX="125.0" layoutY="145.0" prefHeight="420.0" prefWidth="600.0">
         <columns>
           <TableColumn prefWidth="180.0" text="酒店名称" />
           <TableColumn prefWidth="314.0" text="地址" />

@@ -9,12 +9,12 @@
    <children>
       <TableView fx:id="table" layoutX="125.0" layoutY="150.0" maxHeight="450.0" prefWidth="600.0">
         <columns>
-          <TableColumn fx:id="time" prefWidth="102.0" text="时间" />
-          <TableColumn prefWidth="158.0" text="订单号" />
-            <TableColumn prefWidth="86.0" text="变更原因" />
-            <TableColumn prefWidth="101.0" text="变更额度" />
-            <TableColumn prefWidth="84.0" text="变更后的信用值" />
-            <TableColumn fx:id="btn" prefWidth="75.0" text="action" />
+          <TableColumn fx:id="time" prefWidth="90.0" text="时间" />
+          <TableColumn prefWidth="143.0" text="订单号" />
+            <TableColumn text="变更原因" />
+            <TableColumn prefWidth="70.0" text="变更额度" />
+            <TableColumn prefWidth="122.0" text="变更后的信用值" />
+            <TableColumn fx:id="btn" prefWidth="101.0" />
         </columns>
       </TableView>
       <Button layoutX="645.0" layoutY="569.0" mnemonicParsing="false" styleClass="actionBtn" text="查看详情" />

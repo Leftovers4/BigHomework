@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?language javascript?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -9,11 +8,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../css/login/style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginui.logincontroller.LoginSceneController">
+<Pane fx:id="mainpane" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../css/login/style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginui.logincontroller.LoginSceneController">
 
    <children>
       <Button id="minimum" fx:id="minimum" layoutX="530.0" layoutY="5.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#minimizeWindow" prefHeight="30.0" prefWidth="30.0">
@@ -33,48 +30,12 @@
             </ImageView>
          </graphic>
       </Button>
-      <Label id="slider" fx:id="slider" layoutX="236.0" layoutY="179.0" maxHeight="4.0" minHeight="4.0" prefHeight="4.0" prefWidth="35.0"/>
-      <VBox id="logo" fx:id="logo" layoutX="200.0" prefHeight="400.0" prefWidth="200.0">
-         <children>
-            <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
-               <children>
-                  <Button id="changeToLogin" fx:id="changeToLogin" alignment="CENTER" onAction="#changeToLogin" text="登录" />
-                  <Button fx:id="changeToRegister" onAction="#changeToRegister" text="注册">
-                     <HBox.margin>
-                        <Insets left="40.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-               <VBox.margin>
-                  <Insets top="140.0" />
-               </VBox.margin>
-            </HBox>
-         </children>
-      </VBox>
+      <Label id="slider" fx:id="slider" layoutX="236.0" layoutY="179.0" maxHeight="4.0" minHeight="4.0" prefHeight="4.0" prefWidth="35.0" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/login/logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="nameLabel" layoutX="165.0" layoutY="220.0" text="用户名：" visible="false" />
-      <ImageView fx:id="namePic" fitHeight="25.0" fitWidth="25.0" layoutX="190.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/login/username.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="passwordLabel" layoutX="180.0" layoutY="270.0" text="密码：" visible="false" />
-      <ImageView fx:id="passwordPic" fitHeight="25.0" fitWidth="25.0" layoutX="190.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/login/password.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="loginUsername" layoutX="235.0" layoutY="215.0" prefWidth="170.0" />
-      <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="235.0" layoutY="265.0" prefWidth="170.0" />
-      <Button id="buttonLogin" fx:id="buttonLogin" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="200.0" layoutY="320.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#Login" text="登录" textAlignment="CENTER">
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor></Button>
-      <Button id="buttonRegister" fx:id="buttonRegister" layoutX="200.0" layoutY="320.0" minHeight="35.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="注册" visible="false" />
       <Button id="managerEntrance" fx:id="managerEntrance" alignment="CENTER" contentDisplay="RIGHT" layoutX="475.0" layoutY="370.0" onAction="#webmanagerLogin" text="工作人员入口">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -91,5 +52,31 @@
             </ImageView>
          </graphic>
       </Button>
+      <Pane fx:id="movingSection" layoutX="150.0" layoutY="195.0" prefHeight="178.0" prefWidth="300.0">
+         <children>
+            <Label fx:id="nameLabel" layoutX="20.0" layoutY="16.0" text="用户名：" visible="false" />
+            <ImageView fx:id="namePic" fitHeight="25.0" fitWidth="25.0" layoutX="42.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/login/username.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="passwordLabel" layoutX="21.0" layoutY="72.0" text="密   码：" visible="false" />
+            <ImageView fx:id="passwordPic" fitHeight="25.0" fitWidth="25.0" layoutX="43.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/login/password.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="loginUsername" layoutX="89.0" layoutY="11.0" prefWidth="170.0" />
+            <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="89.0" layoutY="67.0" prefWidth="170.0" />
+            <Button id="buttonLogin" fx:id="buttonLogin" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="50.0" layoutY="123.0" maxWidth="200.0" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onAction="#Login" text="登录" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Button>
+            <Button id="buttonRegister" fx:id="buttonRegister" layoutX="50.0" layoutY="123.0" minHeight="35.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="注册" visible="false" />
+         </children>
+      </Pane>
+      <Button fx:id="changeToLogin" layoutX="226.0" layoutY="145.0" mnemonicParsing="false" onAction="#changeToLogin" text="登录" />
+      <Button fx:id="changeToRegister" layoutX="320.0" layoutY="146.0" mnemonicParsing="false" onAction="#changeToRegister" text="注册" />
    </children>
 </Pane>

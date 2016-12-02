@@ -2,6 +2,7 @@ package presentation.userui.usercontroller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -28,6 +29,9 @@ public class ComUserSceneController {
     @FXML private ImageView leftBarSlider;
     private Button currentBtn = null;
 
+    @FXML private Label timeLabel;
+
+
     //左边栏按钮集合
     private ArrayList<Button> leftBarBtnArr;
 
@@ -42,6 +46,7 @@ public class ComUserSceneController {
         leftBarBtnArr = new ArrayList<>(Arrays.asList(userInfoBtn, orderListBtn, searchHotelBtn,
                 hotelRegisteredBtn, indexBtn));
     }
+
 
     @FXML
     private void closeWindow(){

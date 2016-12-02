@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -18,6 +19,7 @@ import presentation.webmanagerui.webmanagerscene.WebmanagerComScene;
 
 /**
  * Created by wyj on 2016/11/6.
+ * 登录界面
  */
 public class LoginSceneController {
 
@@ -34,6 +36,7 @@ public class LoginSceneController {
     @FXML private Label passwordLabel;
     @FXML private ImageView namePic;
     @FXML private ImageView passwordPic;
+    @FXML private Pane movingSection;
 
     //用于客户登录和工作人员登录界面切换
     private boolean isFromLogin = true;
@@ -106,37 +109,9 @@ public class LoginSceneController {
 
         Timeline timeline = new Timeline();
         timeline.setAutoReverse(false);
-        KeyValue kvLoginBtn = new KeyValue(buttonLogin.layoutYProperty(), 290);
+        KeyValue kvLoginBtn = new KeyValue(movingSection.layoutYProperty(), 165);
         KeyFrame kfLoginBtn = new KeyFrame(Duration.millis(400), kvLoginBtn);
         timeline.getKeyFrames().add(kfLoginBtn);
-
-        KeyValue kvRegisterBtn = new KeyValue(buttonRegister.layoutYProperty(), 290);
-        KeyFrame kfRegisterBtn = new KeyFrame(Duration.millis(400), kvRegisterBtn);
-        timeline.getKeyFrames().add(kfRegisterBtn);
-
-        KeyValue kvNamePic = new KeyValue(namePic.layoutYProperty(), 190);
-        KeyFrame kfNamePic = new KeyFrame(Duration.millis(400), kvNamePic);
-        timeline.getKeyFrames().add(kfNamePic);
-
-        KeyValue kvPasswordPic = new KeyValue(passwordPic.layoutYProperty(), 240);
-        KeyFrame kfPasswordPic = new KeyFrame(Duration.millis(400), kvPasswordPic);
-        timeline.getKeyFrames().add(kfPasswordPic);
-
-        KeyValue kvNameLabel = new KeyValue(nameLabel.layoutYProperty(), 190);
-        KeyFrame kfNameLabel = new KeyFrame(Duration.millis(400), kvNameLabel);
-        timeline.getKeyFrames().add(kfNameLabel);
-
-        KeyValue kvPasswordLabel = new KeyValue(passwordLabel.layoutYProperty(), 240);
-        KeyFrame kfPasswordLabel = new KeyFrame(Duration.millis(400), kvPasswordLabel);
-        timeline.getKeyFrames().add(kfPasswordLabel);
-
-        KeyValue kvNameText = new KeyValue(loginUsername.layoutYProperty(), 190);
-        KeyFrame kfNameText = new KeyFrame(Duration.millis(400), kvNameText);
-        timeline.getKeyFrames().add(kfNameText);
-
-        KeyValue kvPasswordText = new KeyValue(loginPassword.layoutYProperty(), 240);
-        KeyFrame kfPasswordText = new KeyFrame(Duration.millis(400), kvPasswordText);
-        timeline.getKeyFrames().add(kfPasswordText);
         timeline.play();
 
     }
@@ -163,37 +138,9 @@ public class LoginSceneController {
 
         Timeline timeline = new Timeline();
         timeline.setAutoReverse(false);
-        KeyValue kvLoginBtn = new KeyValue(buttonLogin.layoutYProperty(), 320);
+        KeyValue kvLoginBtn = new KeyValue(movingSection.layoutYProperty(), 195);
         KeyFrame kfLoginBtn = new KeyFrame(Duration.millis(400), kvLoginBtn);
         timeline.getKeyFrames().add(kfLoginBtn);
-
-        KeyValue kvRegisterBtn = new KeyValue(buttonRegister.layoutYProperty(), 320);
-        KeyFrame kfRegisterBtn = new KeyFrame(Duration.millis(400), kvRegisterBtn);
-        timeline.getKeyFrames().add(kfRegisterBtn);
-
-        KeyValue kvNamePic = new KeyValue(namePic.layoutYProperty(), 220);
-        KeyFrame kfNamePic = new KeyFrame(Duration.millis(400), kvNamePic);
-        timeline.getKeyFrames().add(kfNamePic);
-
-        KeyValue kvPasswordPic = new KeyValue(passwordPic.layoutYProperty(), 270);
-        KeyFrame kfPasswordPic = new KeyFrame(Duration.millis(400), kvPasswordPic);
-        timeline.getKeyFrames().add(kfPasswordPic);
-
-        KeyValue kvNameLabel = new KeyValue(nameLabel.layoutYProperty(), 220);
-        KeyFrame kfNameLabel = new KeyFrame(Duration.millis(400), kvNameLabel);
-        timeline.getKeyFrames().add(kfNameLabel);
-
-        KeyValue kvPasswordLabel = new KeyValue(passwordLabel.layoutYProperty(), 270);
-        KeyFrame kfPasswordLabel = new KeyFrame(Duration.millis(400), kvPasswordLabel);
-        timeline.getKeyFrames().add(kfPasswordLabel);
-
-        KeyValue kvNameText = new KeyValue(loginUsername.layoutYProperty(), 220);
-        KeyFrame kfNameText = new KeyFrame(Duration.millis(400), kvNameText);
-        timeline.getKeyFrames().add(kfNameText);
-
-        KeyValue kvPasswordText = new KeyValue(loginPassword.layoutYProperty(), 270);
-        KeyFrame kfPasswordText = new KeyFrame(Duration.millis(400), kvPasswordText);
-        timeline.getKeyFrames().add(kfPasswordText);
         timeline.play();
     }
 
