@@ -40,6 +40,7 @@ public class RoomListButtonCell extends TableCell<RoomVO, Boolean> {
             tableView.setDisable(true);
             controller.setAddComponentsVisible(true);
             controller.getRoomBox().setValue(roomVO.roomType);
+            controller.getRoomBox().setDisable(true);
             controller.getRoomAmountField().setText(String.valueOf(roomVO.total));
             controller.getRoomPriceField().setText(String.valueOf(roomVO.price));
         });

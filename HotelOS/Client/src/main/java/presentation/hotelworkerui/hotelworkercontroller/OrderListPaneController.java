@@ -152,24 +152,24 @@ public class OrderListPaneController {
 //        this.lastExecuteTime = lastExecuteTime;
 //        this.executeTime = executeTime;
 //        this.cancelTime = cancelTime;
-        OrderTimeVO orderTimeVO1 = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 11, 20, 00), null, null,
-                null, LocalDateTime.of(2016, 11, 12, 21, 00), null, null);
-        list.add(new OrderVO("12345678912345678", 123456, "user1", OrderType.Abnormal, "如家", null, "A110 A250",
-                2, false, null, orderTimeVO1, orderPriceVO, null));
-
-        OrderTimeVO orderTimeVO2 = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 12, 20, 00), LocalDateTime.of(2016, 11, 12, 20, 30), LocalDateTime.of(2016, 11, 14, 20, 00),
-                LocalDateTime.of(2016, 11, 14, 21, 00), LocalDateTime.of(2016, 11, 12, 21, 00), LocalDateTime.of(2016, 11, 12, 20, 30), null);
-        list.add(new OrderVO("12345678912345679", 123456, "user2", OrderType.Executed, "金陵", null, "A110 A250",
-                2, false, null, orderTimeVO2, orderPriceVO, null));
-
-        OrderTimeVO orderTimeVO3 = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 11, 20, 00), null, null,
-                null, LocalDateTime.of(2016, 11, 12, 21, 00), null, null);
-        list.add(new OrderVO("12345678910000000", 123456, "user3", OrderType.Unexecuted, "七天", null, "A110 A250",
-                2, false, null, orderTimeVO3, orderPriceVO, null));
-        for (int i = 0; i < 15; i++){
-            list.add(new OrderVO("12345678910000000", 123456, "user3", OrderType.Unexecuted, "七天", null, "A110 A250",
-                    2, false, null, orderTimeVO3, orderPriceVO, null));
-        }
+//        OrderTimeVO orderTimeVO1 = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 11, 20, 00), null, null,
+//                null, LocalDateTime.of(2016, 11, 12, 21, 00), null, null);
+//        list.add(new OrderVO("12345678912345678", 123456, "user1", OrderType.Abnormal, "如家", null, "A110 A250",
+//                2, false, null, orderTimeVO1, orderPriceVO, null));
+//
+//        OrderTimeVO orderTimeVO2 = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 12, 20, 00), LocalDateTime.of(2016, 11, 12, 20, 30), LocalDateTime.of(2016, 11, 14, 20, 00),
+//                LocalDateTime.of(2016, 11, 14, 21, 00), LocalDateTime.of(2016, 11, 12, 21, 00), LocalDateTime.of(2016, 11, 12, 20, 30), null);
+//        list.add(new OrderVO("12345678912345679", 123456, "user2", OrderType.Executed, "金陵", null, "A110 A250",
+//                2, false, null, orderTimeVO2, orderPriceVO, null));
+//
+//        OrderTimeVO orderTimeVO3 = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 11, 20, 00), null, null,
+//                null, LocalDateTime.of(2016, 11, 12, 21, 00), null, null);
+//        list.add(new OrderVO("12345678910000000", 123456, "user3", OrderType.Unexecuted, "七天", null, "A110 A250",
+//                2, false, null, orderTimeVO3, orderPriceVO, null));
+//        for (int i = 0; i < 15; i++){
+//            list.add(new OrderVO("12345678910000000", 123456, "user3", OrderType.Unexecuted, "七天", null, "A110 A250",
+//                    2, false, null, orderTimeVO3, orderPriceVO, null));
+//        }
 
 
             return list;

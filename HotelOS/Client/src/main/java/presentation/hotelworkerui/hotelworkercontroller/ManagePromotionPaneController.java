@@ -1,17 +1,13 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 import presentation.util.AlertController;
+import presentation.util.MySlider;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -72,7 +68,7 @@ public class ManagePromotionPaneController {
         alertController = new AlertController();
         vBoxes = new ArrayList<>(Arrays.asList(birthVBox,roomVBox,timeVBox,comVBox));
 
-        //然后生日优惠按钮默认被选中
+        //设置生日优惠按钮默认被选中
         makeBirthFocused();
     }
 
@@ -266,25 +262,25 @@ public class ManagePromotionPaneController {
     @FXML
     private void showBirth(){
         showVBox(birthVBox);
-        moveSliderLabel(36);
+        MySlider.moveSliderLabel(sliderPromotionLabel,36);
     }
 
     @FXML
     private void showRoom(){
         showVBox(roomVBox);
-        moveSliderLabel(168);
+        MySlider.moveSliderLabel(sliderPromotionLabel,168);
     }
 
     @FXML
     private void showTime(){
         showVBox(timeVBox);
-        moveSliderLabel(300);
+        MySlider.moveSliderLabel(sliderPromotionLabel,300);
     }
 
     @FXML
     private void showCom(){
         showVBox(comVBox);
-        moveSliderLabel(432);
+        MySlider.moveSliderLabel(sliderPromotionLabel,432);
     }
 
     private void showVBox(VBox visibleBox){
@@ -294,16 +290,4 @@ public class ManagePromotionPaneController {
         }
     }
 
-    /**
-     * 移动滑块
-     * @param x 滑块的新位置x
-     */
-    private void moveSliderLabel(double x){
-        Timeline timeline = new Timeline();
-        timeline.setAutoReverse(false);
-        KeyValue newX = new KeyValue(sliderPromotionLabel.layoutXProperty(),x);
-        KeyFrame kf = new KeyFrame(Duration.millis(200), newX);
-        timeline.getKeyFrames().add(kf);
-        timeline.play();
-    }
 }

@@ -28,11 +28,42 @@
                 <Button fx:id="addCreditBtn" mnemonicParsing="false" onAction="#showAddCredit" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="信用充值" />
             </children></VBox>
         <Pane fx:id="mainPane" layoutX="230.0" maxHeight="690.0" maxWidth="850.0" minHeight="690.0" minWidth="850.0" prefHeight="690.0" prefWidth="850.0" styleClass="panel" />
-        <HBox layoutY="690.0" prefHeight="30.0" prefWidth="1080.0" />
+        <HBox alignment="CENTER_RIGHT" layoutY="690.0" prefHeight="30.0" prefWidth="1080.0">
+         <children>
+            <Label fx:id="timeLabel" text="Label" />
+         </children></HBox>
       <ImageView fx:id="slider" fitHeight="56.0" fitWidth="56.0" layoutX="194.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">
          <image>
             <Image url="@../../img/common/triangle2.png" />
          </image>
       </ImageView>
+      <HBox id="topBar" alignment="CENTER_RIGHT" layoutX="230.0" prefHeight="50.0" prefWidth="850.0">
+         <children>
+            <Button fx:id="minWindowBtn" mnemonicParsing="false" onAction="#minWindow" prefHeight="50.0" prefWidth="50.0" styleClass="MinButton">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/common/min.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="closeWindowBtn" mnemonicParsing="false" onAction="#closeWindow" prefHeight="50.0" prefWidth="50.0" styleClass="CloseButton">
+               <graphic>
+                  <ImageView fx:id="close" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/common/close.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
     </children>
 </Pane>

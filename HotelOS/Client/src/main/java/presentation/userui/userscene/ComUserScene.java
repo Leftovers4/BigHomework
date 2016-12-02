@@ -5,7 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import presentation.userui.usercontroller.ComUserSceneController;
-import presentation.util.EnableWindowDrag;
+import presentation.util.MyWindow;
 
 import java.io.IOException;
 
@@ -30,6 +30,6 @@ public class ComUserScene extends Scene{
         comUserSceneController.launch(primaryStage);
 
         //实现窗口可拖动
-        new EnableWindowDrag(this.getRoot(), primaryStage);
+        MyWindow.enableWindowDrag(this.getRoot(), primaryStage);
     }
 }

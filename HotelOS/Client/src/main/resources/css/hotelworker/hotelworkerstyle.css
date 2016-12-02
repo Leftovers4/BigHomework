@@ -17,22 +17,6 @@
 
 
 
-/*左侧栏*/
-#LeftArea {
-    -fx-background-color: #32323A;
-}
-/*左侧按钮*/
-.sideButton{
-    -fx-border-style: none;
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
-}
-
-.sideButton:hover{
-    -fx-background-color: deepskyblue;
-}
-
-
 
 
 
@@ -73,7 +57,22 @@
 公用-------------------------------------------------------------------------------------------------
  */
 
-/*显示的panel mainPane*/
+/*左侧栏*/
+#LeftArea {
+    -fx-background-color: #32323A;
+}
+/*左侧按钮*/
+.sideButton{
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.sideButton:hover{
+    -fx-background-color: deepskyblue;
+}
+
+
 
 /*关闭按钮*/
 .CloseButton{
@@ -82,7 +81,7 @@
 }
 .CloseButton:hover{
     -fx-background-color:#e74c3c;
-    -fx-graphic: url("../../img/hotelworker/close_hover.png");
+    -fx-graphic: url("../../img/common/close_hover.png");
 }
 
 /*最小化按钮*/

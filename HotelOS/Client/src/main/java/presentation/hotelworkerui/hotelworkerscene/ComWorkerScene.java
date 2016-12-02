@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkercontroller.ComWorkerSceneController;
+import presentation.util.MyWindow;
 
 import java.io.IOException;
 
@@ -27,5 +28,8 @@ public class ComWorkerScene extends Scene{
         //配置控制器
         ComWorkerSceneController comWorkerSceneController = fxmlLoader.getController();
         comWorkerSceneController.launch(primaryStage);
+
+        //实现窗口可拖动
+        MyWindow.enableWindowDrag(this.getRoot(), primaryStage);
     }
 }

@@ -5,7 +5,6 @@ import javafx.scene.Group;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import presentation.loginui.loginscene.LoginScene;
-import presentation.util.EnableWindowDrag;
 
 /**
  * Created by Hitiger on 2016/11/17.

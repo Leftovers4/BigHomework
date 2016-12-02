@@ -2,7 +2,6 @@ package presentation.hotelworkerui.hotelworkerscene;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkercontroller.ManagePromotionPaneController;
 
 import java.io.IOException;
@@ -17,7 +16,7 @@ public class ManagePromotionPane extends Pane{
     }
 
     private void loadFxml() {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelpromotion.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelpromotion1.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

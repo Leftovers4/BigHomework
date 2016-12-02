@@ -62,7 +62,7 @@ public class ReviewPaneController {
     public ObservableList<ReviewVO> getReviewVoList() {
         ObservableList<ReviewVO> list = FXCollections.observableArrayList();
        for (int i =0; i<50;i++){
-           list.add(new ReviewVO("user",123456, LocalDateTime.now(),5,"很好啊"));
+//           list.add(new ReviewVO("user",123456, LocalDateTime.now(),5,"很好啊"));
        }
         return list;
     }

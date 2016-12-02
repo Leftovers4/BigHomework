@@ -2,9 +2,12 @@ package presentation.webmarketerui.webmarketercontroller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.util.AlertController;
+import presentation.util.MyTimeLabel;
 import presentation.util.LeftBarEffect;
 import presentation.webmarketerui.webmarketerscene.FindOrderPane;
 import presentation.webmarketerui.webmarketerscene.FindUserPane;
@@ -34,6 +37,7 @@ public class ComMarketerSceneController {
 
     @FXML
     private ImageView slider;
+    @FXML private Label timeLabel;
 
     private Button currentBtn = null;
     //左边栏按钮集合
@@ -41,12 +45,16 @@ public class ComMarketerSceneController {
     LeftBarEffect leftBarEffect = new LeftBarEffect();
 
     private Stage stage;
-
+    private AlertController alertController;
     public void launch(Stage primaryStage) {
         stage = primaryStage;
         mainPane.getChildren().add(new ManagePromotionPane(stage));
 //        leftBarBtnArr = new ArrayList<>(Arrays.asList(hotelInfoBtn, orderListBtn, registerRoomBtn,
 //                managePromotionBtn, updateCheckInBtn, updateOutBtn));
+
+        alertController = new AlertController();
+        //实时刷新time
+        MyTimeLabel.EnableShowTime(timeLabel);
     }
 
     /**
@@ -57,10 +65,21 @@ public class ComMarketerSceneController {
         mainPane.getChildren().add(newPane);
     }
 
+
+    @FXML
+    private void closeWindow(){
+        if(alertController.showConfirmExitAlert()) stage.close();
+    }
+
+    @FXML
+    private void minWindow(){
+        stage.setIconified(true);
+    }
+
     /**
      * 鼠标点击按钮效果
      *
-     * @param button
+     * @param
      */
 //    private void leftBarBtnEffect(Button button) {
 //        leftBarEffect.buttonActionEffect(button, leftBarBtnArr);

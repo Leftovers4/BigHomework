@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkercontroller.ComWorkerSceneController;
+import presentation.util.MyWindow;
 import presentation.webmarketerui.webmarketercontroller.ComMarketerSceneController;
 
 import java.io.IOException;
@@ -28,5 +29,7 @@ public class ComMarketerScene extends Scene{
         //配置控制器
         ComMarketerSceneController comMarketerSceneController = fxmlLoader.getController();
         comMarketerSceneController.launch(primaryStage);
+
+        MyWindow.enableWindowDrag(this.getRoot(),primaryStage);
     }
 }

@@ -3,10 +3,9 @@ package presentation.loginui.loginscene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import presentation.loginui.logincontroller.LoginSceneController;
-import presentation.util.EnableWindowDrag;
+import presentation.util.MyWindow;
 
 import java.io.IOException;
 
@@ -28,7 +27,7 @@ public class LoginScene extends Scene {
         loginSceneController.setStage(primaryStage);
 
         //实现窗口可拖动
-        new EnableWindowDrag(root, primaryStage);
+        MyWindow.enableWindowDrag(root, primaryStage);
     }
 
 }

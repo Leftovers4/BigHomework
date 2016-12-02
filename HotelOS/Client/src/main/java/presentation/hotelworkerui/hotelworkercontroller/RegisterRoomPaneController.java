@@ -113,6 +113,7 @@ public class RegisterRoomPaneController {
                     }else {
                         //修改客房
                         roomTable.setDisable(false);
+                        roomBox.setDisable(false);
                         ((RoomVO) roomTable.getItems().get(roomListButtonCell.getSelectedIndex())).total = roomAmount;
                         ((RoomVO) roomTable.getItems().get(roomListButtonCell.getSelectedIndex())).price = roomPrice;
                         roomTable.refresh();
@@ -129,7 +130,10 @@ public class RegisterRoomPaneController {
 
     @FXML
     private void cancelAdd(){
-        if(!isAdd) roomTable.setDisable(false);
+        if(!isAdd) {
+            roomTable.setDisable(false);
+            roomBox.setDisable(false);
+        }
         roomAmountField.clear();
         roomPriceField.clear();
 
