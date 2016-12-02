@@ -2,15 +2,12 @@ package presentation.userui.usercontroller;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import presentation.hotelworkerui.hotelworkerscene.InfoPane;
-import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import presentation.userui.userscene.OrderDetailUserPane;
 
 /**
@@ -39,7 +36,7 @@ public class UserSearchHotelController {
         moreInfoChoice.setDisable(false);
         upMoreInfo.setDisable(false);
         upMoreInfo.setVisible(true);
-        FlowPane.setMargin(hotelList, new Insets(20, 0, 0, 160));
+        FlowPane.setMargin(hotelList, new Insets(50, 0, 0, 160));
         downMoreInfo.setVisible(false);
         downMoreInfo.setDisable(true);
     }
@@ -51,7 +48,7 @@ public class UserSearchHotelController {
         moreInfoChoice.setDisable(true);
         downMoreInfo.setVisible(true);
         downMoreInfo.setDisable(false);
-        FlowPane.setMargin(hotelList, new Insets(-90, 0, 0, 160));
+        FlowPane.setMargin(hotelList, new Insets(0, 0, 0, 160));
         upMoreInfo.setVisible(false);
         upMoreInfo.setDisable(true);
     }
