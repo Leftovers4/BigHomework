@@ -1,6 +1,7 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -46,7 +47,8 @@ public class OrderDetailPaneController {
     @FXML private Label roomIDLabel;
 
     //查看客户评价
-    @FXML private Hyperlink showReviewLink;
+    @FXML private Button showReviewBtn;
+    @FXML private Button backBtn;
 
 
     private Stage stage;
@@ -88,5 +90,16 @@ public class OrderDetailPaneController {
         roomIDLabel.setText(orderVO.roomNumber);
     }
 
+    @FXML
+    private void showReview(){}
 
+    @FXML
+    private void back(){
+        mainPane.getChildren().clear();
+        if(isFromList) {
+            mainPane.getChildren().add(new OrderListPane(stage,mainPane));
+        }else {
+            if(isCheckIn) mainPane.getChildren().add(new FindOrderPane(stage,mainPane,isCheckIn));
+        }
+    }
 }

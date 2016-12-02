@@ -8,7 +8,7 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.OrderListPaneController">
     <children>
-      <TableView id="listTable" fx:id="orderTable" layoutX="43.0" layoutY="125.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="500.0" prefWidth="765.0">
+      <TableView fx:id="orderTable" layoutX="43.0" layoutY="170.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="450.0" prefWidth="765.0">
         <columns>
           <TableColumn id="idCol" fx:id="idCol" editable="false" prefWidth="180.0" sortable="false" text="订单号" />
           <TableColumn id="userCol" fx:id="userCol" editable="false" prefWidth="90.0" sortable="false" text="客户" />
@@ -18,7 +18,7 @@
             <TableColumn id="opCol" fx:id="opCol" editable="false" prefWidth="95.0" sortable="false" text="操作" />
         </columns>
       </TableView>
-      <HBox fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="43.0" layoutY="65.0" prefHeight="60.0" prefWidth="765.0" styleClass="listTopBar">
+      <HBox fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="43.0" layoutY="110.0" prefHeight="60.0" prefWidth="765.0" styleClass="listTopBar">
          <children>
             <ComboBox id="orderTypeBox" fx:id="orderTypeBox" prefHeight="36.0" prefWidth="158.0">
                <HBox.margin>

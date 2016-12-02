@@ -36,7 +36,10 @@
                 <Button fx:id="updateCheckInBtn" layoutX="10.0" layoutY="410.0" mnemonicParsing="false" onAction="#showUpdateCheckIn" onMouseEntered="#mouseOnUpdateCheckin" onMouseExited="#mouseOutUpdateCheckin" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="更新入住信息" />
                 <Button fx:id="updateOutBtn" layoutX="10.0" layoutY="455.0" mnemonicParsing="false" onAction="#showUpdateOut" onMouseEntered="#mouseOnUpdateOut" onMouseExited="#mouseOutUpdateOut" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="更新退房信息" />
             </children></VBox>
-        <HBox id="bottomHBox" layoutY="690.0" prefHeight="30.0" prefWidth="1080.0" />
+        <HBox id="bottomHBox" alignment="CENTER_RIGHT" layoutY="690.0" prefHeight="30.0" prefWidth="1080.0">
+         <children>
+            <Label fx:id="timeLabel" text="Label" />
+         </children></HBox>
         <Pane fx:id="mainPane" layoutX="230.0" maxHeight="690.0" maxWidth="850.0" minHeight="690.0" minWidth="850.0" prefHeight="690.0" prefWidth="850.0" style="-fx-background-color: #ffffff;" />
       <ImageView fx:id="slider" fitHeight="56.0" fitWidth="56.0" layoutX="194.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">
          <image>

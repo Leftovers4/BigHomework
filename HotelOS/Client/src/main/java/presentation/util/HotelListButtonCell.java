@@ -42,7 +42,7 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
             int selectedIndex = getTableRow().getIndex();
             OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailPane(stage, mainPane, false, true, orderVO));
+            mainPane.getChildren().add(new OrderDetailPane(stage, mainPane, false,true,orderVO));
         });
 
         checkInButton.setOnAction(event -> {

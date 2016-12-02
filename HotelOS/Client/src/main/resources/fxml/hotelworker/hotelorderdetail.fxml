@@ -8,35 +8,153 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.OrderDetailPaneController">
     <children>
-      <Label layoutX="56.0" layoutY="83.0" text="订单号：" />
-      <Label fx:id="orderIDLabel" layoutX="142.0" layoutY="83.0" text="12345678912345678" />
-      <Label layoutX="56.0" layoutY="293.0" text="入住时间：" />
-      <Label layoutX="430.0" layoutY="293.0" text="预计离开时间：" />
-      <Label fx:id="checkInTimeLabel" layoutX="175.0" layoutY="293.0" text="2016-10-29 16:30" />
-      <Label fx:id="expLeaveTimeLabel" layoutX="587.0" layoutY="293.0" text="2016-10-29 16:30" />
-      <Label layoutX="56.0" layoutY="230.0" text="生成时间：" />
-      <Label layoutX="430.0" layoutY="230.0" text="最晚执行时间：" />
-      <Label fx:id="exeLeastTimeLabel" layoutX="587.0" layoutY="230.0" text="2016-10-29 16:30" />
-      <Label fx:id="generateTimeLabel" layoutX="175.0" layoutY="230.0" text="2016-10-29 16:30" />
-      <Label layoutX="56.0" layoutY="163.0" text="订单状态：" />
-      <Label fx:id="orderTypeLabel" layoutX="175.0" layoutY="163.0" text="未执行" />
-      <Label layoutX="430.0" layoutY="356.0" text="实际离开时间：" />
-      <Label fx:id="actLeaveTimeLabel" layoutX="587.0" layoutY="356.0" text="2016-10-29 16:30" />
-      <Label fx:id="roomAmountLabel" layoutX="361.0" layoutY="550.0" text="3" />
-      <Label fx:id="roomTypeLabel" layoutX="177.0" layoutY="550.0" text="单人房" />
-      <Label layoutX="430.0" layoutY="550.0" text="房间号：" />
-      <Label layoutX="278.0" layoutY="550.0" text="数量：" />
-      <Label layoutX="56.0" layoutY="550.0" text="客房类型：" />
-      <Label fx:id="withChildrenLabel" layoutX="357.0" layoutY="487.0" text="有" />
-      <Label layoutX="278.0" layoutY="487.0" text="儿童：" />
-      <Label layoutX="56.0" layoutY="487.0" text="入住人数：" />
-      <Label fx:id="roomIDLabel" layoutX="515.0" layoutY="550.0" text="A110 A111 A112" />
-      <Label fx:id="orderPriceLabel" layoutX="549.0" layoutY="163.0" text="1200" />
-      <Label layoutX="430.0" layoutY="163.0" text="订单价值：" />
-      <Label layoutX="601.0" layoutY="163.0" text="元" />
-      <Label fx:id="peopleAmountLabel" layoutX="187.0" layoutY="487.0" text="5" />
-      <Label layoutX="88.0" layoutY="425.0" text="客户：" />
-      <Hyperlink fx:id="showReviewLink" layoutX="277.0" layoutY="423.0" text="查看客户评价" />
-      <Label fx:id="userNameLabel" layoutX="174.0" layoutY="425.0" text="路人乙" />
+      <HBox layoutX="40.0" layoutY="310.0" prefHeight="150.0" prefWidth="780.0" styleClass="BackgroundHBox">
+         <children>
+            <GridPane layoutX="56.0" layoutY="230.0" maxHeight="80.0" prefHeight="80.0" vgap="10.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" />
+                  <ColumnConstraints hgrow="SOMETIMES" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints vgrow="SOMETIMES" />
+                  <RowConstraints vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label fx:id="generateTimeLabel" layoutX="175.0" layoutY="230.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="152.0" text="2016-10-29 16:30" GridPane.columnIndex="1" />
+                  <Label layoutX="56.0" layoutY="230.0" text="生成时间：" />
+                  <Label fx:id="exeLeastTimeLabel" layoutX="587.0" layoutY="230.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="152.0" text="2016-10-29 16:30" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label layoutX="430.0" layoutY="230.0" text="最晚执行时间：" GridPane.rowIndex="1" />
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </GridPane>
+            <GridPane layoutX="448.0" layoutY="230.0" maxHeight="128.0" maxWidth="460.0" minHeight="128.0" minWidth="284.0" prefHeight="128.0" prefWidth="284.0" vgap="10.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+                <RowConstraints vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="入住时间：" />
+                  <Label fx:id="checkInTimeLabel" text="2016-10-29 16:30" GridPane.columnIndex="1" />
+                  <Label text="预计离开时间：" GridPane.rowIndex="1" />
+                  <Label fx:id="expLeaveTimeLabel" text="2016-10-29 16:30" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="实际离开时间：" GridPane.rowIndex="2" />
+                  <Label fx:id="actLeaveTimeLabel" text="2016-10-29 16:30" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox layoutX="40.0" layoutY="480.0" prefHeight="130.0" prefWidth="780.0" styleClass="BackgroundHBox">
+         <children>
+            <GridPane hgap="60.0" layoutX="62.0" layoutY="466.0" vgap="10.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="客户：" />
+                  <Label fx:id="userNameLabel" text="路人乙" GridPane.columnIndex="1" />
+                  <Label text="入住人数：" GridPane.rowIndex="2" />
+                  <Label fx:id="peopleAmountLabel" text="5" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="儿童：" GridPane.rowIndex="1" />
+                  <Label fx:id="withChildrenLabel" text="有" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </GridPane>
+            <GridPane hgap="40.0" layoutX="448.0" layoutY="436.0" vgap="10.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" />
+                <ColumnConstraints hgrow="SOMETIMES" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="客房类型：" />
+                  <Label fx:id="roomTypeLabel" text="单人房" GridPane.columnIndex="1" />
+                  <Label text="数量：" GridPane.rowIndex="1" />
+                  <Label fx:id="roomAmountLabel" text="3" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="房间号：" GridPane.rowIndex="2" />
+                  <Label fx:id="roomIDLabel" maxHeight="36.0" prefHeight="36.0" text="A110 A111 A112" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <Button id="showReviewBtn" fx:id="showReviewBtn" layoutX="724.0" layoutY="625.0" mnemonicParsing="false" onAction="#showReview" text="查看评价" />
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="23.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/hotelworker/bar.png" />
+         </image>
+      </ImageView>
+      <Label id="detailTitleLabel" layoutX="71.0" layoutY="82.0" text="订单详情" />
+      <Button fx:id="backBtn" layoutY="78.0" mnemonicParsing="false" onAction="#back" styleClass="BackBtn">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/hotelworker/back.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <HBox layoutX="40.0" layoutY="150.0" prefHeight="130.0" prefWidth="400.0" styleClass="BackgroundHBox">
+         <children>
+            <GridPane hgap="50.0" layoutX="113.0" layoutY="54.0" vgap="10.0">
+               <children>
+                  <Label text="订单号：" />
+                  <Label text="订单状态：" GridPane.rowIndex="1" />
+                  <Label text="订单价值：" GridPane.rowIndex="2" />
+                  <Label fx:id="orderPriceLabel" text="1200" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="元" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="50.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="orderIDLabel" text="12345678912345678" GridPane.columnIndex="1" />
+                  <Label fx:id="orderTypeLabel" text="未执行" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" top="10.0" />
+         </padding>
+      </HBox>
     </children>
 </fx:root>

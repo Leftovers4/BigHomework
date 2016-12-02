@@ -1,14 +1,22 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import presentation.hotelworkerui.hotelworkerscene.*;
 import presentation.util.AlertController;
 import presentation.util.LeftBarEffect;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -29,6 +37,8 @@ public class ComWorkerSceneController {
     @FXML private Button updateOutBtn;
 
     @FXML private ImageView slider;
+    //时间按钮
+    @FXML private Label timeLabel;
 
     private Button currentBtn = null;
     //左边栏按钮集合
@@ -44,6 +54,19 @@ public class ComWorkerSceneController {
         mainPane.getChildren().add(new InfoPane(stage,mainPane));
         leftBarBtnArr = new ArrayList<>(Arrays.asList(hotelInfoBtn, orderListBtn, registerRoomBtn,
                 managePromotionBtn, updateCheckInBtn, updateOutBtn));
+        initTimeLabel();
+    }
+
+    /**
+     * 实现在底部HBox实时刷新time
+     */
+    private void initTimeLabel() {
+        DateFormat timeFormat = new SimpleDateFormat( "YYYY-MM-dd HH:mm:ss" );
+        final Timeline timeline = new Timeline( new KeyFrame( Duration.millis( 500 ), event -> {
+                timeLabel.setText( timeFormat.format( System.currentTimeMillis() ) );
+        }));
+        timeline.setCycleCount( Animation.INDEFINITE );
+        timeline.play();
     }
 
     /**
@@ -93,7 +116,7 @@ public class ComWorkerSceneController {
     private void showManagePromotion(){
         leftBarBtnEffect(managePromotionBtn);
         changeSliderPos(395);
-        changePane(new ManagePromotionPane(stage));
+        changePane(new ManagePromotionPane());
         currentBtn = managePromotionBtn;
     }
 

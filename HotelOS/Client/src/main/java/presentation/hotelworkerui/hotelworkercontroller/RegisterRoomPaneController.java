@@ -8,10 +8,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import presentation.util.AlertController;
-import presentation.util.ConfirmAlert;
-import presentation.util.InputWrongAlert;
-import presentation.util.UnselectedAlert;
+import javafx.util.Callback;
+import presentation.util.*;
 import util.RoomType;
 import vo.hotel.RoomVO;
 import vo.hotel.ViewVOHelper;
@@ -27,8 +25,6 @@ public class RegisterRoomPaneController {
 
     //按钮
     @FXML private Button addBtn;
-    @FXML private Button modifyBtn;
-    @FXML private Button deleteBtn;
     @FXML private Button confirmBtn;
     @FXML private Button cancelBtn;
 
@@ -40,15 +36,22 @@ public class RegisterRoomPaneController {
 
     //列表
     @FXML private TableView roomTable;
-    @FXML private TableColumn typeCol;
-    @FXML private TableColumn amountCol;
-    @FXML private TableColumn priceCol;
+    @FXML private TableColumn roomTypeCol;
+
+
+
+    @FXML private TableColumn roomAmountCol;
+    @FXML private TableColumn roomPriceCol;
+    @FXML private TableColumn roomOpCol;
 
     private Stage stage;
     private ObservableList<RoomVO> roomVoList;
     private HotelBLService_Stub hotelBLServiceStub;
+    private RoomListButtonCell roomListButtonCell;
+
     //提示框控制器
     private AlertController alertController;
+
     //是修改操作还是添加操作
     private Boolean isAdd;
 
@@ -62,10 +65,16 @@ public class RegisterRoomPaneController {
     private void initData() {
         roomVoList = getRoomVoList();
 
-        typeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
-        amountCol.setCellValueFactory(new PropertyValueFactory<>("available"));
-        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-
+        roomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
+        roomAmountCol.setCellValueFactory(new PropertyValueFactory<>("total"));
+        roomPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        roomOpCol.setCellFactory(new Callback<TableColumn, TableCell>() {
+            @Override
+            public TableCell call(TableColumn param) {
+                roomListButtonCell = new RoomListButtonCell(roomTable,RegisterRoomPaneController.this);
+                return roomListButtonCell;
+            }
+        });
         roomTable.setItems(roomVoList);
     }
 
@@ -75,48 +84,10 @@ public class RegisterRoomPaneController {
     }
 
     @FXML
-    private void closeWindow(){
-        if(alertController.showConfirmExitAlert()) stage.close();
-    }
-
-    @FXML
-    private void minWindow(){
-        stage.setIconified(true);
-    }
-
-    @FXML
     private void addRoom(){
         isAdd = true;
         setAddComponentsVisible(true);
     }
-
-    @FXML
-    private void modifyRoom(){
-        isAdd = false;
-        RoomVO modifiedItem = (RoomVO) roomTable.getSelectionModel().getSelectedItem();
-
-        if(modifiedItem == null){
-            alertController.showUnSelectItemAlert("请先选择要修改的客房","修改失败");
-        }else {
-            roomTable.setDisable(true);
-            setAddComponentsVisible(true);
-            roomAmountField.setText(String.valueOf(modifiedItem.available));
-            roomPriceField.setText(String.valueOf(modifiedItem.price));
-        }
-    }
-
-    @FXML
-    private void deleteRoom(){
-        RoomVO deletedItem = (RoomVO) roomTable.getSelectionModel().getSelectedItem();
-
-        if(deletedItem == null)
-            alertController.showUnSelectItemAlert("请先选择要删除的客房","删除失败");
-        else
-            if(alertController.showConfirmDeleteAlert("您确定要删除此类客房吗？","确认删除"))
-                roomTable.getItems().remove(deletedItem);
-    }
-
-
 
     @FXML
     private void confirmAdd(){
@@ -142,8 +113,8 @@ public class RegisterRoomPaneController {
                     }else {
                         //修改客房
                         roomTable.setDisable(false);
-                        ((RoomVO) roomTable.getSelectionModel().getSelectedItem()).available = roomAmount;
-                        ((RoomVO) roomTable.getSelectionModel().getSelectedItem()).price = roomPrice;
+                        ((RoomVO) roomTable.getItems().get(roomListButtonCell.getSelectedIndex())).total = roomAmount;
+                        ((RoomVO) roomTable.getItems().get(roomListButtonCell.getSelectedIndex())).price = roomPrice;
                         roomTable.refresh();
                     }
 
@@ -165,14 +136,32 @@ public class RegisterRoomPaneController {
         setAddComponentsVisible(false);
     }
 
-    private void setAddComponentsVisible(Boolean isVisible){
+    public void setAddComponentsVisible(Boolean isVisible){
         addHBox.setVisible(isVisible);
         confirmBtn.setVisible(isVisible);
         cancelBtn.setVisible(isVisible);
 
         addBtn.setVisible(!isVisible);
-        modifyBtn.setVisible(!isVisible);
-        deleteBtn.setVisible(!isVisible);
+    }
+
+    public void setAdd(Boolean add) {
+        isAdd = add;
+    }
+
+    public ComboBox getRoomBox() {
+        return roomBox;
+    }
+
+    public TextField getRoomAmountField() {
+        return roomAmountField;
+    }
+
+    public TextField getRoomPriceField() {
+        return roomPriceField;
+    }
+
+    public AlertController getAlertController() {
+        return alertController;
     }
 
 }

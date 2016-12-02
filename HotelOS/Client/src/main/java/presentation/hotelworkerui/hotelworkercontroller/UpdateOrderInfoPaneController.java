@@ -24,6 +24,8 @@ import java.time.LocalTime;
  * Description :
  */
 public class UpdateOrderInfoPaneController {
+    //标题
+    @FXML private Label updateTitleLabel;
     //订单号、状态、价格
     @FXML private Label orderIDLabel;
     @FXML private Label orderTypeLabel;
@@ -113,6 +115,8 @@ public class UpdateOrderInfoPaneController {
     }
 
     private void initLabels(OrderVO orderVO) {
+        updateTitleLabel.setText(isCheckIn ? "更新入住信息" : "更新退房信息");
+
         orderIDLabel.setText(orderVO.orderID);
         orderTypeLabel.setText(orderVO.orderType.toString());
         orderPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
@@ -175,7 +179,11 @@ public class UpdateOrderInfoPaneController {
     }
 
     @FXML
-    private void cancelUpdate(){
+    private void back(){
+        mainPane.getChildren().clear();
+        if(isFromList) {
+            mainPane.getChildren().add(new OrderListPane(stage,mainPane));
+        }else mainPane.getChildren().add(new FindOrderPane(stage,mainPane,isCheckIn));
     }
 
 

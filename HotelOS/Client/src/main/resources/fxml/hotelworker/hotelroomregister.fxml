@@ -8,74 +8,77 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.RegisterRoomPaneController">
     <children>
-      <VBox layoutX="45.0" layoutY="165.0">
+        <HBox alignment="CENTER_RIGHT" layoutX="72.0" layoutY="470.0" prefHeight="50.0" prefWidth="707.0">
          <children>
-              <TableView id="listTable" fx:id="roomTable" layoutX="125.0" layoutY="164.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="324.0" prefWidth="760.0">
-                  <columns>
-                      <TableColumn id="idCol" fx:id="typeCol" editable="false" prefWidth="250.0" text="客房类型" />
-                      <TableColumn id="userCol" fx:id="amountCol" editable="false" prefWidth="220.0" text="数量" />
-                      <TableColumn id="amountCol" fx:id="priceCol" editable="false" prefWidth="288.0" text="原价（元/天）" />
-                  </columns>
-              </TableView>
-              <HBox id="listTopBar" alignment="CENTER_RIGHT" layoutX="125.0" layoutY="364.0" prefHeight="50.0" prefWidth="600.0">
+            <HBox fx:id="addHBox" alignment="CENTER_LEFT" visible="false">
                <children>
-                  <HBox fx:id="addHBox" alignment="CENTER_LEFT" visible="false">
-                     <children>
-                        <ComboBox fx:id="roomBox" prefHeight="36.0" prefWidth="140.0" promptText="客房类型" />
-                        <Label text="数量：">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="roomAmountField" prefWidth="50.0">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <Label layoutX="150.0" layoutY="23.0" text="原价：">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField fx:id="roomPriceField" alignment="CENTER" layoutX="204.0" layoutY="17.0" prefHeight="36.0" prefWidth="102.0">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <Label layoutX="248.0" layoutY="23.0" text="元/天">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <Pane>
-                     <children>
-                        <Button fx:id="modifyBtn" layoutX="70.0" layoutY="7.0" mnemonicParsing="false" onAction="#modifyRoom" text="修改">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="deleteBtn" layoutX="140.0" layoutY="7.0" mnemonicParsing="false" onAction="#deleteRoom" text="删除">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="addBtn" layoutY="7.0" mnemonicParsing="false" onAction="#addRoom" text="添加">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button id="saveRegisterBtn" fx:id="confirmBtn" layoutX="32.0" layoutY="7.0" mnemonicParsing="false" onAction="#confirmAdd" text="确认" visible="false" />
-                        <Button id="cancelRegisterBtn" fx:id="cancelBtn" layoutX="111.0" layoutY="7.0" mnemonicParsing="false" onAction="#cancelAdd" text="取消" visible="false" />
-                     </children>
+                  <ComboBox fx:id="roomBox" prefHeight="36.0" prefWidth="140.0" promptText="客房类型" />
+                  <TextField fx:id="roomAmountField" alignment="CENTER" prefHeight="36.0" prefWidth="65.0" promptText="数量">
                      <HBox.margin>
-                        <Insets left="40.0" />
+                        <Insets left="20.0" />
                      </HBox.margin>
-                  </Pane>
+                  </TextField>
+                  <TextField fx:id="roomPriceField" alignment="CENTER" layoutX="204.0" layoutY="17.0" prefHeight="36.0" prefWidth="102.0" promptText="原价">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Label layoutX="248.0" layoutY="23.0" text="元/天">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
-              </HBox>
+            </HBox>
+            <Pane prefHeight="50.0" prefWidth="240.0">
+               <children>
+                  <Button fx:id="addBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="137.0" layoutY="10.0" maxWidth="100.0" mnemonicParsing="false" onAction="#addRoom" prefWidth="100.0" styleClass="roomBtn" text="添加">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/hotelworker/addroom.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+                  <Button fx:id="cancelBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="137.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancelAdd" prefWidth="100.0" styleClass="roomBtn" text="取消" visible="false">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/hotelworker/cancelroom.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="confirmBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="20.0" layoutY="10.0" mnemonicParsing="false" onAction="#confirmAdd" prefWidth="100.0" styleClass="roomBtn" text="确认" visible="false">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/hotelworker/confirmroom.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets left="65.0" />
+               </HBox.margin>
+            </Pane>
          </children>
-      </VBox>
+        </HBox>
+        <TableView fx:id="roomTable" layoutX="72.0" layoutY="110.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="350.0" prefWidth="707.0">
+            <columns>
+                <TableColumn id="roomTypeCol" fx:id="roomTypeCol" editable="false" prefWidth="200.0" sortable="false" text="客房类型" />
+                <TableColumn id="roomAmountCol" fx:id="roomAmountCol" editable="false" prefWidth="200.0" sortable="false" text="数量" />
+                <TableColumn id="roomPriceCol" fx:id="roomPriceCol" editable="false" prefWidth="200.0" sortable="false" text="原价（元/天）" />
+            <TableColumn id="roomOpCol" fx:id="roomOpCol" editable="false" prefWidth="95.0" sortable="false" text="操作" />
+            </columns>
+        </TableView>
     </children>
 </fx:root>

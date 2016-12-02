@@ -35,12 +35,6 @@
 
 
 
-/*搜索按钮*/
-#searchOrderIDBtn{
-    -fx-border-style: none;
-    -fx-background-color: transparent;
-    /*-fx-background-radius: 10;*/
-}
 
 /*线上入住按钮*/
 #checkinOnlineBtn{
@@ -127,6 +121,7 @@
     -fx-background-color: #b3c2c3;
 }
 .combo-box:hover{
+    -fx-cursor: hand;
     -fx-background-color: #95a5a6
 }
 .combo-box .cell:selected{
@@ -142,9 +137,40 @@
     -fx-background-color: white;
 }
 
+/*tableview*/
+.table-view{
+    -fx-background-color: white;
+    -fx-border-color: white;
+    -fx-font-size: 15px;
+}
+.table-view .column-header, .filler{
+    -fx-background-color: white;
+    -fx-border-color: white white #dddddd white;
+}
+.table-view .column-header .label{
+    -fx-background-color: white;
+    -fx-border-color: white white #dddddd white;
+    -fx-text-fill: #7E7E7E;
+    -fx-font-weight: 400;
+}
+.table-view .table-row-cell{
+    -fx-border-color: transparent;
+}
+.table-view .table-column{
+    -fx-border-color: transparent;
+}
+.table-view .table-row-cell:selected{
+    -fx-background-color: #F6FAFF;
+
+}
+.table-view .table-row-cell:hover{
+    -fx-background-color: #F6FAFF;
+}
+
+
 
 /**
-基本信息界面----------------------------------------------------------------------
+基本信息界面-----------------------------------------------------------------------------------------------------------
  */
 
 
@@ -207,89 +233,63 @@
     -fx-background-radius: 10;
     -fx-font-size: 15px;
 }
+/*搜索按钮*/
+#searchOrderIDBtn{
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+    /*-fx-background-radius: 10;*/
+}
 
-/*订单列表*/
-#listTable{
-    -fx-background-color: white;
-    -fx-border-color: white;
-    -fx-font-size: 15px;
-}
-#listTable .column-header, .filler{
-    -fx-background-color: white;
-    -fx-border-color: white white #dddddd white;
-}
-#listTable .column-header .label{
-    -fx-background-color: white;
-    -fx-border-color: white white #dddddd white;
-    -fx-text-fill: #7E7E7E;
-    -fx-font-weight: 400;
-}
-#listTable .table-row-cell{
-    -fx-border-color: transparent;
-}
-#listTable .table-column{
-    -fx-border-color: transparent;
-}
-#listTable .table-row-cell:selected{
-    -fx-background-color: #F6FAFF;
 
-}
-#listTable .table-row-cell:hover{
-    -fx-background-color: #F6FAFF;
-}
-/*.root .table-view{*/
-    /*-fx-control-inner-background: #AB4642;*/
-/*}*/
 /*订单号列表栏*/
-#listTable .column-header#idCol .label{
+.table-view .column-header#idCol .label{
     -fx-alignment: center-left;
 }
-#listTable #idCol{
+.table-view #idCol{
     -fx-alignment: center-left;
 }
 /*客户列表栏*/
-#listTable .column-header#userCol .label{
+.table-view .column-header#userCol .label{
     -fx-alignment: center-left;
 }
-#listTable #userCol{
+.table-view #userCol{
     -fx-alignment: center-left;
 }
 /*价格列表栏*/
-#listTable .column-header#priceCol .label{
+.table-view .column-header#priceCol .label{
     -fx-alignment: center-right;
 }
-#listTable .column-header#priceCol .arrow{
+.table-view .column-header#priceCol .arrow{
     -fx-background-color: black;
 }
-#listTable #priceCol{
+.table-view #priceCol{
     -fx-alignment: center-right;
 }
 /*入住时间列表栏*/
-#listTable .column-header#checkInTimeCol .label{
+.table-view .column-header#checkInTimeCol .label{
     -fx-alignment: center-left;
 }
-#listTable .column-header#checkInTimeCol .arrow{
+.table-view .column-header#checkInTimeCol .arrow{
     -fx-background-color: black;
 }
-#listTable #checkInTimeCol{
+.table-view #checkInTimeCol{
     -fx-alignment: center-left;
 }
 /*订单状态列表栏*/
-#listTable .column-header#typeCol .label{
+.table-view .column-header#typeCol .label{
     -fx-alignment: center-left;
 }
-#listTable #typeCol{
+.table-view #typeCol{
     -fx-alignment: center-left;
 }
 /*操作按钮*/
-#listTable .column-header#opCol .label{
+.table-view .column-header#opCol .label{
     -fx-alignment: center-left;
 }
 .TableButtonCell{
     -fx-background-radius: 50%;
     -fx-cursor: hand;
     -fx-background-color: #55acee;
-    /*-fx-padding: 8px;*/
     -fx-pref-width: 32px;
     -fx-pref-height: 32px;
     -fx-min-width: 32px;
@@ -298,18 +298,348 @@
 .TableButtonCell:hover{
     -fx-background-color: #49BCFF;
 }
+
+
+
 /**
-录入可用客房
+录入可用客房---------------------------------------------------------------------------------------------------
  */
 
+/*客房类型列表栏*/
+.table-view .column-header#roomTypeCol .label{
+    -fx-alignment: center-left;
+}
+.table-view #roomTypeCol{
+    -fx-alignment: center-left;
+}
+/*客房数量列表栏*/
+.table-view .column-header#roomAmountCol .label{
+    -fx-alignment: center-right;
+}
+.table-view #roomAmountCol{
+    -fx-alignment: center-right;
+}
+/*客房价格列表栏*/
+.table-view .column-header#roomPriceCol .label{
+    -fx-alignment: center-right;
+}
+.table-view #roomPriceCol{
+    -fx-alignment: center-right;
+}
+/*客房操作列表栏*/
+.table-view .column-header#roomOpCol .label{
+    -fx-alignment: center-left;
+}
+.table-view #roomOpCol{
+    -fx-alignment: center-left;
+}
+
+/*添加客房按钮*/
+.roomBtn{
+    -fx-background-color: white;
+    -fx-border-color: #dddddd;
+    -fx-padding: 0;
+}
+.roomBtn:hover {
+    -fx-background-color: #F6FAFF;
+}
+
+/**
+订单详情
+ */
+/*返回按钮*/
+.BackBtn{
+    -fx-background-color: transparent;
+}
+.BackBtn:hover{
+    -fx-cursor: hand;
+    -fx-graphic: url("../../img/hotelworker/back_hover.png");;
+}
+/*标题*/
+#detailTitleLabel{
+    -fx-font-size: 24px;
+    -fx-text-fill: #1f99ff;
+}
+.BackgroundHBox{
+    -fx-background-color: white;
+    -fx-border-color: #dddddd;
+}
+/*查看评价按钮*/
+#showReviewBtn{
+    -fx-background-color: #55acee;
+    -fx-text-fill: white;
+}
+#showReviewBtn:hover{
+    -fx-background-color: #49BCFF;
+}
 /**
 制定促销策略
  */
-
+.PromotionBtn{
+    -fx-background-color: transparent;
+    -fx-text-fill: #7E7E7E;
+}
+.PromotionBtn:hover{
+    -fx-cursor: hand;
+}
+.PromotionBtn:focused{
+    -fx-text-fill: #37474F;
+}
+.PromotionAddBtn{
+    -fx-background-color: white;
+    -fx-border-color: #dddddd;
+    -fx-padding: 0;
+}
+.PromotionBtn:hover{
+    -fx-background-color: #F6FAFF;
+}
+/*滑块*/
+#sliderPromotionLabel{
+    -fx-background-color: #1f99ff;
+}
 /**
 更新入住信息
  */
-
+#submitUpdateBtn{
+    -fx-background-color: #55acee;
+    -fx-text-fill: white;
+}
+#submitUpdateBtn:hover{
+    -fx-background-color: #49BCFF;
+}
 /**
 更新退房信息
  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.tab-pane
+{
+    /*-fx-skin: "com.sun.javafx.scene.control.skin.TabPaneSkin";*/
+    /* -fx-tab-min-width: 4.583em;  55 */
+    /* -fx-tab-max-width: 4.583em; 55 */
+    -fx-tab-min-height: 2em; /* 24 */
+    -fx-tab-max-height: 2em; /* 24 */
+}
+.tab .tab-label
+{
+    /*-fx-skin: "com.sun.javafx.scene.control.skin.LabelSkin";*/
+    -fx-background-color: transparent;
+    -fx-alignment: CENTER;
+    -fx-text-fill: -fx-text-base-color;
+}
+/*
+.tab *.tab-label Text {
+-fx-effect: dropshadow(two-pass-box , rgba(255, 255, 255, 0.4), 1, 0.0 , 0, 1);
+}*/
+.tab-content-area
+{
+    -fx-background-color: -fx-control-inner-background;
+    -fx-padding: 0.0em; /* 0 */
+    /* -fx-opacity: -fx-disabled-opacity;*/
+}
+.tab
+{
+    /* This is how it is done in Button, but the -1 inset caused a white line  */
+    /* to appear beneath the tab, which looks bad, so it's taken out below.    */
+    /*    -fx-background-color: -fx-shadow-highlight-color,   -fx-inner-border, -fx-body-color;
+    -fx-background-radius: 5 5 0 0, 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;*/
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-background-color: white;
+    -fx-padding: 0.083333em 0.5em 0.083333em 0.5em; /* 1 6 1 6 */
+
+    /*    -fx-text-fill: -fx-text-base-color;*/
+}
+/*.tab:top*/
+/*{*/
+    /*-fx-background-color:   -fx-inner-border, -fx-body-color;*/
+/*}*/
+/*.tab:right*/
+/*{*/
+    /*-fx-background-color:   -fx-inner-border-bottomup, -fx-body-color-bottomup;*/
+/*}*/
+/*.tab:bottom*/
+/*{*/
+    /*-fx-background-color:   -fx-inner-border-bottomup, -fx-body-color-bottomup;*/
+/*}*/
+/*.tab:left*/
+/*{*/
+    /*-fx-background-color:   -fx-inner-border, -fx-body-color;*/
+/*}*/
+.tab:hover
+{
+    -fx-color: -fx-hover-base;
+}
+.tab:selected
+{
+    /*    -fx-background-color: white;*/
+    /*    -fx-background-color:   -fx-inner-border, -fx-body-color;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-background-insets: 0, 1 1 0 1, 2 2 0 2;*/
+    -fx-background-color:   -fx-control-inner-background;
+    -fx-background-insets: 0, 1 1 0 1;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0;
+}
+.tab:disabled
+{
+    -fx-opacity: -fx-disabled-opacity;
+}
+.tab:disabled:hover
+{
+    -fx-color: -fx-base;
+    -fx-opacity: -fx-disabled-opacity;
+}
+.tab-pane *.tab-header-background
+{
+    -fx-background-color: transparent;
+}
+/*.tab-pane *.tab-header-area {*/
+/* I would like to use -fx-tab-border-color here, but for some reason it */
+/* just isn't the correct color, even though it works in :top above */
+/*    -fx-background-color:   lightgray;*/
+/*}*/
+.tab-pane:top *.tab-header-area
+{
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.416667em 0.166667em 0.0em 0.833em; /* 5 2 0 10 */
+}
+.tab-pane:bottom *.tab-header-area
+{
+    -fx-background-insets: 0, 1 0 0 0;
+    -fx-padding: 0 0.166667em 0.416667em 0.833em; /* 0 2 5 0 */
+}
+.tab-pane:left *.tab-header-area
+{
+    -fx-background-insets: 0, 0 1 0 0;
+    -fx-padding: 0.833em 0.0em 0.166667em 0.416667em; /* 10 0 2 5 */
+}
+.tab-pane:right *.tab-header-area
+{
+    -fx-background-insets: 0, 0 0 0 1;
+    -fx-padding: 0.833em 0.416667em 0.166667em 0.0em; /* 10 5 2 0 */
+}
+.tab-pane .headers-region
+{
+    -fx-effect: dropshadow(two-pass-box , rgba(0,0,0,0.6) , 4, 0.0 , 0, 0);
+}
+/*!* TODO: scaling the shape seems to make it way too large *!*/
+/*.tab-close-button*/
+/*{*/
+    /*-fx-background-color: -fx-mark-color;*/
+    /*-fx-shape: "M 0,0 H1 L 4,3 7,0 H8 V1 L 5,4 8,7 V8 H7 L 4,5 1,8 H0 V7 L 3,4 0,1 Z";*/
+    /*-fx-scale-shape: false;*/
+    /*-fx-effect: dropshadow(two-pass-box , rgba(255, 255, 255, 0.4), 1, 0.0 , 0, 1);*/
+/*}*/
+/*.tab-close-button:hover*/
+/*{*/
+    /*-fx-background-color: derive(-fx-mark-color, -30%);*/
+/*}*/
+/* CONTROL BUTTONS */
+.control-buttons-tab
+{
+    -fx-background-color:   white;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-padding: 0.083333em 0.25em 0.083333em 0.25em; /* 1 3 1 3 */
+}
+/*.tab-down-button*/
+/*{*/
+    /*-fx-background-color: transparent;*/
+    /*-fx-padding: 0.0em 0.416667em 0.0em 0.416667em; !* 0 5 0 5 *!*/
+/*}*/
+/*.tab-down-button:hover*/
+/*{*/
+    /*-fx-background-color: -fx-body-color;*/
+    /*-fx-color: -fx-hover-base;*/
+/*}*/
+/*.tab-down-button .arrow*/
+/*{*/
+    /*-fx-background-color: -fx-mark-highlight-color, -fx-mark-color;*/
+    /*-fx-background-insets: 1 0 -1 0, 0;*/
+    /*-fx-padding: 0.238083em 0.416667em 0.238083em 0.416667em; !* 2.857 5 2.857 5 *!*/
+    /*-fx-shape: "M 0 0 H 7 L 3.5 4 z";*/
+/*}*/
+/* FLOATING TABS CUSTOMISATION */
+/*.tab-pane.floating *.tab-header-background {*/
+    /*-fx-background-color: null;*/
+/*}*/
+/*.tab-pane.floating *.tab-header-area*/
+/*{*/
+    /*-fx-background-color: null;*/
+/*}*/
+/*.tab-pane.floating *.tab-content-area*/
+/*{*/
+    /*-fx-background-color:   -fx-control-inner-background;*/
+    /*-fx-background-insets: 0, 1;*/
+    /*-fx-background-radius: 5, 4;*/
+/*}*/
+/*.tab-pane.floating *.tab*/
+/*{*/
+    /*-fx-background-color:   -fx-inner-border, -fx-body-color;*/
+    /*-fx-background-insets: 0, 1, 2;*/
+    /*-fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;*/
+/*}*/
+/*.tab-pane.floating *.tab:selected*/
+/*{*/
+    /*-fx-background-color:   -fx-control-inner-background;*/
+    /*-fx-background-insets: 0 0 -1 0, 1 1 -1 1;*/
+    /*-fx-background-radius: 5 5 0 0, 4 4 0 0;*/
+/*}*/
+/*.tab-pane:floating *.control-buttons-tab
+{
+-fx-padding: 0.083333em 0.25em 0.083333em 0.25em;
+-fx-background-color:   -fx-inner-border, -fx-body-color;
+-fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+-fx-background-insets: 0, 1 1 0 1, 2 2 0 2;
+}*/

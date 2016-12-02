@@ -36,6 +36,11 @@ public class FindOrderPaneController {
         this.mainPane = mainPane;
         this.isCheckIn = isCheckIn;
         alertController = new AlertController();
+        initLabel();
+    }
+
+    private void initLabel() {
+        idorNameField.setPromptText(isCheckIn ? "更新入住信息，请输入客户名" : "更新退房信息，请输入客户名");
     }
 
 

@@ -13,8 +13,8 @@
             <Image url="@../../img/hotelworker/searchOrder.png" />
          </image>
       </ImageView>
-      <TextField id="idorNameField" fx:id="idorNameField" layoutX="288.0" layoutY="417.0" promptText="订单号/客户名" />
-      <Button id="findByIDorNameBtn" fx:id="findByIDorNameBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="527.0" layoutY="417.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#findOrder" prefHeight="36.0" prefWidth="36.0">
+      <TextField id="idorNameField" fx:id="idorNameField" alignment="CENTER" layoutX="279.0" layoutY="416.0" prefHeight="36.0" prefWidth="260.0" promptText="更新入住信息，请输入客户名" />
+      <Button id="findByIDorNameBtn" fx:id="findByIDorNameBtn" contentDisplay="GRAPHIC_ONLY" graphicTextGap="0.0" layoutX="536.0" layoutY="416.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#findOrder" prefHeight="36.0" prefWidth="36.0">
          <graphic>
             <ImageView id="seaOrderNameImg" fx:id="seaOrderNameImg" fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>

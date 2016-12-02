@@ -1,10 +1,20 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import presentation.util.AlertController;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Hitiger on 2016/11/20.
@@ -13,25 +23,29 @@ import presentation.util.AlertController;
 public class ManagePromotionPaneController {
 
     //生日优惠
+    @FXML private Button birthBtn;
     @FXML private Button addBirthBtn;
     @FXML private Button modifyBirthBtn;
     @FXML private Button deleteBirthBtn;
     @FXML private Button confirmBirthBtn;
     @FXML private Button cancelBirthBtn;
+    @FXML private VBox   birthVBox;
     @FXML private HBox   addBirthHBox;
     //多间预订优惠
-    @FXML private Button addRoomsBtn;
-    @FXML private Button modifyRoomsBtn;
-    @FXML private Button deleteRoomsBtn;
-    @FXML private Button confirmRoomsBtn;
-    @FXML private Button cancelRoomsBtn;
-    @FXML private HBox   addRoomsHBox;
+    @FXML private Button addRoomBtn;
+    @FXML private Button modifyRoomBtn;
+    @FXML private Button deleteRoomBtn;
+    @FXML private Button confirmRoomBtn;
+    @FXML private Button cancelRoomBtn;
+    @FXML private VBox   roomVBox;
+    @FXML private HBox   addRoomHBox;
     //特定期间优惠
     @FXML private Button addTimeBtn;
     @FXML private Button modifyTimeBtn;
     @FXML private Button deleteTimeBtn;
     @FXML private Button confirmTimeBtn;
     @FXML private Button cancelTimeBtn;
+    @FXML private VBox   timeVBox;
     @FXML private HBox   addTimeHBox;
     //合作企业优惠
     @FXML private Button addComBtn;
@@ -39,14 +53,36 @@ public class ManagePromotionPaneController {
     @FXML private Button deleteComBtn;
     @FXML private Button confirmComBtn;
     @FXML private Button cancelComBtn;
+    @FXML private VBox   comVBox;
     @FXML private HBox   addComHBox;
 
-    private Stage stage;
-    private AlertController alertController;
+    //滑块
+    @FXML private Label sliderPromotionLabel;
 
-    public void launch(Stage primaryStage) {
-        this.stage = primaryStage;
+
+    private AlertController alertController;
+    private ArrayList<VBox> vBoxes;
+    //TODO 如果已添加促销策略 则不再显示添加按钮
+    private Boolean isExistBirth = false;
+    private Boolean isExistRoom = false;
+    private Boolean isExistTime = false;
+    private Boolean isExistCom = false;
+
+    public void launch() {
         alertController = new AlertController();
+        vBoxes = new ArrayList<>(Arrays.asList(birthVBox,roomVBox,timeVBox,comVBox));
+
+        //然后生日优惠按钮默认被选中
+        makeBirthFocused();
+    }
+
+    private void makeBirthFocused() {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                birthBtn.requestFocus();
+            }
+        });
     }
 
     @FXML
@@ -57,6 +93,8 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmBirthAdd(){
+        //TODO 如果已添加促销策略 则不再显示添加按钮
+        isExistBirth = true;
         setAddBirthComponentsVisible(false);
         setOriBirthComponentsVisible(true);
     }
@@ -83,48 +121,56 @@ public class ManagePromotionPaneController {
         cancelBirthBtn.setVisible(isVisible);
     }
     private void setOriBirthComponentsVisible(Boolean isVisible){
-        addBirthBtn.setVisible(isVisible);
-        modifyBirthBtn.setVisible(isVisible);
-        deleteBirthBtn.setVisible(isVisible);
+        //TODO 如果已添加促销策略 则不再显示添加按钮
+        if (!isExistBirth)addBirthBtn.setVisible(isVisible);
+        else {
+            modifyBirthBtn.setVisible(isVisible);
+            deleteBirthBtn.setVisible(isVisible);
+        }
     }
 
     @FXML
-    private void addRoomsPromotion(){
+    private void addRoomPromotion(){
         setAddRoomsComponentsVisible(true);
         setOriRoomsComponentsVisible(false);
     }
 
     @FXML
-    private void confirmRoomsAdd(){
+    private void confirmRoomAdd(){
+        //TODO 如果已添加促销策略 则不再显示添加按钮
+        isExistRoom = true;
         setAddRoomsComponentsVisible(false);
         setOriRoomsComponentsVisible(true);
     }
 
     @FXML
-    private void cancelRoomsAdd(){
+    private void cancelRoomAdd(){
         setAddRoomsComponentsVisible(false);
         setOriRoomsComponentsVisible(true);
     }
 
     @FXML
-    private void modifyRoomsPromotion(){
+    private void modifyRoomPromotion(){
 
     }
 
     @FXML
-    private void deleteRoomsPromotion(){
+    private void deleteRoomPromotion(){
 
     }
 
     private void setAddRoomsComponentsVisible(Boolean isVisible){
-        addRoomsHBox.setVisible(isVisible);
-        confirmRoomsBtn.setVisible(isVisible);
-        cancelRoomsBtn.setVisible(isVisible);
+        addRoomHBox.setVisible(isVisible);
+        confirmRoomBtn.setVisible(isVisible);
+        cancelRoomBtn.setVisible(isVisible);
     }
     private void setOriRoomsComponentsVisible(Boolean isVisible){
-        addRoomsBtn.setVisible(isVisible);
-        modifyRoomsBtn.setVisible(isVisible);
-        deleteRoomsBtn.setVisible(isVisible);
+        //TODO 如果已添加促销策略 则不再显示添加按钮
+        if (!isExistRoom)addRoomBtn.setVisible(isVisible);
+        else {
+            modifyRoomBtn.setVisible(isVisible);
+            deleteRoomBtn.setVisible(isVisible);
+        }
     }
 
     @FXML
@@ -135,6 +181,8 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmTimeAdd(){
+        //TODO 如果已添加促销策略 则不再显示添加按钮
+        isExistTime =true;
         setAddTimeComponentsVisible(false);
         setOriTimeComponentsVisible(true);
     }
@@ -161,9 +209,12 @@ public class ManagePromotionPaneController {
         cancelTimeBtn.setVisible(isVisible);
     }
     private void setOriTimeComponentsVisible(Boolean isVisible){
-        addTimeBtn.setVisible(isVisible);
-        modifyTimeBtn.setVisible(isVisible);
-        deleteTimeBtn.setVisible(isVisible);
+        //TODO 如果已添加促销策略 则不再显示添加按钮
+        if (!isExistTime)addTimeBtn.setVisible(isVisible);
+        else {
+            modifyTimeBtn.setVisible(isVisible);
+            deleteTimeBtn.setVisible(isVisible);
+        }
     }
 
     @FXML
@@ -174,6 +225,8 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmComAdd(){
+        //TODO 如果已添加促销策略 则不再显示添加按钮
+        isExistCom = true;
         setAddComComponentsVisible(false);
         setOriComComponentsVisible(true);
     }
@@ -200,8 +253,57 @@ public class ManagePromotionPaneController {
         cancelComBtn.setVisible(isVisible);
     }
     private void setOriComComponentsVisible(Boolean isVisible){
-        addComBtn.setVisible(isVisible);
-        modifyComBtn.setVisible(isVisible);
-        deleteComBtn.setVisible(isVisible);
+        //TODO 如果已添加促销策略 则不再显示添加按钮
+        if (!isExistCom)addComBtn.setVisible(isVisible);
+        else {
+            modifyComBtn.setVisible(isVisible);
+            deleteComBtn.setVisible(isVisible);
+        }
+    }
+
+
+
+    @FXML
+    private void showBirth(){
+        showVBox(birthVBox);
+        moveSliderLabel(36);
+    }
+
+    @FXML
+    private void showRoom(){
+        showVBox(roomVBox);
+        moveSliderLabel(168);
+    }
+
+    @FXML
+    private void showTime(){
+        showVBox(timeVBox);
+        moveSliderLabel(300);
+    }
+
+    @FXML
+    private void showCom(){
+        showVBox(comVBox);
+        moveSliderLabel(432);
+    }
+
+    private void showVBox(VBox visibleBox){
+        for (VBox vbox: vBoxes) {
+            if(vbox == visibleBox) vbox.setVisible(true);
+            else vbox.setVisible(false);
+        }
+    }
+
+    /**
+     * 移动滑块
+     * @param x 滑块的新位置x
+     */
+    private void moveSliderLabel(double x){
+        Timeline timeline = new Timeline();
+        timeline.setAutoReverse(false);
+        KeyValue newX = new KeyValue(sliderPromotionLabel.layoutXProperty(),x);
+        KeyFrame kf = new KeyFrame(Duration.millis(200), newX);
+        timeline.getKeyFrames().add(kf);
+        timeline.play();
     }
 }
