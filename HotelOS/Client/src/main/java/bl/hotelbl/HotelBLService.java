@@ -28,13 +28,13 @@ public interface HotelBLService {
      */
     ResultMessage deleteHotel(long hotelID);
 
-        /**
-         * 根据酒店id查找酒店
-         *
-         * @param hotelID 酒店的id
-         * @return 酒店的详细信息
-         * @deprecated
-         */
+    /**
+     * 根据酒店id查找酒店
+     *
+     * @param hotelID 酒店的id
+     * @return 酒店的详细信息
+     * @deprecated
+     */
     HotelVO findHotelByID(long hotelID);
 
     /**
@@ -96,9 +96,6 @@ public interface HotelBLService {
     List<RoomVO> findRoomsByHotelID(long hotelID);
 
 
-
-
-
     /**
      * 酒店工作人员查看酒店的基本信息
      *
@@ -112,9 +109,9 @@ public interface HotelBLService {
     /**
      * 酒店工作人员更新酒店的基本信息
      *
-     *
      * @return SUCCESS或者FAIL，FAIL表示不存在该酒店
      */
     ResultMessage updateBasicHotelInfo(long hotelID, String address, String tradingArea, String description, String service);
 
+    public ResultMessage updateBasicHotelInfo(HotelVO hotelVO);
 }

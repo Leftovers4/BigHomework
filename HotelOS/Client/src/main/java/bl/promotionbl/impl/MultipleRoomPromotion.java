@@ -19,7 +19,7 @@ public class MultipleRoomPromotion implements Sale{
     public double getActualPrice(OrderVO orderVO) {
         double price = orderVO.orderPriceVO.originPrice;
 
-        if (orderVO.rooms.size() >= leastRooms){
+        if (orderVO.roomAmount >= leastRooms){
             return price * discount;
         }else {
             return price;

@@ -18,7 +18,8 @@ public class PersonnelData {
 
     public Personnel findByHotelID(long hotelID){
         try {
-            return (Personnel)(personnelDao.findByHotelID(hotelID));
+            //todo 方法错误，重新调用
+            return (Personnel)(personnelDao.findByPersonnelID(hotelID));
         } catch (RemoteException e) {
             e.printStackTrace();
             return null;

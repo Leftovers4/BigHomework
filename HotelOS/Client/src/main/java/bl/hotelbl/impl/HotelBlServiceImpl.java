@@ -49,7 +49,7 @@ public class HotelBlServiceImpl implements HotelBLService {
 
     @Override
     public HotelVO findHotelByID(long hotelID) {
-        return hotelData.getBasicHotelInfo(hotelID);
+        return null;
     }
 
     @Override
@@ -94,7 +94,7 @@ public class HotelBlServiceImpl implements HotelBLService {
     public HotelVO viewBasicHotelInfo(long hotelID) {
         Hotel hotel = hotelData.find(hotelID);
         Personnel personnel = personnelData.findByHotelID(hotelID);
-        double rating = orderData.find(hotelID).getRating();
+        double rating = orderData.findByHotelID(hotelID).getRating();
 
         return logicVOHelper.create(hotel, personnel, rating);
     }
@@ -102,7 +102,7 @@ public class HotelBlServiceImpl implements HotelBLService {
     @Override
     public List<ReviewVO> viewHotelReviews(long hotelID) {
         List<ReviewVO> res = new ArrayList<>();
-        OrderList orderList = orderData.find(hotelID);
+        OrderList orderList = orderData.findByHotelID(hotelID);
 
         for (int i = 0; i < orderList.size(); i++) {
             Order order = orderList.get(i);
@@ -112,6 +112,11 @@ public class HotelBlServiceImpl implements HotelBLService {
         }
 
         return res;
+    }
+
+    @Override
+    public ResultMessage updateBasicHotelInfo(long hotelID, String address, String tradingArea, String description, String service) {
+        return null;
     }
 
     @Override

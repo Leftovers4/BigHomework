@@ -62,7 +62,7 @@ public class HotelData implements RoomInfoService{
             return hotelDao.insert(hotelPOCreator.create(hotelVO));
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.ConnectionError;
+            return ResultMessage.ServerConnectionFail;
         }
     }
 
@@ -71,7 +71,7 @@ public class HotelData implements RoomInfoService{
             return hotelDao.delete(hotelID);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.ConnectionError;
+            return ResultMessage.ServerConnectionFail;
         }
     }
 
@@ -81,7 +81,7 @@ public class HotelData implements RoomInfoService{
             return hotelDao.update(hotelPOCreator.create(originHotelPO, hotelVO));
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.ConnectionError;
+            return ResultMessage.ServerConnectionFail;
         }
     }
 
@@ -98,7 +98,7 @@ public class HotelData implements RoomInfoService{
             return hotelDao.insertRoom(hotelPOCreator.create(roomVO));
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.ConnectionError;
+            return ResultMessage.ServerConnectionFail;
         }
     }
 
@@ -107,7 +107,7 @@ public class HotelData implements RoomInfoService{
             return hotelDao.deleteRoom(roomID);
         } catch (RemoteException e) {
             e.printStackTrace();
-            return ResultMessage.ConnectionError;
+            return ResultMessage.ServerConnectionFail;
         }
     }
 

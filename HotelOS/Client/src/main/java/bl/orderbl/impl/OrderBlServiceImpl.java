@@ -85,7 +85,7 @@ public class OrderBlServiceImpl implements OrderBLService {
     @Override
     public List<OrderVO> viewTypeHotelOrderList(long hotelID, OrderType orderType) {
         List<OrderVO> res = new ArrayList<>();
-        OrderList orderList = orderData.find(hotelID, orderType);
+        OrderList orderList = orderData.findByHotelIDAndType(hotelID, orderType);
 
         for (int i = 0; i < orderList.size(); i++) {
             res.add(orderVOCreator.createOrderVO(orderList.get(i)));
@@ -97,7 +97,7 @@ public class OrderBlServiceImpl implements OrderBLService {
     @Override
     public List<OrderVO> viewFullHotelOrderList(long hotelID) {
         List<OrderVO> res = new ArrayList<>();
-        OrderList orderList = orderData.find(hotelID);
+        OrderList orderList = orderData.findByHotelID(hotelID);
 
         for (int i = 0; i < orderList.size(); i++) {
             res.add(orderVOCreator.createOrderVO(orderList.get(i)));

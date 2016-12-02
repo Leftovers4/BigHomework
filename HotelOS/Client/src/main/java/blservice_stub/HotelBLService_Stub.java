@@ -6,6 +6,7 @@ import util.RoomType;
 import vo.hotel.HotelVO;
 import vo.hotel.LogicVOHelper;
 import vo.hotel.RoomVO;
+import vo.order.ReviewVO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +37,6 @@ public class HotelBLService_Stub implements HotelBLService {
     @Override
     public ResultMessage updateBasicHotelInfo(HotelVO hotelVO) {
         return ResultMessage.Success;
-    }
-
-    @Override
-    public HotelVO getBasicHotelInfo(long hotelID) {
-        return logicVOHelper.create(1,"如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi");
     }
 
     @Override
@@ -90,5 +86,20 @@ public class HotelBLService_Stub implements HotelBLService {
         list.add(logicVOHelper.create(hotelID,RoomType.Couple,20,400));
         list.add(logicVOHelper.create(hotelID,RoomType.Couple,30,500));
         return list;
+    }
+
+    @Override
+    public HotelVO viewBasicHotelInfo(long hotelID) {
+        return logicVOHelper.create(1,"如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi");
+    }
+
+    @Override
+    public List<ReviewVO> viewHotelReviews(long hotelID) {
+        return null;
+    }
+
+    @Override
+    public ResultMessage updateBasicHotelInfo(long hotelID, String address, String tradingArea, String description, String service) {
+        return null;
     }
 }

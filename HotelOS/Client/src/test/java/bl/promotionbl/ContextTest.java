@@ -28,7 +28,16 @@ public class ContextTest {
         ArrayList<RoomVO> roomVOs = new ArrayList<>();
         roomVOs.add(new LogicVOHelper().create(1, RoomType.Couple,0, 0));
         OrderPriceVO orderPriceVO = new OrderPriceVO(100, 0);
-        orderVO = new OrderVO("12345620161111001", 123456,"张三", OrderType.Abnormal,"如家", roomVOs,null, 2, false, null, null,orderPriceVO,null);
+        OrderVO orderVO = new OrderVO();
+        orderVO.orderID = "12345678912345678";
+        orderVO.hotelID = 123456;
+        orderVO.username = "user1";
+        orderVO.orderType = OrderType.Abnormal;
+        orderVO.hotelName = "如家";
+        orderVO.roomNumber = "A110 A250";
+        orderVO.roomAmount = 2;
+        orderVO.withChildren = false;
+        orderVO.orderPriceVO = orderPriceVO;
 
         assert 90 == context.getActualPrice(orderVO);
     }

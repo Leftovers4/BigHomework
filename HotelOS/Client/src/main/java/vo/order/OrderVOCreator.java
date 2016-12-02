@@ -1,6 +1,7 @@
 package vo.order;
 
 import bl.orderbl.impl.Order;
+import util.OrderType;
 
 /**
  * Created by lib on 2016/12/1.

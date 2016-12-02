@@ -8,6 +8,7 @@ import vo.order.ReviewVO;
 import vo.user.CreditVO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kevin on 2016/10/16.
@@ -45,13 +46,6 @@ public class OrderBLService_Stub implements OrderBLService {
     }
 
     @Override
-    public ArrayList<OrderVO> viewOrderList(OrderVO orderVO) {
-        ArrayList<OrderVO> list = new ArrayList<OrderVO>();
-        list.add(new OrderVO("12345620161111001", 123456,"张三", OrderType.Abnormal,"如家", null,null, 2, false, null, null,null,null));
-        return list;
-    }
-
-    @Override
     public ArrayList<OrderVO> showListByUsername(String username) {
         return null;
     }
@@ -73,6 +67,16 @@ public class OrderBLService_Stub implements OrderBLService {
 
     @Override
     public ResultMessage handleAppeal(String orderID, double credit) {
+        return null;
+    }
+
+    @Override
+    public List<OrderVO> viewFullHotelOrderList(long hotelID) {
+        return null;
+    }
+
+    @Override
+    public List<OrderVO> viewTypeHotelOrderList(long hotelID, OrderType orderType) {
         return null;
     }
 }
