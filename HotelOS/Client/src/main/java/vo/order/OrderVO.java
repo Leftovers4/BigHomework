@@ -1,6 +1,7 @@
 package vo.order;
 
 import util.OrderType;
+import util.RoomType;
 import vo.hotel.RoomVO;
 
 import java.util.ArrayList;
@@ -40,11 +41,9 @@ public class OrderVO {
      */
     public String hotelName;
 
+    public int roomAmount;
 
-    /**
-     * 房间类型及数量
-     */
-    public ArrayList<RoomVO> rooms;
+    public RoomType roomType;
 
 
     /**
@@ -89,23 +88,4 @@ public class OrderVO {
      */
     public OrderHandleAppealVO orderHandleAppealVO;
 
-
-    /**
-     * 用于生成订单
-     */
-    public OrderVO(String orderID, long hotelID, String username, OrderType orderType, String hotelName, ArrayList<RoomVO> rooms, String roomNumber, int personAmount, boolean withChildren, ReviewVO reviewVO, OrderTimeVO orderTimeVO, OrderPriceVO orderPriceVO, OrderHandleAppealVO orderHandleAppealVO) {
-        this.orderID = orderID;
-        this.hotelID = hotelID;
-        this.username = username;
-        this.orderType = orderType;
-        this.hotelName = hotelName;
-        this.rooms = rooms;
-        this.roomNumber = roomNumber;
-        this.personAmount = personAmount;
-        this.withChildren = withChildren;
-        this.reviewVO = reviewVO;
-        this.orderTimeVO = orderTimeVO;
-        this.orderPriceVO = orderPriceVO;
-        this.orderHandleAppealVO = orderHandleAppealVO;
-    }
 }

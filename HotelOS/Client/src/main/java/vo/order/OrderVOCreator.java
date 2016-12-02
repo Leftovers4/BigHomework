@@ -24,4 +24,25 @@ public class OrderVOCreator {
         return res;
     }
 
+    public OrderVO createOrderVO(Order order){
+        OrderVO res = new OrderVO();
+
+        res.orderID = order.getOrderID();
+        res.orderType = order.getOrderType();
+        res.orderPriceVO.actualPrice = order.getActualPrice();
+        res.orderTimeVO.generateTime = order.getGenerateTime();
+        res.orderTimeVO.lastExecuteTime = order.getLastExecuteTime();
+        res.orderTimeVO.checkinTime = order.getCheckinTime();
+        res.orderTimeVO.expectedLeaveTime = order.getExpectedLeaveTime();
+        res.orderTimeVO.leaveTime = order.getLeaveTime();
+        res.username = order.getUsername();
+        res.personAmount = order.getPersonAmount();
+        res.withChildren = order.isWithChildren();
+        res.roomType = order.getRoomType();
+        res.roomAmount = order.getRoomAmount();
+        res.roomNumber = order.getRoomNumber();
+
+        return res;
+    }
+
 }

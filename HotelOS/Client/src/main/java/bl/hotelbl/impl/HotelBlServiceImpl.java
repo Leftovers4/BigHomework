@@ -88,7 +88,7 @@ public class HotelBlServiceImpl implements HotelBLService {
         return hotelData.findRoomsByHotelID(hotelID);
     }
 
-
+/*--------------------------------------------------------------------------------------------------------------------*/
 
     @Override
     public HotelVO viewBasicHotelInfo(long hotelID) {
@@ -115,13 +115,13 @@ public class HotelBlServiceImpl implements HotelBLService {
     }
 
     @Override
-    public ResultMessage updateBasicHotelInfo(long hotelID, String address, String tradingArea, String description, String service) {
-        Hotel hotel = hotelData.find(hotelID);
+    public ResultMessage updateBasicHotelInfo(HotelVO hotelVO) {
+        Hotel hotel = hotelData.find(hotelVO.hotelID);
 
-        hotel.setAddress(address);
-        hotel.setTradingArea(tradingArea);
-        hotel.setDescription(description);
-        hotel.setService(service);
+        hotel.setAddress(hotelVO.address);
+        hotel.setTradingArea(hotelVO.tradingArea);
+        hotel.setDescription(hotelVO.description);
+        hotel.setService(hotelVO.service);
 
         return hotelData.update(hotel);
     }

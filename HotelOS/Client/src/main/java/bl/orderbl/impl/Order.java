@@ -25,4 +25,36 @@ public class Order extends OrderPO {
         return this.getReviewPO().getReviewTime();
     }
 
+    public double getActualPrice(){
+        return this.getOrderPricePO().getActualPrice();
+    }
+
+    public LocalDateTime getGenerateTime(){
+        return this.getOrderTimePO().getGenerateTime();
+    }
+
+    public LocalDateTime getExpectedCheckinTime() {
+        return this.getOrderTimePO().getExpectedCheckinTime();
+    }
+
+    public LocalDateTime getCheckinTime() {
+        return this.getOrderTimePO().getCheckinTime();
+    }
+
+    public LocalDateTime getExpectedLeaveTime() {
+        return this.getOrderTimePO().getExpectedLeaveTime();
+    }
+
+    public LocalDateTime getLeaveTime() {
+        return this.getOrderTimePO().getLeaveTime();
+    }
+
+    public LocalDateTime getLastExecuteTime() {
+        return this.getOrderTimePO().getLastExecuteTime();
+    }
+
+    public LocalDateTime getCancelTime() {
+        return this.getOrderTimePO().getCancelTime();
+    }
+
 }

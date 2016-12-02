@@ -5,11 +5,16 @@ import vo.order.ReviewVO;
 import vo.user.CreditVO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Hiki on 2016/10/15.
  */
 public interface OrderBLService {
+
+    OrderVO searchOrderByID(String orderID);
+
+/*--------------------------------------------------------------------------------------------------------------------*/
 
     // 添加订单
     ResultMessage addOrder(OrderVO orderVO);
@@ -26,12 +31,10 @@ public interface OrderBLService {
     ResultMessage reviewOrder(ReviewVO reviewVO);
 
     // 根据订单ID查找订单
-    OrderVO searchOrderByID(String orderID);
 
     // 根据条件显示订单列表
     // (待推敲) 根据用户、酒店、类型查找订单
     // (待推敲) 根据用户查找预定过的酒店
-    ArrayList<OrderVO> viewOrderList(OrderVO orderVO);
 
     // 根据用户名查找订单列表
     ArrayList<OrderVO> showListByUsername(String username);
@@ -47,5 +50,11 @@ public interface OrderBLService {
 
     //处理订单申诉
     ResultMessage handleAppeal(String orderID, double credit);
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+    List<OrderVO> viewFullHotelOrderList(long hotelID);
+
+    List<OrderVO> viewTypeHotelOrderList(long hotelID, OrderType orderType);
 
 }

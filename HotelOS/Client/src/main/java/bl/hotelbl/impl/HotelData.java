@@ -19,7 +19,6 @@ import java.util.List;
  */
 public class HotelData implements RoomInfoService{
 
-
     private HotelDataService hotelDao;
     private HotelPOCreator hotelPOCreator;
 
