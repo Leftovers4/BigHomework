@@ -1,6 +1,5 @@
-package data.datahelper;
+package data.datahelper.hoteldatahelper;
 
-import data.datahelper.hoteldatahelper.RoomDataHelperImpl;
 import org.junit.Before;
 import org.junit.Test;
 import util.ResultMessage;
@@ -8,8 +7,10 @@ import util.RoomType;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.*;
+
 /**
- * Created by Hiki on 11/22/2016.
+ * Created by Hiki on 12/3/2016.
  */
 public class RoomDataHelperImplTest {
 
@@ -20,9 +21,8 @@ public class RoomDataHelperImplTest {
         tested = new RoomDataHelperImpl();
     }
 
-
     @Test
-    public void testInsertToSQL(){
+    public void insertToSQL() throws Exception {
         ArrayList<Object> input = new ArrayList<>();
         input.add(110111);
         input.add(522000);
@@ -36,7 +36,13 @@ public class RoomDataHelperImplTest {
     }
 
     @Test
-    public void testUpdateFromSQL(){
+    public void deleteFromSQL() throws Exception {
+        ResultMessage result = tested.deleteFromSQL(110111);
+        System.out.println(result.toString());
+    }
+
+    @Test
+    public void updateFromSQL() throws Exception {
         ArrayList<Object> input = new ArrayList<>();
         input.add(110110);
         input.add(522000);
@@ -50,11 +56,13 @@ public class RoomDataHelperImplTest {
     }
 
     @Test
-    public void testDeleteFromSQL(){
-        ResultMessage result = tested.deleteFromSQL(110111);
-        System.out.println(result.toString());
+    public void findFromSQL() throws Exception {
 
     }
 
+    @Test
+    public void findByIDFromSQL() throws Exception {
+
+    }
 
 }

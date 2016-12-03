@@ -1,15 +1,15 @@
-package data.datahelper;
+package data.datahelper.hoteldatahelper;
 
-import data.datahelper.hoteldatahelper.HotelDataHelper;
-import data.datahelper.hoteldatahelper.HotelDataHelperImpl;
 import org.junit.Before;
 import org.junit.Test;
 import util.ResultMessage;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.*;
+
 /**
- * Created by Hiki on 11/22/2016.
+ * Created by Hiki on 12/3/2016.
  */
 public class HotelDataHelperImplTest {
 
@@ -21,7 +21,7 @@ public class HotelDataHelperImplTest {
     }
 
     @Test
-    public void testInsertToSQL(){
+    public void insertToSQL() throws Exception {
         ArrayList<Object> input = new ArrayList<>();
         input.add(522000);
         input.add("榕江大酒店");
@@ -35,7 +35,12 @@ public class HotelDataHelperImplTest {
     }
 
     @Test
-    public void testUpdateFromSQL(){
+    public void deleteFromSQL() throws Exception {
+
+    }
+
+    @Test
+    public void updateFromSQL() throws Exception {
         ArrayList<Object> input = new ArrayList<>();
         input.add(522001);
         input.add("榕江中酒店");
@@ -49,7 +54,7 @@ public class HotelDataHelperImplTest {
     }
 
     @Test
-    public void testFindFromSQL(){
+    public void findFromSQL() throws Exception {
         ArrayList<ArrayList<Object>> output = new ArrayList<>();
         output = tested.findFromSQL();
         for (ArrayList<Object> each : output) {
@@ -58,20 +63,14 @@ public class HotelDataHelperImplTest {
             }
             System.out.println();
         }
-
     }
 
     @Test
-    public void testFindByIdFromSQL(){
+    public void findByIdFromSQL() throws Exception {
         ArrayList<Object> output = tested.findByIdFromSQL(522000);
         for (Object a : output) {
             System.out.print(a.toString() + " ");
         }
     }
-
-
-
-
-
 
 }
