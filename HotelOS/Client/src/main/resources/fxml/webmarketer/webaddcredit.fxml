@@ -6,7 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/webmarketer/webmarketerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmarketerui.webmarketercontroller.AddCreditPaneController">
+<fx:root prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmarketerui.webmarketercontroller.AddCreditPaneController">
    <children>
       <ImageView fx:id="userPhoto" fitHeight="170.0" fitWidth="170.0" layoutX="80.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
          <image>

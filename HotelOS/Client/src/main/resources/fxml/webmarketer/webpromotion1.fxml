@@ -6,7 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/webmarketer/webmarketerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmarketerui.webmarketercontroller.ManagePromotionPaneController">
+<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmarketerui.webmarketercontroller.ManagePromotionPaneController">
    <children>
       <HBox layoutX="36.0" layoutY="110.0">
          <children>

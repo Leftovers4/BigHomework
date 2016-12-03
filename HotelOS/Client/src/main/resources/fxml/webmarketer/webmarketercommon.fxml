@@ -6,7 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../../css/webmarketer/webmarketerstyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmarketerui.webmarketercontroller.ComMarketerSceneController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmarketerui.webmarketercontroller.ComMarketerSceneController">
     <children>
         <VBox id="LeftArea" fx:id="leftArea" prefHeight="690.0" prefWidth="230.0">
             <children>
@@ -18,7 +18,7 @@
                         <Insets />
                     </VBox.margin>
                 </ImageView>
-                <Button fx:id="managePromotionBtn" mnemonicParsing="false" onAction="#showManagePromotion" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="制定促销策略">
+                <Button fx:id="managePromotionBtn" mnemonicParsing="false" onAction="#showManagePromotion" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="促销策略">
                     <VBox.margin>
                         <Insets top="150.0" />
                     </VBox.margin>
@@ -28,7 +28,7 @@
                 <Button fx:id="addCreditBtn" mnemonicParsing="false" onAction="#showAddCredit" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="信用充值" />
             </children></VBox>
         <Pane fx:id="mainPane" layoutX="230.0" maxHeight="690.0" maxWidth="850.0" minHeight="690.0" minWidth="850.0" prefHeight="690.0" prefWidth="850.0" styleClass="panel" />
-        <HBox alignment="CENTER_RIGHT" layoutY="690.0" prefHeight="30.0" prefWidth="1080.0">
+        <HBox id="bottomHBox" alignment="CENTER_RIGHT" layoutY="690.0" prefHeight="30.0" prefWidth="1080.0">
          <children>
             <Label fx:id="timeLabel" text="Label" />
          </children></HBox>

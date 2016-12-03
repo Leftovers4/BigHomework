@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmarketerui.webmarketercontroller.OrderListPaneController">
+    <children>
+      <TableView id="listTable" fx:id="orderTable" layoutX="84.0" layoutY="170.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="450.0" prefWidth="682.0">
+        <columns>
+          <TableColumn id="hotelMarketCol" fx:id="hotelCol" editable="false" prefWidth="160.0" text="酒店" />
+          <TableColumn id="idCol" fx:id="idCol" editable="false" prefWidth="200.0" text="订单号" />
+            <TableColumn id="userCol" fx:id="userCol" prefWidth="100.0" text="客户" />
+            <TableColumn id="typeCol" fx:id="typeCol" editable="false" prefWidth="100.0" text="状态" />
+            <TableColumn id="opCol" fx:id="opCol" prefWidth="95.0" text="操作" />
+        </columns>
+      </TableView>
+      <HBox fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="84.0" layoutY="110.0" prefHeight="60.0" prefWidth="682.0" styleClass="listTopBar">
+         <children>
+            <ComboBox fx:id="hotelBox" layoutX="262.0" layoutY="17.0" prefHeight="36.0" prefWidth="153.0" promptText="酒店">
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin></ComboBox>
+            <ComboBox fx:id="orderTypeBox" prefHeight="36.0" prefWidth="153.0" promptText="所有订单">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </ComboBox>
+            <StackPane alignment="CENTER_RIGHT">
+               <children>
+                  <TextField id="searchField" fx:id="searchField" prefHeight="36.0" promptText="订单号">
+                     <StackPane.margin>
+                        <Insets left="5.0" />
+                     </StackPane.margin>
+                  </TextField>
+                  <Button id="searchOrderIDBtn" fx:id="searchOrderIDBtn" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/hotelworker/searchInField.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <StackPane.margin>
+                        <Insets right="2.0" />
+                     </StackPane.margin>
+                  </Button>
+               </children>
+               <HBox.margin>
+                  <Insets left="150.0" />
+               </HBox.margin>
+            </StackPane>
+         </children>
+      </HBox>
+    </children>
+</fx:root>

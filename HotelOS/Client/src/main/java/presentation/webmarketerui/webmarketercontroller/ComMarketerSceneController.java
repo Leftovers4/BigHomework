@@ -108,7 +108,7 @@ public class ComMarketerSceneController {
     private void showAppealOrder() {
 //        leftBarBtnEffect(registerRoomBtn);
 //        changeSliderPos(350);
-        changePane(new FindOrderPane(stage, mainPane));
+        changePane(new FindOrderPane(mainPane));
 //        currentBtn = registerRoomBtn;
     }
 
@@ -116,7 +116,7 @@ public class ComMarketerSceneController {
     private void showAddCredit() {
 //        leftBarBtnEffect(hotelInfoBtn);
 //        changeSliderPos(260);
-        changePane(new FindUserPane(stage, mainPane));
+        changePane(new FindUserPane(mainPane));
 //        currentBtn = hotelInfoBtn;
     }
 

@@ -12,11 +12,11 @@ import java.io.IOException;
  * Description :
  */
 public class AppealOrderPane extends Pane{
-    public AppealOrderPane(Stage primaryStage, Pane mainPane) {
-        loadFxml(primaryStage,mainPane);
+    public AppealOrderPane(Pane mainPane) {
+        loadFxml(mainPane);
     }
 
-    private void loadFxml(Stage primaryStage,Pane mainPane) {
+    private void loadFxml(Pane mainPane) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/webmarketer/weborderappeal.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -26,6 +26,6 @@ public class AppealOrderPane extends Pane{
         }
 
         AppealOrderPaneController appealOrderPaneController = fxmlLoader.getController();
-        appealOrderPaneController.launch(primaryStage,mainPane);
+        appealOrderPaneController.launch(mainPane);
     }
 }

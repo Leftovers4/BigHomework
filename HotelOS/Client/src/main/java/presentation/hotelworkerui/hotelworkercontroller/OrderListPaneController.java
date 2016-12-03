@@ -13,10 +13,8 @@ import presentation.util.AlertController;
 import presentation.util.HotelListButtonCell;
 import util.OrderType;
 import vo.order.OrderPriceVO;
-import vo.order.OrderTimeVO;
 import vo.order.OrderVO;
 
-import java.time.LocalDateTime;
 
 
 /**
@@ -79,6 +77,7 @@ public class OrderListPaneController {
         userCol.setCellValueFactory(new PropertyValueFactory<>("username"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("actualPrice"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
+
         checkInTimeCol.setCellValueFactory(new PropertyValueFactory<>("checkinTime"));
         //操作列添加按钮
         opCol.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {

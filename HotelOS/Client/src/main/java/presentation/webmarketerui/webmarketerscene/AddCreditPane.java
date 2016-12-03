@@ -2,7 +2,6 @@ package presentation.webmarketerui.webmarketerscene;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import presentation.webmarketerui.webmarketercontroller.AddCreditPaneController;
 
 import java.io.IOException;
@@ -12,11 +11,11 @@ import java.io.IOException;
  * Description :
  */
 public class AddCreditPane extends Pane{
-    public AddCreditPane(Stage primaryStage, Pane mainPane) {
-        loadFxml(primaryStage,mainPane);
+    public AddCreditPane(Pane mainPane) {
+        loadFxml(mainPane);
     }
 
-    private void loadFxml(Stage primaryStage,Pane mainPane) {
+    private void loadFxml(Pane mainPane) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/webmarketer/webaddcredit.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -26,6 +25,6 @@ public class AddCreditPane extends Pane{
         }
 
         AddCreditPaneController addCreditPaneController = fxmlLoader.getController();
-        addCreditPaneController.launch(primaryStage,mainPane);
+        addCreditPaneController.launch(mainPane);
     }
 }

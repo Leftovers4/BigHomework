@@ -11,11 +11,9 @@ import presentation.webmarketerui.webmarketerscene.AddCreditPane;
  * Description :
  */
 public class FindUserPaneController {
-    private Stage stage;
     private Pane mainPane;
     private AlertController alertController;
-    public void launch(Stage primaryStage,Pane mainPane){
-        this.stage = primaryStage;
+    public void launch(Pane mainPane){
         this.mainPane = mainPane;
         alertController = new AlertController();
     }
@@ -23,17 +21,7 @@ public class FindUserPaneController {
     @FXML
     private void findUser(){
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new AddCreditPane(stage,mainPane));
+        mainPane.getChildren().add(new AddCreditPane(mainPane));
     }
 
-    @FXML
-    private void closeWindow(){
-        if(alertController.showConfirmExitAlert()) stage.close();
-    }
-
-    @FXML
-    private void minWindow(){}
-
-    @FXML
-    private void back(){}
 }

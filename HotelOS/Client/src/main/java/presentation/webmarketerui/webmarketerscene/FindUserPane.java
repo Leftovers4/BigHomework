@@ -13,11 +13,11 @@ import java.io.IOException;
  */
 public class FindUserPane extends Pane{
 
-    public FindUserPane(Stage primaryStage, Pane mainPane) {
-        loadFxml(primaryStage,mainPane);
+    public FindUserPane(Pane mainPane) {
+        loadFxml(mainPane);
     }
 
-    private void loadFxml(Stage primaryStage,Pane mainPane) {
+    private void loadFxml(Pane mainPane) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/webmarketer/webfinduser.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -27,6 +27,6 @@ public class FindUserPane extends Pane{
         }
 
         FindUserPaneController findUserPaneController = fxmlLoader.getController();
-        findUserPaneController.launch(primaryStage,mainPane);
+        findUserPaneController.launch(mainPane);
     }
 }

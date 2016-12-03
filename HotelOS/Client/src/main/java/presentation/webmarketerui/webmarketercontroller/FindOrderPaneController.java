@@ -11,12 +11,10 @@ import presentation.webmarketerui.webmarketerscene.AppealOrderPane;
  * Description :
  */
 public class FindOrderPaneController {
-    private Stage stage;
     private Pane mainPane;
     private AlertController alertController;
 
-    public void launch(Stage primaryStage, Pane mainPane) {
-        this.stage = primaryStage;
+    public void launch(Pane mainPane) {
         this.mainPane = mainPane;
         alertController = new AlertController();
     }
@@ -24,19 +22,7 @@ public class FindOrderPaneController {
     @FXML
     private void findOrder() {
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new AppealOrderPane(stage, mainPane));
+        mainPane.getChildren().add(new AppealOrderPane(mainPane));
     }
 
-    @FXML
-    private void closeWindow() {
-        if (alertController.showConfirmExitAlert()) stage.close();
-    }
-
-    @FXML
-    private void minWindow() {
-    }
-
-    @FXML
-    private void back() {
-    }
 }
