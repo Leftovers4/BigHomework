@@ -43,13 +43,11 @@ public class OrderListPaneController {
     private ComboBox orderTypeBox;
 
 
-    private Stage stage;
     private Pane mainPane;
     private AlertController alertController;
     private ObservableList<OrderVO> orderVoList;
 
-    public void launch(Stage primaryStage, Pane mainPane) {
-        this.stage = primaryStage;
+    public void launch(Pane mainPane) {
         this.mainPane = mainPane;
         alertController = new AlertController();
 
@@ -60,6 +58,7 @@ public class OrderListPaneController {
 
     private void initBox() {
         orderTypeBox.getItems().addAll("所有订单", "未执行订单", "已执行订单", "异常订单");
+
         addBoxListener();
     }
 
@@ -83,15 +82,23 @@ public class OrderListPaneController {
         orderTable.setItems(orderVoList);
     }
 
+    //TODO 调用逻辑接口获得订单数据
     private ObservableList<OrderVO> getOrderVoList() {
         ObservableList<OrderVO> list = FXCollections.observableArrayList();
-        OrderPriceVO orderPriceVO = new OrderPriceVO(250, 200);
 
-        list.add(new OrderVO());
+        OrderPriceVO orderPriceVO = new OrderPriceVO(250, 200);
+        OrderVO orderVO = new OrderVO();
+        orderVO.hotelName = "如家酒店";
+        orderVO.orderID = "12345678912345678";
+        orderVO.username = "陆仁贾";
+        orderVO.orderType = OrderType.Abnormal;
+        orderVO.orderPriceVO = orderPriceVO;
+        list.add(orderVO);
         return list;
     }
 
     /**
+     * TODO 将showOrderList方法更换为 逻辑给的接口
      * 设置组合框的监听
      */
     private void addBoxListener() {

@@ -262,24 +262,36 @@ public class ManagePromotionPaneController {
     @FXML
     private void showBirth(){
         showVBox(birthVBox);
+        setAddBirthComponentsVisible(false);
+        setOriBirthComponentsVisible(true);
+
         MySlider.moveSliderLabel(sliderPromotionLabel,36);
     }
 
     @FXML
     private void showRoom(){
         showVBox(roomVBox);
+        setAddRoomsComponentsVisible(false);
+        setOriRoomsComponentsVisible(true);
+
         MySlider.moveSliderLabel(sliderPromotionLabel,168);
     }
 
     @FXML
     private void showTime(){
         showVBox(timeVBox);
+        setAddTimeComponentsVisible(false);
+        setOriTimeComponentsVisible(true);
+
         MySlider.moveSliderLabel(sliderPromotionLabel,300);
     }
 
     @FXML
     private void showCom(){
         showVBox(comVBox);
+        setAddComComponentsVisible(false);
+        setOriComComponentsVisible(true);
+
         MySlider.moveSliderLabel(sliderPromotionLabel,432);
     }
 

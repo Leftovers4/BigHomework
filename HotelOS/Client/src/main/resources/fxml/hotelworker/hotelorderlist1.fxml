@@ -10,12 +10,12 @@
     <children>
       <TableView fx:id="orderTable" layoutX="43.0" layoutY="170.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="450.0" prefWidth="765.0">
         <columns>
-          <TableColumn id="idCol" fx:id="idCol" editable="false" prefWidth="180.0" sortable="false" text="订单号" />
-          <TableColumn id="userCol" fx:id="userCol" editable="false" prefWidth="90.0" sortable="false" text="客户" />
-            <TableColumn id="checkInTimeCol" fx:id="checkInTimeCol" editable="false" prefWidth="180.0" text="入住时间" />
-            <TableColumn id="priceCol" fx:id="priceCol" editable="false" prefWidth="90.0" text="价值" />
-            <TableColumn id="typeCol" fx:id="typeCol" editable="false" prefWidth="105.0" sortable="false" text="状态" />
-            <TableColumn id="opCol" fx:id="opCol" editable="false" prefWidth="95.0" sortable="false" text="操作" />
+          <TableColumn fx:id="idCol" editable="false" prefWidth="180.0" sortable="false" styleClass="LeftAlignCol" text="订单号" />
+          <TableColumn fx:id="userCol" editable="false" prefWidth="90.0" sortable="false" styleClass="LeftAlignCol" text="客户" />
+            <TableColumn fx:id="checkInTimeCol" editable="false" prefWidth="180.0" styleClass="LeftAlignCol" text="入住时间" />
+            <TableColumn fx:id="priceCol" editable="false" prefWidth="90.0" styleClass="RightAlignCol" text="价值" />
+            <TableColumn fx:id="typeCol" editable="false" prefWidth="105.0" sortable="false" styleClass="LeftAlignCol" text="状态" />
+            <TableColumn fx:id="opCol" editable="false" prefWidth="95.0" sortable="false" styleClass="MidAlignCol" text="操作" />
         </columns>
       </TableView>
       <HBox fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="43.0" layoutY="110.0" prefHeight="60.0" prefWidth="765.0" styleClass="listTopBar">

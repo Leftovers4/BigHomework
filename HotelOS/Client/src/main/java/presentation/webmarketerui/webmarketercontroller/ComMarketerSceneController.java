@@ -99,7 +99,7 @@ public class ComMarketerSceneController {
     private void showOrderList() {
 //        leftBarBtnEffect(orderListBtn);
 //        changeSliderPos(305);
-        changePane(new OrderListPane(stage, mainPane));
+        changePane(new OrderListPane(mainPane));
 //        currentBtn = orderListBtn;
     }
 

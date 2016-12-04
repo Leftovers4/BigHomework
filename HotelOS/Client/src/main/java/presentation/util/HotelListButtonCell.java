@@ -53,8 +53,8 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
         });
 
         btnBox.setSpacing(10);
-        btnBox.setAlignment(Pos.CENTER_LEFT);
-        btnBox.setPadding(new Insets(0,10,0,10));
+        btnBox.setAlignment(Pos.CENTER);
+        btnBox.setPadding(new Insets(0,10,0,20));
     }
 
     @Override

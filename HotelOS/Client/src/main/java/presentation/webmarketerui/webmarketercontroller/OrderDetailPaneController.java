@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import presentation.util.AlertController;
+import presentation.webmarketerui.webmarketerscene.OrderListPane;
 import util.OrderType;
 import vo.order.OrderVO;
 
@@ -43,23 +44,16 @@ public class OrderDetailPaneController {
     @FXML private Label roomIDLabel;
 
     //查看客户评价
-    @FXML private Button showReviewBtn;
     @FXML private Button backBtn;
 
 
     private Pane mainPane;
     private AlertController alertController;
     private OrderVO orderVO;
-    //是否从更新入住信息进入
-    private Boolean isCheckIn;
-    //是否从订单列表进入
-    private Boolean isFromList;
 
     public void launch(Pane mainPane,OrderVO orderVO) {
         this.mainPane = mainPane;
         this.orderVO = orderVO;
-        this.isFromList = isFromList;
-        this.isCheckIn = isCheckIn;
         alertController = new AlertController();
 
         //初始化便签
@@ -72,20 +66,22 @@ public class OrderDetailPaneController {
         orderTypeLabel.setText(orderVO.orderType.toString());
         orderPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
 
-        generateTimeLabel.setText(orderVO.orderTimeVO.generateTime.toString());
-        exeLeastTimeLabel.setText(orderVO.orderTimeVO.lastExecuteTime.toString());
-        checkInTimeLabel.setText(orderVO.orderTimeVO.checkinTime == null ? "尚未入住" : orderVO.orderTimeVO.checkinTime.toString());
-        expLeaveTimeLabel.setText(orderVO.orderTimeVO.expectedLeaveTime == null ? "尚未入住" : orderVO.orderTimeVO.expectedLeaveTime.toString());
-        actLeaveTimeLabel.setText(orderVO.orderTimeVO.leaveTime == null ? (orderVO.orderType == OrderType.Executed ? "尚未退房" : "尚未入住") : orderVO.orderTimeVO.leaveTime.toString());
-
-        userNameLabel.setText(orderVO.username);
-        peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
-        withChildrenLabel.setText(orderVO.withChildren ? "有" : "无");
-        roomIDLabel.setText(orderVO.roomNumber);
+//        generateTimeLabel.setText(orderVO.orderTimeVO.generateTime.toString());
+//        exeLeastTimeLabel.setText(orderVO.orderTimeVO.lastExecuteTime.toString());
+//        checkInTimeLabel.setText(orderVO.orderTimeVO.checkinTime == null ? "尚未入住" : orderVO.orderTimeVO.checkinTime.toString());
+//        expLeaveTimeLabel.setText(orderVO.orderTimeVO.expectedLeaveTime == null ? "尚未入住" : orderVO.orderTimeVO.expectedLeaveTime.toString());
+//        actLeaveTimeLabel.setText(orderVO.orderTimeVO.leaveTime == null ? (orderVO.orderType == OrderType.Executed ? "尚未退房" : "尚未入住") : orderVO.orderTimeVO.leaveTime.toString());
+//
+//        userNameLabel.setText(orderVO.username);
+//        peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
+//        withChildrenLabel.setText(orderVO.withChildren ? "有" : "无");
+//        roomIDLabel.setText(orderVO.roomNumber);
     }
 
 
     @FXML
     private void back(){
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(new OrderListPane(mainPane));
     }
 }

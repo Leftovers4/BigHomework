@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 public class RegisterRoomPaneController {
 
     //按钮
-    @FXML private Button addBtn;
+    @FXML private Button addRoomBtn;
     @FXML private Button confirmBtn;
     @FXML private Button cancelBtn;
 
@@ -145,7 +145,7 @@ public class RegisterRoomPaneController {
         confirmBtn.setVisible(isVisible);
         cancelBtn.setVisible(isVisible);
 
-        addBtn.setVisible(!isVisible);
+        addRoomBtn.setVisible(!isVisible);
     }
 
     public void setAdd(Boolean add) {

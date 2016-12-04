@@ -21,9 +21,9 @@
          <children>
             <TableView prefHeight="337.0" prefWidth="778.0">
                <columns>
-                  <TableColumn prefWidth="230.0" text="客房类型" />
-                  <TableColumn minWidth="0.0" prefWidth="322.0" text="折扣（%）" />
-                  <TableColumn minWidth="0.0" prefWidth="269.0" text="优惠价（元/天）" />
+                  <TableColumn editable="false" prefWidth="230.0" sortable="false" styleClass="LeftAlignCol" text="客房类型" />
+                  <TableColumn editable="false" minWidth="0.0" prefWidth="322.0" styleClass="RightAlignCol" text="折扣（%）" />
+                  <TableColumn editable="false" minWidth="0.0" prefWidth="208.0" styleClass="RightAlignCol" text="优惠价（元/天）" />
                </columns>
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="778.0">
@@ -119,10 +119,10 @@
          <children>
             <TableView prefHeight="337.0">
                <columns>
-                  <TableColumn prefWidth="200.0" text="客房类型" />
-                  <TableColumn prefWidth="201.0" text="最少预订间数" />
-                  <TableColumn minWidth="0.0" prefWidth="178.0" text="折扣（%）" />
-                  <TableColumn minWidth="0.0" prefWidth="197.0" text="优惠价（元/天）" />
+                  <TableColumn editable="false" prefWidth="200.0" sortable="false" styleClass="LeftAlignCol" text="客房类型" />
+                  <TableColumn editable="false" prefWidth="201.0" styleClass="RightAlignCol" text="最少预订间数" />
+                  <TableColumn editable="false" minWidth="0.0" prefWidth="178.0" styleClass="RightAlignCol" text="折扣（%）" />
+                  <TableColumn editable="false" minWidth="0.0" prefWidth="197.0" styleClass="RightAlignCol" text="优惠价（元/天）" />
                </columns>
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0">
@@ -222,11 +222,11 @@
          <children>
             <TableView prefHeight="337.0" prefWidth="778.0">
                <columns>
-                  <TableColumn prefWidth="110.0" text="客房类型" />
-                  <TableColumn prefWidth="210.0" text="2016-10-29 16:30" />
-                  <TableColumn prefWidth="210.0" text="结束日期" />
-                  <TableColumn minWidth="0.0" prefWidth="100.0" text="折扣（%）" />
-                  <TableColumn minWidth="0.0" prefWidth="145.0" text="优惠价（元/天）" />
+                  <TableColumn prefWidth="110.0" styleClass="LeftAlignCol" text="客房类型" />
+                  <TableColumn prefWidth="210.0" styleClass="LeftAlignCol" text="开始日期" />
+                  <TableColumn prefWidth="210.0" styleClass="LeftAlignCol" text="结束日期" />
+                  <TableColumn minWidth="0.0" prefWidth="100.0" styleClass="RightAlignCol" text="折扣（%）" />
+                  <TableColumn minWidth="0.0" prefWidth="146.0" styleClass="RightAlignCol" text="优惠价（元/天）" />
                </columns>
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="778.0">
@@ -335,10 +335,10 @@
          <children>
             <TableView prefHeight="337.0">
                <columns>
-                  <TableColumn prefWidth="182.0" text="企业名称" />
-                  <TableColumn prefWidth="198.0" text="客房类型" />
-                  <TableColumn minWidth="0.0" prefWidth="191.0" text="折扣（%）" />
-                  <TableColumn minWidth="0.0" prefWidth="205.0" text="优惠价（元/天）" />
+                  <TableColumn prefWidth="182.0" styleClass="LeftAlignCol" text="企业名称" />
+                  <TableColumn prefWidth="198.0" styleClass="LeftAlignCol" text="客房类型" />
+                  <TableColumn minWidth="0.0" prefWidth="191.0" styleClass="RightAlignCol" text="折扣（%）" />
+                  <TableColumn minWidth="0.0" prefWidth="185.0" styleClass="RightAlignCol" text="优惠价（元/天）" />
                </columns>
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0">

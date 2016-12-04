@@ -6,7 +6,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.OrderDetailPaneController">
+<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmarketerui.webmarketercontroller.OrderDetailPaneController">
     <children>
       <HBox layoutX="40.0" layoutY="310.0" prefHeight="150.0" prefWidth="780.0" styleClass="BackgroundHBox">
          <children>
@@ -107,7 +107,6 @@
             <Insets bottom="10.0" left="10.0" top="10.0" />
          </padding>
       </HBox>
-      <Button id="showReviewBtn" fx:id="showReviewBtn" layoutX="724.0" layoutY="625.0" mnemonicParsing="false" onAction="#showReview" text="查看评价" />
       <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="23.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/hotelworker/bar.png" />

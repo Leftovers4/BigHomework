@@ -8,14 +8,40 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.UpdateOfflinePaneController">
     <children>
-      <ComboBox fx:id="roomTypeBox" layoutX="297.0" layoutY="341.0" prefHeight="36.0" prefWidth="123.0" promptText="单人房" />
-      <Label layoutX="225.0" layoutY="347.0" text="类型：" />
-      <ComboBox fx:id="roomAmountBox" layoutX="525.0" layoutY="341.0" prefHeight="36.0" prefWidth="100.0" promptText="1" />
-      <Label layoutX="446.0" layoutY="347.0" text="数量：" />
-      <Button fx:id="checkInBtn" layoutX="565.0" layoutY="450.0" mnemonicParsing="false" onAction="#checkIn" prefHeight="24.0" prefWidth="60.0" text="入住" />
-      <Button fx:id="checkOutBtn" layoutX="535.0" layoutY="450.0" mnemonicParsing="false" onAction="#checkOut" text="退房" visible="false" />
-      <Label layoutX="225.0" layoutY="271.0" text="线下已入住客房间数：" />
-      <Label fx:id="busyRoomLabel" layoutX="424.0" layoutY="271.0" text="12" />
-      <Label layoutX="455.0" layoutY="271.0" text="间" />
+      <Pane layoutX="208.0" layoutY="220.0" prefHeight="152.0" prefWidth="434.0" styleClass="BackgroundPanel">
+         <children>
+            <Label layoutX="20.0" layoutY="90.0" text="类型：" />
+            <Label layoutX="250.0" layoutY="20.0" text="间" />
+            <Label layoutX="230.0" layoutY="90.0" text="数量：" />
+            <ComboBox fx:id="roomAmountBox" layoutX="290.0" layoutY="83.0" prefHeight="36.0" prefWidth="120.0" promptText="1" />
+            <Label layoutX="20.0" layoutY="20.0" text="线下已入住客房间数：" />
+            <Label fx:id="busyRoomLabel" layoutX="220.0" layoutY="20.0" text="12" />
+            <ComboBox fx:id="roomTypeBox" layoutX="80.0" layoutY="83.0" prefHeight="36.0" prefWidth="120.0" promptText="单人房" />
+         </children>
+      </Pane>
+      <Button fx:id="checkInBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="542.0" layoutY="432.0" maxWidth="100.0" mnemonicParsing="false" onAction="#checkIn" prefWidth="100.0" styleClass="roomBtn" text="入住">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/hotelworker/offlinecheckin.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="checkOutBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="542.0" layoutY="432.0" maxWidth="100.0" mnemonicParsing="false" onAction="#checkOut" prefWidth="100.0" styleClass="roomBtn" text="退房" visible="false">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/hotelworker/offlinecheckout.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Button>
     </children>
 </fx:root>

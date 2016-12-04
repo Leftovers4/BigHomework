@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.webmarketerui.webmarketercontroller.AppealOrderPaneController;
+import vo.order.OrderVO;
 
 import java.io.IOException;
 
@@ -12,11 +13,11 @@ import java.io.IOException;
  * Description :
  */
 public class AppealOrderPane extends Pane{
-    public AppealOrderPane(Pane mainPane) {
-        loadFxml(mainPane);
+    public AppealOrderPane(Pane mainPane, OrderVO orderVO) {
+        loadFxml(mainPane, orderVO);
     }
 
-    private void loadFxml(Pane mainPane) {
+    private void loadFxml(Pane mainPane, OrderVO orderVO) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/webmarketer/weborderappeal.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -26,6 +27,6 @@ public class AppealOrderPane extends Pane{
         }
 
         AppealOrderPaneController appealOrderPaneController = fxmlLoader.getController();
-        appealOrderPaneController.launch(mainPane);
+        appealOrderPaneController.launch(mainPane, orderVO);
     }
 }

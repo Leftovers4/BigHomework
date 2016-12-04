@@ -1,6 +1,7 @@
 * {
     -fx-font-family: "微软雅黑";
-    -fx-text-fill: #37474F;
+    /*-fx-text-fill: #37474F;*/
+    -fx-text-fill: #757575;
 }
 .label{
     -fx-font-size: 18px;
@@ -141,6 +142,7 @@
     -fx-background-color: white;
     -fx-border-color: white;
     -fx-font-size: 15px;
+    -fx-text-fill: #37474F;
 }
 .table-view .column-header, .filler{
     -fx-background-color: white;
@@ -157,6 +159,7 @@
 }
 .table-view .table-column{
     -fx-border-color: transparent;
+    -fx-text-fill: #37474F;
 }
 .table-view .table-row-cell:selected{
     -fx-background-color: #F6FAFF;
@@ -165,8 +168,25 @@
 .table-view .table-row-cell:hover{
     -fx-background-color: #F6FAFF;
 }
-
-
+/*左右中对齐列表栏*/
+.table-view .column-header.LeftAlignCol .label{
+    -fx-alignment: center-left;
+}
+.table-view .LeftAlignCol{
+    -fx-alignment: center-left;
+}
+.table-view .column-header.RightAlignCol .label{
+     -fx-alignment: center-right;
+ }
+.table-view .RightAlignCol{
+    -fx-alignment: center-right;
+}
+.table-view .column-header.MidAlignCol .label{
+    -fx-alignment: center;
+}
+.table-view .MidAlignCol{
+    -fx-alignment: center;
+}
 
 /**
 基本信息界面-----------------------------------------------------------------------------------------------------------
@@ -240,51 +260,6 @@
 }
 
 
-/*订单号列表栏*/
-.table-view .column-header#idCol .label{
-    -fx-alignment: center-left;
-}
-.table-view #idCol{
-    -fx-alignment: center-left;
-}
-/*客户列表栏*/
-.table-view .column-header#userCol .label{
-    -fx-alignment: center-left;
-}
-.table-view #userCol{
-    -fx-alignment: center-left;
-}
-/*价格列表栏*/
-.table-view .column-header#priceCol .label{
-    -fx-alignment: center-right;
-}
-.table-view .column-header#priceCol .arrow{
-    -fx-background-color: black;
-}
-.table-view #priceCol{
-    -fx-alignment: center-right;
-}
-/*入住时间列表栏*/
-.table-view .column-header#checkInTimeCol .label{
-    -fx-alignment: center-left;
-}
-.table-view .column-header#checkInTimeCol .arrow{
-    -fx-background-color: black;
-}
-.table-view #checkInTimeCol{
-    -fx-alignment: center-left;
-}
-/*订单状态列表栏*/
-.table-view .column-header#typeCol .label{
-    -fx-alignment: center-left;
-}
-.table-view #typeCol{
-    -fx-alignment: center-left;
-}
-/*操作按钮*/
-.table-view .column-header#opCol .label{
-    -fx-alignment: center-left;
-}
 .TableButtonCell{
     -fx-background-radius: 50%;
     -fx-cursor: hand;
@@ -303,35 +278,6 @@
 /**
 录入可用客房---------------------------------------------------------------------------------------------------
  */
-
-/*客房类型列表栏*/
-.table-view .column-header#roomTypeCol .label{
-    -fx-alignment: center-left;
-}
-.table-view #roomTypeCol{
-    -fx-alignment: center-left;
-}
-/*客房数量列表栏*/
-.table-view .column-header#roomAmountCol .label{
-    -fx-alignment: center-right;
-}
-.table-view #roomAmountCol{
-    -fx-alignment: center-right;
-}
-/*客房价格列表栏*/
-.table-view .column-header#roomPriceCol .label{
-    -fx-alignment: center-right;
-}
-.table-view #roomPriceCol{
-    -fx-alignment: center-right;
-}
-/*客房操作列表栏*/
-.table-view .column-header#roomOpCol .label{
-    -fx-alignment: center-left;
-}
-.table-view #roomOpCol{
-    -fx-alignment: center-left;
-}
 
 /*添加客房按钮*/
 .roomBtn{
@@ -380,6 +326,7 @@
 }
 .PromotionBtn:hover{
     -fx-cursor: hand;
+    -fx-background-color: #e1e0dd;
 }
 .PromotionBtn:focused{
     -fx-text-fill: #37474F;
@@ -388,9 +335,6 @@
     -fx-background-color: white;
     -fx-border-color: #dddddd;
     -fx-padding: 0;
-}
-.PromotionBtn:hover{
-    -fx-background-color: #F6FAFF;
 }
 /*滑块*/
 #sliderPromotionLabel{
@@ -428,11 +372,13 @@
 #manageMemRankBtn{
     -fx-background-color: #55acee;
     -fx-text-fill: white;
+    -fx-font-size: 17px;
 }
 #manageMemRankBtn:hover{
     -fx-background-color: #49BCFF;
 }
 
+/*会员优惠*/
 
 /**
 订单列表------------------------------------------------------------------------------------------
@@ -444,4 +390,42 @@
 }
 .table-view #hotelMarketCol{
     -fx-alignment: center-left;
+    -fx-text-fill: #37474F;
+}
+
+/**
+订单申诉------------------------------------------------------------------------------------------
+ */
+/*异常订单价格*/
+#webOrderPriceLabel{
+    -fx-text-fill: #fd9301;
+}
+/*异常订单状态*/
+#webOrderTypeLabel{
+    -fx-text-fill: #ff2c14;
+}
+/*撤销异常订单按钮*/
+#cancelAbnOrderBtn{
+    -fx-background-color: #55acee;
+    -fx-text-fill: white;
+}
+#cancelAbnOrderBtn:hover{
+    -fx-background-color: #49BCFF;
+}
+
+
+/**
+增加信用值-----------------------------------------------------------------------------------------
+ */
+/*充值提示*/
+#creditPromptLabel{
+    -fx-font-size: 15px;
+    -fx-text-fill: #cccccc;
+}
+#addBtn{
+    -fx-background-color: #55acee;
+    -fx-text-fill: white;
+}
+#addBtn:hover{
+    -fx-background-color: #49BCFF;
 }

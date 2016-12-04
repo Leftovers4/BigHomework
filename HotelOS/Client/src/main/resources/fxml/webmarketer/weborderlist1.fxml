@@ -10,11 +10,11 @@
     <children>
       <TableView id="listTable" fx:id="orderTable" layoutX="84.0" layoutY="170.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="450.0" prefWidth="682.0">
         <columns>
-          <TableColumn id="hotelMarketCol" fx:id="hotelCol" editable="false" prefWidth="160.0" text="酒店" />
-          <TableColumn id="idCol" fx:id="idCol" editable="false" prefWidth="200.0" text="订单号" />
-            <TableColumn id="userCol" fx:id="userCol" prefWidth="100.0" text="客户" />
-            <TableColumn id="typeCol" fx:id="typeCol" editable="false" prefWidth="100.0" text="状态" />
-            <TableColumn id="opCol" fx:id="opCol" prefWidth="95.0" text="操作" />
+          <TableColumn fx:id="hotelCol" editable="false" prefWidth="160.0" sortable="false" styleClass="LeftAlignCol" text="酒店" />
+          <TableColumn fx:id="idCol" editable="false" prefWidth="200.0" sortable="false" styleClass="LeftAlignCol" text="订单号" />
+            <TableColumn fx:id="userCol" editable="false" prefWidth="100.0" sortable="false" styleClass="LeftAlignCol" text="客户" />
+            <TableColumn fx:id="typeCol" editable="false" prefWidth="100.0" sortable="false" styleClass="LeftAlignCol" text="状态" />
+            <TableColumn fx:id="opCol" editable="false" prefWidth="95.0" sortable="false" styleClass="MidAlignCol" text="操作" />
         </columns>
       </TableView>
       <HBox fx:id="listTopBar" alignment="CENTER_LEFT" layoutX="84.0" layoutY="110.0" prefHeight="60.0" prefWidth="682.0" styleClass="listTopBar">
@@ -34,6 +34,9 @@
                      <StackPane.margin>
                         <Insets left="5.0" />
                      </StackPane.margin>
+                     <padding>
+                        <Insets left="10.0" right="35.0" />
+                     </padding>
                   </TextField>
                   <Button id="searchOrderIDBtn" fx:id="searchOrderIDBtn" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0">
                      <graphic>
@@ -49,7 +52,7 @@
                   </Button>
                </children>
                <HBox.margin>
-                  <Insets left="150.0" />
+                  <Insets left="120.0" />
                </HBox.margin>
             </StackPane>
          </children>

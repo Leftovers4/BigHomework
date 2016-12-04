@@ -32,7 +32,7 @@
             </HBox>
             <Pane prefHeight="50.0" prefWidth="240.0">
                <children>
-                  <Button fx:id="addBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="137.0" layoutY="10.0" maxWidth="100.0" mnemonicParsing="false" onAction="#addRoom" prefWidth="100.0" styleClass="roomBtn" text="添加">
+                  <Button fx:id="addRoomBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="137.0" layoutY="10.0" maxWidth="100.0" mnemonicParsing="false" onAction="#addRoom" prefWidth="100.0" styleClass="roomBtn" text="添加">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -72,12 +72,12 @@
             </Pane>
          </children>
         </HBox>
-        <TableView fx:id="roomTable" layoutX="72.0" layoutY="110.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="350.0" prefWidth="707.0">
+        <TableView fx:id="roomTable" layoutX="67.0" layoutY="108.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="350.0" prefWidth="717.0">
             <columns>
-                <TableColumn id="roomTypeCol" fx:id="roomTypeCol" editable="false" prefWidth="200.0" sortable="false" text="客房类型" />
-                <TableColumn id="roomAmountCol" fx:id="roomAmountCol" editable="false" prefWidth="200.0" sortable="false" text="数量" />
-                <TableColumn id="roomPriceCol" fx:id="roomPriceCol" editable="false" prefWidth="200.0" sortable="false" text="原价（元/天）" />
-            <TableColumn id="roomOpCol" fx:id="roomOpCol" editable="false" prefWidth="95.0" sortable="false" text="操作" />
+                <TableColumn fx:id="roomTypeCol" editable="false" prefWidth="200.0" sortable="false" styleClass="LeftAlignCol" text="客房类型" />
+                <TableColumn fx:id="roomAmountCol" editable="false" prefWidth="200.0" styleClass="RightAlignCol" text="数量" />
+                <TableColumn fx:id="roomPriceCol" editable="false" prefWidth="200.0" styleClass="RightAlignCol" text="原价（元/天）" />
+            <TableColumn fx:id="roomOpCol" editable="false" prefWidth="95.0" sortable="false" styleClass="MidAlignCol" text="操作" />
             </columns>
         </TableView>
     </children>

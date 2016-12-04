@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import presentation.webmarketerui.webmarketerscene.AppealOrderPane;
 import presentation.webmarketerui.webmarketerscene.OrderDetailPane;
 import util.OrderType;
@@ -49,12 +48,12 @@ public class WebMarketListButtonCell extends TableCell<OrderVO, Boolean> {
             int selectedIndex = getTableRow().getIndex();
             OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new AppealOrderPane(mainPane));
+            mainPane.getChildren().add(new AppealOrderPane(mainPane,orderVO));
         });
 
         btnBox.setSpacing(10);
-        btnBox.setAlignment(Pos.CENTER_LEFT);
-        btnBox.setPadding(new Insets(0,10,0,10));
+        btnBox.setAlignment(Pos.CENTER);
+        btnBox.setPadding(new Insets(0,10,0,20));
     }
 
     @Override

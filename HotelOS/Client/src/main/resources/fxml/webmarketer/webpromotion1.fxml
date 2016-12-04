@@ -18,11 +18,11 @@
       <Label id="sliderPromotionLabel" fx:id="sliderPromotionLabel" layoutX="36.0" layoutY="180.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="3.0" prefWidth="132.0" />
       <VBox fx:id="timeVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0">
          <children>
-            <TableView prefHeight="320.0">
+            <TableView fx:id="proTimeTable" prefHeight="320.0">
                <columns>
-                  <TableColumn prefWidth="300.0" text="开始日期" />
-                  <TableColumn prefWidth="300.0" text="结束日期" />
-                  <TableColumn minWidth="0.0" prefWidth="176.0" text="折扣（%）" />
+                  <TableColumn fx:id="proStartTimeCol" editable="false" prefWidth="300.0" sortable="false" styleClass="LeftAlignCol" text="开始日期" />
+                  <TableColumn fx:id="proEndTimeCol" editable="false" prefWidth="300.0" sortable="false" styleClass="LeftAlignCol" text="结束日期" />
+                  <TableColumn fx:id="proTimeDiscountCol" editable="false" minWidth="0.0" prefWidth="160.0" styleClass="RightAlignCol" text="折扣（%）" />
                </columns>
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="99.0" prefWidth="778.0">
@@ -127,18 +127,58 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="memberVBox" layoutX="36.0" layoutY="213.0" prefHeight="465.0" prefWidth="778.0" visible="false">
+      <VBox fx:id="memberVBox" layoutX="36.0" layoutY="213.0" prefHeight="475.0" prefWidth="778.0" visible="false">
          <children>
-            <TableView prefHeight="320.0">
+            <TableView fx:id="proMemTable" prefHeight="320.0" prefWidth="750.0">
                <columns>
-                  <TableColumn prefWidth="300.0" text="等级" />
-                  <TableColumn prefWidth="300.0" text="商圈" />
-                  <TableColumn minWidth="0.0" prefWidth="176.0" text="折扣（%）" />
+                  <TableColumn fx:id="proAreaCol" editable="false" prefWidth="300.0" sortable="false" styleClass="LeftAlignCol" text="商圈" />
+                  <TableColumn fx:id="proRankCol" editable="false" prefWidth="300.0" sortable="false" styleClass="RightAlignCol" text="等级" />
+                  <TableColumn fx:id="proMemDiscountCol" editable="false" minWidth="0.0" prefWidth="160.0" styleClass="RightAlignCol" text="折扣（%）" />
                </columns>
             </TableView>
-            <VBox alignment="TOP_RIGHT" prefHeight="146.0" prefWidth="778.0">
+            <Pane prefHeight="155.0" prefWidth="778.0">
                <children>
-                  <HBox fx:id="addMemPromotionHBox" alignment="CENTER_LEFT" visible="false">
+                  <Pane layoutX="558.0" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="220.0">
+                     <children>
+                        <Button fx:id="modifyMemBtn" alignment="TOP_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#modifyMemPromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="修改" visible="false">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/hotelworker/modifypromotion.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="deleteMemBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="120.0" mnemonicParsing="false" onAction="#deleteMemPromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="删除" visible="false">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/hotelworker/cancelroom.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="addMemBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="120.0" maxWidth="100.0" mnemonicParsing="false" onAction="#addMemPromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="添加">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../img/hotelworker/addroom.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="2.0" left="50.0" />
+                     </HBox.margin>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Pane>
+                  <HBox fx:id="addMemHBox" alignment="CENTER_LEFT" layoutY="28.0" visible="false">
                      <children>
                         <Label layoutX="355.0" layoutY="16.0" text="等级：">
                            <HBox.margin>
@@ -172,7 +212,7 @@
                         </ComboBox>
                         <Label text="折扣：" GridPane.rowIndex="1">
                            <HBox.margin>
-                              <Insets left="20.0" />
+                              <Insets left="50.0" />
                            </HBox.margin>
                         </Label>
                         <TextField alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="36.0" prefWidth="50.0" promptText="80" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -193,65 +233,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="220.0">
-                     <children>
-                        <Button fx:id="modifyTimeBtn1" alignment="TOP_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#modifyTimePromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="修改" visible="false">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/modifypromotion.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="deleteTimeBtn1" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="120.0" mnemonicParsing="false" onAction="#deleteTimePromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="删除" visible="false">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/cancelroom.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="addTimeBtn1" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="120.0" maxWidth="100.0" mnemonicParsing="false" onAction="#addTimePromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="添加">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/addroom.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                        </Button>
-                        <Button fx:id="confirmTimeBtn1" alignment="TOP_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#confirmTimeAdd" prefWidth="100.0" styleClass="PromotionAddBtn" text="确认" visible="false">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/confirmroom.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="cancelTimeBtn1" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="120.0" mnemonicParsing="false" onAction="#cancelTimeAdd" prefWidth="100.0" styleClass="PromotionAddBtn" text="取消" visible="false">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/cancelroom.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="2.0" left="50.0" />
-                     </HBox.margin>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Pane>
-                  <Button id="manageMemRankBtn" fx:id="manageMemRankBtn" mnemonicParsing="false" text="制定会员等级">
+                  <Button id="manageMemRankBtn" fx:id="manageMemRankBtn" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="678.0" layoutY="100.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="100.0" text="制定等级">
                      <HBox.margin>
                         <Insets left="40.0" />
                      </HBox.margin>
@@ -259,8 +241,26 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </Button>
+                  <Button fx:id="confirmMemBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="546.0" layoutY="100.0" mnemonicParsing="false" onAction="#confirmMemAdd" prefWidth="100.0" styleClass="PromotionAddBtn" text="确认" visible="false">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/hotelworker/confirmroom.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="cancelMemBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="678.0" layoutY="100.0" mnemonicParsing="false" onAction="#cancelMemAdd" prefWidth="100.0" styleClass="PromotionAddBtn" text="取消" visible="false">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/hotelworker/cancelroom.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
-            </VBox>
+            </Pane>
          </children>
       </VBox>
    </children>
