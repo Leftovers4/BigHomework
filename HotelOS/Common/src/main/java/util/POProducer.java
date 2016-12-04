@@ -1,8 +1,6 @@
 package util;
 
-import data.dao._poalfactory.Al2Po_Factory;
-import data.dao._poalfactory.CommonTransferFactory;
-import data.dao._poalfactory.impl.Al2Po_FactoryImpl;
+
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
 import po.order.OrderPO;
@@ -27,7 +25,7 @@ public class POProducer {
     private static CreditRecordPO creditRecordPO;
 
     // 利用AL to PO
-    private final static Al2Po_Factory apFactory = new Al2Po_FactoryImpl();
+    private final static Al2Po_FactoryImpl apFactory = new Al2Po_FactoryImpl();
 
     // 初始化所有PO
     static{
@@ -71,4 +69,7 @@ public class POProducer {
     public static CreditRecordPO getCreditRecordPO() {
         return creditRecordPO;
     }
+
+
+
 }

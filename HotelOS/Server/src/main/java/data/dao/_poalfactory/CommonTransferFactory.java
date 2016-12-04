@@ -28,6 +28,7 @@ public interface CommonTransferFactory {
     public Iterator<Iterator<Object>> alsToItrs(List<ArrayList<Object>> als);
 
 
+    // TODO: not used
     /**
      * 将传入的al对象转换成能够被数据库查询，默认值要改成'%'
      * @param conditionAl

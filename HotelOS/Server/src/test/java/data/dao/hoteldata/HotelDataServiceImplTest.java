@@ -1,7 +1,10 @@
 package data.dao.hoteldata;
 
+import javafx.beans.property.ReadOnlySetProperty;
 import org.junit.Before;
 import org.junit.Test;
+import util.POProducer;
+import util.ResultMessage;
 
 import static org.junit.Assert.*;
 
@@ -19,12 +22,13 @@ public class HotelDataServiceImplTest {
 
     @Test
     public void insert() throws Exception {
-
+        ResultMessage resultMessage = tested.insert(POProducer.getHotelPO());
+        System.out.println(resultMessage.toString());
     }
 
     @Test
     public void delete() throws Exception {
-
+        ResultMessage resultMessage = tested.delete(POProducer.getHotelPO().getHotelID());
     }
 
     @Test
