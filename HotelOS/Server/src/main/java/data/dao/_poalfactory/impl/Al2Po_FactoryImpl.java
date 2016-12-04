@@ -12,6 +12,7 @@ import po.user.UserPO;
 import util.*;
 
 import java.lang.reflect.Member;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -45,7 +46,9 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
         String phone = (String) userAL.next();
         MemberType memberType = (MemberType) EnumFactory.getEnum((String)userAL.next());
         int level = (int) userAL.next();
-        LocalDate birthday = toDate((String)userAL.next());
+//        LocalDate birthday = toDate((String)userAL.next());
+        LocalDate birthday = ((Date) userAL.next()).toLocalDate();
+
         String enterprise = (String) userAL.next();
 
         // 构造MemberPO
@@ -129,6 +132,7 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
 
     @Override
     public OrderPO toOrderPO(Iterator<Object> orderAL) {
+
         // 若order表没有内容，则返回null
         if(!orderAL.hasNext()){
             return null;

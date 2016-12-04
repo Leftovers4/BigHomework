@@ -4,9 +4,12 @@ import com.sun.corba.se.spi.ior.ObjectKey;
 import po.user.UserPO;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.sql.Date;
 
 /**
  * Created by Hiki on 12/3/2016.
@@ -29,7 +32,7 @@ public class ALProducer {
     private final static long personnelID = 100000;
     private final static long hotelID = 522000;
     private final static String hotelName = "榕江大酒店";
-    private final static String date = "2016-01-01";
+//    private final static String date = "2016-01-01";
     private final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");;
     private final static Timestamp datetime = Timestamp.valueOf(LocalDateTime.parse("2016-01-01 11:11:11", formatter));
 //    private final static String datetime = "2016-01-01 11:11:11";
@@ -44,6 +47,8 @@ public class ALProducer {
     private final static String password = "abc123456";
     private final static String enterprise = "南京大学";
     private final static long crID = 10000;
+    private final static LocalDate birthday = LocalDate.parse("2016-01-01");
+    private final static Date date = Date.valueOf(birthday);
 
 
 

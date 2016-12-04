@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-12-04 21:30:15
+Date: 2016-12-05 00:27:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,10 +20,10 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `credit_record`;
 CREATE TABLE `credit_record` (
-  `record_id` int(6) NOT NULL AUTO_INCREMENT,
+  `record_id` bigint(6) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
-  `current_credit` decimal(8,2) NOT NULL,
-  `changed_credit` decimal(8,2) NOT NULL,
+  `current_credit` double(8,2) NOT NULL,
+  `changed_credit` double(8,2) NOT NULL,
   `changed_time` datetime NOT NULL,
   `cause` varchar(20) NOT NULL DEFAULT '',
   `order_id` char(20) NOT NULL,
@@ -62,7 +62,7 @@ INSERT INTO `hotel` VALUES ('522002', '榕江大酒店', '5', '广东揭阳', '�
 -- ----------------------------
 DROP TABLE IF EXISTS `hotel_image`;
 CREATE TABLE `hotel_image` (
-  `hotel_id` int(6) unsigned NOT NULL DEFAULT '0',
+  `hotel_id` bigint(6) unsigned NOT NULL DEFAULT '0',
   `image_reference` varchar(80) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`hotel_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -126,9 +126,9 @@ CREATE TABLE `personnel` (
 -- Records of personnel
 -- ----------------------------
 INSERT INTO `personnel` VALUES ('100000', 'abc123456', 'HotelWorker', 'leftovers03', '522000');
-INSERT INTO `personnel` VALUES ('119119', 'password', 'HOTEL_WORKER', '', '000000');
-INSERT INTO `personnel` VALUES ('120110', 'password', 'HOTEL_WORKER', '', '000000');
-INSERT INTO `personnel` VALUES ('120120', 'pass', 'HOTEL_WORKER', '', '000000');
+INSERT INTO `personnel` VALUES ('119119', 'password', 'HotelWorker', '', '000000');
+INSERT INTO `personnel` VALUES ('120110', 'password', 'HotelWorker', '', '000000');
+INSERT INTO `personnel` VALUES ('120120', 'pass', 'HotelWorker', '', '000000');
 
 -- ----------------------------
 -- Table structure for promotion
@@ -137,9 +137,9 @@ DROP TABLE IF EXISTS `promotion`;
 CREATE TABLE `promotion` (
   `promotion_id` int(6) unsigned zerofill NOT NULL,
   `promotion_type` varchar(20) NOT NULL DEFAULT '',
-  `hotel_id` int(6) NOT NULL,
+  `hotel_id` bigint(6) NOT NULL,
   `discount` double NOT NULL DEFAULT '0',
-  `least_rooms` int(10) unsigned NOT NULL DEFAULT '0',
+  `least_rooms` smallint(10) unsigned NOT NULL DEFAULT '0',
   `begin_time` datetime NOT NULL,
   `end_time` datetime NOT NULL,
   `enterprise1` varchar(60) NOT NULL DEFAULT '',
@@ -157,17 +157,17 @@ CREATE TABLE `promotion` (
   `tra_discount4` double NOT NULL,
   `trading_area5` varchar(40) NOT NULL DEFAULT '',
   `tra_discount5` double NOT NULL,
-  `credit1` decimal(8,2) NOT NULL,
+  `credit1` double(8,2) NOT NULL,
   `mem_discount1` double NOT NULL,
-  `credit2` decimal(8,2) NOT NULL,
+  `credit2` double(8,2) NOT NULL,
   `mem_discount2` double NOT NULL,
-  `credit3` decimal(8,2) NOT NULL,
+  `credit3` double(8,2) NOT NULL,
   `mem_discount3` double NOT NULL,
-  `credit4` decimal(8,2) NOT NULL,
+  `credit4` double(8,2) NOT NULL,
   `mem_discount4` double NOT NULL,
-  `credit5` decimal(8,2) NOT NULL,
+  `credit5` double(8,2) NOT NULL,
   `mem_discount5` double NOT NULL,
-  `credit6` decimal(8,2) NOT NULL,
+  `credit6` double(8,2) NOT NULL,
   `mem_discount6` double NOT NULL,
   PRIMARY KEY (`promotion_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -207,7 +207,7 @@ CREATE TABLE `user` (
   `gender` tinyint(4) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `member_type` varchar(20) NOT NULL,
-  `level` int(10) unsigned NOT NULL,
+  `level` smallint(10) unsigned NOT NULL,
   `birthday` date NOT NULL,
   `enterprise` char(80) NOT NULL DEFAULT '',
   PRIMARY KEY (`username`)

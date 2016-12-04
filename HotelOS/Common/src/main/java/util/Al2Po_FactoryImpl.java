@@ -12,6 +12,7 @@ import po.user.CreditRecordPO;
 import po.user.MemberPO;
 import po.user.UserPO;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -45,7 +46,7 @@ public class Al2Po_FactoryImpl{
         String phone = (String) userAL.next();
         MemberType memberType = (MemberType) EnumFactory.getEnum((String)userAL.next());
         int level = (int) userAL.next();
-        LocalDate birthday = toDate((String)userAL.next());
+        LocalDate birthday = ((Date)userAL.next()).toLocalDate();
         String enterprise = (String) userAL.next();
 
         // 构造MemberPO

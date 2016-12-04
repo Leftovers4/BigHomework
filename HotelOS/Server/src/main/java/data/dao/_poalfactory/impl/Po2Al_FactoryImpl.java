@@ -111,7 +111,6 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         promotionInfoContent.add(promotionPO.getPromotionID());
         promotionInfoContent.add(toString(promotionPO.getPromotionType()));
         promotionInfoContent.add(promotionPO.getHotelID());
-        promotionInfoContent.add(promotionPO.getLeastRooms());
         promotionInfoContent.add(promotionPO.getDiscount());
         promotionInfoContent.add(promotionPO.getLeastRooms());
         // 起止时间
