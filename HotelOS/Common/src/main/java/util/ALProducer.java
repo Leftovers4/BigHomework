@@ -12,15 +12,15 @@ import java.util.ArrayList;
 public class ALProducer {
 
 
-    public static ArrayList<Object> CreditRecord = new ArrayList<>();
-    public static ArrayList<Object> Hotel = new ArrayList<>();
-    public static ArrayList<Object> HotelImage = new ArrayList<>();
-    public static ArrayList<Object> Order = new ArrayList<>();
-    public static ArrayList<Object> Personnel = new ArrayList<>();
-    public static ArrayList<Object> Promotion = new ArrayList<>();
-    public static ArrayList<Object> Room = new ArrayList<>();
-    public static ArrayList<Object> User = new ArrayList<>();
-    public static ArrayList<Object> UserImage = new ArrayList<>();
+    private static ArrayList<Object> CreditRecord = new ArrayList<>();
+    private static ArrayList<Object> Hotel = new ArrayList<>();
+    private static ArrayList<Object> HotelImage = new ArrayList<>();
+    private static ArrayList<Object> Order = new ArrayList<>();
+    private static ArrayList<Object> Personnel = new ArrayList<>();
+    private static ArrayList<Object> Promotion = new ArrayList<>();
+    private static ArrayList<Object> Room = new ArrayList<>();
+    private static ArrayList<Object> User = new ArrayList<>();
+    private static ArrayList<Object> UserImage = new ArrayList<>();
 
     private final static String username = "leftovers01";
     private final static long personnelID = 100000;
@@ -38,12 +38,13 @@ public class ALProducer {
     private final static String service = "没有特殊服务";
     private final static String password = "abc123456";
     private final static String enterprise = "南京大学";
+    private final static long crID = 10000;
 
 
 
     static{
         // "record_id", "username", "current_credit", "changed_credit", "changed_time", "cause", "order_id"
-        CreditRecord = objectsToList(10000, username, 1.0, 0.1, datetime, "Recharge", orderID);
+        CreditRecord = objectsToList(crID, username, 1.0, 0.1, datetime, "Recharge", orderID);
         // "hotel_id", "hotel_name", "star", "address", "trading_area", "description", "service"
         Hotel = objectsToList(hotelID, hotelName, 5, address, tradingArea, description, service);
         // "order_id", "hotel_id", "username", "order_type", "hotel_name", "room_type", "room_amount",
@@ -52,7 +53,7 @@ public class ALProducer {
         // "review_time", "rating", "review", "ha_time", "ha_result"
         Order = objectsToList(orderID, hotelID, username, "Abnormal", hotelName, "Single", 2, "511", 2, false,
                                 datetime, datetime, datetime, datetime, datetime, datetime, datetime,
-                                100, 80, datetime, 4, "好", datetime, "All");
+                                100.0, 80.0, datetime, 4, "好", datetime, "All");
         // "personnel_id", "password", "personnel_type", "name", "hotel_id"
         Personnel = objectsToList(personnelID, password, "HotelWorker", username, hotelID);
         // "promotion_id", "promotion_type", "hotel_id", "discount", "least_rooms", "begin_time", "end_time",
@@ -62,9 +63,9 @@ public class ALProducer {
         Promotion = objectsToList(promotionID, "BirthdayPromotion", hotelID, 0.1, 4, datetime, datetime,
                     enterprise, enterprise, enterprise, enterprise, enterprise,
                     tradingArea, 0.8, tradingArea, 0.8, tradingArea, 0.8, tradingArea, 0.8, tradingArea, 0.8,
-                    1000, 0.7, 1000, 0.7, 1000, 0.7, 1000, 0.7, 1000, 0.7, 1000, 0.7);
+                    1000.0, 0.7, 1000.0, 0.7, 1000.0, 0.7, 1000.0, 0.7, 1000.0, 0.7, 1000.0, 0.7);
         // "room_id", "hotel_id", "room_type", "total", "available", "price"
-        Room = objectsToList(roomID, hotelID, "Single", 12, 11, 100);
+        Room = objectsToList(roomID, hotelID, "Single", 12, 11, 100.0);
         // "username", "password", "name", "gender", "phone", "member_type", "level", "birthday", "enterprise"
         User = objectsToList(username, password, "啊", true, "11011011010", "Normal", 5, date, enterprise);
 
@@ -93,4 +94,75 @@ public class ALProducer {
     }
 
 
+    public static ArrayList<Object> getCreditRecord() {
+        return CreditRecord;
+    }
+
+    public static void setCreditRecord(ArrayList<Object> creditRecord) {
+        CreditRecord = creditRecord;
+    }
+
+    public static ArrayList<Object> getHotel() {
+        return Hotel;
+    }
+
+    public static void setHotel(ArrayList<Object> hotel) {
+        Hotel = hotel;
+    }
+
+    public static ArrayList<Object> getHotelImage() {
+        return HotelImage;
+    }
+
+    public static void setHotelImage(ArrayList<Object> hotelImage) {
+        HotelImage = hotelImage;
+    }
+
+    public static ArrayList<Object> getOrder() {
+        return Order;
+    }
+
+    public static void setOrder(ArrayList<Object> order) {
+        Order = order;
+    }
+
+    public static ArrayList<Object> getPersonnel() {
+        return Personnel;
+    }
+
+    public static void setPersonnel(ArrayList<Object> personnel) {
+        Personnel = personnel;
+    }
+
+    public static ArrayList<Object> getPromotion() {
+        return Promotion;
+    }
+
+    public static void setPromotion(ArrayList<Object> promotion) {
+        Promotion = promotion;
+    }
+
+    public static ArrayList<Object> getRoom() {
+        return Room;
+    }
+
+    public static void setRoom(ArrayList<Object> room) {
+        Room = room;
+    }
+
+    public static ArrayList<Object> getUser() {
+        return User;
+    }
+
+    public static void setUser(ArrayList<Object> user) {
+        User = user;
+    }
+
+    public static ArrayList<Object> getUserImage() {
+        return UserImage;
+    }
+
+    public static void setUserImage(ArrayList<Object> userImage) {
+        UserImage = userImage;
+    }
 }

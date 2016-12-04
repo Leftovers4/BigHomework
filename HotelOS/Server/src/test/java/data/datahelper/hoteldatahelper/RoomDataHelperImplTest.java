@@ -2,6 +2,7 @@ package data.datahelper.hoteldatahelper;
 
 import org.junit.Before;
 import org.junit.Test;
+import util.ALProducer;
 import util.ResultMessage;
 import util.RoomType;
 
@@ -23,14 +24,7 @@ public class RoomDataHelperImplTest {
 
     @Test
     public void insertToSQL() throws Exception {
-        ArrayList<Object> input = new ArrayList<>();
-        input.add(110111);
-        input.add(522000);
-        input.add(RoomType.Single.toString());
-        input.add(5);
-        input.add(3);
-        input.add(52.0);
-
+        ArrayList<Object> input = ALProducer.getRoom();
         ResultMessage result = tested.insertToSQL(input);
         System.out.println(result.toString());
     }
@@ -57,12 +51,22 @@ public class RoomDataHelperImplTest {
 
     @Test
     public void findFromSQL() throws Exception {
-
+        ArrayList<ArrayList<Object>> output = new ArrayList<>();
+        output = tested.findFromSQL();
+        for (ArrayList<Object> each : output) {
+            for (Object a : each) {
+                System.out.print(a.toString() + " ");
+            }
+            System.out.println();
+        }
     }
 
     @Test
     public void findByIDFromSQL() throws Exception {
-
+        ArrayList<Object> output = tested.findByIDFromSQL((long)ALProducer.getRoom().get(0));
+        for (Object a : output) {
+            System.out.print(a.toString() + " ");
+        }
     }
 
 }

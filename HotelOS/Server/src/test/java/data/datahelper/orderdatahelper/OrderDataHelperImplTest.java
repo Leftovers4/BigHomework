@@ -2,6 +2,8 @@ package data.datahelper.orderdatahelper;
 
 import org.junit.Before;
 import org.junit.Test;
+import util.ALProducer;
+import util.ResultMessage;
 
 import java.util.ArrayList;
 
@@ -15,64 +17,47 @@ public class OrderDataHelperImplTest {
     OrderDataHelperImpl tested;
 
     @Before
-    public void setUp() throws Exception{
+    public void setUp() throws Exception {
         tested = new OrderDataHelperImpl();
     }
 
-
-
-    @Test
-    public void findByIdFromSQL() throws Exception {
-
-    }
-
-    @Test
-    public void findByConditionsFromSQL() throws Exception {
-
-    }
-
-
-
     @Test
     public void insertToSQL() throws Exception {
-        ArrayList<Object> orderInfo = new ArrayList<>();
-        orderInfo.add("45454148498");
-        orderInfo.add(522000);
-        orderInfo.add("Hiki");
-        orderInfo.add("Abnormal");
-        orderInfo.add("榕江大酒店");
-        orderInfo.add("Single");
-        orderInfo.add(1);
-        orderInfo.add("511");
-        orderInfo.add(2);
-        orderInfo.add(true);
-        orderInfo.add("2012-12-12 11:11:11");
-        orderInfo.add("2012-12-12 11:11:11");
-        orderInfo.add("2012-12-12 11:11:11");
-        orderInfo.add("2012-12-12 11:11:11");
-        orderInfo.add("2012-12-12 11:11:11");
-        orderInfo.add("2012-12-12 11:11:11");
-        orderInfo.add("2012-12-12 11:11:11");
-        orderInfo.add(100);
-        orderInfo.add(80);
-        orderInfo.add("2012-12-12 11:11:11");
-        orderInfo.add(1);
-        orderInfo.add("Good");
-        orderInfo.add("2012-12-12 11:11:11");
-        orderInfo.add("All");
-
-        System.out.print(tested.insertToSQL(orderInfo));
+        ArrayList<Object> input = ALProducer.getOrder();
+        ResultMessage result = tested.insertToSQL(input);
+        System.out.println(result.toString());
 
     }
 
     @Test
     public void updateFromSQL() throws Exception {
-
+        ArrayList<Object> input = ALProducer.getOrder();
+        input.set(2, "leftovers02");
+        ResultMessage result = tested.updateFromSQL(input);
+        System.out.println(result.toString());
     }
 
     @Test
     public void findFromSQL() throws Exception {
-
+        // TODO：时间显示会后面加个 .0
+        ArrayList<ArrayList<Object>> output = new ArrayList<>();
+        output = tested.findFromSQL();
+        for (ArrayList<Object> each : output) {
+            for (Object a : each) {
+                System.out.print(a.toString() + " ");
+            }
+            System.out.println();
+        }
     }
 
+    @Test
+    public void findByIdFromSQL() throws Exception {
+        ArrayList<Object> output = tested.findByIdFromSQL((String) ALProducer.getOrder().get(0));
+        for (Object a : output) {
+            System.out.print(a.toString() + " ");
+        }
+    }
 }
+
+
+

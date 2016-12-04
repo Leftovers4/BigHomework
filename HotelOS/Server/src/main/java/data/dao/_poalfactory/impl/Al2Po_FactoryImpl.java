@@ -193,20 +193,28 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
 
         // 合作企业
         ArrayList<String> promotionEnterprises = new ArrayList<>(Const.MaxPromotionEntpriseAmount);
-        for(int i = 0; i < promotionEnterprises.size(); i++){
-            promotionEnterprises.add((String) promotionAL.next());
+        for(int i = 0; i < Const.MaxPromotionEntpriseAmount; i++){
+            String enterprise = (String) promotionAL.next();
+            promotionEnterprises.add(enterprise);
         }
+
 
         // 商圈优惠
         ArrayList<PromotionTraAreaPO> promotionTraAreaPOs = new ArrayList<>(Const.MaxPromotionAddressAmount);
-        for(int i = 0; i < promotionTraAreaPOs.size(); i++){
-            promotionTraAreaPOs.add(new PromotionTraAreaPO((String)promotionAL.next(), (double)promotionAL.next()));
+        for(int i = 0; i < Const.MaxPromotionAddressAmount; i++){
+            String tradingArea = (String) promotionAL.next();
+            double traDiscount = (double) promotionAL.next();
+            promotionTraAreaPOs.add(new PromotionTraAreaPO(tradingArea, traDiscount));
+
         }
 
         // 会员优惠
         ArrayList<PromotionMRPO> promotionMRPOs = new ArrayList<>(Const.MaxMemberLevel);
-        for(int i = 0; i < promotionMRPOs.size(); i++){
-            promotionMRPOs.add(new PromotionMRPO((double) promotionAL.next(), (double) promotionAL.next()));
+        for(int i = 0; i < Const.MaxMemberLevel; i++){
+            double credit = (double) promotionAL.next();
+            double memDiscount = (double) promotionAL.next();
+
+            promotionMRPOs.add(new PromotionMRPO(credit, memDiscount));
         }
 
         // 构造promotionTimePO

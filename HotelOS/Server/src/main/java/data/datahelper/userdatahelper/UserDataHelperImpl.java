@@ -14,10 +14,6 @@ public class UserDataHelperImpl extends DataHelperParent implements UserDataHelp
     private final static String USER_TABLENAME = TableName.user.toString();
 
 
-    @Override
-    public ArrayList<Object> findByIDFromSQL(String username) {
-        return findFromSQLById(USER_TABLENAME, username);
-    }
 
     @Override
     public ResultMessage insertToSQL(ArrayList<Object> userInfo) {
@@ -40,4 +36,8 @@ public class UserDataHelperImpl extends DataHelperParent implements UserDataHelp
     }
 
 
+    @Override
+    public ArrayList<Object> findByIDFromSQL(String username) {
+        return findFromSQLById(USER_TABLENAME, username);
+    }
 }

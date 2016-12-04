@@ -12,12 +12,6 @@ public interface UserDataHelper {
 
     // 格式："username", "password", "name", "gender", "phone", "member_type", "level", "birthday", "enterprise"
 
-    /**
-     * 根据用户名在user表中查找一条用户信息
-     * @param username
-     * @return
-     */
-    public ArrayList<Object> findByIDFromSQL(String username);
 
     /**
      * 在user表中插入一条用户信息
@@ -46,7 +40,12 @@ public interface UserDataHelper {
      */
     public ArrayList<ArrayList<Object>> findFromSQL();
 
-
+    /**
+     * 根据用户名在user表中查找一条用户信息
+     * @param username
+     * @return
+     */
+    public ArrayList<Object> findByIDFromSQL(String username);
 
 
 }

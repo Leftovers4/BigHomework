@@ -69,7 +69,7 @@ public class DataHelperParent {
         TB_TO_COL.put("promotion", strsToList("promotion_id", "promotion_type", "hotel_id", "discount", "least_rooms", "begin_time", "end_time",
                       "enterprise1", "enterprise2", "enterprise3", "enterprise4", "enterprise5",
                       "trading_area1", "tra_discount1", "trading_area2", "tra_discount2", "trading_area3", "tra_discount3", "trading_area4", "tra_discount4", "trading_area5", "tra_discount5",
-                      "credit1", "mem_discount1", "credit2", "mem_discount2", "credit3", "mem_discount3", "credit4", "mem_discount4", "credit5", "mem_discount", "credit6", "mem_discount6"));
+                      "credit1", "mem_discount1", "credit2", "mem_discount2", "credit3", "mem_discount3", "credit4", "mem_discount4", "credit5", "mem_discount5", "credit6", "mem_discount6"));
         TB_TO_COL.put("user_image", strsToList("username", "image_reference"));
         TB_TO_COL.put("hotel_image", strsToList("hotel_id", "image_reference"));
 
@@ -158,11 +158,11 @@ public class DataHelperParent {
         } catch (SQLException e) {
             // TODO 以后要注释掉
             e.printStackTrace();
-            return ResultMessage.DataNotExisted;
+            return ResultMessage.Fail;
         }
 
         if(affectedRows == 0){
-            return ResultMessage.Fail;
+            return ResultMessage.DataNotExisted;
         }
 
         return ResultMessage.Success;
@@ -213,12 +213,12 @@ public class DataHelperParent {
         } catch (SQLException e) {
             // TODO 以后要注释掉
             e.printStackTrace();
-            return ResultMessage.DataNotExisted;
+            return ResultMessage.Fail;
         }
 
 
         if(affectedRows == 0){
-            return ResultMessage.Fail;
+            return ResultMessage.DataNotExisted;
         }
 
         return ResultMessage.Success;

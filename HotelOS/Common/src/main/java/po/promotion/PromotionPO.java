@@ -127,6 +127,7 @@ public class PromotionPO implements Serializable {
 
     // 用于从数据库中读取出来一个po
     public PromotionPO(long promotionID, PromotionType promotionType, long hotelID, double discount, int leastRooms, PromotionTimePO promotionTimePO, ArrayList<String> promotionEnterprises, ArrayList<PromotionTraAreaPO> promotionTraAreaPOs, ArrayList<PromotionMRPO> promotionMRPOs) {
+        initial();
         this.promotionID = promotionID;
         this.promotionType = promotionType;
         this.hotelID = hotelID;
@@ -147,15 +148,15 @@ public class PromotionPO implements Serializable {
         promotionTraAreaPOs = new ArrayList<>(Const.MaxPromotionAddressAmount);
         promotionMRPOs = new ArrayList<>(Const.MaxMemberLevel);
         // 初始化合作企业优惠
-        for(int i = 0; i < promotionEnterprises.size(); i++){
+        for(int i = 0; i < Const.MaxPromotionEntpriseAmount; i++){
             promotionEnterprises.add("");
         }
         // 初始化商圈优惠
-        for(int i = 0; i < promotionTraAreaPOs.size(); i++){
+        for(int i = 0; i < Const.MaxPromotionAddressAmount; i++){
             promotionTraAreaPOs.add(new PromotionTraAreaPO("", 1.0));
         }
         // 初始化会员等级优惠
-        for(int i = 0; i < promotionMRPOs.size(); i++){
+        for(int i = 0; i < Const.MaxMemberLevel; i++){
             promotionMRPOs.add(new PromotionMRPO(0.0, 1.0));
         }
 

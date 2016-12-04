@@ -2,6 +2,7 @@ package data.datahelper.hoteldatahelper;
 
 import org.junit.Before;
 import org.junit.Test;
+import util.ALProducer;
 import util.ResultMessage;
 
 import java.util.ArrayList;
@@ -22,33 +23,21 @@ public class HotelDataHelperImplTest {
 
     @Test
     public void insertToSQL() throws Exception {
-        ArrayList<Object> input = new ArrayList<>();
-        input.add(522000);
-        input.add("榕江大酒店");
-        input.add(5);
-        input.add("广东揭阳");
-        input.add("东山");
-        input.add("包吃包住");
-        input.add("没有特殊服务");
+        ArrayList<Object> input = ALProducer.getHotel();
         ResultMessage result = tested.insertToSQL(input);
         System.out.println(result.toString());
     }
 
     @Test
     public void deleteFromSQL() throws Exception {
-
+        ResultMessage result = tested.deleteFromSQL((long)ALProducer.getHotel().get(0));
+        System.out.println(result.toString());
     }
 
     @Test
     public void updateFromSQL() throws Exception {
-        ArrayList<Object> input = new ArrayList<>();
-        input.add(522001);
-        input.add("榕江中酒店");
-        input.add(3);
-        input.add("广东潮汕");
-        input.add("东山");
-        input.add("包吃包住");
-        input.add("没有特殊服务");
+        ArrayList<Object> input = ALProducer.getHotel();
+        input.set(6, "有特殊服务");
         ResultMessage result = tested.updateFromSQL(input);
         System.out.println(result.toString());
     }
@@ -67,7 +56,8 @@ public class HotelDataHelperImplTest {
 
     @Test
     public void findByIdFromSQL() throws Exception {
-        ArrayList<Object> output = tested.findByIdFromSQL(522000);
+//        System.out.println((long)ALProducer.getHotel().get(0));
+        ArrayList<Object> output = tested.findByIdFromSQL((long)ALProducer.getHotel().get(0));
         for (Object a : output) {
             System.out.print(a.toString() + " ");
         }

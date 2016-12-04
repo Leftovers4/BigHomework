@@ -63,7 +63,13 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
 
     @Override
     public ResultMessage delete(long hotelID) throws RemoteException {
-        //TODO: 并没有删除对应的rooms
+
+        // 删除酒店的rooms
+        ArrayList<RoomPO> roomPOs = findRoomsByHotelID(hotelID);
+        for (RoomPO each : roomPOs) {
+            deleteRoom(each.getroomID());
+        }
+
         return hotelDataHelper.deleteFromSQL(hotelID);
     }
 
@@ -101,7 +107,6 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
         ArrayList<ReviewPO> reviewPOs = findAllReviews();
 
         // 对每个hotelpo获取相应的roomPOs和reviewPOs
-        // TODO: 待测试，foreach循环是否可以set
         ArrayList<HotelPO> setHotelPOs = new ArrayList<>();
         for(HotelPO each : hotelPOs){
             each.setRooms(getRoomsByHotelID(roomPOs, each.getHotelID()));
