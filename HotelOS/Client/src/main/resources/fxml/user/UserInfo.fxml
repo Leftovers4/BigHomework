@@ -46,7 +46,7 @@
             <Image url="@../../img/common/initialPhoto.png" />
          </image>
       </ImageView>
-      <Button fx:id="changePhotoBtn" layoutX="125.0" layoutY="300.0" mnemonicParsing="false" onAction="#changePhoto" styleClass="actionBtn" text="编辑头像" />
+      <Button fx:id="changePhotoBtn" layoutX="125.0" layoutY="300.0" mnemonicParsing="false" onAction="#changePhoto" text="编辑头像" />
       <TextField fx:id="userIdField" layoutX="435.0" layoutY="110.0" visible="false" />
       <TextField fx:id="userNameField" layoutX="435.0" layoutY="170.0" visible="false" />
       <RadioButton fx:id="sexMan" layoutX="435.0" layoutY="235.0" mnemonicParsing="false" text="男" visible="false">
@@ -76,17 +76,17 @@
       <Label fx:id="birthDate" layoutX="425.0" layoutY="296.0" text="2016-09-12" />
       <Label fx:id="phone" layoutX="425.0" layoutY="356.0" text="Label" />
       <Label layoutX="425.0" layoutY="415.0" text="0" />
-      <Button fx:id="registerCommonvipBtn" layoutX="511.0" layoutY="470.0" mnemonicParsing="false" onAction="#registerCommonvip" styleClass="actionBtn" text="注册" />
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="425.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="registerCommonvipBtn" layoutX="491.0" layoutY="470.0" mnemonicParsing="false" onAction="#registerCommonvip" styleClass="actionBtn" text="注册" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="425.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/user/commonVIP.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="425.0" layoutY="520.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="425.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/user/companyVIP.png" />
          </image>
       </ImageView>
-      <Button fx:id="registerCompanyvipBtn" layoutX="511.0" layoutY="520.0" mnemonicParsing="false" onAction="#registerCompanyvip" styleClass="actionBtn" text="注册" />
+      <Button fx:id="registerCompanyvipBtn" layoutX="491.0" layoutY="520.0" mnemonicParsing="false" onAction="#registerCompanyvip" styleClass="actionBtn" text="注册" />
    </children>
 </fx:root>

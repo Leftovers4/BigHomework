@@ -35,7 +35,7 @@
          </children></VBox>
       <HBox id="stateBar" fx:id="downbar" alignment="CENTER_RIGHT" layoutY="690.0" prefHeight="30.0" prefWidth="1080.0">
          <children>
-            <Label fx:id="timeLabel" text="Label" />
+            <Label fx:id="timeLabel" />
          </children></HBox>
       <ImageView fx:id="leftBarSlider" fitHeight="56.0" fitWidth="56.0" layoutX="194.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">
          <image>
@@ -57,7 +57,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Button>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="topbarphoto" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/common/initialPhoto.png" />
                </image>

@@ -27,6 +27,6 @@
       <Button fx:id="registerCompanyBtn" disable="true" layoutX="315.0" layoutY="553.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="220.0" styleClass="actionBtn" text="立即注册" />
       <Label layoutX="286.0" layoutY="460.0" text="企业名称：" />
       <TextField layoutX="377.0" layoutY="455.0" prefWidth="175.0" />
-      <CheckBox onMouseClicked="#checkCompanyvipInfo" fx:id="confirmCompanyvipInfo" layoutX="362.0" layoutY="509.0" mnemonicParsing="false" onAction="#checkCommonvipInfo" text="我已核对信息无误" />
+      <CheckBox onMouseClicked="#checkCompanyvipInfo" fx:id="confirmCompanyvipInfo" layoutX="362.0" layoutY="509.0" mnemonicParsing="false" onAction="#checkCompanyvipInfo" text="我已核对信息无误" />
    </children>
 </fx:root>

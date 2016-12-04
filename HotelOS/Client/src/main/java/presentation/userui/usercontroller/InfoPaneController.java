@@ -19,6 +19,8 @@ import vo.user.UserVO;
 import java.io.*;
 import java.time.LocalDate;
 
+import static presentation.util.ChangePhoto.updatePhoto;
+
 /**
  * Created by Hitiger on 2016/11/19.
  * Description : 客户基本信息控制器，负责查看和编辑信息界面的跳转
@@ -51,9 +53,12 @@ public class InfoPaneController {
 
     private UserBLService_Stub userBLService_stub;
 
-    public void launch(Stage primaryStage, Pane mainPane) {
+    private ImageView topbarphoto;
+
+    public void launch(Stage primaryStage, Pane mainPane, ImageView topbarphoto) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
+        this.topbarphoto = topbarphoto;
 
         userBLService_stub = new UserBLService_Stub();
 
@@ -245,8 +250,10 @@ public class InfoPaneController {
                     output.close();
                     input.close();
                 }
-                Image image = new Image("file:///"+fileName);
-                userPhoto.setImage(image);
+//                Image image = new Image("file:///"+fileName);
+//                userPhoto.setImage(image);
+                updatePhoto(userPhoto, fileName);
+                updatePhoto(topbarphoto, fileName);
 //                topBarPhoto.setImage(image);
             } catch (Exception e) {
                 e.printStackTrace();

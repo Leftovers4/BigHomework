@@ -23,6 +23,8 @@ public class RegisterCompanyVIPController {
     private void checkCompanyvipInfo() {
         if (confirmCompanyvipInfo.isSelected()) {
             registerCompanyBtn.setDisable(false);
+        } else {
+            registerCompanyBtn.setDisable(true);
         }
     }
 }

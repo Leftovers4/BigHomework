@@ -3,6 +3,7 @@ package presentation.userui.usercontroller;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.FlowPane;
@@ -23,9 +24,15 @@ public class UserSearchHotelController {
     @FXML private TableView hotelList;
     @FXML private Pane downMoreInfo;
 
+    @FXML private ComboBox cityComBox;
+    @FXML private ComboBox tradingAreaCombox;
+
     public void launch(Stage primaryStage, Pane mainPane) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
+
+        cityComBox.getItems().add("南京市");
+        tradingAreaCombox.getItems().add("新街口");
     }
 
 

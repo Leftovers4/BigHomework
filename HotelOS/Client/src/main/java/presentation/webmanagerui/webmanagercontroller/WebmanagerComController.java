@@ -2,10 +2,12 @@ package presentation.webmanagerui.webmanagercontroller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.util.LeftBarEffect;
+import presentation.util.MyTimeLabel;
 import presentation.webmanagerui.webmanagerscene.HotelManagePane;
 import presentation.webmanagerui.webmanagerscene.HotelworkerManagePane;
 import presentation.webmanagerui.webmanagerscene.UserManagePane;
@@ -13,6 +15,8 @@ import presentation.webmanagerui.webmanagerscene.WebmarketerManagePane;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static presentation.util.MyTimeLabel.EnableShowTime;
 
 /**
  * Created by wyj on 2016/11/29.
@@ -28,6 +32,8 @@ public class WebmanagerComController {
     @FXML private Button webmarketerBtn;
     @FXML private ImageView leftBarSlider;
 
+    @FXML private Label timelabel;
+
     private Button currentBtn = null;
     LeftBarEffect leftBarEffect = new LeftBarEffect();
     private ArrayList<Button> buttons;
@@ -36,6 +42,8 @@ public class WebmanagerComController {
         this.stage = primaryStage;
         buttons = new ArrayList<>(Arrays.asList(hotelManageBtn, userBtn, hotelworkerBtn, webmarketerBtn));
         mainPane.getChildren().add(new HotelManagePane(stage, mainPane));
+
+        EnableShowTime(timelabel);
     }
 
     @FXML

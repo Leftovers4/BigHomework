@@ -68,7 +68,14 @@
 #changePhotoBtn {
     -fx-background-color: transparent;
     -fx-text-fill: deepskyblue;
+}
+#changePhotoBtn:hover {
     -fx-underline: true;
+    -fx-background-color: transparent;
+}
+#changePhotoBtn:armed {
+    -fx-underline: true;
+    -fx-background-color: transparent;
 }
 
 
@@ -101,3 +108,10 @@
 #moreInfoChoice {
     -fx-border-color: transparent #dddddd transparent #dddddd;
 }
+
+
+#searchArea {
+    -fx-background-color: white;
+    -fx-border-color: #dddddd #dddddd #dddddd #dddddd;
+}
+

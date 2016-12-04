@@ -13,8 +13,8 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.UserOrderListController">
    <children>
-      <ComboBox layoutX="80.0" layoutY="130.0" prefHeight="30.0" prefWidth="126.0" promptText="-订单状态-" />
-      <TextField layoutX="220.0" layoutY="130.0" prefWidth="165.0" />
+      <ComboBox fx:id="orderStateComBox" layoutX="80.0" layoutY="130.0" prefHeight="30.0" prefWidth="130.0" promptText="-订单状态-" />
+      <TextField layoutX="225.0" layoutY="130.0" prefWidth="165.0" />
       <TableView layoutX="80.0" layoutY="190.0" prefHeight="360.0" prefWidth="690.0">
         <columns>
           <TableColumn prefWidth="192.0" text="订单号" />
@@ -24,7 +24,7 @@
             <TableColumn minWidth="0.0" prefWidth="0.0" />
         </columns>
       </TableView>
-      <Button layoutX="340.0" layoutY="125.0" mnemonicParsing="false" onAction="#cancelOrder">
+      <Button layoutX="345.0" layoutY="125.0" mnemonicParsing="false" onAction="#cancelOrder">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -34,9 +34,9 @@
          </graphic>
       </Button>
       <Label layoutX="405.0" layoutY="135.0" text="时间：" />
-      <DatePicker layoutX="454.0" layoutY="130.0" prefWidth="135.0" />
+      <DatePicker fx:id="datebegin" layoutX="454.0" layoutY="130.0" prefWidth="135.0" />
       <Label layoutX="605.0" layoutY="135.0" text="至" />
-      <DatePicker layoutX="634.0" layoutY="130.0" prefWidth="135.0" />
+      <DatePicker fx:id="dateend" layoutX="634.0" layoutY="130.0" prefWidth="135.0" />
       <Button layoutX="690.0" layoutY="583.0" mnemonicParsing="false" styleClass="actionBtn" text="查看详情" />
    </children>
 </fx:root>

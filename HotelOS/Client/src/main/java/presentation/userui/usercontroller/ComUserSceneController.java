@@ -12,6 +12,8 @@ import presentation.util.LeftBarEffect;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static presentation.util.MyTimeLabel.EnableShowTime;
+
 /**
  * Created by Hitiger on 2016/11/19.
  * Description : 客户主界面控制器，负责基本信息、浏览订单、搜索酒店等界面的跳转
@@ -27,10 +29,11 @@ public class ComUserSceneController {
     @FXML private Button searchHotelBtn;
     @FXML private Button hotelRegisteredBtn;
     @FXML private ImageView leftBarSlider;
+
+    @FXML private ImageView topbarphoto;
     private Button currentBtn = null;
 
     @FXML private Label timeLabel;
-
 
     //左边栏按钮集合
     private ArrayList<Button> leftBarBtnArr;
@@ -40,11 +43,13 @@ public class ComUserSceneController {
     public void launch(Stage primaryStage){
         primaryStage.setX(400);
         primaryStage.setY(200);
-        mainPane.getChildren().add(new InfoPane(primaryStage, mainPane));
+        mainPane.getChildren().add(new InfoPane(primaryStage, mainPane, topbarphoto));
         this.stage = primaryStage;
 
         leftBarBtnArr = new ArrayList<>(Arrays.asList(userInfoBtn, orderListBtn, searchHotelBtn,
                 hotelRegisteredBtn, indexBtn));
+
+        EnableShowTime(timeLabel);
     }
 
 
@@ -87,7 +92,7 @@ public class ComUserSceneController {
     private void userInfo() {
         changeSliderPos(260);
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new InfoPane(stage, mainPane));
+        mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto));
         leftBarBtnEffect(userInfoBtn);
         currentBtn = userInfoBtn;
     }
@@ -166,3 +171,4 @@ public class ComUserSceneController {
         mouseOutEffect(hotelRegisteredBtn);
     }
 }
+
