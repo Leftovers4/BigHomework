@@ -9,20 +9,38 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 
 <fx:root prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.InfoPaneController">
    <children>
       <Label fx:id="vipCompany" layoutX="523.0" layoutY="525.0" text="company" visible="false" />
       <Label fx:id="vipLevel" layoutX="524.0" layoutY="475.0" text="level" visible="false" />
-      <Label layoutX="345.0" layoutY="115.0" text="用户名：" />
-      <Label layoutX="362.0" layoutY="175.0" text="姓名：" />
-      <Label layoutX="362.0" layoutY="235.0" text="性别：" />
-      <Label layoutX="330.0" layoutY="355.0" text="联系方式：" />
-      <Label layoutX="331.0" layoutY="295.0" text="出生日期：" />
-      <Label layoutX="343.0" layoutY="415.0" text="信用值：" />
-      <Hyperlink fx:id="checkcreditentrance" layoutX="487.0" layoutY="411.0" onAction="#checkCreditRecord" text="查看信用记录" />
-      <Label layoutX="325.0" layoutY="475.0" text="会员信息：" />
+      <GridPane layoutX="325.0" layoutY="95.0" prefHeight="417.0" prefWidth="75.0">
+         <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Label text="用户名：" />
+            <Label text="姓名：" GridPane.rowIndex="1" />
+            <Label text="性别：" GridPane.rowIndex="2" />
+            <Label text="联系方式：" GridPane.rowIndex="4" />
+            <Label text="出生日期：" GridPane.rowIndex="3" />
+            <Label text="信用值：" GridPane.rowIndex="5" />
+            <Label text="会员信息：" GridPane.rowIndex="6" />
+         </children>
+      </GridPane>
       <ImageView fx:id="userPhoto" fitHeight="170.0" fitWidth="170.0" layoutX="80.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/common/initialPhoto.png" />
@@ -38,18 +56,37 @@
       <RadioButton fx:id="sexWoman" layoutX="540.0" layoutY="235.0" mnemonicParsing="false" text="女" toggleGroup="$sexGroup" visible="false" />
       <DatePicker fx:id="birthPicker" editable="false" layoutX="435.0" layoutY="290.0" prefHeight="34.0" prefWidth="201.0" visible="false" />
       <TextField fx:id="phoneField" layoutX="435.0" layoutY="350.0" visible="false" />
-      <Label layoutX="435.0" layoutY="415.0" text="0" />
-      <Label layoutX="435.0" layoutY="475.0" text="普通会员：" />
-      <Label layoutX="435.0" layoutY="525.0" text="企业会员：" />
-      <Button fx:id="registerCommonvipBtn" layoutX="540.0" layoutY="470.0" mnemonicParsing="false" onAction="#registerCommonvip" styleClass="actionBtn" text="注册" />
-      <Button fx:id="registerCompanyvipBtn" layoutX="540.0" layoutY="520.0" mnemonicParsing="false" onAction="#registerCompanyvip" styleClass="actionBtn" text="注册" />
       <Button fx:id="saveInfo" layoutX="491.0" layoutY="596.0" mnemonicParsing="false" onAction="#saveUserInfo" prefWidth="70.0" styleClass="actionBtn" text="保存" visible="false" />
       <Button fx:id="cleanAllBtn" layoutX="603.0" layoutY="596.0" mnemonicParsing="false" onAction="#cleanAll" prefWidth="70.0" styleClass="actionBtn" text="重置" visible="false" />
-      <Label fx:id="userIdLabel" layoutX="435.0" layoutY="115.0" text="name" />
-      <Label fx:id="usernameLabel" layoutX="435.0" layoutY="175.0" text="Label" />
-      <Label fx:id="userSex" layoutX="435.0" layoutY="235.0" text="Label" />
-      <Label fx:id="birthDate" layoutX="435.0" layoutY="295.0" text="2016-09-12" />
-      <Label fx:id="phone" layoutX="435.0" layoutY="355.0" text="Label" />
       <Button fx:id="editInfoBtn" layoutX="490.0" layoutY="596.0" mnemonicParsing="false" onAction="#editUserInfo" prefHeight="30.0" prefWidth="100.0" styleClass="actionBtn" text="编辑" />
+      <GridPane layoutX="590.0" layoutY="45.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
+      <Hyperlink fx:id="checkcreditentrance" layoutX="503.0" layoutY="411.0" onAction="#checkCreditRecord" text="查看信用记录" />
+      <Label fx:id="userIdLabel" layoutX="425.0" layoutY="115.0" text="name" />
+      <Label fx:id="usernameLabel" layoutX="425.0" layoutY="176.0" text="Label" />
+      <Label fx:id="userSex" layoutX="425.0" layoutY="235.0" text="Label" />
+      <Label fx:id="birthDate" layoutX="425.0" layoutY="296.0" text="2016-09-12" />
+      <Label fx:id="phone" layoutX="425.0" layoutY="356.0" text="Label" />
+      <Label layoutX="425.0" layoutY="415.0" text="0" />
+      <Button fx:id="registerCommonvipBtn" layoutX="511.0" layoutY="470.0" mnemonicParsing="false" onAction="#registerCommonvip" styleClass="actionBtn" text="注册" />
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="425.0" layoutY="470.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/user/commonVIP.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="425.0" layoutY="520.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/user/companyVIP.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="registerCompanyvipBtn" layoutX="511.0" layoutY="520.0" mnemonicParsing="false" onAction="#registerCompanyvip" styleClass="actionBtn" text="注册" />
    </children>
 </fx:root>

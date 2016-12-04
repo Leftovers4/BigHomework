@@ -75,31 +75,37 @@ public class InfoPaneController {
     }
 
 
+    /**
+     * 组件的显示与隐藏
+     * @param show
+     */
+    private void showmodule(boolean show) {
+        userIdField.setVisible(show);
+        userNameField.setVisible(show);
+        sexMan.setVisible(show);
+        sexWoman.setVisible(show);
+        birthPicker.setVisible(show);
+        phoneField.setVisible(show);
+        saveInfo.setVisible(show);
+        cleanAllBtn.setVisible(show);
+
+        userIdLabel.setVisible(!show);
+        usernameLabel.setVisible(!show);
+        userSex.setVisible(!show);
+        birthDate.setVisible(!show);
+        phone.setVisible(!show);
+        registerCommonvipBtn.setVisible(!show);
+        registerCompanyvipBtn.setVisible(!show);
+        editInfoBtn.setVisible(!show);
+        checkcreditentrance.setVisible(!show);
+    }
 
     /**
      * 编辑基本信息
      */
     @FXML
     private void editUserInfo() {
-        userIdField.setVisible(true);
-        userNameField.setVisible(true);
-        sexMan.setVisible(true);
-        sexWoman.setVisible(true);
-        birthPicker.setVisible(true);
-        phoneField.setVisible(true);
-        saveInfo.setVisible(true);
-        cleanAllBtn.setVisible(true);
-
-
-        userIdLabel.setVisible(false);
-        usernameLabel.setVisible(false);
-        userSex.setVisible(false);
-        birthDate.setVisible(false);
-        phone.setVisible(false);
-        registerCommonvipBtn.setVisible(false);
-        registerCompanyvipBtn.setVisible(false);
-        editInfoBtn.setVisible(false);
-        checkcreditentrance.setVisible(false);
+        showmodule(true);
 
         userIdField.setText(userIdLabel.getText());
         userNameField.setText(usernameLabel.getText());
@@ -145,24 +151,7 @@ public class InfoPaneController {
             phone.setText(phoneField.getText());
             phoneField.clear();
 
-            userIdField.setVisible(false);
-            userNameField.setVisible(false);
-            sexMan.setVisible(false);
-            sexWoman.setVisible(false);
-            birthPicker.setVisible(false);
-            phoneField.setVisible(false);
-            saveInfo.setVisible(false);
-            cleanAllBtn.setVisible(false);
-
-            checkcreditentrance.setVisible(true);
-            userIdLabel.setVisible(true);
-            usernameLabel.setVisible(true);
-            userSex.setVisible(true);
-            birthDate.setVisible(true);
-            phone.setVisible(true);
-            registerCommonvipBtn.setVisible(true);
-            registerCompanyvipBtn.setVisible(true);
-            editInfoBtn.setVisible(true);
+            showmodule(false);
         } else if (!isempty && !phoneisright) {
             new InputWrongAlert("联系方式格式错误", "格式错误").showAndWait();
         } else {
@@ -293,9 +282,6 @@ public class InfoPaneController {
         mainPane.getChildren().remove(0);
         mainPane.getChildren().add(new RegisterCompanyVIPPane(stage));
     }
-
-
-
 
 
 }
