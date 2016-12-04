@@ -45,14 +45,14 @@ public class DBInit {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
 
         // 获取连接
         try {
             conn = DriverManager.getConnection(URL, USER, PWD);
         } catch (SQLException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
 
 

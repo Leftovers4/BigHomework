@@ -12,6 +12,7 @@ import po.user.CreditRecordPO;
 import po.user.MemberPO;
 import po.user.UserPO;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -28,6 +29,7 @@ import java.util.Iterator;
 public class Al2Po_FactoryImpl{
 
 
+     
     public UserPO toUserPO(Iterator<Object> userAL) {
 
         // 若user表没有内容，则返回null
@@ -39,7 +41,7 @@ public class Al2Po_FactoryImpl{
         String username = (String) userAL.next();
         String password = (String) userAL.next();
         String name = (String) userAL.next();
-        boolean gender = (boolean) userAL.next();
+        boolean gender = intToBool((int)userAL.next());
         String phone = (String) userAL.next();
         MemberType memberType = (MemberType) EnumFactory.getEnum((String)userAL.next());
         int level = (int) userAL.next();
@@ -58,6 +60,7 @@ public class Al2Po_FactoryImpl{
 
     }
 
+     
     public PersonnelPO toPersonnelPO(Iterator<Object> personnelAL) {
         // 若personnel表没有内容，则返回null
         if(!personnelAL.hasNext()){
@@ -76,6 +79,7 @@ public class Al2Po_FactoryImpl{
 
     }
 
+     
     public HotelPO toHotelPO(Iterator<Object> hotelAL) {
         // 若hotel表没有内容，则返回null
         if(!hotelAL.hasNext()){
@@ -104,6 +108,7 @@ public class Al2Po_FactoryImpl{
 
     }
 
+     
     public RoomPO toRoomPO(Iterator<Object> roomAL) {
         // 若room表没有内容，则返回null
         if(!roomAL.hasNext()){
@@ -122,6 +127,7 @@ public class Al2Po_FactoryImpl{
         return roomPO;
     }
 
+     
     public OrderPO toOrderPO(Iterator<Object> orderAL) {
         // 若order表没有内容，则返回null
         if(!orderAL.hasNext()){
@@ -138,24 +144,25 @@ public class Al2Po_FactoryImpl{
         int roomAmount = (int) orderAL.next();
         String roomNumber = (String) orderAL.next();
         int personAmount = (int) orderAL.next();
-        boolean withChilren = (boolean) orderAL.next(); // TODO:不确定能不能转换
+        boolean withChilren = intToBool((int) orderAL.next()); // TODO:不确定能不能转换
         // 时间
-        LocalDateTime generateTime = toDateTime((String)orderAL.next());
-        LocalDateTime expectedCheckinTime = toDateTime((String)orderAL.next());
-        LocalDateTime checkinTime = toDateTime((String)orderAL.next());
-        LocalDateTime expectedLeaveTime = toDateTime((String)orderAL.next());
-        LocalDateTime leaveTime = toDateTime((String)orderAL.next());
-        LocalDateTime lastExecuteTime = toDateTime((String)orderAL.next());
-        LocalDateTime cancelTime = toDateTime((String)orderAL.next());
+//        LocalDateTime generateTime = toDateTime((String) orderAL.next());
+        LocalDateTime generateTime = timeStampToLocalDatetime((Timestamp) orderAL.next());
+        LocalDateTime expectedCheckinTime = timeStampToLocalDatetime((Timestamp) orderAL.next());
+        LocalDateTime checkinTime = timeStampToLocalDatetime((Timestamp) orderAL.next());
+        LocalDateTime expectedLeaveTime = timeStampToLocalDatetime((Timestamp) orderAL.next());
+        LocalDateTime leaveTime = timeStampToLocalDatetime((Timestamp) orderAL.next());
+        LocalDateTime lastExecuteTime = timeStampToLocalDatetime((Timestamp) orderAL.next());
+        LocalDateTime cancelTime = timeStampToLocalDatetime((Timestamp) orderAL.next());
         // 价格
         double originPrice = (double) orderAL.next();
         double actualPrice = (double) orderAL.next();
         // 评价
-        LocalDateTime reviewTime = toDateTime((String)orderAL.next());
+        LocalDateTime reviewTime = timeStampToLocalDatetime((Timestamp) orderAL.next());
         int rating = (int) orderAL.next();
         String review = (String) orderAL.next();
         // 处理申诉
-        LocalDateTime haTime = toDateTime((String)orderAL.next());
+        LocalDateTime haTime = timeStampToLocalDatetime((Timestamp) orderAL.next());
         HandleAppealResult haResult = (HandleAppealResult) EnumFactory.getEnum((String)orderAL.next());
 
         // 生成局部PO
@@ -170,6 +177,7 @@ public class Al2Po_FactoryImpl{
 
     }
 
+     
     public PromotionPO toPromotionPO(Iterator<Object> promotionAL) {
         // 若promotion表没有内容，则返回null
         if(!promotionAL.hasNext()){
@@ -182,8 +190,8 @@ public class Al2Po_FactoryImpl{
         long hotelID = (long) promotionAL.next();
         double discount = (double) promotionAL.next();
         int leastRooms = (int) promotionAL.next();
-        LocalDateTime beginTime = toDateTime((String)promotionAL.next());
-        LocalDateTime endTime = toDateTime((String) promotionAL.next());
+        LocalDateTime beginTime = timeStampToLocalDatetime((Timestamp) promotionAL.next());
+        LocalDateTime endTime = timeStampToLocalDatetime((Timestamp) promotionAL.next());
 
         // 合作企业
         ArrayList<String> promotionEnterprises = new ArrayList<>(Const.MaxPromotionEntpriseAmount);
@@ -223,6 +231,7 @@ public class Al2Po_FactoryImpl{
 
     }
 
+     
     public CreditRecordPO toCreditRecordPO(Iterator<Object> creditRecordAL) {
         if(!creditRecordAL.hasNext()){
             return null;
@@ -232,7 +241,7 @@ public class Al2Po_FactoryImpl{
         String username = (String) creditRecordAL.next();
         double currentCredit = (double) creditRecordAL.next();
         double changedCredit = (double) creditRecordAL.next();
-        LocalDateTime changedTime = toDateTime((String)creditRecordAL.next());
+        LocalDateTime changedTime = timeStampToLocalDatetime((Timestamp) creditRecordAL.next());
         CreditChangedCause creditChangedCause = (CreditChangedCause) EnumFactory.getEnum((String)creditRecordAL.next());
         String orderID = (String) creditRecordAL.next();
 
@@ -240,7 +249,7 @@ public class Al2Po_FactoryImpl{
 
     }
 
-//    @Override
+//     
 //    public PromotionTraAreaPO toPromotionTraAreaPO(Iterator<Object> addressAL) {
 //        if(!addressAL.hasNext()){
 //            return null;
@@ -257,7 +266,7 @@ public class Al2Po_FactoryImpl{
 //        return promotionTraAreaPO;
 //    }
 
-//    @Override
+//     
 //    public PromotionMRPO toPromotionMRPO(Iterator<Object> mrAls) {
 //        if(!mrAls.hasNext()){
 //            return null;
@@ -300,7 +309,18 @@ public class Al2Po_FactoryImpl{
         return null;
     }
 
+    private static boolean intToBool(int bool){
+        if(bool == 0){
+            return false;
+        }else {
+            return true;
+        }
 
+    }
+
+    private static LocalDateTime timeStampToLocalDatetime(Timestamp timestamp){
+        return timestamp.toLocalDateTime();
+    }
 
 
 

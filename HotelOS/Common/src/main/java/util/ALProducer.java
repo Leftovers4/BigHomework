@@ -3,6 +3,9 @@ package util;
 import com.sun.corba.se.spi.ior.ObjectKey;
 import po.user.UserPO;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -27,7 +30,9 @@ public class ALProducer {
     private final static long hotelID = 522000;
     private final static String hotelName = "榕江大酒店";
     private final static String date = "2016-01-01";
-    private final static String datetime = "2016-01-01 11:11:11";
+    private final static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");;
+    private final static Timestamp datetime = Timestamp.valueOf(LocalDateTime.parse("2016-01-01 11:11:11", formatter));
+//    private final static String datetime = "2016-01-01 11:11:11";
     private final static String orderID = hotelID + "20161111" + "000";
     private final static long recordID = 100000;
     private final static long roomID = 121121;
@@ -51,7 +56,7 @@ public class ALProducer {
         // "room_number",  "person_amount", "with_children", "generate_time", "expected_checkin_time",
         // "checkin_time", "expected_leave_time", "leave_time", "last_execute_time", "cancel_time", "original_price", "actual_price",
         // "review_time", "rating", "review", "ha_time", "ha_result"
-        Order = objectsToList(orderID, hotelID, username, "Abnormal", hotelName, "Single", 2, "511", 2, false,
+        Order = objectsToList(orderID, hotelID, username, "Abnormal", hotelName, "Single", 2, "511", 2, 0,
                                 datetime, datetime, datetime, datetime, datetime, datetime, datetime,
                                 100.0, 80.0, datetime, 4, "好", datetime, "All");
         // "personnel_id", "password", "personnel_type", "name", "hotel_id"
@@ -67,7 +72,7 @@ public class ALProducer {
         // "room_id", "hotel_id", "room_type", "total", "available", "price"
         Room = objectsToList(roomID, hotelID, "Single", 12, 11, 100.0);
         // "username", "password", "name", "gender", "phone", "member_type", "level", "birthday", "enterprise"
-        User = objectsToList(username, password, "啊", true, "11011011010", "Normal", 5, date, enterprise);
+        User = objectsToList(username, password, "啊", 1, "11011011010", "Normal", 5, date, enterprise);
 
     }
 

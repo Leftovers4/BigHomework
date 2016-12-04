@@ -172,7 +172,14 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
     }
 
 
+    private static boolean intToBool(int bool){
+        if(bool == 0){
+            return false;
+        }else {
+            return true;
+        }
 
+    }
 
 
 }

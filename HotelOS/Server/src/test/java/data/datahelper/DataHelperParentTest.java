@@ -131,23 +131,7 @@ public class DataHelperParentTest {
         System.out.println(sql);
     }
 
-    @Test
-    public void testFindFromSQLByConditions(){
-        ArrayList<Object> input = new ArrayList<>();
-        input.add("%");
-        input.add("password");
-        input.add(PersonnelType.HotelWorker.toString());
-        input.add("dog");
-        input.add("%");
-        ArrayList<ArrayList<Object>> resultContent = tested.findFromSQLByConditions("personnel", input);
-        for (ArrayList<Object> each : resultContent) {
-            for (Object a: each) {
-                System.out.print(a.toString() + " ");
-            }
-            System.out.println();
-        }
 
-    }
 
 
 

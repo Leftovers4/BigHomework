@@ -79,10 +79,10 @@ public class DataHelperParent {
     protected DataHelperParent(){
         // 连接数据库
         this.conn = DBInit.connect();
-        if(conn != null)
-            System.out.println("Succeed to connect database...");
-        else
+        if(conn == null)
             System.out.println("Fail to connect database...");
+//        else
+//            System.out.println("Succeed to connect database...");
     }
 
 
@@ -123,7 +123,7 @@ public class DataHelperParent {
 
         } catch (SQLException e) {
             // TODO 以后要注释掉
-            e.printStackTrace();
+//            e.printStackTrace();
             return ResultMessage.DataExisted;
         }
 
@@ -157,7 +157,7 @@ public class DataHelperParent {
 
         } catch (SQLException e) {
             // TODO 以后要注释掉
-            e.printStackTrace();
+//            e.printStackTrace();
             return ResultMessage.Fail;
         }
 
@@ -212,7 +212,7 @@ public class DataHelperParent {
 
         } catch (SQLException e) {
             // TODO 以后要注释掉
-            e.printStackTrace();
+//            e.printStackTrace();
             return ResultMessage.Fail;
         }
 
@@ -260,7 +260,7 @@ public class DataHelperParent {
 
         } catch (SQLException e) {
             // TODO 以后要注释掉
-            e.printStackTrace();
+//            e.printStackTrace();
         }
 
         return result;
@@ -290,7 +290,7 @@ public class DataHelperParent {
 
         } catch (SQLException e) {
             // TODO 以后要注释掉
-            e.printStackTrace();
+//            e.printStackTrace();
         }
 
 
@@ -332,44 +332,44 @@ public class DataHelperParent {
 //    }
 
 
-    /**
-     * 从数据库中获得n条数据（根据条件）
-     * 关于条件的说明：参数列表与数据库表保持一致，不构成条件的元素用"%"代替
-     * @param tableName
-     * @return
-     */
-    protected ArrayList<ArrayList<Object>> findFromSQLByConditions(String tableName, ArrayList<Object> conditions) {
-
-        if(TB_TO_COL.get(tableName).size() != conditions.size()){
-            System.out.println("Wrong inputs' number to " + tableName + ".");
-        }
-
-        // 确定参数个数，以便于遍历全部列的内容
-        int paraNum = TB_TO_COL.get(tableName).size();
-
-        // 创建存放结果的容器
-        ArrayList<ArrayList<Object>> resultContent = new ArrayList<>();
-
-        try {
-            preparedStatement = conn.prepareStatement(this.buildFindByConditionsSQL(tableName));
-
-            for(int i = 0; i < paraNum; i++){
-                preparedStatement.setObject(i+1, conditions.get(i));
-            }
-            System.out.println(preparedStatement.toString());
-
-            resultSet = preparedStatement.executeQuery();
-
-            resultContent = this.getInfoFromResultSet(tableName, resultSet);
-
-        } catch (SQLException e) {
-            // TODO 以后要注释掉
-            e.printStackTrace();
-        }
-
-
-        return resultContent;
-    }
+//    /**
+//     * 从数据库中获得n条数据（根据条件）
+//     * 关于条件的说明：参数列表与数据库表保持一致，不构成条件的元素用"%"代替
+//     * @param tableName
+//     * @return
+//     */
+//    protected ArrayList<ArrayList<Object>> findFromSQLByConditions(String tableName, ArrayList<Object> conditions) {
+//
+//        if(TB_TO_COL.get(tableName).size() != conditions.size()){
+//            System.out.println("Wrong inputs' number to " + tableName + ".");
+//        }
+//
+//        // 确定参数个数，以便于遍历全部列的内容
+//        int paraNum = TB_TO_COL.get(tableName).size();
+//
+//        // 创建存放结果的容器
+//        ArrayList<ArrayList<Object>> resultContent = new ArrayList<>();
+//
+//        try {
+//            preparedStatement = conn.prepareStatement(this.buildFindByConditionsSQL(tableName));
+//
+//            for(int i = 0; i < paraNum; i++){
+//                preparedStatement.setObject(i+1, conditions.get(i));
+//            }
+//            System.out.println(preparedStatement.toString());
+//
+//            resultSet = preparedStatement.executeQuery();
+//
+//            resultContent = this.getInfoFromResultSet(tableName, resultSet);
+//
+//        } catch (SQLException e) {
+//            // TODO 以后要注释掉
+//            e.printStackTrace();
+//        }
+//
+//
+//        return resultContent;
+//    }
 
     /* ---------------------------------------------------以下都为辅助类--------------------------------------------------------- */
 
