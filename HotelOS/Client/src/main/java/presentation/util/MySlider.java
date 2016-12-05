@@ -16,7 +16,7 @@ public class MySlider {
         Timeline timeline = new Timeline();
         timeline.setAutoReverse(false);
         KeyValue newX = new KeyValue(label.layoutXProperty(),x);
-        KeyFrame kf = new KeyFrame(Duration.millis(200), newX);
+        KeyFrame kf = new KeyFrame(Duration.millis(300), newX);
         timeline.getKeyFrames().add(kf);
         timeline.play();
     }

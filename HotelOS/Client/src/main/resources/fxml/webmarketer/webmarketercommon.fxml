@@ -18,14 +18,14 @@
                         <Insets />
                     </VBox.margin>
                 </ImageView>
-                <Button fx:id="managePromotionBtn" mnemonicParsing="false" onAction="#showManagePromotion" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="促销策略">
+                <Button fx:id="managePromotionBtn" mnemonicParsing="false" onAction="#showManagePromotion" onMouseEntered="#mouseOnPromotionBtn" onMouseExited="#mouseOutPromotionBtn" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="促销策略">
                     <VBox.margin>
                         <Insets top="150.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="orderListBtn" mnemonicParsing="false" onAction="#showOrderList" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="订单列表" />
-                <Button fx:id="appealOrderBtn" mnemonicParsing="false" onAction="#showAppealOrder" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="订单申诉" />
-                <Button fx:id="addCreditBtn" mnemonicParsing="false" onAction="#showAddCredit" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="信用充值" />
+                <Button fx:id="orderListBtn" mnemonicParsing="false" onAction="#showOrderList" onMouseEntered="#mouseOnOrderListBtn" onMouseExited="#mouseOutOrderListBtn" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="订单列表" />
+                <Button fx:id="appealOrderBtn" mnemonicParsing="false" onAction="#showAppealOrder" onMouseEntered="#mouseOnAppealOrderBtn" onMouseExited="#mouseOutAppealOrderBtn" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="订单申诉" />
+                <Button fx:id="addCreditBtn" mnemonicParsing="false" onAction="#showAddCredit" onMouseEntered="#mouseOnAddCreditBtn" onMouseExited="#mouseOutAddCreditBtn" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="信用充值" />
             </children></VBox>
         <Pane fx:id="mainPane" layoutX="230.0" maxHeight="690.0" maxWidth="850.0" minHeight="690.0" minWidth="850.0" prefHeight="690.0" prefWidth="850.0" styleClass="panel" />
         <HBox id="bottomHBox" alignment="CENTER_RIGHT" layoutY="690.0" prefHeight="30.0" prefWidth="1080.0">

@@ -15,6 +15,7 @@ import presentation.webmarketerui.webmarketerscene.ManagePromotionPane;
 import presentation.webmarketerui.webmarketerscene.OrderListPane;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Hitiger on 2016/11/18.
@@ -49,8 +50,7 @@ public class ComMarketerSceneController {
     public void launch(Stage primaryStage) {
         stage = primaryStage;
         mainPane.getChildren().add(new ManagePromotionPane(stage));
-//        leftBarBtnArr = new ArrayList<>(Arrays.asList(hotelInfoBtn, orderListBtn, registerRoomBtn,
-//                managePromotionBtn, updateCheckInBtn, updateOutBtn));
+        leftBarBtnArr = new ArrayList<>(Arrays.asList(managePromotionBtn, orderListBtn, appealOrderBtn, addCreditBtn));
 
         alertController = new AlertController();
         //实时刷新time
@@ -63,6 +63,16 @@ public class ComMarketerSceneController {
     private void changePane(Pane newPane) {
         mainPane.getChildren().remove(0);
         mainPane.getChildren().add(newPane);
+    }
+
+    /**
+     * 滑块位置改变
+     * @param y
+     */
+    private void changeSliderPos(double y) {
+        slider.setVisible(true);
+        slider.setLayoutX(193);
+        slider.setLayoutY(y);
     }
 
 
@@ -81,15 +91,15 @@ public class ComMarketerSceneController {
      *
      * @param
      */
-//    private void leftBarBtnEffect(Button button) {
-//        leftBarEffect.buttonActionEffect(button, leftBarBtnArr);
-//    }
+    private void leftBarBtnEffect(Button button) {
+        leftBarEffect.buttonActionEffect(button, leftBarBtnArr);
+    }
     @FXML
     private void showManagePromotion() {
-//        leftBarBtnEffect(managePromotionBtn);
-//        changeSliderPos(395);
+        leftBarBtnEffect(managePromotionBtn);
         changePane(new ManagePromotionPane(stage));
-//        currentBtn = managePromotionBtn;
+        currentBtn = managePromotionBtn;
+        changeSliderPos(260);
     }
 
     /**
@@ -97,101 +107,77 @@ public class ComMarketerSceneController {
      */
     @FXML
     private void showOrderList() {
-//        leftBarBtnEffect(orderListBtn);
-//        changeSliderPos(305);
+        leftBarBtnEffect(orderListBtn);
         changePane(new OrderListPane(mainPane));
-//        currentBtn = orderListBtn;
+        currentBtn = orderListBtn;
+        changeSliderPos(305);
     }
 
 
     @FXML
     private void showAppealOrder() {
-//        leftBarBtnEffect(registerRoomBtn);
-//        changeSliderPos(350);
+        leftBarBtnEffect(appealOrderBtn);
         changePane(new FindOrderPane(mainPane));
-//        currentBtn = registerRoomBtn;
+        currentBtn = appealOrderBtn;
+        changeSliderPos(350);
     }
 
     @FXML
     private void showAddCredit() {
-//        leftBarBtnEffect(hotelInfoBtn);
-//        changeSliderPos(260);
+        leftBarBtnEffect(addCreditBtn);
         changePane(new FindUserPane(mainPane));
-//        currentBtn = hotelInfoBtn;
+        currentBtn = addCreditBtn;
+        changeSliderPos(395);
     }
 
 
-//    /**
-//     * 侧边栏滑块位置改变
-//     * @param y
-//     */
-//    private void changeSliderPos(double y) {
-//        slider.setVisible(true);
-//        slider.setLayoutX(193);
-//        slider.setLayoutY(y);
-//    }
-//
-//    /**
-//     * 鼠标悬停按钮效果
-//     * @param button
-//     */
-//    private void mouseOnEffect(Button button) {
-//        leftBarEffect.buttonMouseOnEffect(button, leftBarBtnArr, currentBtn);
-//    }
-//    @FXML
-//    private void mouseOnHotelInfo() {
-//        mouseOnEffect(hotelInfoBtn);
-//    }
-//    @FXML
-//    private void mouseOnOrderList() {
-//        mouseOnEffect(orderListBtn);
-//    }
-//    @FXML
-//    private void mouseOnRegisterRoom() {
-//        mouseOnEffect(registerRoomBtn);
-//    }
-//    @FXML
-//    private void mouseOnManagePromotion() {
-//        mouseOnEffect(managePromotionBtn);
-//    }
-//    @FXML
-//    private void mouseOnUpdateCheckin() {
-//        mouseOnEffect(updateCheckInBtn);
-//    }
-//    @FXML
-//    private void mouseOnUpdateOut() {
-//        mouseOnEffect(updateOutBtn);
-//    }
-//
-//    /**
-//     * 鼠标移出按钮效果
-//     * @param button
-//     */
-//    private void mouseOutEffect(Button button) {
-//        leftBarEffect.buttonMouseOutEffect(button, currentBtn);
-//    }
-//    @FXML
-//    private void mouseOutHotelInfo() {
-//        mouseOutEffect(hotelInfoBtn);
-//    }
-//    @FXML
-//    private void mouseOutOrderList() {
-//        mouseOutEffect(orderListBtn);
-//    }
-//    @FXML
-//    private void mouseOutRegisterRoom() {
-//        mouseOutEffect(registerRoomBtn);
-//    }
-//    @FXML
-//    private void mouseOutManagePromotion() {
-//        mouseOutEffect(managePromotionBtn);
-//    }
-//    @FXML
-//    private void mouseOutUpdateCheckin() {
-//        mouseOutEffect(updateCheckInBtn);
-//    }
-//    @FXML
-//    private void mouseOutUpdateOut() {
-//        mouseOutEffect(updateOutBtn);
-//    }
+
+    /**
+     * 鼠标悬停按钮效果
+     * @param button
+     */
+    private void mouseOnEffect(Button button) {
+        leftBarEffect.buttonMouseOnEffect(button, leftBarBtnArr, currentBtn);
+    }
+    @FXML
+    private void mouseOnPromotionBtn() {
+        mouseOnEffect(managePromotionBtn);
+    }
+    @FXML
+    private void mouseOnOrderListBtn() {
+        mouseOnEffect(orderListBtn);
+    }
+    @FXML
+    private void mouseOnAppealOrderBtn() {
+        mouseOnEffect(appealOrderBtn);
+    }
+    @FXML
+    private void mouseOnAddCreditBtn() {
+        mouseOnEffect(addCreditBtn);
+    }
+
+
+    /**
+     * 鼠标移出按钮效果
+     * @param button
+     */
+    private void mouseOutEffect(Button button) {
+        leftBarEffect.buttonMouseOutEffect(button, currentBtn);
+    }
+    @FXML
+    private void mouseOutPromotionBtn() {
+        mouseOutEffect(managePromotionBtn);
+    }
+    @FXML
+    private void mouseOutOrderListBtn() {
+        mouseOutEffect(orderListBtn);
+    }
+    @FXML
+    private void mouseOutAppealOrderBtn() {
+        mouseOutEffect(appealOrderBtn);
+    }
+    @FXML
+    private void mouseOutAddCreditBtn() {
+        mouseOutEffect(managePromotionBtn);
+    }
 }

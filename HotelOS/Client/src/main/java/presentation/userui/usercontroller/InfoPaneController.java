@@ -75,7 +75,7 @@ public class InfoPaneController {
         } else {
             userSex.setText("女");
         }
-        birthDate.setText(userVO.memberVO.birthday.toString());
+//        birthDate.setText(userVO.memberVO.birthday.toString());
         phone.setText(userVO.phone);
     }
 
@@ -228,7 +228,7 @@ public class InfoPaneController {
 
         if (selectedDirectory!=null) {
             try {
-                String newpath = "C:/Leftovers/Cache/userPhoto/";
+                String newpath = "C:/Leftovers/client/userImage/";
                 String fileName = newpath + selectedDirectory.getName().toString();
                 File testFile = new File(fileName);
                 if (!testFile.exists()) {
