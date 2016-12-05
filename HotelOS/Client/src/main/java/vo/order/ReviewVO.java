@@ -13,7 +13,7 @@ public class ReviewVO {
     /*
      * 订单id
      */
-    public long orderID;
+    public String orderID;
 
     /**
      * 评价内容

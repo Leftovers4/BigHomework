@@ -47,6 +47,10 @@ public class UserVO {
      */
     public CreditVO creditVO;
 
+    public UserVO(){
+
+    }
+
     /**
      * 传给逻辑：创建包含用户登录和注册的界面信息的对象
      *
@@ -74,31 +78,6 @@ public class UserVO {
         this.memberVO = new MemberVO();
         this.memberVO.birthday = birthday;
         this.phone = phone;
-    }
-
-    /**
-     * 传给界面：创建包含用户查看基本信息的界面信息的对象
-     *
-     * @param username   用户名
-     * @param name       姓名
-     * @param gender     性别
-     * @param birthday   生日
-     * @param phone      联系方式（电话号码）
-     * @param credit     信用
-     * @param level      会员等级
-     * @param enterprise 企业名称
-     */
-    public UserVO(String username, String name, boolean gender, LocalDate birthday, String phone, double credit, int level, String enterprise) {
-        this.username = username;
-        this.name = name;
-        this.gender = gender;
-        this.memberVO = new MemberVO();
-        this.memberVO.birthday = birthday;
-        this.phone = phone;
-        this.creditVO = new CreditVO();
-        this.creditVO.credit = credit;
-        this.memberVO.level = level;
-        this.memberVO.enterprise = enterprise;
     }
 
 }

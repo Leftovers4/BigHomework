@@ -1,9 +1,12 @@
 package bl.orderbl;
 import util.*;
+import vo.hotel.RoomVO;
 import vo.order.OrderVO;
 import vo.order.ReviewVO;
 import vo.user.CreditVO;
 
+import java.lang.reflect.InvocationTargetException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,49 +15,42 @@ import java.util.List;
  */
 public interface OrderBLService {
 
-    OrderVO searchOrderByID(String orderID);
+    OrderVO searchOrderByID(String orderID) throws RemoteException;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
-    // 添加订单
-    ResultMessage addOrder(OrderVO orderVO);
+    List<ReviewVO> viewHotelReviewList(long hotelID) throws RemoteException;
 
-    // 修改订单
-    ResultMessage updateOrder(OrderVO orderVO);
+    List<OrderVO> viewFullHotelOrderList(long hotelID) throws RemoteException;
 
-    ResultMessage executeOrder(String orderID);
+    List<OrderVO> viewTypeHotelOrderList(long hotelID, OrderType orderType) throws RemoteException;
 
-    // 撤销订单
-    ResultMessage cancelOrder(String orderID);
+    ReviewVO viewOrderReview(String orderID) throws RemoteException;
 
-    // 评价订单
-    ResultMessage reviewOrder(ReviewVO reviewVO);
+    ResultMessage onlineCheckIn(OrderVO orderVO) throws RemoteException;
 
-    // 根据订单ID查找订单
+    ResultMessage onlineCheckOut(OrderVO orderVO) throws RemoteException;
 
-    // 根据条件显示订单列表
-    // (待推敲) 根据用户、酒店、类型查找订单
-    // (待推敲) 根据用户查找预定过的酒店
-
-    // 根据用户名查找订单列表
-    ArrayList<OrderVO> showListByUsername(String username);
-
-    // 根据用户名、订单类型查找订单列表（分类型查找用户历史订单列表）
-    ArrayList<OrderVO> showListByUsername_orderType(String username, OrderType orderType);
-
-    // 根据酒店id获得订单评价列表
-    ArrayList<CreditVO> showReviewListByHotelID(long hotelID);
-
-    // 改变订单类型
-    ResultMessage changeOrderType(String orderID);
-
-    //处理订单申诉
-    ResultMessage handleAppeal(String orderID, double credit);
+    ResultMessage executeOrder(String orderID) throws RemoteException;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
-    List<OrderVO> viewFullHotelOrderList(long hotelID);
+    ResultMessage cancelOrder(String orderID) throws RemoteException;
 
-    List<OrderVO> viewTypeHotelOrderList(long hotelID, OrderType orderType);
+    public ResultMessage reviewOrder(ReviewVO reviewVO) throws RemoteException;
+
+    public List<OrderVO> viewFullUserOrderList(String username) throws RemoteException;
+
+    public List<OrderVO> viewTypeUserOrderList(String username, OrderType orderType) throws RemoteException;
+
+    public OrderVO searchExtraOrderByID(String orderID) throws RemoteException;
+
+    double getOrderActualPrice(OrderVO orderVO) throws RemoteException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException;
+
+    ResultMessage addOrder(OrderVO orderVO) throws RemoteException;
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+    ResultMessage handleAppeal(String orderID, double credit) throws RemoteException;
 
 }

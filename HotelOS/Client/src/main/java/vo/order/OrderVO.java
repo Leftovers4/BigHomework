@@ -41,6 +41,12 @@ public class OrderVO {
      */
     public String hotelName;
 
+    public String hotelAddress;
+
+    public String hotelTradingArea;
+
+    public String hotelService;
+
     public int roomAmount;
 
     public RoomType roomType;

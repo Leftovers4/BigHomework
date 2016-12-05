@@ -17,16 +17,19 @@ public class PersonnelVO {
      */
     public String password;
 
+    /*
+     * 名字
+     */
+    public String name;
+
     /**
      * 工作人员类型
      */
     public PersonnelType personnelType;
 
-
-    public PersonnelVO(long personnelID, String password, PersonnelType personnelType) {
-        this.personnelID = personnelID;
-        this.password = password;
-        this.personnelType = personnelType;
-    }
+    /*
+     * 酒店id
+     */
+    public long hotelID;
 
 }

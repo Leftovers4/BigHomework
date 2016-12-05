@@ -1,59 +1,96 @@
 package bl.hotelbl.impl;
 
-import vo.hotel.HotelVO;
+import bl.orderbl.impl.OrderList;
+import po.hotel.HotelPO;
+import rmi.RemoteHelper;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by kevin on 2016/11/6.
  */
-public class HotelList {
+public class HotelList extends ArrayList<HotelPO>{
 
-    private List<HotelVO> hotelVOs;
-
-    public HotelList(){
-        hotelVOs = new ArrayList<>();
+    public HotelList(List<HotelPO> hotelPOList){
+        for (int i = 0; i < hotelPOList.size(); i++) {
+            this.add(hotelPOList.get(i));
+        }
     }
 
-    public HotelList(List<HotelVO> hotelVOs){
-        this.hotelVOs = hotelVOs;
-    }
+    public HotelList filterByAddress(String address){
+        HotelList res = new HotelList(this);
 
-    public void sort(String key, int mode){
-        int hotelVONum = hotelVOs.size();
-
-        for (int i = 0; i < hotelVONum - 1; i++) {
-            int chosenKeyValueIndex = 0;
-            double chosenKeyValue = getSortKeyValue(hotelVOs.get(0), key);
-
-            for (int j = 1; j < hotelVONum - i; j++) {
-                double keyValue = getSortKeyValue(hotelVOs.get(j), key);
-
-                boolean compareValue = mode == 0 ? chosenKeyValue < keyValue : chosenKeyValue > keyValue;
-
-                if (compareValue == true){
-                    chosenKeyValueIndex = j;
-                    chosenKeyValue = keyValue;
-                }
+        for (HotelPO hotelPO : this) {
+            if (hotelPO.getAddress().equals(address)){
+                res.add(hotelPO);
             }
-
-            HotelVO tempHotelVO = hotelVOs.get(chosenKeyValueIndex);
-            hotelVOs.remove(chosenKeyValueIndex);
-            hotelVOs.add(hotelVONum - 1 - i, tempHotelVO);
         }
+
+        return res;
     }
 
-    private double getSortKeyValue(HotelVO hotelVO, String key){
-        switch (key){
-            case "price":
-                return hotelVO.price;
-            case "star":
-                return hotelVO.star;
-            case "rating":
-                return hotelVO.rating;
+    public HotelList filterByTradingArea(String tradingArea){
+        HotelList res = new HotelList(this);
+
+        for (HotelPO hotelPO : this) {
+            if (hotelPO.getTradingArea().equals(tradingArea)){
+                res.add(hotelPO);
+            }
         }
-        return 0;
+
+        return res;
+    }
+
+    public HotelList filterByName(String name){
+        HotelList res = new HotelList(this);
+
+        for (HotelPO hotelPO : this) {
+            if (hotelPO.getHotelName().contains(name)){
+                res.add(hotelPO);
+            }
+        }
+
+        return res;
+    }
+
+    public HotelList filterByPrice(double lowerBound, double upperBound) throws RemoteException {
+        HotelList res = new HotelList(this);
+
+        for (HotelPO hotelPO : this) {
+            double price = new RoomList(RemoteHelper.getInstance().getHotelDAO().findRoomsByHotelID(hotelPO.getHotelID())).getHotelPrice();
+            if (lowerBound <= price && price <= upperBound){
+                res.add(hotelPO);
+            }
+        }
+
+        return res;
+    }
+
+    public HotelList filterByStar(int lowerBound, int upperBound){
+        HotelList res = new HotelList(this);
+
+        for (HotelPO hotelPO : this) {
+            if (lowerBound <= hotelPO.getStar() && hotelPO.getStar() <= upperBound){
+                res.add(hotelPO);
+            }
+        }
+
+        return res;
+    }
+
+    public HotelList filterByRating(double lowerBound, double upperBound) throws RemoteException {
+        HotelList res = new HotelList(this);
+
+        for (HotelPO hotelPO : this) {
+            double rating = new OrderList(RemoteHelper.getInstance().getOrderDAO().findByHotelID(hotelPO.getHotelID())).getHotelRating();
+            if (lowerBound <= rating && rating <= upperBound){
+                res.add(hotelPO);
+            }
+        }
+
+        return res;
     }
 
 }

@@ -10,11 +10,14 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * Created by kevin on 2016/11/18.
  */
-public class Context {
+public class Context{
+
     private Sale sale;
+
     private Level level;
 
     public Context(PromotionPO promotionPO) throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException {
+        super();
         String promotionName = promotionPO.getPromotionType().toString();
         Class<?> promotionClass = Class.forName("bl.promotionbl." + promotionName);
         Constructor<?>[] constructors = promotionClass.getConstructors();
@@ -34,4 +37,5 @@ public class Context {
     public int getLevel(double credit){
         return level.getLevel(credit);
     }
+
 }

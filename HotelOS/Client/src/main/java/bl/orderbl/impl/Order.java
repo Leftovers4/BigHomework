@@ -7,54 +7,20 @@ import java.time.LocalDateTime;
 /**
  * Created by kevin on 2016/12/1.
  */
-public class Order extends OrderPO {
+public class Order{
+
+    private OrderPO orderPO;
+
+    public Order(OrderPO orderPO){
+        this.orderPO = orderPO;
+    }
 
     public boolean hasReview(){
-        return this.getReviewPO().getReview().equals("");
+        return orderPO.getReviewPO().getReview().equals("");
     }
 
-    public int getRating(){
-        return this.getReviewPO().getRating();
-    }
-
-    public String getReview(){
-        return this.getReviewPO().getReview();
-    }
-
-    public LocalDateTime getReviewTime(){
-        return this.getReviewPO().getReviewTime();
-    }
-
-    public double getActualPrice(){
-        return this.getOrderPricePO().getActualPrice();
-    }
-
-    public LocalDateTime getGenerateTime(){
-        return this.getOrderTimePO().getGenerateTime();
-    }
-
-    public LocalDateTime getExpectedCheckinTime() {
-        return this.getOrderTimePO().getExpectedCheckinTime();
-    }
-
-    public LocalDateTime getCheckinTime() {
-        return this.getOrderTimePO().getCheckinTime();
-    }
-
-    public LocalDateTime getExpectedLeaveTime() {
-        return this.getOrderTimePO().getExpectedLeaveTime();
-    }
-
-    public LocalDateTime getLeaveTime() {
-        return this.getOrderTimePO().getLeaveTime();
-    }
-
-    public LocalDateTime getLastExecuteTime() {
-        return this.getOrderTimePO().getLastExecuteTime();
-    }
-
-    public LocalDateTime getCancelTime() {
-        return this.getOrderTimePO().getCancelTime();
+    public boolean isLateCancel(LocalDateTime cancelTime){
+        return cancelTime.plusHours(6).isAfter(orderPO.getOrderTimePO().getLastExecuteTime());
     }
 
 }

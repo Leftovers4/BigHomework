@@ -2,8 +2,12 @@ package bl.promotionbl.impl;
 
 import bl.userbl.impl.User;
 import po.promotion.PromotionPO;
+import po.user.UserPO;
+import rmi.RemoteHelper;
 import vo.order.OrderVO;
 
+import java.rmi.RemoteException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -17,14 +21,12 @@ public class BirthdayPromotion implements Sale{
     }
 
     @Override
-    public double getActualPrice(OrderVO orderVO) {
-        //todo get user
-        User user = null;
+    public double getActualPrice(OrderVO orderVO) throws RemoteException {
+        UserPO userPO = RemoteHelper.getInstance().getUserDAO().findByUsername(orderVO.username);
         double price = orderVO.orderPriceVO.originPrice;
-        LocalDateTime today = orderVO.orderTimeVO.generateTime;
+        LocalDate today = LocalDate.now();
 
-        //todo confirm birthday
-        if (true){
+        if (new User(userPO).isBirthday(today)){
             return price * discount;
         }else {
             return price;

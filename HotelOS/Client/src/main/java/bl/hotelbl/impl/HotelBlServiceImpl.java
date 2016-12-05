@@ -1,20 +1,23 @@
 package bl.hotelbl.impl;
 
 import bl.hotelbl.HotelBLService;
-import bl.orderbl.impl.Order;
-import bl.orderbl.impl.OrderData;
-import bl.orderbl.impl.OrderList;
-import bl.personnelbl.impl.Personnel;
-import bl.personnelbl.impl.PersonnelData;
-import util.Address;
+import dataservice.hoteldataservice.HotelDataService;
+import dataservice.orderdataservice.OrderDataService;
+import dataservice.personneldataservice.PersonnelDataService;
+import po.hotel.HotelPO;
+import po.hotel.RoomPO;
+import po.order.OrderPO;
+import po.personnel.PersonnelPO;
+import rmi.RemoteHelper;
+import util.IDProducer;
 import util.ResultMessage;
-import util.TradingArea;
+import vo.hotel.HotelConditionsVO;
 import vo.hotel.HotelVO;
-import vo.hotel.LogicVOHelper;
+import vo.hotel.HotelVOCreator;
 import vo.hotel.RoomVO;
 import vo.order.OrderVOCreator;
-import vo.order.ReviewVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,28 +26,40 @@ import java.util.List;
  */
 public class HotelBlServiceImpl implements HotelBLService {
 
-    HotelData hotelData;
-    PersonnelData personnelData;
-    OrderData orderData;
-    LogicVOHelper logicVOHelper;
+    HotelDataService hotelDAO;
+
+    PersonnelDataService personnelDAO;
+
+    OrderDataService orderDAO;
+
+    HotelVOCreator hotelVOCreator;
+
     OrderVOCreator orderVOCreator;
 
     public HotelBlServiceImpl() {
-        hotelData = new HotelData();
-        personnelData = new PersonnelData();
-        orderData = new OrderData();
-        logicVOHelper = new LogicVOHelper();
+        hotelDAO = RemoteHelper.getInstance().getHotelDAO();
+        personnelDAO = RemoteHelper.getInstance().getPersonnelDAO();
+        orderDAO = RemoteHelper.getInstance().getOrderDAO();
+        hotelVOCreator = new HotelVOCreator();
         orderVOCreator = new OrderVOCreator();
     }
 
+/*--------------------------------------------------------------------------------------------------------------------*/
+
     @Override
-    public ResultMessage addHotel(HotelVO hotelVO) {
-        return hotelData.addHotel(hotelVO);
+    public ResultMessage addHotel(HotelVO hotelVO) throws RemoteException {
+        HotelPO hotelPO = new HotelPO();
+
+        hotelPO.setHotelID(IDProducer.produceHotelID());
+        hotelPO.setHotelName(hotelVO.hotelName);
+        hotelPO.setStar(hotelVO.star);
+
+        return hotelDAO.insert(hotelPO);
     }
 
     @Override
-    public ResultMessage deleteHotel(long hotelID) {
-        return hotelData.deleteHotel(hotelID);
+    public ResultMessage deleteHotel(long hotelID) throws RemoteException {
+        return hotelDAO.delete(hotelID);
     }
 
     @Override
@@ -52,83 +67,144 @@ public class HotelBlServiceImpl implements HotelBLService {
         return null;
     }
 
-    @Override
-    public List<HotelVO> findHotelsByConditions(HotelVO hotelVO) {
-        return null;
-    }
-
-    @Override
-    public List<HotelVO> findHotelsByUsername(String username) {
-        return null;
-    }
-
-    @Override
-    public void sortHotels(List<HotelVO> hotelVOs, String key, int mode) {
-        HotelList hotelList = new HotelList(hotelVOs);
-        hotelList.sort(key, mode);
-    }
-
-    @Override
-    public ResultMessage addRoom(RoomVO roomVO) {
-        return hotelData.addRoom(roomVO);
-    }
-
-    @Override
-    public ResultMessage deleteRoom(long roomID) {
-        return hotelData.deleteRoom(roomID);
-    }
-
-    @Override
-    public ResultMessage updateRoomInfo(RoomVO roomVO) {
-        return hotelData.updateRoomInfo(roomVO);
-    }
-
-    @Override
-    public List<RoomVO> findRoomsByHotelID(long hotelID) {
-        return hotelData.findRoomsByHotelID(hotelID);
-    }
-
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     @Override
-    public HotelVO viewBasicHotelInfo(long hotelID) {
-        Hotel hotel = hotelData.find(hotelID);
-        Personnel personnel = personnelData.findByHotelID(hotelID);
-        double rating = orderData.findByHotelID(hotelID).getRating();
+    public HotelVO viewBasicHotelInfo(long hotelID) throws RemoteException {
+        //酒店工作人员已登录，所以必然存在该酒店
+        HotelPO hotelPO = hotelDAO.findByHotelID(hotelID);
+        PersonnelPO personnelPO = null; // todo personnelDAO.
+        List<OrderPO> orderPOList = orderDAO.findByHotelID(hotelID);
 
-        return logicVOHelper.create(hotel, personnel, rating);
+        return hotelVOCreator.create(hotelPO, personnelPO, orderPOList);
     }
 
     @Override
-    public List<ReviewVO> viewHotelReviews(long hotelID) {
-        List<ReviewVO> res = new ArrayList<>();
-        OrderList orderList = orderData.findByHotelID(hotelID);
+    public ResultMessage updateBasicHotelInfo(HotelVO hotelVO) throws RemoteException {
+        //酒店工作人员已登录，所以必然存在该酒店
+        HotelPO hotelPO = hotelDAO.findByHotelID(hotelVO.hotelID);
 
-        for (int i = 0; i < orderList.size(); i++) {
-            Order order = orderList.get(i);
+        hotelPO.setAddress(hotelVO.address);
+        hotelPO.setTradingArea(hotelVO.tradingArea);
+        hotelPO.setDescription(hotelVO.description);
+        hotelPO.setService(hotelVO.service);
 
-            if (order.hasReview())
-                res.add(orderVOCreator.create(order));
+        return hotelDAO.update(hotelPO);
+    }
+
+    @Override
+    public ResultMessage addRoom(RoomVO roomVO) throws RemoteException {
+        RoomPO roomPO = new RoomPO();
+
+        roomPO.setroomID(IDProducer.produceGeneralID());
+        roomPO.sethotelID(roomVO.hotelID);
+        roomPO.setRoomType(roomVO.roomType);
+        roomPO.setTotal(roomVO.total);
+        roomPO.setAvailable(roomVO.total);
+        roomPO.setPrice(roomVO.price);
+
+        return hotelDAO.insertRoom(roomPO);
+    }
+
+    @Override
+    public ResultMessage deleteRoom(long roomID) throws RemoteException {
+        return hotelDAO.deleteRoom(roomID);
+    }
+
+    @Override
+    public ResultMessage updateRoomInfo(RoomVO roomVO) throws RemoteException {
+        //roomPO非空
+        RoomPO roomPO = null; //todo hotelDAO.findRoomByID(roomVO.roomID);
+
+        roomPO.setTotal(roomVO.total);
+        roomPO.setPrice(roomVO.price);
+
+        return hotelDAO.updateRoom(roomPO);
+    }
+
+    @Override
+    public List<RoomVO> viewAllHotelRooms(long hotelID) throws RemoteException {
+        //返回的有可能是空表
+        List<RoomVO> res = new ArrayList<>();
+        List<RoomPO> roomPOList = hotelDAO.findRoomsByHotelID(hotelID);
+
+        for (RoomPO roomPO : roomPOList) {
+            res.add(hotelVOCreator.create(roomPO));
         }
 
         return res;
     }
 
     @Override
-    public ResultMessage updateBasicHotelInfo(long hotelID, String address, String tradingArea, String description, String service) {
-        return null;
+    public ResultMessage offlineCheckIn(RoomVO roomVO, int amount) throws RemoteException {
+        //roomPO非空
+        RoomPO roomPO = null; //todo hotelDAO.findRoomByID(roomVO.roomID);
+
+        roomPO.setAvailable(roomPO.getAvailable() - amount);
+
+        return hotelDAO.updateRoom(roomPO);
     }
 
     @Override
-    public ResultMessage updateBasicHotelInfo(HotelVO hotelVO) {
-        Hotel hotel = hotelData.find(hotelVO.hotelID);
+    public ResultMessage offlineCheckOut(RoomVO roomVO, int amount) throws RemoteException {
+        //roomPO非空
+        RoomPO roomPO = null; //todo hotelDAO.findRoomByID(roomVO.roomID);
 
-        hotel.setAddress(hotelVO.address);
-        hotel.setTradingArea(hotelVO.tradingArea);
-        hotel.setDescription(hotelVO.description);
-        hotel.setService(hotelVO.service);
+        roomPO.setAvailable(roomPO.getAvailable() + amount);
 
-        return hotelData.update(hotel);
+        return hotelDAO.updateRoom(roomPO);
+    }
+
+    @Override
+    public int viewOfflineCheckInRoomAmount(long hotelID) throws RemoteException {
+        return new RoomList(hotelDAO.findRoomsByHotelID(hotelID)).getOfflineCheckInRoomAmount();
+    }
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+    @Override
+    public void sortHotels(List<HotelVO> hotelVOs, String key, int mode) {
+        HotelVOList hotelList = (HotelVOList) hotelVOs;
+        hotelList.sort(key, mode);
+    }
+
+    @Override
+    public List<HotelVO> searchHotelsByConditions(String username, HotelConditionsVO hotelConditionsVO) throws RemoteException {
+        HotelList hotelList = new HotelList(hotelDAO.findAll());
+
+        hotelList = hotelList.filterByAddress(hotelConditionsVO.address).filterByTradingArea(hotelConditionsVO.tradingArea)
+                .filterByName(hotelConditionsVO.name).filterByStar(hotelConditionsVO.starLowerBound, hotelConditionsVO.starUpperBound)
+                .filterByRating(hotelConditionsVO.ratingLowerBound, hotelConditionsVO.ratingUpperBound)
+                .filterByPrice(hotelConditionsVO.priceLowerBound, hotelConditionsVO.priceUpperBound);
+
+
+        if (hotelConditionsVO.hasOrdered){
+
+        }
+
+        List<HotelVO> res = new ArrayList<>();
+        for (int i = 0; i < hotelList.size(); i++) {
+            HotelPO hotelPO = hotelList.get(i);
+            long hotelID = hotelPO.getHotelID();
+            res.add(hotelVOCreator.create(hotelPO, orderDAO.findByHotelID(hotelID)
+                    , orderDAO.findByUsernameAndHotelID(username,hotelID), hotelDAO.findRoomsByHotelID(hotelID)));
+        }
+        return res;
+    }
+
+    @Override
+    public List<HotelVO> viewOrderedHotelList(String username) throws RemoteException {
+        List<HotelVO> res = new ArrayList<>();
+        List<HotelPO> hotelPOList = null; //todo
+
+        for (int i = 0; i < hotelPOList.size(); i++) {
+            HotelPO hotelPO = hotelPOList.get(i);
+            long hotelID = hotelPO.getHotelID();
+            res.add(hotelVOCreator.create(hotelPO, orderDAO.findByHotelID(hotelID)
+                    , orderDAO.findByUsernameAndHotelID(username,hotelID), hotelDAO.findRoomsByHotelID(hotelID)));
+        }
+
+        return res;
     }
 
 }

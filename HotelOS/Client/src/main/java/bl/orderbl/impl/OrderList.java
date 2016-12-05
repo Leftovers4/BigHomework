@@ -1,21 +1,35 @@
 package bl.orderbl.impl;
 
+import po.order.OrderPO;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by kevin on 2016/11/6.
  */
-public class OrderList extends ArrayList<Order>{
+public class OrderList extends ArrayList<OrderPO>{
 
-    public double getRating(){
+    public OrderList(List<OrderPO> orderPOList){
+        for (int i = 0; i < orderPOList.size(); i++) {
+            this.add(orderPOList.get(i));
+        }
+    }
+
+    public double getHotelRating(){
         double sum = 0;
 
-        for (Order order : this) {
-            sum += order.getRating();
+        for (OrderPO orderPO : this) {
+            sum += orderPO.getReviewPO().getRating();
         }
 
         return sum /= this.size();
+    }
+
+    //todo
+    public int getHotelAvailabeRoomAmount(LocalDate localDate){
+        return 0;
     }
 
 }

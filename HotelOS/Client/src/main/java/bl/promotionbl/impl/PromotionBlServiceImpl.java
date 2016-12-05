@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by kevin on 2016/11/6.
  */
-public class PromotionController implements PromotionBLService {
+public class PromotionBlServiceImpl implements PromotionBLService {
 
     @Override
     public ResultMessage create(PromotionVO promotionVO) {

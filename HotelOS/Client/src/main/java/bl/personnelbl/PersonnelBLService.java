@@ -4,8 +4,9 @@ import util.PersonnelType;
 import util.ResultMessage;
 import vo.personnel.PersonnelVO;
 
-import java.lang.reflect.Array;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Hiki on 2016/10/29.
@@ -13,29 +14,31 @@ import java.util.ArrayList;
 public interface PersonnelBLService {
 
     // 员工登录
-    public ResultMessage login(PersonnelVO personnelVO);
+    public ResultMessage login(long personnelID, String password);
 
     // 员工登出
-    public ResultMessage logout();
+    public ResultMessage logout(long personnelID);
+
+/*--------------------------------------------------------------------------------------------------------------------*/
 
     // 显示员工列表
-    public ArrayList<PersonnelVO> showList();
+    public List<PersonnelVO> viewFullPersonnelList() throws RemoteException;
 
     // 按类型显示员工列表
-    public ArrayList<PersonnelVO> showListByType(PersonnelType personnelType);
+    public List<PersonnelVO> viewTypePersonnelList(PersonnelType personnelType) throws RemoteException;
 
     // 增加员工
-    public ResultMessage add(PersonnelVO personnelVO);
+    public ResultMessage addHotelWorker(PersonnelVO personnelVO) throws RemoteException;
+
+    public ResultMessage addWebMarketer(PersonnelVO personnelVO) throws RemoteException;
 
     // 删除员工
-    public ResultMessage del(long personnelID);
+    public ResultMessage deletePersonnel(long personnelID) throws RemoteException;
 
     // 修改员工信息
-    public ResultMessage modify(PersonnelVO personnelVO);
+    public ResultMessage updatePersonnelInfo(PersonnelVO personnelVO) throws RemoteException;
 
     // 查找员工
-    public PersonnelVO find(long personnelID);
-
-
+    public PersonnelVO searchPersonnelByID(long personnelID) throws RemoteException;
 
 }
