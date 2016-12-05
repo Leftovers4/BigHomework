@@ -1,26 +1,23 @@
 package data.datahelper.hoteldatahelper;
 
-import data.datahelper.DataHelperParent;
+import data.datahelper.ImageHelperParent;
 import util.ResultMessage;
-import util.TableName;
-
-import java.util.ArrayList;
 
 /**
- * Created by Hiki on 11/26/2016.
+ * Created by Hiki on 12/5/2016.
  */
-public class HotelImageHelperImpl extends DataHelperParent implements HotelImageHelper {
+public class HotelImageHelperImpl extends ImageHelperParent implements HotelImageHelper{
 
-    private final static String HOTELIMAGE_TABLENAME = TableName.hotel_image.toString();
+    private final static String HotelImageDir = "C:\\Leftovers\\server\\hotelImage\\";
+
 
     @Override
-    public ArrayList<Object> findByIdFromSQL(long hotelID) {
-        return findFromSQLById(HOTELIMAGE_TABLENAME, hotelID);
-
+    public byte[] findHotelImageByHotelID(long hotelID) {
+        return findImageByID(HotelImageDir, hotelID);
     }
 
     @Override
-    public ResultMessage insertToSQL(ArrayList<Object> hotelImageInfo) {
-        return insertToSQL(HOTELIMAGE_TABLENAME, hotelImageInfo);
+    public ResultMessage setHotelImage(long hotelID, byte[] imageBytes) {
+        return setImage(HotelImageDir, hotelID, imageBytes);
     }
 }

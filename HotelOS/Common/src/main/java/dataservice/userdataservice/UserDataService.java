@@ -36,6 +36,11 @@ public interface UserDataService extends Remote{
     // 根据用户名查找信用记录列表
     public ArrayList<CreditRecordPO> findCreditRecordsByUsername(String username) throws RemoteException;
 
+    // 获得用户头像，以二进制字符串传输
+    public byte[] getImage(String username) throws RemoteException;
+
+    // 修改用户头像，以二进制字符串传输
+    public ResultMessage setImage(String username, byte[] image) throws RemoteException;
 
 
 }

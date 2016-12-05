@@ -2,18 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82b00792-77e5-4ed4-96b1-c2af8b39d780" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/lib/ojdbc6.jar" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/src/main/java/data/datahelper/DBParent.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/main/java/hoteldata/HotelDataServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/main/java/personneldata/PersonnelDataServiceImpl.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Server/lib/ojdbc6.jar" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/main/java/datafactory/待删除.txt" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/main/java/orderdata/OrderDataServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/main/java/userdata/UserDataServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/main/java/personneldata/PersonnelDataServiceImpl.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/main/java/promotiondata/PromotionDataServiceImpl.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/pom.xml" afterPath="$PROJECT_DIR$/Server/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/Server.iml" afterPath="$PROJECT_DIR$/Server/Server.iml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/main/java/userdata/UserDataServiceImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Server/src/main/java/hoteldata/HotelDataServiceImpl.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/src/main/java/rmi/RemoteHelper.java" afterPath="$PROJECT_DIR$/Server/src/main/java/rmi/RemoteHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/pom.xml" afterPath="$PROJECT_DIR$/Server/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server/Server.iml" afterPath="$PROJECT_DIR$/Server/Server.iml" />
     </list>
     <ignored path="HotelOS.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -101,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/Common/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="504">
-              <caret line="24" column="12" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+              <caret line="24" column="12" lean-forward="false" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -146,7 +146,7 @@
       <file leaf-file-name="UserPO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Common/src/main/java/po/user/UserPO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
+            <state relative-caret-position="2016">
               <caret line="126" column="5" lean-forward="false" selection-start-line="126" selection-start-column="5" selection-end-line="126" selection-end-column="5" />
               <folding>
                 <element signature="e#2286#2287#0" expanded="true" />
@@ -280,10 +280,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
+    <option name="x" value="-8" />
     <option name="width" value="1932" />
-    <option name="height" value="1048" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -325,7 +324,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -830,6 +828,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
@@ -1452,6 +1451,7 @@
       <workItem from="1480132644838" duration="18000" />
       <workItem from="1480695113330" duration="94000" />
       <workItem from="1480852236160" duration="16000" />
+      <workItem from="1480928969931" duration="30000" />
     </task>
     <servers />
   </component>
@@ -1488,7 +1488,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31766000" />
+    <option name="totallyTimeSpent" value="31796000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1500,8 +1500,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1932" height="1048" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="0" width="1932" height="1038" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1517,7 +1517,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23842841" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24165769" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24919614" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1631,13 +1631,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/main/resources/fxml/user/UserCommon.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="10" column="207" lean-forward="false" selection-start-line="10" selection-start-column="207" selection-end-line="10" selection-end-column="207" />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/main/java/presentation/hotelworkerui/hotelworkerscene/TestLauncher.java">
@@ -1815,7 +1815,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1891,7 +1890,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Common/src/main/java/po/user/UserPO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
+        <state relative-caret-position="2016">
           <caret line="126" column="5" lean-forward="false" selection-start-line="126" selection-start-column="5" selection-end-line="126" selection-end-column="5" />
           <folding>
             <element signature="e#2286#2287#0" expanded="true" />
@@ -1903,7 +1902,7 @@
     <entry file="file://$PROJECT_DIR$/Common/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
-          <caret line="24" column="12" lean-forward="true" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
+          <caret line="24" column="12" lean-forward="false" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
           <folding />
         </state>
       </provider>

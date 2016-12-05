@@ -10,21 +10,19 @@ import java.util.Objects;
  */
 public interface HotelImageHelper {
 
-    // 格式："hotel_id", "image_reference"
-
     /**
-     * 根据酒店ID从hotel_image表中查找酒店图片
+     * 找出酒店图片，若酒店图片不存在，返回null
      * @param hotelID
      * @return
      */
-    public ArrayList<Object> findByIdFromSQL(long hotelID);
+    public byte[] findHotelImageByHotelID(long hotelID);
 
 
     /**
-     * 往hotel_image表中插入一条酒店图片信息
-     * @param hotelImageInfo
+     * 在文件夹中增加（或更新）酒店图片
+     * @param imageBytes
      * @return
      */
-    public ResultMessage insertToSQL(ArrayList<Object> hotelImageInfo);
+    public ResultMessage setHotelImage(long hotelID, byte[] imageBytes);
 
 }

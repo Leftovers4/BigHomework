@@ -6,22 +6,25 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by Hiki on 12/3/2016.
+ * Created by Hiki on 12/5/2016.
  */
 public class HotelImageHelperImplTest {
+
+    HotelImageHelperImpl tested;
+
     @Before
     public void setUp() throws Exception {
-
+        tested = new HotelImageHelperImpl();
     }
 
     @Test
-    public void findByIdFromSQL() throws Exception {
-
+    public void findHotelImageByHotelID() throws Exception {
+        // TODO
     }
 
     @Test
-    public void insertToSQL() throws Exception {
-
+    public void setHotelImage() throws Exception {
+        // TODO
     }
 
 }

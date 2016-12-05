@@ -9,21 +9,23 @@ import java.util.ArrayList;
  */
 public interface UserImageHelper {
 
-    // 格式："username", "image_reference"
 
     /**
-     * 根据用户名从user_image表中查找用户头像
+     * 找出用户头像，若用户头像不存在，返回null
      * @param username
      * @return
      */
-    public ArrayList<Object> findByIdFromSQL(String username);
+    public byte[] findUserImageByUsername(String username);
 
 
     /**
-     * 往user_image表中插入一条用户头像信息
-     * @param userImageInfo
+     * 在文件夹中增加（或更新）用户头像的图片
+     * @param imageBytes
      * @return
      */
-    public ResultMessage insertToSQL(ArrayList<Object> userImageInfo);
+    public ResultMessage setUserImage(String username, byte[] imageBytes);
+
+
+
 
 }

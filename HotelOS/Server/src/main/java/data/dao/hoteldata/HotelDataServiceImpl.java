@@ -7,10 +7,7 @@ import data.dao._poalfactory.Po2Al_Factory;
 import data.dao._poalfactory.impl.Al2Po_FactoryImpl;
 import data.dao._poalfactory.impl.CommonTransferFactoryImpl;
 import data.dao._poalfactory.impl.Po2Al_FactoryImpl;
-import data.datahelper.hoteldatahelper.HotelDataHelper;
-import data.datahelper.hoteldatahelper.HotelDataHelperImpl;
-import data.datahelper.hoteldatahelper.RoomDataHelper;
-import data.datahelper.hoteldatahelper.RoomDataHelperImpl;
+import data.datahelper.hoteldatahelper.*;
 import data.datahelper.orderdatahelper.OrderDataHelper;
 import data.datahelper.orderdatahelper.OrderDataHelperImpl;
 import dataservice.hoteldataservice.HotelDataService;
@@ -40,6 +37,8 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
 
     private OrderDataHelper orderDataHelper;
 
+    private HotelImageHelper hotelImageHelper;
+
 
     // 将需要调用的底层类初始化
     public HotelDataServiceImpl() {
@@ -47,6 +46,7 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
         hotelDataHelper = dhFactory.getHotelDataHelper();
         roomDataHelper = dhFactory.getRoomDataHelper();
         orderDataHelper = dhFactory.getOrderDataHelper();
+        hotelImageHelper = dhFactory.getHotelImageHelper();
     }
 
     @Override
@@ -200,15 +200,13 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
     }
 
     @Override
-    //TODO
     public byte[] getImage(long hotelID) throws RemoteException {
-        return new byte[0];
+        return hotelImageHelper.findHotelImageByHotelID(hotelID);
     }
 
     @Override
-    //TODO
     public ResultMessage setImage(long hotelID, byte[] image) throws RemoteException {
-        return null;
+        return hotelImageHelper.setHotelImage(hotelID, image);
     }
 
 

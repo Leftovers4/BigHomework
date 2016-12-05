@@ -43,6 +43,16 @@ public class UserDataService_Stub implements UserDataService {
     }
 
     @Override
+    public byte[] getImage(String username) throws RemoteException {
+        return new byte[0];
+    }
+
+    @Override
+    public ResultMessage setImage(String username, byte[] image) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public ResultMessage insert(UserPO userPO) throws RemoteException {
         return null;
     }

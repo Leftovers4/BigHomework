@@ -4,6 +4,7 @@ import com.sun.corba.se.spi.ior.ObjectKey;
 import data.dao.DataServiceImplParent;
 import data.datahelper.userdatahelper.CreditRecordDataHelper;
 import data.datahelper.userdatahelper.UserDataHelper;
+import data.datahelper.userdatahelper.UserImageHelper;
 import dataservice.userdataservice.UserDataService;
 import po.user.CreditRecordPO;
 import po.user.MemberPO;
@@ -21,14 +22,15 @@ public class UserDataServiceImpl extends DataServiceImplParent implements UserDa
 
     // 需要调用的DataHelper
     private UserDataHelper userDataHelper;
-
     private CreditRecordDataHelper crDataHelper;
+    private UserImageHelper userImageHelper;
 
     // 将需要调用的底层类初始化
     public UserDataServiceImpl(){
         super();
         userDataHelper = dhFactory.getUserDataHelper();
         crDataHelper = dhFactory.getCreditRecordDataHelper();
+        userImageHelper = dhFactory.getUserImageHelper();
     }
 
 
@@ -70,7 +72,6 @@ public class UserDataServiceImpl extends DataServiceImplParent implements UserDa
         }
 
         // 对每个userPO设置相应的creditRecordPOs
-        // TODO: 待测试，foreach循环是否可以set
         ArrayList<UserPO> setUserPOs = new ArrayList<>();
         for (UserPO each : userPOs) {
             each.setCreditRecordPOs(getCreditRecordsByUsername(findAllCreditRecord(), each.getUsername()));
@@ -115,6 +116,16 @@ public class UserDataServiceImpl extends DataServiceImplParent implements UserDa
         // 调用findAllCreditRecord
         return getCreditRecordsByUsername(findAllCreditRecord(), username);
 
+    }
+
+    @Override
+    public byte[] getImage(String username) throws RemoteException {
+        return userImageHelper.findUserImageByUsername(username);
+    }
+
+    @Override
+    public ResultMessage setImage(String username, byte[] image) throws RemoteException {
+        return userImageHelper.setUserImage(username, image);
     }
 
 

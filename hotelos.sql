@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-12-05 00:27:26
+Date: 2016-12-05 16:11:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -56,20 +56,6 @@ CREATE TABLE `hotel` (
 INSERT INTO `hotel` VALUES ('522000', '榕江大酒店', '5', '广东揭阳', '东山', '坐落于榕江左岸。', '有特殊服务');
 INSERT INTO `hotel` VALUES ('522001', '榕江中酒店', '3', '广东潮汕', '东山', '包吃包住', '没有特殊服务');
 INSERT INTO `hotel` VALUES ('522002', '榕江大酒店', '5', '广东揭阳', '东山', '包吃包住', '没有特殊服务');
-
--- ----------------------------
--- Table structure for hotel_image
--- ----------------------------
-DROP TABLE IF EXISTS `hotel_image`;
-CREATE TABLE `hotel_image` (
-  `hotel_id` bigint(6) unsigned NOT NULL DEFAULT '0',
-  `image_reference` varchar(80) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  PRIMARY KEY (`hotel_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
--- Records of hotel_image
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for order_info
@@ -220,17 +206,3 @@ INSERT INTO `user` VALUES ('Hiki', '123456', 'GHB', '0', '110', 'NONE', '1', '20
 INSERT INTO `user` VALUES ('Hikii', '123456', 'GHB', '1', '110', 'NONE', '1', '2016-11-23', '');
 INSERT INTO `user` VALUES ('Hikiii', '123456', 'GHB', '1', '110', 'None', '1', '2016-11-26', '');
 INSERT INTO `user` VALUES ('leftovers01', 'abc123456', '哦', '1', '11011011010', 'Normal', '5', '2016-01-01', '南京大学');
-
--- ----------------------------
--- Table structure for user_image
--- ----------------------------
-DROP TABLE IF EXISTS `user_image`;
-CREATE TABLE `user_image` (
-  `username` varchar(20) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `image_reference` varchar(80) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
--- Records of user_image
--- ----------------------------
