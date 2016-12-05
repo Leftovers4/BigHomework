@@ -1,33 +1,57 @@
 package bl.promotionbl.impl;
 
 import bl.promotionbl.PromotionBLService;
+import dataservice.promotiondataservice.PromotionDataService;
+import po.promotion.PromotionPO;
+import rmi.RemoteHelper;
+import util.IDProducer;
+import util.PromotionType;
 import util.ResultMessage;
 import vo.promotion.PromotionVO;
+import vo.promotion.PromotionVOCreator;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kevin on 2016/11/6.
  */
 public class PromotionBlServiceImpl implements PromotionBLService {
 
-    @Override
-    public ResultMessage create(PromotionVO promotionVO) {
-        return null;
+    PromotionDataService promotionDAO;
+
+    PromotionVOCreator promotionVOCreator;
+
+    public PromotionBlServiceImpl(){
+        promotionDAO = RemoteHelper.getInstance().getPromotionDAO();
+        promotionVOCreator = new PromotionVOCreator();
     }
 
     @Override
-    public ResultMessage delete(long id) {
-        return null;
+    public ResultMessage create(PromotionVO promotionVO) throws RemoteException {
+        promotionVO.promotionID = IDProducer.produceGeneralID();
+        return promotionDAO.insert(new PromotionPOCreator().create(promotionVO));
     }
 
     @Override
-    public ResultMessage update(long id) {
-        return null;
+    public ResultMessage delete(long id) throws RemoteException {
+        return promotionDAO.delete(id);
     }
 
     @Override
-    public ArrayList<PromotionVO> showList(long creator) {
-        return null;
+    public ResultMessage update(PromotionVO promotionVO) throws RemoteException {
+        PromotionPO promotionPO = promotionDAO.findByPromotionID(promotionVO.promotionID);
+
+        promotionVO.hotelID = promotionPO.getHotelID();
+        promotionVO.promotionType = promotionPO.getPromotionType();
+
+        return promotionDAO.update(new PromotionPOCreator().create(promotionVO));
     }
+
+    @Override
+    public List<PromotionVO> viewPromotionList(long hotelID, PromotionType promotionType) throws RemoteException {
+        return promotionVOCreator.createAll(promotionDAO.findByHotelIDAndType(hotelID, promotionType));
+    }
+
 }

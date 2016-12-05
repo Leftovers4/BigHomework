@@ -18,9 +18,4 @@ public class PromotionTimeVO {
      */
     public LocalDateTime endTime;
 
-
-    public PromotionTimeVO(LocalDateTime beginTime, LocalDateTime endTime) {
-        this.beginTime = beginTime;
-        this.endTime = endTime;
-    }
 }

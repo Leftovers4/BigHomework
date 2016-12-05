@@ -1,8 +1,11 @@
 package bl.promotionbl;
+import bl.promotionbl.impl.Promotion;
 import util.*;
 import vo.promotion.PromotionVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Hiki on 2016/10/15.
@@ -10,16 +13,16 @@ import java.util.ArrayList;
 public interface PromotionBLService {
 
     // 增加营销策略
-    public ResultMessage create(PromotionVO promotionVO);
+    ResultMessage create(PromotionVO promotionVO) throws RemoteException;
 
     // 根据营销策略ID删除策略
-    public ResultMessage delete(long id);
+    ResultMessage delete(long id) throws RemoteException;
 
     // 根据营销策略ID更新策略
-    public ResultMessage update(long id);
+    ResultMessage update(PromotionVO promotionVO) throws RemoteException;
 
     // 根据用户类型显示营销策略列表
-    public ArrayList<PromotionVO> showList(long creator);
+    List<PromotionVO> viewPromotionList(long hotelID, PromotionType promotionType) throws RemoteException;
 
 
 }
