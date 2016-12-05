@@ -1,6 +1,7 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
 import blservice_stub.OrderBLService_Stub;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,7 +14,6 @@ import presentation.hotelworkerui.hotelworkerscene.InfoPane;
 import presentation.util.AlertController;
 import vo.order.ReviewVO;
 
-import java.time.LocalDateTime;
 
 /**
  * Created by Hitiger on 2016/11/22.
@@ -56,16 +56,31 @@ public class ReviewPaneController {
         userNameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
 
 
+
         reviewTable.setItems(reviewVoList);
+
+        reviewTable.setFixedCellSize(25);
+        reviewTable.prefHeightProperty().bind(reviewTable.fixedCellSizeProperty().multiply(Bindings.size(reviewTable.getItems()).add(1.01)));
+        reviewTable.minHeightProperty().bind(reviewTable.prefHeightProperty());
+        reviewTable.maxHeightProperty().bind(reviewTable.prefHeightProperty());
     }
 
     public ObservableList<ReviewVO> getReviewVoList() {
         ObservableList<ReviewVO> list = FXCollections.observableArrayList();
        for (int i =0; i<50;i++){
-//           list.add(new ReviewVO("user",123456, LocalDateTime.now(),5,"很好啊"));
+           ReviewVO reviewVO = new ReviewVO();
+           reviewVO.orderID = "12345678912345678";
+           reviewVO.rating = 5;
+           reviewVO.review = "sdsdadadsadasdasasfasfasfasfafaf";
+           reviewVO.username = "路人";
+           list.add(reviewVO);
        }
         return list;
     }
 
-
+    @FXML
+    private void back(){
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(new InfoPane(stage,mainPane));
+    }
 }

@@ -200,6 +200,15 @@
     -fx-text-fill: #55acee;
 
 }
+/*评价订单列表*/
+#reviewTable *.scroll-bar:vertical *.increment-button,
+#reviewTable *.scroll-bar:vertical *.decrement-button,
+#reviewTable *.scroll-bar:vertical *.increment-arrow,
+#reviewTable *.scroll-bar:vertical *.decrement-arrow {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
 
 /*评分*/
 #hotelRatingLabel{
