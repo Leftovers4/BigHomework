@@ -237,7 +237,7 @@ public class OrderBlServiceImpl implements OrderBLService {
         orderPO.getOrderTimePO().setGenerateTime(LocalDateTime.now());
         orderPO.getOrderTimePO().setExpectedCheckinTime(orderVO.orderTimeVO.expectedCheckinTime);
         orderPO.getOrderTimePO().setExpectedLeaveTime(orderVO.orderTimeVO.expectedLeaveTime);
-        orderPO.getOrderTimePO().setLastExecuteTime();
+        orderPO.getOrderTimePO().setLastExecuteTime(null);//todo
         orderPO.getOrderPricePO().setOriginPrice(orderVO.orderPriceVO.originPrice);
         orderPO.getOrderPricePO().setActualPrice(orderVO.orderPriceVO.actualPrice);
 

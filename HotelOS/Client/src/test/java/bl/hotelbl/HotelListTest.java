@@ -1,10 +1,11 @@
 package bl.hotelbl;
 
 import bl.hotelbl.impl.HotelList;
+import bl.hotelbl.impl.HotelVOList;
 import org.junit.Before;
 import org.junit.Test;
 import vo.hotel.HotelVO;
-import vo.hotel.LogicVOHelper;
+import vo.hotel.HotelVOCreator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,8 +15,8 @@ import java.util.List;
  */
 public class HotelListTest {
 
-    HotelList tested;
-    LogicVOHelper logicVOHelper = new LogicVOHelper();
+    HotelVOList tested;
+    HotelVOCreator logicVOHelper = new HotelVOCreator();
     List<HotelVO> hotelVOs;
 
     @Before
@@ -41,7 +42,7 @@ public class HotelListTest {
 
     @Test
     public void sort() throws Exception {
-        tested = new HotelList(hotelVOs);
+        tested = new HotelVOList(hotelVOs);
         tested.sort("price", 0);
     }
 

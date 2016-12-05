@@ -7,6 +7,8 @@ import vo.order.OrderVO;
 import vo.order.ReviewVO;
 import vo.user.CreditVO;
 
+import java.lang.reflect.InvocationTargetException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,11 +23,15 @@ public class OrderBLService_Stub implements OrderBLService {
     }
 
     @Override
+    public List<ReviewVO> viewHotelReviewList(long hotelID) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public ResultMessage addOrder(OrderVO orderVO) {
         return ResultMessage.Success;
     }
 
-    @Override
     public ResultMessage updateOrder(OrderVO orderVO) {
         return ResultMessage.Success;
     }
@@ -41,26 +47,42 @@ public class OrderBLService_Stub implements OrderBLService {
     }
 
     @Override
+    public List<OrderVO> viewFullUserOrderList(String username) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<OrderVO> viewTypeUserOrderList(String username, OrderType orderType) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public OrderVO searchExtraOrderByID(String orderID) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public double getOrderActualPrice(OrderVO orderVO) throws RemoteException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        return 0;
+    }
+
+    @Override
     public ResultMessage cancelOrder(String orderID) {
         return ResultMessage.Success;
     }
 
-    @Override
     public ArrayList<OrderVO> showListByUsername(String username) {
         return null;
     }
 
-    @Override
     public ArrayList<OrderVO> showListByUsername_orderType(String username, OrderType orderType) {
         return null;
     }
 
-    @Override
     public ArrayList<CreditVO> showReviewListByHotelID(long hotelID) {
         return null;
     }
 
-    @Override
     public ResultMessage changeOrderType(String orderID) {
         return null;
     }
@@ -77,6 +99,21 @@ public class OrderBLService_Stub implements OrderBLService {
 
     @Override
     public List<OrderVO> viewTypeHotelOrderList(long hotelID, OrderType orderType) {
+        return null;
+    }
+
+    @Override
+    public ReviewVO viewOrderReview(String orderID) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ResultMessage onlineCheckIn(OrderVO orderVO) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ResultMessage onlineCheckOut(OrderVO orderVO) throws RemoteException {
         return null;
     }
 }

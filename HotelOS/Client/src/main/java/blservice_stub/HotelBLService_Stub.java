@@ -3,11 +3,13 @@ package blservice_stub;
 import bl.hotelbl.HotelBLService;
 import util.ResultMessage;
 import util.RoomType;
+import vo.hotel.HotelConditionsVO;
 import vo.hotel.HotelVO;
-import vo.hotel.LogicVOHelper;
+import vo.hotel.HotelVOCreator;
 import vo.hotel.RoomVO;
 import vo.order.ReviewVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +19,11 @@ import java.util.List;
 public class HotelBLService_Stub implements HotelBLService {
 
     List<RoomVO> list;
-    LogicVOHelper logicVOHelper;
+    HotelVOCreator logicVOHelper;
 
     public HotelBLService_Stub(){
          list = new ArrayList<>();
-         logicVOHelper = new LogicVOHelper();
+         logicVOHelper = new HotelVOCreator();
     }
 
     @Override
@@ -40,18 +42,21 @@ public class HotelBLService_Stub implements HotelBLService {
     }
 
     @Override
+    public List<RoomVO> viewAllHotelRooms(long hotelID) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public HotelVO findHotelByID(long hotelID) {
         return logicVOHelper.create(1,"如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi");
     }
 
-    @Override
     public List<HotelVO> findHotelsByConditions(HotelVO hotelVO) {
         ArrayList<HotelVO> list = new ArrayList<HotelVO>();
         list.add(logicVOHelper.create(1, "如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi"));
         return list;
     }
 
-    @Override
     public List<HotelVO> findHotelsByUsername(String username) {
         return null;
     }
@@ -59,6 +64,16 @@ public class HotelBLService_Stub implements HotelBLService {
     @Override
     public void sortHotels(List<HotelVO> hotelVOs, String key, int mode) {
 
+    }
+
+    @Override
+    public List<HotelVO> searchHotelsByConditions(String username, HotelConditionsVO hotelConditionsVO) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<HotelVO> viewOrderedHotelList(String username) throws RemoteException {
+        return null;
     }
 
     @Override
@@ -78,6 +93,20 @@ public class HotelBLService_Stub implements HotelBLService {
     }
 
     @Override
+    public ResultMessage offlineCheckIn(RoomVO roomVO, int amount) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ResultMessage offlineCheckOut(RoomVO roomVO, int amount) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public int viewOfflineCheckInRoomAmount(long hotelID) throws RemoteException {
+        return 0;
+    }
+
     public List<RoomVO> findRoomsByHotelID(long hotelID) {
 
         list.add(logicVOHelper.create(hotelID,RoomType.Single,10,100));
@@ -93,12 +122,10 @@ public class HotelBLService_Stub implements HotelBLService {
         return logicVOHelper.create(1,"如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi");
     }
 
-    @Override
     public List<ReviewVO> viewHotelReviews(long hotelID) {
         return null;
     }
 
-    @Override
     public ResultMessage updateBasicHotelInfo(long hotelID, String address, String tradingArea, String description, String service) {
         return null;
     }

@@ -3,11 +3,18 @@ package bl.hotelbl.impl;
 import vo.hotel.HotelVO;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kevin on 2016/12/2.
  */
-public class HotelVOList extends ArrayList<HotelVO> {
+public class HotelVOList extends ArrayList<HotelVO>{
+
+    public HotelVOList(List<HotelVO> hotelVOList){
+        for (int i = 0; i < hotelVOList.size(); i++) {
+            this.add(hotelVOList.get(i));
+        }
+    }
 
     public void sort(String key, int mode){
         int hotelVONum = this.size();

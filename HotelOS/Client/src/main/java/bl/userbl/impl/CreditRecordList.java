@@ -19,7 +19,8 @@ public class CreditRecordList extends ArrayList<CreditRecordPO> {
     }
 
     public int getLevel() throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
-        return new PromotionData().findUserLevelPromotion().getLevel(getCurrentCredit());
+       //todo return new PromotionData().findUserLevelPromotion().getLevel(getCurrentCredit());
+        return 0;
     }
 
     public double getCurrentCredit(){

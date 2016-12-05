@@ -7,7 +7,7 @@ import po.promotion.PromotionPO;
 import util.OrderType;
 import util.PromotionType;
 import util.RoomType;
-import vo.hotel.LogicVOHelper;
+import vo.hotel.HotelVOCreator;
 import vo.hotel.RoomVO;
 import vo.order.OrderPriceVO;
 import vo.order.OrderVO;
@@ -29,7 +29,7 @@ public class ContextTest {
         promotionPO = new PromotionPO(110110, PromotionType.MultipleRoomPromotion, 522000, null, 0.9, 1);
         context = new Context(promotionPO);
         ArrayList<RoomVO> roomVOs = new ArrayList<>();
-        roomVOs.add(new LogicVOHelper().create(1, RoomType.Couple,0, 0));
+        roomVOs.add(new HotelVOCreator().create(1, RoomType.Couple,0, 0));
         OrderPriceVO orderPriceVO = new OrderPriceVO(100, 0);
         OrderVO orderVO = new OrderVO();
         orderVO.orderID = "12345678912345678";

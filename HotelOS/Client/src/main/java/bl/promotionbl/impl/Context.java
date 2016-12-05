@@ -5,6 +5,7 @@ import vo.order.OrderVO;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.rmi.RemoteException;
 
 
 /**
@@ -30,7 +31,7 @@ public class Context{
         }
     }
 
-    public double getActualPrice(OrderVO orderVO){
+    public double getActualPrice(OrderVO orderVO) throws RemoteException {
         return sale.getActualPrice(orderVO);
     }
 

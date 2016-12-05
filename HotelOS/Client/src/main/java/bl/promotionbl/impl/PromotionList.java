@@ -4,6 +4,7 @@ import po.promotion.PromotionPO;
 import vo.order.OrderVO;
 
 import java.lang.reflect.InvocationTargetException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class PromotionList extends ArrayList<PromotionPO>{
         }
     }
 
-    public double getLowestPrice(OrderVO orderVO) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public double getLowestPrice(OrderVO orderVO) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, RemoteException {
         double res = orderVO.orderPriceVO.originPrice;
 
         for (int i = 0; i < this.size(); i++) {

@@ -164,7 +164,7 @@ public class HotelBlServiceImpl implements HotelBLService {
 
     @Override
     public void sortHotels(List<HotelVO> hotelVOs, String key, int mode) {
-        HotelVOList hotelList = (HotelVOList) hotelVOs;
+        HotelVOList hotelList = new HotelVOList(hotelVOs);
         hotelList.sort(key, mode);
     }
 
