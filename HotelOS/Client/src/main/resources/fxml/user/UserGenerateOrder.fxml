@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="generateOrderPane" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" fx:controller="presentation.userui.usercontroller.UserGenerateOrderController" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root type="Pane" fx:id="generateOrderPane" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" fx:controller="presentation.userui.usercontroller.UserGenerateOrderController" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="325.0" layoutY="180.0" text="预计入住时间：" />
       <Label layoutX="325.0" layoutY="235.0" text="预计离开时间：" />
@@ -65,4 +65,4 @@
       <Label fx:id="peopleNumLabel" layoutX="440.0" layoutY="400.0" text="人数" visible="false" />
       <Label fx:id="child" layoutX="666.0" layoutY="400.0" text="有无" visible="false" />
    </children>
-</Pane>
+</fx:root>
