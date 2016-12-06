@@ -3,10 +3,17 @@ package po.promotion;
 import util.Address;
 import util.TradingArea;
 
+import java.io.Serializable;
+
 /**
- * Created by lib on 2016/11/22.
+ * Created by kevin on 2016/11/22.
  */
-public class PromotionTraAreaPO {
+public class PromotionTraAreaPO implements Serializable{
+
+    /**
+     * 序列化UID
+     */
+    private static final long serialVersionUID = 1L;
 
     private String tradingArea;
 

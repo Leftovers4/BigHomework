@@ -14,6 +14,7 @@ public class PersonnelVOCreator {
         PersonnelVO res = new PersonnelVO();
 
         res.personnelID = personnelPO.getPersonnelID();
+        res.personnelType = personnelPO.getPersonnelType();
         res.name = personnelPO.getName();
         res.hotelID = personnelPO.getHotelID();
 

@@ -47,6 +47,7 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void viewOrderReview() throws Exception {
+        //todo 尚未测试没有评价的情况
         ReviewVO reviewVO = tested.viewOrderReview("52200020161111000");
     }
 
@@ -92,7 +93,7 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void searchExtraOrderByID() throws Exception {
-
+        OrderVO orderVO = tested.searchExtraOrderByID("52200020161111000");
     }
 
     @Test

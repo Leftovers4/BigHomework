@@ -6,6 +6,8 @@ import org.junit.Test;
 import util.PersonnelType;
 import vo.personnel.PersonnelVO;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -32,44 +34,54 @@ public class PersonnelBLServiceImplTest {
 
     @Test
     public void viewFullPersonnelList() throws Exception {
-
+        List<PersonnelVO> personnelVOList = tested.viewFullPersonnelList();
     }
 
     @Test
     public void viewTypePersonnelList() throws Exception {
-
+        List<PersonnelVO> personnelVOList = tested.viewTypePersonnelList(PersonnelType.WebMarketer);
     }
 
     @Test
     public void addHotelWorker() throws Exception {
         PersonnelVO personnelVO = new PersonnelVO();
 
-        personnelVO.hotelID = 145328;
-        personnelVO.personnelType = PersonnelType.HotelWorker;
-        personnelVO.name = "zhagnsan";
-        personnelVO.password = "123456";
+        personnelVO.hotelID = 233333;
+        personnelVO.name = "lisi";
+        personnelVO.password = "654321";
 
         tested.addHotelWorker(personnelVO);
     }
 
     @Test
     public void addWebMarketer() throws Exception {
+        PersonnelVO personnelVO = new PersonnelVO();
 
+        personnelVO.name = "marketer";
+        personnelVO.password = "abc";
+
+        tested.addWebMarketer(personnelVO);
     }
 
     @Test
     public void deletePersonnel() throws Exception {
-
+        tested.deletePersonnel(659748);
     }
 
     @Test
     public void updatePersonnelInfo() throws Exception {
+        PersonnelVO personnelVO = new PersonnelVO();
 
+        personnelVO.personnelID = 559870;
+        personnelVO.name = "hhhhhh";
+        personnelVO.password = "000000";
+
+        tested.updatePersonnelInfo(personnelVO);
     }
 
     @Test
     public void searchPersonnelByID() throws Exception {
-
+        PersonnelVO personnelVO = tested.searchPersonnelByID(159510);
     }
 
 }

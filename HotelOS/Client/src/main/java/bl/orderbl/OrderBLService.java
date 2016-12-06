@@ -15,10 +15,16 @@ import java.util.List;
  */
 public interface OrderBLService {
 
+    /*
+     * 若搜索不到该订单则返回null
+     */
     OrderVO searchOrderByID(String orderID) throws RemoteException;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
+    /*
+     * 若酒店无评价则返回size为0的表
+     */
     List<ReviewVO> viewHotelReviewList(long hotelID) throws RemoteException;
 
     List<OrderVO> viewFullHotelOrderList(long hotelID) throws RemoteException;

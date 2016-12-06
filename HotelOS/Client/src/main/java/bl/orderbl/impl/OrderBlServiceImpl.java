@@ -15,6 +15,7 @@ import po.promotion.PromotionPO;
 import po.user.CreditRecordPO;
 import rmi.RemoteHelper;
 import util.*;
+import vo.order.OrderPriceVO;
 import vo.order.OrderVO;
 import vo.order.OrderVOCreator;
 import vo.order.ReviewVO;
@@ -50,7 +51,13 @@ public class OrderBlServiceImpl implements OrderBLService {
 
     @Override
     public OrderVO searchOrderByID(String orderID) throws RemoteException {
-        return orderVOCreator.createDetailedOrderVO(orderDAO.findByOrderID(orderID));
+        OrderPO orderPO = orderDAO.findByOrderID(orderID);
+
+        //存在搜索不到该订单的情况
+        if (orderPO == null)
+            return null;
+
+        return orderVOCreator.createDetailedOrderVO(orderPO);
     }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -96,7 +103,13 @@ public class OrderBlServiceImpl implements OrderBLService {
 
     @Override
     public ReviewVO viewOrderReview(String orderID) throws RemoteException {
-        return orderVOCreator.createOrdinaryReviewVO(orderDAO.findByOrderID(orderID));
+        OrderPO orderPO = orderDAO.findByOrderID(orderID);
+
+        //存在订单没有评价的情况，但不存在搜索不到该酒店的情况
+        if (!new Order(orderPO).hasReview())
+            return null;
+
+        return orderVOCreator.createOrdinaryReviewVO(orderPO);
     }
 
     @Override

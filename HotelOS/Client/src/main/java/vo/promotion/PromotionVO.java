@@ -9,7 +9,7 @@ import java.util.Vector;
 /**
  * Created by Hiki on 2016/10/16.
  */
-public class PromotionVO extends Vector<String>{
+public class PromotionVO {
 
     /**
      * 营销策略ID

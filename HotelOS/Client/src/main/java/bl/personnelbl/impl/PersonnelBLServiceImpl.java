@@ -91,7 +91,13 @@ public class PersonnelBLServiceImpl implements PersonnelBLService{
 
     @Override
     public PersonnelVO searchPersonnelByID(long personnelID) throws RemoteException {
-        return personnelVOCreator.create(personnelDAO.findByPersonnelID(personnelID));
+        PersonnelPO personnelPO = personnelDAO.findByPersonnelID(personnelID);
+
+        //存在找不到对应的工作人员的情况
+        if (personnelPO == null)
+            return null;
+
+        return personnelVOCreator.create(personnelPO);
     }
 
 }
