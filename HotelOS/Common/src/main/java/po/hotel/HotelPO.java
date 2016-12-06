@@ -114,7 +114,7 @@ public class HotelPO implements Serializable{
     }
 
     public void setHotelID(long hotelID) {
-        hotelID = hotelID;
+        this.hotelID = hotelID;
     }
 
     public String getHotelName() {
