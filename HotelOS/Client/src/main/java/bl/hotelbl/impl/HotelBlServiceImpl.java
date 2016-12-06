@@ -1,6 +1,7 @@
 package bl.hotelbl.impl;
 
 import bl.hotelbl.HotelBLService;
+import bl.personnelbl.impl.PersonnelList;
 import dataservice.hoteldataservice.HotelDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.personneldataservice.PersonnelDataService;
@@ -10,6 +11,7 @@ import po.order.OrderPO;
 import po.personnel.PersonnelPO;
 import rmi.RemoteHelper;
 import util.IDProducer;
+import util.PersonnelType;
 import util.ResultMessage;
 import vo.hotel.HotelConditionsVO;
 import vo.hotel.HotelVO;
@@ -73,7 +75,7 @@ public class HotelBlServiceImpl implements HotelBLService {
     public HotelVO viewBasicHotelInfo(long hotelID) throws RemoteException {
         //酒店工作人员已登录，所以必然存在该酒店
         HotelPO hotelPO = hotelDAO.findByHotelID(hotelID);
-        PersonnelPO personnelPO = ; // todo personnelDAO.
+        PersonnelPO personnelPO = new PersonnelList(personnelDAO.findByType(PersonnelType.HotelWorker)).filterByHotelID(hotelID);
         List<OrderPO> orderPOList = orderDAO.findByHotelID(hotelID);
 
         return hotelVOCreator.create(hotelPO, personnelPO, orderPOList);
@@ -114,7 +116,7 @@ public class HotelBlServiceImpl implements HotelBLService {
     @Override
     public ResultMessage updateRoomInfo(RoomVO roomVO) throws RemoteException {
         //roomPO非空
-        RoomPO roomPO = null; //todo hotelDAO.findRoomByID(roomVO.roomID);
+        RoomPO roomPO = hotelDAO.findRoomsByID(roomVO.roomID);
 
         roomPO.setTotal(roomVO.total);
         roomPO.setPrice(roomVO.price);
@@ -138,7 +140,7 @@ public class HotelBlServiceImpl implements HotelBLService {
     @Override
     public ResultMessage offlineCheckIn(RoomVO roomVO, int amount) throws RemoteException {
         //roomPO非空
-        RoomPO roomPO = null; //todo hotelDAO.findRoomByID(roomVO.roomID);
+        RoomPO roomPO = hotelDAO.findRoomsByID(roomVO.roomID);
 
         roomPO.setAvailable(roomPO.getAvailable() - amount);
 
@@ -148,7 +150,7 @@ public class HotelBlServiceImpl implements HotelBLService {
     @Override
     public ResultMessage offlineCheckOut(RoomVO roomVO, int amount) throws RemoteException {
         //roomPO非空
-        RoomPO roomPO = null; //todo hotelDAO.findRoomByID(roomVO.roomID);
+        RoomPO roomPO = hotelDAO.findRoomsByID(roomVO.roomID);
 
         roomPO.setAvailable(roomPO.getAvailable() + amount);
 
@@ -195,8 +197,15 @@ public class HotelBlServiceImpl implements HotelBLService {
     @Override
     public List<HotelVO> viewOrderedHotelList(String username) throws RemoteException {
         List<HotelVO> res = new ArrayList<>();
-        List<HotelPO> hotelPOList = null; //todo
+        List<HotelPO> hotelPOList = new ArrayList<>();
 
+        //找出所有预定过的酒店的PO
+        List<OrderPO> orderPOList = orderDAO.findByUsername(username);
+        for (int i = 0; i < orderPOList.size(); i++) {
+            hotelPOList.add(hotelDAO.findByHotelID(orderPOList.get(i).getHotelID()));
+        }
+
+        //构建出含有订单跟房间信息的酒店VO
         for (int i = 0; i < hotelPOList.size(); i++) {
             HotelPO hotelPO = hotelPOList.get(i);
             long hotelID = hotelPO.getHotelID();

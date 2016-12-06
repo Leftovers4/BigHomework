@@ -16,5 +16,14 @@ public class PersonnelList extends ArrayList<PersonnelPO>{
         }
     }
 
-    public
+    public PersonnelPO filterByHotelID(long hotelID){
+        for (int i = 0; i < this.size(); i++) {
+            if (this.get(i).getHotelID() == hotelID){
+                return this.get(i);
+            }
+        }
+
+        return null;
+    }
+
 }
