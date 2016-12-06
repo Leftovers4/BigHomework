@@ -64,7 +64,6 @@ public class UpdateOrderInfoPaneController {
     @FXML private Label roomIDLabel;
     @FXML private TextField roomIDField;
 
-    private Stage stage;
     private Pane mainPane;
     //是否从更新入住信息进入
     private Boolean isCheckIn;
@@ -74,8 +73,7 @@ public class UpdateOrderInfoPaneController {
     private AlertController alertController;
     private OrderVO orderVO;
 
-    public void launch(Stage primaryStage, Pane mainPane , Boolean isCheckIn,Boolean isFromList, OrderVO orderVO) {
-        this.stage = primaryStage;
+    public void launch(Pane mainPane , Boolean isCheckIn,Boolean isFromList, OrderVO orderVO) {
         this.mainPane = mainPane;
         this.isCheckIn = isCheckIn;
         this.isFromList = isFromList;
@@ -153,7 +151,7 @@ public class UpdateOrderInfoPaneController {
 
 
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailPane(stage,mainPane,isCheckIn,isFromList,orderVO));
+            mainPane.getChildren().add(new OrderDetailPane(mainPane,isCheckIn,isFromList,orderVO));
         }else {
             //输入不合法
             alertController.showInputWrongAlert("请将入住信息填写完整","提交失败");
@@ -182,8 +180,8 @@ public class UpdateOrderInfoPaneController {
     private void back(){
         mainPane.getChildren().clear();
         if(isFromList) {
-            mainPane.getChildren().add(new OrderListPane(stage,mainPane));
-        }else mainPane.getChildren().add(new FindOrderPane(stage,mainPane,isCheckIn));
+            mainPane.getChildren().add(new OrderListPane(mainPane));
+        }else mainPane.getChildren().add(new FindOrderPane(mainPane,isCheckIn));
     }
 
 

@@ -13,11 +13,11 @@ import java.io.IOException;
  */
 public class UpdateOfflinePane extends Pane{
 
-    public UpdateOfflinePane(Stage primaryStage, Pane mainPane, Boolean isCheckIn) {
-        loadFxml(primaryStage,mainPane,isCheckIn);
+    public UpdateOfflinePane(Pane mainPane, Boolean isCheckIn) {
+        loadFxml(mainPane,isCheckIn);
     }
 
-    private void loadFxml(Stage primaryStage,Pane mainPane, Boolean isCheckIn) {
+    private void loadFxml(Pane mainPane, Boolean isCheckIn) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hoteloffline.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -27,6 +27,6 @@ public class UpdateOfflinePane extends Pane{
         }
 
         UpdateOfflinePaneController updateOfflinePaneController = fxmlLoader.getController();
-        updateOfflinePaneController.launch(primaryStage,mainPane,isCheckIn);
+        updateOfflinePaneController.launch(mainPane,isCheckIn);
     }
 }

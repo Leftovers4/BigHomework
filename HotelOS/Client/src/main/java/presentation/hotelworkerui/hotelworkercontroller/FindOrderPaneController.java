@@ -27,12 +27,10 @@ public class FindOrderPaneController {
     @FXML private ImageView findOrderImg;
     @FXML private TextField idorNameField;
     @FXML private Button findByIDorNameBtn;
-    private Stage stage;
     private Pane mainPane;
     private Boolean isCheckIn;
     private AlertController alertController;
-    public void launch(Stage primaryStage, Pane mainPane,Boolean isCheckIn) {
-        this.stage = primaryStage;
+    public void launch(Pane mainPane,Boolean isCheckIn) {
         this.mainPane = mainPane;
         this.isCheckIn = isCheckIn;
         alertController = new AlertController();

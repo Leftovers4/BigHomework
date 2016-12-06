@@ -20,12 +20,10 @@ public class UpdateOfflinePaneController {
     @FXML private ComboBox roomTypeBox;
     @FXML private ComboBox roomAmountBox;
 
-    private Stage stage;
     private Pane mainPane;
     private AlertController alertController;
 
-    public void launch(Stage primaryStage, Pane mainPane, Boolean isCheckIn) {
-        this.stage = primaryStage;
+    public void launch(Pane mainPane, Boolean isCheckIn) {
         this.mainPane = mainPane;
         alertController = new AlertController();
 

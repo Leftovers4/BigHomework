@@ -51,13 +51,11 @@ public class OrderListPaneController {
     //提示框控制器
     private AlertController alertController;
 
-    private Stage stage;
     private Pane mainPane;
     private ObservableList<OrderVO> orderVoList;
     private OrderBLService_Stub orderBLServiceStub;
 
-    public void launch(Stage primaryStage, Pane mainPane) {
-        this.stage = primaryStage;
+    public void launch(Pane mainPane) {
         this.mainPane = mainPane;
         orderBLServiceStub = new OrderBLService_Stub();
         alertController = new AlertController();
@@ -83,7 +81,7 @@ public class OrderListPaneController {
         opCol.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
             @Override
             public TableCell<OrderVO, Boolean> call(TableColumn<OrderVO, Boolean> param) {
-                return new HotelListButtonCell(stage, mainPane, orderTable);
+                return new HotelListButtonCell(mainPane, orderTable);
             }
         });
 

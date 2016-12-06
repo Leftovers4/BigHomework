@@ -22,13 +22,11 @@ public class UpdateCheckInPaneController {
     @FXML Button checkinOnlineBtn;
     @FXML Button checkinOfflineBtn;
 
-    private Stage stage;
     private Pane mainPane;
     private AlertController alertController;
 
-    public void launch(Stage primaryStage,Pane mainPane) {
+    public void launch(Pane mainPane) {
         this.mainPane = mainPane;
-        this.stage = primaryStage;
         alertController = new AlertController();
     }
 
@@ -39,7 +37,7 @@ public class UpdateCheckInPaneController {
     @FXML
     private void checkinOnline(){
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new FindOrderPane(stage,mainPane,true));
+        mainPane.getChildren().add(new FindOrderPane(mainPane,true));
     }
 
     /**
@@ -48,7 +46,7 @@ public class UpdateCheckInPaneController {
     @FXML
     private void checkinOffline(){
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new UpdateOfflinePane(stage,mainPane,true));
+        mainPane.getChildren().add(new UpdateOfflinePane(mainPane,true));
     }
 
 }

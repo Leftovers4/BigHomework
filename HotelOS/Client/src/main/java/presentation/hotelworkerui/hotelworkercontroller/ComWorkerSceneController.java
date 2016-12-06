@@ -85,7 +85,7 @@ public class ComWorkerSceneController {
     private void showOrderList(){
         leftBarBtnEffect(orderListBtn);
         changeSliderPos(305);
-        changePane(new OrderListPane(stage,mainPane));
+        changePane(new OrderListPane(mainPane));
         currentBtn = orderListBtn;
     }
 
@@ -109,7 +109,7 @@ public class ComWorkerSceneController {
     private void showUpdateCheckIn(){
         leftBarBtnEffect(updateCheckInBtn);
         changeSliderPos(440);
-        changePane(new UpdateCheckInPane(stage,mainPane));
+        changePane(new UpdateCheckInPane(mainPane));
         currentBtn = updateCheckInBtn;
     }
 
@@ -117,7 +117,7 @@ public class ComWorkerSceneController {
     private void showUpdateOut(){
         leftBarBtnEffect(updateOutBtn);
         changeSliderPos(485);
-        changePane(new UpdateOutPane(stage,mainPane));
+        changePane(new UpdateOutPane(mainPane));
         currentBtn = updateOutBtn;
     }
 

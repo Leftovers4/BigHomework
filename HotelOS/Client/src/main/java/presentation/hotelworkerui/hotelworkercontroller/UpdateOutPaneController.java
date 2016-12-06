@@ -19,12 +19,10 @@ public class UpdateOutPaneController {
     @FXML Button outOnlineBtn;
     @FXML Button outOfflineBtn;
 
-    private Stage stage;
     private Pane mainPane;
     private AlertController alertController;
 
-    public void launch(Stage primaryStage,Pane mainPane) {
-        this.stage = primaryStage;
+    public void launch(Pane mainPane) {
         this.mainPane = mainPane;
         alertController = new AlertController();
     }
@@ -32,12 +30,12 @@ public class UpdateOutPaneController {
     @FXML
     private void outOnline(){
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new FindOrderPane(stage,mainPane,false));
+        mainPane.getChildren().add(new FindOrderPane(mainPane,false));
     }
 
     @FXML
     private void outOffline(){
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new UpdateOfflinePane(stage,mainPane,false));
+        mainPane.getChildren().add(new UpdateOfflinePane(mainPane,false));
     }
 }

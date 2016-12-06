@@ -156,5 +156,12 @@
             <Insets bottom="10.0" left="10.0" top="10.0" />
          </padding>
       </HBox>
+      <Label layoutX="524.0" layoutY="150.0" text="优惠信息" />
+      <Pane layoutX="577.0" layoutY="191.0" styleClass="BackgroundHBox">
+         <children>
+            <Label layoutY="41.0" text="优惠" />
+            <Label layoutX="18.0" text="优惠" />
+         </children>
+      </Pane>
     </children>
 </fx:root>

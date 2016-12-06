@@ -13,11 +13,11 @@ import java.io.IOException;
  * Description :
  */
 public class UpdateOrderInfoPane extends Pane{
-    public UpdateOrderInfoPane(Stage primaryStage, Pane mainPane, Boolean isCheckIn,Boolean isFromList, OrderVO orderVO) {
-        loadFxml(primaryStage,mainPane,isCheckIn,isFromList,orderVO);
+    public UpdateOrderInfoPane(Pane mainPane, Boolean isCheckIn,Boolean isFromList, OrderVO orderVO) {
+        loadFxml(mainPane,isCheckIn,isFromList,orderVO);
     }
 
-    private void loadFxml(Stage primaryStage,Pane mainPane,Boolean isCheckIn,Boolean isFromList,OrderVO orderVO) {
+    private void loadFxml(Pane mainPane,Boolean isCheckIn,Boolean isFromList,OrderVO orderVO) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelupdateorderinfo.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -27,6 +27,6 @@ public class UpdateOrderInfoPane extends Pane{
         }
 
         UpdateOrderInfoPaneController updateOrderInfoPaneController = fxmlLoader.getController();
-        updateOrderInfoPaneController.launch(primaryStage,mainPane,isCheckIn,isFromList,orderVO);
+        updateOrderInfoPaneController.launch(mainPane,isCheckIn,isFromList,orderVO);
     }
 }

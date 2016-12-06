@@ -12,11 +12,11 @@ import java.io.IOException;
  * Description :
  */
 public class UpdateOutPane extends Pane {
-    public UpdateOutPane(Stage primaryStage,Pane mainPane) {
-        loadFxml(primaryStage,mainPane);
+    public UpdateOutPane(Pane mainPane) {
+        loadFxml(mainPane);
     }
 
-    private void loadFxml(Stage primaryStage,Pane mainPane) {
+    private void loadFxml(Pane mainPane) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelupdateout.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -26,6 +26,6 @@ public class UpdateOutPane extends Pane {
         }
 
         UpdateOutPaneController updateOutPaneController = fxmlLoader.getController();
-        updateOutPaneController.launch(primaryStage,mainPane);
+        updateOutPaneController.launch(mainPane);
     }
 }

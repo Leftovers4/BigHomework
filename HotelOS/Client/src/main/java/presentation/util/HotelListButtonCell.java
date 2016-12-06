@@ -25,7 +25,7 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
     final private Button checkInButton = new Button();
     private TableView tableView;
 
-    public HotelListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView) {
+    public HotelListButtonCell(final Pane mainPane, final TableView tableView) {
         this.tableView = tableView;
 
         this.getStylesheets().add(HotelListButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
@@ -42,14 +42,14 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
             int selectedIndex = getTableRow().getIndex();
             OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailPane(stage, mainPane, false,true,orderVO));
+            mainPane.getChildren().add(new OrderDetailPane(mainPane, false,true,orderVO));
         });
 
         checkInButton.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
             OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new UpdateOrderInfoPane(stage, mainPane, true, true, orderVO));
+            mainPane.getChildren().add(new UpdateOrderInfoPane(mainPane, true, true, orderVO));
         });
 
         btnBox.setSpacing(10);

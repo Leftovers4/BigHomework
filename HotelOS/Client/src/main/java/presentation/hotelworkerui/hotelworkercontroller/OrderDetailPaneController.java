@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
 import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
+import presentation.hotelworkerui.hotelworkerscene.UserReviewPane;
 import presentation.util.AlertController;
 import util.OrderType;
 import vo.order.OrderVO;
@@ -51,7 +52,6 @@ public class OrderDetailPaneController {
     @FXML private Button backBtn;
 
 
-    private Stage stage;
     private Pane mainPane;
     private AlertController alertController;
     private OrderVO orderVO;
@@ -60,8 +60,7 @@ public class OrderDetailPaneController {
     //是否从订单列表进入
     private Boolean isFromList;
 
-    public void launch(Stage primaryStage, Pane mainPane,Boolean isCheckIn,Boolean isFromList,OrderVO orderVO) {
-        this.stage = primaryStage;
+    public void launch(Pane mainPane,Boolean isCheckIn,Boolean isFromList,OrderVO orderVO) {
         this.mainPane = mainPane;
         this.orderVO = orderVO;
         this.isFromList = isFromList;
@@ -91,15 +90,18 @@ public class OrderDetailPaneController {
     }
 
     @FXML
-    private void showReview(){}
+    private void showReview(){
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(new UserReviewPane(mainPane,isCheckIn,isFromList,orderVO));
+    }
 
     @FXML
     private void back(){
         mainPane.getChildren().clear();
         if(isFromList) {
-            mainPane.getChildren().add(new OrderListPane(stage,mainPane));
+            mainPane.getChildren().add(new OrderListPane(mainPane));
         }else {
-            if(isCheckIn) mainPane.getChildren().add(new FindOrderPane(stage,mainPane,isCheckIn));
+            if(isCheckIn) mainPane.getChildren().add(new FindOrderPane(mainPane,isCheckIn));
         }
     }
 }
