@@ -1,5 +1,6 @@
 package util.poalfactory.impl;
 
+import util.Coder;
 import util.poalfactory.Po2Al_Factory;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
@@ -20,14 +21,16 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
 
     // TODO 注意初始值的设定
     // TODO 类似memberpo 初始值不能为null
+    // 特殊需求：用户的账号、密码、姓名（名称）、联系方式必须密文存储
     @Override
     public ArrayList<Object> toUserAl(UserPO userPO) {
         ArrayList<Object> userInfoContent = new ArrayList<>();
-        userInfoContent.add(userPO.getUsername());
-        userInfoContent.add(userPO.getPassword());
-        userInfoContent.add(userPO.getName());
+        // 加密
+        userInfoContent.add(Coder.encode(userPO.getUsername()));
+        userInfoContent.add(Coder.encode(userPO.getPassword()));
+        userInfoContent.add(Coder.encode(userPO.getName()));
         userInfoContent.add(userPO.isGender());
-        userInfoContent.add(userPO.getPhone());
+        userInfoContent.add(Coder.encode(userPO.getPhone()));
         userInfoContent.add(toString(userPO.getMemberPO().getMemberType()));
         userInfoContent.add(userPO.getMemberPO().getLevel());
         userInfoContent.add(toString(userPO.getMemberPO().getBirthday()));

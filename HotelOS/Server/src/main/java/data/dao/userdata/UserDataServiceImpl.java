@@ -9,6 +9,7 @@ import dataservice.userdataservice.UserDataService;
 import po.user.CreditRecordPO;
 import po.user.MemberPO;
 import po.user.UserPO;
+import util.Coder;
 import util.ResultMessage;
 
 import java.rmi.RemoteException;
@@ -47,6 +48,8 @@ public class UserDataServiceImpl extends DataServiceImplParent implements UserDa
 
     @Override
     public ResultMessage delete(String username) throws RemoteException {
+        // 先将username加密
+        username = Coder.encode(username);
         return userDataHelper.deleteFromSQL(username);
     }
 
@@ -85,7 +88,8 @@ public class UserDataServiceImpl extends DataServiceImplParent implements UserDa
 
     @Override
     public UserPO findByUsername(String username) throws RemoteException {
-
+        // 先将username加密
+        username = Coder.encode(username);
         // 根据用户名在user表中获取userAL
         ArrayList<Object> userAL = userDataHelper.findByIDFromSQL(username);
         // 构造userAL的迭代器

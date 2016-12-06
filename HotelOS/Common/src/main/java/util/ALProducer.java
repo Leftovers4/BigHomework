@@ -77,7 +77,7 @@ public class ALProducer {
         // "room_id", "hotel_id", "room_type", "total", "available", "price"
         Room = objectsToList(roomID, hotelID, "Single", 12, 11, 100.0);
         // "username", "password", "name", "gender", "phone", "member_type", "level", "birthday", "enterprise"
-        User = objectsToList(username, password, "啊", 1, "11011011010", "Normal", 5, date, enterprise);
+        User = objectsToList(Coder.encode(username), Coder.encode(password), Coder.encode("啊"), 1, Coder.encode("11011011010"), "Normal", 5, date, enterprise);
 
     }
 

@@ -1,5 +1,6 @@
 package util.poalfactory.impl;
 
+import com.sun.org.apache.bcel.internal.classfile.Code;
 import util.poalfactory.Al2Po_Factory;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
@@ -28,7 +29,7 @@ import java.util.Iterator;
  */
 public class Al2Po_FactoryImpl implements Al2Po_Factory{
 
-
+    // 特殊需求：用户的账号、密码、姓名（名称）、联系方式必须密文存储
     @Override
     public UserPO toUserPO(Iterator<Object> userAL) {
 
@@ -55,6 +56,12 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
 
         // 初始化CreditRecordPOs
         ArrayList<CreditRecordPO> creditRecordPOs = new ArrayList<>();
+
+        // 解密
+        username = Coder.decode(username);
+        password = Coder.decode(password);
+        name = Coder.decode(name);
+        phone = Coder.decode(phone);
 
         UserPO userPO = new UserPO(username, password, name, gender, phone, memberPO, creditRecordPOs);
 

@@ -15,6 +15,7 @@ import java.util.ArrayList;
  */
 public interface Po2Al_Factory {
 
+    // 特殊需求：用户的账号、密码、姓名（名称）、联系方式必须密文存储
     public ArrayList<Object> toUserAl(UserPO userPO);
 
     public ArrayList<Object> toPersonnelAl(PersonnelPO personnelPO);

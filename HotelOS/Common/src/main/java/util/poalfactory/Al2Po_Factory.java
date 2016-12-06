@@ -15,6 +15,7 @@ import java.util.Iterator;
  */
 public interface Al2Po_Factory {
 
+    // 特殊需求：用户的账号、密码、姓名（名称）、联系方式必须密文存储
     public UserPO toUserPO(Iterator<Object> userAL);
 
     public PersonnelPO toPersonnelPO(Iterator<Object> personnelAL);

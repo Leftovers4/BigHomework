@@ -43,7 +43,7 @@ public class AbnormalOrderAutoChanger implements Runnable {
                 }
 
                 // 设置为一分钟检查一次
-                Thread.sleep(6000);
+                Thread.sleep(60000);
 
                 System.out.println("Thread running...");
 
