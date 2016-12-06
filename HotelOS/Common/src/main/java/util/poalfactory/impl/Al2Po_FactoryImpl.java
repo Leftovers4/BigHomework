@@ -1,16 +1,15 @@
-package util;
+package util.poalfactory.impl;
 
+import util.poalfactory.Al2Po_Factory;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
 import po.order.*;
 import po.personnel.PersonnelPO;
-import po.promotion.PromotionMRPO;
-import po.promotion.PromotionPO;
-import po.promotion.PromotionTimePO;
-import po.promotion.PromotionTraAreaPO;
+import po.promotion.*;
 import po.user.CreditRecordPO;
 import po.user.MemberPO;
 import po.user.UserPO;
+import util.*;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -27,10 +26,10 @@ import java.util.Iterator;
  * 注意顺序和类型转换
  * 若拿过来的表没有内容，则构造的po为null
  */
-public class Al2Po_FactoryImpl{
+public class Al2Po_FactoryImpl implements Al2Po_Factory{
 
 
-     
+    @Override
     public UserPO toUserPO(Iterator<Object> userAL) {
 
         // 若user表没有内容，则返回null
@@ -46,7 +45,9 @@ public class Al2Po_FactoryImpl{
         String phone = (String) userAL.next();
         MemberType memberType = (MemberType) EnumFactory.getEnum((String)userAL.next());
         int level = (int) userAL.next();
-        LocalDate birthday = ((Date)userAL.next()).toLocalDate();
+//        LocalDate birthday = toDate((String)userAL.next());
+        LocalDate birthday = ((Date) userAL.next()).toLocalDate();
+
         String enterprise = (String) userAL.next();
 
         // 构造MemberPO
@@ -61,7 +62,7 @@ public class Al2Po_FactoryImpl{
 
     }
 
-     
+    @Override
     public PersonnelPO toPersonnelPO(Iterator<Object> personnelAL) {
         // 若personnel表没有内容，则返回null
         if(!personnelAL.hasNext()){
@@ -80,7 +81,7 @@ public class Al2Po_FactoryImpl{
 
     }
 
-     
+    @Override
     public HotelPO toHotelPO(Iterator<Object> hotelAL) {
         // 若hotel表没有内容，则返回null
         if(!hotelAL.hasNext()){
@@ -109,7 +110,7 @@ public class Al2Po_FactoryImpl{
 
     }
 
-     
+    @Override
     public RoomPO toRoomPO(Iterator<Object> roomAL) {
         // 若room表没有内容，则返回null
         if(!roomAL.hasNext()){
@@ -128,8 +129,9 @@ public class Al2Po_FactoryImpl{
         return roomPO;
     }
 
-     
+    @Override
     public OrderPO toOrderPO(Iterator<Object> orderAL) {
+
         // 若order表没有内容，则返回null
         if(!orderAL.hasNext()){
             return null;
@@ -178,7 +180,7 @@ public class Al2Po_FactoryImpl{
 
     }
 
-     
+    @Override
     public PromotionPO toPromotionPO(Iterator<Object> promotionAL) {
         // 若promotion表没有内容，则返回null
         if(!promotionAL.hasNext()){
@@ -232,7 +234,7 @@ public class Al2Po_FactoryImpl{
 
     }
 
-     
+    @Override
     public CreditRecordPO toCreditRecordPO(Iterator<Object> creditRecordAL) {
         if(!creditRecordAL.hasNext()){
             return null;
@@ -250,7 +252,7 @@ public class Al2Po_FactoryImpl{
 
     }
 
-//     
+//    @Override
 //    public PromotionTraAreaPO toPromotionTraAreaPO(Iterator<Object> addressAL) {
 //        if(!addressAL.hasNext()){
 //            return null;
@@ -267,7 +269,7 @@ public class Al2Po_FactoryImpl{
 //        return promotionTraAreaPO;
 //    }
 
-//     
+//    @Override
 //    public PromotionMRPO toPromotionMRPO(Iterator<Object> mrAls) {
 //        if(!mrAls.hasNext()){
 //            return null;

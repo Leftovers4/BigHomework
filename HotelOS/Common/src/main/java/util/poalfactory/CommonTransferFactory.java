@@ -1,8 +1,7 @@
-package data.dao._poalfactory;
+package util.poalfactory;
 
 import util.TableName;
 
-import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;

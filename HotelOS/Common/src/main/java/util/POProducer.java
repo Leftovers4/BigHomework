@@ -8,8 +8,8 @@ import po.personnel.PersonnelPO;
 import po.promotion.PromotionPO;
 import po.user.CreditRecordPO;
 import po.user.UserPO;
-
-import javax.jws.soap.SOAPBinding;
+import util.poalfactory.Al2Po_Factory;
+import util.poalfactory.impl.Al2Po_FactoryImpl;
 
 /**
  * Created by Hiki on 12/4/2016.
@@ -25,7 +25,7 @@ public class POProducer {
     private static CreditRecordPO creditRecordPO;
 
     // 利用AL to PO
-    private final static Al2Po_FactoryImpl apFactory = new Al2Po_FactoryImpl();
+    private final static Al2Po_Factory apFactory = new Al2Po_FactoryImpl();
 
     // 初始化所有PO
     static{

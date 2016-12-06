@@ -1,4 +1,4 @@
-package data.dao._poalfactory;
+package util.poalfactory;
 
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;

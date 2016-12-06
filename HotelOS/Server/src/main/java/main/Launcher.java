@@ -38,13 +38,17 @@ public class Launcher extends Application{
     @FXML
     private void launchServer() {
         launchBtn.setDisable(true);
-//        (remoteHelper = new RemoteHelper()).run();
+        // 启动rmi连接
+        (remoteHelper = new RemoteHelper()).run();
+        // TODO: 开启线程监控订单状态（超时自动置为异常订单）
+
+
     }
 
     @FXML
     private void stopServer() {
-//        Platform.exit();
-//        remoteHelper.stop();
+        Platform.exit();
+        remoteHelper.stop();
 
     }
 

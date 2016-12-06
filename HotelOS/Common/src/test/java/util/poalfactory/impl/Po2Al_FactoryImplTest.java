@@ -1,8 +1,6 @@
-package data.dao._poalfactory.impl;
+package util.poalfactory.impl;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Hiki on 12/4/2016.

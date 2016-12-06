@@ -1,6 +1,6 @@
-package data.dao._poalfactory.impl;
+package util.poalfactory.impl;
 
-import data.dao._poalfactory.Po2Al_Factory;
+import util.poalfactory.Po2Al_Factory;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
 import po.order.OrderPO;
@@ -12,7 +12,6 @@ import po.user.CreditRecordPO;
 import po.user.UserPO;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Hiki on 11/22/2016.

@@ -1,4 +1,4 @@
-package data.dao._poalfactory.impl;
+package util.poalfactory.impl;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,10 +11,6 @@ import po.user.CreditRecordPO;
 import po.user.UserPO;
 import util.ALProducer;
 import util.CommonMethod;
-
-import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Hiki on 12/4/2016.

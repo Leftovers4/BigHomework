@@ -1,12 +1,10 @@
-package data.dao._poalfactory;
+package util.poalfactory;
 
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
 import po.order.OrderPO;
 import po.personnel.PersonnelPO;
-import po.promotion.PromotionMRPO;
 import po.promotion.PromotionPO;
-import po.promotion.PromotionTraAreaPO;
 import po.user.CreditRecordPO;
 import po.user.UserPO;
 

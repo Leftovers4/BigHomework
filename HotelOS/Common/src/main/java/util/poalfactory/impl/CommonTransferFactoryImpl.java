@@ -1,6 +1,6 @@
-package data.dao._poalfactory.impl;
+package util.poalfactory.impl;
 
-import data.dao._poalfactory.CommonTransferFactory;
+import util.poalfactory.CommonTransferFactory;
 import util.DefaultAl;
 import util.TableName;
 

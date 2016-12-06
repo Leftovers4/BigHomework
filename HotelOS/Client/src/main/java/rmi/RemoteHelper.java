@@ -86,6 +86,7 @@ public class RemoteHelper {
     public PromotionDataService getPromotionDAO() {
         try {
             promotionDAO= (PromotionDataService) Naming.lookup(networkAddress + "/" + "PromotionDataService");
+            System.out.println("Link to server!");
         } catch (NotBoundException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
