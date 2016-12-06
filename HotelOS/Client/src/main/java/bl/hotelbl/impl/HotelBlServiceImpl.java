@@ -73,7 +73,7 @@ public class HotelBlServiceImpl implements HotelBLService {
     public HotelVO viewBasicHotelInfo(long hotelID) throws RemoteException {
         //酒店工作人员已登录，所以必然存在该酒店
         HotelPO hotelPO = hotelDAO.findByHotelID(hotelID);
-        PersonnelPO personnelPO = null; // todo personnelDAO.
+        PersonnelPO personnelPO = ; // todo personnelDAO.
         List<OrderPO> orderPOList = orderDAO.findByHotelID(hotelID);
 
         return hotelVOCreator.create(hotelPO, personnelPO, orderPOList);

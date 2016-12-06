@@ -2,13 +2,16 @@ package po.order;
 
 import util.HandleAppealResult;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
  * Created by Hiki on 11/17/2016.
  */
-public class OrderHandleAppealPO {
+public class OrderHandleAppealPO implements Serializable{
+
+    private static final long serialVersionUID = 1L;
 
     private LocalDateTime haTime;
 
