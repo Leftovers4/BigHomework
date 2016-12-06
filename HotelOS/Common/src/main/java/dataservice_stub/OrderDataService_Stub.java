@@ -27,6 +27,11 @@ public class OrderDataService_Stub implements OrderDataService {
     }
 
     @Override
+    public ArrayList<OrderPO> findByType(OrderType orderType) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public ArrayList<OrderPO> findByHotelIDAndType(long hotelID, OrderType orderType) throws RemoteException {
         return null;
     }

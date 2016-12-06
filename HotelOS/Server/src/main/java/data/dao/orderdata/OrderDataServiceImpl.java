@@ -101,6 +101,22 @@ public class OrderDataServiceImpl extends DataServiceImplParent implements Order
     }
 
     @Override
+    public ArrayList<OrderPO> findByType(OrderType orderType) throws RemoteException {
+        // 调用findAll
+        ArrayList<OrderPO> orderPOs = findAll();
+
+        // 选择出相应的orderPOs
+        ArrayList<OrderPO> selectedOrderPOs = new ArrayList<>();
+        for(OrderPO each : orderPOs){
+            if(each.getOrderType().equals(orderType)){
+                selectedOrderPOs.add(each);
+            }
+        }
+
+        return selectedOrderPOs;
+    }
+
+    @Override
     public ArrayList<OrderPO> findByHotelIDAndType(long hotelID, OrderType orderType) throws RemoteException {
         // 调用findAll
         ArrayList<OrderPO> orderPOs = findAll();

@@ -30,6 +30,9 @@ public interface OrderDataService extends Remote{
     // 根据hotelID查找订单
     public ArrayList<OrderPO> findByHotelID(long hotelID) throws RemoteException;
 
+    // 根据OrderType查找订单
+    public ArrayList<OrderPO> findByType(OrderType orderType) throws RemoteException;
+
     // 根据hotelID和OrderType查找订单
     public ArrayList<OrderPO> findByHotelIDAndType(long hotelID, OrderType orderType) throws RemoteException;
 

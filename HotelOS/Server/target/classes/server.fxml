@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Launcher">
+   <children>
+      <Button fx:id="launchBtn" layoutX="101.0" layoutY="142.0" mnemonicParsing="false" onAction="#launchServer" prefWidth="100.0" text="启动">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="279.0" layoutY="142.0" mnemonicParsing="false" onAction="#stopServer" prefWidth="100.0" text="停止">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
