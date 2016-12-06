@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateOrderInfoPane;
 import util.OrderType;

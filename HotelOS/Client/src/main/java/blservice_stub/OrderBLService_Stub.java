@@ -3,12 +3,16 @@ package blservice_stub;
 import bl.orderbl.OrderBLService;
 import util.OrderType;
 import util.ResultMessage;
+import util.RoomType;
+import vo.order.OrderPriceVO;
+import vo.order.OrderTimeVO;
 import vo.order.OrderVO;
 import vo.order.ReviewVO;
 import vo.user.CreditVO;
 
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,7 +98,28 @@ public class OrderBLService_Stub implements OrderBLService {
 
     @Override
     public List<OrderVO> viewFullHotelOrderList(long hotelID) {
-        return null;
+        ArrayList<OrderVO> list = new ArrayList<>();
+        OrderVO orderVO = new OrderVO();
+        orderVO.orderID = "12345678912345678";
+        orderVO.username = "网红";
+        orderVO.orderPriceVO = new OrderPriceVO(250, 200);
+        orderVO.orderType = OrderType.Unexecuted;
+
+        ReviewVO reviewVO = new ReviewVO();
+        reviewVO.reviewTime = LocalDateTime.of(2016, 11, 12, 21, 00);
+        reviewVO.review = "那你提莫无敌非常非常棒棒 象牙蚌啊!";
+        reviewVO.rating = 5;
+        reviewVO.roomType = RoomType.Couple;
+        reviewVO.orderID = orderVO.orderID;
+        reviewVO.username = orderVO.username;
+
+        OrderTimeVO orderTimeVO = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 11, 20, 00), null, null,
+                null, LocalDateTime.of(2016, 11, 12, 21, 00), null, null);
+
+        orderVO.reviewVO = reviewVO;
+        orderVO.orderTimeVO = orderTimeVO;
+        list.add(orderVO);
+        return list;
     }
 
     @Override

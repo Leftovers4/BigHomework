@@ -2,6 +2,7 @@ package presentation.hotelworkerui.hotelworkercontroller;
 
 import blservice_stub.OrderBLService_Stub;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -10,11 +11,14 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.AlertController;
+import presentation.util.CancelDateBefore;
+import presentation.util.DisableColumnChangeListener;
 import presentation.util.HotelListButtonCell;
 import util.OrderType;
 import vo.order.OrderPriceVO;
 import vo.order.OrderVO;
 
+import java.time.LocalDate;
 
 
 /**
@@ -60,11 +64,27 @@ public class OrderListPaneController {
         orderBLServiceStub = new OrderBLService_Stub();
         alertController = new AlertController();
         initBox();
+        initDatePicker();
         initTable();
     }
 
+    private void initDatePicker() {
+        createDatePicker.setDayCellFactory(new CancelDateBefore(createDatePicker, LocalDate.now()));
+        exeDatePicker.setDayCellFactory(new CancelDateBefore(createDatePicker, LocalDate.now()));
+
+        createDatePicker.setOnAction(event -> {
+            exeDatePicker.setDayCellFactory(new CancelDateBefore(exeDatePicker, createDatePicker.getValue()));
+        });
+        exeDatePicker.setOnAction(event -> {
+            if(createDatePicker.getValue() !=null){
+                //TODO 按时间区间筛选订单
+            }
+        });
+    }
+
     private void initBox() {
-        orderTypeBox.getItems().addAll("所有订单", "未执行订单", "已执行订单", "异常订单");
+        orderTypeBox.getItems().addAll("所有订单", "未执行订单", "已执行订单", "异常订单", "撤销订单");
+        orderTypeBox.setValue("所有订单");
         addBoxListener();
     }
 
@@ -87,29 +107,11 @@ public class OrderListPaneController {
 
 
         orderTable.setItems(orderVoList);
+
+        final TableColumn[] columns = {idCol, userCol, checkInTimeCol, priceCol, typeCol, opCol};
+        orderTable.getColumns().addListener(new DisableColumnChangeListener(orderTable,columns));
     }
 
-//    /**
-//     * 设置列表的监听
-//    */
-//    private void addTableListener(){
-//        orderTable.getSelectionModel().selectedItemProperty().addListener(
-//                (v,oldValue,newValue)->{
-//                    OrderVO tempVO = (OrderVO) orderTable.getSelectionModel().getSelectedItem();
-//                    if(tempVO == null) return;
-//                    if(tempVO.orderType == OrderType.Executed){
-//                        checkInBtn.setText("客户入住");
-//                        checkInBtn.setDisable(true);
-//                    }else if(tempVO.orderType == OrderType.Abnormal){
-//                        checkInBtn.setText("延迟入住");
-//                        checkInBtn.setDisable(false);
-//                    }else{
-//                        checkInBtn.setText("客户入住");
-//                        checkInBtn.setDisable(false);
-//                    }
-//                }
-//        );
-//    }
 
     /**
      * 设置组合框的监听
@@ -135,12 +137,10 @@ public class OrderListPaneController {
     }
 
     private ObservableList<OrderVO> getOrderVoList() {
-        ObservableList<OrderVO> list = FXCollections.observableArrayList();
 //        for (int i = 0; i< 30 ; i++) {
 //
 //            list.add(new OrderVO("12345678912345678", 123456, "user1", OrderType.Abnormal, "如家", null, "A110", 2, false, null, null, null, null));
 //        }
-        OrderPriceVO orderPriceVO = new OrderPriceVO(250, 200);
 ////      this.generateTime = generateTime;
 //        this.expectedCheckinTime = expectedCheckinTime;
 //        this.checkinTime = checkinTime;
@@ -169,7 +169,7 @@ public class OrderListPaneController {
 //        }
 
 
-            return list;
+            return FXCollections.observableArrayList(orderBLServiceStub.viewFullHotelOrderList(123456));
     }
 
 

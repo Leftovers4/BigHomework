@@ -1,35 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.UserReviewPaneController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.UserReviewPaneController">
    <children>
-      <Label layoutX="453.0" layoutY="231.0" text="评分：" />
-      <HBox layoutX="447.0" layoutY="266.0">
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="23.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/hotelworker/bar.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="461.0" layoutY="242.0" text="评分：" />
+      <HBox layoutX="455.0" layoutY="266.0">
          <children>
-            <ImageView fx:id="star1" fitHeight="40.0" fitWidth="40.0" layoutX="371.0" layoutY="243.0" onMouseClicked="#star1event" onMouseEntered="#star1hover" onMouseExited="#star1out" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="star1" fitHeight="40.0" fitWidth="40.0" layoutX="371.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/user/blankStar.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="star2" fitHeight="40.0" fitWidth="40.0" layoutX="411.0" layoutY="243.0" onMouseClicked="#star2event" onMouseEntered="#star2hover" onMouseExited="#star2out" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="star2" fitHeight="40.0" fitWidth="40.0" layoutX="411.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/user/blankStar.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="star3" fitHeight="40.0" fitWidth="40.0" layoutX="451.0" layoutY="243.0" onMouseClicked="#star3event" onMouseEntered="#star3hover" onMouseExited="#star3out" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="star3" fitHeight="40.0" fitWidth="40.0" layoutX="451.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/user/blankStar.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="star4" fitHeight="40.0" fitWidth="40.0" layoutX="491.0" layoutY="243.0" onMouseClicked="#star4event" onMouseEntered="#star4hover" onMouseExited="#star4out" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="star4" fitHeight="40.0" fitWidth="40.0" layoutX="491.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/user/blankStar.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="star5" fitHeight="40.0" fitWidth="40.0" layoutX="531.0" layoutY="243.0" onMouseClicked="#star5event" onMouseEntered="#star5hover" onMouseExited="#star5out" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="star5" fitHeight="40.0" fitWidth="40.0" layoutX="531.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/user/blankStar.png" />
                </image>
@@ -37,12 +43,12 @@
          </children>
       </HBox>
       <Label layoutX="196.0" layoutY="356.0" text="评价：" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="250.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="254.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/common/initialPhoto.png" />
          </image>
       </ImageView>
-      <Label alignment="TOP_LEFT" layoutX="250.0" layoutY="356.0" prefHeight="178.0" prefWidth="405.0" styleClass="BackgroundHBox" text="Label" wrapText="true" />
+      <Label fx:id="reviewLabel" alignment="TOP_LEFT" layoutX="250.0" layoutY="356.0" prefHeight="178.0" prefWidth="405.0" styleClass="BackgroundHBox" wrapText="true" />
       <Button fx:id="backBtn" layoutY="78.0" mnemonicParsing="false" onAction="#back" styleClass="BackBtn">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
@@ -53,10 +59,7 @@
          </graphic>
       </Button>
       <Label id="detailTitleLabel" layoutX="71.0" layoutY="82.0" text="客户评价" />
-      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="23.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/hotelworker/bar.png" />
-         </image>
-      </ImageView>
+      <Label layoutX="461.0" layoutY="156.0" text="发布于：" />
+      <Label fx:id="reviewTimeLabel" layoutX="461.0" layoutY="188.0" text="2016-10-29 16:30" />
    </children>
 </fx:root>

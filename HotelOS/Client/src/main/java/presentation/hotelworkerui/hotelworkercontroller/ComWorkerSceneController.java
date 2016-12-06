@@ -45,7 +45,7 @@ public class ComWorkerSceneController {
     public void launch(Stage primaryStage){
         this.stage = primaryStage;
         alertController = new AlertController();
-        mainPane.getChildren().add(new InfoPane(stage,mainPane));
+        mainPane.getChildren().add(new InfoPane(mainPane));
         leftBarBtnArr = new ArrayList<>(Arrays.asList(hotelInfoBtn, orderListBtn, registerRoomBtn,
                 managePromotionBtn, updateCheckInBtn, updateOutBtn));
 
@@ -74,7 +74,7 @@ public class ComWorkerSceneController {
     private void showHotelInfo(){
         leftBarBtnEffect(hotelInfoBtn);
         changeSliderPos(260);
-        changePane(new InfoPane(stage,mainPane));
+        changePane(new InfoPane(mainPane));
         currentBtn = hotelInfoBtn;
     }
 

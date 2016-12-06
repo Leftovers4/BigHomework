@@ -44,13 +44,11 @@ public class InfoPaneController {
     @FXML private Button cancelEditBtn;
 
     private HotelBLService_Stub hotelBLServiceStub;
-    private Stage stage;
     private Pane mainPane;
     //提示框控制器
     private AlertController alertController;
 
-    public void launch(Stage primaryStage, Pane mainPane) {
-        this.stage = primaryStage;
+    public void launch(Pane mainPane) {
         this.mainPane = mainPane;
 
         hotelBLServiceStub = new HotelBLService_Stub();
@@ -119,7 +117,7 @@ public class InfoPaneController {
     @FXML
     private void showReview(){
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new ReviewPane(stage,mainPane));
+        mainPane.getChildren().add(new ReviewPane(mainPane));
     }
 
     private void setEditInfoComponentsVisible(Boolean isVisible){

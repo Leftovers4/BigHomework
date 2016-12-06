@@ -12,9 +12,11 @@ import presentation.hotelworkerui.hotelworkerscene.UpdateOrderInfoPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateOutPane;
 import presentation.util.AlertController;
 import util.OrderType;
+import util.RoomType;
 import vo.order.OrderPriceVO;
 import vo.order.OrderTimeVO;
 import vo.order.OrderVO;
+import vo.order.ReviewVO;
 
 import java.time.LocalDateTime;
 
@@ -46,13 +48,26 @@ public class FindOrderPaneController {
      * 搜索订单
      */
     @FXML private void findOrder(){
-//        OrderPriceVO orderPriceVO = new OrderPriceVO(250,200);
-//        OrderTimeVO orderTimeVO = new OrderTimeVO(LocalDateTime.of(2016,11,11,11,11),null,LocalDateTime.of(2016,11,12,8,00),LocalDateTime.of(2016,11,14,11,11),
-//                LocalDateTime.of(2016,11,15,11,11),LocalDateTime.of(2016,11,12,11,11),null,null);
-//        OrderTimeVO orderTimeVO2 = new OrderTimeVO(LocalDateTime.of(2016,11,11,11,00),LocalDateTime.of(2016,11,12,20,00),LocalDateTime.of(2016,11,12,20,30),LocalDateTime.of(2016,11,14,20,00),
-//                null,LocalDateTime.of(2016,11,12,21,00),LocalDateTime.of(2016,11,12,20,30),null);
-//        OrderVO orderVO = new OrderVO("12345678912345678", 123456, "user1", OrderType.Executed, "如家", null, "A110 A250", 2, false, null, orderTimeVO2, orderPriceVO, null);
-//        mainPane.getChildren().remove(0);
-//        mainPane.getChildren().add(new UpdateOrderInfoPane(stage,mainPane,isCheckIn,false,orderVO));
+        mainPane.getChildren().clear();
+        OrderVO orderVO = new OrderVO();
+        orderVO.orderID = "12345678912345678";
+        orderVO.username = "网红";
+        orderVO.orderPriceVO = new OrderPriceVO(250, 200);
+        orderVO.orderType = OrderType.Unexecuted;
+
+        ReviewVO reviewVO = new ReviewVO();
+        reviewVO.reviewTime = LocalDateTime.of(2016, 11, 12, 21, 00);
+        reviewVO.review = "那你提莫无敌非常非常棒棒 象牙蚌啊!";
+        reviewVO.rating = 5;
+        reviewVO.roomType = RoomType.Couple;
+        reviewVO.orderID = orderVO.orderID;
+        reviewVO.username = orderVO.username;
+
+        OrderTimeVO orderTimeVO = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 11, 20, 00), null, null,
+                null, LocalDateTime.of(2016, 11, 12, 21, 00), null, null);
+
+        orderVO.reviewVO = reviewVO;
+        orderVO.orderTimeVO = orderTimeVO;
+        mainPane.getChildren().add(new UpdateOrderInfoPane(mainPane,isCheckIn,false,orderVO));
     }
 }

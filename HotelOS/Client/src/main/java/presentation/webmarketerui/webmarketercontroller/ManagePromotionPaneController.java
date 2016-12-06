@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -37,6 +38,11 @@ public class ManagePromotionPaneController {
     @FXML private Button modifyMemBtn;
     @FXML private Button deleteMemBtn;
     @FXML private Button manageMemRankBtn;
+    @FXML private Button confirmManageBtn;
+    @FXML private Button cancelManageBtn;
+
+    @FXML private GridPane manageGridPane;
+
     @FXML private VBox memberVBox;
     @FXML private HBox addMemHBox;
     @FXML private TableView proMemTable;
@@ -160,6 +166,33 @@ public class ManagePromotionPaneController {
     }
 
 
+    /**
+     * 制定会员等级
+     */
+    @FXML
+    private void manageRank(){
+        setManageComponentsVisible(true);
+        setOriMemComponentsVisible(false);
+    }
+
+    @FXML
+    private void cancelManage(){
+        setManageComponentsVisible(false);
+        setOriMemComponentsVisible(true);
+    }
+
+    @FXML
+    private void confirmManage(){
+        setManageComponentsVisible(false);
+        setOriMemComponentsVisible(true);
+    }
+
+    private void setManageComponentsVisible(Boolean isVisible){
+        manageMemRankBtn.setVisible(!isVisible);
+        confirmManageBtn.setVisible(isVisible);
+        cancelManageBtn.setVisible(isVisible);
+        manageGridPane.setVisible(isVisible);
+    }
 
     @FXML
     private void showTimePromotion(){
@@ -178,6 +211,7 @@ public class ManagePromotionPaneController {
         timeVBox.setVisible(false);
         setAddMemComponentsVisible(false);
         setOriMemComponentsVisible(true);
+        setManageComponentsVisible(false);
 
         //移动滑块
         MySlider.moveSliderLabel(sliderPromotionLabel,168);

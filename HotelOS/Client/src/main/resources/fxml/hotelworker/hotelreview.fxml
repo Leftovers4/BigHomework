@@ -34,7 +34,7 @@
                               <Insets left="23.0" top="25.0" />
                            </FlowPane.margin>
                            <HBox.margin>
-                              <Insets left="-23.0" />
+                              <Insets left="-28.0" />
                            </HBox.margin>
                         </ImageView>
                         <Label id="detailTitleLabel" text="酒店评价">
@@ -44,13 +44,19 @@
                         </Label>
                      </children>
                      <FlowPane.margin>
-                        <Insets left="-5.0" top="-20.0" />
+                        <Insets left="-5.0" top="-70.0" />
                      </FlowPane.margin>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="48.0" layoutY="19.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="48.0" layoutY="19.0" prefHeight="68.0" prefWidth="394.0" spacing="10.0" styleClass="listTopBar">
                      <children>
-                        <Label layoutX="48.0" layoutY="28.0" text="评分" />
-                        <Label layoutX="145.0" layoutY="28.0" text="4.8" />
+                        <Label layoutX="48.0" layoutY="28.0" text="评分：">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin></Label>
+                        <Label fx:id="ratingLabel" layoutX="145.0" layoutY="28.0" text="4.8">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></Label>
                         <HBox alignment="CENTER" layoutX="224.0" layoutY="19.0" prefHeight="42.0" prefWidth="120.0">
                            <children>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -80,26 +86,29 @@
                               </ImageView>
                            </children>
                         </HBox>
-                        <ComboBox layoutX="721.0" layoutY="81.0" prefHeight="36.0" prefWidth="103.0" promptText="评分">
+                        <ComboBox fx:id="rankBox" layoutX="721.0" layoutY="81.0" prefHeight="36.0" prefWidth="101.0" promptText="评分">
                            <HBox.margin>
-                              <Insets left="100.0" />
+                              <Insets left="25.0" />
                            </HBox.margin>
                         </ComboBox>
                      </children>
                      <FlowPane.margin>
-                        <Insets left="-120.0" top="100.0" />
+                        <Insets left="-120.0" top="150.0" />
                      </FlowPane.margin>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
                   </HBox>
-                  <TableView id="reviewTable" fx:id="reviewTable">
+                  <TableView id="reviewTable" fx:id="reviewTable" prefHeight="2000.0" prefWidth="780.0">
                     <columns>
-                      <TableColumn fx:id="reviewContentCol" prefWidth="300.0" resizable="false" styleClass="LeftAlignCol" text="评价内容" />
-                      <TableColumn fx:id="reviewRatingCol" resizable="false" styleClass="RightAlignCol" text="评分" />
-                        <TableColumn fx:id="roomTypeCol" prefWidth="120.0" resizable="false" styleClass="LeftAlignCol" text="客房类型" />
-                        <TableColumn fx:id="reviewTimeCol" prefWidth="190.0" resizable="false" styleClass="LeftAlignCol" text="评价时间" />
-                        <TableColumn fx:id="userNameCol" prefWidth="75.0" resizable="false" styleClass="LeftAlignCol" text="客户" />
+                      <TableColumn fx:id="reviewContentCol" editable="false" prefWidth="280.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="评价内容" />
+                      <TableColumn fx:id="reviewRatingCol" editable="false" prefWidth="100.0" resizable="false" styleClass="RightAlignCol" text="评分" />
+                        <TableColumn fx:id="roomTypeCol" editable="false" prefWidth="120.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="客房类型" />
+                        <TableColumn fx:id="reviewTimeCol" editable="false" prefWidth="180.0" resizable="false" styleClass="LeftAlignCol" text="评价时间" />
+                        <TableColumn fx:id="userNameCol" editable="false" prefWidth="77.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="客户" />
                     </columns>
                      <FlowPane.margin>
-                        <Insets left="40.0" top="50.0" />
+                        <Insets left="40.0" />
                      </FlowPane.margin>
                   </TableView>
                </children>

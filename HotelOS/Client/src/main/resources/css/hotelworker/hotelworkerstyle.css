@@ -142,7 +142,6 @@
     -fx-background-color: white;
     -fx-border-color: white;
     -fx-font-size: 15px;
-    -fx-text-fill: #37474F;
 }
 .table-view .column-header, .filler{
     -fx-background-color: white;
@@ -188,6 +187,9 @@
     -fx-alignment: center;
 }
 
+
+
+
 /**
 基本信息界面-----------------------------------------------------------------------------------------------------------
  */
@@ -201,20 +203,36 @@
 
 }
 /*评价订单列表*/
-#reviewTable *.scroll-bar:vertical *.increment-button,
-#reviewTable *.scroll-bar:vertical *.decrement-button,
-#reviewTable *.scroll-bar:vertical *.increment-arrow,
-#reviewTable *.scroll-bar:vertical *.decrement-arrow {
-    -fx-background-color: transparent;
-    -fx-padding: 0;
+/*滚动条不可见*/
+/*#reviewTable *.scroll-bar:vertical *.increment-button,*/
+/*#reviewTable *.scroll-bar:vertical *.decrement-button,*/
+/*#reviewTable *.scroll-bar:vertical *.increment-arrow,*/
+/*#reviewTable *.scroll-bar:vertical *.decrement-arrow {*/
+    /*-fx-background-color: transparent;*/
+    /*-fx-padding: 0;*/
+/*}*/
+#reviewTable .table-row-cell:empty {
+    -fx-background-color: white;
 }
+#reviewTable .table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}
+#reviewTable .table-row-cell:selected{
+    -fx-background-color: transparent;
 
+}
+#reviewTable .table-row-cell:hover{
+    -fx-background-color: transparent;
+}
 
 /*评分*/
 #hotelRatingLabel{
     -fx-text-fill: #fe4f00;
 }
-
+#ratingLabel{
+    -fx-text-fill: #fe4f00;
+    -fx-font-size: 32px;
+}
 /*编辑按钮*/
 #editInfoBtn{
     -fx-border-color: #55acee;

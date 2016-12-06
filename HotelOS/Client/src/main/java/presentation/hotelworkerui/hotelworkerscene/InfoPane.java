@@ -14,11 +14,11 @@ import java.io.IOException;
 public class InfoPane extends Pane{
 
 
-    public InfoPane(Stage primaryStage,Pane mainPane) {
-        loadFxml(primaryStage,mainPane);
+    public InfoPane(Pane mainPane) {
+        loadFxml(mainPane);
     }
 
-    private void loadFxml(Stage primaryStage,Pane mainPane) {
+    private void loadFxml(Pane mainPane) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelinfo.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -28,6 +28,6 @@ public class InfoPane extends Pane{
         }
 
         InfoPaneController infoPaneController = fxmlLoader.getController();
-        infoPaneController.launch(primaryStage,mainPane);
+        infoPaneController.launch(mainPane);
     }
 }
