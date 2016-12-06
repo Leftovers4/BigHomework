@@ -1,19 +1,29 @@
 package blservice_stub;
 
 import bl.userbl.UserBLService;
+import util.CreditChangedCause;
 import util.ResultMessage;
 import vo.user.CreditRecordVO;
 import vo.user.UserVO;
+import vo.user.UserVOCreater;
 
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by kevin on 2016/10/16.
  */
 public class UserBLService_Stub implements UserBLService {
+
+    UserVOCreater userVOCreater;
+
+    public UserBLService_Stub(){
+        userVOCreater = new UserVOCreater();
+    }
     @Override
     public ResultMessage login(String username, String password) {
         return ResultMessage.Success;
@@ -35,7 +45,18 @@ public class UserBLService_Stub implements UserBLService {
 
     @Override
     public List<CreditRecordVO> getCreditRecordsByUsername(String username) {
-        return null;
+        ArrayList<CreditRecordVO> list = new ArrayList<>();
+        CreditRecordVO creditRecordVO = new CreditRecordVO();
+        creditRecordVO.changedTime = LocalDateTime.parse("2016-01-01T11:11:11");
+        creditRecordVO.orderID = "52200020161111000";
+        creditRecordVO.creditChangedCause = CreditChangedCause.Recharge;
+        creditRecordVO.changedCredit = 0.10;
+        creditRecordVO.currentCredit = 1.00;
+        list.add(creditRecordVO);
+        list.add(creditRecordVO);
+        list.add(creditRecordVO);
+        list.add(creditRecordVO);
+        return list;
     }
 
     @Override

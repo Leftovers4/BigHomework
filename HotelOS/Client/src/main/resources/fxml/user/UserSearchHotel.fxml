@@ -116,7 +116,7 @@
                         <Insets left="160.0" top="-20.0" />
                      </FlowPane.margin>
                   </Pane>
-                  <TableView fx:id="hotelList" prefHeight="100.0" prefWidth="528.0">
+                  <TableView fx:id="hotelList" maxHeight="-Infinity" prefWidth="528.0">
                      <columns>
                         <TableColumn prefWidth="149.0" text="酒店名称" />
                         <TableColumn prefWidth="137.0" text="地址/商圈" />

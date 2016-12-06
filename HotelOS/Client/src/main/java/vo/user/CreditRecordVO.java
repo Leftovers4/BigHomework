@@ -40,9 +40,38 @@ public class CreditRecordVO {
      */
     public double changedCredit;
 
+    public long getRecordID() {
+        return recordID;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public LocalDateTime getChangedTime() {
+        return changedTime;
+    }
+
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public CreditChangedCause getCreditChangedCause() {
+        return creditChangedCause;
+    }
+
+    public double getChangedCredit() {
+        return changedCredit;
+    }
+
+    public double getCurrentCredit() {
+        return currentCredit;
+    }
+
     /**
      * 信用度结果（改变后的信用值）
      */
+
     public double currentCredit;
 
 }

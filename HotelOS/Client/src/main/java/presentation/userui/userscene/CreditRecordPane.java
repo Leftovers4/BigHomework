@@ -14,11 +14,11 @@ import java.io.IOException;
  */
 public class CreditRecordPane extends Pane {
 
-    public CreditRecordPane(Stage primaryStage) {
-        loadFxml(primaryStage);
+    public CreditRecordPane(Stage primaryStage, Pane mainPane) {
+        loadFxml(primaryStage, mainPane);
     }
 
-    private void loadFxml(Stage primaryStage) {
+    private void loadFxml(Stage primaryStage, Pane mainPane) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/creditRecord.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -28,6 +28,6 @@ public class CreditRecordPane extends Pane {
         }
 
         CreditRecordController creditRecordController = fxmlLoader.getController();
-        creditRecordController.launch(primaryStage);
+        creditRecordController.launch(primaryStage, mainPane);
     }
 }
