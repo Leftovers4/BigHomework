@@ -93,12 +93,12 @@ public class HotelBLService_Stub implements HotelBLService {
     }
 
     @Override
-    public ResultMessage offlineCheckIn(RoomVO roomVO, int amount) throws RemoteException {
+    public ResultMessage offlineCheckIn(long roomID, int amount) throws RemoteException {
         return null;
     }
 
     @Override
-    public ResultMessage offlineCheckOut(RoomVO roomVO, int amount) throws RemoteException {
+    public ResultMessage offlineCheckOut(long roomID, int amount) throws RemoteException {
         return null;
     }
 

@@ -118,6 +118,7 @@ public class HotelBlServiceImpl implements HotelBLService {
         //roomPO非空
         RoomPO roomPO = hotelDAO.findRoomsByID(roomVO.roomID);
 
+        roomPO.setAvailable(roomPO.getAvailable() + roomVO.total - roomPO.getTotal());
         roomPO.setTotal(roomVO.total);
         roomPO.setPrice(roomVO.price);
 
@@ -138,9 +139,9 @@ public class HotelBlServiceImpl implements HotelBLService {
     }
 
     @Override
-    public ResultMessage offlineCheckIn(RoomVO roomVO, int amount) throws RemoteException {
+    public ResultMessage offlineCheckIn(long roomID, int amount) throws RemoteException {
         //roomPO非空
-        RoomPO roomPO = hotelDAO.findRoomsByID(roomVO.roomID);
+        RoomPO roomPO = hotelDAO.findRoomsByID(roomID);
 
         roomPO.setAvailable(roomPO.getAvailable() - amount);
 
@@ -148,9 +149,9 @@ public class HotelBlServiceImpl implements HotelBLService {
     }
 
     @Override
-    public ResultMessage offlineCheckOut(RoomVO roomVO, int amount) throws RemoteException {
+    public ResultMessage offlineCheckOut(long roomID, int amount) throws RemoteException {
         //roomPO非空
-        RoomPO roomPO = hotelDAO.findRoomsByID(roomVO.roomID);
+        RoomPO roomPO = hotelDAO.findRoomsByID(roomID);
 
         roomPO.setAvailable(roomPO.getAvailable() + amount);
 

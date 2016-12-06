@@ -1,6 +1,7 @@
 package util;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 /**
@@ -35,10 +36,7 @@ public class IDProducer {
         String res = "";
 
         res += hotelID;
-        LocalDate today = LocalDate.now();
-        res += today.getYear();
-        res += today.getMonth();
-        res += today.getDayOfMonth();
+        res += LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
         res += new Random().nextInt(MAX_ORDERID - MIN_ORDERID) + MIN_ORDERID;
 
         return res;

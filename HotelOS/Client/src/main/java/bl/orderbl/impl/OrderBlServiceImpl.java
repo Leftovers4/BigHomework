@@ -229,7 +229,7 @@ public class OrderBlServiceImpl implements OrderBLService {
         orderPO.setHotelID(orderVO.hotelID);
         orderPO.setUsername(orderVO.username);
         orderPO.setOrderType(OrderType.Unexecuted);
-        orderPO.setHotelName(orderVO.hotelName);
+        orderPO.setHotelName(hotelDAO.findByHotelID(orderVO.hotelID).getHotelName());
         orderPO.setRoomType(orderVO.roomType);
         orderPO.setRoomAmount(orderVO.roomAmount);
         orderPO.setPersonAmount(orderVO.personAmount);

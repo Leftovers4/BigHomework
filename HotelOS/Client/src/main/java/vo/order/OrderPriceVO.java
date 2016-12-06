@@ -16,6 +16,10 @@ public class OrderPriceVO {
      */
     public double actualPrice;
 
+    public OrderPriceVO(){
+
+    }
+
     public OrderPriceVO(double originPrice, double actualPrice) {
         this.originPrice = originPrice;
         this.actualPrice = actualPrice;

@@ -40,6 +40,4 @@ public class ReviewVO {
      */
     public String username;
 
-    public ReviewVO(){}
-
 }

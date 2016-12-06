@@ -94,4 +94,11 @@ public class OrderVO {
      */
     public OrderHandleAppealVO orderHandleAppealVO;
 
+    public OrderVO(){
+        this.orderPriceVO = new OrderPriceVO();
+        this.orderTimeVO = new OrderTimeVO();
+        this.reviewVO = new ReviewVO();
+        this.orderHandleAppealVO = new OrderHandleAppealVO();
+    }
+
 }

@@ -14,8 +14,4 @@ public class OrderHandleAppealVO {
 
     public HandleAppealResult ha_result;
 
-    public OrderHandleAppealVO(LocalDateTime haTime, HandleAppealResult ha_result) {
-        this.haTime = haTime;
-        this.ha_result = ha_result;
-    }
 }

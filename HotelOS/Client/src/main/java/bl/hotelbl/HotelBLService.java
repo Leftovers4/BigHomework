@@ -89,9 +89,9 @@ public interface HotelBLService {
      */
     ResultMessage updateRoomInfo(RoomVO roomVO) throws RemoteException;
 
-    ResultMessage offlineCheckIn(RoomVO roomVO, int amount) throws RemoteException;
+    ResultMessage offlineCheckIn(long roomID, int amount) throws RemoteException;
 
-    ResultMessage offlineCheckOut(RoomVO roomVO, int amount) throws RemoteException;
+    ResultMessage offlineCheckOut(long roomID, int amount) throws RemoteException;
 
     int viewOfflineCheckInRoomAmount(long hotelID) throws RemoteException;
 

@@ -24,7 +24,9 @@ public class OrderList extends ArrayList<OrderPO>{
             sum += orderPO.getReviewPO().getRating();
         }
 
-        return sum /= this.size();
+        sum = this.size() == 0 ? sum : sum / this.size();
+
+        return sum;
     }
 
     //todo
