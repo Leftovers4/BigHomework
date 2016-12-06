@@ -8,34 +8,44 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.userui.userscene.CancelOrderPane;
 import presentation.userui.userscene.OrderDetailUserPane;
-import vo.user.CreditVO;
-
+import vo.order.OrderVO;
 
 /**
- * Created by wyj on 2016/12/2.
+ * Created by wyj on 2016/12/6.
  */
-public class CreditTabelButtonCell extends TableCell<CreditVO, Boolean> {
+public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
 
     final private HBox btnBox = new HBox();
     final private Button checkDetailBtn = new Button();
+    final private Button cancelOrderBtn = new Button();
+
     private TableView tableView;
 
-    public CreditTabelButtonCell(final Stage stage, final Pane mainPane, final TableView tableView) {
+    public UserOrderListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView) {
         this.tableView = tableView;
 
-        this.getStylesheets().add(CreditTabelButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
-        Image detailimg = new Image("/img/user/checkdetail.png");
-        checkDetailBtn.setGraphic(new ImageView(detailimg));
+        this.getStylesheets().add(UserOrderListButtonCell.class.getResource("css/user/userstyle.css").toExternalForm());
+        Image detailImg = new Image("/img/user/checkdetail.png");
+        checkDetailBtn.setGraphic(new ImageView(detailImg));
         checkDetailBtn.getStyleClass().add("tableCellBtn");
 
+        Image cancelImg = new Image("/img/user/cancel.png");
+        cancelOrderBtn.setGraphic(new ImageView(cancelImg));
+        cancelOrderBtn.getStyleClass().add("tableCellBtn");
+
         checkDetailBtn.setOnAction(event -> {
-            int selectedIndex = getTableRow().getIndex();
-            CreditVO creditVO = (CreditVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
             mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane));
         });
+
+        cancelOrderBtn.setOnAction(event -> {
+            mainPane.getChildren().remove(0);
+            mainPane.getChildren().add(new CancelOrderPane(stage));
+        });
     }
+
 
     @Override
     protected void updateItem(Boolean t, boolean empty) {

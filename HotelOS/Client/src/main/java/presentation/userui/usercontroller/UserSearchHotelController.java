@@ -1,15 +1,17 @@
 package presentation.userui.usercontroller;
 
+import bl.hotelbl.impl.HotelBlServiceImpl;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 import presentation.userui.userscene.OrderDetailUserPane;
+import presentation.util.UserHotelListButtonCell;
 
 /**
  * Created by wyj on 2016/11/19.
@@ -26,40 +28,6 @@ public class UserSearchHotelController {
 
     @FXML private ComboBox cityComBox;
     @FXML private ComboBox tradingAreaCombox;
-
-    public void launch(Stage primaryStage, Pane mainPane) {
-        this.stage = primaryStage;
-        this.mainPane = mainPane;
-
-        cityComBox.getItems().add("南京市");
-        tradingAreaCombox.getItems().add("新街口");
-    }
-
-
-    @FXML
-    private void showMoreChoice() {
-        moreInfoChoice.setVisible(true);
-        FlowPane.setMargin(moreInfoChoice, new Insets(-105, 0, 0, 160));
-        moreInfoChoice.setDisable(false);
-        upMoreInfo.setDisable(false);
-        upMoreInfo.setVisible(true);
-        FlowPane.setMargin(hotelList, new Insets(50, 0, 0, 160));
-        downMoreInfo.setVisible(false);
-        downMoreInfo.setDisable(true);
-    }
-
-    @FXML
-    private void hideMoreChoice() {
-        moreInfoChoice.setVisible(false);
-        FlowPane.setMargin(moreInfoChoice, new Insets(-160, 0, 0, 160));
-        moreInfoChoice.setDisable(true);
-        downMoreInfo.setVisible(true);
-        downMoreInfo.setDisable(false);
-        FlowPane.setMargin(hotelList, new Insets(0, 0, 0, 160));
-        upMoreInfo.setVisible(false);
-        upMoreInfo.setDisable(true);
-    }
-
 
     @FXML private CheckBox simgleRoomCB;
     @FXML private CheckBox standardRoomCB;
@@ -88,6 +56,75 @@ public class UserSearchHotelController {
     @FXML private CheckBox fourToFourPoFive;
 
     @FXML private CheckBox onlyCheckRegistered;
+
+    @FXML private TableColumn hotelNameCol;
+    @FXML private TableColumn hotelAddressCol;
+    @FXML private TableColumn hotelScoreCol;
+    @FXML private TableColumn registerRecordCol;
+    @FXML private TableColumn priceCol;
+    @FXML private TableColumn btnCol;
+
+    private UserHotelListButtonCell userHotelListButtonCell;
+    private HotelBlServiceImpl hotelBlService;
+
+    public void launch(Stage primaryStage, Pane mainPane) {
+        this.stage = primaryStage;
+        this.mainPane = mainPane;
+
+        hotelBlService = new HotelBlServiceImpl();
+
+        cityComBox.getItems().add("南京市");
+        tradingAreaCombox.getItems().add("新街口");
+
+        initialData();
+    }
+
+    private void initialData() {
+        hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
+        hotelAddressCol.setCellValueFactory(new PropertyValueFactory<>("hotelAddress"));
+        hotelScoreCol.setCellValueFactory(new PropertyValueFactory<>("hotelScore"));
+        registerRecordCol.setCellValueFactory(new PropertyValueFactory<>("registerRecord"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        btnCol.setCellValueFactory(new Callback<TableColumn, TableCell>() {
+            @Override
+            public TableCell call(TableColumn param) {
+                userHotelListButtonCell = new UserHotelListButtonCell(stage, mainPane, hotelList);
+                return userHotelListButtonCell;
+            }
+        });
+        hotelList.setItems(getSearchedHotelList());
+    }
+
+    private ObservableList getSearchedHotelList() {
+//        ObservableList<HotelVO> list = FXCollections.observableArrayList(hotelBlService.searchHotelsByConditions());
+        return null;
+    }
+
+
+    @FXML
+    private void showMoreChoice() {
+        moreInfoChoice.setVisible(true);
+        FlowPane.setMargin(moreInfoChoice, new Insets(-105, 0, 0, 160));
+        moreInfoChoice.setDisable(false);
+        upMoreInfo.setDisable(false);
+        upMoreInfo.setVisible(true);
+        FlowPane.setMargin(hotelList, new Insets(50, 0, 0, 160));
+        downMoreInfo.setVisible(false);
+        downMoreInfo.setDisable(true);
+    }
+
+    @FXML
+    private void hideMoreChoice() {
+        moreInfoChoice.setVisible(false);
+        FlowPane.setMargin(moreInfoChoice, new Insets(-160, 0, 0, 160));
+        moreInfoChoice.setDisable(true);
+        downMoreInfo.setVisible(true);
+        downMoreInfo.setDisable(false);
+        FlowPane.setMargin(hotelList, new Insets(0, 0, 0, 160));
+        upMoreInfo.setVisible(false);
+        upMoreInfo.setDisable(true);
+    }
+
 
 
     @FXML

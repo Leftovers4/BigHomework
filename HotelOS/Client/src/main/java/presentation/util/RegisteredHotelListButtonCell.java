@@ -9,19 +9,18 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.OrderDetailUserPane;
-import vo.user.CreditVO;
-
+import vo.hotel.HotelVO;
 
 /**
- * Created by wyj on 2016/12/2.
+ * Created by wyj on 2016/12/6.
  */
-public class CreditTabelButtonCell extends TableCell<CreditVO, Boolean> {
+public class RegisteredHotelListButtonCell extends TableCell<HotelVO, Boolean> {
 
     final private HBox btnBox = new HBox();
     final private Button checkDetailBtn = new Button();
     private TableView tableView;
 
-    public CreditTabelButtonCell(final Stage stage, final Pane mainPane, final TableView tableView) {
+    public RegisteredHotelListButtonCell(final Stage stage, final Pane mainPane, final  TableView tableView) {
         this.tableView = tableView;
 
         this.getStylesheets().add(CreditTabelButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
@@ -30,8 +29,8 @@ public class CreditTabelButtonCell extends TableCell<CreditVO, Boolean> {
         checkDetailBtn.getStyleClass().add("tableCellBtn");
 
         checkDetailBtn.setOnAction(event -> {
-            int selectedIndex = getTableRow().getIndex();
-            CreditVO creditVO = (CreditVO) tableView.getItems().get(selectedIndex);
+//            int selectedIndex = getTableRow().getIndex();
+//            HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
             mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane));
         });

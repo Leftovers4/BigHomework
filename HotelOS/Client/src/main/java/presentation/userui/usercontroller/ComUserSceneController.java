@@ -116,7 +116,7 @@ public class ComUserSceneController {
     private void hotelRegistered() {
         changeSliderPos(395);
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new RegisteredHotelPane(stage));
+        mainPane.getChildren().add(new RegisteredHotelPane(stage, mainPane));
         leftBarBtnEffect(hotelRegisteredBtn);
         currentBtn = hotelRegisteredBtn;
     }

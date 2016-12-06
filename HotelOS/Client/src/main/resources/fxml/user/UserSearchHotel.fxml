@@ -118,12 +118,12 @@
                   </Pane>
                   <TableView fx:id="hotelList" maxHeight="-Infinity" prefWidth="528.0">
                      <columns>
-                        <TableColumn prefWidth="149.0" text="酒店名称" />
-                        <TableColumn prefWidth="137.0" text="地址/商圈" />
-                        <TableColumn prefWidth="45.0" text="评分" />
-                        <TableColumn prefWidth="70.0" text="预订记录" />
-                        <TableColumn prefWidth="67.0" text="价格区间" />
-                        <TableColumn prefWidth="59.0" />
+                        <TableColumn fx:id="hotelNameCol" prefWidth="149.0" text="酒店名称" />
+                        <TableColumn fx:id="hotelAddressCol" prefWidth="137.0" text="地址/商圈" />
+                        <TableColumn fx:id="hotelScoreCol" prefWidth="45.0" text="评分" />
+                        <TableColumn fx:id="registerRecordCol" prefWidth="70.0" text="预订记录" />
+                        <TableColumn fx:id="priceCol" prefWidth="67.0" text="价格区间" />
+                        <TableColumn fx:id="btnCol" prefWidth="59.0" />
                      </columns>
                      <FlowPane.margin>
                         <Insets left="160.0" />

@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.CreditTabelButtonCell;
 import vo.user.CreditRecordVO;
-import vo.user.CreditVO;
 
 /**
  * Created by wyj on 2016/11/25.
