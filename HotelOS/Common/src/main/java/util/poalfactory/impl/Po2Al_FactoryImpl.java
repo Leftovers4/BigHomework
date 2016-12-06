@@ -88,16 +88,22 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         orderInfoContent.add(orderPO.getRoomNumber());
         orderInfoContent.add(orderPO.getPersonAmount());
         orderInfoContent.add(orderPO.isWithChildren());
+        // 时间
         orderInfoContent.add(toString(orderPO.getOrderTimePO().getGenerateTime()));
         orderInfoContent.add(toString(orderPO.getOrderTimePO().getExpectedCheckinTime()));
+        orderInfoContent.add(toString(orderPO.getOrderTimePO().getCheckinTime()));
+        orderInfoContent.add(toString(orderPO.getOrderTimePO().getExpectedLeaveTime()));
         orderInfoContent.add(toString(orderPO.getOrderTimePO().getLeaveTime()));
         orderInfoContent.add(toString(orderPO.getOrderTimePO().getLastExecuteTime()));
         orderInfoContent.add(toString(orderPO.getOrderTimePO().getCancelTime()));
+        // 价格
         orderInfoContent.add(orderPO.getOrderPricePO().getOriginPrice());
         orderInfoContent.add(orderPO.getOrderPricePO().getActualPrice());
+        // 评价
         orderInfoContent.add(toString(orderPO.getReviewPO().getReviewTime()));
         orderInfoContent.add(orderPO.getReviewPO().getRating());
         orderInfoContent.add(orderPO.getReviewPO().getReview());
+        // 申诉处理
         orderInfoContent.add(toString(orderPO.getOrderHandleAppealPO().getHaTime()));
         orderInfoContent.add(toString(orderPO.getOrderHandleAppealPO().getHa_result()));
 

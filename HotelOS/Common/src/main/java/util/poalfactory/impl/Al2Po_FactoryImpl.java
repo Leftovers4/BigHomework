@@ -322,6 +322,10 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
     }
 
     private static LocalDateTime timeStampToLocalDatetime(Timestamp timestamp){
+        if(timestamp == null){
+            return null;
+        }
+
         return timestamp.toLocalDateTime();
     }
 
