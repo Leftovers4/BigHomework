@@ -56,4 +56,19 @@ public class OrderTimeVO {
      */
     public LocalDateTime cancelTime;
 
+    public OrderTimeVO(){
+
+    }
+
+    public OrderTimeVO(LocalDateTime generateTime, LocalDateTime expectedCheckinTime, LocalDateTime checkinTime, LocalDateTime expectedLeaveTime, LocalDateTime leaveTime, LocalDateTime lastExecuteTime, LocalDateTime executeTime, LocalDateTime cancelTime) {
+        this.generateTime = generateTime;
+        this.expectedCheckinTime = expectedCheckinTime;
+        this.checkinTime = checkinTime;
+        this.expectedLeaveTime = expectedLeaveTime;
+        this.leaveTime = leaveTime;
+        this.lastExecuteTime = lastExecuteTime;
+        this.executeTime = executeTime;
+        this.cancelTime = cancelTime;
+    }
+
 }
