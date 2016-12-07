@@ -13,6 +13,7 @@ import vo.hotel.HotelVO;
 
 /**
  * Created by wyj on 2016/12/6.
+ * Description: 预订过的酒店列表添加按钮的方法：查看酒店详情按钮
  */
 public class RegisteredHotelListButtonCell extends TableCell<HotelVO, Boolean> {
 

@@ -14,6 +14,7 @@ import vo.order.OrderVO;
 
 /**
  * Created by wyj on 2016/12/6.
+ * Description： 客户订单列表添加按钮的方法：查看订单详情按钮、撤销订单按钮
  */
 public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
 
