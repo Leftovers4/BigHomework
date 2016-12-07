@@ -1,6 +1,7 @@
 package presentation.webmanagerui.webmanagercontroller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -16,6 +17,10 @@ public class UserManageController {
 
     @FXML private TableView userlist;
     @FXML private Pane modifyUserInfoPane;
+
+    @FXML private TableColumn userIDCol;
+    @FXML private TableColumn userNameCol;
+    @FXML private TableColumn btnCol;
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;

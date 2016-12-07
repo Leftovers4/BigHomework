@@ -2,6 +2,8 @@ package presentation.webmanagerui.webmanagercontroller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -24,6 +26,14 @@ public class HotelManageController {
     @FXML private Button deletehotelBtn;
     @FXML private TextField hotelidinput;
     @FXML private TextField hotelnameinput;
+
+    @FXML private TableView hotelList;
+    @FXML private TableColumn hotelIDCol;
+    @FXML private TableColumn hotelNameCol;
+    @FXML private TableColumn hotelCityCol;
+    @FXML private TableColumn hotelBusinessCol;
+    @FXML private TableColumn btnCol;
+
 
     public void launch(Stage primaryStage, Pane mainPane) {
         this.pane = mainPane;

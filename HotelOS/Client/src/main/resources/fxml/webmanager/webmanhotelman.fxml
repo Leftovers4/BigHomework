@@ -10,12 +10,13 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.HotelManageController">
    <children>
-      <TableView layoutX="100.0" layoutY="155.0" prefHeight="400.0" prefWidth="650.0">
+      <TableView fx:id="hotelList" layoutX="100.0" layoutY="155.0" prefHeight="400.0" prefWidth="650.0">
         <columns>
-          <TableColumn prefWidth="87.0" text="酒店编号 " />
-          <TableColumn prefWidth="131.0" text="酒店名称" />
-            <TableColumn prefWidth="192.0" text="地址" />
-            <TableColumn prefWidth="95.0" text="商圈" />
+          <TableColumn fx:id="hotelIDCol" prefWidth="124.0" text="酒店编号 " />
+          <TableColumn fx:id="hotelNameCol" prefWidth="150.0" text="酒店名称" />
+            <TableColumn fx:id="hotelCityCol" prefWidth="157.0" text="城市" />
+            <TableColumn fx:id="hotelBusinessCol" prefWidth="75.0" text="商圈" />
+            <TableColumn fx:id="btnCol" prefWidth="75.0" />
         </columns>
       </TableView>
       <TextField layoutX="100.0" layoutY="104.0" prefHeight="30.0" prefWidth="235.0" promptText="搜索酒店编号、名称" />
@@ -28,7 +29,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button onAction="#newHotel" fx:id="newhotelBtn" layoutX="600.0" layoutY="99.0" mnemonicParsing="false">
+      <Button fx:id="newhotelBtn" layoutX="600.0" layoutY="99.0" mnemonicParsing="false" onAction="#newHotel">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
