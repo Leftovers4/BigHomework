@@ -56,6 +56,11 @@ public class OrderBlServiceImpl implements OrderBLService {
         return orderVOCreator.createDetailedOrderVO(orderPO);
     }
 
+    @Override
+    public List<OrderVO> searchOrderByHotelIDAndUsername(long hotelID, String username) throws RemoteException {
+        return orderVOCreator.createAllDetailedOrderVO(orderDAO.findByUsernameAndHotelID(username, hotelID));
+    }
+
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     @Override

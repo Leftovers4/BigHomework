@@ -53,6 +53,16 @@ public class OrderVOCreator {
         return res;
     }
 
+    public List<OrderVO> createAllDetailedOrderVO(List<OrderPO> orderPOList){
+        List<OrderVO> res = new ArrayList<>();
+
+        for (int i = 0; i < orderPOList.size(); i++) {
+            res.add(createDetailedOrderVO(orderPOList.get(i)));
+        }
+
+        return res;
+    }
+
     public OrderVO createExtraOrderVO(OrderPO orderPO, HotelPO hotelPO){
         OrderVO res = new OrderVO();
 

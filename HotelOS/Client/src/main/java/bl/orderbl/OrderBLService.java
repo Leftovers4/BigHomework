@@ -20,6 +20,8 @@ public interface OrderBLService {
      */
     OrderVO searchOrderByID(String orderID) throws RemoteException;
 
+    List<OrderVO> searchOrderByHotelIDAndUsername(long hotelID, String username) throws RemoteException;
+
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     /*
