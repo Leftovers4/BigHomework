@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.ComWorkerSceneController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.ComWorkerSceneController">
     <children>
         <VBox id="LeftArea" fx:id="leftArea" prefHeight="690.0" prefWidth="230.0">
             <children>
@@ -18,16 +21,64 @@
                         <Insets />
                     </VBox.margin>
                 </ImageView>
-                <Button fx:id="hotelInfoBtn" mnemonicParsing="false" onAction="#showHotelInfo" onMouseEntered="#mouseOnHotelInfo" onMouseExited="#mouseOutHotelInfo" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="基本信息">
+                <Button fx:id="hotelInfoBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#showHotelInfo" onMouseEntered="#mouseOnHotelInfo" onMouseExited="#mouseOutHotelInfo" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="基本信息">
                     <VBox.margin>
                         <Insets top="150.0" />
                     </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/hotelworker/hotelInfo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets right="30.0" />
+               </padding>
                 </Button>
-                <Button fx:id="orderListBtn" mnemonicParsing="false" onAction="#showOrderList" onMouseEntered="#mouseOnOrderList" onMouseExited="#mouseOutOrderList" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="订单列表" />
-                <Button fx:id="registerRoomBtn" mnemonicParsing="false" onAction="#showRegisterRoom" onMouseEntered="#mouseOnRegisterRoom" onMouseExited="#mouseOutRegisterRoom" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="录入可用客房" />
-                <Button fx:id="managePromotionBtn" mnemonicParsing="false" onAction="#showManagePromotion" onMouseEntered="#mouseOnManagePromotion" onMouseExited="#mouseOutManagePromotion" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="制定促销策略" />
-                <Button fx:id="updateCheckInBtn" layoutX="10.0" layoutY="410.0" mnemonicParsing="false" onAction="#showUpdateCheckIn" onMouseEntered="#mouseOnUpdateCheckin" onMouseExited="#mouseOutUpdateCheckin" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="更新入住信息" />
-                <Button fx:id="updateOutBtn" layoutX="10.0" layoutY="455.0" mnemonicParsing="false" onAction="#showUpdateOut" onMouseEntered="#mouseOnUpdateOut" onMouseExited="#mouseOutUpdateOut" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="更新退房信息" />
+                <Button fx:id="orderListBtn" graphicTextGap="15.0" mnemonicParsing="false" onAction="#showOrderList" onMouseEntered="#mouseOnOrderList" onMouseExited="#mouseOutOrderList" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="订单列表">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/hotelworker/orderList.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets right="30.0" />
+               </padding></Button>
+                <Button fx:id="registerRoomBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#showRegisterRoom" onMouseEntered="#mouseOnRegisterRoom" onMouseExited="#mouseOutRegisterRoom" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="录入可用客房">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/hotelworker/registerRoom.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+                <Button fx:id="managePromotionBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#showManagePromotion" onMouseEntered="#mouseOnManagePromotion" onMouseExited="#mouseOutManagePromotion" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="制定促销策略">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/hotelworker/promotion.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+                <Button fx:id="updateCheckInBtn" graphicTextGap="10.0" layoutX="10.0" layoutY="410.0" mnemonicParsing="false" onAction="#showUpdateCheckIn" onMouseEntered="#mouseOnUpdateCheckin" onMouseExited="#mouseOutUpdateCheckin" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="更新入住信息">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/hotelworker/checkin.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+                <Button fx:id="updateOutBtn" graphicTextGap="10.0" layoutX="10.0" layoutY="455.0" mnemonicParsing="false" onAction="#showUpdateOut" onMouseEntered="#mouseOnUpdateOut" onMouseExited="#mouseOutUpdateOut" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="更新退房信息">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/hotelworker/leave.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
             </children></VBox>
         <Pane fx:id="mainPane" layoutX="230.0" maxHeight="690.0" maxWidth="850.0" minHeight="690.0" minWidth="850.0" prefHeight="690.0" prefWidth="850.0" style="-fx-background-color: #ffffff;" />
       <ImageView fx:id="slider" fitHeight="56.0" fitWidth="56.0" layoutX="194.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">

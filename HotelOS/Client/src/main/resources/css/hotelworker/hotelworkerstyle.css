@@ -12,7 +12,7 @@
 }
 .button {
     -fx-border-radius: 5px;
-    -fx-font-size: 18px;
+    /*-fx-font-size: 18px;*/
     -fx-cursor: hand;
 }
 

@@ -24,21 +24,61 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="userInfoBtn" fx:id="hotelManageBtn" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#hotelManageEvent" onMouseEntered="#hotelManageMouseOn" onMouseExited="#hotelManageMouseOut" prefHeight="45.0" prefWidth="230.0" text="酒店管理">
+            <Button id="userInfoBtn" fx:id="hotelManageBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#hotelManageEvent" onMouseEntered="#hotelManageMouseOn" onMouseExited="#hotelManageMouseOut" prefHeight="45.0" prefWidth="230.0" text="酒店管理">
                <VBox.margin>
                   <Insets top="150.0" />
                </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/webmanager/hotelManage.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets right="50.0" />
+               </padding>
             </Button>
-            <Button fx:id="userBtn" mnemonicParsing="false" onAction="#userManageEvent" onMouseEntered="#userManageMouseOn" onMouseExited="#userManageMouseOut" prefHeight="45.0" prefWidth="230.0" text="客户管理">
+            <Button fx:id="userBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#userManageEvent" onMouseEntered="#userManageMouseOn" onMouseExited="#userManageMouseOut" prefHeight="45.0" prefWidth="230.0" text="客户管理">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/webmanager/userManage.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets right="50.0" />
+               </padding>
             </Button>
-            <Button fx:id="hotelworkerBtn" mnemonicParsing="false" onAction="#hotelWorkerEvent" onMouseEntered="#hotelWorkerMouseOn" onMouseExited="#hotelWorkerMouseOut" prefHeight="45.0" prefWidth="230.0" text="酒店工作人员管理" />
-            <Button fx:id="webmarketerBtn" mnemonicParsing="false" onAction="#webMarketerEvent" onMouseEntered="#webMarketerMouseOn" onMouseExited="#webMarketerMouseOut" prefHeight="45.0" prefWidth="230.0" text="网站营销人员管理">
+            <Button fx:id="hotelworkerBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#hotelWorkerEvent" onMouseEntered="#hotelWorkerMouseOn" onMouseExited="#hotelWorkerMouseOut" prefHeight="45.0" prefWidth="230.0" text="酒店工作人员管理">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/webmanager/hotelworkerManage.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="10.0" />
+               </padding></Button>
+            <Button fx:id="webmarketerBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#webMarketerEvent" onMouseEntered="#webMarketerMouseOn" onMouseExited="#webMarketerMouseOut" prefHeight="45.0" prefWidth="230.0" text="网站营销人员管理">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/webmanager/webmarketerManage.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
             </Button>
          </children>
       </VBox>
