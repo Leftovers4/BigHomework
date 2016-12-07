@@ -97,6 +97,10 @@ public class UserDataServiceImpl extends DataServiceImplParent implements UserDa
         // 生成userPO
         UserPO userPO = apFactory.toUserPO(userInfo);
 
+        // 若找不到相应的userPO则返回null
+        if (userPO == null)
+            return null;
+
         // 查找对应username的credit records
         ArrayList<CreditRecordPO> creditRecordPOs = findCreditRecordsByUsername(username);
 

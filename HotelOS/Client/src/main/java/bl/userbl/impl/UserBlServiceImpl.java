@@ -129,6 +129,10 @@ public class UserBlServiceImpl implements UserBLService {
 
     @Override
     public ResultMessage topup(String username, double amount) throws RemoteException {
+        //客户不存在的情况
+        if (userDAO.findByUsername(username) == null)
+            return ResultMessage.UsernameNotExisted;
+
         CreditRecordPO creditRecordPO = new CreditRecordPO();
 
         creditRecordPO.setrecordID(IDProducer.produceGeneralID());
