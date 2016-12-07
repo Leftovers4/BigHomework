@@ -20,9 +20,9 @@ public class UserImageHelperImplTest {
     @Test
     public void findUserImageByUsername() throws Exception {
         byte[] result = tested.findUserImageByUsername("test");
-        for (int i = 0; i < result.length; i++){
-            System.out.print(result[i]);
-        }
+//        for (int i = 0; i < result.length; i++){
+//            System.out.print(result[i]);
+//        }
     }
 
     @Test
