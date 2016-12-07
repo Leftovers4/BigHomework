@@ -23,7 +23,9 @@ public class PromotionBlServiceImplTest {
 
     @Test
     public void create() throws Exception {
+        PromotionVO promotionVO = new PromotionVO();
 
+        promotionVO.hotelID = 522000;
     }
 
     @Test
