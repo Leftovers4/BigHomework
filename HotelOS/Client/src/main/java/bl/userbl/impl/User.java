@@ -20,4 +20,8 @@ public class User{
         return userPO.getMemberPO().getBirthday().isEqual(localDate);
     }
 
+    public boolean passwordCorrect(String password){
+        return password.equals(userPO.getPassword());
+    }
+
 }

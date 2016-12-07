@@ -28,7 +28,7 @@ public interface UserBLService {
      * @param password 密码
      * @return SUCCESS, FAIL
      */
-    ResultMessage login(String username, String password);
+    ResultMessage login(String username, String password) throws RemoteException;
 
     /**
      * 客户登出
@@ -44,7 +44,7 @@ public interface UserBLService {
      * @param username 用户名
      * @return 客户的信用变化记录
      */
-    List<CreditRecordVO> getCreditRecordsByUsername(String username);
+    List<CreditRecordVO> getCreditRecordsByUsername(String username) throws RemoteException;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 

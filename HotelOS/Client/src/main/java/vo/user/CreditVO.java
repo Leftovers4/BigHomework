@@ -18,7 +18,9 @@ public class CreditVO {
      */
     public List<CreditRecordVO> creditRecords;
 
-    public CreditVO(){}
+    public CreditVO(){
+        creditRecords = new ArrayList<>();
+    }
 
     /**
      * 用于创建信用类

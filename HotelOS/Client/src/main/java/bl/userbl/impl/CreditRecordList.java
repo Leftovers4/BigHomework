@@ -20,10 +20,16 @@ public class CreditRecordList extends ArrayList<CreditRecordPO> {
 
     public int getLevel() throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
        //todo return new PromotionData().findUserLevelPromotion().getLevel(getCurrentCredit());
+        //todo 检查表为空的情况
         return 0;
     }
 
     public double getCurrentCredit(){
+        //表为空的情况
+        if (this.size() == 0)
+            return 0;
+
+        //表不为空的情况
         double res = this.get(0).getCurrentCredit();
         LocalDateTime changedTime = this.get(0).getChangedTime();
 

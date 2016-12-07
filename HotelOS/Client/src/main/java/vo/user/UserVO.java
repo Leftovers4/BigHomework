@@ -48,7 +48,8 @@ public class UserVO {
     public CreditVO creditVO;
 
     public UserVO(){
-
+        memberVO = new MemberVO();
+        creditVO = new CreditVO();
     }
 
     /**

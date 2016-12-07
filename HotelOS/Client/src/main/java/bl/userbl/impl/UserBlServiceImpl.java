@@ -48,8 +48,18 @@ public class UserBlServiceImpl implements UserBLService {
     }
 
     @Override
-    public ResultMessage login(String username, String password) {
-        return null;
+    public ResultMessage login(String username, String password) throws RemoteException {
+        UserPO userPO = userDAO.findByUsername(username);
+
+        //客户不存在的情况
+        if (userPO == null)
+            return ResultMessage.UsernameNotExisted;
+
+        //客户存在但密码错误的情况
+        if (!(new User(userPO).passwordCorrect(password)))
+            return ResultMessage.PasswordWrong;
+
+        return ResultMessage.Success;
     }
 
     @Override
@@ -58,8 +68,8 @@ public class UserBlServiceImpl implements UserBLService {
     }
 
     @Override
-    public List<CreditRecordVO> getCreditRecordsByUsername(String username) {
-        return null;
+    public List<CreditRecordVO> getCreditRecordsByUsername(String username) throws RemoteException {
+        return userVOCreater.createAllOrdinaryCreditRecordVO(userDAO.findCreditRecordsByUsername(username));
     }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -67,8 +77,12 @@ public class UserBlServiceImpl implements UserBLService {
     @Override
     public UserVO viewBasicUserInfo(String username) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, RemoteException {
         UserPO userPO = userDAO.findByUsername(username);
-        List<CreditRecordPO> creditRecordPOList = userDAO.findCreditRecordsByUsername(username);
-        return userVOCreater.createFullUserVO(userPO, creditRecordPOList);
+
+        //客户不存在的情况
+        if (userPO == null)
+            return null;
+
+        return userVOCreater.createFullUserVO(userPO, userDAO.findCreditRecordsByUsername(username));
     }
 
     @Override
