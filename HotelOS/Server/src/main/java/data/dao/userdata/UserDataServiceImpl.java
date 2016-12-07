@@ -37,6 +37,9 @@ public class UserDataServiceImpl extends DataServiceImplParent implements UserDa
 
     @Override
     public ResultMessage insert(UserPO userPO) throws RemoteException {
+        if(userPO == null){
+            return ResultMessage.NullInput;
+        }
 
         // 将userPO转换成userAL
         ArrayList<Object> userAL = paFactory.toUserAl(userPO);
@@ -55,6 +58,10 @@ public class UserDataServiceImpl extends DataServiceImplParent implements UserDa
 
     @Override
     public ResultMessage update(UserPO userPO) throws RemoteException {
+        if(userPO == null){
+            return ResultMessage.NullInput;
+        }
+
         // 将userPO转换成userAL
         ArrayList<Object> userAL = paFactory.toUserAl(userPO);
 

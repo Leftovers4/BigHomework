@@ -47,7 +47,7 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
         MemberType memberType = (MemberType) EnumFactory.getEnum((String)userAL.next());
         int level = (int) userAL.next();
 //        LocalDate birthday = toDate((String)userAL.next());
-        LocalDate birthday = ((Date) userAL.next()).toLocalDate();
+        LocalDate birthday = sqlDateToLocalDate((Date)userAL.next());
 
         String enterprise = (String) userAL.next();
 
@@ -297,15 +297,18 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
 
 /*---------------------------------------辅助方法-------------------------------------------------*/
 
-    private static LocalDate toDate(String dateString) throws DateTimeParseException{
-        // 若输入格式错误，返回null
-        if(dateString != null && !dateString.equals("")){
-            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate date = LocalDate.parse(dateString, format);
-            return date;
+    private static LocalDate sqlDateToLocalDate(Date date){
+        if(date == null){
+            return null;
         }
 
-        return null;
+        // 若读取到为默认值，返回null
+        if(date.equals(Date.valueOf(Const.DefaultDate))){
+            return null;
+        }
+
+        return date.toLocalDate();
+
     }
 
 //    /**

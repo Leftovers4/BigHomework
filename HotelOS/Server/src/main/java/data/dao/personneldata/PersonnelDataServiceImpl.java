@@ -28,6 +28,11 @@ public class PersonnelDataServiceImpl extends DataServiceImplParent implements P
 
     @Override
     public ResultMessage insert(PersonnelPO personnelPO) throws RemoteException {
+
+        if(personnelPO == null){
+            return null;
+        }
+
         // 将personnelPO转换成personnelAL
         ArrayList<Object> personnelAL = paFactory.toPersonnelAl(personnelPO);
 
@@ -43,6 +48,10 @@ public class PersonnelDataServiceImpl extends DataServiceImplParent implements P
 
     @Override
     public ResultMessage update(PersonnelPO personnelPO) throws RemoteException {
+        if(personnelPO == null){
+            return null;
+        }
+
         // 将personnelPO转换成personnelAL
         ArrayList<Object> personnelAL = paFactory.toPersonnelAl(personnelPO);
 

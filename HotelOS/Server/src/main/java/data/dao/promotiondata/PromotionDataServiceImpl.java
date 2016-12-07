@@ -33,6 +33,10 @@ public class PromotionDataServiceImpl extends DataServiceImplParent implements P
 
     @Override
     public ResultMessage insert(PromotionPO promotionPO) throws RemoteException {
+        if(promotionPO == null){
+            return ResultMessage.NullInput;
+        }
+
         // 将po转换成al
         ArrayList<Object> promotionAL = paFactory.toPromotionAl(promotionPO);
         // 插入到promotion表中
@@ -46,6 +50,10 @@ public class PromotionDataServiceImpl extends DataServiceImplParent implements P
 
     @Override
     public ResultMessage update(PromotionPO promotionPO) throws RemoteException {
+        if(promotionPO == null){
+            return ResultMessage.NullInput;
+        }
+
         // 将po转换成al
         ArrayList<Object> promotionAL = paFactory.toPromotionAl(promotionPO);
         // 更新到promotion表中

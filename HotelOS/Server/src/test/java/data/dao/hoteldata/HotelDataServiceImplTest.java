@@ -72,7 +72,7 @@ public class HotelDataServiceImplTest {
 
     @Test
     public void findRoomsByID() throws Exception {
-        RoomPO roomPO = tested.findRoomsByID(POProducer.getRoomPO().getroomID());
+        RoomPO roomPO = tested.findRoomByID(POProducer.getRoomPO().getroomID());
         if(roomPO != null){
             CommonMethod.printClass(roomPO);
         }

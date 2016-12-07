@@ -41,6 +41,10 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
     @Override
     public ResultMessage insert(HotelPO hotelPO) throws RemoteException {
 
+        if(hotelPO == null){
+            return ResultMessage.NullInput;
+        }
+
         // 将po转换成hotel表行
         ArrayList<Object> hotelInfo = paFactory.toHotelAl(hotelPO);
 
@@ -64,6 +68,10 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
 
     @Override
     public ResultMessage update(HotelPO hotelPO) throws RemoteException {
+
+        if(hotelPO == null){
+            return ResultMessage.NullInput;
+        }
 
         // 将po转换成hotel表行
         ArrayList<Object> hotelInfo = paFactory.toHotelAl(hotelPO);
@@ -123,6 +131,11 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
         ArrayList<RoomPO> roomPOs = findRoomsByHotelID(hotelID);
         ArrayList<ReviewPO> reviewPOs = findReviewByHotelID(hotelID);
 
+        // 若找不到相应的hotelPO，返回null
+        if(hotelPO == null){
+            return null;
+        }
+
         // 补充hotelPO中的信息
         hotelPO.setRooms(roomPOs);
         hotelPO.setReviews(reviewPOs);
@@ -153,7 +166,7 @@ public class HotelDataServiceImpl extends DataServiceImplParent implements Hotel
     }
 
     @Override
-    public RoomPO findRoomsByID(long roomID) throws RemoteException {
+    public RoomPO findRoomByID(long roomID) throws RemoteException {
         // 在room表中根据id取出roomAL
         ArrayList<Object> roomAL = roomDataHelper.findByIDFromSQL(roomID);
         // 构造roomAL的迭代器

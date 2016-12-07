@@ -28,7 +28,7 @@ public class ALProducer {
     private static ArrayList<Object> User = new ArrayList<>();
     private static ArrayList<Object> UserImage = new ArrayList<>();
 
-    private final static String username = "leftovers01";
+    private final static String username = "123456";
     private final static long personnelID = 100000;
     private final static long hotelID = 522000;
     private final static String hotelName = "榕江大酒店";
@@ -77,7 +77,7 @@ public class ALProducer {
         // "room_id", "hotel_id", "room_type", "total", "available", "price"
         Room = objectsToList(roomID, hotelID, "Single", 12, 11, 100.0);
         // "username", "password", "name", "gender", "phone", "member_type", "level", "birthday", "enterprise"
-        User = objectsToList(Coder.encode(username), Coder.encode(password), Coder.encode("啊"), 1, Coder.encode("11011011010"), "Normal", 5, date, enterprise);
+        User = objectsToList(Coder.encode(username), Coder.encode(password), Coder.encode("啊"), 1, Coder.encode("11011011010"), "Normal", 5, null, enterprise);
 
     }
 

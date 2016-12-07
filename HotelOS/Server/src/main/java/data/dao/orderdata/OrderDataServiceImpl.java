@@ -31,17 +31,25 @@ public class OrderDataServiceImpl extends DataServiceImplParent implements Order
 
     @Override
     public ResultMessage insert(OrderPO orderPO) throws RemoteException {
+        if(orderPO == null){
+            return ResultMessage.NullInput;
+        }
+
         // 将orderPO转换成orderAL
         ArrayList<Object> orderAL = paFactory.toOrderAl(orderPO);
 
         // 将orderAL写入order表中
         return orderDataHelper.insertToSQL(orderAL);
 
-
     }
 
     @Override
     public ResultMessage update(OrderPO orderPO) throws RemoteException {
+
+        if(orderPO == null){
+            return ResultMessage.NullInput;
+        }
+
         // 将orderPO转换成orderAL
         ArrayList<Object> orderAL = paFactory.toOrderAl(orderPO);
 
