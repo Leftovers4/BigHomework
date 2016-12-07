@@ -61,8 +61,8 @@ public class ALProducer {
         // "room_number",  "person_amount", "with_children", "generate_time", "expected_checkin_time",
         // "checkin_time", "expected_leave_time", "leave_time", "last_execute_time", "cancel_time", "original_price", "actual_price",
         // "review_time", "rating", "review", "ha_time", "ha_result"
-        Order = objectsToList(orderID, hotelID, username, "Abnormal", hotelName, "Single", 2, "511", 2, 0,
-                                datetime, datetime, datetime, datetime, datetime, datetime, datetime,
+        Order = objectsToList("15165165", hotelID, username, "Abnormal", hotelName, "Single", 2, "511", 2, 0,
+                                null, datetime, datetime, datetime, datetime, datetime, datetime,
                                 100.0, 80.0, datetime, 4, "好", datetime, "All");
         // "personnel_id", "password", "personnel_type", "name", "hotel_id"
         Personnel = objectsToList(personnelID, password, "HotelWorker", username, hotelID);

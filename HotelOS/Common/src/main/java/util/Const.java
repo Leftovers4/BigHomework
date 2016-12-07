@@ -14,4 +14,13 @@ public class Const {
     // promotion中合作企业的个数
     public final static int MaxPromotionEntpriseAmount = 5;
 
+    // 默认时间
+    public final static String DefaultDateTime = "0001-01-01 00:00:00";
+
+    // 默认日期
+    public final static String DefaultDate = "0000-00-00";
+
+    //
+    public final static String DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+
 }

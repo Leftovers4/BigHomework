@@ -1,6 +1,7 @@
 package util.poalfactory.impl;
 
 import util.Coder;
+import util.Const;
 import util.poalfactory.Po2Al_Factory;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
@@ -12,6 +13,8 @@ import po.promotion.PromotionTraAreaPO;
 import po.user.CreditRecordPO;
 import po.user.UserPO;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -33,7 +36,7 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         userInfoContent.add(Coder.encode(userPO.getPhone()));
         userInfoContent.add(toString(userPO.getMemberPO().getMemberType()));
         userInfoContent.add(userPO.getMemberPO().getLevel());
-        userInfoContent.add(toString(userPO.getMemberPO().getBirthday()));
+        userInfoContent.add(dateToString(userPO.getMemberPO().getBirthday()));
         userInfoContent.add(toString(userPO.getMemberPO().getMemberType()));
 
         return userInfoContent;
@@ -92,22 +95,22 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         orderInfoContent.add(orderPO.getPersonAmount());
         orderInfoContent.add(orderPO.isWithChildren());
         // 时间
-        orderInfoContent.add(toString(orderPO.getOrderTimePO().getGenerateTime()));
-        orderInfoContent.add(toString(orderPO.getOrderTimePO().getExpectedCheckinTime()));
-        orderInfoContent.add(toString(orderPO.getOrderTimePO().getCheckinTime()));
-        orderInfoContent.add(toString(orderPO.getOrderTimePO().getExpectedLeaveTime()));
-        orderInfoContent.add(toString(orderPO.getOrderTimePO().getLeaveTime()));
-        orderInfoContent.add(toString(orderPO.getOrderTimePO().getLastExecuteTime()));
-        orderInfoContent.add(toString(orderPO.getOrderTimePO().getCancelTime()));
+        orderInfoContent.add(dateTimeToString(orderPO.getOrderTimePO().getGenerateTime()));
+        orderInfoContent.add(dateTimeToString(orderPO.getOrderTimePO().getExpectedCheckinTime()));
+        orderInfoContent.add(dateTimeToString(orderPO.getOrderTimePO().getCheckinTime()));
+        orderInfoContent.add(dateTimeToString(orderPO.getOrderTimePO().getExpectedLeaveTime()));
+        orderInfoContent.add(dateTimeToString(orderPO.getOrderTimePO().getLeaveTime()));
+        orderInfoContent.add(dateTimeToString(orderPO.getOrderTimePO().getLastExecuteTime()));
+        orderInfoContent.add(dateTimeToString(orderPO.getOrderTimePO().getCancelTime()));
         // 价格
         orderInfoContent.add(orderPO.getOrderPricePO().getOriginPrice());
         orderInfoContent.add(orderPO.getOrderPricePO().getActualPrice());
         // 评价
-        orderInfoContent.add(toString(orderPO.getReviewPO().getReviewTime()));
+        orderInfoContent.add(dateTimeToString(orderPO.getReviewPO().getReviewTime()));
         orderInfoContent.add(orderPO.getReviewPO().getRating());
         orderInfoContent.add(orderPO.getReviewPO().getReview());
         // 申诉处理
-        orderInfoContent.add(toString(orderPO.getOrderHandleAppealPO().getHaTime()));
+        orderInfoContent.add(dateTimeToString(orderPO.getOrderHandleAppealPO().getHaTime()));
         orderInfoContent.add(toString(orderPO.getOrderHandleAppealPO().getHa_result()));
 
         return orderInfoContent;
@@ -122,8 +125,8 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         promotionInfoContent.add(promotionPO.getDiscount());
         promotionInfoContent.add(promotionPO.getLeastRooms());
         // 起止时间
-        promotionInfoContent.add(toString(promotionPO.getPromotionTimePO().getBeginTime()));
-        promotionInfoContent.add(toString(promotionPO.getPromotionTimePO().getEndTime()));
+        promotionInfoContent.add(dateTimeToString(promotionPO.getPromotionTimePO().getBeginTime()));
+        promotionInfoContent.add(dateTimeToString(promotionPO.getPromotionTimePO().getEndTime()));
         // 合作企业
         for (String eachEnt : promotionPO.getPromotionEnterprises()) {
             promotionInfoContent.add(eachEnt);
@@ -155,7 +158,7 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         crInfoContent.add(creditRecordPO.getUsername());
         crInfoContent.add(creditRecordPO.getCurrentCredit());
         crInfoContent.add(creditRecordPO.getChangedCredit());
-        crInfoContent.add(toString(creditRecordPO.getChangedTime()));
+        crInfoContent.add(dateTimeToString(creditRecordPO.getChangedTime()));
         crInfoContent.add(toString(creditRecordPO.getCreditChangedCause()));
         crInfoContent.add(creditRecordPO.getOrderID());
 
@@ -166,7 +169,7 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
 /*-------------------------------------------------辅助方法-------------------------------------------------------------*/
 
     /**
-     * 把enum, localdatetime等类型化成string存储
+     * 把enum转换成string存储
      * @param input
      * @return
      */
@@ -177,6 +180,33 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
             return input.toString();
         }
     }
+
+
+    /**
+     * 把datetime转换成String存储
+     * @param input
+     * @return
+     */
+    private static String dateTimeToString(LocalDateTime input){
+        if(input == null){
+            return Const.DefaultDateTime;
+        }else{
+            return input.toString();
+        }
+    }
+    /**
+     * 把date转换成String存储
+     * @param input
+     * @return
+     */
+    private static String dateToString(LocalDate input){
+        if(input == null){
+            return Const.DefaultDate;
+        }else{
+            return input.toString();
+        }
+    }
+
 
 
     private static boolean intToBool(int bool){

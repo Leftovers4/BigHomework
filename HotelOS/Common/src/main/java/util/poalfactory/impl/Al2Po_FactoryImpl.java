@@ -308,17 +308,28 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
         return null;
     }
 
-    private static LocalDateTime toDateTime(String dateTimeString) throws DateTimeParseException{
-        // 若输入格式错误，返回null
-        if(dateTimeString != null && !dateTimeString.equals("")){
-            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            LocalDateTime dateTime = LocalDateTime.parse(dateTimeString, format);
-            return dateTime;
-        }
+//    /**
+//     * 已放弃使用
+//     * @param dateTimeString
+//     * @return
+//     * @throws DateTimeParseException
+//     */
+//    private static LocalDateTime toDateTime(String dateTimeString) throws DateTimeParseException{
+//        // 若输入格式错误，返回null
+//        if(dateTimeString != null && !dateTimeString.equals("")){
+//            DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//            LocalDateTime dateTime = LocalDateTime.parse(dateTimeString, format);
+//            return dateTime;
+//        }
+//
+//        return null;
+//    }
 
-        return null;
-    }
-
+    /**
+     * 将数据库中的int类型转换成booloean类型
+     * @param bool
+     * @return
+     */
     private static boolean intToBool(int bool){
         if(bool == 0){
             return false;
@@ -328,13 +339,28 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
 
     }
 
-    private static LocalDateTime timeStampToLocalDatetime(Timestamp timestamp){
-        if(timestamp == null){
+
+    /**
+     * 将从数据库取出的timestamp日期转换成localdatetime
+     * 若timestamp为默认值DefaultDateTime，则转换成null
+     * @param timestamp
+     * @return
+     */
+    public LocalDateTime timeStampToLocalDatetime(Timestamp timestamp){
+
+        if (timestamp == null){
+            return null;
+        }
+
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern(Const.DateTimeFormat);
+
+        if(timestamp.toLocalDateTime().equals(LocalDateTime.parse(Const.DefaultDateTime, timeFormatter))){
             return null;
         }
 
         return timestamp.toLocalDateTime();
     }
+
 
 
 

@@ -1,6 +1,7 @@
 package util.poalfactory.impl;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
@@ -11,11 +12,18 @@ import po.user.CreditRecordPO;
 import po.user.UserPO;
 import util.ALProducer;
 import util.CommonMethod;
+import util.Const;
+
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by Hiki on 12/4/2016.
  */
 public class Al2Po_FactoryImplTest {
+
 
     Al2Po_FactoryImpl tested;
 
@@ -66,6 +74,20 @@ public class Al2Po_FactoryImplTest {
     public void toCreditRecordPO() throws Exception {
         CreditRecordPO creditRecordPO = tested.toCreditRecordPO(ALProducer.getCreditRecord().iterator());
         CommonMethod.printClass(creditRecordPO);
+    }
+
+    @Ignore
+    public void timeStampToLocalDatetime() throws Exception {
+        Timestamp test1 = Timestamp.valueOf("0001-01-01 00:00:00");
+        LocalDateTime a = tested.timeStampToLocalDatetime(test1);
+        System.out.println(a);
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime localDateTime = LocalDateTime.parse("1989-01-01 00:00:15", timeFormatter);
+
+        LocalDateTime b = tested.timeStampToLocalDatetime(Timestamp.valueOf(localDateTime));
+
+        System.out.println(b);
+
     }
 
 }
