@@ -37,7 +37,7 @@ public class OrderBlServiceImpl implements OrderBLService {
 
     OrderVOCreator orderVOCreator;
 
-    public OrderBlServiceImpl() {
+    public OrderBlServiceImpl() throws RemoteException {
         orderDAO = RemoteHelper.getInstance().getOrderDAO();
         userDAO = RemoteHelper.getInstance().getUserDAO();
         hotelDAO = RemoteHelper.getInstance().getHotelDAO();

@@ -27,7 +27,7 @@ public class UserBlServiceImpl implements UserBLService {
 
     private UserVOCreater userVOCreater;
 
-    public UserBlServiceImpl(){
+    public UserBlServiceImpl() throws RemoteException {
         userDAO = RemoteHelper.getInstance().getUserDAO();
         userVOCreater = new UserVOCreater();
     }

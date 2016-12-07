@@ -23,7 +23,7 @@ public class PromotionBlServiceImpl implements PromotionBLService {
 
     PromotionVOCreator promotionVOCreator;
 
-    public PromotionBlServiceImpl(){
+    public PromotionBlServiceImpl() throws RemoteException {
         promotionDAO = RemoteHelper.getInstance().getPromotionDAO();
         promotionVOCreator = new PromotionVOCreator();
     }

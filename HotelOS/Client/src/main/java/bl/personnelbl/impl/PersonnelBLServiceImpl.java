@@ -22,7 +22,7 @@ public class PersonnelBLServiceImpl implements PersonnelBLService{
 
     PersonnelVOCreator personnelVOCreator;
 
-    public PersonnelBLServiceImpl(){
+    public PersonnelBLServiceImpl() throws RemoteException {
         personnelDAO = RemoteHelper.getInstance().getPersonnelDAO();
         personnelVOCreator = new PersonnelVOCreator();
     }

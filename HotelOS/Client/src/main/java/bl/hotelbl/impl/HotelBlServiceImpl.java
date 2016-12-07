@@ -38,7 +38,7 @@ public class HotelBlServiceImpl implements HotelBLService {
 
     OrderVOCreator orderVOCreator;
 
-    public HotelBlServiceImpl() {
+    public HotelBlServiceImpl() throws RemoteException {
         hotelDAO = RemoteHelper.getInstance().getHotelDAO();
         personnelDAO = RemoteHelper.getInstance().getPersonnelDAO();
         orderDAO = RemoteHelper.getInstance().getOrderDAO();
