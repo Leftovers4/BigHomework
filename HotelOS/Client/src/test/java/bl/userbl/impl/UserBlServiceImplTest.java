@@ -4,7 +4,12 @@ import bl.userbl.UserBLService;
 import org.junit.Before;
 import org.junit.Test;
 import util.ResultMessage;
+import vo.user.CreditRecordVO;
+import vo.user.MemberVO;
 import vo.user.UserVO;
+
+import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -26,7 +31,7 @@ public class UserBlServiceImplTest {
 
     @Test
     public void login() throws Exception {
-        ResultMessage resultMessage = tested.login("List", "8520");
+        ResultMessage resultMessage = tested.login("lisi", "8521");
     }
 
     @Test
@@ -36,27 +41,44 @@ public class UserBlServiceImplTest {
 
     @Test
     public void getCreditRecordsByUsername() throws Exception {
-
+        List<CreditRecordVO> creditRecordVOList = tested.getCreditRecordsByUsername("lisi");
     }
 
     @Test
     public void viewBasicUserInfo() throws Exception {
-
+        UserVO userVO = tested.viewBasicUserInfo("lisi");
     }
 
     @Test
     public void updateBasicUserInfo() throws Exception {
+        UserVO userVO = new UserVO();
 
+        userVO.username = "lisi"; //提供唯一标识
+        userVO.newUsername = "lisii";
+        userVO.name = "张张";
+        userVO.gender = true;
+        userVO.memberVO.birthday = LocalDate.now();
+        userVO.phone = "123456789";
+
+        ResultMessage resultMessage = tested.updateBasicUserInfo(userVO);
     }
 
     @Test
     public void registerNormalMember() throws Exception {
+        UserVO userVO = new UserVO();
 
+        userVO.username = "lisii"; //提供唯一标识
+        userVO.name = "张";
+        userVO.gender = true;
+        userVO.memberVO.birthday = LocalDate.now();
+        userVO.phone = "123456789";
+
+        ResultMessage resultMessage = tested.registerNormalMember(userVO);
     }
 
     @Test
     public void registerEnterpriseMember() throws Exception {
-
+        UserVO userVO = new UserVO();
     }
 
     @Test
