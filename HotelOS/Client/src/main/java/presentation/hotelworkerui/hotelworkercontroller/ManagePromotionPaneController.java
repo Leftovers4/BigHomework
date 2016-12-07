@@ -1,15 +1,19 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import presentation.util.alert.AlertController;
+import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.MySlider;
+import vo.promotion.PromotionVO;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -95,8 +99,58 @@ public class ManagePromotionPaneController {
 
         //设置生日优惠按钮默认被选中
         makeBirthFocused();
+        initTable();
     }
 
+    private void initTable() {
+        birthRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        birthDiscountCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        birthPriceCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        final TableColumn[] birthColumns = {birthRoomTypeCol, birthDiscountCol, birthPriceCol};
+        birthTable.getColumns().addListener(new DisableColumnChangeListener(birthTable, birthColumns));
+        birthTable.setItems(getBirthProVoList());
+
+        roomTypeCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        roomLeastCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        roomDiscountCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        roomPriceCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        final TableColumn[] roomColumns = {roomTypeCol, roomLeastCol, roomDiscountCol, roomPriceCol};
+        roomTable.getColumns().addListener(new DisableColumnChangeListener(roomTable, roomColumns));
+        roomTable.setItems(getRoomProVoList());
+
+        timeRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        timeStartCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        timeEndCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        timeDiscountCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        timePriceCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        final TableColumn[] timeColumns = {timeRoomTypeCol, timeStartCol, timeEndCol, timeDiscountCol, timePriceCol};
+        timeTable.getColumns().addListener(new DisableColumnChangeListener(timeTable, timeColumns));
+        timeTable.setItems(getTimeProVoList());
+
+        comNameCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        comRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        comDiscountCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        comPriceCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        final TableColumn[] comColumns = {comNameCol, comRoomTypeCol, comDiscountCol, comPriceCol};
+        comTable.getColumns().addListener(new DisableColumnChangeListener(comTable, comColumns));
+        comTable.setItems(getComProVoList());
+    }
+
+    private ObservableList<PromotionVO> getBirthProVoList() {
+        return null;
+    }
+
+    private ObservableList<PromotionVO> getRoomProVoList() {
+        return null;
+    }
+
+    private ObservableList<PromotionVO> getTimeProVoList() {
+        return null;
+    }
+
+    private ObservableList<PromotionVO> getComProVoList() {
+        return null;
+    }
     private void makeBirthFocused() {
         Platform.runLater(new Runnable() {
             @Override

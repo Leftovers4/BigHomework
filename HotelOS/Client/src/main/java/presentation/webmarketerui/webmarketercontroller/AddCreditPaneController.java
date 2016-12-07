@@ -8,6 +8,9 @@ import javafx.scene.layout.Pane;
 import presentation.util.alert.AlertController;
 import vo.user.UserVO;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by Hitiger on 2016/11/28.
  * Description :
@@ -51,6 +54,27 @@ public class AddCreditPaneController {
 
     @FXML
     private void addCredit() {
+        if(judgeInput()){
+            //TODO addcredit
+        }
+    }
+
+
+    private boolean judgeInput() {
+        if(creditTextField.getText().equals("")){
+            alertController.showInputWrongAlert("请输入充值额度","充值失败");
+            return false;
+        }
+        else {
+            //用正则表达式判断输入格式，非数字报错
+            Pattern pattern = Pattern.compile("^[0-9]*$");
+            Matcher matcherCredit = pattern.matcher(creditTextField.getText());
+            if(!matcherCredit.matches()){
+                alertController.showInputWrongAlert("充值额度必须为整数，请重新输入","充值失败");
+                return false;
+            }
+        }
+        return true;
     }
 
 }

@@ -1,17 +1,21 @@
 package presentation.webmarketerui.webmarketercontroller;
 
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import presentation.util.alert.AlertController;
+import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.MySlider;
+import vo.promotion.PromotionVO;
 
 /**
  * Created by Hitiger on 2016/11/28.
@@ -66,6 +70,31 @@ public class ManagePromotionPaneController {
 
         //设置特定期间优惠按钮默认被选中
         makeTimeFocused();
+        initTable();
+    }
+
+    private void initTable() {
+        proStartTimeCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        proEndTimeCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        proTimeDiscountCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        final TableColumn[] proTimeColumns = {proStartTimeCol, proEndTimeCol, proTimeDiscountCol};
+        proTimeTable.getColumns().addListener(new DisableColumnChangeListener(proTimeTable, proTimeColumns));
+        proTimeTable.setItems(getTimeProVoList());
+
+        proAreaCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        proRankCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        proMemDiscountCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        final TableColumn[] proMemColumns = {proAreaCol, proRankCol, proMemDiscountCol};
+        proMemTable.getColumns().addListener(new DisableColumnChangeListener(proMemTable, proMemColumns));
+        proMemTable.setItems(getMemProVoList());
+    }
+
+    private ObservableList<PromotionVO> getTimeProVoList() {
+        return null;
+    }
+
+    private ObservableList<PromotionVO> getMemProVoList() {
+        return null;
     }
 
     private void makeTimeFocused() {

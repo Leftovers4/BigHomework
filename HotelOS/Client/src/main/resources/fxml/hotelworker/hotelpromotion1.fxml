@@ -8,7 +8,7 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.ManagePromotionPaneController">
    <children>
-      <HBox layoutX="36.0" layoutY="110.0">
+      <HBox layoutX="36.0" layoutY="110.0" styleClass="BackgroundHBox">
          <children>
             <Button fx:id="birthBtn" layoutX="141.0" layoutY="67.0" mnemonicParsing="false" onAction="#showBirth" prefHeight="72.0" prefWidth="132.0" styleClass="PromotionBtn" text="生日优惠" />
             <Button layoutX="323.0" layoutY="31.0" mnemonicParsing="false" onAction="#showRoom" prefHeight="72.0" prefWidth="132.0" styleClass="PromotionBtn" text="多间预订优惠" />
@@ -16,8 +16,8 @@
             <Button layoutX="642.0" layoutY="41.0" mnemonicParsing="false" onAction="#showCom" prefHeight="72.0" prefWidth="132.0" styleClass="PromotionBtn" text="合作企业优惠" />
          </children>
       </HBox>
-      <Separator layoutX="36.0" layoutY="181.0" prefWidth="778.0" />
-      <VBox fx:id="birthVBox" alignment="TOP_CENTER" fillWidth="false" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0" visible="false">
+      <Separator layoutX="36.0" layoutY="183.0" prefWidth="778.0" />
+      <VBox fx:id="birthVBox" alignment="TOP_CENTER" fillWidth="false" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0">
          <children>
             <TableView fx:id="birthTable" prefHeight="337.0" prefWidth="778.0">
                <columns>

@@ -95,7 +95,7 @@ public class ReviewPaneController {
 
     }
 
-    public ObservableList<ReviewVO> getReviewVoList() {
+    private ObservableList<ReviewVO> getReviewVoList() {
         ObservableList<ReviewVO> list = FXCollections.observableArrayList();
        for (int i =0; i<2;i++){
            ReviewVO reviewVO = new ReviewVO();

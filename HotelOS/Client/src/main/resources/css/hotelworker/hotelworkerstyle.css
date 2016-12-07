@@ -427,10 +427,6 @@
 #webOrderPriceLabel{
     -fx-text-fill: #fd9301;
 }
-/*异常订单状态*/
-#webOrderTypeLabel{
-    -fx-text-fill: #ff2c14;
-}
 /*撤销异常订单按钮*/
 #cancelAbnOrderBtn{
     -fx-background-color: #55acee;

@@ -32,7 +32,7 @@ public class FindOrderPaneController {
         orderVO.hotelName = "如家酒店";
         orderVO.orderID = "12345678912345678";
         orderVO.username = "陆仁贾";
-        orderVO.orderType = OrderType.Abnormal;
+        orderVO.orderType = OrderType.Executed;
         orderVO.orderPriceVO = orderPriceVO;
         mainPane.getChildren().add(new AppealOrderPane(mainPane,orderVO));
     }

@@ -8,13 +8,13 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmarketerui.webmarketercontroller.ManagePromotionPaneController">
    <children>
-      <HBox layoutX="36.0" layoutY="110.0">
+      <HBox layoutX="36.0" layoutY="110.0" styleClass="BackgroundHBox">
          <children>
             <Button fx:id="timeBtn" layoutX="117.0" layoutY="31.0" mnemonicParsing="false" onAction="#showTimePromotion" prefHeight="72.0" prefWidth="132.0" styleClass="PromotionBtn" text="特定期间优惠" />
             <Button layoutX="249.0" layoutY="31.0" mnemonicParsing="false" onAction="#showMemberPromotion" prefHeight="72.0" prefWidth="132.0" styleClass="PromotionBtn" text="会员优惠" />
          </children>
       </HBox>
-      <Separator layoutX="36.0" layoutY="181.0" prefWidth="778.0" />
+      <Separator layoutX="36.0" layoutY="183.0" prefWidth="778.0" />
       <Label id="sliderPromotionLabel" fx:id="sliderPromotionLabel" layoutX="36.0" layoutY="180.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="3.0" prefWidth="132.0" />
       <VBox fx:id="timeVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0">
          <children>

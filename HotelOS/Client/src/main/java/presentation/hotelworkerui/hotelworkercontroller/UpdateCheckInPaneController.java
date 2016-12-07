@@ -13,10 +13,6 @@ import presentation.util.alert.AlertController;
  */
 public class UpdateCheckInPaneController {
 
-    //选择入住方式的组件
-    @FXML Button checkinOnlineBtn;
-    @FXML Button checkinOfflineBtn;
-
     private Pane mainPane;
     private AlertController alertController;
 
