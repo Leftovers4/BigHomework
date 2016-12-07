@@ -4,7 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import presentation.util.MyWindow;
+import presentation.util.other.MyWindow;
 import presentation.webmanagerui.webmanagercontroller.WebmanagerComController;
 
 import java.io.IOException;

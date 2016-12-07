@@ -1,4 +1,4 @@
-package presentation.util;
+package presentation.util.buttoncell;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
@@ -14,6 +14,7 @@ import vo.user.CreditVO;
 
 /**
  * Created by wyj on 2016/12/2.
+ * Description: 信用记录列表添加按钮的方法：查看订单详情按钮
  */
 public class CreditTabelButtonCell extends TableCell<CreditVO, Boolean> {
 

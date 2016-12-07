@@ -26,7 +26,7 @@ public class PeopleController implements Initializable{
         ObservableList<People> list = FXCollections.observableArrayList();
 
         for (int i=0;i<100;i++){
-            People people = new People("user",18);
+            People people = new People("buttoncell",18);
             list.add(people);
         }
 

@@ -3,8 +3,8 @@ package presentation.userui.usercontroller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import presentation.util.CancelDateBefore;
-import presentation.util.InputWrongAlert;
+import presentation.util.other.CancelDateBefore;
+import presentation.util.alert.InputWrongAlert;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package presentation.util;
+package presentation.util.buttoncell;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
@@ -8,44 +8,43 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import presentation.userui.userscene.CancelOrderPane;
-import presentation.userui.userscene.OrderDetailUserPane;
-import vo.order.OrderVO;
+import presentation.userui.userscene.UserGenerateOrderPane;
+import vo.hotel.HotelVO;
 
 /**
  * Created by wyj on 2016/12/6.
+ * Description: 客户搜索酒店，酒店列表添加按钮的方法：预订按钮、查看酒店详情按钮
  */
-public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
+public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
 
     final private HBox btnBox = new HBox();
     final private Button checkDetailBtn = new Button();
-    final private Button cancelOrderBtn = new Button();
-
+    final private Button generateOrderBtn = new Button();
     private TableView tableView;
 
-    public UserOrderListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView) {
+    public UserHotelListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView) {
         this.tableView = tableView;
 
-        this.getStylesheets().add(UserOrderListButtonCell.class.getResource("css/user/userstyle.css").toExternalForm());
+        this.getStylesheets().add(UserHotelListButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
         Image detailImg = new Image("/img/user/checkdetail.png");
         checkDetailBtn.setGraphic(new ImageView(detailImg));
         checkDetailBtn.getStyleClass().add("tableCellBtn");
 
-        Image cancelImg = new Image("/img/user/cancel.png");
-        cancelOrderBtn.setGraphic(new ImageView(cancelImg));
-        cancelOrderBtn.getStyleClass().add("tableCellBtn");
+        Image generateImg = new Image("/img/user/generateOrder.png");
+        generateOrderBtn.setGraphic(new ImageView(generateImg));
+        generateOrderBtn.getStyleClass().add("tableCellBtn");
 
         checkDetailBtn.setOnAction(event -> {
-            mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane));
+//            int selectedIndex = getTableRow().getIndex();
+//            mainPane.getChildren().remove(0);
+//            mainPane.getChildren().add(new );
         });
 
-        cancelOrderBtn.setOnAction(event -> {
+        generateOrderBtn.setOnAction(event -> {
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new CancelOrderPane(stage));
+            mainPane.getChildren().add(new UserGenerateOrderPane(stage));
         });
     }
-
 
     @Override
     protected void updateItem(Boolean t, boolean empty) {

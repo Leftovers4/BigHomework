@@ -7,12 +7,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.*;
-import presentation.util.LeftBarEffect;
+import presentation.util.other.LeftBarEffect;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static presentation.util.MyTimeLabel.EnableShowTime;
+import static presentation.util.other.MyTimeLabel.EnableShowTime;
 
 /**
  * Created by Hitiger on 2016/11/19.

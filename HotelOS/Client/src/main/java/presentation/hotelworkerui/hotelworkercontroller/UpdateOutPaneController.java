@@ -3,10 +3,9 @@ package presentation.hotelworkerui.hotelworkercontroller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateOfflinePane;
-import presentation.util.AlertController;
+import presentation.util.alert.AlertController;
 
 /**
  * Created by Hitiger on 2016/11/20.

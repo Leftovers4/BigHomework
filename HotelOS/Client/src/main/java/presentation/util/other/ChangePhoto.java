@@ -1,4 +1,4 @@
-package presentation.util;
+package presentation.util.other;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

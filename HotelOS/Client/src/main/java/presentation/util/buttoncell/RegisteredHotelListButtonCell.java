@@ -1,4 +1,4 @@
-package presentation.util;
+package presentation.util.buttoncell;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
@@ -8,40 +8,32 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import presentation.userui.userscene.UserGenerateOrderPane;
+import presentation.userui.userscene.OrderDetailUserPane;
 import vo.hotel.HotelVO;
 
 /**
  * Created by wyj on 2016/12/6.
+ * Description: 预订过的酒店列表添加按钮的方法：查看酒店详情按钮
  */
-public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
+public class RegisteredHotelListButtonCell extends TableCell<HotelVO, Boolean> {
 
     final private HBox btnBox = new HBox();
     final private Button checkDetailBtn = new Button();
-    final private Button generateOrderBtn = new Button();
     private TableView tableView;
 
-    public UserHotelListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView) {
+    public RegisteredHotelListButtonCell(final Stage stage, final Pane mainPane, final  TableView tableView) {
         this.tableView = tableView;
 
-        this.getStylesheets().add(UserHotelListButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
-        Image detailImg = new Image("/img/user/checkdetail.png");
-        checkDetailBtn.setGraphic(new ImageView(detailImg));
+        this.getStylesheets().add(CreditTabelButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
+        Image detailimg = new Image("/img/user/checkdetail.png");
+        checkDetailBtn.setGraphic(new ImageView(detailimg));
         checkDetailBtn.getStyleClass().add("tableCellBtn");
-
-        Image generateImg = new Image("/img/user/generateOrder.png");
-        generateOrderBtn.setGraphic(new ImageView(generateImg));
-        generateOrderBtn.getStyleClass().add("tableCellBtn");
 
         checkDetailBtn.setOnAction(event -> {
 //            int selectedIndex = getTableRow().getIndex();
-//            mainPane.getChildren().remove(0);
-//            mainPane.getChildren().add(new );
-        });
-
-        generateOrderBtn.setOnAction(event -> {
+//            HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new UserGenerateOrderPane(stage));
+            mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane));
         });
     }
 

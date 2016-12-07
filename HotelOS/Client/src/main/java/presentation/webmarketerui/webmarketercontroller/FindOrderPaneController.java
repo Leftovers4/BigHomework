@@ -2,8 +2,7 @@ package presentation.webmarketerui.webmarketercontroller;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import presentation.util.AlertController;
+import presentation.util.alert.AlertController;
 import presentation.webmarketerui.webmarketerscene.AppealOrderPane;
 import util.OrderType;
 import vo.order.OrderPriceVO;

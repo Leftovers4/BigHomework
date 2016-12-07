@@ -5,9 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import presentation.util.AlertController;
-import presentation.webmarketerui.webmarketerscene.FindUserPane;
+import presentation.util.alert.AlertController;
 import vo.user.UserVO;
 
 /**

@@ -6,8 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import presentation.util.LeftBarEffect;
-import presentation.util.MyTimeLabel;
+import presentation.util.other.LeftBarEffect;
 import presentation.webmanagerui.webmanagerscene.HotelManagePane;
 import presentation.webmanagerui.webmanagerscene.HotelworkerManagePane;
 import presentation.webmanagerui.webmanagerscene.UserManagePane;
@@ -16,7 +15,7 @@ import presentation.webmanagerui.webmanagerscene.WebmarketerManagePane;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static presentation.util.MyTimeLabel.EnableShowTime;
+import static presentation.util.other.MyTimeLabel.EnableShowTime;
 
 /**
  * Created by wyj on 2016/11/29.

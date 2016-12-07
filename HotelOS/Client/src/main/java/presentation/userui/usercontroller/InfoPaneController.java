@@ -13,13 +13,13 @@ import javafx.stage.Stage;
 import presentation.userui.userscene.CreditRecordPane;
 import presentation.userui.userscene.RegisterCommonVIPPane;
 import presentation.userui.userscene.RegisterCompanyVIPPane;
-import presentation.util.InputWrongAlert;
+import presentation.util.alert.InputWrongAlert;
 import vo.user.UserVO;
 
 import java.io.*;
 import java.time.LocalDate;
 
-import static presentation.util.ChangePhoto.updatePhoto;
+import static presentation.util.other.ChangePhoto.updatePhoto;
 
 /**
  * Created by Hitiger on 2016/11/19.

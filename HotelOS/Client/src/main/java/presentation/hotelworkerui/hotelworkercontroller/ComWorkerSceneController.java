@@ -7,9 +7,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.*;
-import presentation.util.AlertController;
-import presentation.util.MyTimeLabel;
-import presentation.util.LeftBarEffect;
+import presentation.util.alert.AlertController;
+import presentation.util.other.MyTimeLabel;
+import presentation.util.other.LeftBarEffect;
 
 import java.util.ArrayList;
 import java.util.Arrays;
