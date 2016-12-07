@@ -8,7 +8,7 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.UpdateOutPaneController">
     <children>
-      <Button id="outOfflineBtn" fx:id="outOfflineBtn" contentDisplay="TOP" graphicTextGap="10.0" layoutX="510.0" layoutY="255.0" mnemonicParsing="false" onAction="#outOffline" text="线下退房">
+      <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="510.0" layoutY="255.0" mnemonicParsing="false" onAction="#outOffline" styleClass="checkOfflineBtn" text="线下退房">
          <graphic>
                 <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -20,7 +20,7 @@
                 </ImageView>
          </graphic>
       </Button>
-        <Button id="outOnlineBtn" fx:id="outOnlineBtn" contentDisplay="TOP" graphicTextGap="10.0" layoutX="180.0" layoutY="255.0" mnemonicParsing="false" onAction="#outOnline" prefHeight="140.0" prefWidth="140.0" text="线上退房">
+        <Button contentDisplay="TOP" graphicTextGap="10.0" layoutX="180.0" layoutY="255.0" mnemonicParsing="false" onAction="#outOnline" prefHeight="140.0" prefWidth="140.0" styleClass="checkOnlineBtn" text="线上退房">
          <graphic>
                 <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                     <viewport>

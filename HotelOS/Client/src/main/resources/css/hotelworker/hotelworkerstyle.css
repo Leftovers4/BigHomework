@@ -12,7 +12,7 @@
 }
 .button {
     -fx-border-radius: 5px;
-    /*-fx-font-size: 18px;*/
+    -fx-font-size: 18px;
     -fx-cursor: hand;
 }
 
@@ -21,24 +21,6 @@
 
 
 
-/*线上入住按钮*/
-#checkinOnlineBtn{
-    -fx-background-color: transparent;
-}
-
-/*线下入住按钮*/
-#checkinOfflineBtn{
-    -fx-background-color: transparent;
-}
-/*线上退房按钮*/
-#outOnlineBtn{
-    -fx-background-color: transparent;
-}
-
-/*线下退房按钮*/
-#outOfflineBtn{
-    -fx-background-color: transparent;
-}
 
 /**
 *订单详情界面
@@ -67,6 +49,7 @@
     -fx-border-style: none;
     -fx-background-color: transparent;
     -fx-text-fill: white;
+    -fx-font-size: 15px;
 }
 
 .sideButton:hover{
@@ -368,7 +351,7 @@
     -fx-background-color: #1f99ff;
 }
 /**
-更新入住信息
+更新入住，退房信息
  */
 #submitUpdateBtn{
     -fx-background-color: #55acee;
@@ -377,9 +360,18 @@
 #submitUpdateBtn:hover{
     -fx-background-color: #49BCFF;
 }
-/**
-更新退房信息
- */
+
+/*线上入住、退房按钮*/
+.checkOnlineBtn{
+    -fx-background-color: transparent;
+}
+.checkOnlineBtn:hover{
+    -fx-graphic: url("../../img/hotelworker/checkonline_hover.png");
+}
+/*线下入住、退房按钮*/
+.checkOfflineBtn{
+    -fx-background-color: transparent;
+}
 
 
 

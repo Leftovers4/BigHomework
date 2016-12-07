@@ -1,12 +1,15 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
-import blservice_stub.HotelBLService_Stub;
+import bl.hotelbl.HotelBLService;
+import bl.hotelbl.impl.HotelBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import presentation.util.alert.AlertController;
 import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
 import vo.hotel.HotelVO;
+
+import java.rmi.RemoteException;
 
 /**
  * Created by Hitiger on 2016/11/18.
@@ -20,12 +23,11 @@ public class InfoPaneController {
     @FXML private Label hotelRatingLabel;
 
     //地址
-    @FXML private Label    cityLabel;
+    @FXML private Label    addressLabel;
     @FXML private ComboBox cityBox;
 
     //商圈
     @FXML private ComboBox tradeAreaBox;
-    @FXML private Label tradeAreaLabel;
 
     //简介
     @FXML private TextArea simpleIntroArea;
@@ -40,15 +42,17 @@ public class InfoPaneController {
     @FXML private Button saveEditBtn;
     @FXML private Button cancelEditBtn;
 
-    private HotelBLService_Stub hotelBLServiceStub;
+    private HotelBLService hotelBLService;
     private Pane mainPane;
+    private String city;
+    private String tradeArea;
     //提示框控制器
     private AlertController alertController;
 
     public void launch(Pane mainPane) {
         this.mainPane = mainPane;
 
-        hotelBLServiceStub = new HotelBLService_Stub();
+        hotelBLService = new HotelBlServiceImpl();
         alertController = new AlertController();
         //初始化数据
         initData();
@@ -60,17 +64,22 @@ public class InfoPaneController {
     }
 
     private void initData() {
-        HotelVO hotelVO = hotelBLServiceStub.findHotelByID(123456);
+        HotelVO hotelVO;
+        try {
+            hotelVO = hotelBLService.viewBasicHotelInfo(522000);
 
-        hotelNameLabel.setText(hotelVO.hotelName);
-        hotelWorkerNameLabel.setText(hotelVO.hotelWorkerName);
-        hotelRatingLabel.setText(String.valueOf(hotelVO.rating));
-        cityLabel.setText(String.valueOf(hotelVO.address)+"市");
-        tradeAreaLabel.setText(String.valueOf(hotelVO.tradingArea));
-        simpleIntroLabel.setText(hotelVO.description);
-        hotelServiceLabel.setText(hotelVO.service);
-
-
+            city = String.valueOf(hotelVO.address);
+            tradeArea = String.valueOf(hotelVO.tradingArea);
+            hotelNameLabel.setText(hotelVO.hotelName);
+            hotelWorkerNameLabel.setText(hotelVO.hotelWorkerName);
+            hotelRatingLabel.setText(String.valueOf(hotelVO.rating));
+            addressLabel.setText(city+tradeArea);
+            simpleIntroLabel.setText(hotelVO.description);
+            hotelServiceLabel.setText(hotelVO.service);
+        } catch (RemoteException e) {
+            //TODO
+            System.out.println("6662");
+        }
     }
 
     /**
@@ -80,8 +89,8 @@ public class InfoPaneController {
     private void editHotelInfo(){
         setCheckInfoComponentsVisible(false);
         setEditInfoComponentsVisible(true);
-        cityBox.setValue(cityLabel.getText().substring(0,cityLabel.getText().length()-1));
-        tradeAreaBox.setValue(tradeAreaLabel.getText());
+        cityBox.setValue(city);
+        tradeAreaBox.setValue(tradeArea);
     }
 
 
@@ -92,13 +101,21 @@ public class InfoPaneController {
         setCheckInfoComponentsVisible(true);
         setEditInfoComponentsVisible(false);
 
+        HotelVO hotelVO = new HotelVO();
+        hotelVO.hotelID = 522000;
+        hotelVO.address = cityBox.getValue()+"";
+        hotelVO.tradingArea = tradeAreaBox.getValue()+"";
+        hotelVO.description = simpleIntroArea.getText();
+        hotelVO.service = hotelServiceArea.getText();
+
+        try {
+            hotelBLService.updateBasicHotelInfo(hotelVO);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
         //将编辑的内容显示到查看信息界面
-        cityLabel.setText(cityBox.getValue()+"市");
-        tradeAreaLabel.setText(tradeAreaBox.getValue()+"");
-        simpleIntroLabel.setText(simpleIntroArea.getText());
-        hotelServiceLabel.setText(hotelServiceArea.getText());
-        simpleIntroArea.clear();
-        hotelServiceArea.clear();
+        initData();
     }
 
     @FXML
@@ -127,8 +144,7 @@ public class InfoPaneController {
     }
 
     private void setCheckInfoComponentsVisible(Boolean isVisible){
-        cityLabel.setVisible(isVisible);
-        tradeAreaLabel.setVisible(isVisible);
+        addressLabel.setVisible(isVisible);
         simpleIntroLabel.setVisible(isVisible);
         hotelServiceLabel.setVisible(isVisible);
         editBtn.setVisible(isVisible);

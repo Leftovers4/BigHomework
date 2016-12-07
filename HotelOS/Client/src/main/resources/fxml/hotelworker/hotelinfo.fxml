@@ -11,16 +11,15 @@
       <Pane layoutX="98.0" layoutY="338.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="271.0" prefWidth="667.0" styleClass="BackgroundPanel">
          <children>
                   <Label layoutX="20.0" layoutY="170.0" text="服务：" />
-            <Label fx:id="cityLabel" layoutX="80.0" layoutY="20.0" text="南京市" />
+            <Label fx:id="addressLabel" layoutX="80.0" layoutY="20.0" text="江苏南京市" />
                   <Label layoutX="20.0" layoutY="95.0" text="简介：" />
             <Label fx:id="hotelServiceLabel" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="80.0" layoutY="170.0" prefHeight="90.0" prefWidth="578.0" text="为散客提供免费的WIFI。房间服务，接送服务（额外收费），24小时前台服务，货币兑换，行礼寄存，礼宾台，洗衣服务，干洗服务，熨衣服务是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
             <Label fx:id="simpleIntroLabel" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="80.0" layoutY="95.0" prefHeight="62.0" prefWidth="578.0" text="座落于半山园林美景之中，是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
                   <TextArea fx:id="simpleIntroArea" layoutX="80.0" layoutY="95.0" prefHeight="62.0" prefWidth="578.0" visible="false" wrapText="true" />
                   <TextArea fx:id="hotelServiceArea" layoutX="80.0" layoutY="170.0" prefHeight="82.0" prefWidth="578.0" visible="false" wrapText="true" />
                   <Label layoutX="20.0" layoutY="20.0" text="地址：" />
-                  <ComboBox fx:id="cityBox" layoutX="80.0" layoutY="14.0" prefHeight="36.0" prefWidth="100.0" promptText="南京" visible="false" />
-                  <ComboBox fx:id="tradeAreaBox" layoutX="200.0" layoutY="14.0" prefHeight="36.0" prefWidth="180.0" promptText="仙林商圈" visible="false" />
-            <Label fx:id="tradeAreaLabel" layoutX="134.0" layoutY="20.0" text="仙林商圈" />
+                  <ComboBox fx:id="cityBox" layoutX="80.0" layoutY="14.0" prefHeight="36.0" prefWidth="122.0" promptText="南京市" visible="false" />
+                  <ComboBox fx:id="tradeAreaBox" layoutX="227.0" layoutY="14.0" prefHeight="36.0" prefWidth="180.0" promptText="仙林商圈" visible="false" />
          </children>
       </Pane>
       <Pane layoutX="365.0" layoutY="110.0" prefHeight="200.0" prefWidth="400.0" styleClass="BackgroundPanel">
