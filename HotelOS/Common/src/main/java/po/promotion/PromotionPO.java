@@ -63,6 +63,9 @@ public class PromotionPO implements Serializable {
      */
     private ArrayList<PromotionMRPO> promotionMRPOs;
 
+    public PromotionPO(){
+        initial();
+    }
 
     /**
      * 用于增加营销策略

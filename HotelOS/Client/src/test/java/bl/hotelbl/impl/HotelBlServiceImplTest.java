@@ -27,7 +27,7 @@ public class HotelBlServiceImplTest {
     public void addHotel() throws Exception {
         HotelVO hotelVO = new HotelVO();
 
-        hotelVO.hotelName = "hhhhhh";
+        hotelVO.hotelName = "demo";
         hotelVO.star = 4;
 
         tested.addHotel(hotelVO);

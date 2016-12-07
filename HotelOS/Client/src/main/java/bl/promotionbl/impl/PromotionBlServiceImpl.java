@@ -31,7 +31,8 @@ public class PromotionBlServiceImpl implements PromotionBLService {
     @Override
     public ResultMessage create(PromotionVO promotionVO) throws RemoteException {
         promotionVO.promotionID = IDProducer.produceGeneralID();
-        return promotionDAO.insert(new PromotionPOCreator().create(promotionVO));
+        PromotionPO promotionPO = new PromotionPOCreator().create(promotionVO);
+        return promotionDAO.insert(promotionPO);
     }
 
     @Override

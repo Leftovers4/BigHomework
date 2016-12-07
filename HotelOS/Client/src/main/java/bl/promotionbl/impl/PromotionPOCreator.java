@@ -4,6 +4,8 @@ import po.promotion.PromotionMRPO;
 import po.promotion.PromotionPO;
 import po.promotion.PromotionTimePO;
 import po.promotion.PromotionTraAreaPO;
+import util.Const;
+import util.PromotionType;
 import vo.promotion.PromotionTimeVO;
 import vo.promotion.PromotionVO;
 
@@ -15,46 +17,40 @@ import java.util.ArrayList;
 public class PromotionPOCreator {
 
     public PromotionPO create(PromotionVO promotionVO){
-        PromotionTimePO promotionTimePO = new PromotionTimePO();
-        if (promotionVO.promotionTimeVO != null){
-            promotionTimePO.setBeginTime(promotionVO.promotionTimeVO.beginTime);
-            promotionTimePO.setEndTime(promotionVO.promotionTimeVO.endTime);
+        PromotionPO res = new PromotionPO();
+
+        res.setPromotionID(promotionVO.promotionID);
+        res.setPromotionType(promotionVO.promotionType);
+        res.setHotelID(promotionVO.hotelID);
+        res.setDiscount(promotionVO.discount);
+        res.setLeastRooms(promotionVO.leastRooms);
+
+        if (promotionVO.promotionType.equals(PromotionType.SpecialTimePromotion)){
+            res.getPromotionTimePO().setBeginTime(promotionVO.promotionTimeVO.beginTime);
+            res.getPromotionTimePO().setEndTime(promotionVO.promotionTimeVO.endTime);
         }
 
-        ArrayList<String> promotionEnterprises = new ArrayList<>();
-        if (promotionVO.promotionEnterprises != null){
+        if (promotionVO.promotionType.equals(PromotionType.EnterprisePromotion)){
             for (int i = 0; i < promotionVO.promotionEnterprises.size(); i++) {
-                promotionEnterprises.add(promotionVO.promotionEnterprises.get(i));
+                res.getPromotionEnterprises().add(promotionVO.promotionEnterprises.get(i));
             }
         }
 
-        ArrayList<PromotionTraAreaPO> promotionTraAreaPOs = new ArrayList<>();
-        if (promotionVO.promotionTraAreaVOs != null){
+        if (promotionVO.promotionType.equals(PromotionType.VIPSpecialAreaPromotion)){
             for (int i = 0; i < promotionVO.promotionTraAreaVOs.size(); i++) {
-                PromotionTraAreaPO promotionTraAreaPO = new PromotionTraAreaPO();
-
-                promotionTraAreaPO.setTradingArea(promotionVO.promotionTraAreaVOs.get(i).tradingArea);
-                promotionTraAreaPO.setTraDiscount(promotionVO.promotionTraAreaVOs.get(i).traDiscount);
-
-                promotionTraAreaPOs.add(promotionTraAreaPO);
+                res.getPromotionTraAreaPOs().get(i).setTradingArea(promotionVO.promotionTraAreaVOs.get(i).tradingArea);
+                res.getPromotionTraAreaPOs().get(i).setTraDiscount(promotionVO.promotionTraAreaVOs.get(i).traDiscount);
             }
         }
 
-        ArrayList<PromotionMRPO> promotionMRPOs = new ArrayList<>();
-        if (promotionVO.promotionMRVOs != null){
+        if (promotionVO.promotionType.equals(PromotionType.UserLevelPromotion)){
             for (int i = 0; i < promotionVO.promotionMRVOs.size(); i++) {
-                PromotionMRPO promotionMRPO = new PromotionMRPO();
-
-                promotionMRPO.setCredit(promotionVO.promotionMRVOs.get(i).credit);
-                promotionMRPO.setMemberDiscount(promotionVO.promotionMRVOs.get(i).memberDiscount);
-
-                promotionMRPOs.add(promotionMRPO);
+                res.getPromotionMRPOs().get(i).setCredit(promotionVO.promotionMRVOs.get(i).credit);
+                res.getPromotionMRPOs().get(i).setMemberDiscount(promotionVO.promotionMRVOs.get(i).memberDiscount);
             }
         }
 
-        return new PromotionPO(promotionVO.promotionID, promotionVO.promotionType,
-                promotionVO.hotelID, promotionVO.discount, promotionVO.leastRooms, promotionTimePO,
-                promotionEnterprises, promotionTraAreaPOs, promotionMRPOs);
+        return res;
     }
 
 }

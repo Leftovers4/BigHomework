@@ -1,5 +1,6 @@
 package vo.promotion;
 
+import util.Const;
 import util.PromotionType;
 
 import java.util.ArrayList;
@@ -55,5 +56,18 @@ public class PromotionVO {
      * 会员等级制度
      */
     public List<PromotionMRVO> promotionMRVOs;
+
+    public PromotionVO(){
+        promotionTimeVO = new PromotionTimeVO();
+        promotionEnterprises = new ArrayList<>();
+        promotionTraAreaVOs = new ArrayList<>();
+        for (int i = 0; i < Const.MaxPromotionAddressAmount; i++) {
+            promotionTraAreaVOs.add(new PromotionTraAreaVO());
+        }
+        promotionMRVOs = new ArrayList<>();
+        for (int i = 0; i < Const.MaxMemberLevel; i++) {
+            promotionMRVOs.add(new PromotionMRVO());
+        }
+    }
 
 }

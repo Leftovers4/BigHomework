@@ -4,6 +4,7 @@ import bl.orderbl.OrderBLService;
 import org.junit.Before;
 import org.junit.Test;
 import util.OrderType;
+import util.ResultMessage;
 import util.RoomType;
 import vo.hotel.HotelVO;
 import vo.order.OrderVO;
@@ -116,7 +117,7 @@ public class OrderBlServiceImplTest {
         orderVO.orderTimeVO.expectedCheckinTime = LocalDateTime.now();
         orderVO.orderTimeVO.expectedLeaveTime = LocalDateTime.now().plusDays(2);
 
-        tested.addOrder(orderVO);
+        ResultMessage resultMessage = tested.addOrder(orderVO);
     }
 
     @Test
