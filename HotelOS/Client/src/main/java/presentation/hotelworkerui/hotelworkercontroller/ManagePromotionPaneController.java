@@ -4,6 +4,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import presentation.util.AlertController;
@@ -27,6 +29,11 @@ public class ManagePromotionPaneController {
     @FXML private Button cancelBirthBtn;
     @FXML private VBox   birthVBox;
     @FXML private HBox   addBirthHBox;
+    @FXML private TableView birthTable;
+    @FXML private TableColumn birthRoomTypeCol;
+    @FXML private TableColumn birthDiscountCol;
+    @FXML private TableColumn birthPriceCol;
+
     //多间预订优惠
     @FXML private Button addRoomBtn;
     @FXML private Button modifyRoomBtn;
@@ -35,6 +42,12 @@ public class ManagePromotionPaneController {
     @FXML private Button cancelRoomBtn;
     @FXML private VBox   roomVBox;
     @FXML private HBox   addRoomHBox;
+    @FXML private TableView roomTable;
+    @FXML private TableColumn roomTypeCol;
+    @FXML private TableColumn roomLeastCol;
+    @FXML private TableColumn roomDiscountCol;
+    @FXML private TableColumn roomPriceCol;
+
     //特定期间优惠
     @FXML private Button addTimeBtn;
     @FXML private Button modifyTimeBtn;
@@ -43,6 +56,13 @@ public class ManagePromotionPaneController {
     @FXML private Button cancelTimeBtn;
     @FXML private VBox   timeVBox;
     @FXML private HBox   addTimeHBox;
+    @FXML private TableView timeTable;
+    @FXML private TableColumn timeRoomTypeCol;
+    @FXML private TableColumn timeStartCol;
+    @FXML private TableColumn timeEndCol;
+    @FXML private TableColumn timeDiscountCol;
+    @FXML private TableColumn timePriceCol;
+
     //合作企业优惠
     @FXML private Button addComBtn;
     @FXML private Button modifyComBtn;
@@ -51,6 +71,11 @@ public class ManagePromotionPaneController {
     @FXML private Button cancelComBtn;
     @FXML private VBox   comVBox;
     @FXML private HBox   addComHBox;
+    @FXML private TableView comTable;
+    @FXML private TableColumn comNameCol;
+    @FXML private TableColumn comRoomTypeCol;
+    @FXML private TableColumn comDiscountCol;
+    @FXML private TableColumn comPriceCol;
 
     //滑块
     @FXML private Label sliderPromotionLabel;

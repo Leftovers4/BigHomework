@@ -63,7 +63,7 @@ public class FindOrderPaneController {
         reviewVO.orderID = orderVO.orderID;
         reviewVO.username = orderVO.username;
 
-        OrderTimeVO orderTimeVO = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 11, 20, 00), null, null,
+        OrderTimeVO orderTimeVO = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 11, 20, 00), null, LocalDateTime.of(2016,12,5,11,00),
                 null, LocalDateTime.of(2016, 11, 12, 21, 00), null, null);
 
         orderVO.reviewVO = reviewVO;

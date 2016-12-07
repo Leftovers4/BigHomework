@@ -11,6 +11,7 @@ import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
 import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
 import presentation.util.AlertController;
+import presentation.util.CancelDateBefore;
 import util.OrderType;
 import vo.order.OrderTimeVO;
 import vo.order.OrderVO;
@@ -88,6 +89,13 @@ public class UpdateOrderInfoPaneController {
         //初始化组件
         initLabels(orderVO);
         initBox();
+        initDatePicker();
+    }
+
+    private void initDatePicker() {
+        checkInTimeDatePicker.setDayCellFactory(new CancelDateBefore(checkInTimeDatePicker, LocalDate.now()));
+        expLeaveTimeDatePicker.setDayCellFactory(new CancelDateBefore(expLeaveTimeDatePicker, LocalDate.now()));
+        expLeaveTimeDatePicker.setValue(orderVO.orderTimeVO.expectedLeaveTime.toLocalDate());
     }
 
     private void initBox() {
