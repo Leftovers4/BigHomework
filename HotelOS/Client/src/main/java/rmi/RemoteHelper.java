@@ -41,7 +41,7 @@ public class RemoteHelper {
         return remoteHelper;
     }
 
-    public HotelDataService getHotelDAO() {
+    public HotelDataService getHotelDAO() throws RemoteException {
         try {
             hotelDAO = (HotelDataService) Naming.lookup(networkAddress + "/" + "HotelDataService");
             System.out.println("Link to server!");
@@ -49,13 +49,11 @@ public class RemoteHelper {
             e.printStackTrace();
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch (RemoteException e) {
-            e.printStackTrace();
         }
         return hotelDAO;
     }
 
-    public OrderDataService getOrderDAO() {
+    public OrderDataService getOrderDAO() throws RemoteException {
         try {
             orderDAO = (OrderDataService) Naming.lookup(networkAddress + "/" + "OrderDataService");
             System.out.println("Link to server!");
@@ -63,13 +61,11 @@ public class RemoteHelper {
             e.printStackTrace();
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch (RemoteException e) {
-            e.printStackTrace();
         }
         return orderDAO;
     }
 
-    public PersonnelDataService getPersonnelDAO() {
+    public PersonnelDataService getPersonnelDAO() throws RemoteException {
         try {
             personnelDAO = (PersonnelDataService) Naming.lookup(networkAddress + "/" + "PersonnelDataService");
             System.out.println("Link to server!");
@@ -77,13 +73,11 @@ public class RemoteHelper {
             e.printStackTrace();
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch (RemoteException e) {
-            e.printStackTrace();
         }
         return personnelDAO;
     }
 
-    public PromotionDataService getPromotionDAO() {
+    public PromotionDataService getPromotionDAO() throws RemoteException {
         try {
             promotionDAO= (PromotionDataService) Naming.lookup(networkAddress + "/" + "PromotionDataService");
             System.out.println("Link to server!");
@@ -91,21 +85,17 @@ public class RemoteHelper {
             e.printStackTrace();
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch (RemoteException e) {
-            e.printStackTrace();
         }
         return promotionDAO;
     }
 
-    public UserDataService getUserDAO() {
+    public UserDataService getUserDAO() throws RemoteException {
         try {
             userDAO = (UserDataService) Naming.lookup(networkAddress + "/" + "UserDataService");
             System.out.println("Link to server!");
         } catch (NotBoundException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (RemoteException e) {
             e.printStackTrace();
         }
         return userDAO;
