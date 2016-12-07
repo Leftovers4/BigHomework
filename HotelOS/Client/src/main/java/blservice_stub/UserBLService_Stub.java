@@ -85,6 +85,11 @@ public class UserBLService_Stub implements UserBLService {
         return null;
     }
 
+    @Override
+    public ResultMessage deleteUser(String username) throws RemoteException {
+        return null;
+    }
+
     public ResultMessage topup(CreditRecordVO creditRecordVO) {
         return ResultMessage.Success;
     }

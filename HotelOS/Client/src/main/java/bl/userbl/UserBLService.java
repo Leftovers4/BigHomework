@@ -89,4 +89,11 @@ public interface UserBLService {
      */
     ResultMessage topup(String username, double amount) throws RemoteException;
 
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+    /*
+     * 网站管理人员删除客户
+     */
+    ResultMessage deleteUser(String username) throws RemoteException;
+
 }

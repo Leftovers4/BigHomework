@@ -87,9 +87,13 @@ public class UserBlServiceImpl implements UserBLService {
 
     @Override
     public ResultMessage updateBasicUserInfo(UserVO userVO) throws RemoteException {
+        //新的用户名跟数据库冲突的情况
+        if (userDAO.findByUsername(userVO.newUsername) != null)
+            return ResultMessage.DataExisted;
+
         UserPO userPO = userDAO.findByUsername(userVO.username);
 
-        userPO.setUsername(userVO.username);
+        userPO.setUsername(userVO.newUsername);
         userPO.setName(userVO.name);
         userPO.setGender(userVO.gender);
         userPO.getMemberPO().setBirthday(userVO.memberVO.birthday);
@@ -144,6 +148,13 @@ public class UserBlServiceImpl implements UserBLService {
         creditRecordPO.setCurrentCredit(new CreditRecordList(userDAO.findCreditRecordsByUsername(username)).getCurrentCredit() + creditRecordPO.getChangedCredit());
 
         return userDAO.insertCreditRecord(creditRecordPO);
+    }
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+    @Override
+    public ResultMessage deleteUser(String username) throws RemoteException {
+        return userDAO.delete(username);
     }
 
 }

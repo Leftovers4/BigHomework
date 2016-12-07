@@ -17,6 +17,7 @@ import static org.junit.Assert.*;
  * Created by kevin on 2016/12/7.
  */
 public class UserBlServiceImplTest {
+
     UserBLService tested;
 
     @Before
@@ -26,12 +27,12 @@ public class UserBlServiceImplTest {
 
     @Test
     public void registerUser() throws Exception {
-        tested.registerUser("lisi", "8520");
+        ResultMessage resultMessage = tested.registerUser("lisii", "8520");
     }
 
     @Test
     public void login() throws Exception {
-        ResultMessage resultMessage = tested.login("lisi", "8521");
+        ResultMessage resultMessage = tested.login("lisiii", "852");
     }
 
     @Test
@@ -41,20 +42,20 @@ public class UserBlServiceImplTest {
 
     @Test
     public void getCreditRecordsByUsername() throws Exception {
-        List<CreditRecordVO> creditRecordVOList = tested.getCreditRecordsByUsername("lisi");
+        List<CreditRecordVO> creditRecordVOList = tested.getCreditRecordsByUsername("lisiiii");
     }
 
     @Test
     public void viewBasicUserInfo() throws Exception {
-        UserVO userVO = tested.viewBasicUserInfo("lisi");
+        UserVO userVO = tested.viewBasicUserInfo("lisiiii");
     }
 
     @Test
     public void updateBasicUserInfo() throws Exception {
         UserVO userVO = new UserVO();
 
-        userVO.username = "lisi"; //提供唯一标识
-        userVO.newUsername = "lisii";
+        userVO.username = "lisiiii"; //提供唯一标识
+        userVO.newUsername = "lisi";
         userVO.name = "张张";
         userVO.gender = true;
         userVO.memberVO.birthday = LocalDate.now();
@@ -83,7 +84,12 @@ public class UserBlServiceImplTest {
 
     @Test
     public void topup() throws Exception {
+        ResultMessage resultMessage = tested.topup("lisiiii", 50);
+    }
 
+    @Test
+    public void deleteUser() throws Exception {
+        ResultMessage resultMessage = tested.deleteUser("lisi");
     }
 
 }
