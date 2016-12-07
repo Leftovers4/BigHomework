@@ -33,6 +33,21 @@ public class UserBlServiceImpl implements UserBLService {
     }
 
     @Override
+    public ResultMessage registerUser(String username, String password) throws RemoteException {
+        //先判断是否有相同用户名的客户
+        if (!(new UserList(userDAO.findAll()).isValidUsername(username)))
+            return ResultMessage.DataExisted;
+
+        //若没有相同用户名的客户，则添加该客户
+        UserPO userPO = new UserPO();
+
+        userPO.setUsername(username);
+        userPO.setPassword(password);
+
+        return userDAO.insert(userPO);
+    }
+
+    @Override
     public ResultMessage login(String username, String password) {
         return null;
     }

@@ -19,6 +19,7 @@ import static org.junit.Assert.*;
  * Created by kevin on 2016/12/6.
  */
 public class OrderBlServiceImplTest {
+
     OrderBLService tested;
 
     @Before
@@ -29,6 +30,11 @@ public class OrderBlServiceImplTest {
     @Test
     public void searchOrderByID() throws Exception {
         OrderVO orderVO = tested.searchOrderByID("45454148498");
+    }
+
+    @Test
+    public void searchOrderByHotelIDAndUsername() throws Exception {
+        List<OrderVO> orderVOList = tested.searchOrderByHotelIDAndUsername(145328, "Hiki");
     }
 
     @Test
@@ -48,15 +54,16 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void viewOrderReview() throws Exception {
-        //todo 尚未测试没有评价的情况
-        ReviewVO reviewVO = tested.viewOrderReview("52200020161111000");
+        ReviewVO reviewVO = tested.viewOrderReview("14532820161207423");
     }
 
     @Test
     public void onlineCheckIn() throws Exception {
         OrderVO orderVO = new OrderVO();
 
+        orderVO.orderID = "14532820161207423";
         orderVO.orderTimeVO.checkinTime = LocalDateTime.now();
+        orderVO.orderTimeVO.expectedLeaveTime = LocalDateTime.now();
         orderVO.roomNumber = "B330";
 
         tested.onlineCheckIn(orderVO);
@@ -64,7 +71,12 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void onlineCheckOut() throws Exception {
+        OrderVO orderVO = new OrderVO();
 
+        orderVO.orderID = "14532820161207423";
+        orderVO.orderTimeVO.leaveTime = LocalDateTime.now();
+
+        tested.onlineCheckOut(orderVO);
     }
 
     @Test
@@ -79,7 +91,13 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void reviewOrder() throws Exception {
+        ReviewVO reviewVO = new ReviewVO();
 
+        reviewVO.orderID = "14532820161207423";
+        reviewVO.rating = 4;
+        reviewVO.review = "sdjlfkalfkdfjkalj";
+
+        tested.reviewOrder(reviewVO);
     }
 
     @Test
@@ -106,8 +124,8 @@ public class OrderBlServiceImplTest {
     public void addOrder() throws Exception {
         OrderVO orderVO = new OrderVO();
 
-        orderVO.username = "Hiki";
-        orderVO.hotelID = 145328;
+        orderVO.username = "Hikii";
+        orderVO.hotelID = 196531;
         orderVO.roomType = RoomType.Couple;
         orderVO.roomAmount = 2;
         orderVO.personAmount = 4;

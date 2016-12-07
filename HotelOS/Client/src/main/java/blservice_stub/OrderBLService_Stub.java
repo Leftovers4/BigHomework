@@ -27,6 +27,11 @@ public class OrderBLService_Stub implements OrderBLService {
     }
 
     @Override
+    public List<OrderVO> searchOrderByHotelIDAndUsername(long hotelID, String username) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public List<ReviewVO> viewHotelReviewList(long hotelID) throws RemoteException {
         return null;
     }

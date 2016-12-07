@@ -16,6 +16,11 @@ import java.util.List;
  */
 public interface UserBLService {
 
+    /*
+     * 客户注册
+     */
+    ResultMessage registerUser(String username, String password) throws RemoteException;
+
     /**
      * 客户登入
      *

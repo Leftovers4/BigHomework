@@ -24,6 +24,12 @@ public class UserBLService_Stub implements UserBLService {
     public UserBLService_Stub(){
         userVOCreater = new UserVOCreater();
     }
+
+    @Override
+    public ResultMessage registerUser(String username, String password) throws RemoteException {
+        return null;
+    }
+
     @Override
     public ResultMessage login(String username, String password) {
         return ResultMessage.Success;
