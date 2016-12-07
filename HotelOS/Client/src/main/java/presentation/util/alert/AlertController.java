@@ -71,4 +71,9 @@ public class AlertController {
         InputWrongAlert inputWrongAlert = new InputWrongAlert(contentText,title);
         inputWrongAlert.showAndWait();
     }
+
+    public void showNetConnectAlert(){
+        RemoteAlert remoteAlert = new RemoteAlert("与服务器连接异常","连接失败");
+        remoteAlert.showAndWait();
+    }
 }

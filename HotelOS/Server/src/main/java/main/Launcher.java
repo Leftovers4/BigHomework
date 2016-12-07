@@ -9,11 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import rmi.RemoteHelper;
-import sun.management.jmxremote.SingleEntryRegistry;
 import thread.AbnormalOrderAutoChanger;
 
-import java.rmi.RemoteException;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -27,6 +24,8 @@ public class Launcher extends Application{
     private RemoteHelper remoteHelper;
 
     private static boolean running;
+
+    private ExecutorService executorService;
 
 
 
@@ -42,6 +41,11 @@ public class Launcher extends Application{
         primaryStage.setTitle("Leftovers服务器");
         primaryStage.setResizable(false);
         primaryStage.show();
+
+        //将进程关闭
+        primaryStage.setOnCloseRequest(event -> {
+            System.exit(0);
+        });
     }
 
     @FXML
@@ -56,7 +60,7 @@ public class Launcher extends Application{
         (remoteHelper = new RemoteHelper()).run();
 
         // 开启线程监控订单状态（超时自动置为异常订单）
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService = Executors.newSingleThreadExecutor();
         executorService.submit(new AbnormalOrderAutoChanger());
 
     }
@@ -66,7 +70,6 @@ public class Launcher extends Application{
         remoteHelper.stop();
         running = false;
         launchBtn.setDisable(false);
-//        Platform.exit();
 
     }
 

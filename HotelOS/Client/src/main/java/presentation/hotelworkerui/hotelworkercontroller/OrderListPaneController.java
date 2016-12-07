@@ -1,5 +1,7 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
+import bl.orderbl.OrderBLService;
+import bl.orderbl.impl.OrderBlServiceImpl;
 import blservice_stub.OrderBLService_Stub;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +17,7 @@ import presentation.util.buttoncell.HotelListButtonCell;
 import util.OrderType;
 import vo.order.OrderVO;
 
+import java.rmi.RemoteException;
 import java.time.LocalDate;
 
 
@@ -54,15 +57,23 @@ public class OrderListPaneController {
 
     private Pane mainPane;
     private ObservableList<OrderVO> orderVoList;
-    private OrderBLService_Stub orderBLServiceStub;
+    private OrderBLService orderBLService;
 
     public void launch(Pane mainPane) {
         this.mainPane = mainPane;
-        orderBLServiceStub = new OrderBLService_Stub();
         alertController = new AlertController();
+        initService();
         initBox();
         initDatePicker();
         initTable();
+    }
+
+    private void initService() {
+        try {
+            orderBLService = new OrderBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initDatePicker() {
@@ -73,7 +84,7 @@ public class OrderListPaneController {
             exeDatePicker.setDayCellFactory(new CancelDateBefore(exeDatePicker, createDatePicker.getValue()));
         });
         exeDatePicker.setOnAction(event -> {
-            if(createDatePicker.getValue() !=null){
+            if (createDatePicker.getValue() != null) {
                 //TODO 按时间区间筛选订单
             }
         });
@@ -92,7 +103,6 @@ public class OrderListPaneController {
         userCol.setCellValueFactory(new PropertyValueFactory<>("username"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("actualPrice"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
-
         checkInTimeCol.setCellValueFactory(new PropertyValueFactory<>("checkinTime"));
         //操作列添加按钮
         opCol.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
@@ -106,7 +116,7 @@ public class OrderListPaneController {
         orderTable.setItems(orderVoList);
 
         final TableColumn[] columns = {idCol, userCol, checkInTimeCol, priceCol, typeCol, opCol};
-        orderTable.getColumns().addListener(new DisableColumnChangeListener(orderTable,columns));
+        orderTable.getColumns().addListener(new DisableColumnChangeListener(orderTable, columns));
     }
 
 
@@ -116,73 +126,37 @@ public class OrderListPaneController {
     private void addBoxListener() {
         orderTypeBox.getSelectionModel().selectedItemProperty().addListener(
                 (o, oldValue, newValue) -> {
-                    switch ((String) newValue) {
-                        case "所有订单":
-                            orderTable.setItems(orderVoList);
-                            break;
-                        case "未执行订单":
-                            showOrderList(OrderType.Unexecuted);
-                            break;
-                        case "已执行订单":
-                            showOrderList(OrderType.Executed);
-                            break;
-                        case "异常订单":
-                            showOrderList(OrderType.Abnormal);
-                            break;
+                    try {
+                        switch ((String) newValue) {
+                            case "所有订单":
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewFullHotelOrderList(522000)));
+                                break;
+                            case "未执行订单":
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeHotelOrderList(522000, OrderType.Unexecuted)));
+                                break;
+                            case "已执行订单":
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeHotelOrderList(522000, OrderType.Executed)));
+                                break;
+                            case "异常订单":
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeHotelOrderList(522000, OrderType.Abnormal)));
+                                break;
+                            case "撤销订单":
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeHotelOrderList(522000, OrderType.Canceled)));
+                                break;
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
                     }
                 });
     }
 
     private ObservableList<OrderVO> getOrderVoList() {
-//        for (int i = 0; i< 30 ; i++) {
-//
-//            list.add(new OrderVO("12345678912345678", 123456, "user1", OrderType.Abnormal, "如家", null, "A110", 2, false, null, null, null, null));
-//        }
-////      this.generateTime = generateTime;
-//        this.expectedCheckinTime = expectedCheckinTime;
-//        this.checkinTime = checkinTime;
-//        this.expectedLeaveTime = expectedLeaveTime;
-//        this.leaveTime = leaveTime;
-//        this.lastExecuteTime = lastExecuteTime;
-//        this.executeTime = executeTime;
-//        this.cancelTime = cancelTime;
-//        OrderTimeVO orderTimeVO1 = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 11, 20, 00), null, null,
-//                null, LocalDateTime.of(2016, 11, 12, 21, 00), null, null);
-//        list.add(new OrderVO("12345678912345678", 123456, "user1", OrderType.Abnormal, "如家", null, "A110 A250",
-//                2, false, null, orderTimeVO1, orderPriceVO, null));
-//
-//        OrderTimeVO orderTimeVO2 = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 12, 20, 00), LocalDateTime.of(2016, 11, 12, 20, 30), LocalDateTime.of(2016, 11, 14, 20, 00),
-//                LocalDateTime.of(2016, 11, 14, 21, 00), LocalDateTime.of(2016, 11, 12, 21, 00), LocalDateTime.of(2016, 11, 12, 20, 30), null);
-//        list.add(new OrderVO("12345678912345679", 123456, "user2", OrderType.Executed, "金陵", null, "A110 A250",
-//                2, false, null, orderTimeVO2, orderPriceVO, null));
-//
-//        OrderTimeVO orderTimeVO3 = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 11, 20, 00), null, null,
-//                null, LocalDateTime.of(2016, 11, 12, 21, 00), null, null);
-//        list.add(new OrderVO("12345678910000000", 123456, "user3", OrderType.Unexecuted, "七天", null, "A110 A250",
-//                2, false, null, orderTimeVO3, orderPriceVO, null));
-//        for (int i = 0; i < 15; i++){
-//            list.add(new OrderVO("12345678910000000", 123456, "user3", OrderType.Unexecuted, "七天", null, "A110 A250",
-//                    2, false, null, orderTimeVO3, orderPriceVO, null));
-//        }
-
-
-            return FXCollections.observableArrayList(orderBLServiceStub.viewFullHotelOrderList(123456));
-    }
-
-
-    /**
-     * 根据传入的订单状态显示相应的订单列表
-     *
-     * @param orderType 订单状态
-     */
-    private void showOrderList(OrderType orderType) {
-        ObservableList<OrderVO> list = FXCollections.observableArrayList();
-        for (OrderVO OrderVO : orderVoList) {
-            if (OrderVO.orderType == orderType) {
-                list.add(OrderVO);
-            }
+        ObservableList<OrderVO> list = null;
+        try {
+            list = FXCollections.observableArrayList(orderBLService.viewFullHotelOrderList(522000));
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
-        orderTable.setItems(list);
-        orderTable.refresh();
+        return list;
     }
 }

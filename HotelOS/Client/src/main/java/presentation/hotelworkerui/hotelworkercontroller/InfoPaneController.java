@@ -52,8 +52,10 @@ public class InfoPaneController {
     public void launch(Pane mainPane) {
         this.mainPane = mainPane;
 
-        hotelBLService = new HotelBlServiceImpl();
+
         alertController = new AlertController();
+        //初始化接口
+        initService();
         //初始化数据
         initData();
         //显示查看信息界面
@@ -61,6 +63,14 @@ public class InfoPaneController {
 
         cityBox.getItems().addAll("南京","苏州","无锡");
         tradeAreaBox.getItems().addAll("仙林商圈","新街口商圈");
+    }
+
+    private void initService() {
+        try {
+            hotelBLService = new HotelBlServiceImpl();
+        } catch (RemoteException e) {
+            alertController.showNetConnectAlert();
+        }
     }
 
     private void initData() {
@@ -77,8 +87,7 @@ public class InfoPaneController {
             simpleIntroLabel.setText(hotelVO.description);
             hotelServiceLabel.setText(hotelVO.service);
         } catch (RemoteException e) {
-            //TODO
-            System.out.println("6662");
+            alertController.showNetConnectAlert();
         }
     }
 

@@ -71,7 +71,7 @@ public class UserSearchHotelController {
         this.stage = primaryStage;
         this.mainPane = mainPane;
 
-        hotelBlService = new HotelBlServiceImpl();
+//        hotelBlService = new HotelBlServiceImpl();
 
         cityComBox.getItems().add("南京市");
         tradingAreaCombox.getItems().add("新街口");

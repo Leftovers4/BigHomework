@@ -35,7 +35,7 @@ public class RegisteredHotelController {
     public void launch(Stage primaryStage, Pane pane) {
         this.stage = primaryStage;
         this.mainPane = pane;
-        hotelBlService = new HotelBlServiceImpl();
+//        hotelBlService = new HotelBlServiceImpl();
 
         initialData();
     }

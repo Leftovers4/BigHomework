@@ -1,5 +1,7 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
+import bl.hotelbl.HotelBLService;
+import bl.hotelbl.impl.HotelBlServiceImpl;
 import blservice_stub.HotelBLService_Stub;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +17,7 @@ import util.RoomType;
 import vo.hotel.RoomVO;
 import vo.hotel.ViewVOHelper;
 
+import java.rmi.RemoteException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,7 +50,7 @@ public class RegisterRoomPaneController {
 
     private Stage stage;
     private ObservableList<RoomVO> roomVoList;
-    private HotelBLService_Stub hotelBLServiceStub;
+    private HotelBLService hotelBLService;
     private RoomListButtonCell roomListButtonCell;
 
     //提示框控制器
@@ -58,9 +61,18 @@ public class RegisterRoomPaneController {
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
-        hotelBLServiceStub = new HotelBLService_Stub();
         alertController = new AlertController();
+
+        initService();
         initData();
+    }
+
+    private void initService() {
+        try {
+            hotelBLService = new HotelBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initData() {
@@ -80,7 +92,12 @@ public class RegisterRoomPaneController {
     }
 
     private ObservableList getRoomVoList(){
-        ObservableList<RoomVO> list = FXCollections.observableArrayList(hotelBLServiceStub.findRoomsByHotelID(123456));
+        ObservableList<RoomVO> list = null;
+        try {
+            list = FXCollections.observableArrayList(hotelBLService.viewAllHotelRooms(522000));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         return list;
     }
 
@@ -110,7 +127,8 @@ public class RegisterRoomPaneController {
                         //添加客房
                         RoomVO roomVO = new ViewVOHelper().create(123456,RoomType.Single,roomAmount,roomPrice);
                         roomTable.getItems().add(roomVO);
-                        hotelBLServiceStub.addRoom(roomVO);
+                        //Todo
+//                        hotelBLServiceStub.addRoom(roomVO);
                     }else {
                         //修改客房
                         roomTable.setDisable(false);
