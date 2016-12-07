@@ -11,7 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import presentation.util.CreditTabelButtonCell;
+import presentation.util.buttoncell.CreditTabelButtonCell;
 import vo.user.CreditRecordVO;
 
 /**

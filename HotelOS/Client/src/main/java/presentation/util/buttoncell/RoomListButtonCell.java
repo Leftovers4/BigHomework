@@ -1,4 +1,4 @@
-package presentation.util;
+package presentation.util.buttoncell;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import presentation.hotelworkerui.hotelworkercontroller.RegisterRoomPaneController;
+import presentation.util.buttoncell.HotelListButtonCell;
 import vo.hotel.RoomVO;
 
 /**

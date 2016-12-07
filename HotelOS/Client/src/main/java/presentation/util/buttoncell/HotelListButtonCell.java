@@ -1,4 +1,4 @@
-package presentation.util;
+package presentation.util.buttoncell;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,8 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import presentation.webmarketerui.webmarketerscene.AppealOrderPane;
-import presentation.webmarketerui.webmarketerscene.OrderDetailPane;
+import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
+import presentation.hotelworkerui.hotelworkerscene.UpdateOrderInfoPane;
 import util.OrderType;
 import vo.order.OrderVO;
 
@@ -18,37 +18,37 @@ import vo.order.OrderVO;
  * Created by Hitiger on 2016/11/30.
  * Description :
  */
-public class WebMarketListButtonCell extends TableCell<OrderVO, Boolean> {
+public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
     final private HBox btnBox = new HBox();
     final private Button detailButton = new Button();
-    final private Button appealButton = new Button();
+    final private Button checkInButton = new Button();
     private TableView tableView;
 
-    public WebMarketListButtonCell(final Pane mainPane, final TableView tableView) {
+    public HotelListButtonCell(final Pane mainPane, final TableView tableView) {
         this.tableView = tableView;
 
-        this.getStylesheets().add(WebMarketListButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
-        Image detailImage = new Image("/img/webmarketer/checkorderdetail.png");
+        this.getStylesheets().add(HotelListButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
+        Image detailImage = new Image("/img/hotelworker/checkorderdetail.png");
         detailButton.setGraphic(new ImageView(detailImage));
         detailButton.getStyleClass().add("TableButtonCell");
 
-        Image appealImage = new Image("/img/webmarketer/appealbutton.png");
-        appealButton.setGraphic(new ImageView(appealImage));
-        appealButton.setId("appealButton");
-        appealButton.getStyleClass().add("TableButtonCell");
+        Image checkInImage = new Image("/img/hotelworker/checkin.png");
+        checkInButton.setGraphic(new ImageView(checkInImage));
+        checkInButton.setId("checkInButton");
+        checkInButton.getStyleClass().add("TableButtonCell");
 
         detailButton.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
             OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailPane(mainPane,orderVO));
+            mainPane.getChildren().add(new OrderDetailPane(mainPane, false,true,orderVO));
         });
 
-        appealButton.setOnAction(event -> {
+        checkInButton.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
             OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new AppealOrderPane(mainPane,orderVO));
+            mainPane.getChildren().add(new UpdateOrderInfoPane(mainPane, true, true, orderVO));
         });
 
         btnBox.setSpacing(10);
@@ -64,10 +64,10 @@ public class WebMarketListButtonCell extends TableCell<OrderVO, Boolean> {
             setText(null);
         } else {
             btnBox.getChildren().clear();
-            if(((OrderVO)tableView.getItems().get(getTableRow().getIndex())).orderType == OrderType.Abnormal){
-                btnBox.getChildren().addAll(detailButton, appealButton);
-            }else {
+            if(((OrderVO)tableView.getItems().get(getTableRow().getIndex())).orderType == OrderType.Executed){
                 btnBox.getChildren().add(detailButton);
+            }else {
+                btnBox.getChildren().addAll(detailButton, checkInButton);
             }
             setGraphic(btnBox);
             setText(null);

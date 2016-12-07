@@ -4,9 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import presentation.util.AlertController;
+import presentation.util.alert.AlertController;
 import presentation.webmarketerui.webmarketerscene.OrderListPane;
-import util.OrderType;
 import vo.order.OrderVO;
 
 /**

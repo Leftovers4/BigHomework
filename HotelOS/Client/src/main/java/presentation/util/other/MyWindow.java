@@ -1,6 +1,5 @@
-package presentation.util;
+package presentation.util.other;
 
-import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;

@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.Pane;
-import presentation.util.AlertController;
+import presentation.util.alert.AlertController;
 import vo.order.OrderVO;
 
 /**

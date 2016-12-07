@@ -6,8 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import presentation.util.AlertController;
-import presentation.util.MySlider;
+import presentation.util.alert.AlertController;
+import presentation.util.other.MySlider;
 
 import java.util.ArrayList;
 import java.util.Arrays;

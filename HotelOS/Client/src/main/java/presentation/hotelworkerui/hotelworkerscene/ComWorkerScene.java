@@ -5,7 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkercontroller.ComWorkerSceneController;
-import presentation.util.MyWindow;
+import presentation.util.other.MyWindow;
 
 import java.io.IOException;
 

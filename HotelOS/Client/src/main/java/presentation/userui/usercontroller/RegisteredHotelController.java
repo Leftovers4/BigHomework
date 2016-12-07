@@ -11,7 +11,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import presentation.util.RegisteredHotelListButtonCell;
+import presentation.util.buttoncell.RegisteredHotelListButtonCell;
 import vo.hotel.HotelVO;
 
 import java.rmi.RemoteException;

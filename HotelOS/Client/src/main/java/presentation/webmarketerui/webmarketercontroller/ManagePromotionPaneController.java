@@ -10,8 +10,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import presentation.util.AlertController;
-import presentation.util.MySlider;
+import presentation.util.alert.AlertController;
+import presentation.util.other.MySlider;
 
 /**
  * Created by Hitiger on 2016/11/28.

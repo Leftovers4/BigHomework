@@ -11,7 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.userui.userscene.OrderDetailUserPane;
-import presentation.util.UserHotelListButtonCell;
+import presentation.util.buttoncell.UserHotelListButtonCell;
 
 /**
  * Created by wyj on 2016/11/19.

@@ -4,8 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import presentation.hotelworkerui.hotelworkercontroller.ComWorkerSceneController;
-import presentation.util.MyWindow;
+import presentation.util.other.MyWindow;
 import presentation.webmarketerui.webmarketercontroller.ComMarketerSceneController;
 
 import java.io.IOException;

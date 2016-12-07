@@ -1,8 +1,6 @@
 package presentation.userui.usercontroller;
 
 import bl.orderbl.impl.OrderBlServiceImpl;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,7 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.userui.userscene.CancelOrderPane;
-import presentation.util.UserOrderListButtonCell;
+import presentation.util.buttoncell.UserOrderListButtonCell;
 
 /**
  * Created by wyj on 2016/11/22.

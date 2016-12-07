@@ -1,4 +1,4 @@
-package presentation.util;
+package presentation.util.other;
 
 import javafx.collections.ListChangeListener;
 import javafx.scene.control.TableColumn;
