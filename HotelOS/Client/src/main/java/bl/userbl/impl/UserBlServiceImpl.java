@@ -43,6 +43,7 @@ public class UserBlServiceImpl implements UserBLService {
 
         userPO.setUsername(username);
         userPO.setPassword(password);
+        userPO.getMemberPO().setMemberType(MemberType.None);
 
         return userDAO.insert(userPO);
     }
@@ -87,12 +88,29 @@ public class UserBlServiceImpl implements UserBLService {
 
     @Override
     public ResultMessage updateBasicUserInfo(UserVO userVO) throws RemoteException {
-        //新的用户名跟数据库冲突的情况
-        if (userDAO.findByUsername(userVO.newUsername) != null)
-            return ResultMessage.DataExisted;
-
         UserPO userPO = userDAO.findByUsername(userVO.username);
 
+        //客户不存在的情况
+        if (userPO == null)
+            return ResultMessage.UsernameNotExisted;
+
+        //客户存在但是不改用户名的情况
+        if (userVO.username.equals(userVO.newUsername)){
+            userPO.setUsername(userVO.newUsername);
+            userPO.setName(userVO.name);
+            userPO.setGender(userVO.gender);
+            userPO.getMemberPO().setBirthday(userVO.memberVO.birthday);
+            userPO.setPhone(userVO.phone);
+
+            return userDAO.update(userPO);
+        }
+
+        //客户存在但是改了用户名的情况
+            //新的用户名跟数据库冲突的情况
+        if (!userVO.username.equals(userVO.newUsername) && userDAO.findByUsername(userVO.newUsername) != null)
+            return ResultMessage.DataExisted;
+
+            //新的用户名不跟数据库冲突的情况
         userPO.setUsername(userVO.newUsername);
         userPO.setName(userVO.name);
         userPO.setGender(userVO.gender);
@@ -100,12 +118,18 @@ public class UserBlServiceImpl implements UserBLService {
         userPO.setPhone(userVO.phone);
 
         return userDAO.update(userPO);
+
     }
 
     @Override
     public ResultMessage registerNormalMember(UserVO userVO) throws RemoteException {
         UserPO userPO = userDAO.findByUsername(userVO.username);
 
+        //用户不存在的情况
+        if (userPO == null)
+            return ResultMessage.UsernameNotExisted;
+
+        //正常的情况
         userPO.getMemberPO().setMemberType(MemberType.NormalMember);
         userPO.setName(userVO.name);
         userPO.setGender(userVO.gender);

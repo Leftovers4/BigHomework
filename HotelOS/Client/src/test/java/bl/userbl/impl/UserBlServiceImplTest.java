@@ -27,12 +27,12 @@ public class UserBlServiceImplTest {
 
     @Test
     public void registerUser() throws Exception {
-        ResultMessage resultMessage = tested.registerUser("lisii", "8520");
+        ResultMessage resultMessage = tested.registerUser("lisi", "8520");
     }
 
     @Test
     public void login() throws Exception {
-        ResultMessage resultMessage = tested.login("lisiii", "852");
+        ResultMessage resultMessage = tested.login("lisiiii", "8520");
     }
 
     @Test
@@ -55,7 +55,7 @@ public class UserBlServiceImplTest {
         UserVO userVO = new UserVO();
 
         userVO.username = "lisiiii"; //提供唯一标识
-        userVO.newUsername = "lisi";
+        userVO.newUsername = "lisii";
         userVO.name = "张张";
         userVO.gender = true;
         userVO.memberVO.birthday = LocalDate.now();
@@ -68,7 +68,7 @@ public class UserBlServiceImplTest {
     public void registerNormalMember() throws Exception {
         UserVO userVO = new UserVO();
 
-        userVO.username = "lisii"; //提供唯一标识
+        userVO.username = "lisiiii"; //提供唯一标识
         userVO.name = "张";
         userVO.gender = true;
         userVO.memberVO.birthday = LocalDate.now();
