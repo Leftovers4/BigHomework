@@ -27,12 +27,12 @@ public class UserBlServiceImplTest {
 
     @Test
     public void registerUser() throws Exception {
-        ResultMessage resultMessage = tested.registerUser("lisi", "8520");
+        ResultMessage resultMessage = tested.registerUser("lisii", "8520");
     }
 
     @Test
     public void login() throws Exception {
-        ResultMessage resultMessage = tested.login("lisiiii", "8520");
+        ResultMessage resultMessage = tested.login("lisii", "852");
     }
 
     @Test
@@ -42,20 +42,19 @@ public class UserBlServiceImplTest {
 
     @Test
     public void getCreditRecordsByUsername() throws Exception {
-        List<CreditRecordVO> creditRecordVOList = tested.getCreditRecordsByUsername("lisiiii");
+        List<CreditRecordVO> creditRecordVOList = tested.getCreditRecordsByUsername("lisii");
     }
 
     @Test
     public void viewBasicUserInfo() throws Exception {
-        UserVO userVO = tested.viewBasicUserInfo("lisiiii");
+        UserVO userVO = tested.viewBasicUserInfo("lisii");
     }
 
     @Test
     public void updateBasicUserInfo() throws Exception {
         UserVO userVO = new UserVO();
 
-        userVO.username = "lisiiii"; //提供唯一标识
-        userVO.newUsername = "lisii";
+        userVO.username = "lisii"; //提供唯一标识
         userVO.name = "张张";
         userVO.gender = true;
         userVO.memberVO.birthday = LocalDate.now();
@@ -68,7 +67,7 @@ public class UserBlServiceImplTest {
     public void registerNormalMember() throws Exception {
         UserVO userVO = new UserVO();
 
-        userVO.username = "lisiiii"; //提供唯一标识
+        userVO.username = "lisii"; //提供唯一标识
         userVO.name = "张";
         userVO.gender = true;
         userVO.memberVO.birthday = LocalDate.now();
@@ -80,11 +79,20 @@ public class UserBlServiceImplTest {
     @Test
     public void registerEnterpriseMember() throws Exception {
         UserVO userVO = new UserVO();
+
+        userVO.username = "lisiiii"; //提供唯一标识
+        userVO.name = "张";
+        userVO.gender = true;
+        userVO.phone = "123456789";
+        userVO.memberVO.birthday = LocalDate.now();
+        userVO.memberVO.enterprise = "华为";
+
+        ResultMessage resultMessage = tested.registerEnterpriseMember(userVO);
     }
 
     @Test
     public void topup() throws Exception {
-        ResultMessage resultMessage = tested.topup("lisiiii", 50);
+        ResultMessage resultMessage = tested.topup("lisii", 50);
     }
 
     @Test

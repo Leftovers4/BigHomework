@@ -96,9 +96,11 @@ public interface UserBLService {
     ResultMessage topup(String username, double amount) throws RemoteException;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
-
-    /*
+    /**
      * 网站管理人员删除客户
+     *
+     * @param username 用户名
+     * @return 数据库返回的result message
      */
     ResultMessage deleteUser(String username) throws RemoteException;
 

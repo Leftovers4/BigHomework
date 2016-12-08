@@ -1,8 +1,6 @@
 package vo.user;
 
-import bl.userbl.impl.CreditRecord;
 import bl.userbl.impl.CreditRecordList;
-import bl.userbl.impl.User;
 import po.user.CreditRecordPO;
 import po.user.UserPO;
 
