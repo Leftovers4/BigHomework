@@ -8,8 +8,11 @@ import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
 import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
 import presentation.hotelworkerui.hotelworkerscene.UserReviewPane;
 import presentation.util.alert.AlertController;
+import util.DateTimeFormat;
 import util.OrderType;
 import vo.order.OrderVO;
+
+import java.time.format.DateTimeFormatter;
 
 /**
  * Created by Hitiger on 2016/11/20.
@@ -20,13 +23,15 @@ public class OrderDetailPaneController {
     //订单号、状态、价格
     @FXML private Label orderIDLabel;
     @FXML private Label orderTypeLabel;
-    @FXML private Label orderPriceLabel;
+    @FXML private Label orderOriPriceLabel;
+    @FXML private Label orderProLabel;
+    @FXML private Label orderActPriceLabel;
 
     //生成时间
     @FXML private Label generateTimeLabel;
 
     //最晚执行时间
-    @FXML private Label exeLeastTimeLabel;
+    @FXML private Label lastExecuteTimeLabel;
 
     //实际离开时间
     @FXML private Label actLeaveTimeLabel;
@@ -47,7 +52,6 @@ public class OrderDetailPaneController {
 
     //查看客户评价
     @FXML private Button showReviewBtn;
-    @FXML private Button backBtn;
 
 
     private Pane mainPane;
@@ -60,31 +64,40 @@ public class OrderDetailPaneController {
 
     public void launch(Pane mainPane,Boolean isCheckIn,Boolean isFromList,OrderVO orderVO) {
         this.mainPane = mainPane;
-        this.orderVO = orderVO;
         this.isFromList = isFromList;
         this.isCheckIn = isCheckIn;
+        this.orderVO = orderVO;
         alertController = new AlertController();
 
         //初始化便签
         initOrderLabel(orderVO);
+        initReviewBtn(orderVO.orderType);
     }
 
     private void initOrderLabel(OrderVO orderVO) {
 
         orderIDLabel.setText(orderVO.orderID);
         orderTypeLabel.setText(orderVO.orderType.toString());
-        orderPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
+        orderOriPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.originPrice));
+//      TODO  orderProLabel.setText();
+        orderActPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
 
-        generateTimeLabel.setText(orderVO.orderTimeVO.generateTime.toString());
-        exeLeastTimeLabel.setText(orderVO.orderTimeVO.lastExecuteTime.toString());
-        checkInTimeLabel.setText(orderVO.orderTimeVO.checkinTime == null ? "尚未入住" : orderVO.orderTimeVO.checkinTime.toString());
-        expLeaveTimeLabel.setText(orderVO.orderTimeVO.expectedLeaveTime == null ? "尚未入住" : orderVO.orderTimeVO.expectedLeaveTime.toString());
-        actLeaveTimeLabel.setText(orderVO.orderTimeVO.leaveTime == null ? (orderVO.orderType == OrderType.Executed ? "尚未退房" : "尚未入住") : orderVO.orderTimeVO.leaveTime.toString());
+        generateTimeLabel.setText(orderVO.orderTimeVO.generateTime.format(DateTimeFormat.dateHourFormat));
+        lastExecuteTimeLabel.setText(orderVO.orderTimeVO.lastExecuteTime.format(DateTimeFormat.dateHourFormat));
+        checkInTimeLabel.setText(orderVO.orderTimeVO.checkinTime == null ? "尚未入住" : orderVO.orderTimeVO.checkinTime.format(DateTimeFormat.dateHourFormat));
+        expLeaveTimeLabel.setText(orderVO.orderTimeVO.expectedLeaveTime == null ? "尚未入住" : orderVO.orderTimeVO.expectedLeaveTime.format(DateTimeFormat.dateHourFormat));
+        actLeaveTimeLabel.setText(orderVO.orderTimeVO.leaveTime == null ? (orderVO.orderType == OrderType.Executed ? "尚未退房" : "尚未入住") : orderVO.orderTimeVO.leaveTime.format(DateTimeFormat.dateHourFormat));
 
         userNameLabel.setText(orderVO.username);
-        peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
         withChildrenLabel.setText(orderVO.withChildren ? "有" : "无");
+        peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
+        roomTypeLabel.setText(String.valueOf(orderVO.roomType));
+        roomAmountLabel.setText(String.valueOf(orderVO.roomAmount));
         roomIDLabel.setText(orderVO.roomNumber);
+    }
+
+    private void initReviewBtn(OrderType orderType) {
+        if(orderType != OrderType.Executed) showReviewBtn.setVisible(false);
     }
 
     @FXML

@@ -22,6 +22,7 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
     final private HBox btnBox = new HBox();
     final private Button detailButton = new Button();
     final private Button checkInButton = new Button();
+    final private Button checkOutButton = new Button();
     private TableView tableView;
 
     public HotelListButtonCell(final Pane mainPane, final TableView tableView) {
@@ -36,18 +37,29 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
         checkInButton.setGraphic(new ImageView(checkInImage));
         checkInButton.getStyleClass().add("TableButtonCell");
 
+        Image checkOutImage = new Image("/img/hotelworker/checkout.png");
+        checkOutButton.setGraphic(new ImageView(checkOutImage));
+        checkOutButton.getStyleClass().add("TableButtonCell");
+
         detailButton.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
             OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
-            mainPane.getChildren().remove(0);
+            mainPane.getChildren().clear();
             mainPane.getChildren().add(new OrderDetailPane(mainPane, false,true,orderVO));
         });
 
         checkInButton.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
             OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
-            mainPane.getChildren().remove(0);
+            mainPane.getChildren().clear();
             mainPane.getChildren().add(new UpdateOrderInfoPane(mainPane, true, true, orderVO));
+        });
+
+        checkOutButton.setOnAction(event -> {
+            int selectedIndex = getTableRow().getIndex();
+            OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(new UpdateOrderInfoPane(mainPane, false, true, orderVO));
         });
 
         btnBox.setSpacing(10);
@@ -62,10 +74,16 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
             setText(null);
         } else {
             btnBox.getChildren().clear();
-            if(((OrderVO)tableView.getItems().get(getTableRow().getIndex())).orderType == OrderType.Executed){
-                btnBox.setAlignment(Pos.CENTER_LEFT);
-                btnBox.setPadding(new Insets(0,0,0,13));
-                btnBox.getChildren().add(detailButton);
+            OrderVO temp = (OrderVO)tableView.getItems().get(getTableRow().getIndex());
+            if(temp.orderType == OrderType.Executed){
+                if(temp.orderTimeVO.leaveTime == null){
+                    btnBox.setAlignment(Pos.CENTER_LEFT);
+                    btnBox.setPadding(new Insets(0,0,0,13));
+                    btnBox.getChildren().add(detailButton);
+                }else {
+                    btnBox.setPadding(new Insets(0,5,0,20));
+                    btnBox.getChildren().addAll(detailButton, checkOutButton);
+                }
             }else {
                 btnBox.setPadding(new Insets(0,5,0,20));
                 btnBox.getChildren().addAll(detailButton, checkInButton);
