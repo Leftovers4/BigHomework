@@ -21,6 +21,7 @@ import static presentation.util.other.MyTimeLabel.EnableShowTime;
 public class ComUserSceneController {
 
     private Stage stage;
+    private String userID;
 
     @FXML private Pane mainPane;
     @FXML private Button indexBtn;
@@ -40,14 +41,22 @@ public class ComUserSceneController {
 
     LeftBarEffect leftBarEffect = new LeftBarEffect();
 
-    public void launch(Stage primaryStage){
-        primaryStage.setX(400);
-        primaryStage.setY(200);
-        mainPane.getChildren().add(new InfoPane(primaryStage, mainPane, topbarphoto));
+    public void launch(Stage primaryStage, String username){
+
         this.stage = primaryStage;
+        this.userID = username;
 
         leftBarBtnArr = new ArrayList<>(Arrays.asList(userInfoBtn, orderListBtn, searchHotelBtn,
                 hotelRegisteredBtn, indexBtn));
+
+        currentBtn = userInfoBtn;
+        userInfoBtn.setStyle("-fx-background-color: #0F81C7");
+        primaryStage.setX(400);
+        primaryStage.setY(200);
+        mainPane.getChildren().add(new InfoPane(primaryStage, mainPane, topbarphoto, userID, leftBarBtnArr));
+
+
+
 
         EnableShowTime(timeLabel);
     }
@@ -92,7 +101,7 @@ public class ComUserSceneController {
     private void userInfo() {
         changeSliderPos(260);
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto));
+        mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto, userID, leftBarBtnArr));
         leftBarBtnEffect(userInfoBtn);
         currentBtn = userInfoBtn;
     }
@@ -171,4 +180,3 @@ public class ComUserSceneController {
         mouseOutEffect(hotelRegisteredBtn);
     }
 }
-

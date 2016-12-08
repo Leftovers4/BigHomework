@@ -1,6 +1,6 @@
 package presentation.userui.usercontroller;
 
-import blservice_stub.UserBLService_Stub;
+import bl.userbl.impl.UserBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -11,13 +11,19 @@ import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import presentation.userui.userscene.CreditRecordPane;
+import presentation.userui.userscene.InfoPane;
 import presentation.userui.userscene.RegisterCommonVIPPane;
 import presentation.userui.userscene.RegisterCompanyVIPPane;
 import presentation.util.alert.InputWrongAlert;
+import util.MemberType;
+import util.ResultMessage;
 import vo.user.UserVO;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+import java.rmi.RemoteException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import static presentation.util.other.ChangePhoto.updatePhoto;
 
@@ -29,6 +35,7 @@ public class InfoPaneController {
 
     private Stage stage;
     private Pane mainPane;
+    private String userID;
 
     @FXML private TextField userIdField;
     @FXML private TextField userNameField;
@@ -39,6 +46,9 @@ public class InfoPaneController {
     @FXML private Button saveInfo;
     @FXML private Button cleanAllBtn;
     @FXML private Hyperlink checkcreditentrance;
+
+    @FXML private Label vipLevel;
+    @FXML private Label vipCompany;
 
     @FXML private ImageView userPhoto;
 
@@ -51,32 +61,130 @@ public class InfoPaneController {
     @FXML private Button registerCompanyvipBtn;
     @FXML private Button editInfoBtn;
 
-    private UserBLService_Stub userBLService_stub;
+    private UserBlServiceImpl userBlService;
+    private ArrayList<Button> leftBarBtnArr;
 
     private ImageView topbarphoto;
 
-    public void launch(Stage primaryStage, Pane mainPane, ImageView topbarphoto) {
+    public void launch(Stage primaryStage, Pane mainPane, ImageView topbarphoto, String username, ArrayList<Button> leftBarBtnArr) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         this.topbarphoto = topbarphoto;
+        this.userID = username;
+        this.leftBarBtnArr = leftBarBtnArr;
 
-        userBLService_stub = new UserBLService_Stub();
+        try {
+            userBlService = new UserBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
         initialData();
     }
 
     private void initialData() {
-        UserVO userVO = userBLService_stub.getBasicUserInfo("lisi");
 
-        userIdLabel.setText(userVO.username);
-        usernameLabel.setText(userVO.name);
-        if (userVO.gender) {
-            userSex.setText("男");
+        if (firstToLogin(userID)) {
+            //新注册后第一次登录填写个人信息
+            for (int i = 0; i<leftBarBtnArr.size(); i++) {
+                if (i != 0) {
+                    leftBarBtnArr.get(i).setDisable(true);
+                }
+            }
+            showmodule(true);
+
+            userIdField.setText(userID);
+            userNameField.setText(null);
+            sexMan.setSelected(false);
+            sexWoman.setSelected(false);
+            phoneField.setText(null);
         } else {
-            userSex.setText("女");
+            //老用户信息显示
+            try {
+                UserVO userVO = userBlService.viewBasicUserInfo(userID);
+
+                userIdLabel.setText(userVO.username);
+                usernameLabel.setText(userVO.name);
+                if (userVO.gender) {
+                    userSex.setText("男");
+                } else {
+                    userSex.setText("女");
+                }
+                phone.setText(userVO.phone);
+
+                //会员信息显示
+                MemberType memberType = userVO.memberVO.memberType;
+                System.out.println(memberType==null);
+
+                switch (memberType) {
+                    case None:
+                        vipLevel.setVisible(false);
+                        vipCompany.setVisible(false);
+                        registerCommonvipBtn.setVisible(false);
+                        registerCompanyvipBtn.setVisible(false);
+                    case NormalMember:
+                        vipLevel.setVisible(true);
+                        registerCommonvipBtn.setVisible(false);
+                        vipLevel.setText(String.valueOf(userVO.memberVO.level));
+                        registerCompanyvipBtn.setVisible(true);
+                        vipCompany.setVisible(false);
+                    case EnterpriseMember:
+                        vipCompany.setVisible(true);
+                        registerCompanyvipBtn.setVisible(false);
+                        vipCompany.setText(userVO.memberVO.enterprise);
+                        registerCommonvipBtn.setVisible(true);
+                    case Both:
+                        vipCompany.setVisible(true);
+                        vipCompany.setText(userVO.memberVO.enterprise);
+                        vipLevel.setVisible(true);
+                        vipLevel.setText(String.valueOf(userVO.memberVO.level));
+                        registerCommonvipBtn.setVisible(false);
+                        registerCompanyvipBtn.setVisible(false);
+                }
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
-//        birthDate.setText(userVO.memberVO.birthday.toString());
-        phone.setText(userVO.phone);
+
+    }
+
+    /**
+     * 判断用户信息是否已填写
+     * 若未填写，则直接进入填写个人基本信息界面
+     * @param username
+     * @return
+     */
+    private boolean firstToLogin(String username) {
+        boolean isNew = false;
+        try {
+            UserVO userVO = userBlService.viewBasicUserInfo(username);
+
+            if (userVO.name.equals("")) {
+                isNew = true;
+            } else {
+                isNew = false;
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        return isNew;
     }
 
 
@@ -116,15 +224,12 @@ public class InfoPaneController {
         userNameField.setText(usernameLabel.getText());
         if (userSex.getText().equals("男")) {
             sexMan.setSelected(true);
-            sexWoman.setSelected(false);
+//            sexWoman.setSelected(false);
         } else if (userSex.getText().equals("女")) {
             sexWoman.setSelected(true);
-            sexMan.setSelected(false);
-        } else {
-            sexMan.setSelected(false);
-            sexWoman.setSelected(false);
+//            sexMan.setSelected(false);
         }
-        birthPicker.setValue(LocalDate.parse(birthDate.getText().toString()));
+        birthPicker.setValue(LocalDate.parse(birthDate.getText()));
         phoneField.setText(phone.getText());
     }
 
@@ -137,26 +242,39 @@ public class InfoPaneController {
         boolean phoneisright = judgePhoneNumber(phoneField.getText());
 
         if (!isempty && phoneisright) {
-            userIdLabel.setText(userIdField.getText());
-            userIdField.clear();
-            usernameLabel.setText(userNameField.getText());
-            userNameField.clear();
-            if (sexMan.isSelected()) {
-                userSex.setText("男");
-            } else if (sexWoman.isSelected()) {
-                userSex.setText("女");
-            } else {
-                userSex.setText("保密");
+            UserVO userVO = new UserVO();
+
+            userVO.username = userID;
+            userVO.newUsername = userIdField.getText();
+            userVO.name = userNameField.getText();
+            userVO.gender = sexMan.isSelected();
+            userVO.phone = phoneField.getText();
+            userVO.memberVO.birthday = birthPicker.getValue();
+
+            try {
+                ResultMessage resultMessage = userBlService.updateBasicUserInfo(userVO);
+
+                if (resultMessage == ResultMessage.DataExisted) {
+                    System.out.println("exits");
+                } else if (resultMessage == ResultMessage.Success) {
+                    System.out.println("success");
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
             }
-            sexMan.setSelected(false);
-            sexWoman.setSelected(false);
-            birthDate.setText(birthPicker.getValue().toString());
-            birthPicker.setValue(null);
 
             phone.setText(phoneField.getText());
+            userIdField.clear();
+            userNameField.clear();
+            sexMan.setSelected(false);
+            sexWoman.setSelected(false);
+            birthPicker.setValue(null);
             phoneField.clear();
 
             showmodule(false);
+
+            mainPane.getChildren().remove(0);
+            mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto, userID, leftBarBtnArr));
         } else if (!isempty && !phoneisright) {
             new InputWrongAlert("联系方式格式错误", "格式错误").showAndWait();
         } else {
@@ -186,12 +304,12 @@ public class InfoPaneController {
      * @return
      */
     private boolean judgePhoneNumber(String str) {
+        boolean judge = true;
+
         int length = str.length();
         if (length != 11) {
-            return false;
+            judge = false;
         }
-
-        boolean judge = true;
 
         for(int i = 0; i<length; i++) {
             int temp = str.charAt(i) - '0';
@@ -278,7 +396,7 @@ public class InfoPaneController {
     @FXML
     private void registerCommonvip() {
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new RegisterCommonVIPPane(stage));
+        mainPane.getChildren().add(new RegisterCommonVIPPane(stage, userID));
     }
 
     /**
@@ -287,7 +405,7 @@ public class InfoPaneController {
     @FXML
     private void registerCompanyvip() {
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new RegisterCompanyVIPPane(stage));
+        mainPane.getChildren().add(new RegisterCompanyVIPPane(stage, userID));
     }
 
 

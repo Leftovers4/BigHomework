@@ -1,5 +1,6 @@
 package presentation.loginui.logincontroller;
 
+import bl.userbl.impl.UserBlServiceImpl;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -16,10 +17,13 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import presentation.userui.userscene.ComUserScene;
 import presentation.webmanagerui.webmanagerscene.WebmanagerComScene;
+import util.ResultMessage;
+
+import java.rmi.RemoteException;
 
 /**
  * Created by wyj on 2016/11/6.
- * 登录界面
+ * Description: 登录界面
  */
 public class LoginSceneController {
 
@@ -38,12 +42,20 @@ public class LoginSceneController {
     @FXML private ImageView passwordPic;
     @FXML private Pane movingSection;
 
+    private UserBlServiceImpl userBlService;
+
     //用于客户登录和工作人员登录界面切换
     private boolean isFromLogin = true;
 
     Stage stage;
     public void setStage(Stage stage) {
         this.stage = stage;
+
+        try {
+            userBlService = new UserBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -70,7 +82,8 @@ public class LoginSceneController {
         loginUsername.setText("");
         loginPassword.setText("");
     }
-    public void changeToLogin() {
+    @FXML
+    private void changeToLogin() {
         changeLoginAndRegister(236, changeToLogin, changeToRegister, buttonLogin, buttonRegister);
         namePic.setVisible(true);
         passwordPic.setVisible(true);
@@ -78,7 +91,8 @@ public class LoginSceneController {
         passwordLabel.setVisible(false);
         isFromLogin = true;
     }
-    public void changeToRegister() {
+    @FXML
+    private void changeToRegister() {
         changeLoginAndRegister(329, changeToRegister, changeToLogin, buttonRegister, buttonLogin);
         namePic.setVisible(false);
         passwordPic.setVisible(false);
@@ -90,7 +104,8 @@ public class LoginSceneController {
     /**
      * 客户登录注册界面切换至酒店工作人员界面特效
      */
-    public void changeToManager() {
+    @FXML
+    private void changeToManager() {
         changeToLogin.setVisible(false);
         changeToRegister.setVisible(false);
         slider.setVisible(false);
@@ -119,7 +134,8 @@ public class LoginSceneController {
     /**
      * 酒店工作人员登录界面切换至客户登陆注册界面
      */
-    public void changeToUser() {
+    @FXML
+    private void changeToUser() {
         changeToLogin.setVisible(true);
         changeToRegister.setVisible(true);
         slider.setVisible(true);
@@ -147,22 +163,66 @@ public class LoginSceneController {
     /**
      * 关闭窗口
      */
-    public void closeWindow() {
+    @FXML
+    private void closeWindow() {
         stage.close();
     }
 
     /**
      * 最小化窗口
      */
-    public void minimizeWindow() {
+    @FXML
+    private void minimizeWindow() {
         stage.setIconified(true);
     }
 
-    public void Login() {
-        stage.setScene(new ComUserScene(new Group(),stage));
+    /**
+     * 客户登录
+     */
+    @FXML
+    private void Login() {
+
+        try {
+            ResultMessage resultMessage = userBlService.login(loginUsername.getText(), loginPassword.getText());
+
+            if (resultMessage == ResultMessage.UsernameNotExisted) {
+                System.out.println("not exits");
+            } else if (resultMessage == ResultMessage.PasswordWrong) {
+                System.out.println("wrong password");
+            } else if (resultMessage == ResultMessage.Success) {
+                stage.setScene(new ComUserScene(new Group(),stage, loginUsername.getText()));
+                System.out.println("success");
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void webmanagerLogin() {
+
+    @FXML
+    private void webmanagerLogin() {
         stage.setScene(new WebmanagerComScene(new Group(), stage));
     }
+
+
+    /**
+     * 注册新用户
+     */
+    @FXML
+    private void userRegister() {
+        try {
+            ResultMessage resultMessage = userBlService.registerUser(loginUsername.getText(), loginPassword.getText());
+
+            if (resultMessage == ResultMessage.DataExisted) {
+                System.out.printf("exits");
+            }
+
+            loginUsername.setText(null);
+            loginPassword.setText(null);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

@@ -60,7 +60,7 @@ public class MemberPO implements Serializable {
 
     private void initial(){
         this.username = "";
-        this.memberType = null;
+        this.memberType = MemberType.None;
         this.level = 0;
         this.birthday = null;
         this.enterprise = "";

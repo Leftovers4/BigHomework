@@ -88,7 +88,7 @@ public class UserBlServiceImpl implements UserBLService {
     @Override
     public ResultMessage updateBasicUserInfo(UserVO userVO) throws RemoteException {
         //新的用户名跟数据库冲突的情况
-        if (userDAO.findByUsername(userVO.newUsername) != null)
+        if (!userVO.username.equals(userVO.newUsername) && userDAO.findByUsername(userVO.newUsername) != null)
             return ResultMessage.DataExisted;
 
         UserPO userPO = userDAO.findByUsername(userVO.username);
