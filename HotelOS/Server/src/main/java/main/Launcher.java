@@ -57,7 +57,7 @@ public class Launcher extends Application{
         running = true;
 
         // 启动rmi连接
-        (remoteHelper = new RemoteHelper()).run();
+        (remoteHelper = RemoteHelper.getInstance()).run();
 
         // 开启线程监控订单状态（超时自动置为异常订单）
         executorService = Executors.newSingleThreadExecutor();

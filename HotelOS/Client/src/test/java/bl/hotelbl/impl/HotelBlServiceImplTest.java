@@ -87,7 +87,6 @@ public class HotelBlServiceImplTest {
     @Test
     public void viewAllHotelRooms() throws Exception {
         List<RoomVO> roomVOList = tested.viewAllHotelRooms(145328);
-        int i = 0;
     }
 
     @Test
@@ -103,7 +102,6 @@ public class HotelBlServiceImplTest {
     @Test
     public void viewOfflineCheckInRoomAmount() throws Exception {
         int amount = tested.viewOfflineCheckInRoomAmount(145328);
-        System.out.print(amount);
     }
 
     @Test
@@ -119,7 +117,6 @@ public class HotelBlServiceImplTest {
     @Test
     public void viewOrderedHotelList() throws Exception {
         List<HotelVO> hotelVOList = tested.viewOrderedHotelList("Hiki");
-        int i = 0;
     }
 
 }
