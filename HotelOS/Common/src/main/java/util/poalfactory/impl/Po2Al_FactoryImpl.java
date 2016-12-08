@@ -105,6 +105,8 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         // 价格
         orderInfoContent.add(orderPO.getOrderPricePO().getOriginPrice());
         orderInfoContent.add(orderPO.getOrderPricePO().getActualPrice());
+        // 订单采用的促销策略类型
+        orderInfoContent.add(toString(orderPO.getPromotionType()));
         // 评价
         orderInfoContent.add(dateTimeToString(orderPO.getReviewPO().getReviewTime()));
         orderInfoContent.add(orderPO.getReviewPO().getRating());

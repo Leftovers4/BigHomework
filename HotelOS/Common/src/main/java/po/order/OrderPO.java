@@ -2,6 +2,7 @@ package po.order;
 
 import po.hotel.RoomPO;
 import util.OrderType;
+import util.PromotionType;
 import util.RoomType;
 
 import java.io.Serializable;
@@ -94,6 +95,11 @@ public class OrderPO implements Serializable {
      */
     private OrderPricePO orderPricePO;
 
+    /**
+     * 订单采用的促销策略类型
+     */
+    private PromotionType promotionType;
+
 
     /**
      * 申诉信息
@@ -105,8 +111,11 @@ public class OrderPO implements Serializable {
         initial();
     }
 
-    public OrderPO(String orderID, long hotelID, String username, OrderType orderType, String hotelName, RoomType roomType, int roomAmount, String roomNumber, int personAmount, boolean withChildren, ReviewPO reviewPO, OrderTimePO orderTimePO, OrderPricePO orderPricePO, OrderHandleAppealPO orderHandleAppealPO) {
-        initial();
+
+    /**
+     * 用于生成订单
+     */
+    public OrderPO(String orderID, long hotelID, String username, OrderType orderType, String hotelName, RoomType roomType, int roomAmount, String roomNumber, int personAmount, boolean withChildren, ReviewPO reviewPO, OrderTimePO orderTimePO, OrderPricePO orderPricePO, PromotionType promotionType, OrderHandleAppealPO orderHandleAppealPO) {
         this.orderID = orderID;
         this.hotelID = hotelID;
         this.username = username;
@@ -120,12 +129,9 @@ public class OrderPO implements Serializable {
         this.reviewPO = reviewPO;
         this.orderTimePO = orderTimePO;
         this.orderPricePO = orderPricePO;
+        this.promotionType = promotionType;
         this.orderHandleAppealPO = orderHandleAppealPO;
     }
-
-    /**
-     * 用于生成订单
-     */
 
 
     private void initial(){
@@ -142,6 +148,7 @@ public class OrderPO implements Serializable {
         this.reviewPO = new ReviewPO();
         this.orderTimePO = new OrderTimePO();
         this.orderPricePO = new OrderPricePO();
+        this.promotionType = null;
         this.orderHandleAppealPO = new OrderHandleAppealPO();
     }
 
@@ -248,6 +255,14 @@ public class OrderPO implements Serializable {
 
     public void setRoomNumber(String roomNumber) {
         this.roomNumber = roomNumber;
+    }
+
+    public PromotionType getPromotionType() {
+        return promotionType;
+    }
+
+    public void setPromotionType(PromotionType promotionType) {
+        this.promotionType = promotionType;
     }
 
     public OrderHandleAppealPO getOrderHandleAppealPO() {

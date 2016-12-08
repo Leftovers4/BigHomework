@@ -63,7 +63,7 @@ public class ALProducer {
         // "review_time", "rating", "review", "ha_time", "ha_result"
         Order = objectsToList("15165165", hotelID, username, "Abnormal", hotelName, "Single", 2, "511", 2, 0,
                                 null, datetime, datetime, datetime, datetime, datetime, datetime,
-                                100.0, 80.0, datetime, 4, "好", datetime, "All");
+                                100.0, 80.0, "BirthdayPromotion", datetime, 4, "好", datetime, "All");
         // "personnel_id", "password", "personnel_type", "name", "hotel_id"
         Personnel = objectsToList(personnelID, password, "HotelWorker", username, hotelID);
         // "promotion_id", "promotion_type", "hotel_id", "discount", "least_rooms", "begin_time", "end_time",

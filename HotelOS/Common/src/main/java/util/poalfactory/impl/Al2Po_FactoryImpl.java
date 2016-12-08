@@ -166,6 +166,8 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
         // 价格
         double originPrice = (double) orderAL.next();
         double actualPrice = (double) orderAL.next();
+        // 订单采用的促销策略类型
+        PromotionType promotionType = (PromotionType) EnumFactory.getEnum((String)orderAL.next());
         // 评价
         LocalDateTime reviewTime = timeStampToLocalDatetime((Timestamp) orderAL.next());
         int rating = (int) orderAL.next();
@@ -180,7 +182,7 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
         ReviewPO reviewPO = new ReviewPO(username, hotelID, reviewTime, rating, review);
         OrderHandleAppealPO orderHandleAppealPO = new OrderHandleAppealPO(haTime, haResult);
 
-        OrderPO orderPO = new OrderPO(orderID, hotelID, username, orderType, hotelName, roomType, roomAmount, roomNumber, personAmount, withChilren, reviewPO, orderTimePO, orderPricePO, orderHandleAppealPO);
+        OrderPO orderPO = new OrderPO(orderID, hotelID, username, orderType, hotelName, roomType, roomAmount, roomNumber, personAmount, withChilren, reviewPO, orderTimePO, orderPricePO, promotionType, orderHandleAppealPO);
 
         return orderPO;
 
