@@ -70,4 +70,23 @@ public class PromotionVO {
         }
     }
 
+    public long getPromotionID() {
+        return promotionID;
+    }
+
+    public PromotionType getPromotionType() {
+        return promotionType;
+    }
+
+    public long getHotelID() {
+        return hotelID;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public int getLeastRooms() {
+        return leastRooms;
+    }
 }

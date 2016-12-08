@@ -37,4 +37,28 @@ public class RoomVO {
      */
     public double price;
 
+    public long getRoomID() {
+        return roomID;
+    }
+
+    public long getHotelID() {
+        return hotelID;
+    }
+
+    public RoomType getRoomType() {
+        return roomType;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public int getAvailable() {
+        return available;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
 }

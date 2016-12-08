@@ -29,6 +29,18 @@ public class OrderList extends ArrayList<OrderPO>{
         return sum;
     }
 
+    public OrderList filterByHasReview(){
+        OrderList res = new OrderList(new ArrayList<>());
+
+        for (int i = 0; i < this.size(); i++) {
+            if (new Order(this.get(i)).hasReview()) {
+                res.add(this.get(i));
+            }
+        }
+
+        return res;
+    }
+
     //todo
     public int getHotelAvailabeRoomAmount(LocalDate localDate){
         return 0;

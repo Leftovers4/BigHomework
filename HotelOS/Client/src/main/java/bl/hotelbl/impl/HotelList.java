@@ -20,7 +20,7 @@ public class HotelList extends ArrayList<HotelPO>{
     }
 
     public HotelList filterByAddress(String address){
-        HotelList res = new HotelList(this);
+        HotelList res = new HotelList(new ArrayList<>());
 
         for (HotelPO hotelPO : this) {
             if (hotelPO.getAddress().equals(address)){
@@ -32,7 +32,7 @@ public class HotelList extends ArrayList<HotelPO>{
     }
 
     public HotelList filterByTradingArea(String tradingArea){
-        HotelList res = new HotelList(this);
+        HotelList res = new HotelList(new ArrayList<>());
 
         for (HotelPO hotelPO : this) {
             if (hotelPO.getTradingArea().equals(tradingArea)){
@@ -44,7 +44,7 @@ public class HotelList extends ArrayList<HotelPO>{
     }
 
     public HotelList filterByName(String name){
-        HotelList res = new HotelList(this);
+        HotelList res = new HotelList(new ArrayList<>());
 
         for (HotelPO hotelPO : this) {
             if (hotelPO.getHotelName().contains(name)){
@@ -56,7 +56,7 @@ public class HotelList extends ArrayList<HotelPO>{
     }
 
     public HotelList filterByPrice(double lowerBound, double upperBound) throws RemoteException {
-        HotelList res = new HotelList(this);
+        HotelList res = new HotelList(new ArrayList<>());
 
         for (HotelPO hotelPO : this) {
             double price = new RoomList(RemoteHelper.getInstance().getHotelDAO().findRoomsByHotelID(hotelPO.getHotelID())).getHotelPrice();
@@ -69,7 +69,7 @@ public class HotelList extends ArrayList<HotelPO>{
     }
 
     public HotelList filterByStar(int lowerBound, int upperBound){
-        HotelList res = new HotelList(this);
+        HotelList res = new HotelList(new ArrayList<>());
 
         for (HotelPO hotelPO : this) {
             if (lowerBound <= hotelPO.getStar() && hotelPO.getStar() <= upperBound){
@@ -81,10 +81,10 @@ public class HotelList extends ArrayList<HotelPO>{
     }
 
     public HotelList filterByRating(double lowerBound, double upperBound) throws RemoteException {
-        HotelList res = new HotelList(this);
+        HotelList res = new HotelList(new ArrayList<>());
 
         for (HotelPO hotelPO : this) {
-            double rating = new OrderList(RemoteHelper.getInstance().getOrderDAO().findByHotelID(hotelPO.getHotelID())).getHotelRating();
+            double rating = new OrderList(RemoteHelper.getInstance().getOrderDAO().findByHotelID(hotelPO.getHotelID())).filterByHasReview().getHotelRating();
             if (lowerBound <= rating && rating <= upperBound){
                 res.add(hotelPO);
             }

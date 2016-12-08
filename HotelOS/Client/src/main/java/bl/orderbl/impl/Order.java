@@ -16,7 +16,7 @@ public class Order{
     }
 
     public boolean hasReview(){
-        return !orderPO.getReviewPO().getReview().equals("");
+        return orderPO.getReviewPO().getReviewTime() != null;
     }
 
     public boolean isLateCancel(LocalDateTime cancelTime){

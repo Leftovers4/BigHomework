@@ -87,4 +87,48 @@ public class HotelVO {
      */
     public String hotelWorkerName;
 
+    public long getHotelID() {
+        return hotelID;
+    }
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public int getStar() {
+        return star;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getTradingArea() {
+        return tradingArea;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public double getRating() {
+        return rating;
+    }
+
+    public long getHotelWorkerID() {
+        return hotelWorkerID;
+    }
+
+    public String getHotelWorkerName() {
+        return hotelWorkerName;
+    }
+
 }

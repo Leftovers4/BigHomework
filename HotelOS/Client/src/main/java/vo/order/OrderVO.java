@@ -101,4 +101,56 @@ public class OrderVO {
         this.orderHandleAppealVO = new OrderHandleAppealVO();
     }
 
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public long getHotelID() {
+        return hotelID;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public OrderType getOrderType() {
+        return orderType;
+    }
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public String getHotelAddress() {
+        return hotelAddress;
+    }
+
+    public String getHotelTradingArea() {
+        return hotelTradingArea;
+    }
+
+    public String getHotelService() {
+        return hotelService;
+    }
+
+    public int getRoomAmount() {
+        return roomAmount;
+    }
+
+    public RoomType getRoomType() {
+        return roomType;
+    }
+
+    public String getRoomNumber() {
+        return roomNumber;
+    }
+
+    public int getPersonAmount() {
+        return personAmount;
+    }
+
+    public boolean isWithChildren() {
+        return withChildren;
+    }
+
 }

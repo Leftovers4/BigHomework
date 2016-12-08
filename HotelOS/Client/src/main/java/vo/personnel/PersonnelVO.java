@@ -32,4 +32,24 @@ public class PersonnelVO {
      */
     public long hotelID;
 
+    public long getPersonnelID() {
+        return personnelID;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public PersonnelType getPersonnelType() {
+        return personnelType;
+    }
+
+    public long getHotelID() {
+        return hotelID;
+    }
+
 }

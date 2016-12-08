@@ -58,9 +58,27 @@ public class UserVO {
         creditVO = new CreditVO();
     }
 
+    public String getUsername() {
+        return username;
+    }
 
+    public String getPassword() {
+        return password;
+    }
 
-    //todo 废弃的东西，项目完成时要删掉
+    public String getName() {
+        return name;
+    }
+
+    public boolean isGender() {
+        return gender;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+//todo 废弃的东西，项目完成时要删掉
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     /**

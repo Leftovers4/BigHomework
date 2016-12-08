@@ -32,7 +32,7 @@ public class HotelVOCreator {
         res.hotelWorkerID = personnelPO.getPersonnelID();
         res.hotelWorkerName = personnelPO.getName();
 
-        res.rating = new OrderList(orderPOList).getHotelRating();
+        res.rating = new OrderList(orderPOList).filterByHasReview().getHotelRating();
 
         return res;
     }
@@ -49,7 +49,7 @@ public class HotelVOCreator {
         res.description = hotelPO.getDescription();
         res.service = hotelPO.getService();
         res.price = new RoomList(roomPOList).getHotelPrice();
-        res.rating = new OrderList(orderPOListForRating).getHotelRating();
+        res.rating = new OrderList(orderPOListForRating).filterByHasReview().getHotelRating();
 
         List<OrderVO> orderVOList = new ArrayList<>();
         for (int i = 0; i < orderPOListForOrders.size(); i++) {

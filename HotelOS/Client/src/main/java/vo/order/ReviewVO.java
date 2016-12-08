@@ -1,9 +1,9 @@
 package vo.order;
 
+import util.DateTimeFormat;
 import util.RoomType;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * Created by Hiki on 2016/10/16.
@@ -39,5 +39,29 @@ public class ReviewVO {
      * 用户名
      */
     public String username;
+
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public String getReview() {
+        return review;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public RoomType getRoomType() {
+        return roomType;
+    }
+
+    public String getReviewTime() {
+        return reviewTime.format(DateTimeFormat.dateTimeFormat);
+    }
+
+    public String getUsername() {
+        return username;
+    }
 
 }

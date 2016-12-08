@@ -1,9 +1,9 @@
 package vo.user;
 
 import util.CreditChangedCause;
+import util.DateTimeFormat;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * Created by Hiki on 11/17/2016.
@@ -40,6 +40,12 @@ public class CreditRecordVO {
      */
     public double changedCredit;
 
+    /**
+     * 信用度结果（改变后的信用值）
+     */
+
+    public double currentCredit;
+
     public long getRecordID() {
         return recordID;
     }
@@ -48,8 +54,8 @@ public class CreditRecordVO {
         return username;
     }
 
-    public LocalDateTime getChangedTime() {
-        return changedTime;
+    public String getChangedTime() {
+        return changedTime.format(DateTimeFormat.dateTimeFormat);
     }
 
     public String getOrderID() {
@@ -67,11 +73,5 @@ public class CreditRecordVO {
     public double getCurrentCredit() {
         return currentCredit;
     }
-
-    /**
-     * 信用度结果（改变后的信用值）
-     */
-
-    public double currentCredit;
 
 }
