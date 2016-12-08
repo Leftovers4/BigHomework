@@ -28,6 +28,7 @@ public class UserVOCreater {
         res.phone = userPO.getPhone();
         res.creditVO.credit = new CreditRecordList(creditRecordPOList).getCurrentCredit();
         res.creditVO.creditRecords = createAllOrdinaryCreditRecordVO(creditRecordPOList);
+        res.memberVO.memberType = userPO.getMemberPO().getMemberType();
         res.memberVO.birthday = userPO.getMemberPO().getBirthday();
         res.memberVO.level = new CreditRecordList(creditRecordPOList).getLevel();
         res.memberVO.enterprise = userPO.getMemberPO().getEnterprise();

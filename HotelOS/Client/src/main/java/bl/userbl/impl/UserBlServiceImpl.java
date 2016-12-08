@@ -1,7 +1,9 @@
 package bl.userbl.impl;
 
 import bl.userbl.UserBLService;
+import dataservice.orderdataservice.OrderDataService;
 import dataservice.userdataservice.UserDataService;
+import po.order.OrderPO;
 import po.user.CreditRecordPO;
 import po.user.UserPO;
 import rmi.RemoteHelper;
@@ -25,20 +27,23 @@ public class UserBlServiceImpl implements UserBLService {
 
     private UserDataService userDAO;
 
+    private OrderDataService orderDAO;
+
     private UserVOCreater userVOCreater;
 
     public UserBlServiceImpl() throws RemoteException {
         userDAO = RemoteHelper.getInstance().getUserDAO();
+        orderDAO = RemoteHelper.getInstance().getOrderDAO();
         userVOCreater = new UserVOCreater();
     }
 
     @Override
     public ResultMessage registerUser(String username, String password) throws RemoteException {
-        //先判断是否有相同用户名的客户
+        //用户名冲突的情况
         if (!(new UserList(userDAO.findAll()).isValidUsername(username)))
             return ResultMessage.DataExisted;
 
-        //若没有相同用户名的客户，则添加该客户
+        //用户名不冲突的情况
         UserPO userPO = new UserPO();
 
         userPO.setUsername(username);
@@ -56,10 +61,11 @@ public class UserBlServiceImpl implements UserBLService {
         if (userPO == null)
             return ResultMessage.UsernameNotExisted;
 
-        //客户存在但密码错误的情况
+        //客户存在且密码错误的情况
         if (!(new User(userPO).passwordCorrect(password)))
             return ResultMessage.PasswordWrong;
 
+        //客户存在且密码正确的情况
         return ResultMessage.Success;
     }
 
@@ -83,6 +89,7 @@ public class UserBlServiceImpl implements UserBLService {
         if (userPO == null)
             return null;
 
+        //客户存在的情况
         return userVOCreater.createFullUserVO(userPO, userDAO.findCreditRecordsByUsername(username));
     }
 
@@ -94,43 +101,30 @@ public class UserBlServiceImpl implements UserBLService {
         if (userPO == null)
             return ResultMessage.UsernameNotExisted;
 
-        //客户存在但是不改用户名的情况
-        if (userVO.username.equals(userVO.newUsername)){
-            userPO.setUsername(userVO.newUsername);
-            userPO.setName(userVO.name);
-            userPO.setGender(userVO.gender);
-            userPO.getMemberPO().setBirthday(userVO.memberVO.birthday);
-            userPO.setPhone(userVO.phone);
-
-            return userDAO.update(userPO);
-        }
-
-        //客户存在但是改了用户名的情况
-            //新的用户名跟数据库冲突的情况
-        if (!userVO.username.equals(userVO.newUsername) && userDAO.findByUsername(userVO.newUsername) != null)
-            return ResultMessage.DataExisted;
-
-            //新的用户名不跟数据库冲突的情况
-        userPO.setUsername(userVO.newUsername);
+        //客户存在的情况
         userPO.setName(userVO.name);
         userPO.setGender(userVO.gender);
         userPO.getMemberPO().setBirthday(userVO.memberVO.birthday);
         userPO.setPhone(userVO.phone);
 
         return userDAO.update(userPO);
-
     }
 
     @Override
     public ResultMessage registerNormalMember(UserVO userVO) throws RemoteException {
         UserPO userPO = userDAO.findByUsername(userVO.username);
 
-        //用户不存在的情况
+        //客户不存在的情况
         if (userPO == null)
             return ResultMessage.UsernameNotExisted;
 
-        //正常的情况
-        userPO.getMemberPO().setMemberType(MemberType.NormalMember);
+        //客户存在且已经注册了普通会员的情况
+        MemberType memberType = userPO.getMemberPO().getMemberType();
+        if (memberType.equals(MemberType.NormalMember) || memberType.equals(MemberType.Both))
+            return ResultMessage.DataExisted;
+
+        //客户存在且未注册普通会员的情况
+        userPO.getMemberPO().setMemberType(memberType.equals(MemberType.EnterpriseMember) ? MemberType.Both : MemberType.NormalMember);
         userPO.setName(userVO.name);
         userPO.setGender(userVO.gender);
         userPO.getMemberPO().setBirthday(userVO.memberVO.birthday);
@@ -143,7 +137,17 @@ public class UserBlServiceImpl implements UserBLService {
     public ResultMessage registerEnterpriseMember(UserVO userVO) throws RemoteException {
         UserPO userPO = userDAO.findByUsername(userVO.username);
 
-        userPO.getMemberPO().setMemberType(MemberType.EnterpriseMember);
+        //客户不存在的情况
+        if (userPO == null)
+            return ResultMessage.UsernameNotExisted;
+
+        //客户存在且已经注册了企业会员的情况
+        MemberType memberType = userPO.getMemberPO().getMemberType();
+        if (memberType.equals(MemberType.EnterpriseMember) || memberType.equals(MemberType.Both))
+            return ResultMessage.DataExisted;
+
+        //客户存在且未注册企业会员的情况
+        userPO.getMemberPO().setMemberType(memberType.equals(MemberType.NormalMember) ? MemberType.Both : MemberType.EnterpriseMember);
         userPO.setName(userVO.name);
         userPO.setGender(userVO.gender);
         userPO.getMemberPO().setBirthday(userVO.memberVO.birthday);
@@ -161,6 +165,7 @@ public class UserBlServiceImpl implements UserBLService {
         if (userDAO.findByUsername(username) == null)
             return ResultMessage.UsernameNotExisted;
 
+        //客户存在的情况
         CreditRecordPO creditRecordPO = new CreditRecordPO();
 
         creditRecordPO.setrecordID(IDProducer.produceGeneralID());
