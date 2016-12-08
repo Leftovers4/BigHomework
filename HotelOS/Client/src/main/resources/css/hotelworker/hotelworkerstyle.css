@@ -312,6 +312,12 @@
     -fx-cursor: hand;
     -fx-graphic: url("../../img/hotelworker/back_hover.png");;
 }
+.orderIDLabel{
+    -fx-font-size: 16px;
+}
+#orderActPriceLabel{
+    -fx-text-fill: #fd9301;
+}
 /*标题*/
 #detailTitleLabel{
     -fx-font-size: 24px;
@@ -417,7 +423,7 @@
 /**
 订单申诉------------------------------------------------------------------------------------------
  */
-/*异常订单价格*/
+/*订单价格*/
 #webOrderPriceLabel{
     -fx-text-fill: #fd9301;
 }
