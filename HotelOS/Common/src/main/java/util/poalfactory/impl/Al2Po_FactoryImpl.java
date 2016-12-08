@@ -48,20 +48,19 @@ public class Al2Po_FactoryImpl implements Al2Po_Factory{
         int level = (int) userAL.next();
 //        LocalDate birthday = toDate((String)userAL.next());
         LocalDate birthday = sqlDateToLocalDate((Date)userAL.next());
-
         String enterprise = (String) userAL.next();
-
-        // 构造MemberPO
-        MemberPO memberPO = new MemberPO(username, memberType, level, birthday, enterprise);
-
-        // 初始化CreditRecordPOs
-        ArrayList<CreditRecordPO> creditRecordPOs = new ArrayList<>();
 
         // 解密
         username = Coder.decode(username);
         password = Coder.decode(password);
         name = Coder.decode(name);
         phone = Coder.decode(phone);
+
+        // 构造MemberPO
+        MemberPO memberPO = new MemberPO(username, memberType, level, birthday, enterprise);
+
+        // 初始化CreditRecordPOs
+        ArrayList<CreditRecordPO> creditRecordPOs = new ArrayList<>();
 
         UserPO userPO = new UserPO(username, password, name, gender, phone, memberPO, creditRecordPOs);
 

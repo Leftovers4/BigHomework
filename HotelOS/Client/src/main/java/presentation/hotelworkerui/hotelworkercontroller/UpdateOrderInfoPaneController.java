@@ -1,5 +1,7 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
+import bl.orderbl.OrderBLService;
+import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -11,9 +13,11 @@ import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
 import presentation.util.alert.AlertController;
 import presentation.util.other.CancelDateBefore;
+import util.DateTimeFormat;
 import util.OrderType;
 import vo.order.OrderVO;
 
+import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -28,7 +32,9 @@ public class UpdateOrderInfoPaneController {
     //订单号、状态、价格
     @FXML private Label orderIDLabel;
     @FXML private Label orderTypeLabel;
-    @FXML private Label orderPriceLabel;
+    @FXML private Label orderOriPriceLabel;
+    @FXML private Label orderProLabel;
+    @FXML private Label orderActPriceLabel;
 
     //生成时间
     @FXML private Label generateTimeLabel;
@@ -70,6 +76,7 @@ public class UpdateOrderInfoPaneController {
     private Boolean isFromList;
     //提示框控制器
     private AlertController alertController;
+    private OrderBLService orderBLService;
     private OrderVO orderVO;
 
     public void launch(Pane mainPane , Boolean isCheckIn,Boolean isFromList, OrderVO orderVO) {
@@ -77,17 +84,26 @@ public class UpdateOrderInfoPaneController {
         this.isCheckIn = isCheckIn;
         this.isFromList = isFromList;
         this.orderVO = orderVO;
+        alertController = new AlertController();
 
         setActLeaveTimeComponentsVisible(!isCheckIn);
         setCheckinTimeComponentsVisible(isCheckIn);
         setExpLeaveTimeComponentsVisible(isCheckIn);
         setRoomComponentsVisible(isCheckIn);
 
-        alertController = new AlertController();
+        initService();
         //初始化组件
         initLabels(orderVO);
         initBox();
         initDatePicker();
+    }
+
+    private void initService() {
+        try {
+            orderBLService = new OrderBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initDatePicker() {
@@ -123,17 +139,21 @@ public class UpdateOrderInfoPaneController {
 
         orderIDLabel.setText(orderVO.orderID);
         orderTypeLabel.setText(orderVO.orderType.toString());
-        orderPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
+        orderOriPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.originPrice));
+//      TODO  orderProLabel.setText();
+        orderActPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
 
-        generateTimeLabel.setText(orderVO.orderTimeVO.generateTime.toString());
-        exeLeastTimeLabel.setText(orderVO.orderTimeVO.lastExecuteTime.toString());
-        checkInTimeLabel.setText(orderVO.orderTimeVO.checkinTime == null ? "" : orderVO.orderTimeVO.checkinTime.toString());
-        expLeaveTimeLabel.setText(orderVO.orderTimeVO.expectedLeaveTime == null ? "" : orderVO.orderTimeVO.expectedLeaveTime.toString());
+        generateTimeLabel.setText(orderVO.orderTimeVO.generateTime.format(DateTimeFormat.dateHourFormat));
+        exeLeastTimeLabel.setText(orderVO.orderTimeVO.lastExecuteTime.format(DateTimeFormat.dateHourFormat));
+        checkInTimeLabel.setText(orderVO.orderTimeVO.checkinTime == null ? "" : orderVO.orderTimeVO.checkinTime.format(DateTimeFormat.dateHourFormat));
+        expLeaveTimeLabel.setText(orderVO.orderTimeVO.expectedLeaveTime == null ? "" : orderVO.orderTimeVO.expectedLeaveTime.format(DateTimeFormat.dateHourFormat));
 
         userNameLabel.setText(orderVO.username);
-        peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
         withChildrenLabel.setText(orderVO.withChildren ? "有" : "无");
-        //TODO roomIDLabel.setText();
+        peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
+        roomTypeLabel.setText(String.valueOf(orderVO.roomType));
+        roomAmountLabel.setText(String.valueOf(orderVO.roomAmount));
+        roomIDLabel.setText(orderVO.roomNumber == null ? "" : orderVO.roomNumber);
     }
 
     @FXML
@@ -143,21 +163,40 @@ public class UpdateOrderInfoPaneController {
             if(isCheckIn){
                 //更新入住信息
                 LocalDateTime checkinTime = LocalDateTime.of(checkInTimeDatePicker.getValue(), LocalTime.of((int) (checkInTimeHourBox.getValue()),(int)(checkInTimeMinBox.getValue())));
-                orderVO.orderTimeVO.checkinTime = checkinTime;
                 LocalDateTime expectedLeaveTime = LocalDateTime.of(expLeaveTimeDatePicker.getValue(), LocalTime.of((int) (expLeaveTimeHourBox.getValue()),(int)(expLeaveTimeMinBox.getValue())));
-                orderVO.orderTimeVO.expectedLeaveTime = expectedLeaveTime;
                 String roomNumber = roomIDField.getText();
+
+                orderVO.orderTimeVO.checkinTime = checkinTime;
+                orderVO.orderTimeVO.expectedLeaveTime = expectedLeaveTime;
                 orderVO.roomNumber = roomNumber;
-                orderVO.orderType = OrderType.Executed;
+
+                try {
+                    orderBLService.onlineCheckIn(orderVO);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
             }else{
                 //更新退房信息
                 LocalDateTime actLeaveTime = LocalDateTime.of(actLeaveTimeDatePicker.getValue(), LocalTime.of((int) (actLeaveTimeHourBox.getValue()),(int)(actLeaveTimeMinBox.getValue())));
                 orderVO.orderTimeVO.leaveTime = actLeaveTime;
+
+                try {
+                    orderBLService.onlineCheckOut(orderVO);
+                    orderBLService.executeOrder(orderVO.orderID);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
             }
 
-
-            mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailPane(mainPane,isCheckIn,isFromList,orderVO));
+            //更新完成，跳转至订单详情界面
+            mainPane.getChildren().clear();
+            OrderVO updatedOrderVo = null;
+            try {
+                updatedOrderVo = orderBLService.searchOrderByID(orderVO.orderID);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+            mainPane.getChildren().add(new OrderDetailPane(mainPane,isCheckIn,isFromList,updatedOrderVo));
         }else {
             //输入不合法
             alertController.showInputWrongAlert("请将入住信息填写完整","提交失败");
@@ -214,5 +253,6 @@ public class UpdateOrderInfoPaneController {
 
     private void setRoomComponentsVisible(Boolean isVisible){
         roomIDField.setVisible(isVisible);
+        roomIDLabel.setVisible(!isVisible);
     }
 }

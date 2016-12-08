@@ -315,8 +315,18 @@
 .orderIDLabel{
     -fx-font-size: 16px;
 }
+#orderOriPriceLabel{
+    -fx-text-fill: #ff3333;
+}
 #orderActPriceLabel{
-    -fx-text-fill: #fd9301;
+    -fx-text-fill: #dd3333;
+    -fx-font-weight: bold;
+    -fx-font-size: 24px;
+}
+#orderProLabel{
+    -fx-background-color: rgba(255, 102, 0, 0.8);
+    -fx-text-fill: white;
+    -fx-padding: 5px;
 }
 /*标题*/
 #detailTitleLabel{

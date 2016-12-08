@@ -73,7 +73,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </Button>
-            <Button id="buttonRegister" fx:id="buttonRegister" layoutX="50.0" layoutY="123.0" minHeight="35.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="注册" visible="false" />
+            <Button id="buttonRegister" fx:id="buttonRegister" onAction="#userRegister" layoutX="50.0" layoutY="123.0" minHeight="35.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="注册" visible="false" />
          </children>
       </Pane>
       <Button fx:id="changeToLogin" layoutX="226.0" layoutY="145.0" mnemonicParsing="false" onAction="#changeToLogin" text="登录" />

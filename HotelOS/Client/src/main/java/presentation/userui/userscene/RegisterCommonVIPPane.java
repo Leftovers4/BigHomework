@@ -12,11 +12,11 @@ import java.io.IOException;
  */
 public class RegisterCommonVIPPane extends Pane {
 
-    public RegisterCommonVIPPane(Stage primaryStage) {
-        loadFxml(primaryStage);
+    public RegisterCommonVIPPane(Stage primaryStage, String userID) {
+        loadFxml(primaryStage, userID);
     }
 
-    private void loadFxml(Stage primaryStage) {
+    private void loadFxml(Stage primaryStage, String userID) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/user/RegisterCommonVIP.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -26,6 +26,6 @@ public class RegisterCommonVIPPane extends Pane {
         }
 
         RegisterCommonVIPController registerCommonVIPController = fxmlLoader.getController();
-        registerCommonVIPController.launch(primaryStage);
+        registerCommonVIPController.launch(primaryStage, userID);
     }
 }

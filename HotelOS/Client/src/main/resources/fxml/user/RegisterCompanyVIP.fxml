@@ -19,14 +19,14 @@
       <Label layoutX="288.0" layoutY="124.0" text="企业会员：" wrapText="true" />
       <Label layoutX="373.0" layoutY="157.0" text="2、享受合作企业优惠" />
       <Label layoutX="373.0" layoutY="124.0" text="1、享受企业会员专属折扣" />
-      <TextField layoutX="376.0" layoutY="255.0" prefHeight="30.0" prefWidth="175.0" />
-      <RadioButton layoutX="377.0" layoutY="310.0" mnemonicParsing="false" text="男" />
-      <RadioButton layoutX="465.0" layoutY="310.0" mnemonicParsing="false" text="女" />
-      <DatePicker layoutX="376.0" layoutY="355.0" prefWidth="175.0" />
-      <TextField layoutX="376.0" layoutY="405.0" prefWidth="175.0" />
+      <TextField fx:id="usernameField" layoutX="376.0" layoutY="255.0" prefHeight="30.0" prefWidth="175.0" />
+      <RadioButton fx:id="sexMan" layoutX="377.0" layoutY="310.0" mnemonicParsing="false" text="男" />
+      <RadioButton fx:id="sexWoman" layoutX="465.0" layoutY="310.0" mnemonicParsing="false" text="女" />
+      <DatePicker fx:id="birthdayPicker" layoutX="376.0" layoutY="355.0" prefWidth="175.0" />
+      <TextField fx:id="phoneField" layoutX="376.0" layoutY="405.0" prefWidth="175.0" />
       <Button fx:id="registerCompanyBtn" disable="true" layoutX="315.0" layoutY="553.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="220.0" styleClass="actionBtn" text="立即注册" />
       <Label layoutX="286.0" layoutY="460.0" text="企业名称：" />
-      <TextField layoutX="377.0" layoutY="455.0" prefWidth="175.0" />
-      <CheckBox onMouseClicked="#checkCompanyvipInfo" fx:id="confirmCompanyvipInfo" layoutX="362.0" layoutY="509.0" mnemonicParsing="false" onAction="#checkCompanyvipInfo" text="我已核对信息无误" />
+      <TextField fx:id="enterpriseField" layoutX="377.0" layoutY="455.0" prefWidth="175.0" />
+      <CheckBox fx:id="confirmCompanyvipInfo" layoutX="362.0" layoutY="509.0" mnemonicParsing="false" onAction="#checkCompanyvipInfo" onMouseClicked="#checkCompanyvipInfo" text="我已核对信息无误" />
    </children>
 </fx:root>

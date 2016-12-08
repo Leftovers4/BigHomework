@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 public class ComUserScene extends Scene{
 
-    public ComUserScene(Parent parent, Stage primaryStage) {
+    public ComUserScene(Parent parent, Stage primaryStage, String username) {
         super(parent);
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/usercommon.fxml"));
 
@@ -27,7 +27,7 @@ public class ComUserScene extends Scene{
 
         //配置控制器
         ComUserSceneController comUserSceneController = fxmlLoader.getController();
-        comUserSceneController.launch(primaryStage);
+        comUserSceneController.launch(primaryStage, username);
 
         //实现窗口可拖动
         MyWindow.enableWindowDrag(this.getRoot(), primaryStage);
