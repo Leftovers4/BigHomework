@@ -3,6 +3,8 @@ package presentation.hotelworkerui.hotelworkercontroller;
 import bl.orderbl.OrderBLService;
 import bl.orderbl.impl.OrderBlServiceImpl;
 import blservice_stub.OrderBLService_Stub;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -51,6 +53,8 @@ public class OrderListPaneController {
     private DatePicker createDatePicker;
     @FXML
     private DatePicker exeDatePicker;
+    @FXML
+    private TextField searchField;
 
     //提示框控制器
     private AlertController alertController;
@@ -158,5 +162,18 @@ public class OrderListPaneController {
             e.printStackTrace();
         }
         return list;
+    }
+
+    @FXML
+    private void searchOrderByID(){
+        ObservableList<OrderVO> list = FXCollections.observableArrayList();
+        OrderVO orderVO = null;
+        try {
+            orderVO = orderBLService.searchOrderByID(searchField.getText());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        if(orderVO != null) list.add(orderVO);
+        orderTable.setItems(list);
     }
 }

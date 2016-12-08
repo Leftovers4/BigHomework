@@ -93,7 +93,7 @@ public class ComWorkerSceneController {
     private void showRegisterRoom(){
         leftBarBtnEffect(registerRoomBtn);
         changeSliderPos(350);
-        changePane(new RegisterRoomPane(stage));
+        changePane(new RegisterRoomPane());
         currentBtn = registerRoomBtn;
     }
 

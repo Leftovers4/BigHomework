@@ -34,7 +34,6 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
 
         Image checkInImage = new Image("/img/hotelworker/checkin.png");
         checkInButton.setGraphic(new ImageView(checkInImage));
-        checkInButton.setId("checkInButton");
         checkInButton.getStyleClass().add("TableButtonCell");
 
         detailButton.setOnAction(event -> {
@@ -53,7 +52,6 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
 
         btnBox.setSpacing(10);
         btnBox.setAlignment(Pos.CENTER);
-        btnBox.setPadding(new Insets(0,10,0,20));
     }
 
     @Override
@@ -65,8 +63,11 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
         } else {
             btnBox.getChildren().clear();
             if(((OrderVO)tableView.getItems().get(getTableRow().getIndex())).orderType == OrderType.Executed){
+                btnBox.setAlignment(Pos.CENTER_LEFT);
+                btnBox.setPadding(new Insets(0,0,0,13));
                 btnBox.getChildren().add(detailButton);
             }else {
+                btnBox.setPadding(new Insets(0,5,0,20));
                 btnBox.getChildren().addAll(detailButton, checkInButton);
             }
             setGraphic(btnBox);
