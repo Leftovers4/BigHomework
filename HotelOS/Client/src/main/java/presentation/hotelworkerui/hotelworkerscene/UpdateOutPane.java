@@ -2,7 +2,6 @@ package presentation.hotelworkerui.hotelworkerscene;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkercontroller.UpdateOutPaneController;
 
 import java.io.IOException;
@@ -17,7 +16,7 @@ public class UpdateOutPane extends Pane {
     }
 
     private void loadFxml(Pane mainPane) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelupdateout.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelupdateout1.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

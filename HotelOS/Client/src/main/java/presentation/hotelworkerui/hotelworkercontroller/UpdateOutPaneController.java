@@ -13,11 +13,6 @@ import presentation.util.alert.AlertController;
  */
 public class UpdateOutPaneController {
 
-
-    //选择入住方式的组件
-    @FXML Button outOnlineBtn;
-    @FXML Button outOfflineBtn;
-
     private Pane mainPane;
     private AlertController alertController;
 
@@ -28,13 +23,13 @@ public class UpdateOutPaneController {
 
     @FXML
     private void outOnline(){
-        mainPane.getChildren().remove(0);
+        mainPane.getChildren().clear();
         mainPane.getChildren().add(new FindOrderPane(mainPane,false));
     }
 
     @FXML
     private void outOffline(){
-        mainPane.getChildren().remove(0);
+        mainPane.getChildren().clear();
         mainPane.getChildren().add(new UpdateOfflinePane(mainPane,false));
     }
 }

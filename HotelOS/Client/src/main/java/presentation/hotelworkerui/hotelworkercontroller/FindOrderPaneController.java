@@ -1,5 +1,7 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
+import bl.orderbl.OrderBLService;
+import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -14,7 +16,10 @@ import vo.order.OrderTimeVO;
 import vo.order.OrderVO;
 import vo.order.ReviewVO;
 
+import java.rmi.RemoteException;
 import java.time.LocalDateTime;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Hitiger on 2016/11/21.
@@ -22,9 +27,7 @@ import java.time.LocalDateTime;
  */
 public class FindOrderPaneController {
     //选择线上入住后显现的组件
-    @FXML private ImageView findOrderImg;
     @FXML private TextField idorNameField;
-    @FXML private Button findByIDorNameBtn;
     private Pane mainPane;
     private Boolean isCheckIn;
     private AlertController alertController;
@@ -36,7 +39,7 @@ public class FindOrderPaneController {
     }
 
     private void initLabel() {
-        idorNameField.setPromptText(isCheckIn ? "更新入住信息，请输入客户名" : "更新退房信息，请输入客户名");
+        idorNameField.setPromptText(isCheckIn ? "更新入住信息，请输入订单号" : "更新退房信息，请输入订单号");
     }
 
 
@@ -44,26 +47,28 @@ public class FindOrderPaneController {
      * 搜索订单
      */
     @FXML private void findOrder(){
-        mainPane.getChildren().clear();
-        OrderVO orderVO = new OrderVO();
-        orderVO.orderID = "12345678912345678";
-        orderVO.username = "网红";
-        orderVO.orderPriceVO = new OrderPriceVO(250, 200);
-        orderVO.orderType = OrderType.Unexecuted;
-
-        ReviewVO reviewVO = new ReviewVO();
-        reviewVO.reviewTime = LocalDateTime.of(2016, 11, 12, 21, 00);
-        reviewVO.review = "那你提莫无敌非常非常棒棒 象牙蚌啊!";
-        reviewVO.rating = 5;
-        reviewVO.roomType = RoomType.Couple;
-        reviewVO.orderID = orderVO.orderID;
-        reviewVO.username = orderVO.username;
-
-        OrderTimeVO orderTimeVO = new OrderTimeVO(LocalDateTime.of(2016, 11, 11, 11, 00), LocalDateTime.of(2016, 11, 11, 20, 00), null, LocalDateTime.of(2016,12,5,11,00),
-                null, LocalDateTime.of(2016, 11, 12, 21, 00), null, null);
-
-        orderVO.reviewVO = reviewVO;
-        orderVO.orderTimeVO = orderTimeVO;
-        mainPane.getChildren().add(new UpdateOrderInfoPane(mainPane,isCheckIn,false,orderVO));
+        if(idorNameField.getText().equals("")) alertController.showInputWrongAlert("订单号不能为空","查询失败");
+        else {
+            //用正则表达式判断输入格式，非数字报错
+            Pattern pattern = Pattern.compile("^[0-9]*$");
+            Matcher matcherID = pattern.matcher(idorNameField.getText());
+            if(matcherID.matches()){
+                OrderVO orderVO = null;
+                try {
+                    OrderBLService orderBLService = new OrderBlServiceImpl();
+                    orderVO = orderBLService.searchOrderByID(idorNameField.getText());
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+                if(orderVO == null){
+                    alertController.showNullWrongAlert("查询不到该订单,请重新输入","查询失败");
+                }else {
+                    mainPane.getChildren().clear();
+                    mainPane.getChildren().add(new UpdateOrderInfoPane(mainPane,isCheckIn,false,orderVO));
+                }
+            }else {
+                alertController.showInputWrongAlert("订单号需输入数字,请重新输入","输入错误");
+            }
+        }
     }
 }

@@ -80,8 +80,22 @@ public class AlertController {
         remoteAlert.showAndWait();
     }
 
+    /**
+     * 查询结果为空提示框
+     * @param contentText 提示内容
+     * @param title       提示标题
+     */
     public void showNullWrongAlert(String contentText,String title){
         NullWrongAlert nullWrongAlert = new NullWrongAlert(contentText,title);
         nullWrongAlert.showAndWait();
+    }
+
+    public Boolean showUpdateSuccessAlert(String contentText,String title){
+        UpdateSuccessAlert updateSuccessAlert = new UpdateSuccessAlert(contentText, title);
+        updateSuccessAlert.showAndWait();
+        final ButtonType rtn = updateSuccessAlert.getResult();
+        if (rtn == ButtonType.OK) {
+            return true;
+        }else return false;
     }
 }
