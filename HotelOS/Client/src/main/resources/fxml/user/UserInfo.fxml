@@ -16,8 +16,6 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.InfoPaneController">
    <children>
-      <Label fx:id="vipCompany" layoutX="523.0" layoutY="525.0" text="company" visible="false" />
-      <Label fx:id="vipLevel" layoutX="524.0" layoutY="475.0" text="level" visible="false" />
       <GridPane layoutX="325.0" layoutY="95.0" prefHeight="417.0" prefWidth="75.0">
          <columnConstraints>
             <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
@@ -87,5 +85,7 @@
          </image>
       </ImageView>
       <Button fx:id="registerCompanyvipBtn" layoutX="491.0" layoutY="520.0" mnemonicParsing="false" onAction="#registerCompanyvip" styleClass="actionBtn" text="注册" />
+      <Label fx:id="vipCompany" layoutX="523.0" layoutY="525.0" visible="false" />
+      <Label fx:id="vipLevel" layoutX="524.0" layoutY="475.0" visible="false" />
    </children>
 </fx:root>

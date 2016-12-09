@@ -113,33 +113,38 @@ public class InfoPaneController {
 
                 //会员信息显示
                 MemberType memberType = userVO.memberVO.memberType;
-                System.out.println(memberType==null);
+                System.out.println(memberType == null);
 
-//                switch (memberType) {
-//                    case None:
-//                        vipLevel.setVisible(false);
-//                        vipCompany.setVisible(false);
-//                        registerCommonvipBtn.setVisible(false);
-//                        registerCompanyvipBtn.setVisible(false);
-//                    case NormalMember:
-//                        vipLevel.setVisible(true);
-//                        registerCommonvipBtn.setVisible(false);
-//                        vipLevel.setText(String.valueOf(userVO.memberVO.level));
-//                        registerCompanyvipBtn.setVisible(true);
-//                        vipCompany.setVisible(false);
-//                    case EnterpriseMember:
-//                        vipCompany.setVisible(true);
-//                        registerCompanyvipBtn.setVisible(false);
-//                        vipCompany.setText(userVO.memberVO.enterprise);
-//                        registerCommonvipBtn.setVisible(true);
-//                    case Both:
-//                        vipCompany.setVisible(true);
-//                        vipCompany.setText(userVO.memberVO.enterprise);
-//                        vipLevel.setVisible(true);
-//                        vipLevel.setText(String.valueOf(userVO.memberVO.level));
-//                        registerCommonvipBtn.setVisible(false);
-//                        registerCompanyvipBtn.setVisible(false);
-//                }
+                if (memberType == MemberType.None) {
+                    vipLevel.setVisible(false);
+                    vipCompany.setVisible(false);
+                    registerCommonvipBtn.setVisible(true);
+                    registerCompanyvipBtn.setVisible(true);
+                } else if (memberType == MemberType.NormalMember) {
+                    vipLevel.setVisible(true);
+                    registerCommonvipBtn.setVisible(false);
+                    vipLevel.setText(String.valueOf(userVO.memberVO.level));
+                    registerCompanyvipBtn.setVisible(true);
+                    vipCompany.setVisible(false);
+                } else if (memberType == MemberType.EnterpriseMember) {
+                    vipCompany.setVisible(true);
+                    registerCompanyvipBtn.setVisible(false);
+                    vipCompany.setText(userVO.memberVO.enterprise);
+                    registerCommonvipBtn.setVisible(true);
+                    vipLevel.setVisible(false);
+                } else if (memberType == MemberType.Both) {
+                    vipCompany.setVisible(true);
+                    vipCompany.setText(userVO.memberVO.enterprise);
+                    vipLevel.setVisible(true);
+                    vipLevel.setText(String.valueOf(userVO.memberVO.level));
+                    registerCommonvipBtn.setVisible(false);
+                    registerCompanyvipBtn.setVisible(false);
+                } else {
+                    registerCommonvipBtn.setVisible(true);
+                    registerCompanyvipBtn.setVisible(true);
+                    vipLevel.setVisible(false);
+                    vipCompany.setVisible(false);
+                }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
@@ -199,6 +204,8 @@ public class InfoPaneController {
         phoneField.setVisible(show);
         saveInfo.setVisible(show);
         cleanAllBtn.setVisible(show);
+        vipLevel.setVisible(show);
+        vipCompany.setVisible(show);
 
         usernameLabel.setVisible(!show);
         userSex.setVisible(!show);
@@ -268,10 +275,10 @@ public class InfoPaneController {
 
             showmodule(false);
 
-//            mainPane.getChildren().remove(0);
-//            mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto, userID, leftBarBtnArr));
+            mainPane.getChildren().remove(0);
+            mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto, userID, leftBarBtnArr));
 
-            initialData();
+//            initialData();
         } else if (!isempty && !phoneisright) {
             new InputWrongAlert("联系方式格式错误", "格式错误").showAndWait();
         } else {
@@ -391,7 +398,7 @@ public class InfoPaneController {
     @FXML
     private void registerCommonvip() {
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new RegisterCommonVIPPane(stage, userID));
+        mainPane.getChildren().add(new RegisterCommonVIPPane(stage, mainPane, userID, topbarphoto, leftBarBtnArr));
     }
 
     /**
@@ -400,7 +407,7 @@ public class InfoPaneController {
     @FXML
     private void registerCompanyvip() {
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new RegisterCompanyVIPPane(stage, userID));
+        mainPane.getChildren().add(new RegisterCompanyVIPPane(stage, mainPane, userID, topbarphoto, leftBarBtnArr));
     }
 
 

@@ -70,12 +70,13 @@ public class UserOrderListController {
     }
 
     private ObservableList getUserOrderList() {
+        ObservableList<OrderVO> list = null;
         try {
-            ObservableList<OrderVO> list = FXCollections.observableArrayList(orderBlService.viewFullUserOrderList(userID));
+            list = FXCollections.observableArrayList(orderBlService.viewFullUserOrderList(userID));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        return null;
+        return list;
     }
 
 

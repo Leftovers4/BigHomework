@@ -3,13 +3,18 @@ package presentation.userui.usercontroller;
 import bl.userbl.impl.UserBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.userui.userscene.InfoPane;
 import presentation.util.alert.InputWrongAlert;
 import util.MemberType;
+import util.ResultMessage;
 import vo.user.UserVO;
 
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  * Created by wyj on 2016/11/25.
@@ -18,6 +23,9 @@ public class RegisterCommonVIPController {
 
     private Stage stage;
     private String userID;
+    private Pane mainPane;
+    private ImageView topbarphoto;
+    private ArrayList<Button> leftBarArr;
 
     @FXML private Button registerCommonBtn;
     @FXML private CheckBox confirmCommonvipInfo;
@@ -30,9 +38,12 @@ public class RegisterCommonVIPController {
 
     private UserBlServiceImpl userBlService;
 
-    public void launch(Stage primaryStage, String userID) {
+    public void launch(Stage primaryStage, Pane mainPane, String userID, ImageView topbarphoto, ArrayList<Button> leftBarArr) {
         this.stage = primaryStage;
         this.userID = userID;
+        this.mainPane = mainPane;
+        this.topbarphoto = topbarphoto;
+        this.leftBarArr = leftBarArr;
 
         try {
             userBlService = new UserBlServiceImpl();
@@ -97,11 +108,29 @@ public class RegisterCommonVIPController {
             userVO.memberVO.birthday = birthdayPicker.getValue();
             userVO.phone = phoneField.getText();
 
-            if (userVO.memberVO.memberType == MemberType.None) {
-                userVO.memberVO.memberType = MemberType.NormalMember;
-            } else if (userVO.memberVO.memberType == MemberType.EnterpriseMember) {
-                userVO.memberVO.memberType = MemberType.Both;
+            try {
+                ResultMessage resultMessage = userBlService.registerNormalMember(userVO);
+                if (resultMessage == ResultMessage.Success) {
+                    System.out.println("success");
+
+                    if (userVO.memberVO.memberType == MemberType.None) {
+                        userVO.memberVO.memberType = MemberType.NormalMember;
+                    } else if (userVO.memberVO.memberType == MemberType.EnterpriseMember) {
+                        userVO.memberVO.memberType = MemberType.Both;
+                    }
+
+                } else if (resultMessage == ResultMessage.UsernameNotExisted) {
+                    System.out.println("common vip exits");
+                } else if (resultMessage == ResultMessage.UsernameNotExisted) {
+                    System.out.println("user not exits");
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
             }
+
+            mainPane.getChildren().remove(0);
+            mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto, userID, leftBarArr));
+
         } else if (!isempty && !isphoneok) {
             new InputWrongAlert("联系方式格式错误", "格式错误").showAndWait();
         } else {
