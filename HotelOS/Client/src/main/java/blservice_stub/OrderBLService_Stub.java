@@ -112,6 +112,16 @@ public class OrderBLService_Stub implements OrderBLService {
     }
 
     @Override
+    public List<OrderVO> viewFullOrderList() throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<OrderVO> viewTypeOrderList(OrderType orderType) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public List<OrderVO> viewFullHotelOrderList(long hotelID) {
         ArrayList<OrderVO> list = new ArrayList<>();
         OrderVO orderVO = new OrderVO();

@@ -18,6 +18,7 @@ import vo.order.ReviewVO;
 
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -295,6 +296,11 @@ public class OrderBlServiceImpl implements OrderBLService {
 
     @Override
     public ResultMessage addOrder(OrderVO orderVO) throws RemoteException {
+        //信用值不足的情况
+        if (!(new CreditRecordList(userDAO.findCreditRecordsByUsername(orderVO.username)).canAddOrder()))
+            return ResultMessage.CreditNotEnough;
+
+        //信用值足够的情况
         OrderPO orderPO = new OrderPO();
 
         orderPO.setOrderID(IDProducer.produceOrderID(orderVO.hotelID));
@@ -307,9 +313,21 @@ public class OrderBlServiceImpl implements OrderBLService {
         orderPO.setPersonAmount(orderVO.personAmount);
         orderPO.setWithChildren(orderVO.withChildren);
         orderPO.getOrderTimePO().setGenerateTime(LocalDateTime.now());
-        orderPO.getOrderTimePO().setExpectedCheckinTime(orderVO.orderTimeVO.expectedCheckinTime);
-        orderPO.getOrderTimePO().setExpectedLeaveTime(orderVO.orderTimeVO.expectedLeaveTime);
-        orderPO.getOrderTimePO().setLastExecuteTime(null);//todo
+            //处理预计入住时间
+        LocalDate today = LocalDate.now();
+        LocalDate expectedCheckInDate = orderVO.orderTimeVO.expectedCheckinTime.toLocalDate();
+        if (expectedCheckInDate.isEqual(today)){
+            if (LocalDateTime.now().isAfter(LocalDateTime.now().withHour(14).withMinute(0).withSecond(0)))
+                orderPO.getOrderTimePO().setExpectedCheckinTime(LocalDateTime.now());
+            else
+                orderPO.getOrderTimePO().setExpectedCheckinTime(LocalDateTime.now().withHour(14).withMinute(0).withSecond(0));
+        }else {
+            orderPO.getOrderTimePO().setExpectedCheckinTime(orderVO.orderTimeVO.expectedCheckinTime.withHour(14).withMinute(0).withSecond(0));
+        }
+            //处理预计离开时间
+        orderPO.getOrderTimePO().setExpectedLeaveTime(orderVO.orderTimeVO.expectedLeaveTime.withHour(12).withMinute(0).withSecond(0));
+            //处理最晚执行时间
+        orderPO.getOrderTimePO().setLastExecuteTime(orderPO.getOrderTimePO().getExpectedCheckinTime().plusHours(6));
         orderPO.getOrderPricePO().setOriginPrice(orderVO.orderPriceVO.originPrice);
         orderPO.getOrderPricePO().setActualPrice(orderVO.orderPriceVO.actualPrice);
 
@@ -351,6 +369,16 @@ public class OrderBlServiceImpl implements OrderBLService {
         orderPO.getOrderHandleAppealPO().setHaTime(now);
         orderPO.getOrderHandleAppealPO().setHa_result(creditPercent == 0.5 ? HandleAppealResult.Half : HandleAppealResult.All);
         return orderDAO.update(orderPO);
+    }
+
+    @Override
+    public List<OrderVO> viewFullOrderList() throws RemoteException {
+        return orderVOCreator.createAllDetailedOrderVO(orderDAO.findAll());
+    }
+
+    @Override
+    public List<OrderVO> viewTypeOrderList(OrderType orderType) throws RemoteException {
+        return orderVOCreator.createAllDetailedOrderVO(orderDAO.findByType(orderType));
     }
 
 }

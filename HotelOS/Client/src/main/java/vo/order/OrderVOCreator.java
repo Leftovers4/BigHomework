@@ -54,6 +54,7 @@ public class OrderVOCreator {
         res.orderTimeVO.checkinTime = orderPO.getOrderTimePO().getCheckinTime();
         res.orderTimeVO.expectedLeaveTime = orderPO.getOrderTimePO().getExpectedLeaveTime();
         res.orderTimeVO.leaveTime = orderPO.getOrderTimePO().getLeaveTime();
+        res.hotelName = orderPO.getHotelName();
         res.username = orderPO.getUsername();
         res.personAmount = orderPO.getPersonAmount();
         res.withChildren = orderPO.isWithChildren();

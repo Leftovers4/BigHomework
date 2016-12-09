@@ -27,7 +27,7 @@ public class UserBlServiceImplTest {
 
     @Test
     public void registerUser() throws Exception {
-        ResultMessage resultMessage = tested.registerUser("lisii", "8520");
+        ResultMessage resultMessage = tested.registerUser("lisiii", "8520");
     }
 
     @Test
@@ -80,7 +80,7 @@ public class UserBlServiceImplTest {
     public void registerEnterpriseMember() throws Exception {
         UserVO userVO = new UserVO();
 
-        userVO.username = "lisii"; //提供唯一标识
+        userVO.username = "lisiii"; //提供唯一标识
         userVO.name = "张";
         userVO.gender = true;
         userVO.phone = "123456789";

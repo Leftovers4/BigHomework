@@ -88,7 +88,7 @@ public class OrderBlServiceImplTest {
     public void executeOrder() throws Exception {
         OrderVO orderVO = new OrderVO();
 
-        orderVO.orderID = "14532820161207423"; //提供唯一标识
+        orderVO.orderID = "96152920161209324"; //提供唯一标识
         orderVO.orderTimeVO.checkinTime = LocalDateTime.now();
         orderVO.orderTimeVO.expectedLeaveTime = LocalDateTime.now().plusDays(2);
         orderVO.roomNumber = "B330";
@@ -105,7 +105,7 @@ public class OrderBlServiceImplTest {
     public void reviewOrder() throws Exception {
         ReviewVO reviewVO = new ReviewVO();
 
-        reviewVO.orderID = "14532820161207423"; //提供唯一标识
+        reviewVO.orderID = "96152920161209324"; //提供唯一标识
         reviewVO.rating = 4;
         reviewVO.review = "sdjlfkalfkdfjkalj";
 
@@ -137,7 +137,7 @@ public class OrderBlServiceImplTest {
         OrderVO orderVO = new OrderVO();
 
         orderVO.username = "Hikii";
-        orderVO.hotelID = 196531;
+        orderVO.hotelID = 961529;
         orderVO.roomType = RoomType.Couple;
         orderVO.roomAmount = 2;
         orderVO.personAmount = 4;
@@ -152,11 +152,17 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void handleAppeal() throws Exception {
-        OrderVO orderVO = new OrderVO();
+        tested.handleAppeal("52200020161111000", 0.5);
+    }
 
-        orderVO.orderID = "52200020161111000"; // 提供唯一标识
+    @Test
+    public void getFullOrderList() throws Exception {
+        List<OrderVO> orderVOList = tested.viewFullOrderList();
+    }
 
-
+    @Test
+    public void getTypeOrderList() throws Exception {
+        List<OrderVO> orderVOList = tested.viewTypeOrderList(OrderType.Executed);
     }
 
 }

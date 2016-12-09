@@ -43,4 +43,8 @@ public class CreditRecordList extends ArrayList<CreditRecordPO> {
         return res;
     }
 
+    public boolean canAddOrder(){
+        return (getCurrentCredit() >= 0);
+    }
+
 }
