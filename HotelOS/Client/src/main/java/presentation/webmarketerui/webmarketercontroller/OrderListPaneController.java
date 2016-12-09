@@ -1,5 +1,7 @@
 package presentation.webmarketerui.webmarketercontroller;
 
+import bl.orderbl.OrderBLService;
+import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +17,8 @@ import presentation.util.buttoncell.WebMarketListButtonCell;
 import util.OrderType;
 import vo.order.OrderPriceVO;
 import vo.order.OrderVO;
+
+import java.rmi.RemoteException;
 
 /**
  * Created by Hitiger on 2016/11/28.
@@ -44,16 +48,26 @@ public class OrderListPaneController {
 
     private Pane mainPane;
     private AlertController alertController;
+    private OrderBLService orderBLService;
     private ObservableList<OrderVO> orderVoList;
 
     public void launch(Pane mainPane) {
         this.mainPane = mainPane;
         alertController = new AlertController();
 
+        initService();
         initBox();
         initTable();
+        initData();
     }
 
+    private void initService() {
+        try {
+            orderBLService = new OrderBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void initBox() {
         orderTypeBox.getItems().addAll("所有订单", "未执行订单", "已执行订单", "异常订单");
@@ -81,19 +95,15 @@ public class OrderListPaneController {
         orderTable.setItems(orderVoList);
     }
 
+
+    private void initData() {
+    }
+
     //TODO 调用逻辑接口获得订单数据
     private ObservableList<OrderVO> getOrderVoList() {
-        ObservableList<OrderVO> list = FXCollections.observableArrayList();
+//        ObservableList<OrderVO> list = FXCollections.observableArrayList(orderBLService.viewFullHotelOrderList());
 
-        OrderPriceVO orderPriceVO = new OrderPriceVO(250, 200);
-        OrderVO orderVO = new OrderVO();
-        orderVO.hotelName = "如家酒店";
-        orderVO.orderID = "12345678912345678";
-        orderVO.username = "陆仁贾";
-        orderVO.orderType = OrderType.Abnormal;
-        orderVO.orderPriceVO = orderPriceVO;
-        list.add(orderVO);
-        return list;
+        return null;
     }
 
     /**

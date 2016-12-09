@@ -2,9 +2,6 @@ package presentation.hotelworkerui.hotelworkercontroller;
 
 import bl.orderbl.OrderBLService;
 import bl.orderbl.impl.OrderBlServiceImpl;
-import blservice_stub.OrderBLService_Stub;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

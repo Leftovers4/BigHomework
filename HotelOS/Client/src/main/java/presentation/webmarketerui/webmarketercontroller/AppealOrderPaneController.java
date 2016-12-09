@@ -1,14 +1,19 @@
 package presentation.webmarketerui.webmarketercontroller;
 
+import bl.orderbl.OrderBLService;
+import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import presentation.util.alert.AlertController;
+import presentation.webmarketerui.webmarketerscene.FindOrderPane;
 import util.OrderType;
+import util.ResultMessage;
 import vo.order.OrderVO;
+
+import java.rmi.RemoteException;
 
 /**
  * Created by Hitiger on 2016/11/28.
@@ -34,12 +39,26 @@ public class AppealOrderPaneController {
 
     private Pane mainPane;
     private AlertController alertController;
+    private OrderBLService orderBLService;
+    private String orderID;
 
     public void launch(Pane mainPane, OrderVO orderVO) {
         this.mainPane = mainPane;
+        this.orderID =orderVO.orderID;
+
         alertController = new AlertController();
+        initService();
         initLabels(orderVO);
     }
+
+    private void initService() {
+        try {
+            orderBLService = new OrderBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private void initLabels(OrderVO orderVO) {
         orderIdLabel.setText(orderVO.orderID);
@@ -62,9 +81,29 @@ public class AppealOrderPaneController {
     @FXML
     private void cancelAbnOrder(){
         if(allCreditBtn.isSelected()){
-            System.out.println("all");
+            try {
+                ResultMessage resultMessage = orderBLService.handleAppeal(orderID, 1);
+                if(resultMessage == ResultMessage.Success){
+                    if(alertController.showUpdateSuccessAlert("订单申诉成功，返回客户全部信用值","申诉成功")){
+                        mainPane.getChildren().clear();
+                        mainPane.getChildren().add(new FindOrderPane(mainPane));
+                    }
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }else {
-            System.out.println("half");
+            try {
+                ResultMessage resultMessage = orderBLService.handleAppeal(orderID, 0.5);
+                if(resultMessage == ResultMessage.Success){
+                    if(alertController.showUpdateSuccessAlert("订单申诉成功，返回客户一半信用值","申诉成功")){
+                        mainPane.getChildren().clear();
+                        mainPane.getChildren().add(new FindOrderPane(mainPane));
+                    }
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

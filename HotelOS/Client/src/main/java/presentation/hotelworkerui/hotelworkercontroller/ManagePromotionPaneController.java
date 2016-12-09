@@ -1,6 +1,9 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
+import bl.promotionbl.PromotionBLService;
+import bl.promotionbl.impl.PromotionBlServiceImpl;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,8 +16,10 @@ import javafx.scene.layout.VBox;
 import presentation.util.alert.AlertController;
 import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.MySlider;
+import util.PromotionType;
 import vo.promotion.PromotionVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -92,6 +97,7 @@ public class ManagePromotionPaneController {
     private Boolean isExistRoom = false;
     private Boolean isExistTime = false;
     private Boolean isExistCom = false;
+    private PromotionBLService promotionBLService;
 
     public void launch() {
         alertController = new AlertController();
@@ -99,29 +105,39 @@ public class ManagePromotionPaneController {
 
         //设置生日优惠按钮默认被选中
         makeBirthFocused();
+        initService();
         initTable();
+        initData();
+    }
+
+    private void initService() {
+        try {
+            promotionBLService = new PromotionBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initTable() {
         birthRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>(""));
-        birthDiscountCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        birthDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
         birthPriceCol.setCellValueFactory(new PropertyValueFactory<>(""));
         final TableColumn[] birthColumns = {birthRoomTypeCol, birthDiscountCol, birthPriceCol};
         birthTable.getColumns().addListener(new DisableColumnChangeListener(birthTable, birthColumns));
         birthTable.setItems(getBirthProVoList());
 
         roomTypeCol.setCellValueFactory(new PropertyValueFactory<>(""));
-        roomLeastCol.setCellValueFactory(new PropertyValueFactory<>(""));
-        roomDiscountCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        roomLeastCol.setCellValueFactory(new PropertyValueFactory<>("leastRooms"));
+        roomDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
         roomPriceCol.setCellValueFactory(new PropertyValueFactory<>(""));
         final TableColumn[] roomColumns = {roomTypeCol, roomLeastCol, roomDiscountCol, roomPriceCol};
         roomTable.getColumns().addListener(new DisableColumnChangeListener(roomTable, roomColumns));
         roomTable.setItems(getRoomProVoList());
 
         timeRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>(""));
-        timeStartCol.setCellValueFactory(new PropertyValueFactory<>(""));
-        timeEndCol.setCellValueFactory(new PropertyValueFactory<>(""));
-        timeDiscountCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        timeStartCol.setCellValueFactory(new PropertyValueFactory<>("beginTime"));
+        timeEndCol.setCellValueFactory(new PropertyValueFactory<>("endTime"));
+        timeDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
         timePriceCol.setCellValueFactory(new PropertyValueFactory<>(""));
         final TableColumn[] timeColumns = {timeRoomTypeCol, timeStartCol, timeEndCol, timeDiscountCol, timePriceCol};
         timeTable.getColumns().addListener(new DisableColumnChangeListener(timeTable, timeColumns));
@@ -129,11 +145,23 @@ public class ManagePromotionPaneController {
 
         comNameCol.setCellValueFactory(new PropertyValueFactory<>(""));
         comRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>(""));
-        comDiscountCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        comDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
         comPriceCol.setCellValueFactory(new PropertyValueFactory<>(""));
         final TableColumn[] comColumns = {comNameCol, comRoomTypeCol, comDiscountCol, comPriceCol};
         comTable.getColumns().addListener(new DisableColumnChangeListener(comTable, comColumns));
         comTable.setItems(getComProVoList());
+    }
+
+
+    private void initData() {
+        try {
+            birthTable.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(888888, PromotionType.BirthdayPromotion)));
+            roomTable.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(888888, PromotionType.MultipleRoomPromotion)));
+            timeTable.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(888888, PromotionType.SpecialTimePromotion)));
+            comTable.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(888888, PromotionType.EnterprisePromotion)));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     private ObservableList<PromotionVO> getBirthProVoList() {
