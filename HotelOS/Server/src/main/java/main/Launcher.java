@@ -60,8 +60,8 @@ public class Launcher extends Application{
         (remoteHelper = RemoteHelper.getInstance()).run();
 
         // 开启线程监控订单状态（超时自动置为异常订单）
-        executorService = Executors.newSingleThreadExecutor();
-        executorService.submit(new AbnormalOrderAutoChanger());
+//        executorService = Executors.newSingleThreadExecutor();
+//        executorService.submit(new AbnormalOrderAutoChanger());
 
     }
 

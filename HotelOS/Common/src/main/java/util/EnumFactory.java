@@ -28,7 +28,7 @@ public class EnumFactory {
         enumMap.put("None", MemberType.None);
         enumMap.put("NormalMember", MemberType.NormalMember);
         enumMap.put("EnterpriseMember", MemberType.EnterpriseMember);
-        enumMap.put("MemberType.Both", MemberType.Both);
+        enumMap.put("Both", MemberType.Both);
 
         // OrderType
         enumMap.put("Abnormal", OrderType.Abnormal);
