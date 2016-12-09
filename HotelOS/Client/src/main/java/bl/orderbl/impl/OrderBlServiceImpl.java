@@ -279,14 +279,16 @@ public class OrderBlServiceImpl implements OrderBLService {
     public ResultMessage handleAppeal(String orderID, double credit) throws RemoteException {
         OrderPO orderPO = orderDAO.findByOrderID(orderID);
 
-        LocalDateTime now = LocalDateTime.now();
+        //订单不存在的情况
+        if (orderPO == null)
+            return ResultMessage.DataNotExisted;
 
-        orderPO.setOrderType(OrderType.Canceled);
-        orderPO.getOrderHandleAppealPO().setHaTime(now);
-        if (credit == 0.5)
-            orderPO.getOrderHandleAppealPO().setHa_result(HandleAppealResult.Half);
-        else
-            orderPO.getOrderHandleAppealPO().setHa_result(HandleAppealResult.All);
+        //订单存在且状态不正确的情况
+        if (!orderPO.getOrderType().equals(OrderType.Abnormal))
+            return ResultMessage.OrederStatusIncorrect;
+
+        //订单存在且状态正确的情况
+        LocalDateTime now = LocalDateTime.now();
 
         CreditRecordPO creditRecordPO = new CreditRecordPO();
 
@@ -298,7 +300,14 @@ public class OrderBlServiceImpl implements OrderBLService {
         creditRecordPO.setChangedCredit(orderPO.getOrderPricePO().getActualPrice() * credit);
         creditRecordPO.setCurrentCredit(new CreditRecordList(userDAO.findCreditRecordsByUsername(orderPO.getUsername())).getCurrentCredit() + creditRecordPO.getChangedCredit());
 
-        userDAO.insertCreditRecord(creditRecordPO);
+        ResultMessage resultMessage = userDAO.insertCreditRecord(creditRecordPO);
+
+        if (!resultMessage.equals(ResultMessage.Success))
+            return resultMessage;
+
+        orderPO.setOrderType(OrderType.Canceled);
+        orderPO.getOrderHandleAppealPO().setHaTime(now);
+        orderPO.getOrderHandleAppealPO().setHa_result(credit == 0.5 ? HandleAppealResult.Half : HandleAppealResult.All);
 
         return orderDAO.update(orderPO);
     }
