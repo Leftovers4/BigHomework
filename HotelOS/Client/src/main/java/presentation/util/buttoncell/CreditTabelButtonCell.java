@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.OrderDetailUserPane;
+import vo.user.CreditRecordVO;
 import vo.user.CreditVO;
 
 
@@ -16,7 +17,7 @@ import vo.user.CreditVO;
  * Created by wyj on 2016/12/2.
  * Description: 信用记录列表添加按钮的方法：查看订单详情按钮
  */
-public class CreditTabelButtonCell extends TableCell<CreditVO, Boolean> {
+public class CreditTabelButtonCell extends TableCell<CreditRecordVO, Boolean> {
 
     final private HBox btnBox = new HBox();
     final private Button checkDetailBtn = new Button();
@@ -32,9 +33,9 @@ public class CreditTabelButtonCell extends TableCell<CreditVO, Boolean> {
 
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
-            CreditVO creditVO = (CreditVO) tableView.getItems().get(selectedIndex);
+            CreditRecordVO creditRecordVO = (CreditRecordVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane));
+            mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane, creditRecordVO.orderID));
         });
     }
 

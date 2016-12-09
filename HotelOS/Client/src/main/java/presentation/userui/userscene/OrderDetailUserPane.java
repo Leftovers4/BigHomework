@@ -12,11 +12,11 @@ import java.io.IOException;
  */
 public class OrderDetailUserPane extends Pane {
 
-    public OrderDetailUserPane(Stage primaryStage, Pane mainPane) {
-        loadFxml(primaryStage, mainPane);
+    public OrderDetailUserPane(Stage primaryStage, Pane mainPane, String orderID) {
+        loadFxml(primaryStage, mainPane, orderID);
     }
 
-    private void loadFxml(Stage primaryStage, Pane mainPane) {
+    private void loadFxml(Stage primaryStage, Pane mainPane, String orderID) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/orderDetailUser.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -26,6 +26,6 @@ public class OrderDetailUserPane extends Pane {
         }
 
         OrderDetailUserController orderDetailUserController = fxmlLoader.getController();
-        orderDetailUserController.launch(primaryStage, mainPane);
+        orderDetailUserController.launch(primaryStage, mainPane, orderID);
     }
 }

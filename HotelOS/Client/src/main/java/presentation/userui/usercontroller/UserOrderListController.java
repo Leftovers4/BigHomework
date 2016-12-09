@@ -45,6 +45,12 @@ public class UserOrderListController {
         this.mainPane = mainPane;
         this.userID = userID;
 
+        try {
+            orderBlService = new OrderBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
         orderStateComBox.getItems().add("全部订单");
         orderStateComBox.getItems().add("已执行订单");
         orderStateComBox.getItems().add("未执行订单");
@@ -59,7 +65,7 @@ public class UserOrderListController {
         orderTimeCol.setCellValueFactory(new PropertyValueFactory<>("orderTimeVO"));
         orderStateCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
         hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
-        btnCol.setCellValueFactory(new Callback<TableColumn, TableCell>() {
+        btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {
                 userOrderListButtonCell = new UserOrderListButtonCell(stage, mainPane, orderList);

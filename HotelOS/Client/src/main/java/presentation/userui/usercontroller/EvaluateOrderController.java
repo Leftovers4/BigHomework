@@ -1,10 +1,17 @@
 package presentation.userui.usercontroller;
 
+import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import util.ResultMessage;
+import vo.order.OrderVO;
+import vo.order.ReviewVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -21,11 +28,22 @@ public class EvaluateOrderController {
     @FXML private ImageView star4;
     @FXML private ImageView star5;
 
+    @FXML private TextArea reviewField;
+
     private ArrayList<ImageView> starGroup;
     private boolean isClicked = false;
+    private OrderBlServiceImpl orderBlService;
+
+    private int rate;
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
+
+        try {
+            orderBlService = new OrderBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
         starGroup = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
     }
@@ -62,8 +80,6 @@ public class EvaluateOrderController {
     }
 
 
-
-
     @FXML
     private void star1hover() {
         starHover(star1);
@@ -75,6 +91,7 @@ public class EvaluateOrderController {
     @FXML
     private void star1event() {
         starEvent(star1);
+        rate = 1;
     }
 
     @FXML
@@ -89,6 +106,7 @@ public class EvaluateOrderController {
     @FXML
     private void star2event() {
         starEvent(star2);
+        rate = 2;
     }
 
     @FXML
@@ -104,6 +122,7 @@ public class EvaluateOrderController {
     @FXML
     private void star3event() {
         starEvent(star3);
+        rate = 3;
     }
 
     @FXML
@@ -120,6 +139,7 @@ public class EvaluateOrderController {
     @FXML
     private void star4event() {
         starEvent(star4);
+        rate = 4;
     }
 
     @FXML
@@ -137,5 +157,30 @@ public class EvaluateOrderController {
     @FXML
     private void star5event() {
         starEvent(star5);
+        rate = 5;
+    }
+
+    /**
+     * 确认提交评价
+     */
+    @FXML
+    private void confirmSubmit() {
+        ReviewVO reviewVO = new ReviewVO();
+
+//        reviewVO.orderID = orderID;
+        reviewVO.rating = rate;
+        reviewVO.review = reviewField.getText();
+
+        try {
+            ResultMessage resultMessage = orderBlService.reviewOrder(reviewVO);
+
+            if (resultMessage == ResultMessage.Success) {
+                System.out.println("review success");
+            } else {
+                System.out.println("review failed");
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -23,6 +23,7 @@ public class RegisteredHotelController {
 
     private Stage stage;
     private Pane mainPane;
+    private String userID;
 
     @FXML private TableColumn hotelNameCol;
     @FXML private TableColumn hotelAddressCol;
@@ -32,10 +33,16 @@ public class RegisteredHotelController {
     private RegisteredHotelListButtonCell registeredHotelListButtonCell;
     private HotelBlServiceImpl hotelBlService;
 
-    public void launch(Stage primaryStage, Pane pane) {
+    public void launch(Stage primaryStage, Pane pane, String userID) {
         this.stage = primaryStage;
         this.mainPane = pane;
-//        hotelBlService = new HotelBlServiceImpl();
+        this.userID = userID;
+
+        try {
+            hotelBlService = new HotelBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
         initialData();
     }
@@ -43,8 +50,8 @@ public class RegisteredHotelController {
 
     private void initialData() {
         hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
-        hotelAddressCol.setCellValueFactory(new PropertyValueFactory<>("hotelAddress"));
-        btnCol.setCellValueFactory(new Callback<TableColumn, TableCell>() {
+        hotelAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {
                 registeredHotelListButtonCell = new RegisteredHotelListButtonCell(stage, mainPane, registeredHotelList);
@@ -52,15 +59,16 @@ public class RegisteredHotelController {
             }
         });
 
+        registeredHotelList.setItems(getRegisteredHotelList());
+    }
+
+    private ObservableList getRegisteredHotelList() {
+        ObservableList<HotelVO> list = null;
         try {
-            registeredHotelList.setItems(getRegisteredHotelList());
+            list = FXCollections.observableArrayList(hotelBlService.viewOrderedHotelList(userID));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-    }
-
-    private ObservableList getRegisteredHotelList() throws RemoteException {
-        ObservableList<HotelVO> list = FXCollections.observableArrayList(hotelBlService.viewOrderedHotelList("00"));
         return list;
     }
 }

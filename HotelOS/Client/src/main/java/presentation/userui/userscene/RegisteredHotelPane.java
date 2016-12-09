@@ -12,11 +12,11 @@ import java.io.IOException;
  */
 public class RegisteredHotelPane extends Pane {
 
-    public RegisteredHotelPane(Stage primaryStage, Pane mainPane) {
-        loadFxml(primaryStage, mainPane);
+    public RegisteredHotelPane(Stage primaryStage, Pane mainPane, String userID) {
+        loadFxml(primaryStage, mainPane, userID);
     }
 
-    private void loadFxml(Stage primaryStage, Pane mainPane) {
+    private void loadFxml(Stage primaryStage, Pane mainPane, String userID) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/user/UserRegisteredHotel.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -26,6 +26,6 @@ public class RegisteredHotelPane extends Pane {
         }
 
         RegisteredHotelController registeredHotelController = fxmlLoader.getController();
-        registeredHotelController.launch(primaryStage, mainPane);
+        registeredHotelController.launch(primaryStage, mainPane, userID);
     }
 }

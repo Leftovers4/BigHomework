@@ -27,7 +27,7 @@ public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
     public UserOrderListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView) {
         this.tableView = tableView;
 
-        this.getStylesheets().add(UserOrderListButtonCell.class.getResource("css/user/userstyle.css").toExternalForm());
+        this.getStylesheets().add(UserOrderListButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
         Image detailImg = new Image("/img/user/checkdetail.png");
         checkDetailBtn.setGraphic(new ImageView(detailImg));
         checkDetailBtn.getStyleClass().add("tableCellBtn");

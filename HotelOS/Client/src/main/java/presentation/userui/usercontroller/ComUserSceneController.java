@@ -117,7 +117,7 @@ public class ComUserSceneController {
     private void searchHotel() {
         changeSliderPos(350);
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new SearchHotelPane(stage, mainPane));
+        mainPane.getChildren().add(new SearchHotelPane(stage, mainPane, userID));
         leftBarBtnEffect(searchHotelBtn);
         currentBtn = searchHotelBtn;
     }
@@ -125,7 +125,7 @@ public class ComUserSceneController {
     private void hotelRegistered() {
         changeSliderPos(395);
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new RegisteredHotelPane(stage, mainPane));
+        mainPane.getChildren().add(new RegisteredHotelPane(stage, mainPane, userID));
         leftBarBtnEffect(hotelRegisteredBtn);
         currentBtn = hotelRegisteredBtn;
     }
