@@ -37,7 +37,7 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         userInfoContent.add(toString(userPO.getMemberPO().getMemberType()));
         userInfoContent.add(userPO.getMemberPO().getLevel());
         userInfoContent.add(dateToString(userPO.getMemberPO().getBirthday()));
-        userInfoContent.add(toString(userPO.getMemberPO().getMemberType()));
+        userInfoContent.add(toString(userPO.getMemberPO().getEnterprise()));
 
         return userInfoContent;
     }
