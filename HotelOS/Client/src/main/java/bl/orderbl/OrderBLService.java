@@ -29,6 +29,8 @@ public interface OrderBLService {
      */
     List<ReviewVO> viewHotelReviewList(long hotelID) throws RemoteException;
 
+    List<ReviewVO> viewHotelReviewListByRating(long hotelID, int rating) throws RemoteException;
+
     List<OrderVO> viewFullHotelOrderList(long hotelID) throws RemoteException;
 
     List<OrderVO> viewTypeHotelOrderList(long hotelID, OrderType orderType) throws RemoteException;
@@ -40,6 +42,8 @@ public interface OrderBLService {
     ResultMessage onlineCheckOut(OrderVO orderVO) throws RemoteException;
 
     ResultMessage executeOrder(String orderID) throws RemoteException;
+
+    ResultMessage executeOrder(OrderVO orderVO) throws RemoteException;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
@@ -59,6 +63,6 @@ public interface OrderBLService {
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
-    ResultMessage handleAppeal(String orderID, double credit) throws RemoteException;
+    ResultMessage handleAppeal(String orderID, double creditPercent) throws RemoteException;
 
 }

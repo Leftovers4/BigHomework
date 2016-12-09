@@ -70,6 +70,11 @@ public class OrderBlServiceImpl implements OrderBLService {
     }
 
     @Override
+    public List<ReviewVO> viewHotelReviewListByRating(long hotelID, int rating) throws RemoteException {
+        return orderVOCreator.createAllOrdinaryReviewVO(new OrderList(orderDAO.findByHotelID(hotelID)).filterByHasReview().filterByRating(rating));
+    }
+
+    @Override
     public List<OrderVO> viewFullHotelOrderList(long hotelID) throws RemoteException {
         return orderVOCreator.createAllDetailedOrderVO(orderDAO.findByHotelID(hotelID));
     }
@@ -103,7 +108,11 @@ public class OrderBlServiceImpl implements OrderBLService {
         if (orderPO == null)
             return ResultMessage.DataNotExisted;
 
-        //订单存在的情况
+        //订单存在且已经入住的情况
+        if (orderPO.getOrderTimePO().getCheckinTime() != null)
+            return ResultMessage.OrederStatusIncorrect;
+
+        //订单存在且尚未入住的情况
         orderPO.getOrderTimePO().setCheckinTime(orderVO.orderTimeVO.checkinTime);
         orderPO.getOrderTimePO().setExpectedLeaveTime(orderVO.orderTimeVO.expectedLeaveTime);
         orderPO.setRoomNumber(orderVO.roomNumber);
@@ -115,6 +124,19 @@ public class OrderBlServiceImpl implements OrderBLService {
     public ResultMessage onlineCheckOut(OrderVO orderVO) throws RemoteException {
         OrderPO orderPO = orderDAO.findByOrderID(orderVO.orderID);
 
+        //订单不存在的情况
+        if (orderPO == null)
+            return ResultMessage.DataNotExisted;
+
+        //订单存在且尚未入住的情况
+        if (orderPO.getOrderTimePO().getCheckinTime() == null)
+            return ResultMessage.OrederStatusIncorrect;
+
+        //订单存在且已经入住且已经离开的情况
+        if(orderPO.getOrderTimePO().getLeaveTime() != null)
+            return ResultMessage.DataExisted;
+
+        //订单存在且已经入住且尚未离开的情况
         orderPO.getOrderTimePO().setLeaveTime(orderVO.orderTimeVO.leaveTime);
 
         return orderDAO.update(orderPO);
@@ -124,10 +146,18 @@ public class OrderBlServiceImpl implements OrderBLService {
     public ResultMessage executeOrder(String orderID) throws RemoteException {
         OrderPO orderPO = orderDAO.findByOrderID(orderID);
 
-        orderPO.setOrderType(OrderType.Executed);
+        //订单不存在的情况
+        if (orderPO == null)
+            return ResultMessage.DataNotExisted;
 
+        //订单存在且状态不正确的情况
+        OrderType orderType = orderPO.getOrderType();
+        if (orderType.equals(OrderType.Executed) || orderType.equals(OrderType.Canceled))
+            return ResultMessage.OrederStatusIncorrect;
+
+        //订单存在且状态正确的情况
+            //更新信用记录
         CreditRecordPO creditRecordPO = new CreditRecordPO();
-
         creditRecordPO.setrecordID(IDProducer.produceGeneralID());
         creditRecordPO.setChangedTime(LocalDateTime.now());
         creditRecordPO.setUsername(orderPO.getUsername());
@@ -135,10 +165,23 @@ public class OrderBlServiceImpl implements OrderBLService {
         creditRecordPO.setOrderID(orderID);
         creditRecordPO.setChangedCredit(orderPO.getOrderPricePO().getActualPrice());
         creditRecordPO.setCurrentCredit(new CreditRecordList(userDAO.findCreditRecordsByUsername(orderPO.getUsername())).getCurrentCredit() + creditRecordPO.getChangedCredit());
+        ResultMessage resultMessage = userDAO.insertCreditRecord(creditRecordPO);
+        if (!resultMessage.equals(ResultMessage.Success))
+            return resultMessage;
 
-        userDAO.insertCreditRecord(creditRecordPO);
-
+            //更新订单信息
+        orderPO.setOrderType(OrderType.Executed);
         return orderDAO.update(orderPO);
+    }
+
+    @Override
+    public ResultMessage executeOrder(OrderVO orderVO) throws RemoteException {
+        ResultMessage resultMessage = onlineCheckIn(orderVO);
+
+        if (!resultMessage.equals(ResultMessage.Success))
+            return resultMessage;
+
+        return executeOrder(orderVO.orderID);
     }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -276,7 +319,7 @@ public class OrderBlServiceImpl implements OrderBLService {
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     @Override
-    public ResultMessage handleAppeal(String orderID, double credit) throws RemoteException {
+    public ResultMessage handleAppeal(String orderID, double creditPercent) throws RemoteException {
         OrderPO orderPO = orderDAO.findByOrderID(orderID);
 
         //订单不存在的情况
@@ -290,25 +333,23 @@ public class OrderBlServiceImpl implements OrderBLService {
         //订单存在且状态正确的情况
         LocalDateTime now = LocalDateTime.now();
 
+            //更新信用记录
         CreditRecordPO creditRecordPO = new CreditRecordPO();
-
         creditRecordPO.setrecordID(IDProducer.produceGeneralID());
         creditRecordPO.setChangedTime(now);
         creditRecordPO.setUsername(orderPO.getUsername());
         creditRecordPO.setCreditChangedCause(CreditChangedCause.CancelAbnormalOrder);
         creditRecordPO.setOrderID(orderID);
-        creditRecordPO.setChangedCredit(orderPO.getOrderPricePO().getActualPrice() * credit);
+        creditRecordPO.setChangedCredit(orderPO.getOrderPricePO().getActualPrice() * creditPercent);
         creditRecordPO.setCurrentCredit(new CreditRecordList(userDAO.findCreditRecordsByUsername(orderPO.getUsername())).getCurrentCredit() + creditRecordPO.getChangedCredit());
-
         ResultMessage resultMessage = userDAO.insertCreditRecord(creditRecordPO);
-
         if (!resultMessage.equals(ResultMessage.Success))
             return resultMessage;
 
+            //更新订单信息
         orderPO.setOrderType(OrderType.Canceled);
         orderPO.getOrderHandleAppealPO().setHaTime(now);
-        orderPO.getOrderHandleAppealPO().setHa_result(credit == 0.5 ? HandleAppealResult.Half : HandleAppealResult.All);
-
+        orderPO.getOrderHandleAppealPO().setHa_result(creditPercent == 0.5 ? HandleAppealResult.Half : HandleAppealResult.All);
         return orderDAO.update(orderPO);
     }
 

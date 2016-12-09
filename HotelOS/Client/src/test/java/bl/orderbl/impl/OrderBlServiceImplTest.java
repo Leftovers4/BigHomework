@@ -43,6 +43,11 @@ public class OrderBlServiceImplTest {
     }
 
     @Test
+    public void viewHotelReviewListByRating() throws Exception {
+        List<ReviewVO> reviewVOList = tested.viewHotelReviewListByRating(522000, 4);
+    }
+
+    @Test
     public void viewFullHotelOrderList() throws Exception {
         List<OrderVO> orderVOList = tested.viewFullHotelOrderList(522000);
     }
@@ -73,7 +78,7 @@ public class OrderBlServiceImplTest {
     public void onlineCheckOut() throws Exception {
         OrderVO orderVO = new OrderVO();
 
-        orderVO.orderID = "14532820161207423";
+        orderVO.orderID = "14532820161207423"; // 提供唯一标识
         orderVO.orderTimeVO.leaveTime = LocalDateTime.now();
 
         tested.onlineCheckOut(orderVO);
@@ -81,19 +86,26 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void executeOrder() throws Exception {
+        OrderVO orderVO = new OrderVO();
 
+        orderVO.orderID = "14532820161207423"; //提供唯一标识
+        orderVO.orderTimeVO.checkinTime = LocalDateTime.now();
+        orderVO.orderTimeVO.expectedLeaveTime = LocalDateTime.now().plusDays(2);
+        orderVO.roomNumber = "B330";
+
+        ResultMessage resultMessage = tested.executeOrder(orderVO);
     }
 
     @Test
     public void cancelOrder() throws Exception {
-
+        ResultMessage resultMessage = tested.cancelOrder("14532820161207423");
     }
 
     @Test
     public void reviewOrder() throws Exception {
         ReviewVO reviewVO = new ReviewVO();
 
-        reviewVO.orderID = "14532820161207423";
+        reviewVO.orderID = "14532820161207423"; //提供唯一标识
         reviewVO.rating = 4;
         reviewVO.review = "sdjlfkalfkdfjkalj";
 
@@ -102,12 +114,12 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void viewFullUserOrderList() throws Exception {
-
+        List<OrderVO> orderVOList = tested.viewFullUserOrderList("lisi");
     }
 
     @Test
     public void viewTypeUserOrderList() throws Exception {
-
+        List<OrderVO> orderVOList = tested.viewTypeUserOrderList("lisi", OrderType.Unexecuted);
     }
 
     @Test
@@ -122,6 +134,7 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void addOrder() throws Exception {
+        //该测试还存在问题
         OrderVO orderVO = new OrderVO();
 
         orderVO.username = "Hikii";
