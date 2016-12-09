@@ -22,7 +22,7 @@
                <children>
                   <Label fx:id="generateTimeLabel" layoutX="175.0" layoutY="230.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="152.0" text="2016-10-29 16:30" GridPane.columnIndex="1" />
                   <Label layoutX="56.0" layoutY="230.0" text="生成时间：" />
-                  <Label fx:id="exeLeastTimeLabel" layoutX="587.0" layoutY="230.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="152.0" text="2016-10-29 16:30" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="lastExecuteTimeLabel" layoutX="587.0" layoutY="230.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="152.0" text="2016-10-29 16:30" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label layoutX="430.0" layoutY="230.0" text="最晚执行时间：" GridPane.rowIndex="1" />
                </children>
                <HBox.margin>
@@ -58,10 +58,10 @@
       </HBox>
       <HBox layoutX="40.0" layoutY="480.0" prefHeight="130.0" prefWidth="780.0" styleClass="BackgroundHBox">
          <children>
-            <GridPane hgap="60.0" layoutX="62.0" layoutY="466.0" vgap="10.0">
+            <GridPane hgap="25.0" layoutX="62.0" layoutY="466.0" vgap="10.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="160.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -99,7 +99,7 @@
                   <Label fx:id="roomIDLabel" maxHeight="36.0" prefHeight="36.0" text="A110 A111 A112" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
                <HBox.margin>
-                  <Insets left="100.0" />
+                  <Insets left="20.0" />
                </HBox.margin>
             </GridPane>
          </children>
@@ -113,7 +113,7 @@
          </image>
       </ImageView>
       <Label id="detailTitleLabel" layoutX="71.0" layoutY="82.0" text="订单详情" />
-      <Button fx:id="backBtn" layoutY="78.0" mnemonicParsing="false" onAction="#back" styleClass="BackBtn">
+      <Button layoutY="78.0" mnemonicParsing="false" onAction="#back" styleClass="BackBtn">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -121,25 +121,18 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <HBox layoutX="40.0" layoutY="150.0" prefHeight="130.0" prefWidth="400.0" styleClass="BackgroundHBox">
+      <HBox layoutX="40.0" layoutY="150.0" prefHeight="130.0" prefWidth="780.0" styleClass="BackgroundHBox">
          <children>
-            <GridPane hgap="50.0" layoutX="113.0" layoutY="54.0" vgap="10.0">
+            <GridPane hgap="25.0" layoutX="113.0" layoutY="54.0" vgap="10.0">
                <children>
                   <Label text="订单号：" />
                   <Label text="订单状态：" GridPane.rowIndex="1" />
-                  <Label text="订单价值：" GridPane.rowIndex="2" />
-                  <Label fx:id="orderPriceLabel" text="1200" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label text="元" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets left="50.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Label fx:id="orderIDLabel" text="12345678912345678" GridPane.columnIndex="1" />
+                  <Label fx:id="orderIDLabel" styleClass="orderIDLabel" text="12345678912345678" GridPane.columnIndex="1" />
                   <Label fx:id="orderTypeLabel" text="未执行" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="160.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -148,6 +141,42 @@
                </rowConstraints>
                <HBox.margin>
                   <Insets />
+               </HBox.margin>
+            </GridPane>
+            <GridPane hgap="37.0" vgap="10.0">
+               <children>
+                  <Label text="订单优惠：" GridPane.rowIndex="1" />
+                  <Label text="订单原价：" />
+                  <Label text="订单价值：" GridPane.rowIndex="2" />
+                  <Label id="orderActPriceLabel" fx:id="orderActPriceLabel" text="1200" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <Label text="¥" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets top="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label id="orderProLabel" fx:id="orderProLabel" text="特定期间" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label id="orderOriPriceLabel" fx:id="orderOriPriceLabel" text="1200" GridPane.columnIndex="1">
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </Label>
+                  <Label text="¥" GridPane.columnIndex="1" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" />
+                  <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <HBox.margin>
+                  <Insets left="20.0" />
                </HBox.margin>
             </GridPane>
          </children>

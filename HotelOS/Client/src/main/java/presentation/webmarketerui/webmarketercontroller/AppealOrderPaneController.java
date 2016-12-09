@@ -85,8 +85,9 @@ public class AppealOrderPaneController {
                 ResultMessage resultMessage = orderBLService.handleAppeal(orderID, 1);
                 if(resultMessage == ResultMessage.Success){
                     if(alertController.showUpdateSuccessAlert("订单申诉成功，返回客户全部信用值","申诉成功")){
-                        mainPane.getChildren().clear();
-                        mainPane.getChildren().add(new FindOrderPane(mainPane));
+                        cancelAbnOrderBtn.setDisable(true);
+                        webOrderTypeLabel.setStyle("-fx-text-fill: green");
+                        webOrderTypeLabel.setText(OrderType.Canceled.toString());
                     }
                 }
             } catch (RemoteException e) {
@@ -97,8 +98,9 @@ public class AppealOrderPaneController {
                 ResultMessage resultMessage = orderBLService.handleAppeal(orderID, 0.5);
                 if(resultMessage == ResultMessage.Success){
                     if(alertController.showUpdateSuccessAlert("订单申诉成功，返回客户一半信用值","申诉成功")){
-                        mainPane.getChildren().clear();
-                        mainPane.getChildren().add(new FindOrderPane(mainPane));
+                        cancelAbnOrderBtn.setDisable(true);
+                        webOrderTypeLabel.setStyle("-fx-text-fill: green");
+                        webOrderTypeLabel.setText(OrderType.Canceled.toString());
                     }
                 }
             } catch (RemoteException e) {

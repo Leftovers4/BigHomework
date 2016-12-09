@@ -1,13 +1,19 @@
 package presentation.webmarketerui.webmarketercontroller;
 
+import bl.userbl.UserBLService;
+import bl.userbl.impl.UserBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import presentation.util.alert.AlertController;
+import presentation.webmarketerui.webmarketerscene.AddCreditPane;
+import util.ResultMessage;
 import vo.user.UserVO;
 
+import java.lang.reflect.InvocationTargetException;
+import java.rmi.RemoteException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,9 +42,11 @@ public class AddCreditPaneController {
 
     private Pane mainPane;
     private AlertController alertController;
+    private String userName;
 
     public void launch(Pane mainPane, UserVO userVO) {
         this.mainPane = mainPane;
+        this.userName = userVO.username;
         alertController = new AlertController();
         initLabels(userVO);
     }
@@ -55,7 +63,27 @@ public class AddCreditPaneController {
     @FXML
     private void addCredit() {
         if(judgeInput()){
-            //TODO addcredit
+            try {
+                UserBLService userBLService = new UserBlServiceImpl();
+                ResultMessage resultMessage = userBLService.topup(userName, Double.parseDouble(creditTextField.getText()));
+                if(resultMessage == ResultMessage.Success) {
+                    if(alertController.showUpdateSuccessAlert("信用充值成功","充值成功")){
+                        UserVO newuserVO = userBLService.viewBasicUserInfo(userName);
+                        mainPane.getChildren().clear();
+                        mainPane.getChildren().add(new AddCreditPane(mainPane, newuserVO));
+                    }
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 

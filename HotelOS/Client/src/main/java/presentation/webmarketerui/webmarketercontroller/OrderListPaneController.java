@@ -114,19 +114,26 @@ public class OrderListPaneController {
     private void addBoxListener() {
         orderTypeBox.getSelectionModel().selectedItemProperty().addListener(
                 (o, oldValue, newValue) -> {
-                    switch ((String) newValue) {
-//                        case "所有订单":
-//                            orderTable.setItems(getOrderVoList());
-//                            break;
-//                        case "未执行订单":
-//                            showOrderList(OrderType.Unexecuted);
-//                            break;
-//                        case "已执行订单":
-//                            showOrderList(OrderType.Executed);
-//                            break;
-//                        case "异常订单":
-//                            showOrderList(OrderType.Abnormal);
-//                            break;
+                    try {
+                        switch ((String) newValue) {
+                            case "所有订单":
+                                orderTable.setItems(getOrderVoList());
+                                break;
+                            case "未执行订单":
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeOrderList(OrderType.Unexecuted)));
+                                break;
+                            case "已执行订单":
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeOrderList(OrderType.Executed)));
+                                break;
+                            case "异常订单":
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeOrderList(OrderType.Abnormal)));
+                                break;
+                            case "撤销订单":
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeOrderList(OrderType.Canceled)));
+                                break;
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
                     }
                 });
     }

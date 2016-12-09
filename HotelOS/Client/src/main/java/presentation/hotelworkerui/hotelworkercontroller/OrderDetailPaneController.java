@@ -79,7 +79,6 @@ public class OrderDetailPaneController {
     }
 
     private void initOrderLabel(OrderVO orderVO) {
-
         orderIDLabel.setText(orderVO.orderID);
         orderTypeLabel.setText(orderVO.orderType.toString());
         orderOriPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.originPrice));
@@ -97,7 +96,7 @@ public class OrderDetailPaneController {
         peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
         roomTypeLabel.setText(String.valueOf(orderVO.roomType));
         roomAmountLabel.setText(String.valueOf(orderVO.roomAmount));
-        roomIDLabel.setText(orderVO.roomNumber);
+        roomIDLabel.setText(orderVO.roomNumber == null ? "" : orderVO.roomNumber);
     }
 
     private void initReviewBtn(OrderType orderType) {
