@@ -216,6 +216,10 @@
     -fx-text-fill: #fe4f00;
     -fx-font-size: 32px;
 }
+#userReviewLabel{
+    -fx-font-size: 15px;
+    -fx-text-fill: #b7b7b7;
+}
 /*编辑按钮*/
 #editInfoBtn{
     -fx-border-color: #55acee;

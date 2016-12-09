@@ -3,10 +3,7 @@ package presentation.hotelworkerui.hotelworkercontroller;
 import bl.orderbl.OrderBLService;
 import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
 import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
@@ -69,6 +66,8 @@ public class UpdateOrderInfoPaneController {
     @FXML private Label roomIDLabel;
     @FXML private TextField roomIDField;
 
+    @FXML private Button submitUpdateBtn;
+
     private Pane mainPane;
     //是否从更新入住信息进入
     private Boolean isCheckIn;
@@ -93,10 +92,12 @@ public class UpdateOrderInfoPaneController {
 
         initService();
         //初始化组件
+        initSubmitBtn();
         initLabels(orderVO);
         initBox();
         initDatePicker();
     }
+
 
     private void initService() {
         try {
@@ -104,6 +105,10 @@ public class UpdateOrderInfoPaneController {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+    }
+
+    private void initSubmitBtn() {
+        submitUpdateBtn.setText(isCheckIn ? (orderVO.orderType == OrderType.Abnormal ? "延迟入住" : "入住") : "退房");
     }
 
     private void initDatePicker() {
@@ -171,7 +176,7 @@ public class UpdateOrderInfoPaneController {
                 orderVO.roomNumber = roomNumber;
 
                 try {
-                    orderBLService.onlineCheckIn(orderVO);
+                    orderBLService.executeOrder(orderVO);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
@@ -182,7 +187,6 @@ public class UpdateOrderInfoPaneController {
 
                 try {
                     orderBLService.onlineCheckOut(orderVO);
-                    orderBLService.executeOrder(orderVO.orderID);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }

@@ -68,7 +68,8 @@ public class ReviewPaneController {
     }
 
     private void initBox() {
-        rankBox.getItems().addAll("5","4","3","2","1");
+        rankBox.getItems().addAll("所有","5","4","3","2","1");
+        addBoxListener();
     }
 
     private void initTable() {
@@ -127,17 +128,12 @@ public class ReviewPaneController {
     private void addBoxListener() {
         rankBox.getSelectionModel().selectedItemProperty().addListener(
                 (o, oldValue, newValue) -> {
-                    switch ((String) newValue) {
-                        case "5":
-                            break;
-                        case "4":
-                            break;
-                        case "3":
-                            break;
-                        case "2":
-                            break;
-                        case "1":
-                            break;
+                    try {
+                        String temp = newValue.toString();
+                        if(temp.equals("所有")) reviewTable.setItems(getReviewVoList());
+                        else reviewTable.setItems(FXCollections.observableArrayList(orderBLService.viewHotelReviewListByRating(522000, Integer.parseInt(temp))));
+                    }catch (RemoteException e){
+                        e.printStackTrace();
                     }
                 });
     }
