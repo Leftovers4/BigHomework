@@ -37,6 +37,11 @@ public class OrderBLService_Stub implements OrderBLService {
     }
 
     @Override
+    public List<ReviewVO> viewHotelReviewListByRating(long hotelID, int rating) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public ResultMessage addOrder(OrderVO orderVO) {
         return ResultMessage.Success;
     }
@@ -48,6 +53,11 @@ public class OrderBLService_Stub implements OrderBLService {
     @Override
     public ResultMessage executeOrder(String orderID) {
         return ResultMessage.Success;
+    }
+
+    @Override
+    public ResultMessage executeOrder(OrderVO orderVO) throws RemoteException {
+        return null;
     }
 
     @Override

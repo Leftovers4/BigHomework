@@ -134,7 +134,6 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void addOrder() throws Exception {
-        //该测试还存在问题
         OrderVO orderVO = new OrderVO();
 
         orderVO.username = "Hikii";
@@ -153,6 +152,10 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void handleAppeal() throws Exception {
+        OrderVO orderVO = new OrderVO();
+
+        orderVO.orderID = "52200020161111000"; // 提供唯一标识
+
 
     }
 

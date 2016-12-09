@@ -80,7 +80,7 @@ public class UserBlServiceImplTest {
     public void registerEnterpriseMember() throws Exception {
         UserVO userVO = new UserVO();
 
-        userVO.username = "lisiiii"; //提供唯一标识
+        userVO.username = "lisii"; //提供唯一标识
         userVO.name = "张";
         userVO.gender = true;
         userVO.phone = "123456789";
