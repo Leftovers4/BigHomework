@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import presentation.util.alert.InputWrongAlert;
+import util.MemberType;
 import vo.user.UserVO;
 
 import java.lang.reflect.InvocationTargetException;
@@ -95,6 +96,12 @@ public class RegisterCommonVIPController {
             userVO.gender = SexMan.isSelected();
             userVO.memberVO.birthday = birthdayPicker.getValue();
             userVO.phone = phoneField.getText();
+
+            if (userVO.memberVO.memberType == MemberType.None) {
+                userVO.memberVO.memberType = MemberType.NormalMember;
+            } else if (userVO.memberVO.memberType == MemberType.EnterpriseMember) {
+                userVO.memberVO.memberType = MemberType.Both;
+            }
         } else if (!isempty && !isphoneok) {
             new InputWrongAlert("联系方式格式错误", "格式错误").showAndWait();
         } else {

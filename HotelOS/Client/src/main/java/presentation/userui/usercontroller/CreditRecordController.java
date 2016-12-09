@@ -1,5 +1,6 @@
 package presentation.userui.usercontroller;
 
+import bl.userbl.impl.UserBlServiceImpl;
 import blservice_stub.UserBLService_Stub;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +15,8 @@ import javafx.util.Callback;
 import presentation.util.buttoncell.CreditTabelButtonCell;
 import vo.user.CreditRecordVO;
 
+import java.rmi.RemoteException;
+
 /**
  * Created by wyj on 2016/11/25.
  */
@@ -22,6 +25,7 @@ public class CreditRecordController {
 
     private Stage stage;
     private Pane mainPane;
+    private String userID;
 
     @FXML private TableView creditRecordTable;
 
@@ -34,12 +38,20 @@ public class CreditRecordController {
 
     private CreditTabelButtonCell creditTabelButtonCell;
 
-    private UserBLService_Stub userBLService_stub;
+    private UserBlServiceImpl userBlService;
 
-    public void launch(Stage primaryStage, Pane mainPane) {
+
+    public void launch(Stage primaryStage, Pane mainPane, String userID) {
         this.mainPane = mainPane;
         this.stage = primaryStage;
-        userBLService_stub = new UserBLService_Stub();
+        this.userID = userID;
+
+        try {
+            userBlService = new UserBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
         initialData();
     }
 
@@ -61,7 +73,12 @@ public class CreditRecordController {
     }
 
     private ObservableList getCreditRecordList() {
-        ObservableList<CreditRecordVO> list = FXCollections.observableArrayList(userBLService_stub.getCreditRecordsByUsername("leftovers01"));
+        ObservableList<CreditRecordVO> list = null;
+        try {
+            list = FXCollections.observableArrayList(userBlService.getCreditRecordsByUsername(userID));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         return list;
     }
 

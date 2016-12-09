@@ -37,7 +37,6 @@ public class InfoPaneController {
     private Pane mainPane;
     private String userID;
 
-    @FXML private TextField userIdField;
     @FXML private TextField userNameField;
     @FXML private RadioButton sexMan;
     @FXML private RadioButton sexWoman;
@@ -84,6 +83,8 @@ public class InfoPaneController {
 
     private void initialData() {
 
+        userIdLabel.setText(userID);
+
         if (firstToLogin(userID)) {
             //新注册后第一次登录填写个人信息
             for (int i = 0; i<leftBarBtnArr.size(); i++) {
@@ -92,55 +93,53 @@ public class InfoPaneController {
                 }
             }
             showmodule(true);
-
-            userIdField.setText(userID);
             userNameField.setText(null);
             sexMan.setSelected(false);
             sexWoman.setSelected(false);
             phoneField.setText(null);
+            birthPicker.setValue(null);
         } else {
             //老用户信息显示
             try {
                 UserVO userVO = userBlService.viewBasicUserInfo(userID);
 
-                userIdLabel.setText(userVO.username);
-                usernameLabel.setText(userVO.name);
                 if (userVO.gender) {
                     userSex.setText("男");
                 } else {
                     userSex.setText("女");
                 }
                 phone.setText(userVO.phone);
+                birthDate.setText(userVO.memberVO.birthday.toString());
 
                 //会员信息显示
                 MemberType memberType = userVO.memberVO.memberType;
                 System.out.println(memberType==null);
 
-                switch (memberType) {
-                    case None:
-                        vipLevel.setVisible(false);
-                        vipCompany.setVisible(false);
-                        registerCommonvipBtn.setVisible(false);
-                        registerCompanyvipBtn.setVisible(false);
-                    case NormalMember:
-                        vipLevel.setVisible(true);
-                        registerCommonvipBtn.setVisible(false);
-                        vipLevel.setText(String.valueOf(userVO.memberVO.level));
-                        registerCompanyvipBtn.setVisible(true);
-                        vipCompany.setVisible(false);
-                    case EnterpriseMember:
-                        vipCompany.setVisible(true);
-                        registerCompanyvipBtn.setVisible(false);
-                        vipCompany.setText(userVO.memberVO.enterprise);
-                        registerCommonvipBtn.setVisible(true);
-                    case Both:
-                        vipCompany.setVisible(true);
-                        vipCompany.setText(userVO.memberVO.enterprise);
-                        vipLevel.setVisible(true);
-                        vipLevel.setText(String.valueOf(userVO.memberVO.level));
-                        registerCommonvipBtn.setVisible(false);
-                        registerCompanyvipBtn.setVisible(false);
-                }
+//                switch (memberType) {
+//                    case None:
+//                        vipLevel.setVisible(false);
+//                        vipCompany.setVisible(false);
+//                        registerCommonvipBtn.setVisible(false);
+//                        registerCompanyvipBtn.setVisible(false);
+//                    case NormalMember:
+//                        vipLevel.setVisible(true);
+//                        registerCommonvipBtn.setVisible(false);
+//                        vipLevel.setText(String.valueOf(userVO.memberVO.level));
+//                        registerCompanyvipBtn.setVisible(true);
+//                        vipCompany.setVisible(false);
+//                    case EnterpriseMember:
+//                        vipCompany.setVisible(true);
+//                        registerCompanyvipBtn.setVisible(false);
+//                        vipCompany.setText(userVO.memberVO.enterprise);
+//                        registerCommonvipBtn.setVisible(true);
+//                    case Both:
+//                        vipCompany.setVisible(true);
+//                        vipCompany.setText(userVO.memberVO.enterprise);
+//                        vipLevel.setVisible(true);
+//                        vipLevel.setText(String.valueOf(userVO.memberVO.level));
+//                        registerCommonvipBtn.setVisible(false);
+//                        registerCompanyvipBtn.setVisible(false);
+//                }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
@@ -193,7 +192,6 @@ public class InfoPaneController {
      * @param show
      */
     private void showmodule(boolean show) {
-        userIdField.setVisible(show);
         userNameField.setVisible(show);
         sexMan.setVisible(show);
         sexWoman.setVisible(show);
@@ -202,7 +200,6 @@ public class InfoPaneController {
         saveInfo.setVisible(show);
         cleanAllBtn.setVisible(show);
 
-        userIdLabel.setVisible(!show);
         usernameLabel.setVisible(!show);
         userSex.setVisible(!show);
         birthDate.setVisible(!show);
@@ -220,7 +217,6 @@ public class InfoPaneController {
     private void editUserInfo() {
         showmodule(true);
 
-        userIdField.setText(userIdLabel.getText());
         userNameField.setText(usernameLabel.getText());
         if (userSex.getText().equals("男")) {
             sexMan.setSelected(true);
@@ -245,7 +241,7 @@ public class InfoPaneController {
             UserVO userVO = new UserVO();
 
             userVO.username = userID;
-            userVO.newUsername = userIdField.getText();
+            userVO.newUsername = userID;
             userVO.name = userNameField.getText();
             userVO.gender = sexMan.isSelected();
             userVO.phone = phoneField.getText();
@@ -264,7 +260,6 @@ public class InfoPaneController {
             }
 
             phone.setText(phoneField.getText());
-            userIdField.clear();
             userNameField.clear();
             sexMan.setSelected(false);
             sexWoman.setSelected(false);
@@ -273,8 +268,10 @@ public class InfoPaneController {
 
             showmodule(false);
 
-            mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto, userID, leftBarBtnArr));
+//            mainPane.getChildren().remove(0);
+//            mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto, userID, leftBarBtnArr));
+
+            initialData();
         } else if (!isempty && !phoneisright) {
             new InputWrongAlert("联系方式格式错误", "格式错误").showAndWait();
         } else {
@@ -289,14 +286,13 @@ public class InfoPaneController {
      * @return
      */
     private boolean isEmpty() {
-        boolean userid = userIdField.getText().equals("");
         boolean username = userNameField.getText().equals("");
         boolean phonenum = phoneField.getText().equals("");
         boolean sex = true;
         if (sexMan.isSelected() || sexWoman.isSelected()) {
             sex = false;
         }
-        return userid || username || phonenum || sex;
+        return username || phonenum || sex;
     }
 
     /**
@@ -327,7 +323,6 @@ public class InfoPaneController {
      */
     @FXML
     private void cleanAll() {
-        userIdField.clear();
         userNameField.clear();
         birthPicker.setValue(null);
         sexMan.setSelected(false);
@@ -386,7 +381,7 @@ public class InfoPaneController {
     @FXML
     private void checkCreditRecord() {
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new CreditRecordPane(stage, mainPane));
+        mainPane.getChildren().add(new CreditRecordPane(stage, mainPane, userID));
     }
 
 
