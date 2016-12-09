@@ -20,6 +20,7 @@ import java.util.concurrent.Executors;
 public class Launcher extends Application{
 
     @FXML private Button launchBtn;
+    @FXML private Button stopBtn;
 
     private RemoteHelper remoteHelper;
 
@@ -50,8 +51,9 @@ public class Launcher extends Application{
 
     @FXML
     private void launchServer() {
-        // 将开启按钮设为不可点击
+        // 将开启按钮设为不可点击,停止按钮可点击
         launchBtn.setDisable(true);
+        stopBtn.setDisable(false);
 
         // 改变服务器状态
         running = true;
@@ -70,6 +72,7 @@ public class Launcher extends Application{
         remoteHelper.stop();
         running = false;
         launchBtn.setDisable(false);
+        stopBtn.setDisable(true);
 
     }
 

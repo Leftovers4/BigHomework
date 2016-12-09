@@ -49,7 +49,6 @@ public class OrderListPaneController {
     private Pane mainPane;
     private AlertController alertController;
     private OrderBLService orderBLService;
-    private ObservableList<OrderVO> orderVoList;
 
     public void launch(Pane mainPane) {
         this.mainPane = mainPane;
@@ -70,13 +69,11 @@ public class OrderListPaneController {
     }
 
     private void initBox() {
-        orderTypeBox.getItems().addAll("所有订单", "未执行订单", "已执行订单", "异常订单");
-
+        orderTypeBox.getItems().addAll("所有订单", "未执行订单", "已执行订单", "异常订单", "撤销订单");
         addBoxListener();
     }
 
     private void initTable() {
-        orderVoList = getOrderVoList();
 
         hotelCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
         idCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
@@ -92,18 +89,22 @@ public class OrderListPaneController {
         });
 
 
-        orderTable.setItems(orderVoList);
+
     }
 
 
     private void initData() {
+        orderTable.setItems(getOrderVoList());
     }
 
-    //TODO 调用逻辑接口获得订单数据
     private ObservableList<OrderVO> getOrderVoList() {
-//        ObservableList<OrderVO> list = FXCollections.observableArrayList(orderBLService.viewFullHotelOrderList());
-
-        return null;
+        ObservableList<OrderVO> list = null;
+        try {
+            list = FXCollections.observableArrayList(orderBLService.viewFullOrderList());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
     /**
@@ -114,36 +115,20 @@ public class OrderListPaneController {
         orderTypeBox.getSelectionModel().selectedItemProperty().addListener(
                 (o, oldValue, newValue) -> {
                     switch ((String) newValue) {
-                        case "所有订单":
-                            orderTable.setItems(orderVoList);
-                            break;
-                        case "未执行订单":
-                            showOrderList(OrderType.Unexecuted);
-                            break;
-                        case "已执行订单":
-                            showOrderList(OrderType.Executed);
-                            break;
-                        case "异常订单":
-                            showOrderList(OrderType.Abnormal);
-                            break;
+//                        case "所有订单":
+//                            orderTable.setItems(getOrderVoList());
+//                            break;
+//                        case "未执行订单":
+//                            showOrderList(OrderType.Unexecuted);
+//                            break;
+//                        case "已执行订单":
+//                            showOrderList(OrderType.Executed);
+//                            break;
+//                        case "异常订单":
+//                            showOrderList(OrderType.Abnormal);
+//                            break;
                     }
                 });
     }
 
-
-    /**
-     * 根据传入的订单状态显示相应的订单列表
-     *
-     * @param orderType 订单状态
-     */
-    private void showOrderList(OrderType orderType) {
-        ObservableList<OrderVO> list = FXCollections.observableArrayList();
-        for (OrderVO OrderVO : orderVoList) {
-            if (OrderVO.orderType == orderType) {
-                list.add(OrderVO);
-            }
-        }
-        orderTable.setItems(list);
-        orderTable.refresh();
-    }
 }
