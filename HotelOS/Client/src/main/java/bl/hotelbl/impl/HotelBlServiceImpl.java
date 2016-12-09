@@ -22,6 +22,7 @@ import vo.order.OrderVOCreator;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by kevin on 2016/11/6.
@@ -55,6 +56,8 @@ public class HotelBlServiceImpl implements HotelBLService {
         hotelPO.setHotelID(IDProducer.produceHotelID());
         hotelPO.setHotelName(hotelVO.hotelName);
         hotelPO.setStar(hotelVO.star);
+        hotelPO.setAddress(hotelVO.address);
+        hotelPO.setTradingArea(hotelVO.tradingArea);
 
         return hotelDAO.insert(hotelPO);
     }
@@ -73,8 +76,13 @@ public class HotelBlServiceImpl implements HotelBLService {
 
     @Override
     public HotelVO viewBasicHotelInfo(long hotelID) throws RemoteException {
-        //酒店工作人员已登录，所以必然存在该酒店
         HotelPO hotelPO = hotelDAO.findByHotelID(hotelID);
+
+        //酒店不存在的情况
+        if (hotelPO == null)
+            return null;
+
+        //酒店存在的情况
         PersonnelPO personnelPO = new PersonnelList(personnelDAO.findByType(PersonnelType.HotelWorker)).filterByHotelID(hotelID);
         List<OrderPO> orderPOList = orderDAO.findByHotelID(hotelID);
 
@@ -83,9 +91,13 @@ public class HotelBlServiceImpl implements HotelBLService {
 
     @Override
     public ResultMessage updateBasicHotelInfo(HotelVO hotelVO) throws RemoteException {
-        //酒店工作人员已登录，所以必然存在该酒店
         HotelPO hotelPO = hotelDAO.findByHotelID(hotelVO.hotelID);
 
+        //酒店不存在的情况
+        if (hotelPO == null)
+            return ResultMessage.DataNotExisted;
+
+        //酒店存在的情况
         hotelPO.setAddress(hotelVO.address);
         hotelPO.setTradingArea(hotelVO.tradingArea);
         hotelPO.setDescription(hotelVO.description);
@@ -96,6 +108,11 @@ public class HotelBlServiceImpl implements HotelBLService {
 
     @Override
     public ResultMessage addRoom(RoomVO roomVO) throws RemoteException {
+        //房间类型已存在的情况
+        if(new RoomList(hotelDAO.findRoomsByHotelID(roomVO.hotelID)).filterByRoomType(roomVO.roomType) != null)
+            return ResultMessage.DataExisted;
+
+        //房间类型不存在的情况
         RoomPO roomPO = new RoomPO();
 
         roomPO.setroomID(IDProducer.produceGeneralID());
@@ -115,9 +132,13 @@ public class HotelBlServiceImpl implements HotelBLService {
 
     @Override
     public ResultMessage updateRoomInfo(RoomVO roomVO) throws RemoteException {
-        //roomPO非空
         RoomPO roomPO = hotelDAO.findRoomByID(roomVO.roomID);
 
+        //房间类型不存在的情况
+        if (roomPO == null)
+            return ResultMessage.DataNotExisted;
+
+        //房间类型存在的情况
         roomPO.setAvailable(roomPO.getAvailable() + roomVO.total - roomPO.getTotal());
         roomPO.setTotal(roomVO.total);
         roomPO.setPrice(roomVO.price);
@@ -127,15 +148,7 @@ public class HotelBlServiceImpl implements HotelBLService {
 
     @Override
     public List<RoomVO> viewAllHotelRooms(long hotelID) throws RemoteException {
-        //返回的有可能是空表
-        List<RoomVO> res = new ArrayList<>();
-        List<RoomPO> roomPOList = hotelDAO.findRoomsByHotelID(hotelID);
-
-        for (RoomPO roomPO : roomPOList) {
-            res.add(hotelVOCreator.create(roomPO));
-        }
-
-        return res;
+        return hotelVOCreator.createAllRoomVO(hotelDAO.findRoomsByHotelID(hotelID));
     }
 
     @Override
@@ -166,9 +179,12 @@ public class HotelBlServiceImpl implements HotelBLService {
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     @Override
-    public void sortHotels(List<HotelVO> hotelVOs, String key, int mode) {
+    public List<HotelVO> sortHotels(List<HotelVO> hotelVOs, String key, int mode) {
         HotelVOList hotelList = new HotelVOList(hotelVOs);
+
         hotelList.sort(key, mode);
+
+        return hotelList;
     }
 
     @Override
@@ -198,9 +214,9 @@ public class HotelBlServiceImpl implements HotelBLService {
     @Override
     public List<HotelVO> viewOrderedHotelList(String username) throws RemoteException {
         List<HotelVO> res = new ArrayList<>();
-        List<HotelPO> hotelPOList = new ArrayList<>();
 
         //找出所有预定过的酒店的PO
+        List<HotelPO> hotelPOList = new ArrayList<>();
         List<OrderPO> orderPOList = orderDAO.findByUsername(username);
         for (int i = 0; i < orderPOList.size(); i++) {
             hotelPOList.add(hotelDAO.findByHotelID(orderPOList.get(i).getHotelID()));
@@ -215,6 +231,25 @@ public class HotelBlServiceImpl implements HotelBLService {
         }
 
         return res;
+    }
+
+    @Override
+    public HotelVO viewDetailedHotelInfo(long hotelID, String username) throws RemoteException {
+        HotelPO hotelPO = hotelDAO.findByHotelID(hotelID);
+
+        //酒店不存在的情况
+        if (hotelPO == null)
+            return null;
+
+        //酒店存在的情况
+        return hotelVOCreator.create(hotelPO, orderDAO.findByHotelID(hotelID), orderDAO.findByUsernameAndHotelID(username, hotelID), hotelDAO.findRoomsByHotelID(hotelID));
+    }
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+    @Override
+    public List<HotelVO> viewFullHotelList() throws RemoteException {
+        return hotelVOCreator.createAll(hotelDAO.findAll());
     }
 
 }

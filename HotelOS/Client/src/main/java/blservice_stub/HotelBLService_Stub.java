@@ -9,6 +9,7 @@ import vo.hotel.HotelVOCreator;
 import vo.hotel.RoomVO;
 import vo.order.ReviewVO;
 
+import java.net.HttpCookie;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,8 +63,8 @@ public class HotelBLService_Stub implements HotelBLService {
     }
 
     @Override
-    public void sortHotels(List<HotelVO> hotelVOs, String key, int mode) {
-
+    public List<HotelVO> sortHotels(List<HotelVO> hotelVOs, String key, int mode) {
+        return null;
     }
 
     @Override
@@ -73,6 +74,16 @@ public class HotelBLService_Stub implements HotelBLService {
 
     @Override
     public List<HotelVO> viewOrderedHotelList(String username) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public HotelVO viewDetailedHotelInfo(long hotelID, String username) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public List<HotelVO> viewFullHotelList() throws RemoteException {
         return null;
     }
 

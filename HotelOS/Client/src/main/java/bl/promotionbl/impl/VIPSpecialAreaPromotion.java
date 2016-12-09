@@ -10,7 +10,9 @@ import vo.order.OrderVO;
  * Created by kevin on 2016/11/6.
  */
 public class VIPSpecialAreaPromotion implements Sale{
+
     private String tradingArea;
+
     private double[] discounts;
 
     public VIPSpecialAreaPromotion(PromotionPO promotionPO) {
@@ -35,4 +37,5 @@ public class VIPSpecialAreaPromotion implements Sale{
             return price;
         }
     }
+
 }

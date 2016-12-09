@@ -18,6 +18,30 @@ import java.util.List;
  */
 public class HotelVOCreator {
 
+    public HotelVO create(HotelPO hotelPO){
+        HotelVO res = new HotelVO();
+
+        res.hotelID = hotelPO.getHotelID();
+        res.hotelName = hotelPO.getHotelName();
+        res.star = hotelPO.getStar();
+        res.address = hotelPO.getAddress();
+        res.tradingArea = hotelPO.getTradingArea();
+        res.description = hotelPO.getDescription();
+        res.service = hotelPO.getService();
+
+        return res;
+    }
+
+    public List<HotelVO> createAll(List<HotelPO> hotelPOList){
+        List<HotelVO> res = new ArrayList<>();
+
+        for (int i = 0; i < hotelPOList.size(); i++) {
+            res.add(create(hotelPOList.get(i)));
+        }
+
+        return res;
+    }
+
     public HotelVO create(HotelPO hotelPO, PersonnelPO personnelPO, List<OrderPO> orderPOList) {
         HotelVO res = new HotelVO();
 
@@ -72,7 +96,18 @@ public class HotelVOCreator {
         res.roomID = roomPO.getroomID();
         res.roomType = roomPO.getRoomType();
         res.total = roomPO.getTotal();
+        res.available = roomPO.getAvailable();
         res.price = roomPO.getPrice();
+
+        return res;
+    }
+
+    public List<RoomVO> createAllRoomVO(List<RoomPO> roomPOList){
+        List<RoomVO> res = new ArrayList<>();
+
+        for (int i = 0; i < roomPOList.size(); i++) {
+            res.add(create(roomPOList.get(i)));
+        }
 
         return res;
     }

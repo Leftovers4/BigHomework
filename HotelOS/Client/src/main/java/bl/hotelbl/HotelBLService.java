@@ -9,6 +9,7 @@ import vo.order.ReviewVO;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by Hiki on 2016/10/15.
@@ -98,14 +99,13 @@ public interface HotelBLService {
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     /**
-     * 根据选择的关键字对酒店列表进行排序，有升序和降序两种排序，
-     * 注意该方法不会返回一个新的列表，而是对原来的列表的酒店进行排序
+     * 根据选择的关键字对酒店列表进行排序，有升序和降序两种排序，注意该方法会返回一个新的列表
      *
      * @param hotelVOs 要进行排序的酒店
      * @param key      关键字，有价格，星级，评分，价格为“price”，星级为“star”，评分为“rating”
      * @param mode     排序模式，有升序和降序，升序为0，降序为1
      */
-    void sortHotels(List<HotelVO> hotelVOs, String key, int mode);
+    List<HotelVO> sortHotels(List<HotelVO> hotelVOs, String key, int mode);
 
     /**
      * 客户根据筛选条件搜索酒店，需要先明确地址和商圈
@@ -121,5 +121,11 @@ public interface HotelBLService {
      * @return 用户名对应的用户预定过的所有酒店的列表
      */
     List<HotelVO> viewOrderedHotelList(String username) throws RemoteException;
+
+    HotelVO viewDetailedHotelInfo(long hotelID, String username) throws RemoteException;
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+    List<HotelVO> viewFullHotelList() throws RemoteException;
 
 }

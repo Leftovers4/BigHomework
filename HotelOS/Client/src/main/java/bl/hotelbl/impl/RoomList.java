@@ -1,6 +1,7 @@
 package bl.hotelbl.impl;
 
 import po.hotel.RoomPO;
+import util.RoomType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,16 @@ public class RoomList extends ArrayList<RoomPO> {
         }
 
         return res;
+    }
+
+    public RoomPO filterByRoomType(RoomType roomType){
+        for (int i = 0; i < this.size(); i++) {
+            if (this.get(i).getRoomType().equals(roomType)){
+                return this.get(i);
+            }
+        }
+
+        return null;
     }
 
 }
