@@ -27,8 +27,8 @@
                         <ComboBox fx:id="cityComBox" layoutX="130.0" layoutY="20.0" prefHeight="34.0" prefWidth="110.0" promptText="-城市-" />
                         <Label layoutX="270.0" layoutY="25.0" text="商圈：" />
                         <ComboBox fx:id="tradingAreaCombox" layoutX="350.0" layoutY="20.0" prefHeight="34.0" prefWidth="110.0" promptText="-商圈-" />
-                        <TextField layoutX="50.0" layoutY="75.0" prefHeight="34.0" prefWidth="285.0" promptText="酒店名称" />
-                        <Button fx:id="searchHotelButton" layoutX="350.0" layoutY="75.0" mnemonicParsing="false" onAction="#showOrderDetail" prefHeight="34.0" prefWidth="110.0" styleClass="actionBtn" text="搜索酒店" />
+                        <TextField fx:id="searchField" layoutX="50.0" layoutY="75.0" prefHeight="34.0" prefWidth="285.0" promptText="酒店名称" />
+                        <Button fx:id="searchHotelButton" layoutX="350.0" layoutY="75.0" mnemonicParsing="false" onAction="#confirmChoose" prefHeight="34.0" prefWidth="110.0" styleClass="actionBtn" text="搜索酒店" />
                      </children>
                      <FlowPane.margin>
                         <Insets bottom="-10.0" left="160.0" top="30.0" />
@@ -75,7 +75,7 @@
                            </graphic>
                         </Button>
                         <Button fx:id="resetShow" layoutX="172.0" layoutY="10.0" mnemonicParsing="false" onAction="#resetChoice" prefWidth="70.0" styleClass="actionBtn" text="重置" />
-                        <Button fx:id="confirmShow" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" styleClass="actionBtn" text="确认" />
+                        <Button fx:id="confirmShow" onAction="#confirmChoose" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" styleClass="actionBtn" text="确认" />
                      </children>
                   </Pane>
                   <Pane fx:id="moreInfoChoice" disable="true" prefHeight="170.0" prefWidth="528.0" styleClass="contentPane" visible="false">
@@ -110,7 +110,7 @@
                            </graphic>
                         </Button>
                         <Button fx:id="resetHide" layoutX="172.0" layoutY="15.0" mnemonicParsing="false" onAction="#resetChoice" prefWidth="70.0" styleClass="actionBtn" text="重置" />
-                        <Button fx:id="confirmHide" layoutX="286.0" layoutY="15.0" mnemonicParsing="false" prefWidth="70.0" styleClass="actionBtn" text="确认" />
+                        <Button fx:id="confirmHide" onAction="#confirmChoose" layoutX="286.0" layoutY="15.0" mnemonicParsing="false" prefWidth="70.0" styleClass="actionBtn" text="确认" />
                      </children>
                      <FlowPane.margin>
                         <Insets left="160.0" top="-20.0" />

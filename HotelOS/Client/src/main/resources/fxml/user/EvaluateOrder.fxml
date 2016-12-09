@@ -37,13 +37,13 @@
          </image>
       </ImageView>
       <Label layoutX="200.0" layoutY="333.0" text="评价：" />
-      <TextArea layoutX="254.0" layoutY="333.0" prefHeight="150.0" prefWidth="397.0" />
+      <TextArea fx:id="reviewField" layoutX="254.0" layoutY="333.0" prefHeight="150.0" prefWidth="397.0" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/common/initialPhoto.png" />
          </image>
       </ImageView>
-      <Button fx:id="evalusteSubmit" layoutX="574.0" layoutY="565.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" styleClass="actionBtn" text="提交" />
+      <Button fx:id="evalusteSubmit" onAction="#confirmSubmit" layoutX="574.0" layoutY="565.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" styleClass="actionBtn" text="提交" />
       <CheckBox layoutX="254.0" layoutY="505.0" mnemonicParsing="false" text="匿名" />
       <Button fx:id="evaluateCancel" layoutX="459.0" layoutY="565.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" styleClass="actionBtn" text="取消" />
    </children>
