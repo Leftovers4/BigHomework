@@ -53,11 +53,11 @@
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin></Label>
-                        <Label fx:id="ratingLabel" layoutX="145.0" layoutY="28.0" text="4.8">
+                        <Label fx:id="ratingLabel" layoutX="145.0" layoutY="28.0" prefHeight="42.0" prefWidth="96.0" text="4.8">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin></Label>
-                        <HBox alignment="CENTER" layoutX="224.0" layoutY="19.0" prefHeight="42.0" prefWidth="120.0">
+                        <HBox alignment="CENTER" layoutX="224.0" layoutY="19.0">
                            <children>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -102,10 +102,10 @@
                   <TableView id="reviewTable" fx:id="reviewTable" prefHeight="2000.0" prefWidth="780.0">
                     <columns>
                       <TableColumn fx:id="reviewContentCol" editable="false" prefWidth="280.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="评价内容" />
-                      <TableColumn fx:id="reviewRatingCol" editable="false" prefWidth="100.0" resizable="false" styleClass="RightAlignCol" text="评分" />
-                        <TableColumn fx:id="roomTypeCol" editable="false" prefWidth="120.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="客房类型" />
+                      <TableColumn fx:id="reviewRatingCol" editable="false" prefWidth="90.0" resizable="false" styleClass="RightAlignCol" text="评分" />
+                        <TableColumn fx:id="roomTypeCol" editable="false" prefWidth="100.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="客房类型" />
                         <TableColumn fx:id="reviewTimeCol" editable="false" prefWidth="180.0" resizable="false" styleClass="LeftAlignCol" text="评价时间" />
-                        <TableColumn fx:id="userNameCol" editable="false" prefWidth="77.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="客户" />
+                        <TableColumn fx:id="userNameCol" editable="false" prefWidth="107.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="客户" />
                     </columns>
                      <FlowPane.margin>
                         <Insets left="40.0" />

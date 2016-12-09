@@ -5,6 +5,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkercontroller.UserReviewPaneController;
 import vo.order.OrderVO;
+import vo.order.ReviewVO;
 
 import java.io.IOException;
 
@@ -13,11 +14,11 @@ import java.io.IOException;
  * Description :
  */
 public class UserReviewPane extends Pane{
-    public UserReviewPane(Pane mainPane, Boolean isCheckIn, Boolean isFromList, OrderVO orderVO) {
-        loadFxml(mainPane,isCheckIn,isFromList, orderVO);
+    public UserReviewPane(Pane mainPane, Boolean isCheckIn, Boolean isFromList, OrderVO orderVO, ReviewVO reviewVO) {
+        loadFxml(mainPane,isCheckIn,isFromList,orderVO,reviewVO);
     }
 
-    private void loadFxml(Pane mainPane,Boolean isCheckIn, Boolean isFromList, OrderVO orderVO) {
+    private void loadFxml(Pane mainPane, Boolean isCheckIn, Boolean isFromList, OrderVO orderVO, ReviewVO reviewVO) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hoteluserreview.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -27,6 +28,6 @@ public class UserReviewPane extends Pane{
         }
 
         UserReviewPaneController userReviewPaneController = fxmlLoader.getController();
-        userReviewPaneController.launch(mainPane, isCheckIn, isFromList, orderVO);
+        userReviewPaneController.launch(mainPane, isCheckIn, isFromList, orderVO, reviewVO);
     }
 }

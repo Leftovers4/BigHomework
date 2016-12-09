@@ -4,6 +4,7 @@ import util.OrderType;
 import util.RoomType;
 import vo.hotel.RoomVO;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 /**
@@ -153,4 +154,11 @@ public class OrderVO {
         return withChildren;
     }
 
+    public LocalDateTime getCheckinTime() {
+        return orderTimeVO.checkinTime;
+    }
+
+    public double getActualPrice() {
+        return orderPriceVO.actualPrice;
+    }
 }

@@ -1,5 +1,7 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
+import bl.orderbl.OrderBLService;
+import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -11,7 +13,9 @@ import presentation.util.alert.AlertController;
 import util.DateTimeFormat;
 import util.OrderType;
 import vo.order.OrderVO;
+import vo.order.ReviewVO;
 
+import java.rmi.RemoteException;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -102,8 +106,20 @@ public class OrderDetailPaneController {
 
     @FXML
     private void showReview(){
-        mainPane.getChildren().clear();
-        mainPane.getChildren().add(new UserReviewPane(mainPane,isCheckIn,isFromList,orderVO));
+        ReviewVO reviewVO = null;
+        try {
+            OrderBLService orderBLService = new OrderBlServiceImpl();
+            reviewVO = orderBLService.viewOrderReview(orderVO.orderID);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        if(reviewVO == null) {
+            alertController.showNullWrongAlert("客户尚未评价","查看失败");
+        }else {
+            mainPane.getChildren().clear();
+            mainPane.getChildren().add(new UserReviewPane(mainPane,isCheckIn,isFromList,orderVO,reviewVO));
+        }
     }
 
     @FXML

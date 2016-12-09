@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import vo.order.OrderVO;
+import vo.order.ReviewVO;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -28,21 +29,24 @@ public class UserReviewPaneController {
     @FXML private Label reviewTimeLabel;
 
     private Pane mainPane;
-    private OrderVO orderVO;
     private Boolean isCheckIn;
     private Boolean isFromList;
     private ArrayList<ImageView> starLists;
+    private OrderVO orderVO;
 
-    public void launch(Pane mainPane, Boolean isCheckIn, Boolean isFromList, OrderVO orderVO) {
+    public void launch(Pane mainPane, Boolean isCheckIn, Boolean isFromList, OrderVO orderVO, ReviewVO reviewVO) {
         this.mainPane = mainPane;
-        this.orderVO = orderVO;
         this.isCheckIn = isCheckIn;
         this.isFromList = isFromList;
+        this.orderVO = orderVO;
 
         starLists = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
+        initData(reviewVO);
+    }
 
-        initStar(orderVO.reviewVO.rating);
-        initReview(orderVO.reviewVO.reviewTime, orderVO.reviewVO.review);
+    private void initData(ReviewVO reviewVO) {
+        initStar(reviewVO.rating);
+        initReview(reviewVO.reviewTime, reviewVO.review);
     }
 
     private void initStar(int rating) {

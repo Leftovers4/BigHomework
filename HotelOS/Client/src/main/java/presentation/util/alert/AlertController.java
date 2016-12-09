@@ -72,8 +72,16 @@ public class AlertController {
         inputWrongAlert.showAndWait();
     }
 
+    /**
+     * 服务器连接异常
+     */
     public void showNetConnectAlert(){
         RemoteAlert remoteAlert = new RemoteAlert("与服务器连接异常","连接失败");
         remoteAlert.showAndWait();
+    }
+
+    public void showNullWrongAlert(String contentText,String title){
+        NullWrongAlert nullWrongAlert = new NullWrongAlert(contentText,title);
+        nullWrongAlert.showAndWait();
     }
 }

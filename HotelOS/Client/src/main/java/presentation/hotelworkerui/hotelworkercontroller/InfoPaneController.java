@@ -56,14 +56,13 @@ public class InfoPaneController {
         alertController = new AlertController();
         //初始化接口
         initService();
+        initBox();
         //初始化数据
         initData();
         //显示查看信息界面
         setCheckInfoComponentsVisible(true);
-
-        cityBox.getItems().addAll("南京","苏州","无锡");
-        tradeAreaBox.getItems().addAll("仙林商圈","新街口商圈");
     }
+
 
     private void initService() {
         try {
@@ -71,6 +70,11 @@ public class InfoPaneController {
         } catch (RemoteException e) {
             alertController.showNetConnectAlert();
         }
+    }
+
+    private void initBox() {
+        cityBox.getItems().addAll("南京","苏州","无锡");
+        tradeAreaBox.getItems().addAll("仙林商圈","新街口商圈");
     }
 
     private void initData() {
@@ -140,8 +144,8 @@ public class InfoPaneController {
 
     @FXML
     private void showReview(){
-        mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new ReviewPane(mainPane));
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(new ReviewPane(mainPane, hotelRatingLabel.getText()));
     }
 
     private void setEditInfoComponentsVisible(Boolean isVisible){
