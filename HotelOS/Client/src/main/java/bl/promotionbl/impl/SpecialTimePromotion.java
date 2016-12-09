@@ -9,8 +9,11 @@ import java.time.LocalDateTime;
  * Created by kevin on 2016/11/6.
  */
 public class SpecialTimePromotion implements Sale{
+
     private LocalDateTime beginTime;
+
     private LocalDateTime endTime;
+
     private double discount;
 
     public SpecialTimePromotion(PromotionPO promotionPO) {
@@ -30,4 +33,5 @@ public class SpecialTimePromotion implements Sale{
             return price;
         }
     }
+
 }

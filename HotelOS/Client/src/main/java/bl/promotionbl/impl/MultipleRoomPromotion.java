@@ -7,7 +7,9 @@ import vo.order.OrderVO;
  * Created by kevin on 2016/11/6.
  */
 public class MultipleRoomPromotion implements Sale{
+
     private int leastRooms;
+
     private double discount;
 
     public MultipleRoomPromotion(PromotionPO promotionPO) {
@@ -25,4 +27,5 @@ public class MultipleRoomPromotion implements Sale{
             return price;
         }
     }
+
 }

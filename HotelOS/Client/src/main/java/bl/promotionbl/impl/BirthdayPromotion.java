@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
  * Created by kevin on 2016/11/6.
  */
 public class BirthdayPromotion implements Sale{
+
     private double discount;
 
     public BirthdayPromotion(PromotionPO promotionPO) {
@@ -22,14 +23,13 @@ public class BirthdayPromotion implements Sale{
 
     @Override
     public double getActualPrice(OrderVO orderVO) throws RemoteException {
-        UserPO userPO = RemoteHelper.getInstance().getUserDAO().findByUsername(orderVO.username);
         double price = orderVO.orderPriceVO.originPrice;
-        LocalDate today = LocalDate.now();
 
-        if (new User(userPO).isBirthday(today)){
+        if (new User(RemoteHelper.getInstance().getUserDAO().findByUsername(orderVO.username)).isBirthday(orderVO.orderTimeVO.generateTime.toLocalDate())){
             return price * discount;
         }else {
             return price;
         }
     }
+
 }
