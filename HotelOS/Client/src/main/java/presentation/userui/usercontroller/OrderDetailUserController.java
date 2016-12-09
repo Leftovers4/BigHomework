@@ -7,6 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.EvaluateOrderPane;
+import util.DateTimeFormat;
+import vo.order.OrderVO;
 
 import java.rmi.RemoteException;
 
@@ -20,9 +22,7 @@ public class OrderDetailUserController {
     private String orderID;
     private String userID;
 
-    @FXML private Label checkIndateLabeldet;
     @FXML private Label checkInTimeLabeldet;
-    @FXML private Label checkOutDateLabeldet;
     @FXML private Label checkOutTimeLabeldet;
     @FXML private Label roomTypeLabeldet;
     @FXML private Label roomNumLabeldet;
@@ -32,6 +32,10 @@ public class OrderDetailUserController {
     @FXML private Label finalpriceLabel;
     @FXML private Label ordertypeLabel;
     @FXML private Button evaluateBtn;
+
+    @FXML private Label hotelNameLabel;
+    @FXML private Label hotelAddressLabel;
+    @FXML private Label hotelServiceLabel;
 
     private OrderBlServiceImpl orderBlService;
 
@@ -47,16 +51,36 @@ public class OrderDetailUserController {
             e.printStackTrace();
         }
 
+        initialData();
     }
 
     private void initialData() {
-        
+        try {
+            OrderVO orderVO = orderBlService.searchExtraOrderByID(orderID);
+
+            checkInTimeLabeldet.setText(orderVO.orderTimeVO.checkinTime.format(DateTimeFormat.dateTimeFormat));
+            checkOutTimeLabeldet.setText(orderVO.orderTimeVO.leaveTime.format(DateTimeFormat.dateTimeFormat));
+            roomTypeLabeldet.setText(orderVO.roomType.toString());
+            roomNumLabeldet.setText(String.valueOf(orderVO.roomAmount));
+            peopleNumLabeldet.setText(String.valueOf(orderVO.personAmount));
+            childdet.setText(orderVO.withChildren ? "有" : "无");
+//            bestpromotionLabel.setText(orderVO);
+            finalpriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
+            ordertypeLabel.setText(String.valueOf(orderVO.orderType));
+
+            hotelNameLabel.setText(orderVO.hotelName);
+            hotelAddressLabel.setText(orderVO.hotelAddress);
+            hotelServiceLabel.setText(orderVO.hotelService);
+
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
 
     @FXML
     private void evaluateOrder() {
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new EvaluateOrderPane(stage));
+        mainPane.getChildren().add(new EvaluateOrderPane(stage, orderID));
     }
 }

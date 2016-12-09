@@ -41,14 +41,12 @@
          </image>
       </ImageView>
       <Label fx:id="bestpromotionLabel" layoutX="451.0" layoutY="391.0" text="Label" />
-      <Label layoutX="99.0" layoutY="294.0" text="酒店名" />
-      <Label layoutX="99.0" layoutY="346.0" text="酒店地址" />
-      <Label layoutX="99.0" layoutY="426.0" text="酒店设施" />
+      <Label fx:id="hotelNameLabel" layoutX="99.0" layoutY="294.0" text="酒店名" />
+      <Label fx:id="hotelAddressLabel" layoutX="99.0" layoutY="346.0" text="酒店地址" />
+      <Label fx:id="hotelServiceLabel" layoutX="99.0" layoutY="426.0" text="酒店设施" />
       <Label fx:id="finalpriceLabel" layoutX="450.0" layoutY="446.0" text="Label" />
-      <Label fx:id="checkIndateLabeldet" layoutX="454.0" layoutY="116.0" text="日期" />
-      <Label fx:id="checkInTimeLabeldet" layoutX="524.0" layoutY="116.0" text="时间" />
-      <Label fx:id="checkOutDateLabeldet" layoutX="454.0" layoutY="171.0" text="日期" />
-      <Label fx:id="checkOutTimeLabeldet" layoutX="524.0" layoutY="171.0" text="时间" />
+      <Label fx:id="checkInTimeLabeldet" layoutX="454.0" layoutY="116.0" text="日期" />
+      <Label fx:id="checkOutTimeLabeldet" layoutX="454.0" layoutY="171.0" text="日期" />
       <Label fx:id="roomTypeLabeldet" layoutX="454.0" layoutY="226.0" text="类型" />
       <Label fx:id="roomNumLabeldet" layoutX="454.0" layoutY="281.0" text="数量" />
       <Label fx:id="peopleNumLabeldet" layoutX="454.0" layoutY="336.0" text="人数" />

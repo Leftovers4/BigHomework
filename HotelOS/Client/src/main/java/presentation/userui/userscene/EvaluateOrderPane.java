@@ -12,11 +12,11 @@ import java.io.IOException;
  */
 public class EvaluateOrderPane extends Pane {
 
-    public EvaluateOrderPane(Stage primaryStage) {
-        loadFxml(primaryStage);
+    public EvaluateOrderPane(Stage primaryStage, String orderID) {
+        loadFxml(primaryStage, orderID);
     }
 
-    private void loadFxml(Stage primaryStage) {
+    private void loadFxml(Stage primaryStage, String orderID) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/user/EvaluateOrder.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -26,6 +26,6 @@ public class EvaluateOrderPane extends Pane {
         }
 
         EvaluateOrderController evaluateOrderController = fxmlLoader.getController();
-        evaluateOrderController.launch(primaryStage);
+        evaluateOrderController.launch(primaryStage, orderID);
     }
 }

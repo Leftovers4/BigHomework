@@ -21,6 +21,7 @@ import java.util.Arrays;
 public class EvaluateOrderController {
 
     private Stage stage;
+    private String orderID;
 
     @FXML private ImageView star1;
     @FXML private ImageView star2;
@@ -36,8 +37,9 @@ public class EvaluateOrderController {
 
     private int rate;
 
-    public void launch(Stage primaryStage) {
+    public void launch(Stage primaryStage, String orderID) {
         this.stage = primaryStage;
+        this.orderID = orderID;
 
         try {
             orderBlService = new OrderBlServiceImpl();
@@ -167,7 +169,7 @@ public class EvaluateOrderController {
     private void confirmSubmit() {
         ReviewVO reviewVO = new ReviewVO();
 
-//        reviewVO.orderID = orderID;
+        reviewVO.orderID = orderID;
         reviewVO.rating = rate;
         reviewVO.review = reviewField.getText();
 

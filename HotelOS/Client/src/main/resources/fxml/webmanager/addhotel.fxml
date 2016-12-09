@@ -17,19 +17,18 @@
             <Label layoutX="170.0" layoutY="45.0" text="酒店名称：" />
             <Label layoutX="170.0" layoutY="110.0" text="酒店地址：" />
             <Label layoutX="170.0" layoutY="170.0" text="所属商圈：" />
-            <TextField layoutX="260.0" layoutY="40.0" prefHeight="30.0" prefWidth="211.0" />
-            <ComboBox layoutX="260.0" layoutY="105.0" prefHeight="30.0" prefWidth="96.0" promptText="-城市-" />
-            <ComboBox layoutX="377.0" layoutY="105.0" prefHeight="30.0" prefWidth="96.0" promptText="-地区-" />
-            <ComboBox layoutX="260.0" layoutY="165.0" prefHeight="30.0" prefWidth="96.0" />
+            <TextField fx:id="hotelnameField" layoutX="260.0" layoutY="40.0" prefHeight="30.0" prefWidth="211.0" />
+            <ComboBox fx:id="hotelcity" layoutX="260.0" layoutY="105.0" prefHeight="30.0" prefWidth="133.0" promptText="-城市-" />
+            <ComboBox fx:id="hoteltracingarea" layoutX="260.0" layoutY="165.0" prefHeight="30.0" prefWidth="133.0" />
             <Label layoutX="170.0" layoutY="235.0" text="星       级：" />
-            <RadioButton layoutX="260.0" layoutY="235.0" mnemonicParsing="false" text="一星级">
+            <RadioButton fx:id="onestar" layoutX="260.0" layoutY="235.0" mnemonicParsing="false" text="一星级">
                <toggleGroup>
                   <ToggleGroup fx:id="hotelstar" />
                </toggleGroup></RadioButton>
-            <RadioButton layoutX="367.0" layoutY="235.0" mnemonicParsing="false" text="二星级" toggleGroup="$hotelstar" />
-            <RadioButton layoutX="473.0" layoutY="235.0" mnemonicParsing="false" text="三星级" toggleGroup="$hotelstar" />
-            <RadioButton layoutX="260.0" layoutY="270.0" mnemonicParsing="false" text="四星级" toggleGroup="$hotelstar" />
-            <RadioButton layoutX="367.0" layoutY="270.0" mnemonicParsing="false" text="五星级" toggleGroup="$hotelstar" />
+            <RadioButton fx:id="twostar" layoutX="367.0" layoutY="235.0" mnemonicParsing="false" text="二星级" toggleGroup="$hotelstar" />
+            <RadioButton fx:id="threestar" layoutX="473.0" layoutY="235.0" mnemonicParsing="false" text="三星级" toggleGroup="$hotelstar" />
+            <RadioButton fx:id="fourstar" layoutX="260.0" layoutY="270.0" mnemonicParsing="false" text="四星级" toggleGroup="$hotelstar" />
+            <RadioButton fx:id="fivestar" layoutX="367.0" layoutY="270.0" mnemonicParsing="false" text="五星级" toggleGroup="$hotelstar" />
             <Button layoutX="247.0" layoutY="340.0" mnemonicParsing="false" onAction="#toconfirmHotelInfoEvent" styleClass="actionBtn" text="下一步，确认酒店信息" />
          </children>
       </Pane>

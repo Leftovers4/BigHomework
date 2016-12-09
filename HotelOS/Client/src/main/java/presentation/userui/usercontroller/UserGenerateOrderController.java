@@ -1,12 +1,18 @@
 package presentation.userui.usercontroller;
 
+import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import presentation.util.other.CancelDateBefore;
 import presentation.util.alert.InputWrongAlert;
+import util.DateTimeFormat;
+import vo.order.OrderVO;
 
+import java.rmi.RemoteException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * Created by wyj on 2016/11/24.
@@ -43,10 +49,20 @@ public class UserGenerateOrderController {
     @FXML private Label peopleNumLabel;
     @FXML private Label child;
 
-    private LocalDate date;
+    @FXML private Label hotelnameLabel;
+    @FXML private Label hoteladdressLabel;
+    @FXML private Label hotelserviceLabel;
+
+    private OrderBlServiceImpl orderBlService;
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
+
+        try {
+            orderBlService = new OrderBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
         initial();
     }
@@ -80,6 +96,7 @@ public class UserGenerateOrderController {
         checkInDatePicker.setOnAction(event -> {
             checkOutDatePicker.setDayCellFactory(new CancelDateBefore(checkOutDatePicker, checkInDatePicker.getValue()));
         });
+
     }
 
 
@@ -130,6 +147,9 @@ public class UserGenerateOrderController {
         } else {
             new InputWrongAlert("信息填写不完整", "警告").showAndWait();
         }
+
+
+
     }
 
     /**
@@ -201,6 +221,18 @@ public class UserGenerateOrderController {
         submit.setStyle("-fx-text-fill: deepskyblue");
         confirmPromotion.setStyle("-fx-text-fill: black");
         backToEdit.setVisible(false);
+
+        OrderVO orderVO = new OrderVO();
+
+        orderVO.orderTimeVO.expectedCheckinTime = LocalDateTime.of(checkInDatePicker.getValue(),
+                LocalTime.of((int) (checkInHour.getValue()), (int) (checkInMin.getValue())));
+        orderVO.orderTimeVO.expectedLeaveTime = LocalDateTime.of(checkOutDatePicker.getValue(),
+                LocalTime.of((int) (checkOutHour.getValue()), (int) (checkOutMin.getValue())));
+//        orderVO.roomType = roomType.getValue();
+        orderVO.roomAmount = (int) (roomNum.getValue());
+        orderVO.personAmount = (int) (peopleNum.getValue());
+        orderVO.withChildren = childHave.isSelected();
+
     }
 
 }

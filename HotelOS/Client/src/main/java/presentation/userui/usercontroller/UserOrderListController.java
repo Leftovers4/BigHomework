@@ -23,6 +23,7 @@ public class UserOrderListController {
     private Stage stage;
     private Pane mainPane;
     private String userID;
+    private String orderID;
 
     @FXML private ComboBox orderStateComBox;
     @FXML private DatePicker datebegin;
@@ -89,6 +90,6 @@ public class UserOrderListController {
     @FXML
     private void cancelOrder() {
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new CancelOrderPane(stage));
+        mainPane.getChildren().add(new CancelOrderPane(stage, orderID));
     }
 }

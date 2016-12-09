@@ -1,7 +1,14 @@
 package presentation.userui.usercontroller;
 
+import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import util.DateTimeFormat;
+import util.ResultMessage;
+import vo.order.OrderVO;
+
+import java.rmi.RemoteException;
 
 /**
  * Created by wyj on 2016/11/25.
@@ -9,9 +16,74 @@ import javafx.stage.Stage;
 public class CancelOrderController {
 
     private Stage stage;
+    private String orderID;
 
-    public void launch(Stage primaryStage) {
+    @FXML private Label checkintimeLabelcan;
+    @FXML private Label checkouttimeLabelcan;
+    @FXML private Label roomTypeLabelcan;
+    @FXML private Label roomNumLabelcan;
+    @FXML private Label peopleNumLabelcan;
+    @FXML private Label bestpromotionLabelcan;
+    @FXML private Label finalpriceLabel;
+    @FXML private Label childLabelcan;
+    @FXML private Label ordertypeLabel;
+    @FXML private Label hotelNameLabel;
+    @FXML private Label hotelAddressLabel;
+    @FXML private Label hotelServiceLabel;
+
+    private OrderBlServiceImpl orderBlService;
+
+    public void launch(Stage primaryStage, String orderID) {
         this.stage = primaryStage;
+        this.orderID = orderID;
+
+        try {
+            orderBlService = new OrderBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        initialData();
     }
 
+    private void initialData() {
+        try {
+            OrderVO orderVO = orderBlService.searchExtraOrderByID(orderID);
+
+            checkintimeLabelcan.setText(orderVO.orderTimeVO.expectedCheckinTime.format(DateTimeFormat.dateTimeFormat));
+            checkouttimeLabelcan.setText(orderVO.orderTimeVO.expectedLeaveTime.format(DateTimeFormat.dateTimeFormat));
+            roomTypeLabelcan.setText(String.valueOf(orderVO.roomType));
+            roomNumLabelcan.setText(String.valueOf(orderVO.roomAmount));
+            childLabelcan.setText(orderVO.withChildren ? "有" : "无");
+            peopleNumLabelcan.setText(String.valueOf(orderVO.personAmount));
+//            bestpromotionLabelcan.setText(orderVO.);
+            finalpriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
+            ordertypeLabel.setText(String.valueOf(orderVO.orderType));
+            hotelNameLabel.setText(orderVO.hotelName);
+            hotelAddressLabel.setText(orderVO.hotelAddress);
+            hotelServiceLabel.setText(orderVO.hotelService);
+
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    private void cancelOrderEvent() {
+        try {
+            ResultMessage resultMessage = orderBlService.cancelOrder(orderID);
+
+            if (resultMessage == ResultMessage.Success) {
+                System.out.println("cancel success");
+
+                initialData();
+            } else {
+                System.out.println("cancel failed");
+            }
+
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 }

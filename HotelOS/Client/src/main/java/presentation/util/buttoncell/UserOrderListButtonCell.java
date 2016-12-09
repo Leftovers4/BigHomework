@@ -44,8 +44,10 @@ public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
         });
 
         cancelOrderBtn.setOnAction(event -> {
+            int selectedIndex = getTableRow().getIndex();
+            OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new CancelOrderPane(stage));
+            mainPane.getChildren().add(new CancelOrderPane(stage, orderVO.orderID));
         });
     }
 
