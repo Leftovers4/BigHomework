@@ -348,9 +348,9 @@ public class UserSearchHotelController {
 
 
     /***************临时方法***********************************/
-    @FXML
-    private void showOrderDetail() {
-        mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane));
-    }
+//    @FXML
+//    private void showOrderDetail() {
+//        mainPane.getChildren().remove(0);
+//        mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane));
+//    }
 }

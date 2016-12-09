@@ -24,7 +24,7 @@ public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
 
     private TableView tableView;
 
-    public UserOrderListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView) {
+    public UserOrderListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView, final String userID) {
         this.tableView = tableView;
 
         this.getStylesheets().add(UserOrderListButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
@@ -37,8 +37,10 @@ public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
         cancelOrderBtn.getStyleClass().add("tableCellBtn");
 
         checkDetailBtn.setOnAction(event -> {
+            int selectedIndex = getTableRow().getIndex();
+            OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane));
+            mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane, userID, orderVO.orderID));
         });
 
         cancelOrderBtn.setOnAction(event -> {

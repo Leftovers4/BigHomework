@@ -64,7 +64,7 @@ public class CreditRecordController {
         optCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {
-                creditTabelButtonCell = new CreditTabelButtonCell(stage, mainPane, creditRecordTable);
+                creditTabelButtonCell = new CreditTabelButtonCell(stage, mainPane, creditRecordTable, userID);
                 return creditTabelButtonCell;
             }
         });

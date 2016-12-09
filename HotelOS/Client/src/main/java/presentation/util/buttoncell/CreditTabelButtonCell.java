@@ -23,7 +23,7 @@ public class CreditTabelButtonCell extends TableCell<CreditRecordVO, Boolean> {
     final private Button checkDetailBtn = new Button();
     private TableView tableView;
 
-    public CreditTabelButtonCell(final Stage stage, final Pane mainPane, final TableView tableView) {
+    public CreditTabelButtonCell(final Stage stage, final Pane mainPane, final TableView tableView, final String userID) {
         this.tableView = tableView;
 
         this.getStylesheets().add(CreditTabelButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
@@ -35,7 +35,7 @@ public class CreditTabelButtonCell extends TableCell<CreditRecordVO, Boolean> {
             int selectedIndex = getTableRow().getIndex();
             CreditRecordVO creditRecordVO = (CreditRecordVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane, creditRecordVO.orderID));
+            mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane, userID, creditRecordVO.orderID));
         });
     }
 

@@ -21,7 +21,7 @@ public class RegisteredHotelListButtonCell extends TableCell<HotelVO, Boolean> {
     final private Button checkDetailBtn = new Button();
     private TableView tableView;
 
-    public RegisteredHotelListButtonCell(final Stage stage, final Pane mainPane, final  TableView tableView) {
+    public RegisteredHotelListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView) {
         this.tableView = tableView;
 
         this.getStylesheets().add(CreditTabelButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
@@ -33,7 +33,7 @@ public class RegisteredHotelListButtonCell extends TableCell<HotelVO, Boolean> {
 //            int selectedIndex = getTableRow().getIndex();
 //            HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane));
+//            mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane, userID));
         });
     }
 

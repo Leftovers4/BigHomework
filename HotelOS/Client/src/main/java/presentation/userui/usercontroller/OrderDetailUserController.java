@@ -18,6 +18,7 @@ public class OrderDetailUserController {
     private Stage stage;
     private Pane mainPane;
     private String orderID;
+    private String userID;
 
     @FXML private Label checkIndateLabeldet;
     @FXML private Label checkInTimeLabeldet;
@@ -34,10 +35,11 @@ public class OrderDetailUserController {
 
     private OrderBlServiceImpl orderBlService;
 
-    public void launch(Stage primaryStage, Pane mainPane, String orderID) {
+    public void launch(Stage primaryStage, Pane mainPane, String userID, String orderID) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         this.orderID = orderID;
+        this.userID = userID;
 
         try {
             orderBlService = new OrderBlServiceImpl();

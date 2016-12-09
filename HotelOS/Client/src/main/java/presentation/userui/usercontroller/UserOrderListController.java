@@ -68,7 +68,7 @@ public class UserOrderListController {
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {
-                userOrderListButtonCell = new UserOrderListButtonCell(stage, mainPane, orderList);
+                userOrderListButtonCell = new UserOrderListButtonCell(stage, mainPane, orderList, userID);
                 return userOrderListButtonCell;
             }
         });
