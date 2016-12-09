@@ -49,10 +49,11 @@ public class OrderBlServiceImpl implements OrderBLService {
     public OrderVO searchOrderByID(String orderID) throws RemoteException {
         OrderPO orderPO = orderDAO.findByOrderID(orderID);
 
-        //存在搜索不到该订单的情况
+        //订单不存在的情况
         if (orderPO == null)
             return null;
 
+        //订单存在的情况
         return orderVOCreator.createDetailedOrderVO(orderPO);
     }
 
@@ -65,51 +66,32 @@ public class OrderBlServiceImpl implements OrderBLService {
 
     @Override
     public List<ReviewVO> viewHotelReviewList(long hotelID) throws RemoteException {
-        List<ReviewVO> res = new ArrayList<>();
-        List<OrderPO> orderPOList = orderDAO.findByHotelID(hotelID);
-
-        for (int i = 0; i < orderPOList.size(); i++) {
-            OrderPO orderPO = orderPOList.get(i);
-
-            if (new Order(orderPO).hasReview())
-                res.add(orderVOCreator.createOrdinaryReviewVO(orderPO));
-        }
-
-        return res;
+        return orderVOCreator.createAllOrdinaryReviewVO(new OrderList(orderDAO.findByHotelID(hotelID)).filterByHasReview());
     }
 
     @Override
     public List<OrderVO> viewFullHotelOrderList(long hotelID) throws RemoteException {
-        List<OrderVO> res = new ArrayList<>();
-        List<OrderPO> orderPOList = orderDAO.findByHotelID(hotelID);
-
-        for (int i = 0; i < orderPOList.size(); i++) {
-            res.add(orderVOCreator.createDetailedOrderVO(orderPOList.get(i)));
-        }
-
-        return res;
+        return orderVOCreator.createAllDetailedOrderVO(orderDAO.findByHotelID(hotelID));
     }
 
     @Override
     public List<OrderVO> viewTypeHotelOrderList(long hotelID, OrderType orderType) throws RemoteException {
-        List<OrderVO> res = new ArrayList<>();
-        List<OrderPO> orderPOList = orderDAO.findByHotelIDAndType(hotelID, orderType);
-
-        for (int i = 0; i < orderPOList.size(); i++) {
-            res.add(orderVOCreator.createDetailedOrderVO(orderPOList.get(i)));
-        }
-
-        return res;
+        return orderVOCreator.createAllDetailedOrderVO(orderDAO.findByHotelIDAndType(hotelID, orderType));
     }
 
     @Override
     public ReviewVO viewOrderReview(String orderID) throws RemoteException {
         OrderPO orderPO = orderDAO.findByOrderID(orderID);
 
-        //存在订单没有评价的情况，但不存在搜索不到该酒店的情况
+        //订单不存在的情况 todo 这里两种情况都返回了null
+        if (orderPO == null)
+            return null;
+
+        //订单存在且没有评价的情况
         if (!new Order(orderPO).hasReview())
             return null;
 
+        //订单存在且有评价的情况
         return orderVOCreator.createOrdinaryReviewVO(orderPO);
     }
 
@@ -117,6 +99,11 @@ public class OrderBlServiceImpl implements OrderBLService {
     public ResultMessage onlineCheckIn(OrderVO orderVO) throws RemoteException {
         OrderPO orderPO = orderDAO.findByOrderID(orderVO.orderID);
 
+        //订单不存在的情况
+        if (orderPO == null)
+            return ResultMessage.DataNotExisted;
+
+        //订单存在的情况
         orderPO.getOrderTimePO().setCheckinTime(orderVO.orderTimeVO.checkinTime);
         orderPO.getOrderTimePO().setExpectedLeaveTime(orderVO.orderTimeVO.expectedLeaveTime);
         orderPO.setRoomNumber(orderVO.roomNumber);
@@ -160,6 +147,16 @@ public class OrderBlServiceImpl implements OrderBLService {
     public ResultMessage cancelOrder(String orderID) throws RemoteException {
         OrderPO orderPO = orderDAO.findByOrderID(orderID);
 
+        //订单不存在的情况
+        if (orderPO == null)
+            return ResultMessage.DataNotExisted;
+
+        //订单存在且状态不正确的情况
+        OrderType orderType = orderPO.getOrderType();
+        if (orderType.equals(OrderType.Executed) || orderType.equals(OrderType.Canceled))
+            return ResultMessage.OrederStatusIncorrect;
+
+        //订单存在且状态正确的情况
         orderPO.setOrderType(OrderType.Canceled);
 
         LocalDateTime cancelTime = LocalDateTime.now();
@@ -174,7 +171,10 @@ public class OrderBlServiceImpl implements OrderBLService {
             creditRecordPO.setChangedCredit(-(orderPO.getOrderPricePO().getActualPrice() / 2));
             creditRecordPO.setCurrentCredit(new CreditRecordList(userDAO.findCreditRecordsByUsername(orderPO.getUsername())).getCurrentCredit() + creditRecordPO.getChangedCredit());
 
-            userDAO.insertCreditRecord(creditRecordPO);
+            ResultMessage resultMessage = userDAO.insertCreditRecord(creditRecordPO);
+
+            if (!resultMessage.equals(ResultMessage.Success))
+                return resultMessage;
         }
 
         return orderDAO.update(orderPO);
@@ -184,6 +184,15 @@ public class OrderBlServiceImpl implements OrderBLService {
     public ResultMessage reviewOrder(ReviewVO reviewVO) throws RemoteException {
         OrderPO orderPO = orderDAO.findByOrderID(reviewVO.orderID);
 
+        //订单不存在的情况
+        if (orderPO == null)
+            return ResultMessage.DataNotExisted;
+
+        //订单存在且有评论的情况
+        if (new Order(orderPO).hasReview())
+            return ResultMessage.DataExisted;
+
+        //订单存在且没有评论的情况
         orderPO.getReviewPO().setReviewTime(LocalDateTime.now());
         orderPO.getReviewPO().setRating(reviewVO.rating);
         orderPO.getReviewPO().setReview(reviewVO.review);
@@ -194,8 +203,8 @@ public class OrderBlServiceImpl implements OrderBLService {
     @Override
     public List<OrderVO> viewFullUserOrderList(String username) throws RemoteException {
         List<OrderVO> res = new ArrayList<>();
-        List<OrderPO> orderPOList = orderDAO.findByUsername(username);
 
+        List<OrderPO> orderPOList = orderDAO.findByUsername(username);
         for (int i = 0; i < orderPOList.size(); i++) {
             OrderPO orderPO = orderPOList.get(i);
             res.add(orderVOCreator.createExtraOrderVO(orderPO, hotelDAO.findByHotelID(orderPO.getHotelID())));
@@ -207,8 +216,8 @@ public class OrderBlServiceImpl implements OrderBLService {
     @Override
     public List<OrderVO> viewTypeUserOrderList(String username, OrderType orderType) throws RemoteException {
         List<OrderVO> res = new ArrayList<>();
-        List<OrderPO> orderPOList = orderDAO.findByUsernameAndType(username, orderType);
 
+        List<OrderPO> orderPOList = orderDAO.findByUsernameAndType(username, orderType);
         for (int i = 0; i < orderPOList.size(); i++) {
             OrderPO orderPO = orderPOList.get(i);
             res.add(orderVOCreator.createExtraOrderVO(orderPO, hotelDAO.findByHotelID(orderPO.getHotelID())));
@@ -220,6 +229,12 @@ public class OrderBlServiceImpl implements OrderBLService {
     @Override
     public OrderVO searchExtraOrderByID(String orderID) throws RemoteException {
         OrderPO orderPO = orderDAO.findByOrderID(orderID);
+
+        //订单不存在的情况
+        if (orderPO == null)
+            return null;
+
+        //订单存在的情况
         return orderVOCreator.createExtraOrderVO(orderPO, hotelDAO.findByHotelID(orderPO.getHotelID()));
     }
 

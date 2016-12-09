@@ -28,6 +28,16 @@ public class OrderVOCreator {
         return res;
     }
 
+    public List<ReviewVO> createAllOrdinaryReviewVO(List<OrderPO> orderPOList) {
+        List<ReviewVO> res = new ArrayList<>();
+
+        for (int i = 0; i < orderPOList.size(); i++) {
+            res.add(createOrdinaryReviewVO(orderPOList.get(i)));
+        }
+
+        return res;
+    }
+
     /**
      * 传给界面：创建包含酒店工作人员查看订单详情的界面信息的vo
      *
@@ -37,6 +47,7 @@ public class OrderVOCreator {
 
         res.orderID = orderPO.getOrderID();
         res.orderType = orderPO.getOrderType();
+        res.orderPriceVO.originPrice = orderPO.getOrderPricePO().getOriginPrice();
         res.orderPriceVO.actualPrice = orderPO.getOrderPricePO().getActualPrice();
         res.orderTimeVO.generateTime = orderPO.getOrderTimePO().getGenerateTime();
         res.orderTimeVO.lastExecuteTime = orderPO.getOrderTimePO().getLastExecuteTime();
@@ -70,9 +81,11 @@ public class OrderVOCreator {
         res.orderTimeVO.generateTime = orderPO.getOrderTimePO().getGenerateTime();
         res.orderType = orderPO.getOrderType();
         res.hotelName = orderPO.getHotelName();
-        res.hotelAddress = hotelPO.getAddress();
-        res.hotelTradingArea = hotelPO.getTradingArea();
-        res.hotelService = hotelPO.getService();
+        if(hotelPO != null) {
+            res.hotelAddress = hotelPO.getAddress();
+            res.hotelTradingArea = hotelPO.getTradingArea();
+            res.hotelService = hotelPO.getService();
+        }
         res.orderTimeVO.expectedCheckinTime = orderPO.getOrderTimePO().getExpectedCheckinTime();
         res.orderTimeVO.expectedLeaveTime = orderPO.getOrderTimePO().getExpectedLeaveTime();
         res.roomType = orderPO.getRoomType();

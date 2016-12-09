@@ -64,10 +64,12 @@ public enum ResultMessage {
     /**
      * 信用值不足
      */
-    CreditNotEnough;
+    CreditNotEnough,
 
-
-
+    /**
+     * 订单状态不正确
+     */
+    OrederStatusIncorrect;
 
 }
 
