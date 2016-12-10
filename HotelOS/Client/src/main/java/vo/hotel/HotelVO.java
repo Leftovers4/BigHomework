@@ -75,6 +75,11 @@ public class HotelVO {
      */
     public List<OrderVO> ordersByUserAndHotel;
 
+    /**
+     * 是否预定过
+     */
+    public boolean hasOrdered;
+
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     /*

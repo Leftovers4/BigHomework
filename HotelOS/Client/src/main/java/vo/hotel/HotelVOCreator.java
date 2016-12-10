@@ -84,6 +84,7 @@ public class HotelVOCreator {
             orderVOList.add(new OrderVOCreator().createDetailedOrderVO(orderPOListForOrders.get(i)));
         }
         res.ordersByUserAndHotel = orderVOList;
+        res.hasOrdered = !orderVOList.isEmpty();
 
         List<RoomVO> roomVOList = new ArrayList<>();
         for (int i = 0; i < roomPOList.size(); i++) {
