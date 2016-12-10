@@ -15,4 +15,39 @@ public enum RoomType {
      */
     Couple,
 
+    /**
+     * 标准房
+     */
+    Standard,
+
+    /**
+     * 套房
+     */
+    Suite,
+
+    /**
+     * 总统套房
+     */
+    PresidentialSuite,
+
+    /**
+     * 商务套房
+      */
+    BusinessSuite,
+
+    /**
+     * 大床房
+     */
+    Queen,
+
+    /**
+     * 家庭房
+     */
+    Family,
+
+    /**
+     * 情侣房
+     */
+    Lover,
+
 }

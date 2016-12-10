@@ -5,18 +5,13 @@ package util;
  */
 public enum TableName {
 
-//    address,
+    address,
     credit_record,
-//    enterprise,
     hotel,
-//    member_regulation,
     order_info,
     personnel,
     promotion,
     room,
     user,
-    user_image,
-    hotel_image,
-
 
 }

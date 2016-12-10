@@ -10,10 +10,57 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-12-08 21:49:10
+Date: 2016-12-10 10:44:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for address
+-- ----------------------------
+DROP TABLE IF EXISTS `address`;
+CREATE TABLE `address` (
+  `city` varchar(20) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `trading_area` varchar(20) CHARACTER SET utf8mb4 NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Records of address
+-- ----------------------------
+INSERT INTO `address` VALUES ('南京市', '珠江路商圈');
+INSERT INTO `address` VALUES ('南京市', '新街口商圈');
+INSERT INTO `address` VALUES ('南京市', '江东门商圈');
+INSERT INTO `address` VALUES ('南京市', '江北商圈');
+INSERT INTO `address` VALUES ('南京市', '夫子庙商圈');
+INSERT INTO `address` VALUES ('南京市', '河西商圈');
+INSERT INTO `address` VALUES ('南京市', '仙林商圈');
+INSERT INTO `address` VALUES ('南京市', '山西路商圈');
+INSERT INTO `address` VALUES ('杭州市', '城北商圈');
+INSERT INTO `address` VALUES ('杭州市', '吴山商圈');
+INSERT INTO `address` VALUES ('杭州市', '武林商圈');
+INSERT INTO `address` VALUES ('杭州市', '滨江商圈');
+INSERT INTO `address` VALUES ('上海市', '淮海路商圈');
+INSERT INTO `address` VALUES ('上海市', '徐家汇商圈');
+INSERT INTO `address` VALUES ('上海市', '浦东商圈');
+INSERT INTO `address` VALUES ('上海市', '五角场商圈');
+INSERT INTO `address` VALUES ('上海市', '南京路商圈');
+INSERT INTO `address` VALUES ('广州市', '珠江新城商圈');
+INSERT INTO `address` VALUES ('广州市', '东山商圈');
+INSERT INTO `address` VALUES ('广州市', '北京路商圈');
+INSERT INTO `address` VALUES ('广州市', '小北商圈');
+INSERT INTO `address` VALUES ('广州市', '番禺大北路商圈');
+INSERT INTO `address` VALUES ('广州市', '天河商圈');
+INSERT INTO `address` VALUES ('广州市', '流花商圈');
+INSERT INTO `address` VALUES ('广州市', '西关商圈');
+INSERT INTO `address` VALUES ('北京市', '望京商圈');
+INSERT INTO `address` VALUES ('北京市', '北苑商圈');
+INSERT INTO `address` VALUES ('北京市', '回龙观商圈');
+INSERT INTO `address` VALUES ('北京市', '天通苑商圈');
+INSERT INTO `address` VALUES ('北京市', '朝青商圈');
+INSERT INTO `address` VALUES ('北京市', '亦庄商圈');
+INSERT INTO `address` VALUES ('北京市', '清河商圈');
+INSERT INTO `address` VALUES ('北京市', '亚运村商圈');
+INSERT INTO `address` VALUES ('北京市', '黄村北商圈');
 
 -- ----------------------------
 -- Table structure for credit_record
@@ -28,12 +75,13 @@ CREATE TABLE `credit_record` (
   `cause` varchar(20) NOT NULL DEFAULT '',
   `order_id` char(20) NOT NULL,
   PRIMARY KEY (`record_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10001 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=151512 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of credit_record
 -- ----------------------------
-INSERT INTO `credit_record` VALUES ('10000', 'leftovers01', '1.00', '0.10', '2016-01-01 11:11:11', 'Recharge', '52200020161111000');
+INSERT INTO `credit_record` VALUES ('10000', '123456', '1.00', '1.00', '2016-01-01 11:11:11', 'Recharge', '52200020161111000');
+INSERT INTO `credit_record` VALUES ('151511', '123456', '2.20', '1.20', '2016-01-02 11:11:11', 'ExecuteOrder', '52200020161111000');
 
 -- ----------------------------
 -- Table structure for hotel
@@ -53,9 +101,17 @@ CREATE TABLE `hotel` (
 -- ----------------------------
 -- Records of hotel
 -- ----------------------------
-INSERT INTO `hotel` VALUES ('522000', '榕江大酒店', '5', '广东揭阳', '东山', '坐落于榕江左岸。', '有特殊服务');
-INSERT INTO `hotel` VALUES ('522001', '榕江中酒店', '3', '广东潮汕', '东山', '包吃包住', '没有特殊服务');
-INSERT INTO `hotel` VALUES ('522002', '榕江大酒店', '5', '广东揭阳', '东山', '包吃包住', '没有特殊服务');
+INSERT INTO `hotel` VALUES ('156151', '万达酒店', '5', '北京市', '望京商圈', '帝都加成', '你想要的都有');
+INSERT INTO `hotel` VALUES ('346436', '全季酒店', '5', '杭州市', '滨江商圈', '江畔', '西湖美景尽收眼底');
+INSERT INTO `hotel` VALUES ('511454', '越台酒店', '2', '杭州市', '武林商圈', '在浙江大学附近', '前台大妈服务');
+INSERT INTO `hotel` VALUES ('515765', '凯悦酒店', '5', '广州市', '天河商圈', '真正五星级', '只有你想不到的服务');
+INSERT INTO `hotel` VALUES ('516515', '君亭酒店', '2', '杭州市', '武林商圈', '位于武林广场', '还行的服务');
+INSERT INTO `hotel` VALUES ('522000', '榕江大酒店', '5', '南京市', '新街口商圈', '坐落于榕江左岸', '有特殊服务');
+INSERT INTO `hotel` VALUES ('522001', '榕江中酒店', '3', '南京市', '夫子庙商圈', '包吃包住', '没有特殊服务');
+INSERT INTO `hotel` VALUES ('522002', '榕江小酒店', '5', '南京市', '新街口商圈', '包吃包住', '没有特殊服务');
+INSERT INTO `hotel` VALUES ('522003', '儒家酒店', '1', '上海市', '浦东商圈', '地势可以', '泳池');
+INSERT INTO `hotel` VALUES ('522151', '凯乐酒店', '4', '上海市', '南京路商圈', '地势可以', '一流服务');
+INSERT INTO `hotel` VALUES ('984512', '英尊酒店', '1', '南京市', '仙林商圈', '南大对面，很方柏霓', '普普通通');
 
 -- ----------------------------
 -- Table structure for order_info
@@ -93,9 +149,7 @@ CREATE TABLE `order_info` (
 -- ----------------------------
 -- Records of order_info
 -- ----------------------------
-INSERT INTO `order_info` VALUES ('15165165', '522000', '123456', 'Abnormal', '榕江大酒店', 'Single', '2', '511', '2', '0', '0001-01-01 00:00:00', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '100.00', '80.00', '', '2016-01-01 11:11:11', '4', '好', '2016-01-01 11:11:11', 'All');
-INSERT INTO `order_info` VALUES ('45454148498', '522000', 'Hiki', 'Abnormal', '榕江大酒店', 'Single', '1', '511', '2', '1', '2012-12-12 11:11:11', '2012-12-12 11:11:11', '2012-12-12 11:11:11', '2012-12-12 11:11:11', '2012-12-12 11:11:11', '2012-12-12 11:11:11', '2012-12-12 11:11:11', '100.00', '80.00', '', '2012-12-12 11:11:11', '1', 'Good', '2012-12-12 11:11:11', 'All');
-INSERT INTO `order_info` VALUES ('52200020161111000', '522000', 'leftovers02', 'Abnormal', '榕江大酒店', 'Single', '2', '511', '2', '0', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '100.00', '80.00', '', '2016-01-01 11:11:11', '4', '好', '2016-01-01 11:11:11', 'All');
+INSERT INTO `order_info` VALUES ('52200020161111000', '522000', 'leftovers02', 'Executed', '榕江大酒店', 'Single', '2', '511', '2', '0', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '100.00', '80.00', '', '2016-01-03 11:11:11', '4', '好', '2016-01-01 11:11:11', 'All');
 
 -- ----------------------------
 -- Table structure for personnel
@@ -114,9 +168,9 @@ CREATE TABLE `personnel` (
 -- Records of personnel
 -- ----------------------------
 INSERT INTO `personnel` VALUES ('100000', 'abc123456', 'HotelWorker', 'leftovers03', '522000');
-INSERT INTO `personnel` VALUES ('119119', 'password', 'HotelWorker', '', '000000');
-INSERT INTO `personnel` VALUES ('120110', 'password', 'HotelWorker', '', '000000');
-INSERT INTO `personnel` VALUES ('120120', 'pass', 'HotelWorker', '', '000000');
+INSERT INTO `personnel` VALUES ('119119', 'password', 'HotelWorker', '啊', '522151');
+INSERT INTO `personnel` VALUES ('120110', 'password', 'WebMarketer', '哦', '000000');
+INSERT INTO `personnel` VALUES ('120120', 'pass', 'WebAdministrator', '呃', '000000');
 
 -- ----------------------------
 -- Table structure for promotion
@@ -182,7 +236,7 @@ CREATE TABLE `room` (
 -- ----------------------------
 -- Records of room
 -- ----------------------------
-INSERT INTO `room` VALUES ('121121', '522000', 'Single', '12', '11', '100.00');
+INSERT INTO `room` VALUES ('522000', '522000', 'Single', '12', '11', '100.00');
 
 -- ----------------------------
 -- Table structure for user
@@ -204,4 +258,4 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('Hikiii', '123456', 'GHB', '1', '110', 'None', '1', '2016-12-06', '');
+INSERT INTO `user` VALUES ('ȹȺȻȼȽȾ', 'ɩɪɫȹȺȻȼȽȾ', '坂', '1', 'ȹȹȸȹȹȸȹȹȸȹȸ', '', '5', '0001-01-01', '南京大学');
