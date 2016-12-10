@@ -40,21 +40,21 @@
             <Label layoutX="170.0" layoutY="285.0" text="星       级：" />
             <Button layoutX="284.0" layoutY="362.0" mnemonicParsing="false" onAction="#toaddHotelWorkerEvent" styleClass="actionBtn" text="下一步，添加酒店工作人员" />
             <Label layoutX="170.0" layoutY="45.0" text="酒店编号：" />
-            <Label layoutX="270.0" layoutY="45.0" text="Label" />
-            <Label layoutX="270.0" layoutY="105.0" text="Label" />
-            <Label layoutX="270.0" layoutY="165.0" text="Label" />
-            <Label layoutX="270.0" layoutY="225.0" text="Label" />
-            <Label layoutX="270.0" layoutY="285.0" text="Label" />
+            <Label fx:id="hotelidLabel" layoutX="270.0" layoutY="45.0" text="Label" />
+            <Label fx:id="hotelnameLabel" layoutX="270.0" layoutY="105.0" text="Label" />
+            <Label fx:id="hoteladdressLabel" layoutX="270.0" layoutY="165.0" text="Label" />
+            <Label fx:id="hoteltracingareaLabel" layoutX="270.0" layoutY="225.0" text="Label" />
+            <Label fx:id="hotelstarLabel" layoutX="270.0" layoutY="285.0" text="Label" />
             <Button layoutX="167.0" layoutY="362.0" mnemonicParsing="false" styleClass="actionBtn" text="上一步" />
          </children>
       </Pane>
       <Pane fx:id="addhotelworkerPane" layoutX="100.0" layoutY="157.0" prefHeight="435.0" prefWidth="650.0" visible="false">
          <children>
-            <TableView prefHeight="160.0" prefWidth="650.0">
+            <TableView fx:id="hotelworkerList" prefHeight="160.0" prefWidth="650.0">
               <columns>
-                <TableColumn prefWidth="200.0" text="账号" />
-                <TableColumn prefWidth="130.0" text="姓名" />
-                  <TableColumn prefWidth="156.0" text="联系方式" />
+                <TableColumn fx:id="hotelworkeridCol" prefWidth="200.0" text="账号" />
+                <TableColumn fx:id="hotelworkernameCol" prefWidth="130.0" text="姓名" />
+                  <TableColumn fx:id="hotelworkerphoneCol" prefWidth="156.0" text="联系方式" />
                   <TableColumn prefWidth="163.0" text="初始密码" />
               </columns>
             </TableView>
@@ -64,8 +64,8 @@
                   <Label layoutX="186.0" layoutY="100.0" text="联系方式：" />
                   <Button layoutX="347.0" layoutY="171.0" mnemonicParsing="false" styleClass="actionBtn" text="添加" />
                   <Button layoutX="253.0" layoutY="171.0" mnemonicParsing="false" styleClass="actionBtn" text="上一步" />
-                  <TextField layoutX="282.0" layoutY="29.0" prefHeight="30.0" prefWidth="170.0" />
-                  <TextField layoutX="281.0" layoutY="95.0" prefHeight="30.0" prefWidth="170.0" />
+                  <TextField fx:id="workernameField" layoutX="282.0" layoutY="29.0" prefHeight="30.0" prefWidth="170.0" />
+                  <TextField fx:id="workerphoneField" layoutX="281.0" layoutY="95.0" prefHeight="30.0" prefWidth="170.0" />
                </children>
             </Pane>
          </children>

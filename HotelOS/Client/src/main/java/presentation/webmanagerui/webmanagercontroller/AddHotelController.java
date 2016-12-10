@@ -1,13 +1,14 @@
 package presentation.webmanagerui.webmanagercontroller;
 
 import bl.hotelbl.impl.HotelBlServiceImpl;
+import bl.personnelbl.impl.PersonnelBLServiceImpl;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import util.ResultMessage;
 import vo.hotel.HotelVO;
+import vo.personnel.PersonnelVO;
 
 import java.rmi.RemoteException;
 
@@ -31,12 +32,25 @@ public class AddHotelController {
     @FXML private RadioButton fourstar;
     @FXML private RadioButton fivestar;
 
+    @FXML private Label hotelidLabel;
+    @FXML private Label hotelnameLabel;
+    @FXML private Label hoteladdressLabel;
+    @FXML private Label hoteltracingareaLabel;
+    @FXML private Label hotelstarLabel;
+
+    @FXML private TableView hotelworkerList;
+    @FXML private TextField workernameField;
+    @FXML private TextField workerphoneField;
+
     private HotelBlServiceImpl hotelBlService;
+    private PersonnelBLServiceImpl personnelBLService;
+    private String hotelID;
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
         try {
             hotelBlService = new HotelBlServiceImpl();
+            personnelBLService = new PersonnelBLServiceImpl();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -56,6 +70,7 @@ public class AddHotelController {
 
         hotelVO.hotelName = hotelnameField.getText();
         hotelVO.address = hotelcity.getValue().toString() + hoteltracingarea.getValue().toString();
+
         if (onestar.isSelected()) {
             hotelVO.star = 1;
         } else if (twostar.isSelected()) {
@@ -69,7 +84,13 @@ public class AddHotelController {
         }
 
         try {
-            hotelBlService.addHotel(hotelVO);
+            ResultMessage resultMessage = hotelBlService.addHotel(hotelVO);
+
+            if (resultMessage == ResultMessage.Success) {
+                System.out.println("hotel add success");
+            } else {
+                System.out.println("hotel add fail");
+            }
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -83,5 +104,7 @@ public class AddHotelController {
         finishInfoPane.setVisible(false);
         addhotelworkerPane.setVisible(true);
         confirmHotelInfoPane.setVisible(false);
+
+//        hotelID =
     }
 }
