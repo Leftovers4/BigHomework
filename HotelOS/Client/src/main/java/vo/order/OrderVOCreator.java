@@ -94,6 +94,7 @@ public class OrderVOCreator {
         res.personAmount = orderPO.getPersonAmount();
         res.withChildren = orderPO.isWithChildren();
         res.orderPriceVO.actualPrice = orderPO.getOrderPricePO().getActualPrice();
+        res.orderPriceVO.originPrice = orderPO.getOrderPricePO().getOriginPrice();
 
         return res;
     }

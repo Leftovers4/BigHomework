@@ -27,7 +27,7 @@ public class UserBlServiceImplTest {
 
     @Test
     public void registerUser() throws Exception {
-        ResultMessage resultMessage = tested.registerUser("lisiii", "8520");
+        ResultMessage resultMessage = tested.registerUser("Hikii", "8520");
     }
 
     @Test
@@ -92,7 +92,7 @@ public class UserBlServiceImplTest {
 
     @Test
     public void topup() throws Exception {
-        ResultMessage resultMessage = tested.topup("lisii", 50);
+        ResultMessage resultMessage = tested.topup("Hikii", 50);
     }
 
     @Test

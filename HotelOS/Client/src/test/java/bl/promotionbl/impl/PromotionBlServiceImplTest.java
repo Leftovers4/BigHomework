@@ -31,22 +31,29 @@ public class PromotionBlServiceImplTest {
         //说明：当创建促销策略时，hotelID跟promotionType是一定要赋值的，
         //      当促销策略是网站营销人员制定时，调用IDProducer.produceHotelIDforWP（）
         //      来给hotelID赋值，其余promotionVO的属性的填写根据界面的输入框，有就赋值，
-        //      没有就不用赋值，此处仅以等级优惠为例。
-        promotionVO.hotelID = IDProducer.produceHotelIDForWP();
-        promotionVO.promotionType = PromotionType.UserLevelPromotion;
+        //      没有就不用赋值。
 
-        promotionVO.promotionMRVOs.get(0).credit = 500;
-        promotionVO.promotionMRVOs.get(1).credit = 1000;
-        promotionVO.promotionMRVOs.get(2).credit = 1500;
-        promotionVO.promotionMRVOs.get(3).credit = 2000;
-        promotionVO.promotionMRVOs.get(4).credit = 3000;
-        promotionVO.promotionMRVOs.get(5).credit = 5000;
-        promotionVO.promotionMRVOs.get(0).memberDiscount = 0.98;
-        promotionVO.promotionMRVOs.get(1).memberDiscount = 0.95;
-        promotionVO.promotionMRVOs.get(2).memberDiscount = 0.9;
-        promotionVO.promotionMRVOs.get(3).memberDiscount = 0.85;
-        promotionVO.promotionMRVOs.get(4).memberDiscount = 0.75;
-        promotionVO.promotionMRVOs.get(5).memberDiscount = 0.6;
+        //等级优惠
+//        promotionVO.hotelID = IDProducer.produceHotelIDForWP();
+//        promotionVO.promotionType = PromotionType.UserLevelPromotion;
+//        promotionVO.promotionMRVOs.get(0).credit = 500;
+//        promotionVO.promotionMRVOs.get(1).credit = 1000;
+//        promotionVO.promotionMRVOs.get(2).credit = 1500;
+//        promotionVO.promotionMRVOs.get(3).credit = 2000;
+//        promotionVO.promotionMRVOs.get(4).credit = 3000;
+//        promotionVO.promotionMRVOs.get(5).credit = 5000;
+//        promotionVO.promotionMRVOs.get(0).memberDiscount = 0.98;
+//        promotionVO.promotionMRVOs.get(1).memberDiscount = 0.95;
+//        promotionVO.promotionMRVOs.get(2).memberDiscount = 0.9;
+//        promotionVO.promotionMRVOs.get(3).memberDiscount = 0.85;
+//        promotionVO.promotionMRVOs.get(4).memberDiscount = 0.75;
+//        promotionVO.promotionMRVOs.get(5).memberDiscount = 0.6;
+
+        //多间优惠
+        promotionVO.hotelID = 961529;
+        promotionVO.promotionType = PromotionType.MultipleRoomPromotion;
+        promotionVO.leastRooms = 2;
+        promotionVO.discount = 0.9;
 
         ResultMessage resultMessage = tested.create(promotionVO);
     }

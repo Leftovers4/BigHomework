@@ -129,7 +129,11 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void getOrderActualPrice() throws Exception {
+        OrderVO orderVO = tested.searchExtraOrderByID("96152920161209324");
 
+        orderVO.username = "Hikii";
+        orderVO.hotelID = 961529;
+        double price = tested.getOrderActualPrice(orderVO);
     }
 
     @Test
