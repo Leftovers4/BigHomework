@@ -1,24 +1,29 @@
 package presentation.webmarketerui.webmarketercontroller;
 
+import bl.hotelbl.HotelBLService;
+import bl.hotelbl.impl.HotelBlServiceImpl;
 import bl.orderbl.OrderBLService;
 import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
 import presentation.util.buttoncell.WebMarketListButtonCell;
+import presentation.util.other.DisableColumnChangeListener;
 import util.OrderType;
+import vo.hotel.HotelVO;
 import vo.order.OrderPriceVO;
 import vo.order.OrderVO;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Hitiger on 2016/11/28.
@@ -44,15 +49,16 @@ public class OrderListPaneController {
     private ComboBox hotelBox;
     @FXML
     private ComboBox orderTypeBox;
+    @FXML
+    private TextField searchField;
 
 
     private Pane mainPane;
-    private AlertController alertController;
     private OrderBLService orderBLService;
+    private HotelBLService hotelBLService;
 
     public void launch(Pane mainPane) {
         this.mainPane = mainPane;
-        alertController = new AlertController();
 
         initService();
         initBox();
@@ -63,6 +69,7 @@ public class OrderListPaneController {
     private void initService() {
         try {
             orderBLService = new OrderBlServiceImpl();
+            hotelBLService = new HotelBlServiceImpl();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -70,7 +77,21 @@ public class OrderListPaneController {
 
     private void initBox() {
         orderTypeBox.getItems().addAll("所有订单", "未执行订单", "已执行订单", "异常订单", "撤销订单");
-        addBoxListener();
+        addOrderBoxListener();
+
+        HashMap<String, Long> nameToIdMap = null;
+        try {
+            ArrayList<HotelVO> list = (ArrayList<HotelVO>) hotelBLService.viewFullHotelList();
+            nameToIdMap = new HashMap<>();
+            for (HotelVO hotelVO: list) {
+                hotelBox.getItems().add(hotelVO.hotelName);
+                nameToIdMap.put(hotelVO.hotelName, hotelVO.hotelID);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        addHotelBoxListener(nameToIdMap);
     }
 
     private void initTable() {
@@ -79,7 +100,6 @@ public class OrderListPaneController {
         idCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         userCol.setCellValueFactory(new PropertyValueFactory<>("username"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
-
         //操作列添加按钮
         opCol.setCellFactory(new Callback<TableColumn<OrderVO, Boolean>, TableCell<OrderVO, Boolean>>() {
             @Override
@@ -88,8 +108,8 @@ public class OrderListPaneController {
             }
         });
 
-
-
+        final TableColumn[] columns = {hotelCol, idCol, userCol, typeCol, opCol};
+        orderTable.getColumns().addListener(new DisableColumnChangeListener(orderTable, columns));
     }
 
 
@@ -108,10 +128,9 @@ public class OrderListPaneController {
     }
 
     /**
-     * TODO 将showOrderList方法更换为 逻辑给的接口
      * 设置组合框的监听
      */
-    private void addBoxListener() {
+    private void addOrderBoxListener() {
         orderTypeBox.getSelectionModel().selectedItemProperty().addListener(
                 (o, oldValue, newValue) -> {
                     try {
@@ -136,6 +155,32 @@ public class OrderListPaneController {
                         e.printStackTrace();
                     }
                 });
+    }
+
+    private void addHotelBoxListener(HashMap<String, Long> nameToIdMap) {
+        hotelBox.getSelectionModel().selectedItemProperty().addListener(
+                (o , oldValue, newValue) -> {
+                    try {
+                        orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewFullHotelOrderList((nameToIdMap.get((String) newValue)))));
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
+        );
+    }
+
+
+    @FXML
+    private void searchOrderByID(){
+        OrderVO orderVO = null;
+        ObservableList<OrderVO> list = FXCollections.observableArrayList();
+        try {
+            orderVO = orderBLService.searchOrderByID(searchField.getText());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        if(orderVO != null) list.add(orderVO);
+        orderTable.setItems(list);
     }
 
 }

@@ -19,41 +19,14 @@ import vo.order.OrderVO;
  * Description :
  */
 public class WebMarketListButtonCell extends TableCell<OrderVO, Boolean> {
-    final private HBox btnBox = new HBox();
-    final private Button detailButton = new Button();
-    final private Button appealButton = new Button();
+
     private TableView tableView;
+    private Pane mainPane;
 
     public WebMarketListButtonCell(final Pane mainPane, final TableView tableView) {
         this.tableView = tableView;
-
+        this.mainPane = mainPane;
         this.getStylesheets().add(WebMarketListButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
-        Image detailImage = new Image("/img/webmarketer/checkorderdetail.png");
-        detailButton.setGraphic(new ImageView(detailImage));
-        detailButton.getStyleClass().add("TableButtonCell");
-
-        Image appealImage = new Image("/img/webmarketer/appealbutton.png");
-        appealButton.setGraphic(new ImageView(appealImage));
-        appealButton.setId("appealButton");
-        appealButton.getStyleClass().add("TableButtonCell");
-
-        detailButton.setOnAction(event -> {
-            int selectedIndex = getTableRow().getIndex();
-            OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
-            mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailPane(mainPane,orderVO));
-        });
-
-        appealButton.setOnAction(event -> {
-            int selectedIndex = getTableRow().getIndex();
-            OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
-            mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new AppealOrderPane(mainPane,orderVO));
-        });
-
-        btnBox.setSpacing(10);
-        btnBox.setAlignment(Pos.CENTER);
-        btnBox.setPadding(new Insets(0,10,0,20));
     }
 
     @Override
@@ -63,12 +36,49 @@ public class WebMarketListButtonCell extends TableCell<OrderVO, Boolean> {
             setGraphic(null);
             setText(null);
         } else {
+            HBox btnBox = new HBox();
+            Button detailButton = new Button();
+
+            Image detailImage = new Image("/img/webmarketer/checkorderdetail.png");
+            detailButton.setGraphic(new ImageView(detailImage));
+            detailButton.getStyleClass().add("TableButtonCell");
+
+            detailButton.setOnAction(event -> {
+                int selectedIndex = getTableRow().getIndex();
+                OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
+                mainPane.getChildren().remove(0);
+                mainPane.getChildren().add(new OrderDetailPane(mainPane,orderVO));
+            });
+
+            btnBox.setSpacing(10);
             btnBox.getChildren().clear();
-            if(((OrderVO)tableView.getItems().get(getTableRow().getIndex())).orderType == OrderType.Abnormal){
+
+            OrderVO temp = (OrderVO)tableView.getItems().get(getTableRow().getIndex());
+
+            if(temp.orderType == OrderType.Abnormal){
+                Button appealButton = new Button();
+
+                Image appealImage = new Image("/img/webmarketer/appealbutton.png");
+                appealButton.setGraphic(new ImageView(appealImage));
+                appealButton.setId("appealButton");
+                appealButton.getStyleClass().add("TableButtonCell");
+
+                appealButton.setOnAction(event -> {
+                    int selectedIndex = getTableRow().getIndex();
+                    OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
+                    mainPane.getChildren().remove(0);
+                    mainPane.getChildren().add(new AppealOrderPane(mainPane,orderVO));
+                });
+
+                btnBox.setAlignment(Pos.CENTER);
+                btnBox.setPadding(new Insets(0,5,0,20));
                 btnBox.getChildren().addAll(detailButton, appealButton);
             }else {
+                btnBox.setAlignment(Pos.CENTER_LEFT);
+                btnBox.setPadding(new Insets(0,0,0,13));
                 btnBox.getChildren().add(detailButton);
             }
+
             setGraphic(btnBox);
             setText(null);
         }

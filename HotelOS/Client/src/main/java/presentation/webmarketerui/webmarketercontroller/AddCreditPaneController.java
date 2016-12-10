@@ -68,9 +68,9 @@ public class AddCreditPaneController {
                 ResultMessage resultMessage = userBLService.topup(userName, Double.parseDouble(creditTextField.getText()));
                 if(resultMessage == ResultMessage.Success) {
                     if(alertController.showUpdateSuccessAlert("信用充值成功","充值成功")){
-                        UserVO newuserVO = userBLService.viewBasicUserInfo(userName);
+                        UserVO newUserVO = userBLService.viewBasicUserInfo(userName);
                         mainPane.getChildren().clear();
-                        mainPane.getChildren().add(new AddCreditPane(mainPane, newuserVO));
+                        mainPane.getChildren().add(new AddCreditPane(mainPane, newUserVO));
                     }
                 }
             } catch (RemoteException e) {
@@ -95,10 +95,10 @@ public class AddCreditPaneController {
         }
         else {
             //用正则表达式判断输入格式，非数字报错
-            Pattern pattern = Pattern.compile("^[0-9]*$");
+            Pattern pattern = Pattern.compile("^[0-9].*$");
             Matcher matcherCredit = pattern.matcher(creditTextField.getText());
             if(!matcherCredit.matches()){
-                alertController.showInputWrongAlert("充值额度必须为整数，请重新输入","充值失败");
+                alertController.showInputWrongAlert("充值额度必须为数字，请重新输入","充值失败");
                 return false;
             }
         }
