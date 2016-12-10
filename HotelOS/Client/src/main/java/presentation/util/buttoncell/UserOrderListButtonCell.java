@@ -59,6 +59,7 @@ public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
             setGraphic(null);
             setText(null);
         } else {
+            btnBox.getChildren().clear();
             btnBox.getChildren().add(checkDetailBtn);
             setGraphic(btnBox);
             setText(null);

@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.userui.userscene.CancelOrderPane;
 import presentation.util.buttoncell.UserOrderListButtonCell;
+import util.OrderType;
 import vo.order.OrderVO;
 
 import java.rmi.RemoteException;
@@ -38,7 +39,7 @@ public class UserOrderListController {
     @FXML private TableView orderList;
 
     private UserOrderListButtonCell userOrderListButtonCell;
-
+    private OrderType choseOrderType = null;
     private OrderBlServiceImpl orderBlService;
 
     public void launch(Stage primaryStage, Pane mainPane, String userID) {
@@ -52,16 +53,15 @@ public class UserOrderListController {
             e.printStackTrace();
         }
 
-        orderStateComBox.getItems().add("全部订单");
-        orderStateComBox.getItems().add("已执行订单");
-        orderStateComBox.getItems().add("未执行订单");
-        orderStateComBox.getItems().add("撤销订单");
-        orderStateComBox.getItems().add("异常订单");
 
-        initialData();
+        initialComBox();
+        initialOrderListData();
     }
 
-    private void initialData() {
+    /**
+     * 查看全部订单
+     */
+    private void initialOrderListData() {
         orderIDCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         orderTimeCol.setCellValueFactory(new PropertyValueFactory<>("orderTimeVO"));
         orderStateCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
@@ -73,10 +73,9 @@ public class UserOrderListController {
                 return userOrderListButtonCell;
             }
         });
-        orderList.setItems(getUserOrderList());
+        orderList.setItems(getOrderList());
     }
-
-    private ObservableList getUserOrderList() {
+    private ObservableList getOrderList() {
         ObservableList<OrderVO> list = null;
         try {
             list = FXCollections.observableArrayList(orderBlService.viewFullUserOrderList(userID));
@@ -84,6 +83,79 @@ public class UserOrderListController {
             e.printStackTrace();
         }
         return list;
+    }
+
+
+//    /**
+//     * 分类查看订单
+//     * @param orderType
+//     */
+//    private void initialTypeOrderListData(OrderType orderType) {
+//        orderIDCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
+//        orderTimeCol.setCellValueFactory(new PropertyValueFactory<>("orderTimeVO"));
+//        orderStateCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
+//        hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
+//        btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
+//            @Override
+//            public TableCell call(TableColumn param) {
+//                userOrderListButtonCell = new UserOrderListButtonCell(stage, mainPane, orderList, userID);
+//                return userOrderListButtonCell;
+//            }
+//        });
+//        orderList.setItems(getTypeUserOrderList(orderType));
+//    }
+//    private ObservableList getTypeUserOrderList(OrderType orderType) {
+//        ObservableList<OrderVO> list = null;
+//        try {
+//
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
+//        return list;
+//    }
+
+
+    /**
+     * 初始化订单类型选框数据
+     */
+    private void initialComBox() {
+        orderStateComBox.getItems().addAll("全部订单", "未执行订单", "已执行订单", "异常订单", "撤销订单");
+        addComBoxListener();
+    }
+    /**
+     * 订单类型选框添加监听
+     */
+    private void addComBoxListener() {
+        orderStateComBox.getSelectionModel().selectedItemProperty().addListener(
+                (o, oldValue, newValue) -> {
+                    try {
+                        switch ((String) newValue) {
+                            case "全部订单":
+                                orderList.setItems(getOrderList());
+                                choseOrderType = null;
+                                break;
+                            case "已执行订单":
+                                orderList.setItems(FXCollections.observableArrayList(orderBlService.viewTypeUserOrderList(userID, OrderType.Executed)));
+                                choseOrderType = OrderType.Executed;
+                                break;
+                            case "未执行订单":
+                                orderList.setItems(FXCollections.observableArrayList(orderBlService.viewTypeUserOrderList(userID, OrderType.Unexecuted)));
+                                choseOrderType = OrderType.Unexecuted;
+                                break;
+                            case "异常订单":
+                                orderList.setItems(FXCollections.observableArrayList(orderBlService.viewTypeUserOrderList(userID, OrderType.Abnormal)));
+                                choseOrderType = OrderType.Abnormal;
+                                break;
+                            case "撤销订单":
+                                orderList.setItems(FXCollections.observableArrayList(orderBlService.viewTypeUserOrderList(userID, OrderType.Canceled)));
+                                choseOrderType = OrderType.Canceled;
+                                break;
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
+        );
     }
 
 

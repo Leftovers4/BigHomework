@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.userui.userscene.OrderDetailUserPane;
 import presentation.util.buttoncell.UserHotelListButtonCell;
+import util.RoomType;
 import vo.hotel.HotelConditionsVO;
 import vo.hotel.HotelVO;
 
@@ -37,12 +38,15 @@ public class UserSearchHotelController {
 
     @FXML private TextField searchField;
 
-    @FXML private CheckBox simgleRoomCB;
+    @FXML private CheckBox singleRoomCB;
+    @FXML private CheckBox coupleRoomCB;
     @FXML private CheckBox standardRoomCB;
-    @FXML private CheckBox moreBedsRoomCB;
-    @FXML private CheckBox standardFlatCB;
-    @FXML private CheckBox grandFlatCB;
-    @FXML private CheckBox otherRoomType;
+    @FXML private CheckBox queenCB;
+    @FXML private CheckBox loverroomCB;
+    @FXML private CheckBox familyRoomCB;
+    @FXML private CheckBox suiteroomCB;
+    @FXML private CheckBox presidentialsuiteroomCB;
+    @FXML private CheckBox businessroomCB;
 
     @FXML private DatePicker checkInDate;
     @FXML private DatePicker checkOutDate;
@@ -96,7 +100,7 @@ public class UserSearchHotelController {
     @FXML
     private void showMoreChoice() {
         moreInfoChoice.setVisible(true);
-        FlowPane.setMargin(moreInfoChoice, new Insets(-105, 0, 0, 160));
+        FlowPane.setMargin(moreInfoChoice, new Insets(-70, 0, 0, 160));
         moreInfoChoice.setDisable(false);
         upMoreInfo.setDisable(false);
         upMoreInfo.setVisible(true);
@@ -108,7 +112,7 @@ public class UserSearchHotelController {
     @FXML
     private void hideMoreChoice() {
         moreInfoChoice.setVisible(false);
-        FlowPane.setMargin(moreInfoChoice, new Insets(-160, 0, 0, 160));
+        FlowPane.setMargin(moreInfoChoice, new Insets(-130, 0, 0, 160));
         moreInfoChoice.setDisable(true);
         downMoreInfo.setVisible(true);
         downMoreInfo.setDisable(false);
@@ -124,12 +128,15 @@ public class UserSearchHotelController {
      * 重置筛选条件
      */
     private void resetChoice() {
-        simgleRoomCB.setSelected(false);
+        singleRoomCB.setSelected(false);
         standardRoomCB.setSelected(false);
-        moreBedsRoomCB.setSelected(false);
-        standardFlatCB.setSelected(false);
-        grandFlatCB.setSelected(false);
-        otherRoomType.setSelected(false);
+        coupleRoomCB.setSelected(false);
+        queenCB.setSelected(false);
+        loverroomCB.setSelected(false);
+        familyRoomCB.setSelected(false);
+        suiteroomCB.setSelected(false);
+        presidentialsuiteroomCB.setSelected(false);
+        businessroomCB.setSelected(false);
         checkInDate.setValue(null);
         checkOutDate.setValue(null);
         twoHundredLess.setSelected(false);
@@ -159,6 +166,11 @@ public class UserSearchHotelController {
         hotelConditionsVO.tradingArea = tradingAreaCombox.getPromptText();
         hotelConditionsVO.name = searchField.getText();
 
+        hotelConditionsVO.expectedCheckInTime = checkInDate.getValue();
+        hotelConditionsVO.expectedLeaveTime = checkOutDate.getValue();
+
+//        hotelConditionsVO.roomType =
+
         hotelConditionsVO.priceLowerBound = getPriceBound()[0];
         hotelConditionsVO.priceUpperBound = getPriceBound()[1];
 
@@ -174,7 +186,48 @@ public class UserSearchHotelController {
         initalTable(hotelConditionsVO);
     }
 
-    //获得价格区间
+    /**
+     * 获取房间类型
+     * @return
+     */
+    private RoomType getRoomType() {
+        RoomType roomType = null;
+
+        if (singleRoomCB.isSelected()) {
+            roomType = RoomType.Single;
+        }
+        if (coupleRoomCB.isSelected()) {
+            roomType = RoomType.Couple;
+        }
+        if (standardRoomCB.isSelected()) {
+            roomType = RoomType.Standard;
+        }
+        if (queenCB.isSelected()) {
+            roomType = RoomType.Queen;
+        }
+        if (loverroomCB.isSelected()) {
+            roomType = RoomType.Lover;
+        }
+        if (familyRoomCB.isSelected()) {
+            roomType = RoomType.Family;
+        }
+        if (suiteroomCB.isSelected()) {
+            roomType = RoomType.Suite;
+        }
+        if (presidentialsuiteroomCB.isSelected()) {
+            roomType = RoomType.PresidentialSuite;
+        }
+        if (businessroomCB.isSelected()) {
+            roomType = RoomType.BusinessSuite;
+        }
+
+        return roomType;
+    }
+
+    /**
+     * 获取价格区间
+     * @return
+     */
     private double[] getPriceBound() {
         double[] bound = new double[2];
 
@@ -227,7 +280,10 @@ public class UserSearchHotelController {
         return bound;
     }
 
-    //获得星级区间
+    /**
+     * 获取星级区间
+     * @return
+     */
     private int[] getStarBound() {
         int[] bound = new int[2];
 
@@ -272,7 +328,10 @@ public class UserSearchHotelController {
         return bound;
     }
 
-    //获得酒店评分区间
+    /**
+     * 获取酒店评分区间
+     * @return
+     */
     private double[] getRateBound() {
         double[] bound = new double[2];
 
@@ -318,6 +377,10 @@ public class UserSearchHotelController {
     }
 
 
+    /**
+     * 初始化列表数据
+     * @param hotelConditionsVO
+     */
     private void initalTable(HotelConditionsVO hotelConditionsVO) {
 
         hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));

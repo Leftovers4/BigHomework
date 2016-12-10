@@ -34,27 +34,30 @@
                         <Insets bottom="-10.0" left="160.0" top="30.0" />
                      </FlowPane.margin>
                   </Pane>
-                  <Pane fx:id="contentmainpane" prefHeight="224.0" prefWidth="528.0" styleClass="contentPane">
+                  <Pane fx:id="contentmainpane" prefHeight="260.0" prefWidth="528.0" styleClass="contentPane">
                      <children>
                         <Label layoutX="10.0" layoutY="66.0" text="房间类型：" />
                         <Button fx:id="roomTypeBtn" layoutX="100.0" layoutY="61.0" mnemonicParsing="false" styleClass="actionBtn" text="不限" />
-                        <CheckBox fx:id="simgleRoomCB" layoutX="165.0" layoutY="66.0" mnemonicParsing="false" text="单人间" />
-                        <CheckBox fx:id="standardRoomCB" layoutX="274.0" layoutY="66.0" mnemonicParsing="false" text="标准间" />
-                        <CheckBox fx:id="moreBedsRoomCB" layoutX="384.0" layoutY="66.0" mnemonicParsing="false" text="多床间" />
-                        <CheckBox fx:id="standardFlatCB" layoutX="165.0" layoutY="106.0" mnemonicParsing="false" text="标准套间" />
-                        <CheckBox fx:id="grandFlatCB" layoutX="274.0" layoutY="106.0" mnemonicParsing="false" text="豪华套间" />
-                        <CheckBox fx:id="otherRoomType" layoutX="384.0" layoutY="106.0" mnemonicParsing="false" text="其他" />
+                        <CheckBox fx:id="singleRoomCB" layoutX="165.0" layoutY="66.0" mnemonicParsing="false" text="单人房" />
+                        <CheckBox fx:id="coupleRoomCB" layoutX="274.0" layoutY="66.0" mnemonicParsing="false" text="双人房" />
+                        <CheckBox fx:id="standardRoomCB" layoutX="384.0" layoutY="66.0" mnemonicParsing="false" text="标准房" />
+                        <CheckBox fx:id="queenCB" layoutX="165.0" layoutY="106.0" mnemonicParsing="false" text="大床房" />
+                        <CheckBox fx:id="loverroomCB" layoutX="274.0" layoutY="106.0" mnemonicParsing="false" text="情侣房" />
+                        <CheckBox fx:id="familyRoomCB" layoutX="384.0" layoutY="106.0" mnemonicParsing="false" text="家庭房" />
                         <Label layoutX="10.0" layoutY="21.0" text="入住：" />
                         <DatePicker fx:id="checkInDate" layoutX="71.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" />
                         <Label layoutX="264.0" layoutY="21.0" text="退房：" />
                         <DatePicker fx:id="checkOutDate" layoutX="324.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" />
-                        <Label layoutX="40.0" layoutY="146.0" text="价格：" />
-                        <Button fx:id="priceBtn" layoutX="100.0" layoutY="141.0" mnemonicParsing="false" styleClass="actionBtn" text="不限" />
-                        <CheckBox fx:id="twoHundredLess" layoutX="165.0" layoutY="146.0" mnemonicParsing="false" text="¥200以下" />
-                        <CheckBox fx:id="twoToFourHundred" layoutX="275.0" layoutY="146.0" mnemonicParsing="false" text="¥200-400" />
-                        <CheckBox fx:id="fourToSixHundred" layoutX="384.0" layoutY="146.0" mnemonicParsing="false" text="¥400-600" />
-                        <CheckBox fx:id="sixToEightHundred" layoutX="165.0" layoutY="186.0" mnemonicParsing="false" text="¥600-800" />
-                        <CheckBox fx:id="eightHundredMore" layoutX="275.0" layoutY="186.0" mnemonicParsing="false" text="¥800以上" />
+                        <Label layoutX="41.0" layoutY="188.0" text="价格：" />
+                        <Button fx:id="priceBtn" layoutX="101.0" layoutY="183.0" mnemonicParsing="false" styleClass="actionBtn" text="不限" />
+                        <CheckBox fx:id="twoHundredLess" layoutX="166.0" layoutY="188.0" mnemonicParsing="false" text="¥200以下" />
+                        <CheckBox fx:id="twoToFourHundred" layoutX="276.0" layoutY="188.0" mnemonicParsing="false" text="¥200-400" />
+                        <CheckBox fx:id="fourToSixHundred" layoutX="385.0" layoutY="188.0" mnemonicParsing="false" text="¥400-600" />
+                        <CheckBox fx:id="sixToEightHundred" layoutX="166.0" layoutY="228.0" mnemonicParsing="false" text="¥600-800" />
+                        <CheckBox fx:id="eightHundredMore" layoutX="276.0" layoutY="228.0" mnemonicParsing="false" text="¥800以上" />
+                        <CheckBox fx:id="suiteroomCB" layoutX="166.0" layoutY="146.0" mnemonicParsing="false" text="套房" />
+                        <CheckBox fx:id="presidentialsuiteroomCB" layoutX="274.0" layoutY="146.0" mnemonicParsing="false" text="总统套房" />
+                        <CheckBox fx:id="businessroomCB" layoutX="384.0" layoutY="146.0" mnemonicParsing="false" text="商务套房" />
                      </children>
                      <FlowPane.margin>
                         <Insets left="160.0" top="40.0" />
@@ -75,7 +78,7 @@
                            </graphic>
                         </Button>
                         <Button fx:id="resetShow" layoutX="172.0" layoutY="10.0" mnemonicParsing="false" onAction="#resetChoice" prefWidth="70.0" styleClass="actionBtn" text="重置" />
-                        <Button fx:id="confirmShow" onAction="#confirmChoose" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" prefWidth="70.0" styleClass="actionBtn" text="确认" />
+                        <Button fx:id="confirmShow" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" onAction="#confirmChoose" prefWidth="70.0" styleClass="actionBtn" text="确认" />
                      </children>
                   </Pane>
                   <Pane fx:id="moreInfoChoice" disable="true" prefHeight="170.0" prefWidth="528.0" styleClass="contentPane" visible="false">
@@ -110,7 +113,7 @@
                            </graphic>
                         </Button>
                         <Button fx:id="resetHide" layoutX="172.0" layoutY="15.0" mnemonicParsing="false" onAction="#resetChoice" prefWidth="70.0" styleClass="actionBtn" text="重置" />
-                        <Button fx:id="confirmHide" onAction="#confirmChoose" layoutX="286.0" layoutY="15.0" mnemonicParsing="false" prefWidth="70.0" styleClass="actionBtn" text="确认" />
+                        <Button fx:id="confirmHide" layoutX="286.0" layoutY="15.0" mnemonicParsing="false" onAction="#confirmChoose" prefWidth="70.0" styleClass="actionBtn" text="确认" />
                      </children>
                      <FlowPane.margin>
                         <Insets left="160.0" top="-20.0" />
