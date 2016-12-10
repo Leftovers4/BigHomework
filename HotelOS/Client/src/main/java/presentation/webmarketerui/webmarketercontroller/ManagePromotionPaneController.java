@@ -3,13 +3,11 @@ package presentation.webmarketerui.webmarketercontroller;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import presentation.util.alert.AlertController;
@@ -23,50 +21,58 @@ import vo.promotion.PromotionVO;
  */
 public class ManagePromotionPaneController {
     //特定期间优惠
+    @FXML private VBox timeVBox;
     @FXML private Button timeBtn;
     @FXML private Button addTimeBtn;
     @FXML private Button confirmTimeBtn;
     @FXML private Button cancelTimeBtn;
     @FXML private Button modifyTimeBtn;
     @FXML private Button deleteTimeBtn;
-    @FXML private VBox timeVBox;
     @FXML private HBox addTimeHBox;
     @FXML private TableView proTimeTable;
     @FXML private TableColumn proStartTimeCol;
     @FXML private TableColumn proEndTimeCol;
     @FXML private TableColumn proTimeDiscountCol;
-    //会员优惠
+    //VIP商圈优惠
+    @FXML private VBox memberAreaVBox;
     @FXML private Button addMemBtn;
     @FXML private Button confirmMemBtn;
     @FXML private Button cancelMemBtn;
     @FXML private Button modifyMemBtn;
     @FXML private Button deleteMemBtn;
-    @FXML private Button manageMemRankBtn;
-    @FXML private Button confirmManageBtn;
-    @FXML private Button cancelManageBtn;
-
-    @FXML private GridPane manageGridPane;
-
-    @FXML private VBox memberVBox;
     @FXML private HBox addMemHBox;
     @FXML private TableView proMemTable;
     @FXML private TableColumn proAreaCol;
     @FXML private TableColumn proRankCol;
     @FXML private TableColumn proMemDiscountCol;
 
+    //会员优惠
+    @FXML private Pane memberManagePane;
+    @FXML private Button manageMemRankBtn;
+    @FXML private Button confirmManageBtn;
+    @FXML private Button cancelManageBtn;
+    @FXML private TextField lv1CreditField;
+    @FXML private TextField lv2CreditField;
+    @FXML private TextField lv3CreditField;
+    @FXML private TextField lv4CreditField;
+    @FXML private TextField lv5CreditField;
+    @FXML private TextField lv6CreditField;
+    @FXML private TextField lv1DiscountField;
+    @FXML private TextField lv2DiscountField;
+    @FXML private TextField lv3DiscountField;
+    @FXML private TextField lv4DiscountField;
+    @FXML private TextField lv5DiscountField;
+    @FXML private TextField lv6DiscountField;
     //滑块
     @FXML private Label sliderPromotionLabel;
 
-    private Stage stage;
     private AlertController alertController;
     //TODO 如果已添加促销策略 则不再显示添加按钮
     private Boolean isExistTime = false;
     private Boolean isExistMem = false;
 
-    public void launch(Stage primaryStage) {
-        this.stage = primaryStage;
+    public void launch() {
         alertController = new AlertController();
-
 
         //设置特定期间优惠按钮默认被选中
         makeTimeFocused();
@@ -106,6 +112,9 @@ public class ManagePromotionPaneController {
         });
     }
 
+    /**
+     * 制定特定期间优惠
+     */
     @FXML
     private void addTimePromotion(){
         setAddTimeComponentsVisible(true);
@@ -151,6 +160,9 @@ public class ManagePromotionPaneController {
     }
 
 
+    /**
+     * 制定VIP商圈优惠
+     */
     @FXML
     private void addMemPromotion() {
         setAddMemComponentsVisible(true);
@@ -186,12 +198,13 @@ public class ManagePromotionPaneController {
     }
     private void setOriMemComponentsVisible(Boolean isVisible){
         //TODO 如果已添加促销策略 则不再显示添加按钮
-        if (!isExistMem)addMemBtn.setVisible(isVisible);
-        else {
-            modifyMemBtn.setVisible(isVisible);
-            deleteMemBtn.setVisible(isVisible);
-        }
-        manageMemRankBtn.setVisible(isVisible);
+//        if (!isExistMem)addMemBtn.setVisible(isVisible);
+//        else {
+//            modifyMemBtn.setVisible(isVisible);
+//            deleteMemBtn.setVisible(isVisible);
+//        }
+        modifyMemBtn.setVisible(isVisible);
+        deleteMemBtn.setVisible(isVisible);
     }
 
 
@@ -201,32 +214,30 @@ public class ManagePromotionPaneController {
     @FXML
     private void manageRank(){
         setManageComponentsVisible(true);
-        setOriMemComponentsVisible(false);
     }
 
     @FXML
     private void cancelManage(){
         setManageComponentsVisible(false);
-        setOriMemComponentsVisible(true);
     }
 
     @FXML
     private void confirmManage(){
         setManageComponentsVisible(false);
-        setOriMemComponentsVisible(true);
     }
 
     private void setManageComponentsVisible(Boolean isVisible){
         manageMemRankBtn.setVisible(!isVisible);
         confirmManageBtn.setVisible(isVisible);
         cancelManageBtn.setVisible(isVisible);
-        manageGridPane.setVisible(isVisible);
     }
 
     @FXML
     private void showTimePromotion(){
         timeVBox.setVisible(true);
-        memberVBox.setVisible(false);
+        memberAreaVBox.setVisible(false);
+        memberManagePane.setVisible(false);
+
         setAddTimeComponentsVisible(false);
         setOriTimeComponentsVisible(true);
 
@@ -235,15 +246,27 @@ public class ManagePromotionPaneController {
     }
 
     @FXML
-    private void showMemberPromotion(){
-        memberVBox.setVisible(true);
+    private void showMemberAreaPromotion(){
+        memberAreaVBox.setVisible(true);
         timeVBox.setVisible(false);
+        memberManagePane.setVisible(false);
+
         setAddMemComponentsVisible(false);
         setOriMemComponentsVisible(true);
-        setManageComponentsVisible(false);
 
         //移动滑块
         MySlider.moveSliderLabel(sliderPromotionLabel,168);
     }
 
+    @FXML
+    private void showMemberPromotion(){
+        memberManagePane.setVisible(true);
+        memberAreaVBox.setVisible(false);
+        timeVBox.setVisible(false);
+
+        setManageComponentsVisible(false);
+
+        //移动滑块
+        MySlider.moveSliderLabel(sliderPromotionLabel,300);
+    }
 }

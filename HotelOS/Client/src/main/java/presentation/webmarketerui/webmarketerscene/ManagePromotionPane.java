@@ -12,11 +12,11 @@ import java.io.IOException;
  * Description :
  */
 public class ManagePromotionPane extends Pane{
-    public ManagePromotionPane(Stage primaryStage) {
-        loadFxml(primaryStage);
+    public ManagePromotionPane() {
+        loadFxml();
     }
 
-    private void loadFxml(Stage primaryStage) {
+    private void loadFxml() {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/webmarketer/webpromotion1.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -26,6 +26,6 @@ public class ManagePromotionPane extends Pane{
         }
 
         ManagePromotionPaneController managePromotionPaneController = fxmlLoader.getController();
-        managePromotionPaneController.launch(primaryStage);
+        managePromotionPaneController.launch();
     }
 }

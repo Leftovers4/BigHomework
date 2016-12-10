@@ -49,7 +49,7 @@ public class ComMarketerSceneController {
     private AlertController alertController;
     public void launch(Stage primaryStage) {
         stage = primaryStage;
-        mainPane.getChildren().add(new ManagePromotionPane(stage));
+        mainPane.getChildren().add(new ManagePromotionPane());
         leftBarBtnArr = new ArrayList<>(Arrays.asList(managePromotionBtn, orderListBtn, appealOrderBtn, addCreditBtn));
 
         alertController = new AlertController();
@@ -97,7 +97,7 @@ public class ComMarketerSceneController {
     @FXML
     private void showManagePromotion() {
         leftBarBtnEffect(managePromotionBtn);
-        changePane(new ManagePromotionPane(stage));
+        changePane(new ManagePromotionPane());
         currentBtn = managePromotionBtn;
         changeSliderPos(260);
     }
