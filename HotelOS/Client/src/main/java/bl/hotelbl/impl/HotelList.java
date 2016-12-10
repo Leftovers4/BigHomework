@@ -23,27 +23,33 @@ public class HotelList extends ArrayList<HotelPO> {
         }
     }
 
-    public HotelList filterByHasRoom(LocalDateTime beginTime, LocalDateTime endTime, RoomType roomType) throws RemoteException {
+    public HotelList filterByHasRoom(LocalDateTime beginTime, LocalDateTime endTime, List<RoomType> roomTypeList) throws RemoteException {
         HotelList res = new HotelList(new ArrayList<>());
 
         for (HotelPO hotelPO : this) {
             List<RoomPO> roomPOList = RemoteHelper.getInstance().getHotelDAO().findRoomsByHotelID(hotelPO.getHotelID());
 
-            if (roomType.equals(RoomType.All)){
+            if (roomTypeList.get(0).equals(RoomType.All)){
                 for (int i = 0; i < roomPOList.size(); i++) {
-                    if (new Room(roomPOList.get(i)).getBookableRoomAmount(beginTime, endTime) > 0)
+                    if (new Room(roomPOList.get(i)).getBookableRoomAmount(beginTime, endTime) > 0){
                         res.add(hotelPO);
+                        break;
+                    }
                 }
             }else {
-                RoomPO roomPO = new RoomList(roomPOList).filterByRoomType(roomType);
+                for (int i = 0; i < roomTypeList.size(); i++) {
+                    RoomPO roomPO = new RoomList(roomPOList).filterByRoomType(roomTypeList.get(i));
 
-                //房间类型不存在的情况
-                if (roomPO == null)
-                    return res;
+                    //房间类型不存在的情况
+                    if (roomPO == null)
+                        continue;
 
-                //房间类型存在的情况
-                if (new Room(roomPO).getBookableRoomAmount(beginTime, endTime) > 0)
-                    res.add(hotelPO);
+                    //房间类型存在的情况
+                    if (new Room(roomPO).getBookableRoomAmount(beginTime, endTime) > 0){
+                        res.add(hotelPO);
+                        break;
+                    }
+                }
             }
 
             return res;

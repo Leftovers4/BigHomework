@@ -3,6 +3,8 @@ package vo.hotel;
 import util.RoomType;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kevin on 2016/12/4.
@@ -31,7 +33,7 @@ public class HotelConditionsVO {
 
     public LocalDate expectedLeaveTime;
 
-    public RoomType roomType;
+    public List<RoomType> roomTypeList;
 
     public boolean hasOrdered;
 
@@ -47,7 +49,7 @@ public class HotelConditionsVO {
         ratingUpperBound = Double.MAX_VALUE;
         expectedCheckInTime = null;
         expectedLeaveTime = null;
-        roomType = RoomType.All;
+        roomTypeList = new ArrayList<>();
         hasOrdered = false;
     }
 

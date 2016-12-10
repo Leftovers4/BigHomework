@@ -198,7 +198,7 @@ public class HotelBlServiceImpl implements HotelBLService {
                 .filterByPrice(hotelConditionsVO.priceLowerBound, hotelConditionsVO.priceUpperBound);
 
         //筛选出房间条件符合的
-        if (hotelConditionsVO.expectedCheckInTime != null && hotelConditionsVO.expectedLeaveTime != null){
+        if (hotelConditionsVO.expectedCheckInTime != null && hotelConditionsVO.expectedLeaveTime != null && !hotelConditionsVO.roomTypeList.isEmpty()){
             //处理预计入住时间
             LocalDateTime beginTime;
             if (hotelConditionsVO.expectedCheckInTime.isEqual(LocalDate.now())){
@@ -212,7 +212,7 @@ public class HotelBlServiceImpl implements HotelBLService {
             //处理预计离开时间
             LocalDateTime endTime = hotelConditionsVO.expectedLeaveTime.atTime(12, 0, 0);
 
-            hotelList = hotelList.filterByHasRoom(beginTime, endTime, hotelConditionsVO.roomType);
+            hotelList = hotelList.filterByHasRoom(beginTime, endTime, hotelConditionsVO.roomTypeList);
         }
 
         //筛选出自己预定过的
