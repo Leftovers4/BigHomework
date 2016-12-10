@@ -14,7 +14,7 @@ import java.util.List;
 public interface PersonnelBLService {
 
     // 员工登录
-    public ResultMessage login(long personnelID, String password);
+    public ResultMessage login(long personnelID, String password) throws RemoteException;
 
     // 员工登出
     public ResultMessage logout(long personnelID);
@@ -28,9 +28,9 @@ public interface PersonnelBLService {
     public List<PersonnelVO> viewTypePersonnelList(PersonnelType personnelType) throws RemoteException;
 
     // 增加员工
-    public ResultMessage addHotelWorker(PersonnelVO personnelVO) throws RemoteException;
+    public long addHotelWorker(PersonnelVO personnelVO) throws RemoteException;
 
-    public ResultMessage addWebMarketer(PersonnelVO personnelVO) throws RemoteException;
+    public long addWebMarketer(PersonnelVO personnelVO) throws RemoteException;
 
     // 删除员工
     public ResultMessage deletePersonnel(long personnelID) throws RemoteException;

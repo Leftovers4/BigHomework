@@ -28,8 +28,19 @@ public class PersonnelBLServiceImpl implements PersonnelBLService{
     }
 
     @Override
-    public ResultMessage login(long personnelID, String password) {
-        return null;
+    public ResultMessage login(long personnelID, String password) throws RemoteException {
+        PersonnelPO personnelPO = personnelDAO.findByPersonnelID(personnelID);
+
+        //工作人员不存在的情况
+        if (personnelPO == null)
+            return ResultMessage.UsernameNotExisted;
+
+        //客户存在且密码错误的情况
+        if (!(password.equals(personnelPO.getPassword())))
+            return ResultMessage.PasswordWrong;
+
+        //客户存在且密码正确的情况
+        return ResultMessage.Success;
     }
 
     @Override
@@ -50,7 +61,7 @@ public class PersonnelBLServiceImpl implements PersonnelBLService{
     }
 
     @Override
-    public ResultMessage addHotelWorker(PersonnelVO personnelVO) throws RemoteException {
+    public long addHotelWorker(PersonnelVO personnelVO) throws RemoteException {
         PersonnelPO personnelPO = new PersonnelPO();
 
         personnelPO.setPersonnelID(IDProducer.produceGeneralID());
@@ -59,11 +70,11 @@ public class PersonnelBLServiceImpl implements PersonnelBLService{
         personnelPO.setName(personnelVO.name);
         personnelPO.setHotelID(personnelVO.hotelID);
 
-        return personnelDAO.insert(personnelPO);
+        return personnelPO.getPersonnelID();
     }
 
     @Override
-    public ResultMessage addWebMarketer(PersonnelVO personnelVO) throws RemoteException {
+    public long addWebMarketer(PersonnelVO personnelVO) throws RemoteException {
         PersonnelPO personnelPO = new PersonnelPO();
 
         personnelPO.setPersonnelID(IDProducer.produceGeneralID());
@@ -71,7 +82,7 @@ public class PersonnelBLServiceImpl implements PersonnelBLService{
         personnelPO.setPersonnelType(PersonnelType.WebMarketer);
         personnelPO.setName(personnelVO.name);
 
-        return personnelDAO.insert(personnelPO);
+        return personnelPO.getPersonnelID();
     }
 
     @Override
