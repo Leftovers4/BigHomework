@@ -35,7 +35,14 @@ public class HotelList extends ArrayList<HotelPO> {
                         res.add(hotelPO);
                 }
             }else {
-                if (new Room(new RoomList(roomPOList).filterByRoomType(roomType)).getBookableRoomAmount(beginTime, endTime) > 0)
+                RoomPO roomPO = new RoomList(roomPOList).filterByRoomType(roomType);
+
+                //房间类型不存在的情况
+                if (roomPO == null)
+                    return res;
+
+                //房间类型存在的情况
+                if (new Room(roomPO).getBookableRoomAmount(beginTime, endTime) > 0)
                     res.add(hotelPO);
             }
 
