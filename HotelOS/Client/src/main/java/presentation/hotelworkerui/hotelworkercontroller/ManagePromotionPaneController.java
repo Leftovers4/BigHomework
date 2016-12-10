@@ -6,10 +6,15 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 import presentation.util.alert.AlertController;
 import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.MySlider;
@@ -43,10 +48,10 @@ public class ManagePromotionPaneController {
 
     //多间预订优惠
     @FXML private Button addRoomBtn;
-    @FXML private Button modifyRoomBtn;
-    @FXML private Button deleteRoomBtn;
     @FXML private Button confirmRoomBtn;
     @FXML private Button cancelRoomBtn;
+    @FXML private TextField leastRoomsField;
+    @FXML private TextField roomDiscountField;
     @FXML private VBox   roomVBox;
     @FXML private HBox   addRoomHBox;
     @FXML private TableView roomTable;
@@ -54,11 +59,10 @@ public class ManagePromotionPaneController {
     @FXML private TableColumn roomLeastCol;
     @FXML private TableColumn roomDiscountCol;
     @FXML private TableColumn roomPriceCol;
+    @FXML private TableColumn roomOpCol;
 
     //特定期间优惠
     @FXML private Button addTimeBtn;
-    @FXML private Button modifyTimeBtn;
-    @FXML private Button deleteTimeBtn;
     @FXML private Button confirmTimeBtn;
     @FXML private Button cancelTimeBtn;
     @FXML private VBox   timeVBox;
@@ -90,12 +94,13 @@ public class ManagePromotionPaneController {
 
     private AlertController alertController;
     private ArrayList<VBox> vBoxes;
-    //TODO 如果已添加促销策略 则不再显示添加按钮
+    //TODO 判断是添加还是修改
     private Boolean isBirthAdd = false;
-    private Boolean isExistRoom = false;
-    private Boolean isExistTime = false;
+    private Boolean isRoomAdd = false;
+    private Boolean isTimeAdd = false;
     private Boolean isExistCom = false;
     private PromotionBLService promotionBLService;
+    private ProListButtonCell proRoomListButtonCell;
 
     public void launch() {
         alertController = new AlertController();
@@ -121,7 +126,7 @@ public class ManagePromotionPaneController {
         showVBox(birthVBox);
 
         initBirthTable();
-        setBirthComponentsVisible(true);
+        setBirthComponentsVisible(false);
 
         MySlider.moveSliderLabel(sliderPromotionLabel,36);
     }
@@ -139,10 +144,9 @@ public class ManagePromotionPaneController {
     @FXML
     private void showRoom(){
         showVBox(roomVBox);
-        setAddRoomsComponentsVisible(false);
-        setOriRoomsComponentsVisible(true);
 
         initRoomTable();
+        setRoomsComponentsVisible(false);
 
         MySlider.moveSliderLabel(sliderPromotionLabel,168);
     }
@@ -152,17 +156,22 @@ public class ManagePromotionPaneController {
         roomLeastCol.setCellValueFactory(new PropertyValueFactory<>("leastRooms"));
         roomDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
         roomPriceCol.setCellValueFactory(new PropertyValueFactory<>("bestPrice"));
-        final TableColumn[] roomColumns = {roomTypeCol, roomLeastCol, roomDiscountCol, roomPriceCol};
+        roomOpCol.setCellFactory(new Callback<TableColumn, TableCell>() {
+            @Override
+            public TableCell call(TableColumn param) {
+                proRoomListButtonCell = new ProListButtonCell();
+                return proRoomListButtonCell;
+            }
+        });
+        final TableColumn[] roomColumns = {roomTypeCol, roomLeastCol, roomDiscountCol, roomPriceCol, roomOpCol};
         roomTable.getColumns().addListener(new DisableColumnChangeListener(roomTable, roomColumns));
 
-        initData(roomTable, PromotionType.MultipleRoomPromotion);
+        initData(roomTable, PromotionType.MULTI_ROOMS_HP);
     }
 
     @FXML
     private void showTime(){
         showVBox(timeVBox);
-        setAddTimeComponentsVisible(false);
-        setOriTimeComponentsVisible(true);
 
         initTimeTable();
 
@@ -222,22 +231,22 @@ public class ManagePromotionPaneController {
     @FXML
     private void addBirthPromotion(){
         isBirthAdd = true;
-        setBirthComponentsVisible(false);
+        setBirthComponentsVisible(true);
     }
 
     @FXML
     private void confirmBirthAdd(){
         PromotionVO promotionVO = new PromotionVO();
+
         try {
+            promotionVO.discount = Double.parseDouble(birthDiscountField.getText());
             if(isBirthAdd){
                 //TODO 更换hotelID
                 promotionVO.hotelID = 522000;
                 promotionVO.promotionType = PromotionType.BirthdayPromotion;
-                promotionVO.discount = Double.parseDouble(birthDiscountField.getText());
                 promotionBLService.create(promotionVO);
             }else{
                 promotionVO.promotionID = ((PromotionVO) birthTable.getItems().get(0)).promotionID;
-                promotionVO.discount = Double.parseDouble(birthDiscountField.getText());
                 promotionBLService.update(promotionVO);
             }
         } catch (RemoteException e) {
@@ -245,18 +254,18 @@ public class ManagePromotionPaneController {
         }
 
         initData(birthTable, PromotionType.BirthdayPromotion);
-        setBirthComponentsVisible(true);
+        setBirthComponentsVisible(false);
     }
 
     @FXML
     private void cancelBirthAdd(){
-        setBirthComponentsVisible(true);
+        setBirthComponentsVisible(false);
     }
 
     @FXML
     private void modifyBirthPromotion(){
         isBirthAdd = false;
-        setBirthComponentsVisible(false);
+        setBirthComponentsVisible(true);
     }
 
     @FXML
@@ -269,13 +278,13 @@ public class ManagePromotionPaneController {
         }
 
         initData(birthTable, PromotionType.BirthdayPromotion);
-        setBirthComponentsVisible(true);
+        setBirthComponentsVisible(false);
     }
 
     private void setBirthComponentsVisible(Boolean isVisible){
-        addBirthHBox.setVisible(!isVisible);
-        confirmBirthBtn.setVisible(!isVisible);
-        cancelBirthBtn.setVisible(!isVisible);
+        addBirthHBox.setVisible(isVisible);
+        confirmBirthBtn.setVisible(isVisible);
+        cancelBirthBtn.setVisible(isVisible);
 
         //如果已添加促销策略 则不再显示添加按钮
         if(birthTable.getItems().isEmpty()){
@@ -292,90 +301,63 @@ public class ManagePromotionPaneController {
     }
     @FXML
     private void addRoomPromotion(){
-        setAddRoomsComponentsVisible(true);
-        setOriRoomsComponentsVisible(false);
+        isRoomAdd = true;
+        setRoomsComponentsVisible(true);
     }
 
     @FXML
     private void confirmRoomAdd(){
-        //TODO 如果已添加促销策略 则不再显示添加按钮
-        isExistRoom = true;
-        setAddRoomsComponentsVisible(false);
-        setOriRoomsComponentsVisible(true);
+        PromotionVO promotionVO = new PromotionVO();
+        try {
+            promotionVO.leastRooms = Integer.parseInt(leastRoomsField.getText());
+            promotionVO.discount = Double.parseDouble(roomDiscountField.getText());
+            if(isRoomAdd){
+                //TODO 更换hotelID
+                promotionVO.hotelID = 522000;
+                promotionVO.promotionType = PromotionType.MULTI_ROOMS_HP;
+                promotionBLService.create(promotionVO);
+            }else{
+                promotionVO.promotionID = ((PromotionVO) roomTable.getItems().get(proRoomListButtonCell.getSelectedIndex())).promotionID;
+                promotionBLService.update(promotionVO);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        initData(roomTable, PromotionType.MULTI_ROOMS_HP);
+        setRoomsComponentsVisible(false);
     }
 
     @FXML
     private void cancelRoomAdd(){
-        setAddRoomsComponentsVisible(false);
-        setOriRoomsComponentsVisible(true);
+        setRoomsComponentsVisible(false);
     }
 
-    @FXML
-    private void modifyRoomPromotion(){
-
-    }
-
-    @FXML
-    private void deleteRoomPromotion(){
-
-    }
-
-    private void setAddRoomsComponentsVisible(Boolean isVisible){
+    private void setRoomsComponentsVisible(Boolean isVisible){
         addRoomHBox.setVisible(isVisible);
         confirmRoomBtn.setVisible(isVisible);
         cancelRoomBtn.setVisible(isVisible);
-    }
-    private void setOriRoomsComponentsVisible(Boolean isVisible){
-        //TODO 如果已添加促销策略 则不再显示添加按钮
-        if (!isExistRoom)addRoomBtn.setVisible(isVisible);
-        else {
-            modifyRoomBtn.setVisible(isVisible);
-            deleteRoomBtn.setVisible(isVisible);
-        }
+        addRoomBtn.setVisible(!isVisible);
     }
 
     @FXML
     private void addTimePromotion(){
-        setAddTimeComponentsVisible(true);
-        setOriTimeComponentsVisible(false);
     }
 
     @FXML
     private void confirmTimeAdd(){
-        //TODO 如果已添加促销策略 则不再显示添加按钮
-        isExistTime =true;
-        setAddTimeComponentsVisible(false);
-        setOriTimeComponentsVisible(true);
     }
 
     @FXML
     private void cancelTimeAdd(){
-        setAddTimeComponentsVisible(false);
-        setOriTimeComponentsVisible(true);
+        setTimeComponentsVisible(false);
     }
 
-    @FXML
-    private void modifyTimePromotion(){
-
-    }
-
-    @FXML
-    private void deleteTimePromotion(){
-
-    }
-
-    private void setAddTimeComponentsVisible(Boolean isVisible){
+    private void setTimeComponentsVisible(Boolean isVisible){
         addTimeHBox.setVisible(isVisible);
         confirmTimeBtn.setVisible(isVisible);
         cancelTimeBtn.setVisible(isVisible);
-    }
-    private void setOriTimeComponentsVisible(Boolean isVisible){
-        //TODO 如果已添加促销策略 则不再显示添加按钮
-        if (!isExistTime)addTimeBtn.setVisible(isVisible);
-        else {
-            modifyTimeBtn.setVisible(isVisible);
-            deleteTimeBtn.setVisible(isVisible);
-        }
+        addTimeBtn.setVisible(!isVisible);
     }
 
     @FXML
@@ -429,5 +411,73 @@ public class ManagePromotionPaneController {
                 birthBtn.requestFocus();
             }
         });
+    }
+
+    /**
+     * 操作栏按钮
+     */
+    private class ProListButtonCell extends TableCell<PromotionVO, Boolean> {
+        final private HBox btnBox = new HBox();
+        final private Button modifyButton = new Button();
+        final private Button deleteButton = new Button();
+        private int selectedIndex;
+
+        public ProListButtonCell() {
+            Image modifyImage = new Image("/img/hotelworker/modifyroom.png");
+            modifyButton.setGraphic(new ImageView(modifyImage));
+            modifyButton.getStyleClass().add("TableButtonCell");
+
+            Image deleteImage = new Image("/img/hotelworker/deleteroom.png");
+            deleteButton.setGraphic(new ImageView(deleteImage));
+            deleteButton.getStyleClass().add("TableButtonCell");
+
+            modifyButton.setOnAction(event -> {
+                //多间预订
+                isRoomAdd = false;
+                roomTable.setDisable(true);
+                setRoomsComponentsVisible(true);
+
+                selectedIndex = getTableRow().getIndex();
+            });
+
+            deleteButton.setOnAction(event -> {
+
+                //多间预订
+                if (alertController.showConfirmDeleteAlert("您确定要删除此优惠吗？", "确认删除")) {
+                    selectedIndex = getTableRow().getIndex();
+                    long promotionID = ((PromotionVO) roomTable.getItems().get(selectedIndex)).promotionID;
+                    try {
+                        promotionBLService.delete(promotionID);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+
+                    initData(roomTable, PromotionType.MultipleRoomPromotion);
+                    setRoomsComponentsVisible(false);
+                }
+            });
+
+            btnBox.setSpacing(10);
+            btnBox.setAlignment(Pos.CENTER);
+            btnBox.setPadding(new Insets(0, 10, 0, 20));
+        }
+
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if (empty) {
+                setText(null);
+                setGraphic(null);
+            } else {
+                btnBox.getChildren().clear();
+                btnBox.getChildren().addAll(modifyButton, deleteButton);
+                setText(null);
+                setGraphic(btnBox);
+            }
+        }
+
+        public int getSelectedIndex() {
+            return selectedIndex;
+        }
     }
 }

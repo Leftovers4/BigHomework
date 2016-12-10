@@ -1,5 +1,7 @@
 package presentation.webmarketerui.webmarketercontroller;
 
+import bl.promotionbl.PromotionBLService;
+import bl.promotionbl.impl.PromotionBlServiceImpl;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,10 +20,12 @@ import javafx.util.Callback;
 import presentation.util.alert.AlertController;
 import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.MySlider;
+import util.PromotionType;
 import vo.promotion.PromotionTimeVO;
 import vo.promotion.PromotionVO;
 
 import java.rmi.RemoteException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -98,17 +102,28 @@ public class ManagePromotionPaneController {
     @FXML private Label sliderPromotionLabel;
 
     private AlertController alertController;
+    private PromotionBLService promotionBLService;
     //TODO 如果已添加促销策略 则不再显示添加按钮
-    private Boolean isExistTime = false;
-    private Boolean isExistMem = false;
+    private Boolean isTimeAdd = false;
+    private Boolean isAreaAdd = false;
     private ProListButtonCell proTimeListButtonCell;
     private ProListButtonCell proAreaListButtonCell;
 
     public void launch() {
         alertController = new AlertController();
 
+        initService();
+        showTimePromotion();
         //设置特定期间优惠按钮默认被选中
         makeTimeFocused();
+    }
+
+    private void initService() {
+        try {
+            promotionBLService = new PromotionBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -117,10 +132,9 @@ public class ManagePromotionPaneController {
         memberAreaVBox.setVisible(false);
         memberManagePane.setVisible(false);
 
-        setAddTimeComponentsVisible(false);
-        setOriTimeComponentsVisible(true);
 
         initTimeTable();
+        setTimeComponentsVisible(false);
         //移动滑块
         MySlider.moveSliderLabel(sliderPromotionLabel,36);
     }
@@ -140,19 +154,10 @@ public class ManagePromotionPaneController {
         proTimeTable.getColumns().addListener(new DisableColumnChangeListener(proTimeTable, proTimeColumns));
         proTimeTable.setItems(getTimeProVoList());
 
+//        initData(proTimeTable, PromotionType.SPECIAL_TIME_WP);
     }
 
-    private ObservableList<PromotionVO> getTimeProVoList() {
-        ObservableList<PromotionVO> list = FXCollections.observableArrayList();
-        PromotionTimeVO promotionTimeVO = new PromotionTimeVO();
-        promotionTimeVO.beginTime = LocalDateTime.now();
-        promotionTimeVO.endTime = LocalDateTime.now();
-        PromotionVO promotionVO = new PromotionVO();
-        promotionVO.promotionTimeVO = promotionTimeVO;
-        promotionVO.discount = 0.9;
-        list.add(promotionVO);
-        return list;
-    }
+
 
     @FXML
     private void showMemberAreaPromotion(){
@@ -160,10 +165,8 @@ public class ManagePromotionPaneController {
         timeVBox.setVisible(false);
         memberManagePane.setVisible(false);
 
-        setAddMemComponentsVisible(false);
-        setOriMemComponentsVisible(true);
-
         initAreaTable();
+        setMemComponentsVisible(false);
         //移动滑块
         MySlider.moveSliderLabel(sliderPromotionLabel,168);
     }
@@ -182,7 +185,26 @@ public class ManagePromotionPaneController {
         proMemTable.getColumns().addListener(new DisableColumnChangeListener(proMemTable, proMemColumns));
         proMemTable.setItems(getMemProVoList());
     }
+    private void initData(TableView tableView, PromotionType promotionType) {
+        try {
+            //hotelID ???
+            tableView.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(522000, promotionType)));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private ObservableList<PromotionVO> getTimeProVoList() {
+        ObservableList<PromotionVO> list = FXCollections.observableArrayList();
+        PromotionTimeVO promotionTimeVO = new PromotionTimeVO();
+        promotionTimeVO.beginTime = LocalDateTime.now();
+        promotionTimeVO.endTime = LocalDateTime.now();
+        PromotionVO promotionVO = new PromotionVO();
+        promotionVO.promotionTimeVO = promotionTimeVO;
+        promotionVO.discount = 0.9;
+        list.add(promotionVO);
+        return list;
+    }
     private ObservableList<PromotionVO> getMemProVoList() {
         return null;
     }
@@ -223,32 +245,34 @@ public class ManagePromotionPaneController {
      */
     @FXML
     private void addTimePromotion(){
-        setAddTimeComponentsVisible(true);
-        setOriTimeComponentsVisible(false);
+        isTimeAdd = true;
+        setTimeComponentsVisible(true);
     }
 
     @FXML
     private void confirmTimeAdd(){
-        //TODO 如果已添加促销策略 则不再显示添加按钮
-        isExistTime =true;
-        setAddTimeComponentsVisible(false);
-        setOriTimeComponentsVisible(true);
+        LocalDate startTimeDate = startTimeDatePicker.getValue();
+        LocalDate endTimeDate = endTimeDatePicker.getValue();
+        int startHour = (int) (startHourBox.getValue());
+        int startMin = (int) (startMinBox.getValue());
+        int endHour = (int) (endHourBox.getValue());
+        int endMin = (int) (endMinBox.getValue());
+        double timeDiscount = Double.parseDouble(timeDiscountField.getText());
+
+        setTimeComponentsVisible(false);
     }
 
     @FXML
     private void cancelTimeAdd(){
-        setAddTimeComponentsVisible(false);
-        setOriTimeComponentsVisible(true);
+        setTimeComponentsVisible(false);
     }
 
-    private void setAddTimeComponentsVisible(Boolean isVisible){
+    private void setTimeComponentsVisible(Boolean isVisible){
         addTimeHBox.setVisible(isVisible);
         confirmTimeBtn.setVisible(isVisible);
         cancelTimeBtn.setVisible(isVisible);
-    }
-    private void setOriTimeComponentsVisible(Boolean isVisible){
-        //TODO 如果已添加促销策略 则不再显示添加按钮
-        if (!isExistTime)addTimeBtn.setVisible(isVisible);
+
+        addTimeBtn.setVisible(!isVisible);
     }
 
 
@@ -257,8 +281,8 @@ public class ManagePromotionPaneController {
      */
     @FXML
     private void addMemPromotion() {
-        setAddMemComponentsVisible(true);
-        setOriMemComponentsVisible(false);
+        isAreaAdd = true;
+        setMemComponentsVisible(true);
     }
 
     @FXML
@@ -271,26 +295,20 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmMemAdd() {
-        //TODO 如果已添加促销策略 则不再显示添加按钮
-        isExistMem =true;
-        setAddMemComponentsVisible(false);
-        setOriMemComponentsVisible(true);
+        setMemComponentsVisible(false);
     }
 
     @FXML
     private void cancelMemAdd() {
-        setAddMemComponentsVisible(false);
-        setOriMemComponentsVisible(true);
+        setMemComponentsVisible(false);
     }
 
-    private void setAddMemComponentsVisible(Boolean isVisible){
+    private void setMemComponentsVisible(Boolean isVisible){
         addMemHBox.setVisible(isVisible);
         confirmMemBtn.setVisible(isVisible);
         cancelMemBtn.setVisible(isVisible);
-    }
 
-    private void setOriMemComponentsVisible(Boolean isVisible) {
-
+        addMemBtn.setVisible(!isVisible);
     }
 
 
