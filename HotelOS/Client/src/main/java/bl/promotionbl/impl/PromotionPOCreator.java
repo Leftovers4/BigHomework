@@ -32,7 +32,7 @@ public class PromotionPOCreator {
 
         if (promotionVO.promotionType.equals(PromotionType.EnterprisePromotion)){
             for (int i = 0; i < promotionVO.promotionEnterprises.size(); i++) {
-                res.getPromotionEnterprises().add(promotionVO.promotionEnterprises.get(i));
+                res.getPromotionEnterprises().set(i, promotionVO.promotionEnterprises.get(i));
             }
         }
 

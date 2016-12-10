@@ -1,5 +1,6 @@
 package vo.hotel;
 
+import bl.hotelbl.impl.Room;
 import bl.hotelbl.impl.RoomList;
 import bl.orderbl.impl.OrderList;
 import po.hotel.HotelPO;
@@ -10,6 +11,9 @@ import util.RoomType;
 import vo.order.OrderVO;
 import vo.order.OrderVOCreator;
 
+import java.rmi.RemoteException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,7 +66,7 @@ public class HotelVOCreator {
     }
 
     //todo 获取可用房间
-    public HotelVO create(HotelPO hotelPO, List<OrderPO> orderPOListForRating, List<OrderPO> orderPOListForOrders, List<RoomPO> roomPOList){
+    public HotelVO create(HotelPO hotelPO, List<OrderPO> orderPOListForRating, List<OrderPO> orderPOListForOrders, List<RoomPO> roomPOList) throws RemoteException {
         HotelVO res = new HotelVO();
 
         res.hotelID = hotelPO.getHotelID();
@@ -90,7 +94,7 @@ public class HotelVOCreator {
         return res;
     }
 
-    public RoomVO create(RoomPO roomPO){
+    public RoomVO create(RoomPO roomPO) throws RemoteException {
         RoomVO res = new RoomVO();
 
         res.roomID = roomPO.getroomID();
@@ -98,11 +102,12 @@ public class HotelVOCreator {
         res.total = roomPO.getTotal();
         res.available = roomPO.getAvailable();
         res.price = roomPO.getPrice();
+        res.bookable = new Room(roomPO).getBookableRoomAmount(LocalDateTime.now(), LocalDate.now().plusDays(1).atTime(12, 0, 0));
 
         return res;
     }
 
-    public List<RoomVO> createAllRoomVO(List<RoomPO> roomPOList){
+    public List<RoomVO> createAllRoomVO(List<RoomPO> roomPOList) throws RemoteException {
         List<RoomVO> res = new ArrayList<>();
 
         for (int i = 0; i < roomPOList.size(); i++) {

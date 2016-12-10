@@ -1,8 +1,14 @@
 package bl.userbl.impl;
 
+import bl.promotionbl.impl.Context;
+import po.promotion.PromotionPO;
 import po.user.CreditRecordPO;
+import rmi.RemoteHelper;
+import util.IDProducer;
+import util.PromotionType;
 
 import java.lang.reflect.InvocationTargetException;
+import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +24,15 @@ public class CreditRecordList extends ArrayList<CreditRecordPO> {
         }
     }
 
-    public int getLevel() throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
-       //todo return new PromotionData().findUserLevelPromotion().getLevel(getCurrentCredit());
-        //todo 检查表为空的情况
-        return 0;
+    public int getLevel() throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, RemoteException {
+        List<PromotionPO> promotionPOList = RemoteHelper.getInstance().getPromotionDAO().findByHotelIDAndType(IDProducer.produceHotelIDForWP(), PromotionType.UserLevelPromotion);
+
+        //没有等级策略的情况
+        if (promotionPOList.isEmpty())
+            return 0;
+
+        //有等级策略的情况
+        return new Context(promotionPOList.get(0)).getLevel(getCurrentCredit());
     }
 
     public double getCurrentCredit(){

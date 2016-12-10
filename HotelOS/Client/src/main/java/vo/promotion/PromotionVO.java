@@ -2,6 +2,7 @@ package vo.promotion;
 
 import util.Const;
 import util.PromotionType;
+import util.RoomType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,16 @@ public class PromotionVO {
      * 最少预订间数
      */
     public int leastRooms;
+
+    /**
+     * 房间类型
+     */
+    public RoomType roomType;
+
+    /**
+     * 房间优惠后的价格
+     */
+    public double bestPrice;
 
     /**
      * 时间
@@ -89,4 +100,13 @@ public class PromotionVO {
     public int getLeastRooms() {
         return leastRooms;
     }
+
+    public RoomType getRoomType() {
+        return roomType;
+    }
+
+    public double getBestPrice() {
+        return bestPrice;
+    }
+
 }

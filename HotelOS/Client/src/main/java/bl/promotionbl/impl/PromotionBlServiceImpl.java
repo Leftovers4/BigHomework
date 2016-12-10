@@ -1,7 +1,9 @@
 package bl.promotionbl.impl;
 
 import bl.promotionbl.PromotionBLService;
+import dataservice.hoteldataservice.HotelDataService;
 import dataservice.promotiondataservice.PromotionDataService;
+import po.hotel.RoomPO;
 import po.promotion.PromotionPO;
 import rmi.RemoteHelper;
 import util.IDProducer;
@@ -21,10 +23,13 @@ public class PromotionBlServiceImpl implements PromotionBLService {
 
     PromotionDataService promotionDAO;
 
+    HotelDataService hotelDAO;
+
     PromotionVOCreator promotionVOCreator;
 
     public PromotionBlServiceImpl() throws RemoteException {
         promotionDAO = RemoteHelper.getInstance().getPromotionDAO();
+        hotelDAO = RemoteHelper.getInstance().getHotelDAO();
         promotionVOCreator = new PromotionVOCreator();
     }
 
@@ -52,7 +57,7 @@ public class PromotionBlServiceImpl implements PromotionBLService {
 
     @Override
     public List<PromotionVO> viewPromotionList(long hotelID, PromotionType promotionType) throws RemoteException {
-        return promotionVOCreator.createAll(promotionDAO.findByHotelIDAndType(hotelID, promotionType));
+        return promotionVOCreator.createAll(promotionDAO.findByHotelIDAndType(hotelID, promotionType), hotelDAO.findRoomsByHotelID(hotelID));
     }
 
 }

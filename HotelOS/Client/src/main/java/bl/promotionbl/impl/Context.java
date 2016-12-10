@@ -20,7 +20,7 @@ public class Context{
     public Context(PromotionPO promotionPO) throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException {
         super();
         String promotionName = promotionPO.getPromotionType().toString();
-        Class<?> promotionClass = Class.forName("bl.promotionbl." + promotionName);
+        Class<?> promotionClass = Class.forName("bl.promotionbl.impl." + promotionName);
         Constructor<?>[] constructors = promotionClass.getConstructors();
         Promotion promotion = (Promotion) constructors[0].newInstance(promotionPO);
 
