@@ -18,6 +18,7 @@ import vo.hotel.HotelConditionsVO;
 import vo.hotel.HotelVO;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  * Created by wyj on 2016/11/19.
@@ -162,14 +163,14 @@ public class UserSearchHotelController {
     private void confirmChoose() {
         HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
 
-        hotelConditionsVO.address = cityComBox.getPromptText();
-        hotelConditionsVO.tradingArea = tradingAreaCombox.getPromptText();
+        hotelConditionsVO.address = cityComBox.getValue().toString();
+        hotelConditionsVO.tradingArea = tradingAreaCombox.getValue().toString();
         hotelConditionsVO.name = searchField.getText();
 
         hotelConditionsVO.expectedCheckInTime = checkInDate.getValue();
         hotelConditionsVO.expectedLeaveTime = checkOutDate.getValue();
 
-//        hotelConditionsVO.roomType =
+        hotelConditionsVO.roomTypeList = getRoomType();
 
         hotelConditionsVO.priceLowerBound = getPriceBound()[0];
         hotelConditionsVO.priceUpperBound = getPriceBound()[1];
@@ -190,38 +191,60 @@ public class UserSearchHotelController {
      * 获取房间类型
      * @return
      */
-    private RoomType getRoomType() {
-        RoomType roomType = null;
+    private ArrayList<RoomType> getRoomType() {
+        ArrayList<RoomType> roomTypes = new ArrayList<>();
 
-        if (singleRoomCB.isSelected()) {
-            roomType = RoomType.Single;
+        boolean single = singleRoomCB.isSelected();
+        boolean couple = coupleRoomCB.isSelected();
+        boolean standard = standardRoomCB.isSelected();
+        boolean queen = queenCB.isSelected();
+        boolean lover = loverroomCB.isSelected();
+        boolean family = familyRoomCB.isSelected();
+        boolean suite = suiteroomCB.isSelected();
+        boolean president = presidentialsuiteroomCB.isSelected();
+        boolean business = businessroomCB.isSelected();
+
+        if (single) {
+            roomTypes.add(RoomType.Single);
         }
-        if (coupleRoomCB.isSelected()) {
-            roomType = RoomType.Couple;
+        if (couple) {
+            roomTypes.add(RoomType.Couple);
         }
-        if (standardRoomCB.isSelected()) {
-            roomType = RoomType.Standard;
+        if (standard) {
+            roomTypes.add(RoomType.Standard);
         }
-        if (queenCB.isSelected()) {
-            roomType = RoomType.Queen;
+        if (queen) {
+            roomTypes.add(RoomType.Queen);
         }
-        if (loverroomCB.isSelected()) {
-            roomType = RoomType.Lover;
+        if (lover) {
+            roomTypes.add(RoomType.Lover);
         }
-        if (familyRoomCB.isSelected()) {
-            roomType = RoomType.Family;
+        if (family) {
+            roomTypes.add(RoomType.Family);
         }
-        if (suiteroomCB.isSelected()) {
-            roomType = RoomType.Suite;
+        if (suite) {
+            roomTypes.add(RoomType.Suite);
         }
-        if (presidentialsuiteroomCB.isSelected()) {
-            roomType = RoomType.PresidentialSuite;
+        if (president) {
+            roomTypes.add(RoomType.PresidentialSuite);
         }
-        if (businessroomCB.isSelected()) {
-            roomType = RoomType.BusinessSuite;
+        if (business) {
+            roomTypes.add(RoomType.BusinessSuite);
         }
 
-        return roomType;
+        boolean isAll = single && couple && standard && queen &&
+                lover && family && suite && president && business;
+
+        if (roomTypes.size() == 0) {
+            roomTypes.add(RoomType.All);
+        }
+
+        if (isAll) {
+            roomTypes.clear();
+            roomTypes.add(RoomType.All);
+        }
+
+        return roomTypes;
     }
 
     /**
@@ -231,9 +254,15 @@ public class UserSearchHotelController {
     private double[] getPriceBound() {
         double[] bound = new double[2];
 
-        double lowerprice = 800, higherprice = 0;
+        double lowerprice = Double.MAX_VALUE, higherprice = 0;
 
-        if (twoHundredLess.isSelected()) {
+        boolean twoless = twoHundredLess.isSelected();
+        boolean twotofour = twoToFourHundred.isSelected();
+        boolean fourtosix = fourToSixHundred.isSelected();
+        boolean sixtoeight = sixToEightHundred.isSelected();
+        boolean eightmore = eightHundredMore.isSelected();
+
+        if (twoless) {
             if (lowerprice >= 0) {
                 lowerprice = 0;
             }
@@ -241,7 +270,7 @@ public class UserSearchHotelController {
                 higherprice = 200;
             }
         }
-        if (twoToFourHundred.isSelected()) {
+        if (twotofour) {
             if (lowerprice >= 200) {
                 lowerprice = 200;
             }
@@ -249,7 +278,7 @@ public class UserSearchHotelController {
                 higherprice = 400;
             }
         }
-        if (fourToSixHundred.isSelected()) {
+        if (fourtosix) {
             if (lowerprice >= 400) {
                 lowerprice = 400;
             }
@@ -257,7 +286,7 @@ public class UserSearchHotelController {
                 higherprice = 600;
             }
         }
-        if (sixToEightHundred.isSelected()) {
+        if (sixtoeight) {
             if (lowerprice > 600) {
                 lowerprice = 600;
             }
@@ -265,13 +294,20 @@ public class UserSearchHotelController {
                 higherprice = 800;
             }
         }
-        if (eightHundredMore.isSelected()) {
+        if (eightmore) {
             if (lowerprice >= 800) {
                 lowerprice = 800;
             }
             if (higherprice < Double.MAX_VALUE) {
                 higherprice = Double.MAX_VALUE;
             }
+        }
+
+        boolean isAll = twoless || twotofour || fourtosix || sixtoeight || eightmore;
+
+        if (!isAll) {
+            lowerprice = 0;
+            higherprice = Double.MAX_VALUE;
         }
 
         bound[0] = lowerprice;
@@ -289,7 +325,12 @@ public class UserSearchHotelController {
 
         int lowerstar = 5, higherstar = 0;
 
-        if (twoStarLess.isSelected()) {
+        boolean twoless = twoStarLess.isSelected();
+        boolean three = threeStar.isSelected();
+        boolean four = fourStar.isSelected();
+        boolean five = fiveStar.isSelected();
+
+        if (twoless) {
             if (lowerstar >= 0) {
                 lowerstar = 0;
             }
@@ -297,7 +338,7 @@ public class UserSearchHotelController {
                 higherstar = 2;
             }
         }
-        if (threeStar.isSelected()) {
+        if (three) {
             if (lowerstar >= 3) {
                 lowerstar = 3;
             }
@@ -305,7 +346,7 @@ public class UserSearchHotelController {
                 higherstar = 3;
             }
         }
-        if (fourStar.isSelected()) {
+        if (four) {
             if (lowerstar >= 4) {
                 lowerstar = 4;
             }
@@ -313,13 +354,20 @@ public class UserSearchHotelController {
                 higherstar = 4;
             }
         }
-        if (fiveStar.isSelected()) {
+        if (five) {
             if (lowerstar >= 5) {
                 lowerstar = 5;
             }
             if (higherstar <= 5) {
                 higherstar = 5;
             }
+        }
+
+        boolean isAll = twoless || three || four || five;
+
+        if (!isAll) {
+            lowerstar = 0;
+            higherstar = 5;
         }
 
         bound[0] = lowerstar;
@@ -337,7 +385,12 @@ public class UserSearchHotelController {
 
         double lowerrate = 5, higherrate = 0;
 
-        if (threeLess.isSelected()) {
+        boolean threeless = threeLess.isSelected();
+        boolean threetofour = threeToFour.isSelected();
+        boolean fourtofourpfive = fourToFourPoFive.isSelected();
+        boolean fourpfivemore = fourPoFiveMore.isSelected();
+
+        if (threeless) {
             if (lowerrate >= 0) {
                 lowerrate = 0;
             }
@@ -345,7 +398,7 @@ public class UserSearchHotelController {
                 higherrate = 3;
             }
         }
-        if (threeToFour.isSelected()) {
+        if (threetofour) {
             if (lowerrate >= 3) {
                 lowerrate = 3;
             }
@@ -353,7 +406,7 @@ public class UserSearchHotelController {
                 higherrate = 4;
             }
         }
-        if (fourToFourPoFive.isSelected()) {
+        if (fourtofourpfive) {
             if (lowerrate >= 4) {
                 lowerrate = 4;
             }
@@ -361,13 +414,20 @@ public class UserSearchHotelController {
                 higherrate = 4.5;
             }
         }
-        if (fourPoFiveMore.isSelected()) {
+        if (fourpfivemore) {
             if (lowerrate >= 4.5) {
                 lowerrate = 4.5;
             }
             if (higherrate <= 5) {
                 higherrate = 5;
             }
+        }
+
+        boolean isAll = threeless || threetofour || fourtofourpfive || fourpfivemore;
+
+        if (!isAll) {
+            lowerrate = 0;
+            higherrate = 5;
         }
 
         bound[0] = lowerrate;
@@ -386,7 +446,7 @@ public class UserSearchHotelController {
         hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
         hotelAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
         hotelScoreCol.setCellValueFactory(new PropertyValueFactory<>("rating"));
-        registerRecordCol.setCellValueFactory(new PropertyValueFactory<>("registerRecord"));
+        registerRecordCol.setCellValueFactory(new PropertyValueFactory<>("hasOrdered"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override

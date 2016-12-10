@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.EvaluateOrderPane;
 import util.DateTimeFormat;
+import util.OrderType;
 import vo.order.OrderVO;
 
 import java.rmi.RemoteException;
@@ -58,13 +59,21 @@ public class OrderDetailUserController {
         try {
             OrderVO orderVO = orderBlService.searchExtraOrderByID(orderID);
 
-            checkInTimeLabeldet.setText(orderVO.orderTimeVO.checkinTime.format(DateTimeFormat.dateTimeFormat));
-            checkOutTimeLabeldet.setText(orderVO.orderTimeVO.leaveTime.format(DateTimeFormat.dateTimeFormat));
+            OrderType orderType = orderVO.orderType;
+
+            if (orderType == OrderType.Executed) {
+                checkInTimeLabeldet.setText(orderVO.orderTimeVO.checkinTime.format(DateTimeFormat.dateTimeFormat));
+                checkOutTimeLabeldet.setText(orderVO.orderTimeVO.leaveTime.format(DateTimeFormat.dateTimeFormat));
+            } else {
+                checkInTimeLabeldet.setText(orderVO.orderTimeVO.expectedCheckinTime.format(DateTimeFormat.dateTimeFormat));
+                checkOutTimeLabeldet.setText(orderVO.orderTimeVO.expectedLeaveTime.format(DateTimeFormat.dateTimeFormat));
+            }
+
             roomTypeLabeldet.setText(orderVO.roomType.toString());
             roomNumLabeldet.setText(String.valueOf(orderVO.roomAmount));
             peopleNumLabeldet.setText(String.valueOf(orderVO.personAmount));
             childdet.setText(orderVO.withChildren ? "有" : "无");
-//            bestpromotionLabel.setText(orderVO);
+//            bestpromotionLabel.setText(orderVO.);
             finalpriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
             ordertypeLabel.setText(String.valueOf(orderVO.orderType));
 

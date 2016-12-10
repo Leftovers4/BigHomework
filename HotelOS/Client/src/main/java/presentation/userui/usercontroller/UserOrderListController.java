@@ -86,35 +86,6 @@ public class UserOrderListController {
     }
 
 
-//    /**
-//     * 分类查看订单
-//     * @param orderType
-//     */
-//    private void initialTypeOrderListData(OrderType orderType) {
-//        orderIDCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
-//        orderTimeCol.setCellValueFactory(new PropertyValueFactory<>("orderTimeVO"));
-//        orderStateCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
-//        hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
-//        btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
-//            @Override
-//            public TableCell call(TableColumn param) {
-//                userOrderListButtonCell = new UserOrderListButtonCell(stage, mainPane, orderList, userID);
-//                return userOrderListButtonCell;
-//            }
-//        });
-//        orderList.setItems(getTypeUserOrderList(orderType));
-//    }
-//    private ObservableList getTypeUserOrderList(OrderType orderType) {
-//        ObservableList<OrderVO> list = null;
-//        try {
-//
-//        } catch (RemoteException e) {
-//            e.printStackTrace();
-//        }
-//        return list;
-//    }
-
-
     /**
      * 初始化订单类型选框数据
      */
