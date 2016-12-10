@@ -22,29 +22,24 @@
             <TableView fx:id="birthTable" prefHeight="337.0" prefWidth="778.0">
                <columns>
                   <TableColumn fx:id="birthRoomTypeCol" editable="false" prefWidth="230.0" sortable="false" styleClass="LeftAlignCol" text="客房类型" />
-                  <TableColumn fx:id="birthDiscountCol" editable="false" minWidth="0.0" prefWidth="322.0" styleClass="RightAlignCol" text="折扣（%）" />
+                  <TableColumn fx:id="birthDiscountCol" editable="false" minWidth="0.0" prefWidth="322.0" styleClass="RightAlignCol" text="折扣" />
                   <TableColumn fx:id="birthPriceCol" editable="false" minWidth="0.0" prefWidth="208.0" styleClass="RightAlignCol" text="优惠价（元/天）" />
                </columns>
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="778.0">
                <children>
-                  <HBox fx:id="addBirthHBox" alignment="BOTTOM_LEFT" prefHeight="90.0" prefWidth="151.0" visible="false">
+                  <HBox fx:id="addBirthHBox" alignment="BOTTOM_LEFT" prefHeight="90.0" prefWidth="151.0">
                      <children>
                         <Label text="折扣：">
                            <HBox.margin>
                               <Insets bottom="5.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField alignment="CENTER" prefHeight="36.0" prefWidth="50.0" promptText="70">
+                        <TextField fx:id="birthDiscountField" alignment="CENTER" prefHeight="36.0" prefWidth="59.0" promptText="小数">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Label layoutX="10.0" layoutY="16.0" text="\%">
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="5.0" />
-                           </HBox.margin>
-                        </Label>
                      </children>
                      <HBox.margin>
                         <Insets />

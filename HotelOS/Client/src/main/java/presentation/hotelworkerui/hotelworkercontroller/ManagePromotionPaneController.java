@@ -6,10 +6,7 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -36,6 +33,7 @@ public class ManagePromotionPaneController {
     @FXML private Button deleteBirthBtn;
     @FXML private Button confirmBirthBtn;
     @FXML private Button cancelBirthBtn;
+    @FXML private TextField birthDiscountField;
     @FXML private VBox   birthVBox;
     @FXML private HBox   addBirthHBox;
     @FXML private TableView birthTable;
@@ -93,7 +91,7 @@ public class ManagePromotionPaneController {
     private AlertController alertController;
     private ArrayList<VBox> vBoxes;
     //TODO 如果已添加促销策略 则不再显示添加按钮
-    private Boolean isExistBirth = false;
+    private Boolean isBirthAdd = false;
     private Boolean isExistRoom = false;
     private Boolean isExistTime = false;
     private Boolean isExistCom = false;
@@ -106,8 +104,8 @@ public class ManagePromotionPaneController {
         //设置生日优惠按钮默认被选中
         makeBirthFocused();
         initService();
-        initTable();
-        initData();
+        //默认先显示生日优惠
+        showBirth();
     }
 
     private void initService() {
@@ -118,22 +116,60 @@ public class ManagePromotionPaneController {
         }
     }
 
-    private void initTable() {
+    @FXML
+    private void showBirth(){
+        showVBox(birthVBox);
+
+        initBirthTable();
+        setBirthComponentsVisible(true);
+
+        MySlider.moveSliderLabel(sliderPromotionLabel,36);
+    }
+
+    private void initBirthTable() {
         birthRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         birthDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
         birthPriceCol.setCellValueFactory(new PropertyValueFactory<>("bestPrice"));
         final TableColumn[] birthColumns = {birthRoomTypeCol, birthDiscountCol, birthPriceCol};
         birthTable.getColumns().addListener(new DisableColumnChangeListener(birthTable, birthColumns));
-        birthTable.setItems(getBirthProVoList());
 
+        initData(birthTable, PromotionType.BirthdayPromotion);
+    }
+
+    @FXML
+    private void showRoom(){
+        showVBox(roomVBox);
+        setAddRoomsComponentsVisible(false);
+        setOriRoomsComponentsVisible(true);
+
+        initRoomTable();
+
+        MySlider.moveSliderLabel(sliderPromotionLabel,168);
+    }
+
+    private void initRoomTable() {
         roomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         roomLeastCol.setCellValueFactory(new PropertyValueFactory<>("leastRooms"));
         roomDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
         roomPriceCol.setCellValueFactory(new PropertyValueFactory<>("bestPrice"));
         final TableColumn[] roomColumns = {roomTypeCol, roomLeastCol, roomDiscountCol, roomPriceCol};
         roomTable.getColumns().addListener(new DisableColumnChangeListener(roomTable, roomColumns));
-        roomTable.setItems(getRoomProVoList());
 
+        initData(roomTable, PromotionType.MultipleRoomPromotion);
+    }
+
+    @FXML
+    private void showTime(){
+        showVBox(timeVBox);
+        setAddTimeComponentsVisible(false);
+        setOriTimeComponentsVisible(true);
+
+        initTimeTable();
+
+        MySlider.moveSliderLabel(sliderPromotionLabel,300);
+    }
+
+    private void initTimeTable() {
         timeRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         timeStartCol.setCellValueFactory(new PropertyValueFactory<>("beginTime"));
         timeEndCol.setCellValueFactory(new PropertyValueFactory<>("endTime"));
@@ -141,97 +177,119 @@ public class ManagePromotionPaneController {
         timePriceCol.setCellValueFactory(new PropertyValueFactory<>("bestPrice"));
         final TableColumn[] timeColumns = {timeRoomTypeCol, timeStartCol, timeEndCol, timeDiscountCol, timePriceCol};
         timeTable.getColumns().addListener(new DisableColumnChangeListener(timeTable, timeColumns));
-        timeTable.setItems(getTimeProVoList());
 
+        initData(timeTable, PromotionType.SpecialTimePromotion);
+    }
+
+    @FXML
+    private void showCom(){
+        showVBox(comVBox);
+        setAddComComponentsVisible(false);
+        setOriComComponentsVisible(true);
+
+        initComTable();
+
+        MySlider.moveSliderLabel(sliderPromotionLabel,432);
+    }
+
+    private void initComTable() {
         comNameCol.setCellValueFactory(new PropertyValueFactory<>(""));
         comRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         comDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
         comPriceCol.setCellValueFactory(new PropertyValueFactory<>("bestPrice"));
         final TableColumn[] comColumns = {comNameCol, comRoomTypeCol, comDiscountCol, comPriceCol};
         comTable.getColumns().addListener(new DisableColumnChangeListener(comTable, comColumns));
-        comTable.setItems(getComProVoList());
+
+        initData(comTable, PromotionType.EnterprisePromotion);
     }
 
+    private void showVBox(VBox visibleBox){
+        for (VBox vbox: vBoxes) {
+            if(vbox == visibleBox) vbox.setVisible(true);
+            else vbox.setVisible(false);
+        }
+    }
 
-    private void initData() {
+    private void initData(TableView tableView, PromotionType promotionType) {
         try {
-            birthTable.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(888888, PromotionType.BirthdayPromotion)));
-            roomTable.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(888888, PromotionType.MultipleRoomPromotion)));
-            timeTable.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(888888, PromotionType.SpecialTimePromotion)));
-            comTable.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(888888, PromotionType.EnterprisePromotion)));
+            //TODO 更换hotelID
+            tableView.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(522000, promotionType)));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
     }
 
-    private ObservableList<PromotionVO> getBirthProVoList() {
-        return null;
-    }
-
-    private ObservableList<PromotionVO> getRoomProVoList() {
-        return null;
-    }
-
-    private ObservableList<PromotionVO> getTimeProVoList() {
-        return null;
-    }
-
-    private ObservableList<PromotionVO> getComProVoList() {
-        return null;
-    }
-    private void makeBirthFocused() {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                birthBtn.requestFocus();
-            }
-        });
-    }
-
     @FXML
     private void addBirthPromotion(){
-        setAddBirthComponentsVisible(true);
-        setOriBirthComponentsVisible(false);
+        isBirthAdd = true;
+        setBirthComponentsVisible(false);
     }
 
     @FXML
     private void confirmBirthAdd(){
-        //TODO 如果已添加促销策略 则不再显示添加按钮
-        isExistBirth = true;
-        setAddBirthComponentsVisible(false);
-        setOriBirthComponentsVisible(true);
+        PromotionVO promotionVO = new PromotionVO();
+        try {
+            if(isBirthAdd){
+                //TODO 更换hotelID
+                promotionVO.hotelID = 522000;
+                promotionVO.promotionType = PromotionType.BirthdayPromotion;
+                promotionVO.discount = Double.parseDouble(birthDiscountField.getText());
+                promotionBLService.create(promotionVO);
+            }else{
+                promotionVO.promotionID = ((PromotionVO) birthTable.getItems().get(0)).promotionID;
+                promotionVO.discount = Double.parseDouble(birthDiscountField.getText());
+                promotionBLService.update(promotionVO);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        initData(birthTable, PromotionType.BirthdayPromotion);
+        setBirthComponentsVisible(true);
     }
 
     @FXML
     private void cancelBirthAdd(){
-        setAddBirthComponentsVisible(false);
-        setOriBirthComponentsVisible(true);
+        setBirthComponentsVisible(true);
     }
 
     @FXML
     private void modifyBirthPromotion(){
-
+        isBirthAdd = false;
+        setBirthComponentsVisible(false);
     }
 
     @FXML
     private void deleteBirthPromotion(){
+        long promotionID = ((PromotionVO) birthTable.getItems().get(0)).promotionID;
+        try {
+            promotionBLService.delete(promotionID);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
+        initData(birthTable, PromotionType.BirthdayPromotion);
+        setBirthComponentsVisible(true);
     }
 
-    private void setAddBirthComponentsVisible(Boolean isVisible){
-        addBirthHBox.setVisible(isVisible);
-        confirmBirthBtn.setVisible(isVisible);
-        cancelBirthBtn.setVisible(isVisible);
-    }
-    private void setOriBirthComponentsVisible(Boolean isVisible){
-        //TODO 如果已添加促销策略 则不再显示添加按钮
-        if (!isExistBirth)addBirthBtn.setVisible(isVisible);
-        else {
-            modifyBirthBtn.setVisible(isVisible);
-            deleteBirthBtn.setVisible(isVisible);
+    private void setBirthComponentsVisible(Boolean isVisible){
+        addBirthHBox.setVisible(!isVisible);
+        confirmBirthBtn.setVisible(!isVisible);
+        cancelBirthBtn.setVisible(!isVisible);
+
+        //如果已添加促销策略 则不再显示添加按钮
+        if(birthTable.getItems().isEmpty()){
+            setBirthOpBtnVisible(false);
+        }else {
+            setBirthOpBtnVisible(true);
         }
     }
 
+    private void setBirthOpBtnVisible(Boolean isVisible){
+        addBirthBtn.setVisible(!isVisible);
+        modifyBirthBtn.setVisible(isVisible);
+        deleteBirthBtn.setVisible(isVisible);
+    }
     @FXML
     private void addRoomPromotion(){
         setAddRoomsComponentsVisible(true);
@@ -364,49 +422,12 @@ public class ManagePromotionPaneController {
         }
     }
 
-
-
-    @FXML
-    private void showBirth(){
-        showVBox(birthVBox);
-        setAddBirthComponentsVisible(false);
-        setOriBirthComponentsVisible(true);
-
-        MySlider.moveSliderLabel(sliderPromotionLabel,36);
+    private void makeBirthFocused() {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                birthBtn.requestFocus();
+            }
+        });
     }
-
-    @FXML
-    private void showRoom(){
-        showVBox(roomVBox);
-        setAddRoomsComponentsVisible(false);
-        setOriRoomsComponentsVisible(true);
-
-        MySlider.moveSliderLabel(sliderPromotionLabel,168);
-    }
-
-    @FXML
-    private void showTime(){
-        showVBox(timeVBox);
-        setAddTimeComponentsVisible(false);
-        setOriTimeComponentsVisible(true);
-
-        MySlider.moveSliderLabel(sliderPromotionLabel,300);
-    }
-
-    @FXML
-    private void showCom(){
-        showVBox(comVBox);
-        setAddComComponentsVisible(false);
-        setOriComComponentsVisible(true);
-
-        MySlider.moveSliderLabel(sliderPromotionLabel,432);
-    }
-
-    private void showVBox(VBox visibleBox){
-        for (VBox vbox: vBoxes) {
-            if(vbox == visibleBox) vbox.setVisible(true);
-            else vbox.setVisible(false);
-        }
-    }
-
 }
