@@ -1,7 +1,11 @@
 package bl.orderbl.impl;
 
+import bl.hotelbl.impl.Timeline;
 import po.order.OrderPO;
+import util.RoomType;
+import util.TableName;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,9 +57,22 @@ public class OrderList extends ArrayList<OrderPO>{
         return res;
     }
 
-    //todo
-    public int getHotelAvailabeRoomAmount(LocalDate localDate){
-        return 0;
+    public OrderList filterByRoomType(RoomType roomType){
+        OrderList res = new OrderList(new ArrayList<>());
+
+        for (int i = 0; i < this.size(); i++) {
+            if (this.get(i).getRoomType().equals(roomType)){
+                res.add(this.get(i));
+            }
+        }
+
+        return res;
+    }
+
+    public void fillTimeline(Timeline timeline){
+        for (int i = 0; i < this.size(); i++) {
+            timeline.addPeriod(new Order(this.get(i)).getOrderedPeriod(), this.get(i).getRoomAmount());
+        }
     }
 
 }

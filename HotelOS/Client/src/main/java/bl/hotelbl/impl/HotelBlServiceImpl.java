@@ -153,7 +153,6 @@ public class HotelBlServiceImpl implements HotelBLService {
 
     @Override
     public ResultMessage offlineCheckIn(long roomID, int amount) throws RemoteException {
-        //roomPO非空
         RoomPO roomPO = hotelDAO.findRoomByID(roomID);
 
         roomPO.setAvailable(roomPO.getAvailable() - amount);
@@ -163,7 +162,6 @@ public class HotelBlServiceImpl implements HotelBLService {
 
     @Override
     public ResultMessage offlineCheckOut(long roomID, int amount) throws RemoteException {
-        //roomPO非空
         RoomPO roomPO = hotelDAO.findRoomByID(roomID);
 
         roomPO.setAvailable(roomPO.getAvailable() + amount);
