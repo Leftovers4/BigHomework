@@ -84,9 +84,9 @@ public class AddHotelController {
         }
 
         try {
-            ResultMessage resultMessage = hotelBlService.addHotel(hotelVO);
+            long hotelID = hotelBlService.addHotel(hotelVO);
 
-            if (resultMessage == ResultMessage.Success) {
+            if (true) {
                 System.out.println("hotel add success");
             } else {
                 System.out.println("hotel add fail");

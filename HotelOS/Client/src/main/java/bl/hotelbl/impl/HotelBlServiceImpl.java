@@ -20,6 +20,8 @@ import vo.hotel.RoomVO;
 import vo.order.OrderVOCreator;
 
 import java.rmi.RemoteException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -189,16 +191,36 @@ public class HotelBlServiceImpl implements HotelBLService {
     public List<HotelVO> searchHotelsByConditions(String username, HotelConditionsVO hotelConditionsVO) throws RemoteException {
         HotelList hotelList = new HotelList(hotelDAO.findAll());
 
+        //筛选出地址，商圈，名称，价格，评分，星级符合的
         hotelList = hotelList.filterByAddress(hotelConditionsVO.address).filterByTradingArea(hotelConditionsVO.tradingArea)
                 .filterByName(hotelConditionsVO.name).filterByStar(hotelConditionsVO.starLowerBound, hotelConditionsVO.starUpperBound)
                 .filterByRating(hotelConditionsVO.ratingLowerBound, hotelConditionsVO.ratingUpperBound)
                 .filterByPrice(hotelConditionsVO.priceLowerBound, hotelConditionsVO.priceUpperBound);
 
+        //筛选出房间条件符合的
+        if (hotelConditionsVO.expectedCheckInTime != null && hotelConditionsVO.expectedLeaveTime != null){
+            //处理预计入住时间
+            LocalDateTime beginTime;
+            if (hotelConditionsVO.expectedCheckInTime.isEqual(LocalDate.now())){
+                if (LocalDateTime.now().isAfter(LocalDateTime.now().withHour(14).withMinute(0).withSecond(0)))
+                    beginTime = LocalDateTime.now();
+                else
+                    beginTime = LocalDateTime.now().withHour(14).withMinute(0).withSecond(0);
+            }else {
+                beginTime = hotelConditionsVO.expectedCheckInTime.atTime(14, 0, 0);
+            }
+            //处理预计离开时间
+            LocalDateTime endTime = hotelConditionsVO.expectedLeaveTime.atTime(12, 0, 0);
 
-        if (hotelConditionsVO.hasOrdered){
-
+            hotelList = hotelList.filterByHasRoom(beginTime, endTime, hotelConditionsVO.roomType);
         }
 
+        //筛选出自己预定过的
+        if (hotelConditionsVO.hasOrdered){
+            hotelList = hotelList.filterByHasOrdered(username);
+        }
+
+        //创建出hotelVO
         List<HotelVO> res = new ArrayList<>();
         for (int i = 0; i < hotelList.size(); i++) {
             HotelPO hotelPO = hotelList.get(i);

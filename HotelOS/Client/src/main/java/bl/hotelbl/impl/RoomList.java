@@ -28,6 +28,11 @@ public class RoomList extends ArrayList<RoomPO> {
     }
 
     public double getHotelPrice(){
+        //酒店没有房间的情况
+        if (this.size() == 0)
+            return 0;
+
+        //酒店有房间的情况
         double res = this.get(0).getPrice();
 
         for (RoomPO roomPO : this) {

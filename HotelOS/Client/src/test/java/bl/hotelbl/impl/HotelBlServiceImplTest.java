@@ -6,6 +6,7 @@ import org.junit.Test;
 import util.IDProducer;
 import util.ResultMessage;
 import util.RoomType;
+import vo.hotel.HotelConditionsVO;
 import vo.hotel.HotelVO;
 import vo.hotel.RoomVO;
 
@@ -117,7 +118,7 @@ public class HotelBlServiceImplTest {
 
     @Test
     public void searchHotelsByConditions() throws Exception {
-
+        List<HotelVO> hotelVOList = tested.searchHotelsByConditions("Hiki", new HotelConditionsVO());
     }
 
     @Test

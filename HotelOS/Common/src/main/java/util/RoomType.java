@@ -50,4 +50,9 @@ public enum RoomType {
      */
     Lover,
 
+    /**
+     * 不限
+     */
+    All,
+
 }
