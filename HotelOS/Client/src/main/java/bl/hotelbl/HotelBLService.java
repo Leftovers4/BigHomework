@@ -22,7 +22,7 @@ public interface HotelBLService {
      * @param hotelVO 酒店信息
      * @return SUCCESS或者FAIL，FAIL表示已存在相同的酒店
      */
-    ResultMessage addHotel(HotelVO hotelVO) throws RemoteException;
+    long addHotel(HotelVO hotelVO) throws RemoteException;
 
     /**
      * 删除已有的酒店

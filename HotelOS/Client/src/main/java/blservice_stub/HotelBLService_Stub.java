@@ -28,8 +28,8 @@ public class HotelBLService_Stub implements HotelBLService {
     }
 
     @Override
-    public ResultMessage addHotel(HotelVO hotelVO) {
-        return ResultMessage.Success;
+    public long addHotel(HotelVO hotelVO) {
+        return 0;
     }
 
     @Override

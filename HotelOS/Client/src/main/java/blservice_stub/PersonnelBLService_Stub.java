@@ -74,13 +74,13 @@ public class PersonnelBLService_Stub implements PersonnelBLService{
     }
 
     @Override
-    public ResultMessage addHotelWorker(PersonnelVO personnelVO) throws RemoteException {
-        return null;
+    public long addHotelWorker(PersonnelVO personnelVO) throws RemoteException {
+        return 0;
     }
 
     @Override
-    public ResultMessage addWebMarketer(PersonnelVO personnelVO) throws RemoteException {
-        return null;
+    public long addWebMarketer(PersonnelVO personnelVO) throws RemoteException {
+        return 0;
     }
 
     @Override

@@ -53,4 +53,27 @@ public class Timeline{
         return -1;
     }
 
+    public int getBookableRoomAmount(LocalDateTime beginTime, LocalDateTime endTime){
+        int res = roomTotal;
+
+        for (int i = getLocation(beginTime, true); i <= getLocation(endTime, false); i++) {
+            if (timelineRoomNums.get(i) < res)
+                res = timelineRoomNums.get(i);
+        }
+
+        return res;
+    }
+
+    private int getLocation(LocalDateTime time, boolean beginTime){
+        for (int i = 0; i < timeline.size(); i++) {
+            if (time.isEqual(timeline.get(i)))
+                return beginTime ? i : i - 1;
+
+            if (time.isAfter(timeline.get(i)) && time.isBefore(timeline.get(i + 1)))
+                return i;
+        }
+
+        return -1;
+    }
+
 }

@@ -50,7 +50,7 @@ public class HotelBlServiceImpl implements HotelBLService {
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     @Override
-    public ResultMessage addHotel(HotelVO hotelVO) throws RemoteException {
+    public long addHotel(HotelVO hotelVO) throws RemoteException {
         HotelPO hotelPO = new HotelPO();
 
         hotelPO.setHotelID(IDProducer.produceHotelID());
@@ -59,7 +59,7 @@ public class HotelBlServiceImpl implements HotelBLService {
         hotelPO.setAddress(hotelVO.address);
         hotelPO.setTradingArea(hotelVO.tradingArea);
 
-        return hotelDAO.insert(hotelPO);
+        return hotelPO.getHotelID();
     }
 
     @Override

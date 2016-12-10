@@ -32,6 +32,8 @@ public class RoomVO {
      */
     public int available;
 
+    public int bookable;
+
     /**
      * 价格
      */

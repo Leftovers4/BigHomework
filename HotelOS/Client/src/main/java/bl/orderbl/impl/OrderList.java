@@ -69,6 +69,18 @@ public class OrderList extends ArrayList<OrderPO>{
         return res;
     }
 
+    public OrderList filterByIsNotOverdue(){
+        OrderList res = new OrderList(new ArrayList<>());
+
+        for (int i = 0; i < this.size(); i++) {
+            if (!new Order(this.get(i)).isOverdue()){
+                res.add(this.get(i));
+            }
+        }
+
+        return res;
+    }
+
     public void fillTimeline(Timeline timeline){
         for (int i = 0; i < this.size(); i++) {
             timeline.addPeriod(new Order(this.get(i)).getOrderedPeriod(), this.get(i).getRoomAmount());
