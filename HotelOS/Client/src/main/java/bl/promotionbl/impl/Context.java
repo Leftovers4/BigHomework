@@ -26,7 +26,9 @@ public class Context{
 
         if (promotion instanceof Sale){
             sale = (Sale)promotion;
-        }else {
+        }
+
+        if (promotion instanceof Level){
             level = (Level)promotion;
         }
     }

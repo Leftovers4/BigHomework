@@ -57,7 +57,7 @@ public class UserLevelPromotion implements Sale, Level{
                 return i;
             }
         }
-        return -1;
+        return 0;
     }
 
 }
