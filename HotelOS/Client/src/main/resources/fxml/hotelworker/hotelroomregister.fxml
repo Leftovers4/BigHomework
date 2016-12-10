@@ -74,10 +74,10 @@
         </HBox>
         <TableView fx:id="roomTable" layoutX="67.0" layoutY="108.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="350.0" prefWidth="717.0">
             <columns>
-                <TableColumn fx:id="roomTypeCol" editable="false" prefWidth="200.0" sortable="false" styleClass="LeftAlignCol" text="客房类型" />
-                <TableColumn fx:id="roomAmountCol" editable="false" prefWidth="200.0" styleClass="RightAlignCol" text="数量" />
-                <TableColumn fx:id="roomPriceCol" editable="false" prefWidth="200.0" styleClass="RightAlignCol" text="原价（元/天）" />
-            <TableColumn fx:id="roomOpCol" editable="false" prefWidth="95.0" sortable="false" styleClass="MidAlignCol" text="操作" />
+                <TableColumn fx:id="roomTypeCol" editable="false" prefWidth="200.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="客房类型" />
+                <TableColumn fx:id="roomAmountCol" editable="false" prefWidth="200.0" resizable="false" styleClass="RightAlignCol" text="数量" />
+                <TableColumn fx:id="roomPriceCol" editable="false" prefWidth="200.0" resizable="false" styleClass="RightAlignCol" text="原价（元/天）" />
+            <TableColumn fx:id="roomOpCol" editable="false" prefWidth="95.0" resizable="false" sortable="false" styleClass="MidAlignCol" text="操作" />
             </columns>
         </TableView>
     </children>

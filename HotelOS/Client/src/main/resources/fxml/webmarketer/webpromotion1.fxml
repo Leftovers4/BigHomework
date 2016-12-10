@@ -21,9 +21,10 @@
          <children>
             <TableView fx:id="proTimeTable" prefHeight="320.0">
                <columns>
-                  <TableColumn fx:id="proStartTimeCol" editable="false" prefWidth="300.0" sortable="false" styleClass="LeftAlignCol" text="开始日期" />
-                  <TableColumn fx:id="proEndTimeCol" editable="false" prefWidth="300.0" sortable="false" styleClass="LeftAlignCol" text="结束日期" />
-                  <TableColumn fx:id="proTimeDiscountCol" editable="false" minWidth="0.0" prefWidth="160.0" styleClass="RightAlignCol" text="折扣（%）" />
+                  <TableColumn fx:id="proStartTimeCol" editable="false" prefWidth="255.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="开始日期" />
+                  <TableColumn fx:id="proEndTimeCol" editable="false" prefWidth="250.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="结束日期" />
+                  <TableColumn fx:id="proTimeDiscountCol" editable="false" minWidth="0.0" prefWidth="140.0" resizable="false" styleClass="RightAlignCol" text="折扣（%）" />
+                  <TableColumn fx:id="proTimeOpCol" editable="false" minWidth="0.0" prefWidth="105.0" resizable="false" styleClass="MIdAlignCol" text="操作" />
                </columns>
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="99.0" prefWidth="778.0">
@@ -32,12 +33,12 @@
                      <children>
                         <GridPane hgap="10.0">
                            <children>
-                              <DatePicker prefHeight="36.0" prefWidth="155.0" promptText="开始日期" />
-                              <ComboBox prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="1" />
-                              <ComboBox prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" />
-                              <DatePicker prefHeight="36.0" prefWidth="155.0" promptText="结束日期" GridPane.rowIndex="1" />
-                              <ComboBox layoutX="110.0" layoutY="2.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <ComboBox layoutX="110.0" layoutY="22.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <DatePicker fx:id="startTimeDatePicker" prefHeight="36.0" prefWidth="155.0" promptText="开始日期" />
+                              <ComboBox fx:id="startHourBox" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="1" />
+                              <ComboBox fx:id="startMinBox" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" />
+                              <DatePicker fx:id="endTimeDatePicker" prefHeight="36.0" prefWidth="155.0" promptText="结束日期" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="endHourBox" layoutX="110.0" layoutY="2.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="endMinBox" layoutX="110.0" layoutY="22.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                            </children>
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
@@ -54,7 +55,7 @@
                               <Insets bottom="10.0" left="18.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField alignment="CENTER" layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="50.0" promptText="80">
+                        <TextField fx:id="timeDiscountField" alignment="CENTER" layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="50.0" promptText="80">
                            <HBox.margin>
                               <Insets bottom="5.0" left="10.0" />
                            </HBox.margin>
@@ -68,24 +69,6 @@
                   </HBox>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="220.0">
                      <children>
-                        <Button fx:id="modifyTimeBtn" alignment="TOP_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#modifyTimePromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="修改" visible="false">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/modifypromotion.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="deleteTimeBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="120.0" mnemonicParsing="false" onAction="#deleteTimePromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="删除" visible="false">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/cancelroom.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                         <Button fx:id="addTimeBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="120.0" maxWidth="100.0" mnemonicParsing="false" onAction="#addTimePromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="添加">
                            <graphic>
                               <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -130,11 +113,11 @@
       </VBox>
       <VBox fx:id="memberAreaVBox" layoutX="36.0" layoutY="213.0" prefHeight="475.0" prefWidth="778.0" visible="false">
          <children>
-            <TableView fx:id="proMemTable" prefHeight="320.0" prefWidth="750.0">
+            <TableView fx:id="proMemTable" prefHeight="320.0" prefWidth="544.0">
                <columns>
-                  <TableColumn fx:id="proAreaCol" editable="false" prefWidth="300.0" sortable="false" styleClass="LeftAlignCol" text="商圈" />
-                  <TableColumn fx:id="proRankCol" editable="false" prefWidth="300.0" sortable="false" styleClass="RightAlignCol" text="等级" />
-                  <TableColumn fx:id="proMemDiscountCol" editable="false" minWidth="0.0" prefWidth="160.0" styleClass="RightAlignCol" text="折扣（%）" />
+                  <TableColumn fx:id="proAreaCol" editable="false" prefWidth="330.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="商圈" />
+                  <TableColumn fx:id="proAreaDiscountCol" editable="false" minWidth="0.0" prefWidth="330.0" resizable="false" styleClass="RightAlignCol" text="商圈折扣" />
+                  <TableColumn fx:id="proAreaOpCol" editable="false" minWidth="0.0" prefWidth="95.0" resizable="false" styleClass="MidAlignCol" text="操作" />
                </columns>
             </TableView>
             <Pane prefHeight="155.0" prefWidth="778.0">
@@ -179,18 +162,8 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Pane>
-                  <HBox fx:id="addMemHBox" alignment="CENTER_LEFT" layoutY="28.0" visible="false">
+                  <HBox fx:id="addMemHBox" alignment="CENTER_LEFT" layoutY="28.0">
                      <children>
-                        <Label layoutX="355.0" layoutY="16.0" text="等级：">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Label>
-                        <ComboBox prefHeight="36.0" prefWidth="85.0" promptText="1">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </ComboBox>
                         <Label layoutX="199.0" layoutY="16.0" text="城市：">
                            <HBox.margin>
                               <Insets left="20.0" />
@@ -278,7 +251,7 @@
             </Button>
             <Pane layoutX="226.0" layoutY="14.0" prefHeight="362.0" prefWidth="320.0" styleClass="BackgroundPanel">
                <children>
-                  <GridPane hgap="10.0" layoutX="25.0" layoutY="31.0" vgap="15.0">
+                  <GridPane fx:id="editGridPane" hgap="10.0" layoutX="25.0" layoutY="31.0" vgap="15.0" visible="false">
                      <children>
                         <TextField fx:id="lv1CreditField" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="lv2CreditField" layoutX="110.0" layoutY="7.0" maxWidth="-Infinity" prefWidth="80.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -324,6 +297,68 @@
                         <TextField fx:id="lv6DiscountField" layoutX="52.0" layoutY="7.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="80.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                         <Label text="信用值" GridPane.columnIndex="1" />
                         <Label text="折扣" GridPane.columnIndex="2" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
+                  <GridPane fx:id="showGridPane" hgap="10.0" layoutX="25.0" layoutY="31.0" vgap="15.0">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                           <image>
+                              <Image url="@../../img/webmarketer/1.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                           <image>
+                              <Image url="@../../img/webmarketer/2.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="10.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../../img/webmarketer/3.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="10.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../../img/webmarketer/4.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="210.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5">
+                           <image>
+                              <Image url="@../../img/webmarketer/5.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="210.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
+                           <image>
+                              <Image url="@../../img/webmarketer/6.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="信用值" GridPane.columnIndex="1" />
+                        <Label text="折扣" GridPane.columnIndex="2" />
+                        <Label fx:id="lv1CreditLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="lv1DiscountLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label fx:id="lv2CreditLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="lv2DiscountLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Label fx:id="lv3CreditLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="lv3DiscountLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Label fx:id="lv4CreditLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="lv4DiscountLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <Label fx:id="lv5CreditLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="lv5DiscountLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <Label fx:id="lv6CreditLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label fx:id="lv6DiscountLabel" text="Label" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                      </children>
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />

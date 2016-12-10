@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
+import presentation.util.other.DisableColumnChangeListener;
 import util.RoomType;
 import vo.hotel.RoomVO;
 
@@ -97,6 +98,9 @@ public class RegisterRoomPaneController {
                 return roomListButtonCell;
             }
         });
+
+        final TableColumn[] proMemColumns = {roomTypeCol, roomAmountCol, roomPriceCol, roomOpCol};
+        roomTable.getColumns().addListener(new DisableColumnChangeListener(roomTable, proMemColumns));
     }
 
     private void initBox() {
