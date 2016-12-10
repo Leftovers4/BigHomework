@@ -31,7 +31,7 @@ public class Context{
         }
     }
 
-    public double getActualPrice(OrderVO orderVO) throws RemoteException {
+    public double getActualPrice(OrderVO orderVO) throws RemoteException, ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
         return sale.getActualPrice(orderVO);
     }
 

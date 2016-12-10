@@ -5,6 +5,7 @@ import po.user.CreditRecordPO;
 import po.user.UserPO;
 
 import java.lang.reflect.InvocationTargetException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class UserVOCreater {
      * 传给界面：创建包含用户查看基本信息的界面信息的对象
      *
      */
-    public UserVO createFullUserVO(UserPO userPO, List<CreditRecordPO> creditRecordPOList) throws ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    public UserVO createFullUserVO(UserPO userPO, List<CreditRecordPO> creditRecordPOList) throws ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException, RemoteException {
         UserVO res = new UserVO();
 
         res.username = userPO.getUsername();
