@@ -4,6 +4,7 @@ import util.Const;
 import util.PromotionType;
 import util.RoomType;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -109,4 +110,11 @@ public class PromotionVO {
         return bestPrice;
     }
 
+    public LocalDateTime getBeginTime(){
+        return promotionTimeVO.beginTime;
+    }
+
+    public LocalDateTime getEndTime(){
+        return promotionTimeVO.endTime;
+    }
 }

@@ -119,34 +119,34 @@ public class ManagePromotionPaneController {
     }
 
     private void initTable() {
-        birthRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        birthRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         birthDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
-        birthPriceCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        birthPriceCol.setCellValueFactory(new PropertyValueFactory<>("bestPrice"));
         final TableColumn[] birthColumns = {birthRoomTypeCol, birthDiscountCol, birthPriceCol};
         birthTable.getColumns().addListener(new DisableColumnChangeListener(birthTable, birthColumns));
         birthTable.setItems(getBirthProVoList());
 
-        roomTypeCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        roomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         roomLeastCol.setCellValueFactory(new PropertyValueFactory<>("leastRooms"));
         roomDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
-        roomPriceCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        roomPriceCol.setCellValueFactory(new PropertyValueFactory<>("bestPrice"));
         final TableColumn[] roomColumns = {roomTypeCol, roomLeastCol, roomDiscountCol, roomPriceCol};
         roomTable.getColumns().addListener(new DisableColumnChangeListener(roomTable, roomColumns));
         roomTable.setItems(getRoomProVoList());
 
-        timeRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        timeRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         timeStartCol.setCellValueFactory(new PropertyValueFactory<>("beginTime"));
         timeEndCol.setCellValueFactory(new PropertyValueFactory<>("endTime"));
         timeDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
-        timePriceCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        timePriceCol.setCellValueFactory(new PropertyValueFactory<>("bestPrice"));
         final TableColumn[] timeColumns = {timeRoomTypeCol, timeStartCol, timeEndCol, timeDiscountCol, timePriceCol};
         timeTable.getColumns().addListener(new DisableColumnChangeListener(timeTable, timeColumns));
         timeTable.setItems(getTimeProVoList());
 
         comNameCol.setCellValueFactory(new PropertyValueFactory<>(""));
-        comRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        comRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         comDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
-        comPriceCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        comPriceCol.setCellValueFactory(new PropertyValueFactory<>("bestPrice"));
         final TableColumn[] comColumns = {comNameCol, comRoomTypeCol, comDiscountCol, comPriceCol};
         comTable.getColumns().addListener(new DisableColumnChangeListener(comTable, comColumns));
         comTable.setItems(getComProVoList());
