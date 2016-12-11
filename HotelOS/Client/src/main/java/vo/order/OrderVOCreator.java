@@ -61,6 +61,7 @@ public class OrderVOCreator {
         res.roomType = orderPO.getRoomType();
         res.roomAmount = orderPO.getRoomAmount();
         res.roomNumber = orderPO.getRoomNumber();
+        res.orderPromoInfoVO.promotionType = orderPO.getPromotionType();
 
         return res;
     }
@@ -95,6 +96,7 @@ public class OrderVOCreator {
         res.withChildren = orderPO.isWithChildren();
         res.orderPriceVO.actualPrice = orderPO.getOrderPricePO().getActualPrice();
         res.orderPriceVO.originPrice = orderPO.getOrderPricePO().getOriginPrice();
+        res.orderPromoInfoVO.promotionType = orderPO.getPromotionType();
 
         return res;
     }

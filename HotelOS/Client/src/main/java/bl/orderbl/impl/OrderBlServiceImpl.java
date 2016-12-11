@@ -291,6 +291,7 @@ public class OrderBlServiceImpl implements OrderBLService {
             promotionPOList1.add(promotionPOList2.get(i));
         }
 
+        orderVO.orderTimeVO.generateTime = LocalDateTime.now();
         return new PromotionList(promotionPOList1).getLowestPrice(orderVO);
     }
 
@@ -330,6 +331,7 @@ public class OrderBlServiceImpl implements OrderBLService {
         orderPO.getOrderTimePO().setLastExecuteTime(orderPO.getOrderTimePO().getExpectedCheckinTime().plusHours(6));
         orderPO.getOrderPricePO().setOriginPrice(orderVO.orderPriceVO.originPrice);
         orderPO.getOrderPricePO().setActualPrice(orderVO.orderPriceVO.actualPrice);
+        orderPO.setPromotionType(orderVO.orderPromoInfoVO.promotionType);
 
         return orderDAO.insert(orderPO);
     }

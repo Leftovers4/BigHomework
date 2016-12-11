@@ -1,6 +1,7 @@
 package vo.order;
 
 import util.OrderType;
+import util.PromotionType;
 import util.RoomType;
 import vo.hotel.RoomVO;
 
@@ -71,6 +72,10 @@ public class OrderVO {
      */
     public boolean withChildren;
 
+    /**
+     * 订单采用的优惠信息
+     */
+    public OrderPromoInfoVO orderPromoInfoVO;
 
     /**
      * 评价
@@ -96,6 +101,7 @@ public class OrderVO {
     public OrderHandleAppealVO orderHandleAppealVO;
 
     public OrderVO(){
+        this.orderPromoInfoVO = new OrderPromoInfoVO();
         this.orderPriceVO = new OrderPriceVO();
         this.orderTimeVO = new OrderTimeVO();
         this.reviewVO = new ReviewVO();

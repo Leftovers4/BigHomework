@@ -22,12 +22,22 @@ public class PromotionList extends ArrayList<PromotionPO>{
     public double getLowestPrice(OrderVO orderVO) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, RemoteException {
         double res = orderVO.orderPriceVO.originPrice;
 
+        int index = -1; // 用来记录采用了列表中的第几个优惠策略
+
         for (int i = 0; i < this.size(); i++) {
             Context context = new Context(this.get(i));
             double actualPrice = context.getActualPrice(orderVO);
             if (actualPrice < res){
                 res = actualPrice;
+                index = i;
             }
+        }
+
+        //在orderVO中记录优惠信息
+        if (index != -1){
+            orderVO.orderPriceVO.actualPrice = res;
+            orderVO.orderPromoInfoVO.promotionType = this.get(index).getPromotionType();
+            orderVO.orderPromoInfoVO.discount = this.get(index).getDiscount();
         }
 
         return res;

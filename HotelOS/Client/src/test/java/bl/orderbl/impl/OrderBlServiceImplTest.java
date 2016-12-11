@@ -4,6 +4,7 @@ import bl.orderbl.OrderBLService;
 import org.junit.Before;
 import org.junit.Test;
 import util.OrderType;
+import util.PromotionType;
 import util.ResultMessage;
 import util.RoomType;
 import vo.hotel.HotelVO;
@@ -129,11 +130,19 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void getOrderActualPrice() throws Exception {
-        OrderVO orderVO = tested.searchExtraOrderByID("96152920161209324");
+        OrderVO orderVO = new OrderVO();
 
         orderVO.username = "Hikii";
         orderVO.hotelID = 961529;
-        double price = tested.getOrderActualPrice(orderVO);
+        orderVO.roomType = RoomType.Couple;
+        orderVO.roomAmount = 2;
+        orderVO.personAmount = 4;
+        orderVO.withChildren = false;
+        orderVO.orderPriceVO.originPrice = 250;
+        orderVO.orderTimeVO.expectedCheckinTime = LocalDateTime.now();
+        orderVO.orderTimeVO.expectedLeaveTime = LocalDateTime.now().plusDays(2);
+
+        tested.getOrderActualPrice(orderVO);
     }
 
     @Test
@@ -150,6 +159,7 @@ public class OrderBlServiceImplTest {
         orderVO.orderPriceVO.actualPrice = 200;
         orderVO.orderTimeVO.expectedCheckinTime = LocalDateTime.now();
         orderVO.orderTimeVO.expectedLeaveTime = LocalDateTime.now().plusDays(2);
+        orderVO.orderPromoInfoVO.promotionType = PromotionType.BirthdayPromotion;
 
         ResultMessage resultMessage = tested.addOrder(orderVO);
     }
