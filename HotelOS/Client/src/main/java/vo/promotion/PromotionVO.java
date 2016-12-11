@@ -117,4 +117,8 @@ public class PromotionVO {
     public LocalDateTime getEndTime(){
         return promotionTimeVO.endTime;
     }
+
+    public String getComName(){
+        return promotionEnterprises.get(0);
+    }
 }

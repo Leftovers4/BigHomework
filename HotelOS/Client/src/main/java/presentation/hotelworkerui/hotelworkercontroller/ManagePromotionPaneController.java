@@ -28,6 +28,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Hitiger on 2016/11/20.
@@ -88,8 +89,6 @@ public class ManagePromotionPaneController {
 
     //合作企业优惠
     @FXML private Button addComBtn;
-    @FXML private Button modifyComBtn;
-    @FXML private Button deleteComBtn;
     @FXML private Button confirmComBtn;
     @FXML private Button cancelComBtn;
     @FXML private VBox   comVBox;
@@ -99,6 +98,9 @@ public class ManagePromotionPaneController {
     @FXML private TableColumn comRoomTypeCol;
     @FXML private TableColumn comDiscountCol;
     @FXML private TableColumn comPriceCol;
+    @FXML private TableColumn comOpCol;
+    @FXML private TextField comNameField;
+    @FXML private TextField comDiscountField;
 
     //滑块
     @FXML private Label sliderPromotionLabel;
@@ -106,14 +108,15 @@ public class ManagePromotionPaneController {
 
     private AlertController alertController;
     private ArrayList<VBox> vBoxes;
-    //TODO 判断是添加还是修改
+    //判断是添加还是修改
     private Boolean isBirthAdd = false;
     private Boolean isRoomAdd = false;
     private Boolean isTimeAdd = false;
-    private Boolean isExistCom = false;
+    private Boolean isComAdd = false;
     private PromotionBLService promotionBLService;
     private ProListButtonCell proRoomListButtonCell;
     private ProListButtonCell proTimeListButtonCell;
+    private ProListButtonCell proComListButtonCell;
 
     public void launch() {
         alertController = new AlertController();
@@ -222,20 +225,25 @@ public class ManagePromotionPaneController {
     @FXML
     private void showCom(){
         showVBox(comVBox);
-        setAddComComponentsVisible(false);
-        setOriComComponentsVisible(true);
 
         initComTable();
-
+        setComComponentsVisible(false);
         MySlider.moveSliderLabel(sliderPromotionLabel,432);
     }
 
     private void initComTable() {
-        comNameCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        comNameCol.setCellValueFactory(new PropertyValueFactory<>("comName"));
         comRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         comDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
         comPriceCol.setCellValueFactory(new PropertyValueFactory<>("bestPrice"));
-        final TableColumn[] comColumns = {comNameCol, comRoomTypeCol, comDiscountCol, comPriceCol};
+        comOpCol.setCellFactory(new Callback<TableColumn, TableCell>() {
+            @Override
+            public TableCell call(TableColumn param) {
+                proComListButtonCell = new ProListButtonCell(comTable, PromotionType.EnterprisePromotion);
+                return proComListButtonCell;
+            }
+        });
+        final TableColumn[] comColumns = {comNameCol, comRoomTypeCol, comDiscountCol, comPriceCol, comOpCol};
         comTable.getColumns().addListener(new DisableColumnChangeListener(comTable, comColumns));
 
         initData(comTable, PromotionType.EnterprisePromotion);
@@ -425,46 +433,49 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void addComPromotion(){
-        setAddComComponentsVisible(true);
-        setOriComComponentsVisible(false);
+        isComAdd = true;
+        setComComponentsVisible(true);
     }
 
     @FXML
     private void confirmComAdd(){
-        //TODO 如果已添加促销策略 则不再显示添加按钮
-        isExistCom = true;
-        setAddComComponentsVisible(false);
-        setOriComComponentsVisible(true);
+        PromotionVO promotionVO = new PromotionVO();
+        try {
+            String comName = comNameField.getText();
+            double comDiscount = Double.parseDouble(comDiscountField.getText());
+//            promotionVO.promotionEnterprises = new ArrayList<>();
+            promotionVO.promotionEnterprises.add(comName);
+            promotionVO.discount = comDiscount;
+            if(isComAdd){
+                //TODO 更换hotelID
+                promotionVO.hotelID = 522000;
+                promotionVO.promotionType = PromotionType.EnterprisePromotion;
+                promotionBLService.create(promotionVO);
+            }else{
+                comTable.setDisable(false);
+                promotionVO.promotionID = ((PromotionVO) comTable.getItems().get(proComListButtonCell.getSelectedIndex())).promotionID;
+                promotionBLService.update(promotionVO);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        initData(comTable, PromotionType.EnterprisePromotion);
+        setComComponentsVisible(false);
     }
 
     @FXML
     private void cancelComAdd(){
-        setAddComComponentsVisible(false);
-        setOriComComponentsVisible(true);
+        comTable.setDisable(false);
+        setComComponentsVisible(false);
     }
 
-    @FXML
-    private void modifyComPromotion(){
-
-    }
-
-    @FXML
-    private void deleteComPromotion(){
-
-    }
-
-    private void setAddComComponentsVisible(Boolean isVisible){
+    private void setComComponentsVisible(Boolean isVisible){
         addComHBox.setVisible(isVisible);
         confirmComBtn.setVisible(isVisible);
         cancelComBtn.setVisible(isVisible);
-    }
-    private void setOriComComponentsVisible(Boolean isVisible){
-        //TODO 如果已添加促销策略 则不再显示添加按钮
-        if (!isExistCom)addComBtn.setVisible(isVisible);
-        else {
-            modifyComBtn.setVisible(isVisible);
-            deleteComBtn.setVisible(isVisible);
-        }
+
+        addComBtn.setVisible(!isVisible);
     }
 
     private void makeBirthFocused() {
@@ -511,6 +522,11 @@ public class ManagePromotionPaneController {
                     timeTable.setDisable(true);
                     setTimeComponentsVisible(true);
                     initTimeBOX();
+                }else if(proType == PromotionType.EnterprisePromotion){
+                    //合作企业
+                    isComAdd = false;
+                    comTable.setDisable(true);
+                    setComComponentsVisible(true);
                 }
             });
 

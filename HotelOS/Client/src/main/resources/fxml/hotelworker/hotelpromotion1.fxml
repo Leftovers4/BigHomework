@@ -191,7 +191,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="timeVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0">
+      <VBox fx:id="timeVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0" visible="false">
          <children>
             <TableView fx:id="timeTable" prefHeight="337.0" prefWidth="778.0">
                <columns>
@@ -282,26 +282,27 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="comVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0" visible="false">
+      <VBox fx:id="comVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0">
          <children>
             <TableView fx:id="comTable" prefHeight="337.0">
                <columns>
                   <TableColumn fx:id="comNameCol" prefWidth="182.0" styleClass="LeftAlignCol" text="企业名称" />
-                  <TableColumn fx:id="comRoomTypeCol" prefWidth="198.0" styleClass="LeftAlignCol" text="客房类型" />
-                  <TableColumn fx:id="comDiscountCol" minWidth="0.0" prefWidth="191.0" styleClass="RightAlignCol" text="折扣（%）" />
+                  <TableColumn fx:id="comRoomTypeCol" prefWidth="150.0" styleClass="LeftAlignCol" text="客房类型" />
+                  <TableColumn fx:id="comDiscountCol" minWidth="0.0" prefWidth="130.0" styleClass="RightAlignCol" text="折扣" />
                   <TableColumn fx:id="comPriceCol" minWidth="0.0" prefWidth="185.0" styleClass="RightAlignCol" text="优惠价（元/天）" />
+                  <TableColumn fx:id="comOpCol" minWidth="0.0" prefWidth="100.0" styleClass="MidAlignCol" text="操作" />
                </columns>
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0">
                <children>
-                  <HBox fx:id="addComHBox" alignment="BOTTOM_LEFT" visible="false">
+                  <HBox fx:id="addComHBox" alignment="BOTTOM_LEFT">
                      <children>
                         <Label text="企业名称：">
                            <HBox.margin>
                               <Insets bottom="5.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField prefHeight="36.0" prefWidth="168.0" promptText="南京大学">
+                        <TextField fx:id="comNameField" prefHeight="36.0" prefWidth="168.0" promptText="南京大学">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -311,38 +312,15 @@
                               <Insets bottom="5.0" left="40.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField alignment="CENTER" layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="50.0" promptText="80">
+                        <TextField fx:id="comDiscountField" alignment="CENTER" layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="56.0" promptText="小数">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Label text="\%">
-                           <HBox.margin>
-                              <Insets bottom="5.0" left="5.0" />
-                           </HBox.margin>
-                        </Label>
                      </children>
                   </HBox>
                   <Pane maxHeight="-Infinity" minHeight="-Infinity" prefWidth="220.0">
                      <children>
-                        <Button fx:id="modifyComBtn" alignment="TOP_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#modifyComPromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="修改" visible="false">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/modifypromotion.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="deleteComBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="120.0" mnemonicParsing="false" onAction="#deleteComPromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="删除" visible="false">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/cancelroom.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                         <Button fx:id="addComBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="120.0" maxWidth="100.0" mnemonicParsing="false" onAction="#addComPromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="添加">
                            <graphic>
                               <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">

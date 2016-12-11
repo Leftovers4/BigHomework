@@ -4,12 +4,16 @@ import bl.hotelbl.HotelBLService;
 import bl.hotelbl.impl.HotelBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import presentation.util.alert.AlertController;
 import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
 import vo.hotel.HotelVO;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Hitiger on 2016/11/18.
@@ -21,6 +25,13 @@ public class InfoPaneController {
     @FXML private Label hotelNameLabel;
     @FXML private Label hotelWorkerNameLabel;
     @FXML private Label hotelRatingLabel;
+
+    //星级
+    @FXML private ImageView star1;
+    @FXML private ImageView star2;
+    @FXML private ImageView star3;
+    @FXML private ImageView star4;
+    @FXML private ImageView star5;
 
     //地址
     @FXML private Label    addressLabel;
@@ -91,8 +102,18 @@ public class InfoPaneController {
             addressLabel.setText(city+tradeArea);
             simpleIntroLabel.setText(hotelVO.description);
             hotelServiceLabel.setText(hotelVO.service);
+
+            //初始化星级
+            initStar(hotelVO.star);
         } catch (RemoteException e) {
             alertController.showNetConnectAlert();
+        }
+    }
+
+    private void initStar(int star) {
+        ArrayList<ImageView> starLists = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
+        for (int i = 0; i < star; i++){
+            starLists.get(i).setVisible(true);
         }
     }
 
