@@ -104,7 +104,7 @@ public class WebmanagerComController {
         leftBarEffect.buttonActionEffect(webmarketerBtn, buttons);
         changeSliderPos(395);
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new WebmarketerManagePane(stage));
+        mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
     }
 
     /**

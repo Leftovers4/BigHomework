@@ -45,11 +45,12 @@ public class HotelworkerManageController {
             e.printStackTrace();
         }
 
+        initialData();
     }
 
 
     private void initialData() {
-        hotelIDCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
+        hotelIDCol.setCellValueFactory(new PropertyValueFactory<>("hotelID"));
         hotelworkerIDCol.setCellValueFactory(new PropertyValueFactory<>("personnelID"));
         hotelworkerNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {

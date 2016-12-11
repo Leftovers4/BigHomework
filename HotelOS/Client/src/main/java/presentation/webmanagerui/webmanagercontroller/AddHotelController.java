@@ -40,11 +40,11 @@ public class AddHotelController {
 
     @FXML private TableView hotelworkerList;
     @FXML private TextField workernameField;
-    @FXML private TextField workerphoneField;
+    @FXML private TextField initialPasswordField;
 
     private HotelBlServiceImpl hotelBlService;
     private PersonnelBLServiceImpl personnelBLService;
-    private String hotelID;
+    private long hotelID;
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
@@ -84,7 +84,7 @@ public class AddHotelController {
         }
 
         try {
-            long hotelID = hotelBlService.addHotel(hotelVO);
+            hotelID = hotelBlService.addHotel(hotelVO);
 
             if (true) {
                 System.out.println("hotel add success");
@@ -94,6 +94,18 @@ public class AddHotelController {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+
+
+        try {
+            hotelVO = hotelBlService.viewBasicHotelInfo(hotelID);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        hotelidLabel.setText(String.valueOf(hotelVO.hotelID));
+        hotelnameLabel.setText(hotelVO.hotelName);
+        hoteladdressLabel.setText(hotelVO.address);
+        hoteltracingareaLabel.setText(hotelVO.tradingArea);
+        hotelstarLabel.setText(String.valueOf(hotelVO.star));
     }
 
     /**
@@ -104,7 +116,23 @@ public class AddHotelController {
         finishInfoPane.setVisible(false);
         addhotelworkerPane.setVisible(true);
         confirmHotelInfoPane.setVisible(false);
+    }
 
-//        hotelID =
+    /**
+     * 确认添加酒店工作人员
+     */
+    @FXML
+    private void confirmAddWorker() {
+        PersonnelVO personnelVO = new PersonnelVO();
+
+        personnelVO.name = workernameField.getText();
+        personnelVO.password = initialPasswordField.getText();
+        personnelVO.hotelID = hotelID;
+
+        try {
+            personnelBLService.addHotelWorker(personnelVO);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }
