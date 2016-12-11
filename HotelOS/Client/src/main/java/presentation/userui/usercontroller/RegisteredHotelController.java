@@ -54,7 +54,7 @@ public class RegisteredHotelController {
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {
-                registeredHotelListButtonCell = new RegisteredHotelListButtonCell(stage, mainPane, registeredHotelList);
+                registeredHotelListButtonCell = new RegisteredHotelListButtonCell(stage, mainPane, registeredHotelList, userID);
                 return registeredHotelListButtonCell;
             }
         });

@@ -277,6 +277,11 @@ public class InfoPaneController {
 
             mainPane.getChildren().remove(0);
             mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto, userID, leftBarBtnArr));
+            for (int i = 0; i<leftBarBtnArr.size(); i++) {
+                if (i != 0) {
+                    leftBarBtnArr.get(i).setDisable(false);
+                }
+            }
 
 //            initialData();
         } else if (!isempty && !phoneisright) {

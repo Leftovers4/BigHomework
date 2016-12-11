@@ -18,7 +18,6 @@ import vo.hotel.HotelVO;
 public class WebManHotelworkerButtonCell extends TableCell<HotelVO, Boolean> {
 
     final private HBox btnBox = new HBox();
-    final private Button addBtn = new Button();
     final private Button editBtn = new Button();
     final private Button deleteBtn = new Button();
     private TableView tableView;
@@ -27,22 +26,19 @@ public class WebManHotelworkerButtonCell extends TableCell<HotelVO, Boolean> {
         this.tableView = tableView;
         this.getStylesheets().add(WebManHotelListButtonCell.class.getResource("/css/webmanager/webManagerStyle.css").toExternalForm());
 
-        Image addImg = new Image("/img/webmanager/newhotel.png");
-        addBtn.setGraphic(new ImageView(addImg));
-        addBtn.getStyleClass().add("tableCellBtn");
         Image editImg = new Image("/img/webmanager/edit.png");
-        editBtn.setGraphic(new ImageView(editImg));
+        ImageView editimgview = new ImageView(editImg);
+        editimgview.setFitHeight(20);
+        editimgview.setFitWidth(20);
+        editBtn.setGraphic(editimgview);
         editBtn.getStyleClass().add("tableCellBtn");
         Image deleteImg = new Image("/img/webmanager/delete.png");
-        deleteBtn.setGraphic(new ImageView(deleteImg));
+        ImageView deleteimgview = new ImageView(deleteImg);
+        deleteimgview.setFitWidth(20);
+        deleteimgview.setFitHeight(20);
+        deleteBtn.setGraphic(deleteimgview);
         deleteBtn.getStyleClass().add("tableCellBtn");
 
-        addBtn.setOnAction(event -> {
-//            int selectedIndex = getTableRow().getIndex();
-//            HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
-//            mainPane.getChildren().remove(0);
-//            mainPane.getChildren().add(new AddHotelPane(stage));
-        });
 
         editBtn.setOnAction(event -> {
 
@@ -61,7 +57,7 @@ public class WebManHotelworkerButtonCell extends TableCell<HotelVO, Boolean> {
             setGraphic(null);
             setText(null);
         } else {
-            btnBox.getChildren().add(addBtn);
+            btnBox.getChildren().clear();
             btnBox.getChildren().add(editBtn);
             btnBox.getChildren().add(deleteBtn);
             setGraphic(btnBox);

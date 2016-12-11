@@ -25,7 +25,10 @@ public class WebManUserButtonCell extends TableCell<HotelVO, Boolean> {
         this.getStylesheets().add(WebManHotelListButtonCell.class.getResource("/css/webmanager/webManagerStyle.css").toExternalForm());
 
         Image editImg = new Image("/img/webmanager/edit.png");
-        editBtn.setGraphic(new ImageView(editImg));
+        ImageView editimgview = new ImageView(editImg);
+        editimgview.setFitHeight(20);
+        editimgview.setFitWidth(20);
+        editBtn.setGraphic(editimgview);
         editBtn.getStyleClass().add("tableCellBtn");
 
         editBtn.setOnAction(event -> {
@@ -42,6 +45,7 @@ public class WebManUserButtonCell extends TableCell<HotelVO, Boolean> {
             setGraphic(null);
             setText(null);
         } else {
+            btnBox.getChildren().clear();
             btnBox.getChildren().add(editBtn);
             setGraphic(btnBox);
             setText(null);

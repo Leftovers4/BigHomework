@@ -39,8 +39,15 @@ public class WebmanagerComController {
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
+
+        hotelManageBtn.setStyle("-fx-background-color: #0F81C7");
+
         buttons = new ArrayList<>(Arrays.asList(hotelManageBtn, userBtn, hotelworkerBtn, webmarketerBtn));
-        mainPane.getChildren().add(new HotelManagePane(stage, mainPane));
+
+        primaryStage.setX(400);
+        primaryStage.setY(200);
+
+        mainPane.getChildren().add(new HotelManagePane(primaryStage, mainPane));
 
         EnableShowTime(timelabel);
     }
@@ -81,7 +88,7 @@ public class WebmanagerComController {
         leftBarEffect.buttonActionEffect(userBtn, buttons);
         changeSliderPos(305);
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new UserManagePane(stage));
+        mainPane.getChildren().add(new UserManagePane(stage, mainPane));
     }
     @FXML
     private void hotelWorkerEvent() {

@@ -67,7 +67,7 @@ public class HotelManageController {
             @Override
             public TableCell call(TableColumn param) {
                 webManHotelListButtonCell = new WebManHotelListButtonCell(stage, pane, hotelList);
-                return null;
+                return webManHotelListButtonCell;
             }
         });
         hotelList.setItems(getHotelList());

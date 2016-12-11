@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.OrderDetailUserPane;
+import presentation.userui.userscene.UserHotelInfoPane;
 import vo.hotel.HotelVO;
 
 /**
@@ -21,7 +22,7 @@ public class RegisteredHotelListButtonCell extends TableCell<HotelVO, Boolean> {
     final private Button checkDetailBtn = new Button();
     private TableView tableView;
 
-    public RegisteredHotelListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView) {
+    public RegisteredHotelListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView, final String userID) {
         this.tableView = tableView;
 
         this.getStylesheets().add(CreditTabelButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
@@ -30,10 +31,10 @@ public class RegisteredHotelListButtonCell extends TableCell<HotelVO, Boolean> {
         checkDetailBtn.getStyleClass().add("tableCellBtn");
 
         checkDetailBtn.setOnAction(event -> {
-//            int selectedIndex = getTableRow().getIndex();
-//            HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
+            int selectedIndex = getTableRow().getIndex();
+            HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-//            mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane, userID));
+            mainPane.getChildren().add(new UserHotelInfoPane(stage, mainPane, userID, hotelVO.hotelID));
         });
     }
 

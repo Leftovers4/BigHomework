@@ -1,5 +1,6 @@
 package presentation.util.buttoncell;
 
+import bl.hotelbl.impl.HotelBlServiceImpl;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
@@ -9,7 +10,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.webmanagerui.webmanagerscene.AddHotelPane;
+import util.ResultMessage;
 import vo.hotel.HotelVO;
+
+import java.rmi.RemoteException;
 
 /**
  * Created by wyj on 2016/12/7.
@@ -18,7 +22,6 @@ import vo.hotel.HotelVO;
 public class WebManHotelListButtonCell extends TableCell<HotelVO, Boolean> {
 
     final private HBox btnBox = new HBox();
-    final private Button addBtn = new Button();
     final private Button editBtn = new Button();
     final private Button deleteBtn = new Button();
     private TableView tableView;
@@ -27,29 +30,42 @@ public class WebManHotelListButtonCell extends TableCell<HotelVO, Boolean> {
         this.tableView = tableView;
         this.getStylesheets().add(WebManHotelListButtonCell.class.getResource("/css/webmanager/webManagerStyle.css").toExternalForm());
 
-        Image addImg = new Image("/img/webmanager/newhotel.png");
-        addBtn.setGraphic(new ImageView(addImg));
-        addBtn.getStyleClass().add("tableCellBtn");
         Image editImg = new Image("/img/webmanager/edit.png");
-        editBtn.setGraphic(new ImageView(editImg));
+        ImageView editimgview = new ImageView(editImg);
+        editimgview.setFitWidth(20);
+        editimgview.setFitHeight(20);
+        editBtn.setGraphic(editimgview);
         editBtn.getStyleClass().add("tableCellBtn");
         Image deleteImg = new Image("/img/webmanager/delete.png");
-        deleteBtn.setGraphic(new ImageView(deleteImg));
+        ImageView deleteimgview = new ImageView(deleteImg);
+        deleteimgview.setFitWidth(20);
+        deleteimgview.setFitHeight(20);
+        deleteBtn.setGraphic(deleteimgview);
         deleteBtn.getStyleClass().add("tableCellBtn");
 
-        addBtn.setOnAction(event -> {
-//            int selectedIndex = getTableRow().getIndex();
-//            HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
-            mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new AddHotelPane(stage));
-        });
 
         editBtn.setOnAction(event -> {
 
         });
 
         deleteBtn.setOnAction(event -> {
+            int selectedIndex = getTableRow().getIndex();
+            HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
 
+            HotelBlServiceImpl hotelBlService = null;
+            try {
+                hotelBlService = new HotelBlServiceImpl();
+                ResultMessage resultMessage = hotelBlService.deleteHotel(hotelVO.hotelID);
+
+                if (resultMessage == ResultMessage.Success) {
+                    System.out.println("delete success");
+                } else {
+                    System.out.println("delete failed");
+                }
+
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         });
     }
 
@@ -62,7 +78,6 @@ public class WebManHotelListButtonCell extends TableCell<HotelVO, Boolean> {
             setText(null);
         } else {
             btnBox.getChildren().clear();
-            btnBox.getChildren().add(addBtn);
             btnBox.getChildren().add(editBtn);
             btnBox.getChildren().add(deleteBtn);
             setGraphic(btnBox);

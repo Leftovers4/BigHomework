@@ -43,6 +43,8 @@ public class ComUserSceneController {
 
     public void launch(Stage primaryStage, String username){
 
+
+
         this.stage = primaryStage;
         this.userID = username;
 

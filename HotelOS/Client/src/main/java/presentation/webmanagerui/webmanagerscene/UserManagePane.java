@@ -12,11 +12,11 @@ import java.io.IOException;
  */
 public class UserManagePane extends Pane {
 
-    public UserManagePane(Stage primaryStage) {
-        loadFxml(primaryStage);
+    public UserManagePane(Stage primaryStage, Pane mainPane) {
+        loadFxml(primaryStage, mainPane);
     }
 
-    private void loadFxml(Stage primaryStage) {
+    private void loadFxml(Stage primaryStage, Pane mainPane) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/webmanager/webmanuserman.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -26,6 +26,6 @@ public class UserManagePane extends Pane {
         }
 
         UserManageController userManageController = fxmlLoader.getController();
-        userManageController.launch(primaryStage);
+        userManageController.launch(primaryStage, mainPane);
     }
 }

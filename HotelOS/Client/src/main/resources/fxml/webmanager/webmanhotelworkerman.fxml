@@ -12,10 +12,9 @@
    <children>
       <TableView fx:id="hotelworkerList" layoutX="100.0" layoutY="150.0" prefHeight="400.0" prefWidth="650.0">
          <columns>
-            <TableColumn fx:id="hotelNameCol" prefWidth="190.0" text="酒店名称" />
+            <TableColumn fx:id="hotelIDCol" prefWidth="190.0" text="酒店ID" />
             <TableColumn fx:id="hotelworkerIDCol" minWidth="0.0" prefWidth="135.0" text="账号" />
             <TableColumn fx:id="hotelworkerNameCol" prefWidth="118.0" text="姓名" />
-            <TableColumn fx:id="hotelworkerPhoneCol" prefWidth="118.0" text="联系方式" />
             <TableColumn fx:id="btnCol" prefWidth="75.0" />
          </columns>
       </TableView>

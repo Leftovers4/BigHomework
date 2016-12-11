@@ -15,8 +15,8 @@
           <TableColumn fx:id="hotelIDCol" prefWidth="124.0" text="酒店编号 " />
           <TableColumn fx:id="hotelNameCol" prefWidth="150.0" text="酒店名称" />
             <TableColumn fx:id="hotelCityCol" prefWidth="157.0" text="城市" />
-            <TableColumn fx:id="hotelBusinessCol" prefWidth="75.0" text="商圈" />
-            <TableColumn fx:id="btnCol" prefWidth="75.0" />
+            <TableColumn fx:id="hotelBusinessCol" prefWidth="129.0" text="商圈" />
+            <TableColumn fx:id="btnCol" prefWidth="89.0" />
         </columns>
       </TableView>
       <TextField layoutX="100.0" layoutY="104.0" prefHeight="30.0" prefWidth="235.0" promptText="搜索酒店编号、名称" />

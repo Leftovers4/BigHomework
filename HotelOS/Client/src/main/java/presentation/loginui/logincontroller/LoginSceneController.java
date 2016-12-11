@@ -1,5 +1,6 @@
 package presentation.loginui.logincontroller;
 
+import bl.personnelbl.impl.PersonnelBLServiceImpl;
 import bl.userbl.impl.UserBlServiceImpl;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -43,16 +44,21 @@ public class LoginSceneController {
     @FXML private Pane movingSection;
 
     private UserBlServiceImpl userBlService;
+    private PersonnelBLServiceImpl personnelBLService;
+
+    private String currentUser = null;
 
     //用于客户登录和工作人员登录界面切换
     private boolean isFromLogin = true;
 
-    Stage stage;
+    private Stage stage;
     public void setStage(Stage stage) {
         this.stage = stage;
+        currentUser = "user";
 
         try {
             userBlService = new UserBlServiceImpl();
+            personnelBLService = new PersonnelBLServiceImpl();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -106,6 +112,8 @@ public class LoginSceneController {
      */
     @FXML
     private void changeToManager() {
+        currentUser = "personnel";
+
         changeToLogin.setVisible(false);
         changeToRegister.setVisible(false);
         slider.setVisible(false);
@@ -136,6 +144,8 @@ public class LoginSceneController {
      */
     @FXML
     private void changeToUser() {
+        currentUser = "user";
+
         changeToLogin.setVisible(true);
         changeToRegister.setVisible(true);
         slider.setVisible(true);
@@ -177,31 +187,37 @@ public class LoginSceneController {
     }
 
     /**
-     * 客户登录
+     * 登录
      */
     @FXML
     private void Login() {
 
         try {
-            ResultMessage resultMessage = userBlService.login(loginUsername.getText(), loginPassword.getText());
+            if (currentUser.equals("user")) {
+                ResultMessage resultMessage = userBlService.login(loginUsername.getText(), loginPassword.getText());
 
-            if (resultMessage == ResultMessage.UsernameNotExisted) {
-                System.out.println("not exits");
-            } else if (resultMessage == ResultMessage.PasswordWrong) {
-                System.out.println("wrong password");
-            } else if (resultMessage == ResultMessage.Success) {
-                stage.setScene(new ComUserScene(new Group(),stage, loginUsername.getText()));
-                System.out.println("success");
+                if (resultMessage == ResultMessage.UsernameNotExisted) {
+                    System.out.println("not exits");
+                } else if (resultMessage == ResultMessage.PasswordWrong) {
+                    System.out.println("wrong password");
+                } else if (resultMessage == ResultMessage.Success) {
+                    stage.setScene(new ComUserScene(new Group(), stage, loginUsername.getText()));
+                    System.out.println("success");
+                }
+            } else {
+                ResultMessage resultMessage = personnelBLService.login(Integer.valueOf(loginUsername.getText()), loginPassword.getText());
+
+                if (resultMessage == ResultMessage.Success) {
+                    System.out.println("personnel login success");
+
+                    stage.setScene(new WebmanagerComScene(new Group(), stage));
+                } else {
+                    System.out.println("personnel login failed");
+                }
             }
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-    }
-
-
-    @FXML
-    private void webmanagerLogin() {
-        stage.setScene(new WebmanagerComScene(new Group(), stage));
     }
 
 

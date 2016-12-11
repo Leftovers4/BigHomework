@@ -36,7 +36,7 @@
             <Image url="@../../img/login/logo.png" />
          </image>
       </ImageView>
-      <Button id="managerEntrance" fx:id="managerEntrance" alignment="CENTER" contentDisplay="RIGHT" layoutX="475.0" layoutY="370.0" onAction="#webmanagerLogin" text="工作人员入口">
+      <Button id="managerEntrance" fx:id="managerEntrance" alignment="CENTER" contentDisplay="RIGHT" layoutX="475.0" layoutY="370.0" onAction="#changeToManager" text="工作人员入口">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
