@@ -195,17 +195,17 @@
          <children>
             <TableView fx:id="timeTable" prefHeight="337.0" prefWidth="778.0">
                <columns>
-                  <TableColumn fx:id="timeRoomTypeCol" prefWidth="100.0" resizable="false" styleClass="LeftAlignCol" text="客房类型" />
                   <TableColumn fx:id="timeStartCol" prefWidth="170.0" resizable="false" styleClass="LeftAlignCol" text="开始日期" />
                   <TableColumn fx:id="timeEndCol" prefWidth="170.0" resizable="false" styleClass="LeftAlignCol" text="结束日期" />
                   <TableColumn fx:id="timeDiscountCol" minWidth="0.0" prefWidth="60.0" resizable="false" styleClass="RightAlignCol" text="折扣" />
+                  <TableColumn fx:id="timeRoomTypeCol" prefWidth="100.0" resizable="false" styleClass="LeftAlignCol" text="客房类型" />
                   <TableColumn fx:id="timePriceCol" minWidth="0.0" prefWidth="146.0" resizable="false" styleClass="RightAlignCol" text="优惠价（元/天）" />
-                  <TableColumn fx:id="timeDiscountCol1" minWidth="0.0" prefWidth="100.0" resizable="false" styleClass="MidAlignCol" text="操作" />
+                  <TableColumn fx:id="timeOpCol" minWidth="0.0" prefWidth="100.0" resizable="false" styleClass="MidAlignCol" text="操作" />
                </columns>
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="778.0">
                <children>
-                  <HBox fx:id="addTimeHBox" alignment="BOTTOM_LEFT" prefHeight="90.0" prefWidth="504.0">
+                  <HBox fx:id="addTimeHBox" alignment="BOTTOM_LEFT" prefHeight="90.0" prefWidth="534.0" visible="false">
                      <children>
                         <GridPane hgap="10.0">
                           <columnConstraints>
@@ -218,12 +218,12 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <DatePicker prefHeight="36.0" prefWidth="155.0" promptText="开始日期" />
-                              <ComboBox prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="1" />
-                              <ComboBox prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" />
-                              <DatePicker prefHeight="36.0" prefWidth="155.0" promptText="结束日期" GridPane.rowIndex="1" />
-                              <ComboBox layoutX="110.0" layoutY="2.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <ComboBox layoutX="110.0" layoutY="22.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <DatePicker fx:id="startTimeDatePicker" prefHeight="36.0" prefWidth="155.0" promptText="开始日期" />
+                              <ComboBox fx:id="startHourBox" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="1" />
+                              <ComboBox fx:id="startMinBox" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" />
+                              <DatePicker fx:id="endTimeDatePicker" prefHeight="36.0" prefWidth="155.0" promptText="结束日期" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="endHourBox" layoutX="110.0" layoutY="2.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="endMinBox" layoutX="110.0" layoutY="22.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                         <Label text="折扣：">
@@ -231,16 +231,11 @@
                               <Insets bottom="10.0" left="18.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField alignment="CENTER" layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="50.0" promptText="80">
+                        <TextField fx:id="timeDiscountField" alignment="CENTER" layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="67.0" promptText="小数">
                            <HBox.margin>
                               <Insets bottom="5.0" left="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Label layoutX="466.0" layoutY="16.0" text="\%">
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="5.0" />
-                           </HBox.margin>
-                        </Label>
                      </children>
                   </HBox>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="220.0">
@@ -277,7 +272,7 @@
                         </Button>
                      </children>
                      <HBox.margin>
-                        <Insets bottom="2.0" left="50.0" />
+                        <Insets bottom="2.0" left="40.0" />
                      </HBox.margin>
                   </Pane>
                </children>

@@ -17,11 +17,15 @@ import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
 import presentation.util.other.DisableColumnChangeListener;
+import presentation.util.other.MyComboBox;
 import presentation.util.other.MySlider;
 import util.PromotionType;
 import vo.promotion.PromotionVO;
 
 import java.rmi.RemoteException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -73,6 +77,14 @@ public class ManagePromotionPaneController {
     @FXML private TableColumn timeEndCol;
     @FXML private TableColumn timeDiscountCol;
     @FXML private TableColumn timePriceCol;
+    @FXML private TableColumn timeOpCol;
+    @FXML private DatePicker startTimeDatePicker;
+    @FXML private DatePicker endTimeDatePicker;
+    @FXML private ComboBox startHourBox;
+    @FXML private ComboBox startMinBox;
+    @FXML private ComboBox endHourBox;
+    @FXML private ComboBox endMinBox;
+    @FXML private TextField timeDiscountField;
 
     //合作企业优惠
     @FXML private Button addComBtn;
@@ -101,6 +113,7 @@ public class ManagePromotionPaneController {
     private Boolean isExistCom = false;
     private PromotionBLService promotionBLService;
     private ProListButtonCell proRoomListButtonCell;
+    private ProListButtonCell proTimeListButtonCell;
 
     public void launch() {
         alertController = new AlertController();
@@ -159,14 +172,14 @@ public class ManagePromotionPaneController {
         roomOpCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {
-                proRoomListButtonCell = new ProListButtonCell();
+                proRoomListButtonCell = new ProListButtonCell(roomTable, PromotionType.MultipleRoomPromotion);
                 return proRoomListButtonCell;
             }
         });
         final TableColumn[] roomColumns = {roomTypeCol, roomLeastCol, roomDiscountCol, roomPriceCol, roomOpCol};
         roomTable.getColumns().addListener(new DisableColumnChangeListener(roomTable, roomColumns));
 
-        initData(roomTable, PromotionType.MULTI_ROOMS_HP);
+        initData(roomTable, PromotionType.MultipleRoomPromotion);
     }
 
     @FXML
@@ -174,6 +187,7 @@ public class ManagePromotionPaneController {
         showVBox(timeVBox);
 
         initTimeTable();
+        setTimeComponentsVisible(false);
 
         MySlider.moveSliderLabel(sliderPromotionLabel,300);
     }
@@ -184,10 +198,25 @@ public class ManagePromotionPaneController {
         timeEndCol.setCellValueFactory(new PropertyValueFactory<>("endTime"));
         timeDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
         timePriceCol.setCellValueFactory(new PropertyValueFactory<>("bestPrice"));
-        final TableColumn[] timeColumns = {timeRoomTypeCol, timeStartCol, timeEndCol, timeDiscountCol, timePriceCol};
+        timeOpCol.setCellFactory(new Callback<TableColumn, TableCell>() {
+            @Override
+            public TableCell call(TableColumn param) {
+                proTimeListButtonCell = new ProListButtonCell(timeTable, PromotionType.SpecialTimePromotion);
+                return proTimeListButtonCell;
+            }
+        });
+        final TableColumn[] timeColumns = {timeStartCol, timeEndCol, timeDiscountCol, timeRoomTypeCol, timePriceCol, timeOpCol};
         timeTable.getColumns().addListener(new DisableColumnChangeListener(timeTable, timeColumns));
 
         initData(timeTable, PromotionType.SpecialTimePromotion);
+    }
+
+
+    private void initTimeBOX() {
+        MyComboBox.initHourBox(startHourBox);
+        MyComboBox.initMinBox(startMinBox);
+        MyComboBox.initHourBox(endHourBox);
+        MyComboBox.initMinBox(endMinBox);
     }
 
     @FXML
@@ -314,9 +343,10 @@ public class ManagePromotionPaneController {
             if(isRoomAdd){
                 //TODO 更换hotelID
                 promotionVO.hotelID = 522000;
-                promotionVO.promotionType = PromotionType.MULTI_ROOMS_HP;
+                promotionVO.promotionType = PromotionType.MultipleRoomPromotion;
                 promotionBLService.create(promotionVO);
             }else{
+                roomTable.setDisable(false);
                 promotionVO.promotionID = ((PromotionVO) roomTable.getItems().get(proRoomListButtonCell.getSelectedIndex())).promotionID;
                 promotionBLService.update(promotionVO);
             }
@@ -324,12 +354,13 @@ public class ManagePromotionPaneController {
             e.printStackTrace();
         }
 
-        initData(roomTable, PromotionType.MULTI_ROOMS_HP);
+        initData(roomTable, PromotionType.MultipleRoomPromotion);
         setRoomsComponentsVisible(false);
     }
 
     @FXML
     private void cancelRoomAdd(){
+        roomTable.setDisable(false);
         setRoomsComponentsVisible(false);
     }
 
@@ -342,14 +373,46 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void addTimePromotion(){
+        isTimeAdd = true;
+        setTimeComponentsVisible(true);
+        initTimeBOX();
     }
 
     @FXML
     private void confirmTimeAdd(){
+        PromotionVO promotionVO = new PromotionVO();
+        try {
+            LocalDate startTimeDate = startTimeDatePicker.getValue();
+            LocalDate endTimeDate = endTimeDatePicker.getValue();
+            int startHour = (int) (startHourBox.getValue());
+            int startMin = (int) (startMinBox.getValue());
+            int endHour = (int) (endHourBox.getValue());
+            int endMin = (int) (endMinBox.getValue());
+            double timeDiscount = Double.parseDouble(timeDiscountField.getText());
+            promotionVO.promotionTimeVO.beginTime = LocalDateTime.of(startTimeDate, LocalTime.of(startHour, startMin));
+            promotionVO.promotionTimeVO.endTime = LocalDateTime.of(endTimeDate, LocalTime.of(endHour, endMin));
+            promotionVO.discount = timeDiscount;
+            if(isTimeAdd){
+                //TODO 更换hotelID
+                promotionVO.hotelID = 522000;
+                promotionVO.promotionType = PromotionType.SpecialTimePromotion;
+                promotionBLService.create(promotionVO);
+            }else{
+                timeTable.setDisable(false);
+                promotionVO.promotionID = ((PromotionVO) timeTable.getItems().get(proTimeListButtonCell.getSelectedIndex())).promotionID;
+                promotionBLService.update(promotionVO);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        initData(timeTable, PromotionType.SpecialTimePromotion);
+        setTimeComponentsVisible(false);
     }
 
     @FXML
     private void cancelTimeAdd(){
+        timeTable.setDisable(false);
         setTimeComponentsVisible(false);
     }
 
@@ -420,9 +483,13 @@ public class ManagePromotionPaneController {
         final private HBox btnBox = new HBox();
         final private Button modifyButton = new Button();
         final private Button deleteButton = new Button();
+        private TableView table;
+        private PromotionType proType;
         private int selectedIndex;
 
-        public ProListButtonCell() {
+        public ProListButtonCell(TableView tableView, PromotionType promotionType) {
+            this.table = tableView;
+            this.proType = promotionType;
             Image modifyImage = new Image("/img/hotelworker/modifyroom.png");
             modifyButton.setGraphic(new ImageView(modifyImage));
             modifyButton.getStyleClass().add("TableButtonCell");
@@ -432,28 +499,32 @@ public class ManagePromotionPaneController {
             deleteButton.getStyleClass().add("TableButtonCell");
 
             modifyButton.setOnAction(event -> {
-                //多间预订
-                isRoomAdd = false;
-                roomTable.setDisable(true);
-                setRoomsComponentsVisible(true);
-
                 selectedIndex = getTableRow().getIndex();
+                if(proType == PromotionType.MultipleRoomPromotion){
+                    //多间预订
+                    isRoomAdd = false;
+                    roomTable.setDisable(true);
+                    setRoomsComponentsVisible(true);
+                }else if(proType == PromotionType.SpecialTimePromotion){
+                    //特定期间优惠
+                    isTimeAdd = false;
+                    timeTable.setDisable(true);
+                    setTimeComponentsVisible(true);
+                    initTimeBOX();
+                }
             });
 
             deleteButton.setOnAction(event -> {
-
-                //多间预订
                 if (alertController.showConfirmDeleteAlert("您确定要删除此优惠吗？", "确认删除")) {
                     selectedIndex = getTableRow().getIndex();
-                    long promotionID = ((PromotionVO) roomTable.getItems().get(selectedIndex)).promotionID;
+                    long promotionID = ((PromotionVO) table.getItems().get(selectedIndex)).promotionID;
                     try {
                         promotionBLService.delete(promotionID);
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
 
-                    initData(roomTable, PromotionType.MultipleRoomPromotion);
-                    setRoomsComponentsVisible(false);
+                    initData(table, proType);
                 }
             });
 

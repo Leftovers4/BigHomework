@@ -10,6 +10,7 @@ import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
 import presentation.util.alert.AlertController;
 import presentation.util.other.CancelDateBefore;
+import presentation.util.other.MyComboBox;
 import util.DateTimeFormat;
 import util.OrderType;
 import vo.order.OrderVO;
@@ -118,25 +119,12 @@ public class UpdateOrderInfoPaneController {
     }
 
     private void initBox() {
-
-        for (int i = 0; i < 24; i++){
-            checkInTimeHourBox.getItems().add(i);
-            expLeaveTimeHourBox.getItems().add(i);
-            actLeaveTimeHourBox.getItems().add(i);
-        }
-
-        for (int i = 0; i < 60; i++){
-            checkInTimeMinBox.getItems().add(i);
-            expLeaveTimeMinBox.getItems().add(i);
-            actLeaveTimeMinBox.getItems().add(i);
-        }
-
-        checkInTimeHourBox.setValue(LocalDateTime.now().getHour());
-        expLeaveTimeHourBox.setValue(LocalDateTime.now().getHour());
-        actLeaveTimeHourBox.setValue(LocalDateTime.now().getHour());
-        checkInTimeMinBox.setValue(LocalDateTime.now().getMinute());
-        expLeaveTimeMinBox.setValue(LocalDateTime.now().getMinute());
-        actLeaveTimeMinBox.setValue(LocalDateTime.now().getMinute());
+        MyComboBox.initHourBox(checkInTimeHourBox);
+        MyComboBox.initHourBox(expLeaveTimeHourBox);
+        MyComboBox.initHourBox(actLeaveTimeHourBox);
+        MyComboBox.initMinBox(checkInTimeMinBox);
+        MyComboBox.initMinBox(expLeaveTimeMinBox);
+        MyComboBox.initMinBox(actLeaveTimeMinBox);
     }
 
     private void initLabels(OrderVO orderVO) {
