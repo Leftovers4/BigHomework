@@ -11,6 +11,7 @@ import util.DateTimeFormat;
 import util.OrderType;
 import vo.order.OrderVO;
 
+import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
 
 /**
@@ -73,7 +74,21 @@ public class OrderDetailUserController {
             roomNumLabeldet.setText(String.valueOf(orderVO.roomAmount));
             peopleNumLabeldet.setText(String.valueOf(orderVO.personAmount));
             childdet.setText(orderVO.withChildren ? "有" : "无");
-//            bestpromotionLabel.setText(orderVO.);
+
+            try {
+                orderBlService.getOrderActualPrice(orderVO);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            }
+
+            bestpromotionLabel.setText(orderVO.orderPromoInfoVO.promotionType.toString());
+
             finalpriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
             ordertypeLabel.setText(String.valueOf(orderVO.orderType));
 

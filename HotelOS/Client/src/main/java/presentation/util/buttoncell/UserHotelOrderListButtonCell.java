@@ -9,21 +9,19 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.OrderDetailUserPane;
+import vo.order.OrderVO;
 import vo.user.CreditRecordVO;
-import vo.user.CreditVO;
-
 
 /**
- * Created by wyj on 2016/12/2.
- * Description: 信用记录列表添加按钮的方法：查看订单详情按钮
+ * Created by wyj on 2016/12/11.
  */
-public class CreditTabelButtonCell extends TableCell<CreditRecordVO, Boolean> {
+public class UserHotelOrderListButtonCell extends TableCell<OrderVO, Boolean> {
 
     final private HBox btnBox = new HBox();
     final private Button checkDetailBtn = new Button();
     private TableView tableView;
 
-    public CreditTabelButtonCell(final Stage stage, final Pane mainPane, final TableView tableView, final String userID) {
+    public UserHotelOrderListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView, final String userID) {
         this.tableView = tableView;
 
         this.getStylesheets().add(CreditTabelButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
@@ -33,9 +31,9 @@ public class CreditTabelButtonCell extends TableCell<CreditRecordVO, Boolean> {
 
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
-            CreditRecordVO creditRecordVO = (CreditRecordVO) tableView.getItems().get(selectedIndex);
+            OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane, userID, creditRecordVO.orderID));
+            mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane, userID, orderVO.orderID));
         });
     }
 

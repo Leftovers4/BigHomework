@@ -38,8 +38,8 @@ public class WebManHotelListButtonCell extends TableCell<HotelVO, Boolean> {
         deleteBtn.getStyleClass().add("tableCellBtn");
 
         addBtn.setOnAction(event -> {
-            int selectedIndex = getTableRow().getIndex();
-            HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
+//            int selectedIndex = getTableRow().getIndex();
+//            HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
             mainPane.getChildren().add(new AddHotelPane(stage));
         });
@@ -61,6 +61,7 @@ public class WebManHotelListButtonCell extends TableCell<HotelVO, Boolean> {
             setGraphic(null);
             setText(null);
         } else {
+            btnBox.getChildren().clear();
             btnBox.getChildren().add(addBtn);
             btnBox.getChildren().add(editBtn);
             btnBox.getChildren().add(deleteBtn);

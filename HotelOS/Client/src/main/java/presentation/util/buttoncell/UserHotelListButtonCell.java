@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.UserGenerateOrderPane;
+import presentation.userui.userscene.UserHotelInfoPane;
 import vo.hotel.HotelVO;
 
 /**
@@ -22,7 +23,7 @@ public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
     final private Button generateOrderBtn = new Button();
     private TableView tableView;
 
-    public UserHotelListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView) {
+    public UserHotelListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView, final String userID) {
         this.tableView = tableView;
 
         this.getStylesheets().add(UserHotelListButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
@@ -35,9 +36,10 @@ public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
         generateOrderBtn.getStyleClass().add("tableCellBtn");
 
         checkDetailBtn.setOnAction(event -> {
-//            int selectedIndex = getTableRow().getIndex();
-//            mainPane.getChildren().remove(0);
-//            mainPane.getChildren().add(new );
+            int selectedIndex = getTableRow().getIndex();
+            HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
+            mainPane.getChildren().remove(0);
+            mainPane.getChildren().add(new UserHotelInfoPane(stage, mainPane, userID, hotelVO.hotelID));
         });
 
         generateOrderBtn.setOnAction(event -> {

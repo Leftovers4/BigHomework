@@ -451,7 +451,7 @@ public class UserSearchHotelController {
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {
-                userHotelListButtonCell = new UserHotelListButtonCell(stage, mainPane, hotelList);
+                userHotelListButtonCell = new UserHotelListButtonCell(stage, mainPane, hotelList, userID);
                 return userHotelListButtonCell;
             }
         });

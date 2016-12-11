@@ -35,7 +35,6 @@ public class UserOrderListController {
     @FXML private TableColumn orderStateCol;
     @FXML private TableColumn hotelNameCol;
     @FXML private TableColumn btnCol;
-
     @FXML private TableView orderList;
 
     private UserOrderListButtonCell userOrderListButtonCell;
@@ -52,7 +51,6 @@ public class UserOrderListController {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-
 
         initialComBox();
         initialOrderListData();
