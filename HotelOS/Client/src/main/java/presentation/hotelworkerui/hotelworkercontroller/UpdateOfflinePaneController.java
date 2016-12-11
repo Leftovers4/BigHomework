@@ -57,9 +57,8 @@ public class UpdateOfflinePaneController {
 
     private void initLabel() {
         updateTitleLabel.setText(isCheckIn ? "线下入住" : "线下退房");
-        //TODO 更换酒店ID
         try {
-            busyRoomLabel.setText(String.valueOf(hotelBLService.viewOfflineCheckInRoomAmount(522000)));
+            busyRoomLabel.setText(String.valueOf(hotelBLService.viewOfflineCheckInRoomAmount(ComWorkerSceneController.hotelID)));
         } catch (RemoteException e) {
             e.printStackTrace();
         }

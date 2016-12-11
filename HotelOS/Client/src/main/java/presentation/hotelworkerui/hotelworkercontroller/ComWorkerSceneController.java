@@ -41,9 +41,11 @@ public class ComWorkerSceneController {
 
     private Stage stage;
     private AlertController alertController;
+    public static long hotelID;
 
-    public void launch(Stage primaryStage){
+    public void launch(Stage primaryStage,long hotelID){
         this.stage = primaryStage;
+        this.hotelID = hotelID;
         alertController = new AlertController();
         mainPane.getChildren().add(new InfoPane(mainPane));
         leftBarBtnArr = new ArrayList<>(Arrays.asList(hotelInfoBtn, orderListBtn, registerRoomBtn,

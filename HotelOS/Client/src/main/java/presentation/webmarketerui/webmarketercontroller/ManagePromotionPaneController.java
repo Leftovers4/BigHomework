@@ -110,7 +110,7 @@ public class ManagePromotionPaneController {
 
     private AlertController alertController;
     private PromotionBLService promotionBLService;
-    //TODO 如果已添加促销策略 则不再显示添加按钮
+    //是添加还是修改
     private Boolean isTimeAdd = false;
     private Boolean isAreaAdd = false;
     private ProListButtonCell proTimeListButtonCell;
@@ -407,7 +407,7 @@ public class ManagePromotionPaneController {
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
-            //TODO
+
             initLabel();
             setManageComponentsVisible(false);
         }

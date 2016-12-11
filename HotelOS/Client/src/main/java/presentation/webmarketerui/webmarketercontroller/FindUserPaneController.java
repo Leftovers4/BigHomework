@@ -29,7 +29,6 @@ public class FindUserPaneController {
         alertController = new AlertController();
     }
 
-    //TODO 更好UserVo
     @FXML
     private void findUser() {
         if (userNameField.getText().equals("")) alertController.showInputWrongAlert("客户名不能为空", "查询失败");

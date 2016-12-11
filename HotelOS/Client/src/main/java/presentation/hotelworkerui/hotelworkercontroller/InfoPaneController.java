@@ -91,8 +91,7 @@ public class InfoPaneController {
     private void initData() {
         HotelVO hotelVO;
         try {
-            //TODO 更换hotelID
-            hotelVO = hotelBLService.viewBasicHotelInfo(522000);
+            hotelVO = hotelBLService.viewBasicHotelInfo(ComWorkerSceneController.hotelID);
 
             city = String.valueOf(hotelVO.address);
             tradeArea = String.valueOf(hotelVO.tradingArea);

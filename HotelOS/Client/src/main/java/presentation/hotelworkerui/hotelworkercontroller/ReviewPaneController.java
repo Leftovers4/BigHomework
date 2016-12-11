@@ -110,10 +110,9 @@ public class ReviewPaneController {
     }
 
     private ObservableList<ReviewVO> getReviewVoList() {
-        //TODO hotelID更换
         ObservableList<ReviewVO> list = null;
         try {
-            list = FXCollections.observableArrayList(orderBLService.viewHotelReviewList(522000));
+            list = FXCollections.observableArrayList(orderBLService.viewHotelReviewList(ComWorkerSceneController.hotelID));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -121,7 +120,6 @@ public class ReviewPaneController {
     }
 
     /**
-     * TODO
      * 设置组合框的监听
      */
     private void addBoxListener() {
@@ -130,7 +128,7 @@ public class ReviewPaneController {
                     try {
                         String temp = newValue.toString();
                         if(temp.equals("所有")) reviewTable.setItems(getReviewVoList());
-                        else reviewTable.setItems(FXCollections.observableArrayList(orderBLService.viewHotelReviewListByRating(522000, Integer.parseInt(temp))));
+                        else reviewTable.setItems(FXCollections.observableArrayList(orderBLService.viewHotelReviewListByRating(ComWorkerSceneController.hotelID, Integer.parseInt(temp))));
                     }catch (RemoteException e){
                         e.printStackTrace();
                     }

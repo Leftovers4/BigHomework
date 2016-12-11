@@ -16,9 +16,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import presentation.hotelworkerui.hotelworkerscene.ComWorkerScene;
 import presentation.userui.userscene.ComUserScene;
 import presentation.webmanagerui.webmanagerscene.WebmanagerComScene;
+import presentation.webmarketerui.webmarketerscene.ComMarketerScene;
+import util.PersonnelType;
 import util.ResultMessage;
+import vo.personnel.PersonnelVO;
 
 import java.rmi.RemoteException;
 
@@ -209,8 +213,15 @@ public class LoginSceneController {
 
                 if (resultMessage == ResultMessage.Success) {
                     System.out.println("personnel login success");
+                    PersonnelVO personnelVO = personnelBLService.searchPersonnelByID(Integer.valueOf(loginUsername.getText()));
+                    if(personnelVO.personnelType == PersonnelType.HotelWorker){
+                        stage.setScene(new ComWorkerScene(new Group(), stage, personnelVO.hotelID));
+                    }else if(personnelVO.personnelType == PersonnelType.WebMarketer){
+                        stage.setScene(new ComMarketerScene(new Group(), stage));
+                    }else {
+                        stage.setScene(new WebmanagerComScene(new Group(), stage));
+                    }
 
-                    stage.setScene(new WebmanagerComScene(new Group(), stage));
                 } else {
                     System.out.println("personnel login failed");
                 }

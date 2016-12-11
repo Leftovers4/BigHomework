@@ -15,7 +15,7 @@ import java.io.IOException;
  */
 public class ComWorkerScene extends Scene{
 
-    public ComWorkerScene(Parent parent, Stage primaryStage) {
+    public ComWorkerScene(Parent parent, Stage primaryStage, long hotelID) {
         super(parent);
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelcommon.fxml"));
 
@@ -27,7 +27,7 @@ public class ComWorkerScene extends Scene{
 
         //配置控制器
         ComWorkerSceneController comWorkerSceneController = fxmlLoader.getController();
-        comWorkerSceneController.launch(primaryStage);
+        comWorkerSceneController.launch(primaryStage, hotelID);
 
         //实现窗口可拖动
         MyWindow.enableWindowDrag(this.getRoot(), primaryStage);

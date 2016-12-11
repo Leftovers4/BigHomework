@@ -117,11 +117,12 @@ public class ManagePromotionPaneController {
     private ProListButtonCell proRoomListButtonCell;
     private ProListButtonCell proTimeListButtonCell;
     private ProListButtonCell proComListButtonCell;
+    private long hotelID;
 
     public void launch() {
         alertController = new AlertController();
         vBoxes = new ArrayList<>(Arrays.asList(birthVBox,roomVBox,timeVBox,comVBox));
-
+        hotelID = ComWorkerSceneController.hotelID;
         //设置生日优惠按钮默认被选中
         makeBirthFocused();
         initService();
@@ -258,8 +259,7 @@ public class ManagePromotionPaneController {
 
     private void initData(TableView tableView, PromotionType promotionType) {
         try {
-            //TODO 更换hotelID
-            tableView.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(522000, promotionType)));
+            tableView.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(ComWorkerSceneController.hotelID, promotionType)));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -278,8 +278,7 @@ public class ManagePromotionPaneController {
         try {
             promotionVO.discount = Double.parseDouble(birthDiscountField.getText());
             if(isBirthAdd){
-                //TODO 更换hotelID
-                promotionVO.hotelID = 522000;
+                promotionVO.hotelID = hotelID;
                 promotionVO.promotionType = PromotionType.BirthdayPromotion;
                 promotionBLService.create(promotionVO);
             }else{
@@ -349,8 +348,7 @@ public class ManagePromotionPaneController {
             promotionVO.leastRooms = Integer.parseInt(leastRoomsField.getText());
             promotionVO.discount = Double.parseDouble(roomDiscountField.getText());
             if(isRoomAdd){
-                //TODO 更换hotelID
-                promotionVO.hotelID = 522000;
+                promotionVO.hotelID = hotelID;
                 promotionVO.promotionType = PromotionType.MultipleRoomPromotion;
                 promotionBLService.create(promotionVO);
             }else{
@@ -401,8 +399,7 @@ public class ManagePromotionPaneController {
             promotionVO.promotionTimeVO.endTime = LocalDateTime.of(endTimeDate, LocalTime.of(endHour, endMin));
             promotionVO.discount = timeDiscount;
             if(isTimeAdd){
-                //TODO 更换hotelID
-                promotionVO.hotelID = 522000;
+                promotionVO.hotelID = hotelID;
                 promotionVO.promotionType = PromotionType.SpecialTimePromotion;
                 promotionBLService.create(promotionVO);
             }else{
@@ -447,8 +444,7 @@ public class ManagePromotionPaneController {
             promotionVO.promotionEnterprises.add(comName);
             promotionVO.discount = comDiscount;
             if(isComAdd){
-                //TODO 更换hotelID
-                promotionVO.hotelID = 522000;
+                promotionVO.hotelID = hotelID;
                 promotionVO.promotionType = PromotionType.EnterprisePromotion;
                 promotionBLService.create(promotionVO);
             }else{
