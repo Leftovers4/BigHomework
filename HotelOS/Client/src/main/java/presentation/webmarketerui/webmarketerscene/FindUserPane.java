@@ -18,7 +18,7 @@ public class FindUserPane extends Pane{
     }
 
     private void loadFxml(Pane mainPane) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/webmarketer/webfinduser.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/webmarketer/webfinduser.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

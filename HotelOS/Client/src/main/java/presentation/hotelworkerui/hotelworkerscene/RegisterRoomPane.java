@@ -17,7 +17,7 @@ public class RegisterRoomPane  extends Pane {
     }
 
     private void loadFxml() {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelroomregister.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/hotelworker/hotelroomregister.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

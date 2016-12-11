@@ -17,7 +17,7 @@ public class ManagePromotionPane extends Pane{
     }
 
     private void loadFxml() {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/webmarketer/webpromotion1.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/webmarketer/webpromotion1.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

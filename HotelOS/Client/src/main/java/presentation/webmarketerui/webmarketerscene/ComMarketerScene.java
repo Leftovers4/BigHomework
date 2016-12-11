@@ -17,7 +17,7 @@ public class ComMarketerScene extends Scene{
 
     public ComMarketerScene(Parent parent, Stage primaryStage) {
         super(parent);
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/webmarketer/webmarketercommon.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/webmarketer/webmarketercommon.fxml"));
 
         try {
             this.setRoot(fxmlLoader.load());

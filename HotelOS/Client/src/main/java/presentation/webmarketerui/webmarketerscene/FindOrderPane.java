@@ -18,7 +18,7 @@ public class FindOrderPane extends Pane{
     }
 
     private void loadFxml(Pane mainPane) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/webmarketer/webfindorder.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/webmarketer/webfindorder.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

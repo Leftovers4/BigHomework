@@ -18,7 +18,7 @@ public class FindOrderPane extends Pane{
     }
 
     private void loadFxml(Pane mainPane,Boolean isCheckIn) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelfindorder.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/hotelworker/hotelfindorder.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

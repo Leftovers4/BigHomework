@@ -18,7 +18,7 @@ public class UpdateOrderInfoPane extends Pane{
     }
 
     private void loadFxml(Pane mainPane,Boolean isCheckIn,Boolean isFromList,OrderVO orderVO) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelupdateorderinfo.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/hotelworker/hotelupdateorderinfo.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

@@ -19,7 +19,7 @@ public class InfoPane extends Pane{
     }
 
     private void loadFxml(Pane mainPane) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelinfo.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/hotelworker/hotelinfo.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

@@ -19,7 +19,7 @@ public class CreditRecordPane extends Pane {
     }
 
     private void loadFxml(Stage primaryStage, Pane mainPane, String userID) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/creditRecord.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/user/creditRecord.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

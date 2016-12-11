@@ -17,7 +17,7 @@ public class AddHotelWorkerPane extends Pane {
     }
 
     private void loadFxml(Stage primaryStage) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/webmanager/addnewhotelworker.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/webmanager/addnewhotelworker.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();
