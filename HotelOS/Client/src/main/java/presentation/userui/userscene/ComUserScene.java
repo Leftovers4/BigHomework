@@ -17,7 +17,7 @@ public class ComUserScene extends Scene{
 
     public ComUserScene(Parent parent, Stage primaryStage, String username) {
         super(parent);
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/usercommon.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/user/usercommon.fxml"));
 
         try {
             this.setRoot(fxmlLoader.load());

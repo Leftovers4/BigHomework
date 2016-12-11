@@ -17,7 +17,7 @@ public class CancelOrderPane extends Pane {
     }
 
     private void loadFxml(Stage primaryStage, String orderID) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/cancelOrder.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/user/cancelOrder.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

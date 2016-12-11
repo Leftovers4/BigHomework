@@ -16,7 +16,7 @@ public class WebmanagerComScene extends Scene {
 
     public WebmanagerComScene(Parent parent, Stage primaryStage) {
         super(parent);
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/webmanager/webmanagercommon.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/webmanager/webmanagercommon.fxml"));
 
         try {
             this.setRoot(fxmlLoader.load());

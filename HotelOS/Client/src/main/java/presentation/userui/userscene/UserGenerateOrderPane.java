@@ -18,7 +18,7 @@ public class UserGenerateOrderPane extends Pane {
     }
 
     private void loadFxml(Stage primaryStage) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/user/UserGenerateOrder.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/user/UserGenerateOrder.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

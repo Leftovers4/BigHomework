@@ -17,7 +17,7 @@ public class ReviewPane extends Pane{
     }
 
     private void loadFxml(Pane mainPane, String rating) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelreview.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/hotelworker/hotelreview.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();
