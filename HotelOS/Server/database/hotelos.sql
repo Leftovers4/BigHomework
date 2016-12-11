@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50633
 File Encoding         : 65001
 
-Date: 2016-12-10 10:44:48
+Date: 2016-12-11 08:59:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -106,7 +106,7 @@ INSERT INTO `hotel` VALUES ('346436', '全季酒店', '5', '杭州市', '滨江�
 INSERT INTO `hotel` VALUES ('511454', '越台酒店', '2', '杭州市', '武林商圈', '在浙江大学附近', '前台大妈服务');
 INSERT INTO `hotel` VALUES ('515765', '凯悦酒店', '5', '广州市', '天河商圈', '真正五星级', '只有你想不到的服务');
 INSERT INTO `hotel` VALUES ('516515', '君亭酒店', '2', '杭州市', '武林商圈', '位于武林广场', '还行的服务');
-INSERT INTO `hotel` VALUES ('522000', '榕江大酒店', '5', '南京市', '新街口商圈', '坐落于榕江左岸', '有特殊服务');
+INSERT INTO `hotel` VALUES ('522000', '榕江大酒店', '5', '广东揭阳', '东山', '坐落于榕江左岸。', '有特殊服务');
 INSERT INTO `hotel` VALUES ('522001', '榕江中酒店', '3', '南京市', '夫子庙商圈', '包吃包住', '没有特殊服务');
 INSERT INTO `hotel` VALUES ('522002', '榕江小酒店', '5', '南京市', '新街口商圈', '包吃包住', '没有特殊服务');
 INSERT INTO `hotel` VALUES ('522003', '儒家酒店', '1', '上海市', '浦东商圈', '地势可以', '泳池');
@@ -149,6 +149,7 @@ CREATE TABLE `order_info` (
 -- ----------------------------
 -- Records of order_info
 -- ----------------------------
+INSERT INTO `order_info` VALUES ('15165165', '522000', '123456', 'Abnormal', '榕江大酒店', 'Single', '2', '511', '2', '0', '0001-01-01 00:00:00', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '100.00', '80.00', 'BirthdayPromotion', '2016-01-01 11:11:11', '4', '好', '2016-01-01 11:11:11', 'All');
 INSERT INTO `order_info` VALUES ('52200020161111000', '522000', 'leftovers02', 'Executed', '榕江大酒店', 'Single', '2', '511', '2', '0', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '2016-01-01 11:11:11', '100.00', '80.00', '', '2016-01-03 11:11:11', '4', '好', '2016-01-01 11:11:11', 'All');
 
 -- ----------------------------
@@ -178,7 +179,7 @@ INSERT INTO `personnel` VALUES ('120120', 'pass', 'WebAdministrator', '呃', '00
 DROP TABLE IF EXISTS `promotion`;
 CREATE TABLE `promotion` (
   `promotion_id` int(6) unsigned zerofill NOT NULL,
-  `promotion_type` varchar(20) NOT NULL DEFAULT '',
+  `promotion_type` varchar(40) NOT NULL DEFAULT '',
   `hotel_id` bigint(6) NOT NULL,
   `discount` double NOT NULL DEFAULT '0',
   `least_rooms` smallint(10) unsigned NOT NULL DEFAULT '0',
@@ -236,7 +237,7 @@ CREATE TABLE `room` (
 -- ----------------------------
 -- Records of room
 -- ----------------------------
-INSERT INTO `room` VALUES ('522000', '522000', 'Single', '12', '11', '100.00');
+INSERT INTO `room` VALUES ('121121', '522000', 'Single', '12', '11', '100.00');
 
 -- ----------------------------
 -- Table structure for user
@@ -258,4 +259,5 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('ȹȺȻȼȽȾ', 'ɩɪɫȹȺȻȼȽȾ', '坂', '1', 'ȹȹȸȹȹȸȹȹȸȹȸ', '', '5', '0001-01-01', '南京大学');
+INSERT INTO `user` VALUES ('Hikiii', '123456', 'GHB', '1', '110', 'None', '1', '2016-12-10', '');
+INSERT INTO `user` VALUES ('ɤɭɮɼɧɾɭɺɻ', 'ȹȺȻȼȽȾ', '鋥潡泠', '1', 'ȹȻȹȽȹȽȰȾȿȰȿ', 'Both', '0', '2016-11-09', '南京大学');
