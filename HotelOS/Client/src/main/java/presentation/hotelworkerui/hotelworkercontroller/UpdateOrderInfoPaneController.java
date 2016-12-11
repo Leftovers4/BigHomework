@@ -133,7 +133,7 @@ public class UpdateOrderInfoPaneController {
         orderIDLabel.setText(orderVO.orderID);
         orderTypeLabel.setText(orderVO.orderType.toString());
         orderOriPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.originPrice));
-//      TODO  orderProLabel.setText();
+        orderProLabel.setText(String.valueOf(orderVO.orderPromoInfoVO.promotionType));
         orderActPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
 
         generateTimeLabel.setText(orderVO.orderTimeVO.generateTime.format(DateTimeFormat.dateHourFormat));

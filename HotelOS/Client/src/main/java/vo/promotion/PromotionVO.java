@@ -121,4 +121,12 @@ public class PromotionVO {
     public String getComName(){
         return promotionEnterprises.get(0);
     }
+
+    public String getTradingArea() {
+        return promotionTraAreaVOs.get(0).tradingArea;
+    }
+
+    public double getTraDiscount(){
+        return promotionTraAreaVOs.get(0).traDiscount;
+    }
 }

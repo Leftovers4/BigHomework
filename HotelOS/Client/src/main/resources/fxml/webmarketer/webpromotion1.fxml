@@ -124,24 +124,6 @@
                <children>
                   <Pane layoutX="558.0" layoutY="56.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="220.0">
                      <children>
-                        <Button fx:id="modifyMemBtn" alignment="TOP_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#modifyMemPromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="修改" visible="false">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/modifypromotion.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="deleteMemBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="120.0" mnemonicParsing="false" onAction="#deleteMemPromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="删除" visible="false">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/cancelroom.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
                         <Button fx:id="addMemBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="120.0" maxWidth="100.0" mnemonicParsing="false" onAction="#addMemPromotion" prefWidth="100.0" styleClass="PromotionAddBtn" text="添加">
                            <graphic>
                               <ImageView fitHeight="32.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -162,14 +144,14 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Pane>
-                  <HBox fx:id="addMemHBox" alignment="CENTER_LEFT" layoutY="28.0">
+                  <HBox fx:id="addMemHBox" alignment="CENTER_LEFT" layoutY="28.0" visible="false">
                      <children>
                         <Label layoutX="199.0" layoutY="16.0" text="城市：">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
-                        <ComboBox layoutX="263.0" layoutY="10.0" prefHeight="36.0" prefWidth="101.0" promptText="南京">
+                        <ComboBox fx:id="cityBox" layoutX="263.0" layoutY="10.0" prefHeight="36.0" prefWidth="101.0" promptText="南京">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -179,7 +161,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
-                        <ComboBox prefHeight="36.0" prefWidth="156.0" promptText="新街口商圈" GridPane.columnIndex="1">
+                        <ComboBox fx:id="areaBox" prefHeight="36.0" prefWidth="156.0" promptText="新街口商圈" GridPane.columnIndex="1">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
@@ -189,19 +171,11 @@
                               <Insets left="50.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="36.0" prefWidth="50.0" promptText="80" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="areaDiscountField" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="36.0" prefWidth="57.0" promptText="小数" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Label text="\%" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets left="60.0" />
-                           </GridPane.margin>
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Label>
                      </children>
                      <VBox.margin>
                         <Insets top="10.0" />

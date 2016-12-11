@@ -9,4 +9,9 @@ public class PromotionTraAreaVO {
 
     public double traDiscount;
 
+    public PromotionTraAreaVO(){
+        tradingArea = "";
+        traDiscount = 1;
+    }
+
 }

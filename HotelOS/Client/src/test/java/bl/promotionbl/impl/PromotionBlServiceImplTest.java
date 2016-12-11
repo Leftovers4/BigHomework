@@ -26,7 +26,7 @@ public class PromotionBlServiceImplTest {
 
     @Test
     public void create() throws Exception {
-        PromotionVO promotionVO = new PromotionVO();
+//        PromotionVO promotionVO = new PromotionVO();
 
         //说明：当创建促销策略时，hotelID跟promotionType是一定要赋值的，
         //      当促销策略是网站营销人员制定时，调用IDProducer.produceHotelIDforWP（）
@@ -48,13 +48,17 @@ public class PromotionBlServiceImplTest {
 //        promotionVO.promotionMRVOs.get(3).memberDiscount = 0.85;
 //        promotionVO.promotionMRVOs.get(4).memberDiscount = 0.75;
 //        promotionVO.promotionMRVOs.get(5).memberDiscount = 0.6;
-
-        //多间优惠
-        promotionVO.hotelID = 961529;
-        promotionVO.promotionType = PromotionType.MultipleRoomPromotion;
-        promotionVO.leastRooms = 2;
-        promotionVO.discount = 0.9;
-
+//
+//        //多间优惠
+//        promotionVO.hotelID = 961529;
+//        promotionVO.promotionType = PromotionType.MultipleRoomPromotion;
+//        promotionVO.leastRooms = 2;
+//        promotionVO.discount = 0.9;
+        PromotionVO promotionVO = new PromotionVO();
+        promotionVO.promotionTraAreaVOs.get(0).tradingArea = "xianlin";
+        promotionVO.promotionTraAreaVOs.get(0).traDiscount = 0.9;
+        promotionVO.hotelID = IDProducer.produceHotelIDForWP();
+        promotionVO.promotionType = PromotionType.VIPSpecialAreaPromotion;
         ResultMessage resultMessage = tested.create(promotionVO);
     }
 

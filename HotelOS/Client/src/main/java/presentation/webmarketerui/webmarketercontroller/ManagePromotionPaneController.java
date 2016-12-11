@@ -4,7 +4,6 @@ import bl.promotionbl.PromotionBLService;
 import bl.promotionbl.impl.PromotionBlServiceImpl;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -19,14 +18,21 @@ import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
 import presentation.util.other.DisableColumnChangeListener;
+import presentation.util.other.MyComboBox;
 import presentation.util.other.MySlider;
+import util.IDProducer;
 import util.PromotionType;
-import vo.promotion.PromotionTimeVO;
+import util.TradingArea;
+import vo.promotion.PromotionMRVO;
 import vo.promotion.PromotionVO;
 
 import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -59,13 +65,14 @@ public class ManagePromotionPaneController {
     @FXML private Button addMemBtn;
     @FXML private Button confirmMemBtn;
     @FXML private Button cancelMemBtn;
-    @FXML private Button modifyMemBtn;
-    @FXML private Button deleteMemBtn;
     @FXML private HBox addMemHBox;
     @FXML private TableView proMemTable;
     @FXML private TableColumn proAreaCol;
     @FXML private TableColumn proAreaDiscountCol;
     @FXML private TableColumn proAreaOpCol;
+    @FXML private ComboBox cityBox;
+    @FXML private ComboBox areaBox;
+    @FXML private TextField areaDiscountField;
 
     //会员优惠
     @FXML private Pane memberManagePane;
@@ -146,18 +153,22 @@ public class ManagePromotionPaneController {
         proTimeOpCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {
-                proTimeListButtonCell = new ProListButtonCell();
+                proTimeListButtonCell = new ProListButtonCell(proTimeTable, PromotionType.SpecialTimePromotion);
                 return proTimeListButtonCell;
             }
         });
         final TableColumn[] proTimeColumns = {proStartTimeCol, proEndTimeCol, proTimeDiscountCol, proTimeOpCol};
         proTimeTable.getColumns().addListener(new DisableColumnChangeListener(proTimeTable, proTimeColumns));
-        proTimeTable.setItems(getTimeProVoList());
 
-//        initData(proTimeTable, PromotionType.SPECIAL_TIME_WP);
+        initData(proTimeTable, PromotionType.SpecialTimePromotion);
     }
 
-
+    private void initTimeBOX() {
+        MyComboBox.initHourBox(startHourBox);
+        MyComboBox.initMinBox(startMinBox);
+        MyComboBox.initHourBox(endHourBox);
+        MyComboBox.initMinBox(endMinBox);
+    }
 
     @FXML
     private void showMemberAreaPromotion(){
@@ -172,41 +183,34 @@ public class ManagePromotionPaneController {
     }
 
     private void initAreaTable() {
-        proAreaCol.setCellValueFactory(new PropertyValueFactory<>(""));
-        proAreaDiscountCol.setCellValueFactory(new PropertyValueFactory<>(""));
+        proAreaCol.setCellValueFactory(new PropertyValueFactory<>("tradingArea"));
+        proAreaDiscountCol.setCellValueFactory(new PropertyValueFactory<>("traDiscount"));
         proAreaOpCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {
-                proAreaListButtonCell = new ProListButtonCell();
+                proAreaListButtonCell = new ProListButtonCell(proMemTable, PromotionType.VIPSpecialAreaPromotion);
                 return proAreaListButtonCell;
             }
         });
         final TableColumn[] proMemColumns = {proAreaCol, proAreaDiscountCol, proAreaOpCol};
         proMemTable.getColumns().addListener(new DisableColumnChangeListener(proMemTable, proMemColumns));
-        proMemTable.setItems(getMemProVoList());
+
+        initData(proMemTable, PromotionType.VIPSpecialAreaPromotion);
     }
+
+
+    private void initAreaBox() {
+        //TODo
+        cityBox.getItems().addAll("南京");
+        areaBox.getItems().addAll("仙林商圈");
+    }
+
     private void initData(TableView tableView, PromotionType promotionType) {
         try {
-            //hotelID ???
-            tableView.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(522000, promotionType)));
+            tableView.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(IDProducer.produceHotelIDForWP(), promotionType)));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-    }
-
-    private ObservableList<PromotionVO> getTimeProVoList() {
-        ObservableList<PromotionVO> list = FXCollections.observableArrayList();
-        PromotionTimeVO promotionTimeVO = new PromotionTimeVO();
-        promotionTimeVO.beginTime = LocalDateTime.now();
-        promotionTimeVO.endTime = LocalDateTime.now();
-        PromotionVO promotionVO = new PromotionVO();
-        promotionVO.promotionTimeVO = promotionTimeVO;
-        promotionVO.discount = 0.9;
-        list.add(promotionVO);
-        return list;
-    }
-    private ObservableList<PromotionVO> getMemProVoList() {
-        return null;
     }
 
     @FXML
@@ -223,18 +227,35 @@ public class ManagePromotionPaneController {
     }
 
     private void initLabel() {
-//        lv1CreditLabel.setText();
-//        lv2CreditLabel.setText();
-//        lv3CreditLabel.setText();
-//        lv4CreditLabel.setText();
-//        lv5CreditLabel.setText();
-//        lv6CreditLabel.setText();
-//        lv1DiscountLabel.setText();
-//        lv2DiscountLabel.setText();
-//        lv3DiscountLabel.setText();
-//        lv4DiscountLabel.setText();
-//        lv5DiscountLabel.setText();
-//        lv6DiscountLabel.setText();
+
+        List<PromotionVO> list = null;
+        try {
+            list = promotionBLService.viewPromotionList(IDProducer.produceHotelIDForWP(),PromotionType.UserLevelPromotion);
+            if(list == null){
+                //TODO
+                System.out.println("未制定等级");
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (NullPointerException e){
+
+        }
+        if(list != null){
+            PromotionVO promotionVO = list.get(0);
+            lv1CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(0).credit));
+            lv2CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(1).credit));
+            lv3CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(2).credit));
+            lv4CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(3).credit));
+            lv5CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(4).credit));
+            lv6CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(5).credit));
+            lv1DiscountLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(0).memberDiscount));
+            lv2DiscountLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(1).memberDiscount));
+            lv3DiscountLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(2).memberDiscount));
+            lv4DiscountLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(3).memberDiscount));
+            lv5DiscountLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(4).memberDiscount));
+            lv6DiscountLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(5).memberDiscount));
+        }
+
     }
 
 
@@ -247,23 +268,43 @@ public class ManagePromotionPaneController {
     private void addTimePromotion(){
         isTimeAdd = true;
         setTimeComponentsVisible(true);
+        initTimeBOX();
     }
 
     @FXML
     private void confirmTimeAdd(){
-        LocalDate startTimeDate = startTimeDatePicker.getValue();
-        LocalDate endTimeDate = endTimeDatePicker.getValue();
-        int startHour = (int) (startHourBox.getValue());
-        int startMin = (int) (startMinBox.getValue());
-        int endHour = (int) (endHourBox.getValue());
-        int endMin = (int) (endMinBox.getValue());
-        double timeDiscount = Double.parseDouble(timeDiscountField.getText());
+        PromotionVO promotionVO = new PromotionVO();
+        try {
+            LocalDate startTimeDate = startTimeDatePicker.getValue();
+            LocalDate endTimeDate = endTimeDatePicker.getValue();
+            int startHour = (int) (startHourBox.getValue());
+            int startMin = (int) (startMinBox.getValue());
+            int endHour = (int) (endHourBox.getValue());
+            int endMin = (int) (endMinBox.getValue());
+            double timeDiscount = Double.parseDouble(timeDiscountField.getText());
+            promotionVO.promotionTimeVO.beginTime = LocalDateTime.of(startTimeDate, LocalTime.of(startHour, startMin));
+            promotionVO.promotionTimeVO.endTime = LocalDateTime.of(endTimeDate, LocalTime.of(endHour, endMin));
+            promotionVO.discount = timeDiscount;
+            promotionVO.hotelID = IDProducer.produceHotelIDForWP();
+            if(isTimeAdd){
+                promotionVO.promotionType = PromotionType.SpecialTimePromotion;
+                promotionBLService.create(promotionVO);
+            }else{
+                proTimeTable.setDisable(false);
+                promotionVO.promotionID = ((PromotionVO) proTimeTable.getItems().get(proTimeListButtonCell.getSelectedIndex())).promotionID;
+                promotionBLService.update(promotionVO);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
+        initData(proTimeTable, PromotionType.SpecialTimePromotion);
         setTimeComponentsVisible(false);
     }
 
     @FXML
     private void cancelTimeAdd(){
+        proTimeTable.setDisable(false);
         setTimeComponentsVisible(false);
     }
 
@@ -283,23 +324,39 @@ public class ManagePromotionPaneController {
     private void addMemPromotion() {
         isAreaAdd = true;
         setMemComponentsVisible(true);
+        initAreaBox();
     }
 
-    @FXML
-    private void modifyMemPromotion() {
-    }
-
-    @FXML
-    private void deleteMemPromotion() {
-    }
 
     @FXML
     private void confirmMemAdd() {
+        PromotionVO promotionVO = new PromotionVO();
+        try {
+            //TODO 更换商圈
+//            promotionTraAreaVO.tradingArea = String.valueOf(TradingArea.XIANLIN_CENTER);
+//            promotionTraAreaVO.traDiscount = Double.parseDouble(areaDiscountField.getText());
+            promotionVO.promotionTraAreaVOs.get(0).tradingArea = String.valueOf(TradingArea.XIANLIN_CENTER);
+            promotionVO.promotionTraAreaVOs.get(0).traDiscount = Double.parseDouble(areaDiscountField.getText());
+            promotionVO.hotelID = IDProducer.produceHotelIDForWP();
+            if(isAreaAdd){
+                promotionVO.promotionType = PromotionType.VIPSpecialAreaPromotion;
+                promotionBLService.create(promotionVO);
+            }else{
+                proMemTable.setDisable(false);
+                promotionVO.promotionID = ((PromotionVO) proMemTable.getItems().get(proAreaListButtonCell.getSelectedIndex())).promotionID;
+                promotionBLService.update(promotionVO);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        initData(proMemTable, PromotionType.VIPSpecialAreaPromotion);
         setMemComponentsVisible(false);
     }
 
     @FXML
     private void cancelMemAdd() {
+        proMemTable.setDisable(false);
         setMemComponentsVisible(false);
     }
 
@@ -327,22 +384,33 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmManage(){
-        if(judgeInput()){}
-        double lv1Credit = Double.parseDouble(lv1CreditField.getText());
-        double lv2Credit = Double.parseDouble(lv2CreditField.getText());
-        double lv4Credit = Double.parseDouble(lv4CreditField.getText());
-        double lv3Credit = Double.parseDouble(lv3CreditField.getText());
-        double lv5Credit = Double.parseDouble(lv5CreditField.getText());
-        double lv6Credit = Double.parseDouble(lv6CreditField.getText());
-        double lv1Discount = Double.parseDouble(lv1DiscountField.getText());
-        double lv2Discount = Double.parseDouble(lv2DiscountField.getText());
-        double lv3Discount = Double.parseDouble(lv3DiscountField.getText());
-        double lv4Discount = Double.parseDouble(lv4DiscountField.getText());
-        double lv5Discount = Double.parseDouble(lv5DiscountField.getText());
-        double lv6Discount = Double.parseDouble(lv6DiscountField.getText());
-        //TODO
-        initLabel();
-        setManageComponentsVisible(false);
+        if(judgeInput()){
+            PromotionVO promotionVO = new PromotionVO();
+
+            promotionVO.hotelID = IDProducer.produceHotelIDForWP();
+            promotionVO.promotionType = PromotionType.UserLevelPromotion;
+            promotionVO.promotionMRVOs.get(0).credit = Double.parseDouble(lv1CreditField.getText());
+            promotionVO.promotionMRVOs.get(1).credit = Double.parseDouble(lv2CreditField.getText());
+            promotionVO.promotionMRVOs.get(2).credit = Double.parseDouble(lv4CreditField.getText());
+            promotionVO.promotionMRVOs.get(3).credit = Double.parseDouble(lv3CreditField.getText());
+            promotionVO.promotionMRVOs.get(4).credit = Double.parseDouble(lv5CreditField.getText());
+            promotionVO.promotionMRVOs.get(5).credit = Double.parseDouble(lv6CreditField.getText());
+            promotionVO.promotionMRVOs.get(0).memberDiscount = Double.parseDouble(lv1DiscountField.getText());
+            promotionVO.promotionMRVOs.get(1).memberDiscount = Double.parseDouble(lv2DiscountField.getText());
+            promotionVO.promotionMRVOs.get(2).memberDiscount = Double.parseDouble(lv3DiscountField.getText());
+            promotionVO.promotionMRVOs.get(3).memberDiscount = Double.parseDouble(lv4DiscountField.getText());
+            promotionVO.promotionMRVOs.get(4).memberDiscount = Double.parseDouble(lv5DiscountField.getText());
+            promotionVO.promotionMRVOs.get(5).memberDiscount = Double.parseDouble(lv6DiscountField.getText());
+
+            try {
+                promotionBLService.create(promotionVO);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+            //TODO
+            initLabel();
+            setManageComponentsVisible(false);
+        }
     }
 
     private boolean judgeInput() {
@@ -425,9 +493,13 @@ public class ManagePromotionPaneController {
         final private HBox btnBox = new HBox();
         final private Button modifyButton = new Button();
         final private Button deleteButton = new Button();
+        private TableView table;
+        private PromotionType proType;
         private int selectedIndex;
 
-        public ProListButtonCell() {
+        public ProListButtonCell(TableView tableView, PromotionType promotionType) {
+            this.table = tableView;
+            this.proType = promotionType;
             Image modifyImage = new Image("/img/hotelworker/modifyroom.png");
             modifyButton.setGraphic(new ImageView(modifyImage));
             modifyButton.getStyleClass().add("TableButtonCell");
@@ -438,9 +510,32 @@ public class ManagePromotionPaneController {
 
             modifyButton.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
+                if(proType == PromotionType.SpecialTimePromotion){
+                    //特定期间
+                    isTimeAdd = false;
+                    proTimeTable.setDisable(true);
+                    setTimeComponentsVisible(true);
+                    initTimeBOX();
+                }else if(proType == PromotionType.VIPSpecialAreaPromotion){
+                    //特定期间优惠
+                    isAreaAdd = false;
+                    proMemTable.setDisable(true);
+                    setMemComponentsVisible(true);
+                }
             });
 
             deleteButton.setOnAction(event -> {
+                if (alertController.showConfirmDeleteAlert("您确定要删除此优惠吗？", "确认删除")) {
+                    selectedIndex = getTableRow().getIndex();
+                    long promotionID = ((PromotionVO) table.getItems().get(selectedIndex)).promotionID;
+                    try {
+                        promotionBLService.delete(promotionID);
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+
+                    initData(table, proType);
+                }
             });
 
             btnBox.setSpacing(10);
