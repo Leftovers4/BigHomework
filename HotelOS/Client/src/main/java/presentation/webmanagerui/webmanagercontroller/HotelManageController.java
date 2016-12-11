@@ -6,11 +6,16 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import presentation.util.buttoncell.WebManHotelListButtonCell;
 import presentation.webmanagerui.webmanagerscene.AddHotelPane;
+import presentation.webmanagerui.webmanagerscene.CheckHotelInfoPane;
+import presentation.webmanagerui.webmanagerscene.HotelManagePane;
+import util.ResultMessage;
 import vo.hotel.HotelVO;
 
 import java.rmi.RemoteException;
@@ -23,15 +28,16 @@ public class HotelManageController {
     private Stage stage;
     private Pane pane;
 
-    @FXML private Button hoteldetailBtn;
     @FXML private Button confirmBtn;
     @FXML private Button cancelBtn;
     @FXML private Button searchhotelBtn;
     @FXML private Button newhotelBtn;
-    @FXML private Button edithotelBtn;
-    @FXML private Button deletehotelBtn;
-    @FXML private TextField hotelidinput;
     @FXML private TextField hotelnameinput;
+    @FXML private ComboBox cityCB;
+    @FXML private ComboBox tracingareaCB;
+    @FXML private ComboBox star;
+
+    @FXML private HBox editBox;
 
     @FXML private TableView hotelList;
     @FXML private TableColumn hotelIDCol;
@@ -47,6 +53,8 @@ public class HotelManageController {
     public void launch(Stage primaryStage, Pane mainPane) {
         this.pane = mainPane;
         this.stage = primaryStage;
+
+//        webManHotelListButtonCell = new WebManHotelListButtonCell();
 
         try {
             hotelBlService = new HotelBlServiceImpl();
@@ -66,7 +74,7 @@ public class HotelManageController {
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {
-                webManHotelListButtonCell = new WebManHotelListButtonCell(stage, pane, hotelList);
+                webManHotelListButtonCell = new WebManHotelListButtonCell();
                 return webManHotelListButtonCell;
             }
         });
@@ -83,11 +91,6 @@ public class HotelManageController {
     }
 
 
-
-
-
-
-
     /**
      * 添加酒店
      */
@@ -102,18 +105,138 @@ public class HotelManageController {
 
 
 
+    /**
+     * Created by wyj on 2016/12/7.
+     * Description: 网站管理人员工具类---酒店管理列表按钮
+     */
+    private class WebManHotelListButtonCell extends TableCell<HotelVO, Boolean> {
 
-//    /**
-//     * 修改酒店信息
-//     */
-//    @FXML
-//    private void modifyHotel() {
-//        hoteldetailBtn.setVisible(false);
-//        hotelnameinput.setVisible(true);
-//        hotelidinput.setVisible(true);
-//        confirmBtn.setVisible(true);
-//        cancelBtn.setVisible(true);
-//
-////        hotelidinput.setText();
-//    }
+        final private HBox btnBox = new HBox();
+        final private Button editBtn = new Button();
+        final private Button deleteBtn = new Button();
+        final private Button checkDetailBtn = new Button();
+
+        private int selectedIndex;
+
+        private HotelBlServiceImpl hotelBlService;
+
+        public WebManHotelListButtonCell() {
+
+            Image editImg = new Image("/img/webmanager/edit.png");
+            ImageView editimgview = new ImageView(editImg);
+            editimgview.setFitWidth(20);
+            editimgview.setFitHeight(20);
+            editBtn.setGraphic(editimgview);
+            editBtn.getStyleClass().add("tableCellBtn");
+            Image deleteImg = new Image("/img/webmanager/delete.png");
+            ImageView deleteimgview = new ImageView(deleteImg);
+            deleteimgview.setFitWidth(20);
+            deleteimgview.setFitHeight(20);
+            deleteBtn.setGraphic(deleteimgview);
+            deleteBtn.getStyleClass().add("tableCellBtn");
+            Image checkdetailimg = new Image("/img/user/checkdetail.png");
+            ImageView checkdetailimgview = new ImageView(checkdetailimg);
+            checkdetailimgview.setFitHeight(20);
+            checkdetailimgview.setFitWidth(20);
+            checkDetailBtn.setGraphic(checkdetailimgview);
+            checkDetailBtn.getStyleClass().add("tableCellBtn");
+
+
+            editBtn.setOnAction(event -> {
+                selectedIndex = getTableRow().getIndex();
+
+                hotelList.setPrefHeight(300);
+                editBox.setVisible(true);
+            });
+
+
+            deleteBtn.setOnAction(event -> {
+                selectedIndex = getTableRow().getIndex();
+
+                HotelVO hotelVO = (HotelVO) hotelList.getItems().get(selectedIndex);
+                try {
+                    ResultMessage resultMessage = hotelBlService.deleteHotel(hotelVO.hotelID);
+
+                    if (resultMessage == ResultMessage.Success) {
+                        System.out.println("delete success");
+
+                        pane.getChildren().remove(0);
+                        pane.getChildren().add(new HotelManagePane(stage, pane));
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            });
+
+            checkDetailBtn.setOnAction(event -> {
+                selectedIndex = getTableRow().getIndex();
+
+                HotelVO hotelVO = (HotelVO) hotelList.getItems().get(selectedIndex);
+                pane.getChildren().remove(0);
+                pane.getChildren().add(new CheckHotelInfoPane(pane, hotelVO.hotelID));
+            });
+        }
+
+
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if (empty) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                btnBox.getChildren().clear();
+                btnBox.getChildren().add(editBtn);
+                btnBox.getChildren().add(deleteBtn);
+                btnBox.getChildren().add(checkDetailBtn);
+                setGraphic(btnBox);
+                setText(null);
+            }
+        }
+
+
+        public int getSelectedIndex() {
+            return selectedIndex;
+        }
+    }
+
+
+    /**
+     * 确认修改酒店信息
+     */
+    @FXML
+    private void confirmModify() {
+        HotelVO hotelVO = (HotelVO) hotelList.getItems().get(webManHotelListButtonCell.getSelectedIndex());
+
+        hotelVO.hotelName = hotelnameinput.getText();
+        hotelVO.address = cityCB.getValue().toString();
+        hotelVO.tradingArea = tracingareaCB.getValue().toString();
+        hotelVO.star = Integer.parseInt(star.getValue().toString());
+
+        try {
+            ResultMessage resultMessage = hotelBlService.updateBasicHotelInfo(hotelVO);
+
+            if (resultMessage == ResultMessage.Success) {
+                System.out.println("update success");
+
+                hotelList.setPrefHeight(400);
+                editBox.setVisible(false);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 取消修改酒店信息
+     */
+    @FXML
+    private void cancelModify() {
+        hotelList.setPrefHeight(400);
+        editBox.setVisible(false);
+    }
 }
+
+
+
+

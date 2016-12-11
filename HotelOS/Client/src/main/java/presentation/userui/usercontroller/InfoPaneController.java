@@ -49,6 +49,8 @@ public class InfoPaneController {
     @FXML private Label vipLevel;
     @FXML private Label vipCompany;
 
+    @FXML private Label creditLabel;
+
     @FXML private ImageView userPhoto;
 
     @FXML private Label userIdLabel;
@@ -110,6 +112,8 @@ public class InfoPaneController {
                 }
                 phone.setText(userVO.phone);
                 birthDate.setText(userVO.memberVO.birthday.toString());
+
+                creditLabel.setText(String.valueOf(userVO.creditVO.credit));
 
                 //会员信息显示
                 MemberType memberType = userVO.memberVO.memberType;

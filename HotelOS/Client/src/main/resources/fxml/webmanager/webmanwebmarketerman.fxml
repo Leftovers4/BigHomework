@@ -28,7 +28,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="575.0" layoutY="100.0" mnemonicParsing="false" onAction="#addWebMarketerEvent">
+      <Button layoutX="575.0" layoutY="100.0" mnemonicParsing="false" onAction="#toAddNewWebMarketer">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -37,34 +37,29 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="625.0" layoutY="100.0" mnemonicParsing="false">
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/webmanager/edit.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="675.0" layoutY="100.0" mnemonicParsing="false">
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/webmanager/delete.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Pane fx:id="addwebmarketerPane" layoutX="125.0" layoutY="386.0" prefHeight="200.0" prefWidth="600.0" visible="false">
+      <Pane fx:id="modifywebmarketerPane" layoutX="125.0" layoutY="460.0" prefHeight="150.0" prefWidth="600.0" visible="false">
          <children>
-            <TextField layoutX="275.0" layoutY="75.0" prefHeight="30.0" prefWidth="148.0" />
-            <TextField layoutX="275.0" layoutY="23.0" prefHeight="30.0" prefWidth="148.0" />
-            <Button layoutX="316.0" layoutY="137.0" mnemonicParsing="false" onAction="#saveWebMarketerInfo" styleClass="actionBtn" text="添加" />
-            <Button layoutX="235.0" layoutY="137.0" mnemonicParsing="false" styleClass="actionBtn" text="取消" />
+            <TextField fx:id="workernameField" layoutX="275.0" layoutY="23.0" prefHeight="30.0" prefWidth="148.0" />
+            <Button fx:id="confirmBtn" layoutX="313.0" layoutY="85.0" mnemonicParsing="false" onAction="#confirmModify" styleClass="actionBtn" text="确认修改" />
+            <Button fx:id="cancelBtn" layoutX="229.0" layoutY="85.0" mnemonicParsing="false" onAction="#cancelModify" styleClass="actionBtn" text="取消" />
             <Label layoutX="178.0" layoutY="28.0" text="姓       名：" />
-            <Label layoutX="179.0" layoutY="80.0" text="联系方式：" />
          </children>
       </Pane>
-      <Button layoutX="741.0" layoutY="341.0" mnemonicParsing="false" styleClass="actionBtn" text="查看详情" />
+      <Pane fx:id="fillinfoPane" layoutX="125.0" layoutY="460.0" prefHeight="150.0" prefWidth="600.0" visible="false">
+         <children>
+            <Label layoutX="180.0" layoutY="42.0" text="姓名：" />
+            <TextField fx:id="newworkernameField" layoutX="251.0" layoutY="37.0" prefHeight="30.0" prefWidth="170.0" />
+            <Button onAction="#toConfirmNewMarketerInfo" fx:id="nextStepBtn" layoutX="230.0" layoutY="96.0" mnemonicParsing="false" text="下一步，生成账号" />
+         </children>
+      </Pane>
+      <Pane fx:id="confirmPane" layoutX="125.0" layoutY="460.0" prefHeight="150.0" prefWidth="600.0" visible="false">
+         <children>
+            <Label layoutX="207.0" layoutY="14.0" text="账号：" />
+            <Label fx:id="workerIDLabel" layoutX="280.0" layoutY="14.0" text="Label" />
+            <Button onAction="#confirmMarketerInfo" fx:id="confirminfoBtn" layoutX="240.0" layoutY="100.0" mnemonicParsing="false" text="确认信息" />
+            <Label layoutX="207.0" layoutY="55.0" text="姓名：" />
+            <Label fx:id="workernameLabel" layoutX="280.0" layoutY="55.0" text="Label" />
+         </children>
+      </Pane>
    </children>
 </fx:root>

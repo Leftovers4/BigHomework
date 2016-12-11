@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<fx:root type="Pane" prefHeight="690.0" prefWidth="850.0" styleClass="panel" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.CheckHotelInfoController">
+   <children>
+      <Pane layoutX="98.0" layoutY="338.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="271.0" prefWidth="667.0">
+         <children>
+            <Label layoutX="20.0" layoutY="170.0" text="服务：" />
+            <Label fx:id="addressLabel" layoutX="80.0" layoutY="20.0" text="江苏南京市" />
+            <Label layoutX="20.0" layoutY="95.0" text="简介：" />
+            <Label fx:id="hotelServiceLabel" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="80.0" layoutY="170.0" prefHeight="90.0" prefWidth="578.0" text="为散客提供免费的WIFI。房间服务，接送服务（额外收费），24小时前台服务，货币兑换，行礼寄存，礼宾台，洗衣服务，干洗服务，熨衣服务是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
+            <Label fx:id="simpleIntroLabel" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="80.0" layoutY="95.0" prefHeight="62.0" prefWidth="578.0" text="座落于半山园林美景之中，是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
+            <Label layoutX="20.0" layoutY="20.0" text="地址：" />
+         </children>
+      </Pane>
+      <Pane layoutX="365.0" layoutY="110.0" prefHeight="200.0" prefWidth="400.0">
+         <children>
+            <Label fx:id="hotelRatingLabel" layoutX="90.0" layoutY="155.0" text="4.8" />
+            <Hyperlink id="reviewLink" fx:id="showReviewLink" layoutX="291.0" layoutY="151.0" text="查看评价" />
+            <Label fx:id="hotelNameLabel" layoutX="90.0" layoutY="15.0" text="如家酒店" />
+            <Label layoutX="200.0" layoutY="15.0" text="工作人员：" />
+            <Label layoutX="15.0" layoutY="15.0" text="名称：" />
+            <Label layoutX="15.0" layoutY="155.0" text="评分：" />
+            <Label fx:id="hotelWorkerNameLabel" layoutX="306.0" layoutY="15.0" text="路人乙" />
+            <Label layoutX="15.0" layoutY="85.0" text="星级：" />
+            <Label layoutX="126.0" layoutY="155.0" text="分" />
+            <GridPane layoutX="90.0" layoutY="80.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <ImageView fx:id="star1" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../../img/hotelworker/star.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star2" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1">
+                     <image>
+                        <Image url="@../../img/hotelworker/star.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star3" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2">
+                     <image>
+                        <Image url="@../../img/hotelworker/star.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star4" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3">
+                     <image>
+                        <Image url="@../../img/hotelworker/star.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="star5" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="4">
+                     <image>
+                        <Image url="@../../img/hotelworker/star.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
+      <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="119.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/common/initialPhoto.png" />
+         </image>
+      </ImageView>
+   </children>
+</fx:root>
