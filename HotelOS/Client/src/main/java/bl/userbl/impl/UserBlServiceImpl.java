@@ -6,6 +6,7 @@ import dataservice.userdataservice.UserDataService;
 import po.order.OrderPO;
 import po.user.CreditRecordPO;
 import po.user.UserPO;
+import presentation.hotelworkerui.hotelworkerscene.UserReviewPane;
 import rmi.RemoteHelper;
 import util.CreditChangedCause;
 import util.IDProducer;
@@ -18,6 +19,7 @@ import vo.user.UserVOCreater;
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -184,6 +186,19 @@ public class UserBlServiceImpl implements UserBLService {
     @Override
     public ResultMessage deleteUser(String username) throws RemoteException {
         return userDAO.delete(username);
+    }
+
+    @Override
+    public List<UserVO> getAllUsers() throws RemoteException, ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        List<UserVO> res = new ArrayList<>();
+        List<UserPO> userPOList = userDAO.findAll();
+
+        for (int i = 0; i < userPOList.size(); i++) {
+            List<CreditRecordPO> creditRecordPOList = userDAO.findCreditRecordsByUsername(userPOList.get(i).getUsername());
+            res.add(userVOCreater.createFullUserVO(userPOList.get(i), creditRecordPOList));
+        }
+
+        return res;
     }
 
 }

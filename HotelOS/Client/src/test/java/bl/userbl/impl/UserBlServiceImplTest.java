@@ -100,4 +100,9 @@ public class UserBlServiceImplTest {
         ResultMessage resultMessage = tested.deleteUser("lisi");
     }
 
+    @Test
+    public void getAllUsers() throws Exception {
+        List<UserVO> userVOList = tested.getAllUsers();
+    }
+
 }

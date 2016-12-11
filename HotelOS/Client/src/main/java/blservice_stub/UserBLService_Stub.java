@@ -90,6 +90,11 @@ public class UserBLService_Stub implements UserBLService {
         return null;
     }
 
+    @Override
+    public List<UserVO> getAllUsers() {
+        return null;
+    }
+
     public ResultMessage topup(CreditRecordVO creditRecordVO) {
         return ResultMessage.Success;
     }
