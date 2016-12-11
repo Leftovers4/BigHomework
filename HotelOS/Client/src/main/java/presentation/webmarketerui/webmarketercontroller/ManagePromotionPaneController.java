@@ -231,7 +231,7 @@ public class ManagePromotionPaneController {
         List<PromotionVO> list = null;
         try {
             list = promotionBLService.viewPromotionList(IDProducer.produceHotelIDForWP(),PromotionType.UserLevelPromotion);
-            if(list == null){
+            if(list.isEmpty()){
                 //TODO
                 System.out.println("未制定等级");
             }
@@ -240,7 +240,7 @@ public class ManagePromotionPaneController {
         } catch (NullPointerException e){
 
         }
-        if(list != null){
+        if(!list.isEmpty()){
             PromotionVO promotionVO = list.get(0);
             lv1CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(0).credit));
             lv2CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(1).credit));
