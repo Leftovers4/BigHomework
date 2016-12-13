@@ -59,7 +59,7 @@ public class RegisteredHotelController {
             }
         });
 
-        registeredHotelList.setItems(getRegisteredHotelList());
+        registeredHotelList.setItems(fillRegisteredHotelTable(getRegisteredHotelList()));
     }
 
     private ObservableList getRegisteredHotelList() {
@@ -69,6 +69,24 @@ public class RegisteredHotelController {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+        return list;
+    }
+
+    private ObservableList fillRegisteredHotelTable(ObservableList list) {
+
+//        if (list.size() != 0) {
+//
+//            HotelVO tempHotelVO = (HotelVO) list.get(0);
+//
+//            for (int i = 1; i<list.size(); i++) {
+//                if (((HotelVO) list.get(i)).hotelID == tempHotelVO.hotelID) {
+//                    list.remove(i);
+//                } else {
+//                    tempHotelVO = (HotelVO) list.get(i);
+//                }
+//            }
+//        }
+
         return list;
     }
 }

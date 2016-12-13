@@ -6,10 +6,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.userui.userscene.CheckMyReviewPane;
 import presentation.userui.userscene.EvaluateOrderPane;
 import util.DateTimeFormat;
 import util.OrderType;
+import util.ResultMessage;
 import vo.order.OrderVO;
+import vo.order.ReviewVO;
 
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
@@ -39,6 +42,9 @@ public class OrderDetailUserController {
     @FXML private Label hotelAddressLabel;
     @FXML private Label hotelServiceLabel;
 
+    @FXML private Button cancelBtn;
+    @FXML private Button checkMyReviewBtn;
+
     private OrderBlServiceImpl orderBlService;
 
     public void launch(Stage primaryStage, Pane mainPane, String userID, String orderID) {
@@ -59,15 +65,43 @@ public class OrderDetailUserController {
     private void initialData() {
         try {
             OrderVO orderVO = orderBlService.searchExtraOrderByID(orderID);
+            ReviewVO reviewVO = orderBlService.viewOrderReview(orderID);
 
             OrderType orderType = orderVO.orderType;
 
             if (orderType == OrderType.Executed) {
-                checkInTimeLabeldet.setText(orderVO.orderTimeVO.checkinTime.format(DateTimeFormat.dateTimeFormat));
-                checkOutTimeLabeldet.setText(orderVO.orderTimeVO.leaveTime.format(DateTimeFormat.dateTimeFormat));
+                if (orderVO.orderTimeVO.leaveTime == null) {
+                    checkInTimeLabeldet.setText(orderVO.orderTimeVO.checkinTime.format(DateTimeFormat.dateTimeFormat));
+                    checkOutTimeLabeldet.setText(orderVO.orderTimeVO.expectedLeaveTime.format(DateTimeFormat.dateTimeFormat));
+                    evaluateBtn.setVisible(false);
+                    checkMyReviewBtn.setVisible(false);
+                } else {
+                    checkInTimeLabeldet.setText(orderVO.orderTimeVO.checkinTime.format(DateTimeFormat.dateTimeFormat));
+                    checkOutTimeLabeldet.setText(orderVO.orderTimeVO.leaveTime.format(DateTimeFormat.dateTimeFormat));
+
+                    if (reviewVO.reviewTime == null) {
+                        evaluateBtn.setVisible(true);
+                        checkMyReviewBtn.setVisible(false);
+                    } else {
+                        evaluateBtn.setVisible(false);
+                        checkMyReviewBtn.setVisible(true);
+                    }
+                }
+
+                cancelBtn.setVisible(false);
             } else {
                 checkInTimeLabeldet.setText(orderVO.orderTimeVO.expectedCheckinTime.format(DateTimeFormat.dateTimeFormat));
                 checkOutTimeLabeldet.setText(orderVO.orderTimeVO.expectedLeaveTime.format(DateTimeFormat.dateTimeFormat));
+
+                if (orderType == OrderType.Unexecuted) {
+                    cancelBtn.setVisible(true);
+                    evaluateBtn.setVisible(false);
+                    checkMyReviewBtn.setVisible(false);
+                } else {
+                    cancelBtn.setVisible(false);
+                    evaluateBtn.setVisible(false);
+                    checkMyReviewBtn.setVisible(false);
+                }
             }
 
             roomTypeLabeldet.setText(orderVO.roomType.toString());
@@ -87,14 +121,23 @@ public class OrderDetailUserController {
                 e.printStackTrace();
             }
 
-            bestpromotionLabel.setText(orderVO.orderPromoInfoVO.promotionType.toString());
+
+            if (orderVO.orderPromoInfoVO.promotionType != null) {
+                bestpromotionLabel.setText(orderVO.orderPromoInfoVO.promotionType.toString());
+            } else {
+                bestpromotionLabel.setText("无");
+            }
 
             finalpriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
             ordertypeLabel.setText(String.valueOf(orderVO.orderType));
 
             hotelNameLabel.setText(orderVO.hotelName);
             hotelAddressLabel.setText(orderVO.hotelAddress);
-            hotelServiceLabel.setText(orderVO.hotelService);
+            if (orderVO.hotelService == null) {
+                hotelServiceLabel.setText("");
+            } else {
+                hotelServiceLabel.setText(orderVO.hotelService);
+            }
 
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -105,6 +148,30 @@ public class OrderDetailUserController {
     @FXML
     private void evaluateOrder() {
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new EvaluateOrderPane(stage, orderID));
+        mainPane.getChildren().add(new EvaluateOrderPane(stage, orderID, userID));
+    }
+
+    @FXML
+    private void cancelOrderEvent() {
+        try {
+            ResultMessage resultMessage = orderBlService.cancelOrder(orderID);
+
+            if (resultMessage == ResultMessage.Success) {
+                System.out.println("cancel success");
+
+                initialData();
+            } else {
+                System.out.println("cancel failed");
+            }
+
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void checkMyReviewEvent() {
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new CheckMyReviewPane(orderID));
     }
 }

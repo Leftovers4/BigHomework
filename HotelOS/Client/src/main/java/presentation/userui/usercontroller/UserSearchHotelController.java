@@ -1,6 +1,8 @@
 package presentation.userui.usercontroller;
 
 import bl.hotelbl.impl.HotelBlServiceImpl;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,12 +15,14 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.userui.userscene.OrderDetailUserPane;
 import presentation.util.buttoncell.UserHotelListButtonCell;
+import util.AddTradProducer;
 import util.RoomType;
 import vo.hotel.HotelConditionsVO;
 import vo.hotel.HotelVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by wyj on 2016/11/19.
@@ -80,6 +84,8 @@ public class UserSearchHotelController {
     private UserHotelListButtonCell userHotelListButtonCell;
     private HotelBlServiceImpl hotelBlService;
 
+    private AddTradProducer addTradProducer;
+
     public void launch(Stage primaryStage, Pane mainPane, String userID) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
@@ -91,10 +97,41 @@ public class UserSearchHotelController {
             e.printStackTrace();
         }
 
-        cityComBox.getItems().add("南京市");
-        tradingAreaCombox.getItems().add("新街口");
+        Iterator<String> cityList = addTradProducer.getAllAddress();
+        while (cityList.hasNext()) {
+            cityComBox.getItems().add(cityList.next());
+        }
 
 
+        cityComBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                initeBusinessAreaComBox(newValue.toString());
+            }
+        });
+
+        tradingAreaCombox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                if (newValue != null) {
+                    char ch[] = newValue.toString().toCharArray();
+                    if (ch.length > 6) {
+                        tradingAreaCombox.setStyle("-fx-font-size: 0.85em");
+                    } else {
+                        tradingAreaCombox.setStyle("-fx-font-size: 1em");
+                    }
+                }
+            }
+        });
+    }
+
+    private void initeBusinessAreaComBox(String city) {
+
+        tradingAreaCombox.getItems().clear();
+        Iterator<String> areaList = addTradProducer.getTradingAreasByAddress(city);
+        while (areaList.hasNext()) {
+            tradingAreaCombox.getItems().add(areaList.next());
+        }
     }
 
 
@@ -164,6 +201,7 @@ public class UserSearchHotelController {
         HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
 
         hotelConditionsVO.address = cityComBox.getValue().toString();
+//        initeBusinessAreaComBox(cityComBox.getValue().toString());
         hotelConditionsVO.tradingArea = tradingAreaCombox.getValue().toString();
         hotelConditionsVO.name = searchField.getText();
 
@@ -469,11 +507,4 @@ public class UserSearchHotelController {
         return list;
     }
 
-
-    /***************临时方法***********************************/
-//    @FXML
-//    private void showOrderDetail() {
-//        mainPane.getChildren().remove(0);
-//        mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane));
-//    }
 }

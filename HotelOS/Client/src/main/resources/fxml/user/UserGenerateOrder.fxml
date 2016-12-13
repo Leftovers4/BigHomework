@@ -52,18 +52,16 @@
       <Label fx:id="submit" layoutX="560.0" layoutY="110.0" text="提交订单" />
       <Button fx:id="nextBtn" layoutX="450.0" layoutY="579.0" mnemonicParsing="false" onAction="#nextBtnEvent" prefHeight="30.0" prefWidth="140.0" styleClass="actionBtn" text="下一步" />
       <Label layoutX="328.0" layoutY="455.0" text="最  优  优  惠：" />
-      <Label layoutX="435.0" layoutY="455.0" />
+      <Label fx:id="promotionLabel" layoutX="435.0" layoutY="455.0" />
       <Label fx:id="hotelnameLabel" layoutX="69.0" layoutY="358.0" text="酒店名" />
       <Label fx:id="hoteladdressLabel" layoutX="69.0" layoutY="415.0" text="酒店地址" />
       <Label fx:id="hotelserviceLabel" layoutX="69.0" layoutY="469.0" text="酒店设施" />
       <Label layoutX="325.0" layoutY="510.0" text="价  格  总  计：" />
-      <Label layoutX="435.0" layoutY="510.0" />
+      <Label fx:id="priceLabel" layoutX="435.0" layoutY="510.0" />
       <Button fx:id="confirmBtn" layoutX="532.0" layoutY="579.0" mnemonicParsing="false" onAction="#submitBtnEvent" styleClass="actionBtn" text="确认并提交订单" visible="false" />
       <Button fx:id="backToEdit" layoutX="448.0" layoutY="579.0" mnemonicParsing="false" onAction="#backToEdit" styleClass="actionBtn" text="返回" visible="false" />
-      <Label fx:id="checkIndateLabel" layoutX="440.0" layoutY="180.0" text="日期" visible="false" />
-      <Label fx:id="checkInTimeLabel" layoutX="510.0" layoutY="180.0" text="时间" visible="false" />
-      <Label fx:id="checkOutDateLabel" layoutX="440.0" layoutY="235.0" text="日期" visible="false" />
-      <Label fx:id="checkOutTime" layoutX="510.0" layoutY="235.0" text="时间" visible="false" />
+      <Label fx:id="checkInTimeLabel" layoutX="440.0" layoutY="180.0" text="时间" visible="false" />
+      <Label fx:id="checkOutTime" layoutX="440.0" layoutY="235.0" text="时间" visible="false" />
       <Label fx:id="roomTypeLabel" layoutX="440.0" layoutY="290.0" text="类型" visible="false" />
       <Label fx:id="roomNumLabel" layoutX="440.0" layoutY="345.0" text="数量" visible="false" />
       <Label fx:id="peopleNumLabel" layoutX="440.0" layoutY="400.0" text="人数" visible="false" />

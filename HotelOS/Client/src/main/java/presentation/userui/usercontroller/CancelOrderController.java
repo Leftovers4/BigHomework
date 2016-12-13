@@ -56,7 +56,11 @@ public class CancelOrderController {
             roomNumLabelcan.setText(String.valueOf(orderVO.roomAmount));
             childLabelcan.setText(orderVO.withChildren ? "有" : "无");
             peopleNumLabelcan.setText(String.valueOf(orderVO.personAmount));
-//            bestpromotionLabelcan.setText(orderVO.);
+            if (orderVO.orderPromoInfoVO.promotionType == null) {
+                bestpromotionLabelcan.setText("无");
+            } else {
+                bestpromotionLabelcan.setText(orderVO.orderPromoInfoVO.promotionType.toString());
+            }
             finalpriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
             ordertypeLabel.setText(String.valueOf(orderVO.orderType));
             hotelNameLabel.setText(orderVO.hotelName);

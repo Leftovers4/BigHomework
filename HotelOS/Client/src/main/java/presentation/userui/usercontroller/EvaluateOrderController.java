@@ -22,6 +22,7 @@ public class EvaluateOrderController {
 
     private Stage stage;
     private String orderID;
+    private String userID;
 
     @FXML private ImageView star1;
     @FXML private ImageView star2;
@@ -37,9 +38,10 @@ public class EvaluateOrderController {
 
     private int rate;
 
-    public void launch(Stage primaryStage, String orderID) {
+    public void launch(Stage primaryStage, String orderID, String userID) {
         this.stage = primaryStage;
         this.orderID = orderID;
+        this.userID = userID;
 
         try {
             orderBlService = new OrderBlServiceImpl();
@@ -169,6 +171,7 @@ public class EvaluateOrderController {
     private void confirmSubmit() {
         ReviewVO reviewVO = new ReviewVO();
 
+        reviewVO.username = userID;
         reviewVO.orderID = orderID;
         reviewVO.rating = rate;
         reviewVO.review = reviewField.getText();
@@ -178,7 +181,7 @@ public class EvaluateOrderController {
 
             if (resultMessage == ResultMessage.Success) {
                 System.out.println("review success");
-            } else {
+            } else if (resultMessage ==ResultMessage.DataExisted){
                 System.out.println("review failed");
             }
         } catch (RemoteException e) {

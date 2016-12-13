@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<fx:root type="Pane" stylesheets="@../../css/user/userstyle.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.UserHotelInfoController">
+<fx:root stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.UserHotelInfoController">
    <children>
       <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="850.0">
          <content>
@@ -96,10 +96,10 @@
                   </Pane>
                   <TableView fx:id="hotelOrderList" prefHeight="200.0" prefWidth="500.0">
                     <columns>
-                      <TableColumn fx:id="orderidCol" prefWidth="170.0" text="订单号" />
-                      <TableColumn fx:id="ordertimeCol" prefWidth="124.0" text="订单时间" />
-                        <TableColumn fx:id="ordertypeCol" prefWidth="109.0" text="订单状态" />
-                        <TableColumn fx:id="btnCol" prefWidth="96.0" />
+                      <TableColumn fx:id="orderidCol" prefWidth="170.0" resizable="false" text="订单号" />
+                      <TableColumn fx:id="ordertimeCol" prefWidth="124.0" resizable="false" text="订单时间" />
+                        <TableColumn fx:id="ordertypeCol" prefWidth="109.0" resizable="false" text="订单状态" />
+                        <TableColumn fx:id="btnCol" prefWidth="93.0" resizable="false" />
                     </columns>
                      <FlowPane.margin>
                         <Insets left="165.0" />

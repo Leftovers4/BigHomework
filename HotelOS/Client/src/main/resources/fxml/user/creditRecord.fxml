@@ -10,11 +10,11 @@
       <TableView fx:id="creditRecordTable" layoutX="50.0" layoutY="150.0" maxHeight="450.0" prefWidth="750.0">
         <columns>
           <TableColumn fx:id="timeCol" prefWidth="183.0" resizable="false" text="时间" />
-          <TableColumn fx:id="orderidCol" prefWidth="214.0" resizable="false" text="订单号" />
-            <TableColumn fx:id="causeCol" prefWidth="99.0" resizable="false" text="变更原因" />
-            <TableColumn fx:id="changeNumCol" prefWidth="73.0" resizable="false" text="变更额度" />
-            <TableColumn fx:id="finalNumCol" prefWidth="114.0" resizable="false" text="变更后的信用值" />
-            <TableColumn fx:id="optCol" prefWidth="66.0" resizable="false" />
+          <TableColumn fx:id="orderidCol" prefWidth="204.0" resizable="false" text="订单号" />
+            <TableColumn fx:id="causeCol" prefWidth="87.0" resizable="false" text="变更原因" />
+            <TableColumn fx:id="changeNumCol" prefWidth="77.0" resizable="false" text="变更额度" />
+            <TableColumn fx:id="finalNumCol" prefWidth="116.0" resizable="false" text="变更后的信用值" />
+            <TableColumn fx:id="optCol" resizable="false" />
         </columns>
       </TableView>
       <Button layoutX="645.0" layoutY="569.0" mnemonicParsing="false" styleClass="actionBtn" text="查看详情" />

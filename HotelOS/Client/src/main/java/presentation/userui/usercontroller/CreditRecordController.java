@@ -13,9 +13,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.buttoncell.CreditTabelButtonCell;
+import util.CreditChangedCause;
 import vo.user.CreditRecordVO;
 
 import java.rmi.RemoteException;
+import java.util.List;
 
 /**
  * Created by wyj on 2016/11/25.
@@ -61,13 +63,24 @@ public class CreditRecordController {
         causeCol.setCellValueFactory(new PropertyValueFactory<>("creditChangedCause"));
         changeNumCol.setCellValueFactory(new PropertyValueFactory<>("changedCredit"));
         finalNumCol.setCellValueFactory(new PropertyValueFactory<>("currentCredit"));
-        optCol.setCellFactory(new Callback<TableColumn, TableCell>() {
-            @Override
-            public TableCell call(TableColumn param) {
-                creditTabelButtonCell = new CreditTabelButtonCell(stage, mainPane, creditRecordTable, userID);
-                return creditTabelButtonCell;
+
+        try {
+            List<CreditRecordVO> creditRecordVOS = userBlService.getCreditRecordsByUsername(userID);
+
+            for (int i = 0; i<creditRecordVOS.size(); i++) {
+                if (creditRecordVOS.get(i).creditChangedCause != CreditChangedCause.Recharge) {
+                    optCol.setCellFactory(new Callback<TableColumn, TableCell>() {
+                        @Override
+                        public TableCell call(TableColumn param) {
+                            creditTabelButtonCell = new CreditTabelButtonCell(stage, mainPane, creditRecordTable, userID);
+                            return creditTabelButtonCell;
+                        }
+                    });
+                }
             }
-        });
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
         creditRecordTable.setItems(getCreditRecordList());
     }

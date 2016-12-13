@@ -17,11 +17,11 @@
       <TextField layoutX="225.0" layoutY="130.0" prefWidth="165.0" />
       <TableView fx:id="orderList" layoutX="80.0" layoutY="190.0" prefHeight="360.0" prefWidth="690.0">
         <columns>
-          <TableColumn fx:id="orderIDCol" prefWidth="168.0" text="订单号" />
-          <TableColumn fx:id="orderTimeCol" minWidth="0.0" prefWidth="106.0" text="订单时间" />
-            <TableColumn fx:id="orderStateCol" prefWidth="92.0" text="订单状态" />
-            <TableColumn fx:id="hotelNameCol" prefWidth="208.0" text="酒店名称" />
-            <TableColumn fx:id="btnCol" minWidth="0.0" prefWidth="115.0" />
+          <TableColumn fx:id="orderIDCol" prefWidth="168.0" resizable="false" text="订单号" />
+          <TableColumn fx:id="orderTimeCol" minWidth="0.0" prefWidth="106.0" resizable="false" text="订单时间" />
+            <TableColumn fx:id="orderStateCol" prefWidth="92.0" resizable="false" text="订单状态" />
+            <TableColumn fx:id="hotelNameCol" prefWidth="208.0" resizable="false" text="酒店名称" />
+            <TableColumn fx:id="btnCol" minWidth="0.0" prefWidth="112.0" resizable="false" />
         </columns>
       </TableView>
       <Button layoutX="345.0" layoutY="125.0" mnemonicParsing="false" onAction="#cancelOrder">

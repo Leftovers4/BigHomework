@@ -20,7 +20,7 @@ public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
 
     final private HBox btnBox = new HBox();
     final private Button checkDetailBtn = new Button();
-    final private Button cancelOrderBtn = new Button();
+//    final private Button cancelOrderBtn = new Button();
 
     private TableView tableView;
 
@@ -32,9 +32,9 @@ public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
         checkDetailBtn.setGraphic(new ImageView(detailImg));
         checkDetailBtn.getStyleClass().add("tableCellBtn");
 
-        Image cancelImg = new Image("/img/user/cancel.png");
-        cancelOrderBtn.setGraphic(new ImageView(cancelImg));
-        cancelOrderBtn.getStyleClass().add("tableCellBtn");
+//        Image cancelImg = new Image("/img/user/cancel.png");
+//        cancelOrderBtn.setGraphic(new ImageView(cancelImg));
+//        cancelOrderBtn.getStyleClass().add("tableCellBtn");
 
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
@@ -43,12 +43,12 @@ public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
             mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane, userID, orderVO.orderID));
         });
 
-        cancelOrderBtn.setOnAction(event -> {
-            int selectedIndex = getTableRow().getIndex();
-            OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
-            mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new CancelOrderPane(stage, orderVO.orderID));
-        });
+//        cancelOrderBtn.setOnAction(event -> {
+//            int selectedIndex = getTableRow().getIndex();
+//            OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
+//            mainPane.getChildren().remove(0);
+//            mainPane.getChildren().add(new CancelOrderPane(stage, orderVO.orderID));
+//        });
     }
 
 
@@ -61,6 +61,7 @@ public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
         } else {
             btnBox.getChildren().clear();
             btnBox.getChildren().add(checkDetailBtn);
+//            btnBox.getChildren().add(cancelOrderBtn);
             setGraphic(btnBox);
             setText(null);
         }

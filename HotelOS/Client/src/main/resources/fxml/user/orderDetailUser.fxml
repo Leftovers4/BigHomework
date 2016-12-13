@@ -53,6 +53,8 @@
       <Label fx:id="childdet" layoutX="677.0" layoutY="336.0" text="有无" />
       <Label layoutX="355.0" layoutY="547.0" text="订单状态：" />
       <Label fx:id="ordertypeLabel" layoutX="465.0" layoutY="547.0" text="状态" />
-      <Button fx:id="evaluateBtn" layoutX="597.0" layoutY="542.0" mnemonicParsing="false" onAction="#evaluateOrder" prefHeight="30.0" prefWidth="102.0" styleClass="actionBtn" text="评价晒单" />
+      <Button fx:id="evaluateBtn" layoutX="597.0" layoutY="542.0" mnemonicParsing="false" onAction="#evaluateOrder" prefHeight="30.0" prefWidth="102.0" styleClass="actionBtn" text="评价晒单" visible="false" />
+      <Button onAction="#cancelOrderEvent" fx:id="cancelBtn" layoutX="597.0" layoutY="542.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="102.0" styleClass="actionBtn" text="撤销订单" visible="false" />
+      <Button onAction="#checkMyReviewEvent" fx:id="checkMyReviewBtn" layoutX="606.0" layoutY="542.0" mnemonicParsing="false" styleClass="actionBtn" text="查看我的评价" visible="false" />
    </children>
 </fx:root>

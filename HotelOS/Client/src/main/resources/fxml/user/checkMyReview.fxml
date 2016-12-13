@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<fx:root type="Pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" fx:controller="presentation.userui.usercontroller.CheckMyReviewController" stylesheets="@../../css/user/userstyle.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="371.0" layoutY="178.0" text="评分：" />
+      <ImageView fx:id="star1" fitHeight="40.0" fitWidth="40.0" layoutX="371.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/user/blankStar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="star2" fitHeight="40.0" fitWidth="40.0" layoutX="411.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/user/blankStar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="star3" fitHeight="40.0" fitWidth="40.0" layoutX="451.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/user/blankStar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="star4" fitHeight="40.0" fitWidth="40.0" layoutX="491.0" layoutY="243.0" preserveRatio="true">
+         <image>
+            <Image url="@../../img/user/blankStar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="star5" fitHeight="40.0" fitWidth="40.0" layoutX="531.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/user/blankStar.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="200.0" layoutY="333.0" text="评价：" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/common/initialPhoto.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="reviewContent" layoutX="263.0" layoutY="335.0" text="Label" />
+   </children>
+</fx:root>

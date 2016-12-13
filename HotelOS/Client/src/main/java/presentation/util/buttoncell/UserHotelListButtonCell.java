@@ -43,8 +43,10 @@ public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
         });
 
         generateOrderBtn.setOnAction(event -> {
+            int selectedIndex = getTableRow().getIndex();
+            HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new UserGenerateOrderPane(stage));
+            mainPane.getChildren().add(new UserGenerateOrderPane(stage, mainPane, userID, hotelVO.hotelID));
         });
     }
 
@@ -55,7 +57,9 @@ public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
             setGraphic(null);
             setText(null);
         } else {
+            btnBox.getChildren().clear();
             btnBox.getChildren().add(checkDetailBtn);
+            btnBox.getChildren().add(generateOrderBtn);
             setGraphic(btnBox);
             setText(null);
         }

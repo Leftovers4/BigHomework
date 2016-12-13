@@ -96,8 +96,8 @@ public class ComUserSceneController {
         leftBarBtnEffect(indexBtn);
         indexBtn.setStyle("-fx-background-color: transparent");
         currentBtn = null;
-        mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new UserGenerateOrderPane(stage));
+//        mainPane.getChildren().remove(0);
+//        mainPane.getChildren().add(new UserGenerateOrderPane(stage, mainPane, userID, hotelID));
     }
     @FXML
     private void userInfo() {

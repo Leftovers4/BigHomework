@@ -10,7 +10,7 @@
         <columns>
           <TableColumn fx:id="hotelNameCol" prefWidth="180.0" resizable="false" text="酒店名称" />
           <TableColumn fx:id="hotelAddressCol" prefWidth="325.0" resizable="false" text="地址" />
-            <TableColumn fx:id="btnCol" prefWidth="94.0" resizable="false" />
+            <TableColumn fx:id="btnCol" prefWidth="92.0" resizable="false" />
         </columns>
       </TableView>
    </children>

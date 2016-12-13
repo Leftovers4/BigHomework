@@ -115,3 +115,58 @@
     -fx-border-color: #dddddd #dddddd #dddddd #dddddd;
 }
 
+
+
+
+
+
+
+/*!*tableview*!*/
+/*.table-view{*/
+    /*-fx-background-color: white;*/
+    /*-fx-border-color: white;*/
+    /*-fx-font-size: 15px;*/
+/*}*/
+/*.table-view .column-header, .filler{*/
+    /*-fx-background-color: white;*/
+    /*-fx-border-color: white white #dddddd white;*/
+/*}*/
+/*.table-view .column-header .label{*/
+    /*-fx-background-color: white;*/
+    /*-fx-border-color: white white #dddddd white;*/
+    /*-fx-text-fill: #7E7E7E;*/
+    /*-fx-font-weight: 400;*/
+/*}*/
+/*.table-view .table-row-cell{*/
+    /*-fx-border-color: transparent;*/
+/*}*/
+/*.table-view .table-column{*/
+    /*-fx-border-color: transparent;*/
+    /*-fx-text-fill: #37474F;*/
+/*}*/
+/*.table-view .table-row-cell:selected{*/
+    /*-fx-background-color: #F6FAFF;*/
+
+/*}*/
+/*.table-view .table-row-cell:hover{*/
+    /*-fx-background-color: #F6FAFF;*/
+/*}*/
+/*!*左右中对齐列表栏*!*/
+/*.table-view .column-header.LeftAlignCol .label{*/
+    /*-fx-alignment: center-left;*/
+/*}*/
+/*.table-view .LeftAlignCol{*/
+    /*-fx-alignment: center-left;*/
+/*}*/
+/*.table-view .column-header.RightAlignCol .label{*/
+    /*-fx-alignment: center-right;*/
+/*}*/
+/*.table-view .RightAlignCol{*/
+    /*-fx-alignment: center-right;*/
+/*}*/
+/*.table-view .column-header.MidAlignCol .label{*/
+    /*-fx-alignment: center;*/
+/*}*/
+/*.table-view .MidAlignCol{*/
+    /*-fx-alignment: center;*/
+/*}*/
