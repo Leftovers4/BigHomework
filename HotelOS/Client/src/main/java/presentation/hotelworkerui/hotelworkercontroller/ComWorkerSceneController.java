@@ -1,10 +1,12 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.*;
 import presentation.util.alert.AlertController;
@@ -53,6 +55,7 @@ public class ComWorkerSceneController {
 
         //实时刷新time
         MyTimeLabel.EnableShowTime(timeLabel);
+
     }
 
 

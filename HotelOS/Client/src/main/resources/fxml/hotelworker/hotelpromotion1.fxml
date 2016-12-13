@@ -118,7 +118,7 @@
                   <TableColumn fx:id="roomLeastCol" editable="false" prefWidth="150.0" resizable="false" styleClass="RightAlignCol" text="最少预订间数" />
                   <TableColumn fx:id="roomDiscountCol" editable="false" minWidth="0.0" prefWidth="160.0" resizable="false" styleClass="RightAlignCol" text="折扣" />
                   <TableColumn fx:id="roomPriceCol" editable="false" minWidth="0.0" prefWidth="197.0" resizable="false" styleClass="RightAlignCol" text="优惠价（元/天）" />
-                  <TableColumn fx:id="roomOpCol" editable="false" minWidth="0.0" prefWidth="100.0" resizable="false" styleClass="MidAlignCol" text="操作" />
+                  <TableColumn fx:id="roomOpCol" editable="false" minWidth="0.0" prefWidth="100.0" resizable="false" sortable="false" styleClass="MidAlignCol" text="操作" />
                </columns>
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0">
@@ -195,12 +195,12 @@
          <children>
             <TableView fx:id="timeTable" prefHeight="337.0" prefWidth="778.0">
                <columns>
-                  <TableColumn fx:id="timeStartCol" prefWidth="170.0" resizable="false" styleClass="LeftAlignCol" text="开始日期" />
-                  <TableColumn fx:id="timeEndCol" prefWidth="170.0" resizable="false" styleClass="LeftAlignCol" text="结束日期" />
-                  <TableColumn fx:id="timeDiscountCol" minWidth="0.0" prefWidth="60.0" resizable="false" styleClass="RightAlignCol" text="折扣" />
-                  <TableColumn fx:id="timeRoomTypeCol" prefWidth="100.0" resizable="false" styleClass="LeftAlignCol" text="客房类型" />
-                  <TableColumn fx:id="timePriceCol" minWidth="0.0" prefWidth="146.0" resizable="false" styleClass="RightAlignCol" text="优惠价（元/天）" />
-                  <TableColumn fx:id="timeOpCol" minWidth="0.0" prefWidth="100.0" resizable="false" styleClass="MidAlignCol" text="操作" />
+                  <TableColumn fx:id="timeStartCol" editable="false" prefWidth="170.0" resizable="false" styleClass="LeftAlignCol" text="开始日期" />
+                  <TableColumn fx:id="timeEndCol" editable="false" prefWidth="170.0" resizable="false" styleClass="LeftAlignCol" text="结束日期" />
+                  <TableColumn fx:id="timeDiscountCol" editable="false" minWidth="0.0" prefWidth="60.0" resizable="false" styleClass="RightAlignCol" text="折扣" />
+                  <TableColumn fx:id="timeRoomTypeCol" editable="false" prefWidth="100.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="客房类型" />
+                  <TableColumn fx:id="timePriceCol" editable="false" minWidth="0.0" prefWidth="157.0" resizable="false" styleClass="RightAlignCol" text="优惠价（元/天）" />
+                  <TableColumn fx:id="timeOpCol" editable="false" minWidth="0.0" prefWidth="100.0" resizable="false" sortable="false" styleClass="MidAlignCol" text="操作" />
                </columns>
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="778.0">
@@ -218,10 +218,10 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <DatePicker fx:id="startTimeDatePicker" prefHeight="36.0" prefWidth="155.0" promptText="开始日期" />
+                              <DatePicker fx:id="startTimeDatePicker" editable="false" prefHeight="36.0" prefWidth="160.0" promptText="开始日期" />
                               <ComboBox fx:id="startHourBox" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="1" />
                               <ComboBox fx:id="startMinBox" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" />
-                              <DatePicker fx:id="endTimeDatePicker" prefHeight="36.0" prefWidth="155.0" promptText="结束日期" GridPane.rowIndex="1" />
+                              <DatePicker fx:id="endTimeDatePicker" editable="false" prefHeight="36.0" prefWidth="160.0" promptText="结束日期" GridPane.rowIndex="1" />
                               <ComboBox fx:id="endHourBox" layoutX="110.0" layoutY="2.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <ComboBox fx:id="endMinBox" layoutX="110.0" layoutY="22.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                            </children>
@@ -282,15 +282,15 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="comVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0">
+      <VBox fx:id="comVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0" visible="false">
          <children>
             <TableView fx:id="comTable" prefHeight="337.0">
                <columns>
-                  <TableColumn fx:id="comNameCol" prefWidth="182.0" styleClass="LeftAlignCol" text="企业名称" />
-                  <TableColumn fx:id="comRoomTypeCol" prefWidth="150.0" styleClass="LeftAlignCol" text="客房类型" />
-                  <TableColumn fx:id="comDiscountCol" minWidth="0.0" prefWidth="130.0" styleClass="RightAlignCol" text="折扣" />
-                  <TableColumn fx:id="comPriceCol" minWidth="0.0" prefWidth="185.0" styleClass="RightAlignCol" text="优惠价（元/天）" />
-                  <TableColumn fx:id="comOpCol" minWidth="0.0" prefWidth="100.0" styleClass="MidAlignCol" text="操作" />
+                  <TableColumn fx:id="comNameCol" editable="false" prefWidth="182.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="企业名称" />
+                  <TableColumn fx:id="comRoomTypeCol" editable="false" prefWidth="150.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="客房类型" />
+                  <TableColumn fx:id="comDiscountCol" editable="false" minWidth="0.0" prefWidth="130.0" resizable="false" styleClass="RightAlignCol" text="折扣" />
+                  <TableColumn fx:id="comPriceCol" editable="false" minWidth="0.0" prefWidth="195.0" resizable="false" styleClass="RightAlignCol" text="优惠价（元/天）" />
+                  <TableColumn fx:id="comOpCol" editable="false" minWidth="0.0" prefWidth="100.0" resizable="false" sortable="false" styleClass="MidAlignCol" text="操作" />
                </columns>
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0">

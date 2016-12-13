@@ -16,6 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
+import presentation.util.other.CancelDateBefore;
 import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.MyComboBox;
 import presentation.util.other.MySlider;
@@ -29,6 +30,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Hitiger on 2016/11/20.
@@ -223,6 +226,15 @@ public class ManagePromotionPaneController {
         MyComboBox.initMinBox(endMinBox);
     }
 
+    private void iniDatePicker(){
+        startTimeDatePicker.setValue(LocalDate.now());
+        endTimeDatePicker.setValue(LocalDate.now());
+        startTimeDatePicker.setDayCellFactory(new CancelDateBefore(startTimeDatePicker, LocalDate.now()));
+        endTimeDatePicker.setDayCellFactory(new CancelDateBefore(endTimeDatePicker, LocalDate.now()));
+        startTimeDatePicker.setOnAction(event -> {
+            endTimeDatePicker.setDayCellFactory(new CancelDateBefore(endTimeDatePicker,startTimeDatePicker.getValue()));
+        });
+    }
     @FXML
     private void showCom(){
         showVBox(comVBox);
@@ -273,6 +285,7 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmBirthAdd(){
+        if(!judgeDiscount(birthDiscountField)) return;
         PromotionVO promotionVO = new PromotionVO();
 
         try {
@@ -306,15 +319,17 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void deleteBirthPromotion(){
-        long promotionID = ((PromotionVO) birthTable.getItems().get(0)).promotionID;
-        try {
-            promotionBLService.delete(promotionID);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+        if (alertController.showConfirmDeleteAlert("您确定要删除此优惠吗？", "确认删除")) {
+            long promotionID = ((PromotionVO) birthTable.getItems().get(0)).promotionID;
+            try {
+                promotionBLService.delete(promotionID);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
 
-        initData(birthTable, PromotionType.BirthdayPromotion);
-        setBirthComponentsVisible(false);
+            initData(birthTable, PromotionType.BirthdayPromotion);
+            setBirthComponentsVisible(false);
+        }
     }
 
     private void setBirthComponentsVisible(Boolean isVisible){
@@ -343,6 +358,7 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmRoomAdd(){
+        if(!judgeLeastRoom(leastRoomsField) || !judgeDiscount(roomDiscountField)) return;
         PromotionVO promotionVO = new PromotionVO();
         try {
             promotionVO.leastRooms = Integer.parseInt(leastRoomsField.getText());
@@ -382,10 +398,12 @@ public class ManagePromotionPaneController {
         isTimeAdd = true;
         setTimeComponentsVisible(true);
         initTimeBOX();
+        iniDatePicker();
     }
 
     @FXML
     private void confirmTimeAdd(){
+        if(!judgeDiscount(timeDiscountField)) return;
         PromotionVO promotionVO = new PromotionVO();
         try {
             LocalDate startTimeDate = startTimeDatePicker.getValue();
@@ -436,11 +454,11 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmComAdd(){
+        if(!judgeCom(comNameField) || !judgeDiscount(comDiscountField)) return;
         PromotionVO promotionVO = new PromotionVO();
         try {
             String comName = comNameField.getText();
             double comDiscount = Double.parseDouble(comDiscountField.getText());
-//            promotionVO.promotionEnterprises = new ArrayList<>();
             promotionVO.promotionEnterprises.add(comName);
             promotionVO.discount = comDiscount;
             if(isComAdd){
@@ -474,6 +492,43 @@ public class ManagePromotionPaneController {
         addComBtn.setVisible(!isVisible);
     }
 
+    private Boolean judgeDiscount(TextField textField){
+        Pattern pattern = Pattern.compile("^[0-9].*$");
+        Matcher matcher = pattern.matcher(textField.getText());
+        if(matcher.matches()){
+            double discount = Double.parseDouble(textField.getText());
+            if(discount > 1) {
+                alertController.showInputWrongAlert("折扣不能大于1，请重新输入","格式错误");
+                return false;
+            }
+        }else {
+            alertController.showInputWrongAlert("折扣应输入小数","格式错误");
+            return false;
+        }
+        return true;
+    }
+
+    private Boolean judgeLeastRoom(TextField textField){
+        if(textField.getText().equals("")) {
+            alertController.showInputWrongAlert("最少预订间数需填入整数","格式错误");
+            return false;
+        }
+        Pattern pattern = Pattern.compile("^[0-9]*$");
+        Matcher matcher = pattern.matcher(textField.getText());
+        if(!matcher.matches()){
+            alertController.showInputWrongAlert("最少预订间数需填入整数，请重新输入","格式错误");
+            return false;
+        }
+        return true;
+    }
+
+    private Boolean judgeCom(TextField textField){
+        if(textField.getText().equals("")) {
+            alertController.showInputWrongAlert("请输入企业名称","格式错误");
+            return false;
+        }
+        return true;
+    }
     private void makeBirthFocused() {
         Platform.runLater(new Runnable() {
             @Override
@@ -518,6 +573,7 @@ public class ManagePromotionPaneController {
                     timeTable.setDisable(true);
                     setTimeComponentsVisible(true);
                     initTimeBOX();
+                    iniDatePicker();
                 }else if(proType == PromotionType.EnterprisePromotion){
                     //合作企业
                     isComAdd = false;

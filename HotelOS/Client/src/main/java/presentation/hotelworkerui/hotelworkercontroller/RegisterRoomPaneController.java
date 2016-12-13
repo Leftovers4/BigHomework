@@ -125,6 +125,7 @@ public class RegisterRoomPaneController {
     @FXML
     private void addRoom() {
         isAdd = true;
+        roomTable.setDisable(true);
         setAddComponentsVisible(true);
     }
 
@@ -144,6 +145,7 @@ public class RegisterRoomPaneController {
 
                 if (roomAmount > 0 && roomPrice > 0) {
                     if (isAdd) {
+                        roomTable.setDisable(false);
                         //添加客房
                         RoomVO roomVO = new RoomVO();
                         roomVO.hotelID = 522000;
@@ -190,10 +192,8 @@ public class RegisterRoomPaneController {
 
     @FXML
     private void cancelAdd() {
-        if (!isAdd) {
-            roomTable.setDisable(false);
-            roomBox.setDisable(false);
-        }
+        if (!isAdd) roomBox.setDisable(false);
+        roomTable.setDisable(false);
         roomAmountField.clear();
         roomPriceField.clear();
         setAddComponentsVisible(false);

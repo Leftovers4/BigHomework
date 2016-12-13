@@ -6,6 +6,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import presentation.hotelworkerui.hotelworkerscene.ComWorkerScene;
@@ -206,6 +208,7 @@ public class LoginSceneController {
                     System.out.println("wrong password");
                 } else if (resultMessage == ResultMessage.Success) {
                     stage.setScene(new ComUserScene(new Group(), stage, loginUsername.getText()));
+                    centerStage(stage);
                     System.out.println("success");
                 }
             } else {
@@ -216,10 +219,13 @@ public class LoginSceneController {
                     PersonnelVO personnelVO = personnelBLService.searchPersonnelByID(Integer.valueOf(loginUsername.getText()));
                     if(personnelVO.personnelType == PersonnelType.HotelWorker){
                         stage.setScene(new ComWorkerScene(new Group(), stage, personnelVO.hotelID));
+                        centerStage(stage);
                     }else if(personnelVO.personnelType == PersonnelType.WebMarketer){
                         stage.setScene(new ComMarketerScene(new Group(), stage));
+                        centerStage(stage);
                     }else {
                         stage.setScene(new WebmanagerComScene(new Group(), stage));
+                        centerStage(stage);
                     }
 
                 } else {
@@ -251,5 +257,9 @@ public class LoginSceneController {
         }
     }
 
-
+    private void centerStage(Stage newStage){
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        newStage.setX((primScreenBounds.getWidth() - newStage.getWidth()) / 2);
+        newStage.setY((primScreenBounds.getHeight() - newStage.getHeight()) / 2);
+    }
 }
