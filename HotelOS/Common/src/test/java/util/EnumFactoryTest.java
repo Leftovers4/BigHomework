@@ -16,4 +16,9 @@ public class EnumFactoryTest {
         System.out.print(EnumFactory.getEnum("None"));
     }
 
+    @Test
+    public void getString() throws Exception {
+        System.out.println(EnumFactory.getString(RoomType.BusinessSuite));
+    }
+
 }
