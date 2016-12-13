@@ -16,10 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
-import presentation.util.other.CancelDateBefore;
-import presentation.util.other.DisableColumnChangeListener;
-import presentation.util.other.MyComboBox;
-import presentation.util.other.MySlider;
+import presentation.util.other.*;
 import util.PromotionType;
 import vo.promotion.PromotionVO;
 
@@ -285,7 +282,7 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmBirthAdd(){
-        if(!judgeDiscount(birthDiscountField)) return;
+        if(!JudgeInput.judgeDiscount(birthDiscountField)) return;
         PromotionVO promotionVO = new PromotionVO();
 
         try {
@@ -358,7 +355,7 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmRoomAdd(){
-        if(!judgeLeastRoom(leastRoomsField) || !judgeDiscount(roomDiscountField)) return;
+        if(!judgeLeastRoom(leastRoomsField) || !JudgeInput.judgeDiscount(roomDiscountField)) return;
         PromotionVO promotionVO = new PromotionVO();
         try {
             promotionVO.leastRooms = Integer.parseInt(leastRoomsField.getText());
@@ -403,7 +400,7 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmTimeAdd(){
-        if(!judgeDiscount(timeDiscountField)) return;
+        if(!JudgeInput.judgeDiscount(timeDiscountField)) return;
         PromotionVO promotionVO = new PromotionVO();
         try {
             LocalDate startTimeDate = startTimeDatePicker.getValue();
@@ -454,7 +451,7 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmComAdd(){
-        if(!judgeCom(comNameField) || !judgeDiscount(comDiscountField)) return;
+        if(!judgeCom(comNameField) || !JudgeInput.judgeDiscount(comDiscountField)) return;
         PromotionVO promotionVO = new PromotionVO();
         try {
             String comName = comNameField.getText();
@@ -492,21 +489,7 @@ public class ManagePromotionPaneController {
         addComBtn.setVisible(!isVisible);
     }
 
-    private Boolean judgeDiscount(TextField textField){
-        Pattern pattern = Pattern.compile("^[0-9].*$");
-        Matcher matcher = pattern.matcher(textField.getText());
-        if(matcher.matches()){
-            double discount = Double.parseDouble(textField.getText());
-            if(discount > 1) {
-                alertController.showInputWrongAlert("折扣不能大于1，请重新输入","格式错误");
-                return false;
-            }
-        }else {
-            alertController.showInputWrongAlert("折扣应输入小数","格式错误");
-            return false;
-        }
-        return true;
-    }
+
 
     private Boolean judgeLeastRoom(TextField textField){
         if(textField.getText().equals("")) {

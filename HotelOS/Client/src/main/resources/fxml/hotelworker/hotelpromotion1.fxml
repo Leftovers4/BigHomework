@@ -110,7 +110,7 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="roomVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0" visible="false">
+      <VBox fx:id="roomVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0">
          <children>
             <TableView fx:id="roomTable" prefHeight="337.0">
                <columns>
@@ -191,13 +191,13 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="timeVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0" visible="false">
+      <VBox fx:id="timeVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0">
          <children>
-            <TableView fx:id="timeTable" prefHeight="337.0" prefWidth="778.0">
+            <TableView fx:id="timeTable" prefHeight="337.0">
                <columns>
                   <TableColumn fx:id="timeStartCol" editable="false" prefWidth="170.0" resizable="false" styleClass="LeftAlignCol" text="开始日期" />
                   <TableColumn fx:id="timeEndCol" editable="false" prefWidth="170.0" resizable="false" styleClass="LeftAlignCol" text="结束日期" />
-                  <TableColumn fx:id="timeDiscountCol" editable="false" minWidth="0.0" prefWidth="60.0" resizable="false" styleClass="RightAlignCol" text="折扣" />
+                  <TableColumn fx:id="timeDiscountCol" editable="false" minWidth="0.0" prefWidth="62.0" resizable="false" styleClass="RightAlignCol" text="折扣" />
                   <TableColumn fx:id="timeRoomTypeCol" editable="false" prefWidth="100.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="客房类型" />
                   <TableColumn fx:id="timePriceCol" editable="false" minWidth="0.0" prefWidth="157.0" resizable="false" styleClass="RightAlignCol" text="优惠价（元/天）" />
                   <TableColumn fx:id="timeOpCol" editable="false" minWidth="0.0" prefWidth="100.0" resizable="false" sortable="false" styleClass="MidAlignCol" text="操作" />

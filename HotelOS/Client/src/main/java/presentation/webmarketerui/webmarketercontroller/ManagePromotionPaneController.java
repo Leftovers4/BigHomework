@@ -2,6 +2,7 @@ package presentation.webmarketerui.webmarketercontroller;
 
 import bl.promotionbl.PromotionBLService;
 import bl.promotionbl.impl.PromotionBlServiceImpl;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -17,9 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
-import presentation.util.other.DisableColumnChangeListener;
-import presentation.util.other.MyComboBox;
-import presentation.util.other.MySlider;
+import presentation.util.other.*;
 import util.IDProducer;
 import util.PromotionType;
 import util.TradingArea;
@@ -170,6 +169,16 @@ public class ManagePromotionPaneController {
         MyComboBox.initMinBox(endMinBox);
     }
 
+    private void iniDatePicker(){
+        startTimeDatePicker.setValue(LocalDate.now());
+        startTimeDatePicker.setDayCellFactory(new CancelDateBefore(startTimeDatePicker, LocalDate.now()));
+        startTimeDatePicker.setOnAction(event -> {
+            endTimeDatePicker.setDayCellFactory(new CancelDateBefore(endTimeDatePicker,startTimeDatePicker.getValue()));
+        });
+        endTimeDatePicker.setValue(LocalDate.now());
+        endTimeDatePicker.setDayCellFactory(new CancelDateBefore(endTimeDatePicker, LocalDate.now()));
+    }
+
     @FXML
     private void showMemberAreaPromotion(){
         memberAreaVBox.setVisible(true);
@@ -232,13 +241,11 @@ public class ManagePromotionPaneController {
         try {
             list = promotionBLService.viewPromotionList(IDProducer.produceHotelIDForWP(),PromotionType.UserLevelPromotion);
             if(list.isEmpty()){
-                //TODO
-                System.out.println("未制定等级");
+                showGridPane.setVisible(false);
+                editGridPane.setVisible(false);
             }
         } catch (RemoteException e) {
             e.printStackTrace();
-        } catch (NullPointerException e){
-
         }
         if(!list.isEmpty()){
             PromotionVO promotionVO = list.get(0);
@@ -269,10 +276,12 @@ public class ManagePromotionPaneController {
         isTimeAdd = true;
         setTimeComponentsVisible(true);
         initTimeBOX();
+        iniDatePicker();
     }
 
     @FXML
     private void confirmTimeAdd(){
+        if(!JudgeInput.judgeDiscount(timeDiscountField)) return;
         PromotionVO promotionVO = new PromotionVO();
         try {
             LocalDate startTimeDate = startTimeDatePicker.getValue();
@@ -330,11 +339,10 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmMemAdd() {
+        if(!JudgeInput.judgeDiscount(areaDiscountField)) return;
         PromotionVO promotionVO = new PromotionVO();
         try {
             //TODO 更换商圈
-//            promotionTraAreaVO.tradingArea = String.valueOf(TradingArea.XIANLIN_CENTER);
-//            promotionTraAreaVO.traDiscount = Double.parseDouble(areaDiscountField.getText());
             promotionVO.promotionTraAreaVOs.get(0).tradingArea = String.valueOf(TradingArea.XIANLIN_CENTER);
             promotionVO.promotionTraAreaVOs.get(0).traDiscount = Double.parseDouble(areaDiscountField.getText());
             promotionVO.hotelID = IDProducer.produceHotelIDForWP();
@@ -516,6 +524,7 @@ public class ManagePromotionPaneController {
                     proTimeTable.setDisable(true);
                     setTimeComponentsVisible(true);
                     initTimeBOX();
+                    iniDatePicker();
                 }else if(proType == PromotionType.VIPSpecialAreaPromotion){
                     //特定期间优惠
                     isAreaAdd = false;
