@@ -94,15 +94,26 @@
                         <Insets left="98.0" />
                      </FlowPane.margin>
                   </Pane>
-                  <TableView fx:id="hotelOrderList" prefHeight="200.0" prefWidth="500.0">
+                  <TableView fx:id="hotelRoomList" prefHeight="200.0" prefWidth="520.0">
                     <columns>
-                      <TableColumn fx:id="orderidCol" prefWidth="170.0" resizable="false" text="订单号" />
-                      <TableColumn fx:id="ordertimeCol" prefWidth="124.0" resizable="false" text="订单时间" />
-                        <TableColumn fx:id="ordertypeCol" prefWidth="109.0" resizable="false" text="订单状态" />
-                        <TableColumn fx:id="btnCol" prefWidth="93.0" resizable="false" />
+                      <TableColumn fx:id="roomtypeCol" prefWidth="163.0" resizable="false" text="房间类型" />
+                      <TableColumn fx:id="roomnumCol" prefWidth="134.0" resizable="false" text="可预订房间数量" />
+                        <TableColumn fx:id="roompriceCol" prefWidth="142.0" resizable="false" text="价格" />
+                        <TableColumn fx:id="generateBtnCol" prefWidth="75.0" resizable="false" />
                     </columns>
                      <FlowPane.margin>
-                        <Insets left="165.0" />
+                        <Insets left="155.0" />
+                     </FlowPane.margin>
+                  </TableView>
+                  <TableView fx:id="hotelOrderList" prefHeight="200.0" prefWidth="520.0">
+                    <columns>
+                      <TableColumn fx:id="orderidCol" prefWidth="211.0" resizable="false" text="订单号" />
+                      <TableColumn fx:id="ordertimeCol" prefWidth="131.0" resizable="false" text="订单时间" />
+                        <TableColumn fx:id="ordertypeCol" prefWidth="109.0" resizable="false" text="订单状态" />
+                        <TableColumn fx:id="btnCol" prefWidth="64.0" resizable="false" />
+                    </columns>
+                     <FlowPane.margin>
+                        <Insets left="155.0" top="30.0" />
                      </FlowPane.margin>
                   </TableView>
                </children>

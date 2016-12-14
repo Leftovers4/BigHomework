@@ -1,6 +1,8 @@
 package presentation.webmanagerui.webmanagercontroller;
 
 import bl.hotelbl.impl.HotelBlServiceImpl;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,10 +17,12 @@ import javafx.util.Callback;
 import presentation.webmanagerui.webmanagerscene.AddHotelPane;
 import presentation.webmanagerui.webmanagerscene.CheckHotelInfoPane;
 import presentation.webmanagerui.webmanagerscene.HotelManagePane;
+import util.AddTradProducer;
 import util.ResultMessage;
 import vo.hotel.HotelVO;
 
 import java.rmi.RemoteException;
+import java.util.Iterator;
 
 /**
  * Created by wyj on 2016/11/29.
@@ -54,7 +58,6 @@ public class HotelManageController {
         this.pane = mainPane;
         this.stage = primaryStage;
 
-//        webManHotelListButtonCell = new WebManHotelListButtonCell();
 
         try {
             hotelBlService = new HotelBlServiceImpl();
@@ -62,7 +65,32 @@ public class HotelManageController {
             e.printStackTrace();
         }
 
+        initialData();
         initialTable();
+    }
+
+
+    private void initialData() {
+        Iterator<String> cityList = AddTradProducer.getAllAddress();
+        while (cityList.hasNext()) {
+            cityCB.getItems().add(cityList.next());
+        }
+
+        for (int i = 1; i<=5; i++) {
+            star.getItems().add(i);
+        }
+
+        cityCB.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                if (newValue != null) {
+                    Iterator<String> tracingArea = AddTradProducer.getTradingAreasByAddress(newValue.toString());
+                    while (tracingArea.hasNext()) {
+                        tracingareaCB.getItems().add(tracingArea.next());
+                    }
+                }
+            }
+        });
     }
 
 

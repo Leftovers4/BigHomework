@@ -287,7 +287,7 @@ public class InfoPaneController {
                 }
             }
 
-//            initialData();
+            initialData();
         } else if (!isempty && !phoneisright) {
             new InputWrongAlert("联系方式格式错误", "格式错误").showAndWait();
         } else {

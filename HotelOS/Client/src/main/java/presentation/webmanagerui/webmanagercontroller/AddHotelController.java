@@ -2,15 +2,18 @@ package presentation.webmanagerui.webmanagercontroller;
 
 import bl.hotelbl.impl.HotelBlServiceImpl;
 import bl.personnelbl.impl.PersonnelBLServiceImpl;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import util.ResultMessage;
+import util.AddTradProducer;
 import vo.hotel.HotelVO;
 import vo.personnel.PersonnelVO;
 
 import java.rmi.RemoteException;
+import java.util.Iterator;
 
 /**
  * Created by wyj on 2016/11/30.
@@ -54,6 +57,28 @@ public class AddHotelController {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+
+        initialData();
+    }
+
+    private void initialData() {
+        Iterator<String> cityList = AddTradProducer.getAllAddress();
+        while (cityList.hasNext()) {
+            hotelcity.getItems().add(cityList.next());
+        }
+
+        hotelcity.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                if (newValue != null) {
+                    hoteltracingarea.getItems().clear();
+                    Iterator<String> tracingareaList = AddTradProducer.getTradingAreasByAddress(newValue.toString());
+                    while (tracingareaList.hasNext()) {
+                        hoteltracingarea.getItems().add(tracingareaList.next());
+                    }
+                }
+            }
+        });
     }
 
 
@@ -69,7 +94,8 @@ public class AddHotelController {
         HotelVO hotelVO = new HotelVO();
 
         hotelVO.hotelName = hotelnameField.getText();
-        hotelVO.address = hotelcity.getValue().toString() + hoteltracingarea.getValue().toString();
+        hotelVO.address = hotelcity.getValue().toString();
+        hotelVO.tradingArea = hoteltracingarea.getValue().toString();
 
         if (onestar.isSelected()) {
             hotelVO.star = 1;
@@ -83,29 +109,21 @@ public class AddHotelController {
             hotelVO.star = 5;
         }
 
+
         try {
             hotelID = hotelBlService.addHotel(hotelVO);
 
-            if (true) {
-                System.out.println("hotel add success");
-            } else {
-                System.out.println("hotel add fail");
-            }
+            HotelVO basicHotelInfo = hotelBlService.viewBasicHotelInfo(hotelID);
+
+            hotelidLabel.setText(String.valueOf(basicHotelInfo.hotelID));
+            hotelnameLabel.setText(basicHotelInfo.hotelName);
+            hoteladdressLabel.setText(basicHotelInfo.address);
+            hoteltracingareaLabel.setText(basicHotelInfo.tradingArea);
+            hotelstarLabel.setText(String.valueOf(basicHotelInfo.star));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
 
-
-        try {
-            hotelVO = hotelBlService.viewBasicHotelInfo(hotelID);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        hotelidLabel.setText(String.valueOf(hotelVO.hotelID));
-        hotelnameLabel.setText(hotelVO.hotelName);
-        hoteladdressLabel.setText(hotelVO.address);
-        hoteltracingareaLabel.setText(hotelVO.tradingArea);
-        hotelstarLabel.setText(String.valueOf(hotelVO.star));
     }
 
     /**

@@ -4,17 +4,18 @@ import bl.hotelbl.impl.HotelBlServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import presentation.userui.userscene.UserGenerateOrderPane;
 import presentation.util.buttoncell.UserHotelOrderListButtonCell;
 import vo.hotel.HotelVO;
+import vo.hotel.RoomVO;
 import vo.order.OrderVO;
 
 import java.rmi.RemoteException;
@@ -48,6 +49,12 @@ public class UserHotelInfoController {
     @FXML private Label simpleIntroLabel;
     @FXML private Label hotelServiceLabel;
 
+    @FXML private TableView hotelRoomList;
+    @FXML private TableColumn roomtypeCol;
+    @FXML private TableColumn roomnumCol;
+    @FXML private TableColumn roompriceCol;
+    @FXML private TableColumn generateBtnCol;
+
     private UserHotelOrderListButtonCell userHotelOrderListButtonCell;
     private HotelBlServiceImpl hotelBlService;
 
@@ -70,7 +77,8 @@ public class UserHotelInfoController {
             star.get(i).setVisible(false);
         }
 
-        initialTable();
+        initialHotelRoomTable();
+        initialOrderTable();
         initialData();
     }
 
@@ -98,7 +106,7 @@ public class UserHotelInfoController {
         }
     }
 
-    private void initialTable() {
+    private void initialOrderTable() {
 
         System.out.println(hotelID);
         System.out.println(userID);
@@ -127,4 +135,75 @@ public class UserHotelInfoController {
         }
         return list;
     }
+
+
+    private void initialHotelRoomTable() {
+
+        roomtypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
+        roomnumCol.setCellValueFactory(new PropertyValueFactory<>("available"));
+        roompriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        generateBtnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
+            @Override
+            public TableCell call(TableColumn param) {
+                return new UserHotelRoomButtonCell();
+            }
+        });
+        hotelRoomList.setItems(getHotelRoomList());
+    }
+    private ObservableList getHotelRoomList() {
+        ObservableList<RoomVO> list = null;
+        try {
+            list = FXCollections.observableArrayList(hotelBlService.viewAllHotelRooms(hotelID));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+    /**
+     * Created by wyj on 2016/12/14.
+     */
+    private class UserHotelRoomButtonCell extends TableCell<HotelVO, Boolean> {
+
+        final private HBox btnBox = new HBox();
+        final private Button bookBtn = new Button();
+        private int selectedIndex;
+
+        public UserHotelRoomButtonCell() {
+
+            Image image = new Image("/img/user/generateOrder.png");
+            ImageView bookimgview = new ImageView(image);
+            bookBtn.setGraphic(bookimgview);
+            bookBtn.getStyleClass().add("tableCellBtn");
+
+            bookBtn.setOnAction(event -> {
+                selectedIndex = getTableRow().getIndex();
+                mainPane.getChildren().remove(0);
+                mainPane.getChildren().add(new UserGenerateOrderPane(stage, mainPane, userID, hotelID));
+            });
+        }
+
+        public int getSelectedIndex() {
+            return selectedIndex;
+        }
+
+
+
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if (empty) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                btnBox.getChildren().clear();
+                btnBox.getChildren().add(bookBtn);
+                setGraphic(btnBox);
+                setText(null);
+            }
+        }
+    }
+
+
 }

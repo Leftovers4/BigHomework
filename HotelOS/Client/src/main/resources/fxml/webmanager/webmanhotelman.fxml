@@ -13,16 +13,16 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.HotelManageController">
    <children>
-      <TableView fx:id="hotelList" layoutX="100.0" layoutY="155.0" prefHeight="400.0" prefWidth="650.0">
+      <TableView fx:id="hotelList" layoutX="95.0" layoutY="155.0" prefHeight="400.0" prefWidth="660.0">
         <columns>
           <TableColumn fx:id="hotelIDCol" prefWidth="124.0" text="酒店编号 " />
-          <TableColumn fx:id="hotelNameCol" prefWidth="150.0" text="酒店名称" />
-            <TableColumn fx:id="hotelCityCol" prefWidth="157.0" text="城市" />
-            <TableColumn fx:id="hotelBusinessCol" prefWidth="129.0" text="商圈" />
-            <TableColumn fx:id="btnCol" prefWidth="89.0" />
+          <TableColumn fx:id="hotelNameCol" prefWidth="173.0" text="酒店名称" />
+            <TableColumn fx:id="hotelCityCol" prefWidth="118.0" text="城市" />
+            <TableColumn fx:id="hotelBusinessCol" prefWidth="131.0" text="商圈" />
+            <TableColumn fx:id="btnCol" prefWidth="93.0" />
         </columns>
       </TableView>
-      <TextField layoutX="100.0" layoutY="104.0" prefHeight="30.0" prefWidth="235.0" promptText="搜索酒店编号、名称" />
+      <TextField layoutX="95.0" layoutY="104.0" prefHeight="30.0" prefWidth="235.0" promptText="搜索酒店编号、名称" />
       <Button fx:id="searchhotelBtn" layoutX="335.0" layoutY="104.0" mnemonicParsing="false">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -41,7 +41,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <HBox fx:id="editBox" layoutX="125.0" layoutY="481.0" visible="false">
+      <HBox fx:id="editBox" layoutX="95.0" layoutY="481.0" visible="false">
          <children>
             <TextField fx:id="hotelnameinput" prefHeight="30.0" prefWidth="110.0" promptText="酒店名称" />
             <ComboBox fx:id="cityCB" prefHeight="30.0" prefWidth="110.0" promptText="-城市-">
@@ -49,18 +49,21 @@
                   <Insets left="20.0" />
                </HBox.margin>
             </ComboBox>
-            <ComboBox fx:id="tracingareaCB" prefHeight="30.0" prefWidth="110.0" promptText="-商圈-">
+            <ComboBox fx:id="tracingareaCB" prefHeight="30.0" prefWidth="160.0" promptText="-商圈-">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
             </ComboBox>
-            <ComboBox fx:id="star" prefWidth="150.0" promptText="-星级-" />
-            <Button onAction="#confirmModify" fx:id="confirmBtn" mnemonicParsing="false" styleClass="actionBtn" text="确认">
+            <ComboBox fx:id="star" prefHeight="30.0" prefWidth="65.0" promptText="-星级-">
+               <HBox.margin>
+                  <Insets left="20.0" />
+               </HBox.margin></ComboBox>
+            <Button fx:id="confirmBtn" mnemonicParsing="false" onAction="#confirmModify" styleClass="actionBtn" text="确认">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
             </Button>
-            <Button onAction="#cancelModify" fx:id="cancelBtn" mnemonicParsing="false" styleClass="actionBtn" text="取消">
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancelModify" styleClass="actionBtn" text="取消">
                <HBox.margin>
                   <Insets left="20.0" />
                </HBox.margin>
