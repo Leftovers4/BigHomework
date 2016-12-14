@@ -1,0 +1,1777 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Metrics scope="Common" type="Project" date="2016-12-14" xmlns="http://metrics.sourceforge.net/2003/Metrics-First-Flat">
+   <Cycle name="po.hotel et al" nodes="2" diameter="1">
+      <Package>po.hotel</Package>
+      <Package>po.order</Package>
+   </Cycle>
+   <Metric id = "PAR" description ="Number of Parameters" max ="5" hint ="Move invoked method or pass an object">
+      <Values per = "method" avg = "0.834" stddev = "1.592" max = "15" maxinrange="false">
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="15" inrange="false"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="9" inrange="false"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="9" inrange="false"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="7" inrange="false"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="7" inrange="false"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="7" inrange="false"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="6" inrange="false"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="6" inrange="false"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="6" inrange="false"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="5"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="5"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="5"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="5"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="4"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="4"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="4"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="4"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="3"/>
+         <Value name="findByHotelIDAndType" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="2"/>
+         <Value name="findByUsernameAndHotelID" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="2"/>
+         <Value name="findByUsernameAndType" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="2"/>
+         <Value name="findByHotelIDAndType" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="2"/>
+         <Value name="setImage" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="2"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="2"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="2"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="2"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="2"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="2"/>
+         <Value name="printHotelPO" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printOrderPO" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printPersonnelPO" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printPromotionPO" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printUserPO" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="findByHotelID" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByOrderID" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByType" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsername" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="delete" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByPersonnelID" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByType" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="delete" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByHotelID" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByPromotionID" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="delete" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsername" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findCreditRecordsByUsername" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="getImage" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insertCreditRecord" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="setAddress" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setDescription" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setHotelID" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setHotelName" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setReviews" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setRooms" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setService" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setStar" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setTradingArea" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setAvailable" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setPrice" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setRoomType" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setTotal" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="sethotelID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setroomID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setHaTime" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="setHa_result" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="setHotelID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setHotelName" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderHandleAppealPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderPricePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderTimePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setPersonAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setPromotionType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setReviewPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setRoomAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setRoomNumber" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setRoomType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setUsername" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setWithChildren" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setActualPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="setOriginPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="setCancelTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setExpectedCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setExpectedLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setGenerateTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setLastExecuteTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setHotelID" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setRating" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setReviewTime" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setReview" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setUsername" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setHotelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setName" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setPassword" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setPersonnelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setPersonnelType" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setCredit" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setMemberDiscount" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setDiscount" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setHotelID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setLeastRooms" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionEnterprises" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionMRPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionTimePO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionTraAreaPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionType" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setBeginTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="setEndTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="setTraDiscount" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setTradingArea" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setChangedCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setChangedTime" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setCreditChangedCause" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setCurrentCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setOrderID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setUsername" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setrecordID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setBirthday" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setEnterprise" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setLevel" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setMemberType" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setUsername" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setCreditRecordPOs" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setGender" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setMemberPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setName" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setPassword" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setPhone" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setUsername" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getTradingAreasByAddress" source ="AddTradProducer.java" package ="util" value ="1"/>
+         <Value name="strsToList" source ="AddTradProducer.java" package ="util" value ="1"/>
+         <Value name="decode" source ="Coder.java" package ="util" value ="1"/>
+         <Value name="encode" source ="Coder.java" package ="util" value ="1"/>
+         <Value name="printClass" source ="CommonMethod.java" package ="util" value ="1"/>
+         <Value name="getEnum" source ="EnumFactory.java" package ="util" value ="1"/>
+         <Value name="getString" source ="EnumFactory.java" package ="util" value ="1"/>
+         <Value name="produceOrderID" source ="IDProducer.java" package ="util" value ="1"/>
+         <Value name="delete" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="getRating" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="insert" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="setUp" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="update" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="insert" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="setUp" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="update" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="delete" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="insert" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="setUp" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="update" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="delete" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="insert" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="setUp" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="update" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="addCredit" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="deductCredit" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="delete" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="insert" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="setUp" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="update" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="findAll" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="findAll" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="findAll" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="findAllWebPromotion" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="findAll" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getAddress" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getDescription" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getHotelID" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getHotelName" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getReviews" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getRooms" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getService" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getStar" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getTradingArea" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="initial" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getAvailable" source ="RoomPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getPrice" source ="RoomPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getRoomType" source ="RoomPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getTotal" source ="RoomPO.java" package ="po.hotel" value ="0"/>
+         <Value name="gethotelID" source ="RoomPO.java" package ="po.hotel" value ="0"/>
+         <Value name="getroomID" source ="RoomPO.java" package ="po.hotel" value ="0"/>
+         <Value name="initial" source ="RoomPO.java" package ="po.hotel" value ="0"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="0"/>
+         <Value name="getHaTime" source ="OrderHandleAppealPO.java" package ="po.order" value ="0"/>
+         <Value name="getHa_result" source ="OrderHandleAppealPO.java" package ="po.order" value ="0"/>
+         <Value name="initial" source ="OrderHandleAppealPO.java" package ="po.order" value ="0"/>
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getHotelID" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getHotelName" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getOrderHandleAppealPO" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getOrderID" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getOrderPricePO" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getOrderTimePO" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getOrderType" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getPersonAmount" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getPromotionType" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getReviewPO" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getRoomAmount" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getRoomNumber" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getRoomType" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="getUsername" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="initial" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="isWithChildren" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="0"/>
+         <Value name="getActualPrice" source ="OrderPricePO.java" package ="po.order" value ="0"/>
+         <Value name="getOriginPrice" source ="OrderPricePO.java" package ="po.order" value ="0"/>
+         <Value name="initial" source ="OrderPricePO.java" package ="po.order" value ="0"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="0"/>
+         <Value name="getCancelTime" source ="OrderTimePO.java" package ="po.order" value ="0"/>
+         <Value name="getCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="0"/>
+         <Value name="getExpectedCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="0"/>
+         <Value name="getExpectedLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="0"/>
+         <Value name="getGenerateTime" source ="OrderTimePO.java" package ="po.order" value ="0"/>
+         <Value name="getLastExecuteTime" source ="OrderTimePO.java" package ="po.order" value ="0"/>
+         <Value name="getLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="0"/>
+         <Value name="initial" source ="OrderTimePO.java" package ="po.order" value ="0"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="0"/>
+         <Value name="getHotelID" source ="ReviewPO.java" package ="po.order" value ="0"/>
+         <Value name="getRating" source ="ReviewPO.java" package ="po.order" value ="0"/>
+         <Value name="getReview" source ="ReviewPO.java" package ="po.order" value ="0"/>
+         <Value name="getReviewTime" source ="ReviewPO.java" package ="po.order" value ="0"/>
+         <Value name="getUsername" source ="ReviewPO.java" package ="po.order" value ="0"/>
+         <Value name="initial" source ="ReviewPO.java" package ="po.order" value ="0"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="0"/>
+         <Value name="getHotelID" source ="PersonnelPO.java" package ="po.personnel" value ="0"/>
+         <Value name="getName" source ="PersonnelPO.java" package ="po.personnel" value ="0"/>
+         <Value name="getPassword" source ="PersonnelPO.java" package ="po.personnel" value ="0"/>
+         <Value name="getPersonnelID" source ="PersonnelPO.java" package ="po.personnel" value ="0"/>
+         <Value name="getPersonnelType" source ="PersonnelPO.java" package ="po.personnel" value ="0"/>
+         <Value name="initial" source ="PersonnelPO.java" package ="po.personnel" value ="0"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="0"/>
+         <Value name="getCredit" source ="PromotionMRPO.java" package ="po.promotion" value ="0"/>
+         <Value name="getMemberDiscount" source ="PromotionMRPO.java" package ="po.promotion" value ="0"/>
+         <Value name="initial" source ="PromotionMRPO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="getDiscount" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="getHotelID" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="getLeastRooms" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="getPromotionEnterprises" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="getPromotionID" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="getPromotionMRPOs" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="getPromotionTimePO" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="getPromotionTraAreaPOs" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="getPromotionType" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="initial" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="0"/>
+         <Value name="getBeginTime" source ="PromotionTimePO.java" package ="po.promotion" value ="0"/>
+         <Value name="getEndTime" source ="PromotionTimePO.java" package ="po.promotion" value ="0"/>
+         <Value name="initial" source ="PromotionTimePO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="0"/>
+         <Value name="getTraDiscount" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="0"/>
+         <Value name="getTradingArea" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="0"/>
+         <Value name="initial" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="0"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="0"/>
+         <Value name="getChangedCredit" source ="CreditRecordPO.java" package ="po.user" value ="0"/>
+         <Value name="getChangedTime" source ="CreditRecordPO.java" package ="po.user" value ="0"/>
+         <Value name="getCreditChangedCause" source ="CreditRecordPO.java" package ="po.user" value ="0"/>
+         <Value name="getCurrentCredit" source ="CreditRecordPO.java" package ="po.user" value ="0"/>
+         <Value name="getOrderID" source ="CreditRecordPO.java" package ="po.user" value ="0"/>
+         <Value name="getUsername" source ="CreditRecordPO.java" package ="po.user" value ="0"/>
+         <Value name="getrecordID" source ="CreditRecordPO.java" package ="po.user" value ="0"/>
+         <Value name="initial" source ="CreditRecordPO.java" package ="po.user" value ="0"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="0"/>
+         <Value name="getBirthday" source ="MemberPO.java" package ="po.user" value ="0"/>
+         <Value name="getEnterprise" source ="MemberPO.java" package ="po.user" value ="0"/>
+         <Value name="getLevel" source ="MemberPO.java" package ="po.user" value ="0"/>
+         <Value name="getMemberType" source ="MemberPO.java" package ="po.user" value ="0"/>
+         <Value name="getUsername" source ="MemberPO.java" package ="po.user" value ="0"/>
+         <Value name="initial" source ="MemberPO.java" package ="po.user" value ="0"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="0"/>
+         <Value name="getCreditRecordPOs" source ="UserPO.java" package ="po.user" value ="0"/>
+         <Value name="getMemberPO" source ="UserPO.java" package ="po.user" value ="0"/>
+         <Value name="getName" source ="UserPO.java" package ="po.user" value ="0"/>
+         <Value name="getPassword" source ="UserPO.java" package ="po.user" value ="0"/>
+         <Value name="getPhone" source ="UserPO.java" package ="po.user" value ="0"/>
+         <Value name="getUsername" source ="UserPO.java" package ="po.user" value ="0"/>
+         <Value name="initial" source ="UserPO.java" package ="po.user" value ="0"/>
+         <Value name="isGender" source ="UserPO.java" package ="po.user" value ="0"/>
+         <Value name="getAllAddress" source ="AddTradProducer.java" package ="util" value ="0"/>
+         <Value name="getHotelDefaultAl" source ="DefaultAl.java" package ="util" value ="0"/>
+         <Value name="produceGeneralID" source ="IDProducer.java" package ="util" value ="0"/>
+         <Value name="produceHotelID" source ="IDProducer.java" package ="util" value ="0"/>
+         <Value name="produceHotelIDForWP" source ="IDProducer.java" package ="util" value ="0"/>
+         <Value name="getAllAddress" source ="AddTradProducerTest.java" package ="util" value ="0"/>
+         <Value name="getTradingAreasByAddress" source ="AddTradProducerTest.java" package ="util" value ="0"/>
+         <Value name="decode" source ="CoderTest.java" package ="util" value ="0"/>
+         <Value name="encode" source ="CoderTest.java" package ="util" value ="0"/>
+         <Value name="getEnum" source ="EnumFactoryTest.java" package ="util" value ="0"/>
+         <Value name="getString" source ="EnumFactoryTest.java" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "NSF" description ="Number of Static Attributes">
+      <Values per = "type" total = "38" avg = "1.056" stddev = "1.562" max = "6">
+         <Value name="Const" source ="Const.java" package ="util" value ="6"/>
+         <Value name="DateTimeFormat" source ="DateTimeFormat.java" package ="util" value ="6"/>
+         <Value name="IDProducer" source ="IDProducer.java" package ="util" value ="6"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="AddTradProducer" source ="AddTradProducer.java" package ="util" value ="1"/>
+         <Value name="Coder" source ="Coder.java" package ="util" value ="1"/>
+         <Value name="DefaultAl" source ="DefaultAl.java" package ="util" value ="1"/>
+         <Value name="EnumFactory" source ="EnumFactory.java" package ="util" value ="1"/>
+         <Value name="UserLevel" source ="UserLevel.java" package ="util" value ="1"/>
+         <Value name="HotelDataService_Driver" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="OrderDataService_Driver" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="PersonnelDataService_Driver" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="PromotionDataService_Driver" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="UserDataService_Driver" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="OrderDataService_Stub" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PersonnelDataService_Stub" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PromotionDataService_Stub" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="UserDataService_Stub" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="CommonMethod" source ="CommonMethod.java" package ="util" value ="0"/>
+         <Value name="AddTradProducerTest" source ="AddTradProducerTest.java" package ="util" value ="0"/>
+         <Value name="CoderTest" source ="CoderTest.java" package ="util" value ="0"/>
+         <Value name="EnumFactoryTest" source ="EnumFactoryTest.java" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "CE" description ="Efferent Coupling">
+      <Values per = "packageFragment" avg = "1.75" stddev = "1.346" max = "5">
+         <Value name="dataservice_driver" package ="dataservice_driver" value ="5"/>
+         <Value name="dataservice_stub" package ="dataservice_stub" value ="4"/>
+         <Value name="po.user" package ="po.user" value ="3"/>
+         <Value name="util" package ="util" value ="3"/>
+         <Value name="po.hotel" package ="po.hotel" value ="2"/>
+         <Value name="po.order" package ="po.order" value ="2"/>
+         <Value name="po.promotion" package ="po.promotion" value ="2"/>
+         <Value name="dataservice.datafactoryservice" package ="dataservice.datafactoryservice" value ="1"/>
+         <Value name="dataservice.hoteldataservice" package ="dataservice.hoteldataservice" value ="1"/>
+         <Value name="dataservice.orderdataservice" package ="dataservice.orderdataservice" value ="1"/>
+         <Value name="dataservice.personneldataservice" package ="dataservice.personneldataservice" value ="1"/>
+         <Value name="dataservice.promotiondataservice" package ="dataservice.promotiondataservice" value ="1"/>
+         <Value name="dataservice.userdataservice" package ="dataservice.userdataservice" value ="1"/>
+         <Value name="po.personnel" package ="po.personnel" value ="1"/>
+         <Value name="dataservice" package ="dataservice" value ="0"/>
+         <Value name="util" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "SIX" description ="Specialization Index">
+      <Values per = "type" avg = "0" stddev = "0" max = "0">
+         <Value name="HotelDataService_Driver" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="OrderDataService_Driver" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="PersonnelDataService_Driver" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="PromotionDataService_Driver" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="UserDataService_Driver" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="OrderDataService_Stub" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PersonnelDataService_Stub" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PromotionDataService_Stub" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="UserDataService_Stub" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="0"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="0"/>
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="0"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="0"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="0"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="0"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="0"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="0"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="0"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="0"/>
+         <Value name="AddTradProducer" source ="AddTradProducer.java" package ="util" value ="0"/>
+         <Value name="Coder" source ="Coder.java" package ="util" value ="0"/>
+         <Value name="CommonMethod" source ="CommonMethod.java" package ="util" value ="0"/>
+         <Value name="Const" source ="Const.java" package ="util" value ="0"/>
+         <Value name="DateTimeFormat" source ="DateTimeFormat.java" package ="util" value ="0"/>
+         <Value name="DefaultAl" source ="DefaultAl.java" package ="util" value ="0"/>
+         <Value name="EnumFactory" source ="EnumFactory.java" package ="util" value ="0"/>
+         <Value name="IDProducer" source ="IDProducer.java" package ="util" value ="0"/>
+         <Value name="UserLevel" source ="UserLevel.java" package ="util" value ="0"/>
+         <Value name="AddTradProducerTest" source ="AddTradProducerTest.java" package ="util" value ="0"/>
+         <Value name="CoderTest" source ="CoderTest.java" package ="util" value ="0"/>
+         <Value name="EnumFactoryTest" source ="EnumFactoryTest.java" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "NOC" description ="Number of Classes">
+      <Values per = "packageFragment" total = "36" avg = "2.25" stddev = "2.562" max = "9">
+         <Value name="util" package ="util" value ="9"/>
+         <Value name="dataservice_driver" package ="dataservice_driver" value ="5"/>
+         <Value name="po.order" package ="po.order" value ="5"/>
+         <Value name="dataservice_stub" package ="dataservice_stub" value ="4"/>
+         <Value name="po.promotion" package ="po.promotion" value ="4"/>
+         <Value name="po.user" package ="po.user" value ="3"/>
+         <Value name="util" package ="util" value ="3"/>
+         <Value name="po.hotel" package ="po.hotel" value ="2"/>
+         <Value name="po.personnel" package ="po.personnel" value ="1"/>
+         <Value name="dataservice" package ="dataservice" value ="0"/>
+         <Value name="dataservice.datafactoryservice" package ="dataservice.datafactoryservice" value ="0"/>
+         <Value name="dataservice.hoteldataservice" package ="dataservice.hoteldataservice" value ="0"/>
+         <Value name="dataservice.orderdataservice" package ="dataservice.orderdataservice" value ="0"/>
+         <Value name="dataservice.personneldataservice" package ="dataservice.personneldataservice" value ="0"/>
+         <Value name="dataservice.promotiondataservice" package ="dataservice.promotiondataservice" value ="0"/>
+         <Value name="dataservice.userdataservice" package ="dataservice.userdataservice" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "NOF" description ="Number of Attributes">
+      <Values per = "type" total = "90" avg = "2.5" stddev = "3.516" max = "15">
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="15"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="9"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="9"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="7"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="7"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="7"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="6"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="5"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="5"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="5"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="2"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="2"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="2"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="2"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="2"/>
+         <Value name="HotelDataService_Driver" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="OrderDataService_Driver" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="PersonnelDataService_Driver" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="PromotionDataService_Driver" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="UserDataService_Driver" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="OrderDataService_Stub" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PersonnelDataService_Stub" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PromotionDataService_Stub" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="UserDataService_Stub" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="AddTradProducer" source ="AddTradProducer.java" package ="util" value ="0"/>
+         <Value name="Coder" source ="Coder.java" package ="util" value ="0"/>
+         <Value name="CommonMethod" source ="CommonMethod.java" package ="util" value ="0"/>
+         <Value name="Const" source ="Const.java" package ="util" value ="0"/>
+         <Value name="DateTimeFormat" source ="DateTimeFormat.java" package ="util" value ="0"/>
+         <Value name="DefaultAl" source ="DefaultAl.java" package ="util" value ="0"/>
+         <Value name="EnumFactory" source ="EnumFactory.java" package ="util" value ="0"/>
+         <Value name="IDProducer" source ="IDProducer.java" package ="util" value ="0"/>
+         <Value name="UserLevel" source ="UserLevel.java" package ="util" value ="0"/>
+         <Value name="AddTradProducerTest" source ="AddTradProducerTest.java" package ="util" value ="0"/>
+         <Value name="CoderTest" source ="CoderTest.java" package ="util" value ="0"/>
+         <Value name="EnumFactoryTest" source ="EnumFactoryTest.java" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "RMA" description ="Abstractness">
+      <Values per = "packageFragment" avg = "0.438" stddev = "0.496" max = "1">
+         <Value name="dataservice" package ="dataservice" value ="1"/>
+         <Value name="dataservice.datafactoryservice" package ="dataservice.datafactoryservice" value ="1"/>
+         <Value name="dataservice.hoteldataservice" package ="dataservice.hoteldataservice" value ="1"/>
+         <Value name="dataservice.orderdataservice" package ="dataservice.orderdataservice" value ="1"/>
+         <Value name="dataservice.personneldataservice" package ="dataservice.personneldataservice" value ="1"/>
+         <Value name="dataservice.promotiondataservice" package ="dataservice.promotiondataservice" value ="1"/>
+         <Value name="dataservice.userdataservice" package ="dataservice.userdataservice" value ="1"/>
+         <Value name="dataservice_driver" package ="dataservice_driver" value ="0"/>
+         <Value name="dataservice_stub" package ="dataservice_stub" value ="0"/>
+         <Value name="po.hotel" package ="po.hotel" value ="0"/>
+         <Value name="po.order" package ="po.order" value ="0"/>
+         <Value name="po.personnel" package ="po.personnel" value ="0"/>
+         <Value name="po.promotion" package ="po.promotion" value ="0"/>
+         <Value name="po.user" package ="po.user" value ="0"/>
+         <Value name="util" package ="util" value ="0"/>
+         <Value name="util" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "RMD" description ="Normalized Distance">
+      <Values per = "packageFragment" avg = "0.442" stddev = "0.41" max = "1">
+         <Value name="util" package ="util" value ="1"/>
+         <Value name="po.personnel" package ="po.personnel" value ="0.941"/>
+         <Value name="po.promotion" package ="po.promotion" value ="0.926"/>
+         <Value name="po.order" package ="po.order" value ="0.917"/>
+         <Value name="po.hotel" package ="po.hotel" value ="0.905"/>
+         <Value name="po.user" package ="po.user" value ="0.875"/>
+         <Value name="util" package ="util" value ="0.7"/>
+         <Value name="dataservice.datafactoryservice" package ="dataservice.datafactoryservice" value ="0.333"/>
+         <Value name="dataservice.hoteldataservice" package ="dataservice.hoteldataservice" value ="0.1"/>
+         <Value name="dataservice.promotiondataservice" package ="dataservice.promotiondataservice" value ="0.1"/>
+         <Value name="dataservice.userdataservice" package ="dataservice.userdataservice" value ="0.1"/>
+         <Value name="dataservice.personneldataservice" package ="dataservice.personneldataservice" value ="0.091"/>
+         <Value name="dataservice.orderdataservice" package ="dataservice.orderdataservice" value ="0.083"/>
+         <Value name="dataservice" package ="dataservice" value ="0"/>
+         <Value name="dataservice_driver" package ="dataservice_driver" value ="0"/>
+         <Value name="dataservice_stub" package ="dataservice_stub" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "NSM" description ="Number of Static Methods">
+      <Values per = "type" total = "13" avg = "0.361" stddev = "0.918" max = "4">
+         <Value name="IDProducer" source ="IDProducer.java" package ="util" value ="4"/>
+         <Value name="AddTradProducer" source ="AddTradProducer.java" package ="util" value ="3"/>
+         <Value name="Coder" source ="Coder.java" package ="util" value ="2"/>
+         <Value name="EnumFactory" source ="EnumFactory.java" package ="util" value ="2"/>
+         <Value name="CommonMethod" source ="CommonMethod.java" package ="util" value ="1"/>
+         <Value name="DefaultAl" source ="DefaultAl.java" package ="util" value ="1"/>
+         <Value name="HotelDataService_Driver" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="OrderDataService_Driver" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="PersonnelDataService_Driver" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="PromotionDataService_Driver" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="UserDataService_Driver" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="OrderDataService_Stub" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PersonnelDataService_Stub" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PromotionDataService_Stub" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="UserDataService_Stub" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="0"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="0"/>
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="0"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="0"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="0"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="0"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="0"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="0"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="0"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="0"/>
+         <Value name="Const" source ="Const.java" package ="util" value ="0"/>
+         <Value name="DateTimeFormat" source ="DateTimeFormat.java" package ="util" value ="0"/>
+         <Value name="UserLevel" source ="UserLevel.java" package ="util" value ="0"/>
+         <Value name="AddTradProducerTest" source ="AddTradProducerTest.java" package ="util" value ="0"/>
+         <Value name="CoderTest" source ="CoderTest.java" package ="util" value ="0"/>
+         <Value name="EnumFactoryTest" source ="EnumFactoryTest.java" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "NOI" description ="Number of Interfaces">
+      <Values per = "packageFragment" total = "7" avg = "0.438" stddev = "0.496" max = "1">
+         <Value name="dataservice" package ="dataservice" value ="1"/>
+         <Value name="dataservice.datafactoryservice" package ="dataservice.datafactoryservice" value ="1"/>
+         <Value name="dataservice.hoteldataservice" package ="dataservice.hoteldataservice" value ="1"/>
+         <Value name="dataservice.orderdataservice" package ="dataservice.orderdataservice" value ="1"/>
+         <Value name="dataservice.personneldataservice" package ="dataservice.personneldataservice" value ="1"/>
+         <Value name="dataservice.promotiondataservice" package ="dataservice.promotiondataservice" value ="1"/>
+         <Value name="dataservice.userdataservice" package ="dataservice.userdataservice" value ="1"/>
+         <Value name="dataservice_driver" package ="dataservice_driver" value ="0"/>
+         <Value name="dataservice_stub" package ="dataservice_stub" value ="0"/>
+         <Value name="po.hotel" package ="po.hotel" value ="0"/>
+         <Value name="po.order" package ="po.order" value ="0"/>
+         <Value name="po.personnel" package ="po.personnel" value ="0"/>
+         <Value name="po.promotion" package ="po.promotion" value ="0"/>
+         <Value name="po.user" package ="po.user" value ="0"/>
+         <Value name="util" package ="util" value ="0"/>
+         <Value name="util" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "TLOC" description ="Total Lines of Code">
+      <Value value="1917"/>
+   </Metric>
+   <Metric id = "WMC" description ="Weighted methods per Class">
+      <Values per = "type" total = "313" avg = "8.694" stddev = "7.767" max = "33">
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="33"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="31"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="21"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="17"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="17"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="17"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="15"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="14"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="13"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="13"/>
+         <Value name="OrderDataService_Stub" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="10"/>
+         <Value name="UserDataService_Stub" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="9"/>
+         <Value name="PromotionDataService_Stub" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="8"/>
+         <Value name="UserDataService_Driver" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="7"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="7"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="7"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="7"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="7"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="7"/>
+         <Value name="HotelDataService_Driver" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="6"/>
+         <Value name="PersonnelDataService_Stub" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="6"/>
+         <Value name="PersonnelDataService_Driver" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="5"/>
+         <Value name="PromotionDataService_Driver" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="5"/>
+         <Value name="AddTradProducer" source ="AddTradProducer.java" package ="util" value ="5"/>
+         <Value name="OrderDataService_Driver" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="4"/>
+         <Value name="Coder" source ="Coder.java" package ="util" value ="4"/>
+         <Value name="EnumFactory" source ="EnumFactory.java" package ="util" value ="4"/>
+         <Value name="IDProducer" source ="IDProducer.java" package ="util" value ="4"/>
+         <Value name="AddTradProducerTest" source ="AddTradProducerTest.java" package ="util" value ="4"/>
+         <Value name="CoderTest" source ="CoderTest.java" package ="util" value ="2"/>
+         <Value name="EnumFactoryTest" source ="EnumFactoryTest.java" package ="util" value ="2"/>
+         <Value name="CommonMethod" source ="CommonMethod.java" package ="util" value ="1"/>
+         <Value name="DefaultAl" source ="DefaultAl.java" package ="util" value ="1"/>
+         <Value name="Const" source ="Const.java" package ="util" value ="0"/>
+         <Value name="DateTimeFormat" source ="DateTimeFormat.java" package ="util" value ="0"/>
+         <Value name="UserLevel" source ="UserLevel.java" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "NOM" description ="Number of Methods">
+      <Values per = "type" total = "289" avg = "8.028" stddev = "8.009" max = "33">
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="33"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="28"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="21"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="17"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="17"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="17"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="15"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="14"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="13"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="13"/>
+         <Value name="OrderDataService_Stub" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="10"/>
+         <Value name="UserDataService_Stub" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="9"/>
+         <Value name="PromotionDataService_Stub" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="8"/>
+         <Value name="UserDataService_Driver" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="7"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="7"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="7"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="7"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="7"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="7"/>
+         <Value name="HotelDataService_Driver" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="6"/>
+         <Value name="PersonnelDataService_Stub" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="6"/>
+         <Value name="PersonnelDataService_Driver" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="5"/>
+         <Value name="PromotionDataService_Driver" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="5"/>
+         <Value name="OrderDataService_Driver" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="4"/>
+         <Value name="AddTradProducerTest" source ="AddTradProducerTest.java" package ="util" value ="2"/>
+         <Value name="CoderTest" source ="CoderTest.java" package ="util" value ="2"/>
+         <Value name="EnumFactoryTest" source ="EnumFactoryTest.java" package ="util" value ="2"/>
+         <Value name="AddTradProducer" source ="AddTradProducer.java" package ="util" value ="0"/>
+         <Value name="Coder" source ="Coder.java" package ="util" value ="0"/>
+         <Value name="CommonMethod" source ="CommonMethod.java" package ="util" value ="0"/>
+         <Value name="Const" source ="Const.java" package ="util" value ="0"/>
+         <Value name="DateTimeFormat" source ="DateTimeFormat.java" package ="util" value ="0"/>
+         <Value name="DefaultAl" source ="DefaultAl.java" package ="util" value ="0"/>
+         <Value name="EnumFactory" source ="EnumFactory.java" package ="util" value ="0"/>
+         <Value name="IDProducer" source ="IDProducer.java" package ="util" value ="0"/>
+         <Value name="UserLevel" source ="UserLevel.java" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "DIT" description ="Depth of Inheritance Tree">
+      <Values per = "type" avg = "1" stddev = "0" max = "1">
+         <Value name="HotelDataService_Driver" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="OrderDataService_Driver" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="PersonnelDataService_Driver" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="PromotionDataService_Driver" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="UserDataService_Driver" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="OrderDataService_Stub" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="PersonnelDataService_Stub" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="PromotionDataService_Stub" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="UserDataService_Stub" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="AddTradProducer" source ="AddTradProducer.java" package ="util" value ="1"/>
+         <Value name="Coder" source ="Coder.java" package ="util" value ="1"/>
+         <Value name="CommonMethod" source ="CommonMethod.java" package ="util" value ="1"/>
+         <Value name="Const" source ="Const.java" package ="util" value ="1"/>
+         <Value name="DateTimeFormat" source ="DateTimeFormat.java" package ="util" value ="1"/>
+         <Value name="DefaultAl" source ="DefaultAl.java" package ="util" value ="1"/>
+         <Value name="EnumFactory" source ="EnumFactory.java" package ="util" value ="1"/>
+         <Value name="IDProducer" source ="IDProducer.java" package ="util" value ="1"/>
+         <Value name="UserLevel" source ="UserLevel.java" package ="util" value ="1"/>
+         <Value name="AddTradProducerTest" source ="AddTradProducerTest.java" package ="util" value ="1"/>
+         <Value name="CoderTest" source ="CoderTest.java" package ="util" value ="1"/>
+         <Value name="EnumFactoryTest" source ="EnumFactoryTest.java" package ="util" value ="1"/>
+      </Values>
+   </Metric>
+   <Metric id = "NOP" description ="Number of Packages">
+      <Value value="16"/>
+   </Metric>
+   <Metric id = "RMI" description ="Instability">
+      <Values per = "packageFragment" avg = "0.222" stddev = "0.306" max = "1">
+         <Value name="dataservice_driver" package ="dataservice_driver" value ="1"/>
+         <Value name="dataservice_stub" package ="dataservice_stub" value ="1"/>
+         <Value name="dataservice.datafactoryservice" package ="dataservice.datafactoryservice" value ="0.333"/>
+         <Value name="util" package ="util" value ="0.3"/>
+         <Value name="po.user" package ="po.user" value ="0.125"/>
+         <Value name="dataservice.hoteldataservice" package ="dataservice.hoteldataservice" value ="0.1"/>
+         <Value name="dataservice.promotiondataservice" package ="dataservice.promotiondataservice" value ="0.1"/>
+         <Value name="dataservice.userdataservice" package ="dataservice.userdataservice" value ="0.1"/>
+         <Value name="po.hotel" package ="po.hotel" value ="0.095"/>
+         <Value name="dataservice.personneldataservice" package ="dataservice.personneldataservice" value ="0.091"/>
+         <Value name="dataservice.orderdataservice" package ="dataservice.orderdataservice" value ="0.083"/>
+         <Value name="po.order" package ="po.order" value ="0.083"/>
+         <Value name="po.promotion" package ="po.promotion" value ="0.074"/>
+         <Value name="po.personnel" package ="po.personnel" value ="0.059"/>
+         <Value name="dataservice" package ="dataservice" value ="0"/>
+         <Value name="util" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "VG" description ="McCabe Cyclomatic Complexity" max ="10" hint ="use Extract-method to split the method up">
+      <Values per = "method" avg = "1.036" stddev = "0.248" max = "4">
+         <Value name="initial" source ="PromotionPO.java" package ="po.promotion" value ="4"/>
+         <Value name="getString" source ="EnumFactory.java" package ="util" value ="3"/>
+         <Value name="getTradingAreasByAddress" source ="AddTradProducer.java" package ="util" value ="2"/>
+         <Value name="strsToList" source ="AddTradProducer.java" package ="util" value ="2"/>
+         <Value name="decode" source ="Coder.java" package ="util" value ="2"/>
+         <Value name="encode" source ="Coder.java" package ="util" value ="2"/>
+         <Value name="getAllAddress" source ="AddTradProducerTest.java" package ="util" value ="2"/>
+         <Value name="getTradingAreasByAddress" source ="AddTradProducerTest.java" package ="util" value ="2"/>
+         <Value name="delete" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="getRating" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="insert" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printHotelPO" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="setUp" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="update" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="insert" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printOrderPO" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="setUp" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="update" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="delete" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="insert" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printPersonnelPO" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="setUp" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="update" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="delete" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="insert" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printPromotionPO" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="setUp" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="update" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="addCredit" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="deductCredit" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="delete" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="insert" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printUserPO" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="setUp" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="update" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="findAll" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByHotelIDAndType" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByHotelID" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByOrderID" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByType" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsernameAndHotelID" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsernameAndType" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsername" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="delete" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findAll" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByPersonnelID" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByType" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="delete" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findAll" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findAllWebPromotion" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByHotelIDAndType" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByHotelID" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByPromotionID" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="delete" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findAll" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsername" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findCreditRecordsByUsername" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="getImage" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insertCreditRecord" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="setImage" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getAddress" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getDescription" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getHotelID" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getHotelName" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getReviews" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getRooms" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getService" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getStar" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getTradingArea" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="initial" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setAddress" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setDescription" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setHotelID" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setHotelName" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setReviews" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setRooms" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setService" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setStar" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setTradingArea" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getAvailable" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getPrice" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getRoomType" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getTotal" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="gethotelID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getroomID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="initial" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setAvailable" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setPrice" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setRoomType" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setTotal" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="sethotelID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setroomID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="getHaTime" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="getHa_result" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="initial" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="setHaTime" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="setHa_result" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getHotelID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getHotelName" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderHandleAppealPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderPricePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderTimePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getPersonAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getPromotionType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getReviewPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getRoomAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getRoomNumber" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getRoomType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getUsername" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="initial" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="isWithChildren" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setHotelID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setHotelName" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderHandleAppealPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderPricePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderTimePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setPersonAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setPromotionType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setReviewPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setRoomAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setRoomNumber" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setRoomType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setUsername" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setWithChildren" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="getActualPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="getOriginPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="initial" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="setActualPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="setOriginPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getCancelTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getExpectedCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getExpectedLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getGenerateTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getLastExecuteTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="initial" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setCancelTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setExpectedCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setExpectedLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setGenerateTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setLastExecuteTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getHotelID" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getRating" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getReview" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getReviewTime" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getUsername" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="initial" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setHotelID" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setRating" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setReviewTime" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setReview" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setUsername" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getHotelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getName" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getPassword" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getPersonnelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getPersonnelType" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="initial" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setHotelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setName" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setPassword" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setPersonnelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setPersonnelType" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getCredit" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getMemberDiscount" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="initial" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setCredit" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setMemberDiscount" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getDiscount" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getHotelID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getLeastRooms" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionEnterprises" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionMRPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionTimePO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionTraAreaPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionType" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setDiscount" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setHotelID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setLeastRooms" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionEnterprises" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionMRPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionTimePO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionTraAreaPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionType" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="getBeginTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="getEndTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="initial" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="setBeginTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="setEndTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getTraDiscount" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getTradingArea" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="initial" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setTraDiscount" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setTradingArea" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getChangedCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getChangedTime" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getCreditChangedCause" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getCurrentCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getOrderID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getUsername" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getrecordID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="initial" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setChangedCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setChangedTime" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setCreditChangedCause" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setCurrentCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setOrderID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setUsername" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setrecordID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getBirthday" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getEnterprise" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getLevel" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getMemberType" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getUsername" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="initial" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setBirthday" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setEnterprise" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setLevel" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setMemberType" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setUsername" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getCreditRecordPOs" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getMemberPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getName" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getPassword" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getPhone" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getUsername" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="initial" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="isGender" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setCreditRecordPOs" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setGender" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setMemberPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setName" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setPassword" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setPhone" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setUsername" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getAllAddress" source ="AddTradProducer.java" package ="util" value ="1"/>
+         <Value name="printClass" source ="CommonMethod.java" package ="util" value ="1"/>
+         <Value name="getHotelDefaultAl" source ="DefaultAl.java" package ="util" value ="1"/>
+         <Value name="getEnum" source ="EnumFactory.java" package ="util" value ="1"/>
+         <Value name="produceGeneralID" source ="IDProducer.java" package ="util" value ="1"/>
+         <Value name="produceHotelID" source ="IDProducer.java" package ="util" value ="1"/>
+         <Value name="produceHotelIDForWP" source ="IDProducer.java" package ="util" value ="1"/>
+         <Value name="produceOrderID" source ="IDProducer.java" package ="util" value ="1"/>
+         <Value name="decode" source ="CoderTest.java" package ="util" value ="1"/>
+         <Value name="encode" source ="CoderTest.java" package ="util" value ="1"/>
+         <Value name="getEnum" source ="EnumFactoryTest.java" package ="util" value ="1"/>
+         <Value name="getString" source ="EnumFactoryTest.java" package ="util" value ="1"/>
+      </Values>
+   </Metric>
+   <Metric id = "NBD" description ="Nested Block Depth" max ="5" hint ="use Extract-method to split the method up">
+      <Values per = "method" avg = "1.03" stddev = "0.189" max = "3">
+         <Value name="getString" source ="EnumFactory.java" package ="util" value ="3"/>
+         <Value name="initial" source ="PromotionPO.java" package ="po.promotion" value ="2"/>
+         <Value name="getTradingAreasByAddress" source ="AddTradProducer.java" package ="util" value ="2"/>
+         <Value name="strsToList" source ="AddTradProducer.java" package ="util" value ="2"/>
+         <Value name="decode" source ="Coder.java" package ="util" value ="2"/>
+         <Value name="encode" source ="Coder.java" package ="util" value ="2"/>
+         <Value name="getAllAddress" source ="AddTradProducerTest.java" package ="util" value ="2"/>
+         <Value name="getTradingAreasByAddress" source ="AddTradProducerTest.java" package ="util" value ="2"/>
+         <Value name="delete" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="getRating" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="insert" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printHotelPO" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="setUp" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="update" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="insert" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printOrderPO" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="setUp" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="update" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="delete" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="insert" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printPersonnelPO" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="setUp" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="update" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="delete" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="insert" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printPromotionPO" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="setUp" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="update" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="addCredit" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="deductCredit" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="delete" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="insert" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="printUserPO" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="setUp" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="update" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="1"/>
+         <Value name="findAll" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByHotelIDAndType" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByHotelID" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByOrderID" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByType" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsernameAndHotelID" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsernameAndType" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsername" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="delete" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findAll" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByPersonnelID" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByType" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="delete" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findAll" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findAllWebPromotion" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByHotelIDAndType" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByHotelID" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByPromotionID" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="delete" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findAll" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsername" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findCreditRecordsByUsername" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="getImage" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insertCreditRecord" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="setImage" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getAddress" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getDescription" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getHotelID" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getHotelName" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getReviews" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getRooms" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getService" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getStar" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getTradingArea" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="initial" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setAddress" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setDescription" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setHotelID" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setHotelName" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setReviews" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setRooms" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setService" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setStar" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setTradingArea" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getAvailable" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getPrice" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getRoomType" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getTotal" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="gethotelID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getroomID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="initial" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setAvailable" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setPrice" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setRoomType" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setTotal" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="sethotelID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setroomID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="getHaTime" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="getHa_result" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="initial" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="setHaTime" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="setHa_result" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getHotelID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getHotelName" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderHandleAppealPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderPricePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderTimePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getPersonAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getPromotionType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getReviewPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getRoomAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getRoomNumber" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getRoomType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getUsername" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="initial" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="isWithChildren" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setHotelID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setHotelName" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderHandleAppealPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderPricePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderTimePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setPersonAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setPromotionType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setReviewPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setRoomAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setRoomNumber" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setRoomType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setUsername" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setWithChildren" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="getActualPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="getOriginPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="initial" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="setActualPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="setOriginPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getCancelTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getExpectedCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getExpectedLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getGenerateTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getLastExecuteTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="initial" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setCancelTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setExpectedCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setExpectedLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setGenerateTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setLastExecuteTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getHotelID" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getRating" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getReview" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getReviewTime" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getUsername" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="initial" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setHotelID" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setRating" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setReviewTime" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setReview" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setUsername" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getHotelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getName" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getPassword" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getPersonnelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getPersonnelType" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="initial" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setHotelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setName" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setPassword" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setPersonnelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setPersonnelType" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getCredit" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getMemberDiscount" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="initial" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setCredit" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setMemberDiscount" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getDiscount" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getHotelID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getLeastRooms" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionEnterprises" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionMRPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionTimePO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionTraAreaPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionType" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setDiscount" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setHotelID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setLeastRooms" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionEnterprises" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionMRPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionTimePO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionTraAreaPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionType" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="getBeginTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="getEndTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="initial" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="setBeginTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="setEndTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getTraDiscount" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getTradingArea" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="initial" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setTraDiscount" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setTradingArea" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getChangedCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getChangedTime" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getCreditChangedCause" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getCurrentCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getOrderID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getUsername" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getrecordID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="initial" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setChangedCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setChangedTime" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setCreditChangedCause" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setCurrentCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setOrderID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setUsername" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setrecordID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getBirthday" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getEnterprise" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getLevel" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getMemberType" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getUsername" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="initial" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setBirthday" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setEnterprise" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setLevel" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setMemberType" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setUsername" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getCreditRecordPOs" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getMemberPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getName" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getPassword" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getPhone" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getUsername" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="initial" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="isGender" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setCreditRecordPOs" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setGender" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setMemberPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setName" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setPassword" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setPhone" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setUsername" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getAllAddress" source ="AddTradProducer.java" package ="util" value ="1"/>
+         <Value name="printClass" source ="CommonMethod.java" package ="util" value ="1"/>
+         <Value name="getHotelDefaultAl" source ="DefaultAl.java" package ="util" value ="1"/>
+         <Value name="getEnum" source ="EnumFactory.java" package ="util" value ="1"/>
+         <Value name="produceGeneralID" source ="IDProducer.java" package ="util" value ="1"/>
+         <Value name="produceHotelID" source ="IDProducer.java" package ="util" value ="1"/>
+         <Value name="produceHotelIDForWP" source ="IDProducer.java" package ="util" value ="1"/>
+         <Value name="produceOrderID" source ="IDProducer.java" package ="util" value ="1"/>
+         <Value name="decode" source ="CoderTest.java" package ="util" value ="1"/>
+         <Value name="encode" source ="CoderTest.java" package ="util" value ="1"/>
+         <Value name="getEnum" source ="EnumFactoryTest.java" package ="util" value ="1"/>
+         <Value name="getString" source ="EnumFactoryTest.java" package ="util" value ="1"/>
+      </Values>
+   </Metric>
+   <Metric id = "LCOM" description ="Lack of Cohesion of Methods">
+      <Values per = "type" avg = "0.276" stddev = "0.35" max = "0.903">
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="0.903"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="0.854"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="0.842"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="0.8"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="0.8"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="0.8"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="0.769"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="0.727"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="0.727"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="0.727"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="0.4"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="0.4"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="0.4"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="0.4"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="0.4"/>
+         <Value name="HotelDataService_Driver" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="OrderDataService_Driver" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="PersonnelDataService_Driver" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="PromotionDataService_Driver" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="UserDataService_Driver" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="OrderDataService_Stub" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PersonnelDataService_Stub" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PromotionDataService_Stub" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="UserDataService_Stub" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="AddTradProducer" source ="AddTradProducer.java" package ="util" value ="0"/>
+         <Value name="Coder" source ="Coder.java" package ="util" value ="0"/>
+         <Value name="CommonMethod" source ="CommonMethod.java" package ="util" value ="0"/>
+         <Value name="Const" source ="Const.java" package ="util" value ="0"/>
+         <Value name="DateTimeFormat" source ="DateTimeFormat.java" package ="util" value ="0"/>
+         <Value name="DefaultAl" source ="DefaultAl.java" package ="util" value ="0"/>
+         <Value name="EnumFactory" source ="EnumFactory.java" package ="util" value ="0"/>
+         <Value name="IDProducer" source ="IDProducer.java" package ="util" value ="0"/>
+         <Value name="UserLevel" source ="UserLevel.java" package ="util" value ="0"/>
+         <Value name="AddTradProducerTest" source ="AddTradProducerTest.java" package ="util" value ="0"/>
+         <Value name="CoderTest" source ="CoderTest.java" package ="util" value ="0"/>
+         <Value name="EnumFactoryTest" source ="EnumFactoryTest.java" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "MLOC" description ="Method Lines of Code">
+      <Values per = "method" total = "567" avg = "1.877" stddev = "2.56" max = "16">
+         <Value name="printOrderPO" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="16"/>
+         <Value name="initial" source ="PromotionPO.java" package ="po.promotion" value ="16"/>
+         <Value name="printClass" source ="CommonMethod.java" package ="util" value ="16"/>
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="15"/>
+         <Value name="initial" source ="OrderPO.java" package ="po.order" value ="15"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="10"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="10"/>
+         <Value name="initial" source ="HotelPO.java" package ="po.hotel" value ="9"/>
+         <Value name="getString" source ="EnumFactory.java" package ="util" value ="9"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="8"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="8"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="8"/>
+         <Value name="printHotelPO" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="7"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="7"/>
+         <Value name="initial" source ="OrderTimePO.java" package ="po.order" value ="7"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="7"/>
+         <Value name="initial" source ="CreditRecordPO.java" package ="po.user" value ="7"/>
+         <Value name="initial" source ="UserPO.java" package ="po.user" value ="7"/>
+         <Value name="printUserPO" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="6"/>
+         <Value name="initial" source ="RoomPO.java" package ="po.hotel" value ="6"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="6"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="6"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="6"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="6"/>
+         <Value name="strsToList" source ="AddTradProducer.java" package ="util" value ="6"/>
+         <Value name="printPersonnelPO" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="5"/>
+         <Value name="printPromotionPO" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="5"/>
+         <Value name="initial" source ="ReviewPO.java" package ="po.order" value ="5"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="5"/>
+         <Value name="initial" source ="PersonnelPO.java" package ="po.personnel" value ="5"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="5"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="5"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="5"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="5"/>
+         <Value name="initial" source ="MemberPO.java" package ="po.user" value ="5"/>
+         <Value name="getTradingAreasByAddress" source ="AddTradProducer.java" package ="util" value ="5"/>
+         <Value name="decode" source ="Coder.java" package ="util" value ="5"/>
+         <Value name="encode" source ="Coder.java" package ="util" value ="5"/>
+         <Value name="produceOrderID" source ="IDProducer.java" package ="util" value ="5"/>
+         <Value name="findAll" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="4"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="4"/>
+         <Value name="getAllAddress" source ="AddTradProducerTest.java" package ="util" value ="4"/>
+         <Value name="getTradingAreasByAddress" source ="AddTradProducerTest.java" package ="util" value ="4"/>
+         <Value name="findByHotelID" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="3"/>
+         <Value name="findAll" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="3"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="3"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="3"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="3"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="3"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="3"/>
+         <Value name="findByPersonnelID" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="2"/>
+         <Value name="initial" source ="OrderHandleAppealPO.java" package ="po.order" value ="2"/>
+         <Value name="initial" source ="OrderPricePO.java" package ="po.order" value ="2"/>
+         <Value name="initial" source ="PromotionMRPO.java" package ="po.promotion" value ="2"/>
+         <Value name="initial" source ="PromotionTimePO.java" package ="po.promotion" value ="2"/>
+         <Value name="initial" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="2"/>
+         <Value name="findAll" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByHotelIDAndType" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByHotelID" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByOrderID" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByType" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsernameAndHotelID" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsernameAndType" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsername" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="delete" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByType" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="delete" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findAll" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findAllWebPromotion" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByHotelIDAndType" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByPromotionID" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="delete" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findByUsername" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="findCreditRecordsByUsername" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="getImage" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insertCreditRecord" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="insert" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="setImage" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="update" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="1"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getAddress" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getDescription" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getHotelID" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getHotelName" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getReviews" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getRooms" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getService" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getStar" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getTradingArea" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setAddress" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setDescription" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setHotelID" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setHotelName" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setReviews" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setRooms" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setService" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setStar" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setTradingArea" source ="HotelPO.java" package ="po.hotel" value ="1"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getAvailable" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getPrice" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getRoomType" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getTotal" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="gethotelID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="getroomID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setAvailable" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setPrice" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setRoomType" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setTotal" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="sethotelID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="setroomID" source ="RoomPO.java" package ="po.hotel" value ="1"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="getHaTime" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="getHa_result" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="setHaTime" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="setHa_result" source ="OrderHandleAppealPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getHotelID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getHotelName" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderHandleAppealPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderPricePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderTimePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getOrderType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getPersonAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getPromotionType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getReviewPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getRoomAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getRoomNumber" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getRoomType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="getUsername" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="isWithChildren" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setHotelID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setHotelName" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderHandleAppealPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderID" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderPricePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderTimePO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setOrderType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setPersonAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setPromotionType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setReviewPO" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setRoomAmount" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setRoomNumber" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setRoomType" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setUsername" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="setWithChildren" source ="OrderPO.java" package ="po.order" value ="1"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="getActualPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="getOriginPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="setActualPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="setOriginPrice" source ="OrderPricePO.java" package ="po.order" value ="1"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getCancelTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getExpectedCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getExpectedLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getGenerateTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getLastExecuteTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="getLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setCancelTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setExpectedCheckinTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setExpectedLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setGenerateTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setLastExecuteTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="setLeaveTime" source ="OrderTimePO.java" package ="po.order" value ="1"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getHotelID" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getRating" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getReview" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getReviewTime" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="getUsername" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setHotelID" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setRating" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setReviewTime" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setReview" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="setUsername" source ="ReviewPO.java" package ="po.order" value ="1"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getHotelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getName" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getPassword" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getPersonnelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="getPersonnelType" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setHotelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setName" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setPassword" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setPersonnelID" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="setPersonnelType" source ="PersonnelPO.java" package ="po.personnel" value ="1"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getCredit" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getMemberDiscount" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setCredit" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setMemberDiscount" source ="PromotionMRPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getDiscount" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getHotelID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getLeastRooms" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionEnterprises" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionMRPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionTimePO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionTraAreaPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getPromotionType" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setDiscount" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setHotelID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setLeastRooms" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionEnterprises" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionID" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionMRPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionTimePO" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionTraAreaPOs" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setPromotionType" source ="PromotionPO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="getBeginTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="getEndTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="setBeginTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="setEndTime" source ="PromotionTimePO.java" package ="po.promotion" value ="1"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getTraDiscount" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="getTradingArea" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setTraDiscount" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="setTradingArea" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="1"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getChangedCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getChangedTime" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getCreditChangedCause" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getCurrentCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getOrderID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getUsername" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="getrecordID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setChangedCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setChangedTime" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setCreditChangedCause" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setCurrentCredit" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setOrderID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setUsername" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="setrecordID" source ="CreditRecordPO.java" package ="po.user" value ="1"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getBirthday" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getEnterprise" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getLevel" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getMemberType" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="getUsername" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setBirthday" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setEnterprise" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setLevel" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setMemberType" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="setUsername" source ="MemberPO.java" package ="po.user" value ="1"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getCreditRecordPOs" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getMemberPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getName" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getPassword" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getPhone" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getUsername" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="isGender" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setCreditRecordPOs" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setGender" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setMemberPO" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setName" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setPassword" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setPhone" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="setUsername" source ="UserPO.java" package ="po.user" value ="1"/>
+         <Value name="getAllAddress" source ="AddTradProducer.java" package ="util" value ="1"/>
+         <Value name="getHotelDefaultAl" source ="DefaultAl.java" package ="util" value ="1"/>
+         <Value name="getEnum" source ="EnumFactory.java" package ="util" value ="1"/>
+         <Value name="produceGeneralID" source ="IDProducer.java" package ="util" value ="1"/>
+         <Value name="produceHotelID" source ="IDProducer.java" package ="util" value ="1"/>
+         <Value name="produceHotelIDForWP" source ="IDProducer.java" package ="util" value ="1"/>
+         <Value name="decode" source ="CoderTest.java" package ="util" value ="1"/>
+         <Value name="encode" source ="CoderTest.java" package ="util" value ="1"/>
+         <Value name="getEnum" source ="EnumFactoryTest.java" package ="util" value ="1"/>
+         <Value name="getString" source ="EnumFactoryTest.java" package ="util" value ="1"/>
+         <Value name="delete" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="getRating" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="insert" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="setUp" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="update" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="insert" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="setUp" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="update" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="delete" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="insert" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="setUp" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="update" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="delete" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="insert" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="setUp" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="update" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="addCredit" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="deductCredit" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="delete" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="insert" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="setUp" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="update" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "NORM" description ="Number of Overridden Methods">
+      <Values per = "type" total = "0" avg = "0" stddev = "0" max = "0">
+         <Value name="HotelDataService_Driver" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="OrderDataService_Driver" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="PersonnelDataService_Driver" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="PromotionDataService_Driver" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="UserDataService_Driver" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="OrderDataService_Stub" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PersonnelDataService_Stub" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PromotionDataService_Stub" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="UserDataService_Stub" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="0"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="0"/>
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="0"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="0"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="0"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="0"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="0"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="0"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="0"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="0"/>
+         <Value name="AddTradProducer" source ="AddTradProducer.java" package ="util" value ="0"/>
+         <Value name="Coder" source ="Coder.java" package ="util" value ="0"/>
+         <Value name="CommonMethod" source ="CommonMethod.java" package ="util" value ="0"/>
+         <Value name="Const" source ="Const.java" package ="util" value ="0"/>
+         <Value name="DateTimeFormat" source ="DateTimeFormat.java" package ="util" value ="0"/>
+         <Value name="DefaultAl" source ="DefaultAl.java" package ="util" value ="0"/>
+         <Value name="EnumFactory" source ="EnumFactory.java" package ="util" value ="0"/>
+         <Value name="IDProducer" source ="IDProducer.java" package ="util" value ="0"/>
+         <Value name="UserLevel" source ="UserLevel.java" package ="util" value ="0"/>
+         <Value name="AddTradProducerTest" source ="AddTradProducerTest.java" package ="util" value ="0"/>
+         <Value name="CoderTest" source ="CoderTest.java" package ="util" value ="0"/>
+         <Value name="EnumFactoryTest" source ="EnumFactoryTest.java" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "CA" description ="Afferent Coupling">
+      <Values per = "packageFragment" avg = "19.312" stddev = "33.051" max = "144">
+         <Value name="util" package ="util" value ="144"/>
+         <Value name="po.promotion" package ="po.promotion" value ="25"/>
+         <Value name="po.order" package ="po.order" value ="22"/>
+         <Value name="po.user" package ="po.user" value ="21"/>
+         <Value name="po.hotel" package ="po.hotel" value ="19"/>
+         <Value name="po.personnel" package ="po.personnel" value ="16"/>
+         <Value name="dataservice.orderdataservice" package ="dataservice.orderdataservice" value ="11"/>
+         <Value name="dataservice.personneldataservice" package ="dataservice.personneldataservice" value ="10"/>
+         <Value name="dataservice.hoteldataservice" package ="dataservice.hoteldataservice" value ="9"/>
+         <Value name="dataservice.promotiondataservice" package ="dataservice.promotiondataservice" value ="9"/>
+         <Value name="dataservice.userdataservice" package ="dataservice.userdataservice" value ="9"/>
+         <Value name="util" package ="util" value ="7"/>
+         <Value name="dataservice" package ="dataservice" value ="5"/>
+         <Value name="dataservice.datafactoryservice" package ="dataservice.datafactoryservice" value ="2"/>
+         <Value name="dataservice_driver" package ="dataservice_driver" value ="0"/>
+         <Value name="dataservice_stub" package ="dataservice_stub" value ="0"/>
+      </Values>
+   </Metric>
+   <Metric id = "NSC" description ="Number of Children">
+      <Values per = "type" total = "0" avg = "0" stddev = "0" max = "0">
+         <Value name="HotelDataService_Driver" source ="HotelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="OrderDataService_Driver" source ="OrderDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="PersonnelDataService_Driver" source ="PersonnelDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="PromotionDataService_Driver" source ="PromotionDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="UserDataService_Driver" source ="UserDataService_Driver.java" package ="dataservice_driver" value ="0"/>
+         <Value name="OrderDataService_Stub" source ="OrderDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PersonnelDataService_Stub" source ="PersonnelDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="PromotionDataService_Stub" source ="PromotionDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="UserDataService_Stub" source ="UserDataService_Stub.java" package ="dataservice_stub" value ="0"/>
+         <Value name="HotelPO" source ="HotelPO.java" package ="po.hotel" value ="0"/>
+         <Value name="RoomPO" source ="RoomPO.java" package ="po.hotel" value ="0"/>
+         <Value name="OrderHandleAppealPO" source ="OrderHandleAppealPO.java" package ="po.order" value ="0"/>
+         <Value name="OrderPO" source ="OrderPO.java" package ="po.order" value ="0"/>
+         <Value name="OrderPricePO" source ="OrderPricePO.java" package ="po.order" value ="0"/>
+         <Value name="OrderTimePO" source ="OrderTimePO.java" package ="po.order" value ="0"/>
+         <Value name="ReviewPO" source ="ReviewPO.java" package ="po.order" value ="0"/>
+         <Value name="PersonnelPO" source ="PersonnelPO.java" package ="po.personnel" value ="0"/>
+         <Value name="PromotionMRPO" source ="PromotionMRPO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionPO" source ="PromotionPO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionTimePO" source ="PromotionTimePO.java" package ="po.promotion" value ="0"/>
+         <Value name="PromotionTraAreaPO" source ="PromotionTraAreaPO.java" package ="po.promotion" value ="0"/>
+         <Value name="CreditRecordPO" source ="CreditRecordPO.java" package ="po.user" value ="0"/>
+         <Value name="MemberPO" source ="MemberPO.java" package ="po.user" value ="0"/>
+         <Value name="UserPO" source ="UserPO.java" package ="po.user" value ="0"/>
+         <Value name="AddTradProducer" source ="AddTradProducer.java" package ="util" value ="0"/>
+         <Value name="Coder" source ="Coder.java" package ="util" value ="0"/>
+         <Value name="CommonMethod" source ="CommonMethod.java" package ="util" value ="0"/>
+         <Value name="Const" source ="Const.java" package ="util" value ="0"/>
+         <Value name="DateTimeFormat" source ="DateTimeFormat.java" package ="util" value ="0"/>
+         <Value name="DefaultAl" source ="DefaultAl.java" package ="util" value ="0"/>
+         <Value name="EnumFactory" source ="EnumFactory.java" package ="util" value ="0"/>
+         <Value name="IDProducer" source ="IDProducer.java" package ="util" value ="0"/>
+         <Value name="UserLevel" source ="UserLevel.java" package ="util" value ="0"/>
+         <Value name="AddTradProducerTest" source ="AddTradProducerTest.java" package ="util" value ="0"/>
+         <Value name="CoderTest" source ="CoderTest.java" package ="util" value ="0"/>
+         <Value name="EnumFactoryTest" source ="EnumFactoryTest.java" package ="util" value ="0"/>
+      </Values>
+   </Metric>
+   </Metrics>
