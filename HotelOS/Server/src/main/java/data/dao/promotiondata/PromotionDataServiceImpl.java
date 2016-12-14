@@ -109,9 +109,15 @@ public class PromotionDataServiceImpl extends DataServiceImplParent implements P
         // 取出相应hotelID的promotionPO
         ArrayList<PromotionPO> selectedPromotionPOs = new ArrayList<>();
         for (PromotionPO each : promotionPOs) {
-            if(each.getHotelID() == hotelID && each.getPromotionType().equals(promotionType)){
-                selectedPromotionPOs.add(each);
+            if(each.getPromotionType() == null){
+                continue;
             }
+            else{
+                if(each.getHotelID() == hotelID && each.getPromotionType().equals(promotionType)){
+                    selectedPromotionPOs.add(each);
+                }
+            }
+
         }
         return selectedPromotionPOs;
     }

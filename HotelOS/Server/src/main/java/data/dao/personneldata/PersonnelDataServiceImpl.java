@@ -89,9 +89,15 @@ public class PersonnelDataServiceImpl extends DataServiceImplParent implements P
         ArrayList<PersonnelPO> result = new ArrayList<>();
 
         for (PersonnelPO each : personnelPOs) {
-            if(each.getPersonnelType().equals(personnelType)){
-                result.add(each);
+            if(each.getPersonnelType() == null){
+                continue;
             }
+            else{
+                if(personnelType.equals(each.getPersonnelType())){
+                    result.add(each);
+                }
+            }
+
         }
 
         return result;

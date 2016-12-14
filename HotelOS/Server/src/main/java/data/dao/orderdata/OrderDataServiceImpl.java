@@ -132,8 +132,13 @@ public class OrderDataServiceImpl extends DataServiceImplParent implements Order
         // 选择出相应的orderPOs
         ArrayList<OrderPO> selectedOrderPOs = new ArrayList<>();
         for(OrderPO each : orderPOs){
-            if(each.getHotelID() == hotelID && each.getOrderType().equals(orderType)){
-                selectedOrderPOs.add(each);
+            if(each.getOrderType() == null) {
+                continue;
+            }
+            else {
+                if (each.getHotelID() == hotelID && orderType.equals(each.getOrderType())) {
+                    selectedOrderPOs.add(each);
+                }
             }
         }
 
@@ -164,8 +169,13 @@ public class OrderDataServiceImpl extends DataServiceImplParent implements Order
         // 选择出相应的orderPOs
         ArrayList<OrderPO> selectedOrderPOs = new ArrayList<>();
         for(OrderPO each : orderPOs){
-            if(each.getUsername().equals(username) && each.getOrderType().equals(orderType)){
-                selectedOrderPOs.add(each);
+            if(each.getOrderType() == null){
+                continue;
+            }
+            else {
+                if (each.getUsername().equals(username) && orderType.equals(each.getOrderType())) {
+                    selectedOrderPOs.add(each);
+                }
             }
         }
 

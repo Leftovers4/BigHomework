@@ -13,12 +13,12 @@ public enum HandleAppealResult {
     /**
      * 恢复全部信用值
      */
-    All,
+    RecoverAll,
 
     /**
      * 恢复一半信用值
      */
-    Half;
+    RecoverHalf;
 
 
 }

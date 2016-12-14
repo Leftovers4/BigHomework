@@ -23,8 +23,8 @@ public class EnumFactory {
 
         // HandleAppealResult
         enumMap.put("驳回", HandleAppealResult.Reject);
-        enumMap.put("恢复所有信用值", HandleAppealResult.All);
-        enumMap.put("恢复一半信用值", HandleAppealResult.Half);
+        enumMap.put("恢复所有信用值", HandleAppealResult.RecoverAll);
+        enumMap.put("恢复一半信用值", HandleAppealResult.RecoverHalf);
 
         // MemberType
         enumMap.put("普通用户", MemberType.None);

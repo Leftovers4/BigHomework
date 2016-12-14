@@ -369,7 +369,7 @@ public class OrderBlServiceImpl implements OrderBLService {
             //更新订单信息
         orderPO.setOrderType(OrderType.Canceled);
         orderPO.getOrderHandleAppealPO().setHaTime(now);
-        orderPO.getOrderHandleAppealPO().setHa_result(creditPercent == 0.5 ? HandleAppealResult.Half : HandleAppealResult.All);
+        orderPO.getOrderHandleAppealPO().setHa_result(creditPercent == 0.5 ? HandleAppealResult.RecoverHalf : HandleAppealResult.RecoverAll);
         return orderDAO.update(orderPO);
     }
 

@@ -2,6 +2,7 @@ package util.poalfactory.impl;
 
 import util.Coder;
 import util.Const;
+import util.EnumFactory;
 import util.poalfactory.Po2Al_Factory;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
@@ -34,10 +35,10 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         userInfoContent.add(Coder.encode(userPO.getName()));
         userInfoContent.add(userPO.isGender());
         userInfoContent.add(Coder.encode(userPO.getPhone()));
-        userInfoContent.add(toString(userPO.getMemberPO().getMemberType()));
+        userInfoContent.add(enumToString(userPO.getMemberPO().getMemberType()));
         userInfoContent.add(userPO.getMemberPO().getLevel());
         userInfoContent.add(dateToString(userPO.getMemberPO().getBirthday()));
-        userInfoContent.add(toString(userPO.getMemberPO().getEnterprise()));
+        userInfoContent.add(userPO.getMemberPO().getEnterprise());
 
         return userInfoContent;
     }
@@ -47,7 +48,7 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         ArrayList<Object> personnelInfoContent = new ArrayList<>();
         personnelInfoContent.add(personnelPO.getPersonnelID());
         personnelInfoContent.add(personnelPO.getPassword());
-        personnelInfoContent.add(toString(personnelPO.getPersonnelType()));
+        personnelInfoContent.add(enumToString(personnelPO.getPersonnelType()));
         personnelInfoContent.add(personnelPO.getName());
         personnelInfoContent.add(personnelPO.getHotelID());
 
@@ -73,7 +74,7 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         ArrayList<Object> roomInfoContent = new ArrayList<>();
         roomInfoContent.add(roomPO.getroomID());
         roomInfoContent.add(roomPO.gethotelID());
-        roomInfoContent.add(toString(roomPO.getRoomType()));
+        roomInfoContent.add(enumToString(roomPO.getRoomType()));
         roomInfoContent.add(roomPO.getTotal());
         roomInfoContent.add(roomPO.getAvailable());
         roomInfoContent.add(roomPO.getPrice());
@@ -87,9 +88,9 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         orderInfoContent.add(orderPO.getOrderID());
         orderInfoContent.add(orderPO.getHotelID());
         orderInfoContent.add(orderPO.getUsername());
-        orderInfoContent.add(toString(orderPO.getOrderType()));
+        orderInfoContent.add(enumToString(orderPO.getOrderType()));
         orderInfoContent.add(orderPO.getHotelName());
-        orderInfoContent.add(toString(orderPO.getRoomType()));
+        orderInfoContent.add(enumToString(orderPO.getRoomType()));
         orderInfoContent.add(orderPO.getRoomAmount());
         orderInfoContent.add(orderPO.getRoomNumber());
         orderInfoContent.add(orderPO.getPersonAmount());
@@ -106,14 +107,14 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         orderInfoContent.add(orderPO.getOrderPricePO().getOriginPrice());
         orderInfoContent.add(orderPO.getOrderPricePO().getActualPrice());
         // 订单采用的促销策略类型
-        orderInfoContent.add(toString(orderPO.getPromotionType()));
+        orderInfoContent.add(enumToString(orderPO.getPromotionType()));
         // 评价
         orderInfoContent.add(dateTimeToString(orderPO.getReviewPO().getReviewTime()));
         orderInfoContent.add(orderPO.getReviewPO().getRating());
         orderInfoContent.add(orderPO.getReviewPO().getReview());
         // 申诉处理
         orderInfoContent.add(dateTimeToString(orderPO.getOrderHandleAppealPO().getHaTime()));
-        orderInfoContent.add(toString(orderPO.getOrderHandleAppealPO().getHa_result()));
+        orderInfoContent.add(enumToString(orderPO.getOrderHandleAppealPO().getHa_result()));
 
         return orderInfoContent;
     }
@@ -122,7 +123,7 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
     public ArrayList<Object> toPromotionAl(PromotionPO promotionPO) {
         ArrayList<Object> promotionInfoContent = new ArrayList<>();
         promotionInfoContent.add(promotionPO.getPromotionID());
-        promotionInfoContent.add(toString(promotionPO.getPromotionType()));
+        promotionInfoContent.add(enumToString(promotionPO.getPromotionType()));
         promotionInfoContent.add(promotionPO.getHotelID());
         promotionInfoContent.add(promotionPO.getDiscount());
         promotionInfoContent.add(promotionPO.getLeastRooms());
@@ -161,7 +162,7 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
         crInfoContent.add(creditRecordPO.getCurrentCredit());
         crInfoContent.add(creditRecordPO.getChangedCredit());
         crInfoContent.add(dateTimeToString(creditRecordPO.getChangedTime()));
-        crInfoContent.add(toString(creditRecordPO.getCreditChangedCause()));
+        crInfoContent.add(enumToString(creditRecordPO.getCreditChangedCause()));
         crInfoContent.add(creditRecordPO.getOrderID());
 
         return crInfoContent;
@@ -172,14 +173,14 @@ public class Po2Al_FactoryImpl implements Po2Al_Factory{
 
     /**
      * 把enum转换成string存储
-     * @param input
+     * @param e
      * @return
      */
-    private static String toString(Object input){
-        if(input == null){
+    private static String enumToString(Enum e){
+        if(e == null){
             return "";
         }else{
-            return input.toString();
+            return EnumFactory.getString(e);
         }
     }
 

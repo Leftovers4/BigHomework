@@ -54,30 +54,30 @@ public class ALProducer {
 
     static{
         // "record_id", "username", "current_credit", "changed_credit", "changed_time", "cause", "order_id"
-        CreditRecord = objectsToList(crID, username, 1.0, 0.1, datetime, "Recharge", orderID);
+        CreditRecord = objectsToList(crID, username, 1.0, 0.1, datetime, "信用充值", orderID);
         // "hotel_id", "hotel_name", "star", "address", "trading_area", "description", "service"
         Hotel = objectsToList(hotelID, hotelName, 5, address, tradingArea, description, service);
         // "order_id", "hotel_id", "username", "order_type", "hotel_name", "room_type", "room_amount",
         // "room_number",  "person_amount", "with_children", "generate_time", "expected_checkin_time",
         // "checkin_time", "expected_leave_time", "leave_time", "last_execute_time", "cancel_time", "original_price", "actual_price",
         // "review_time", "rating", "review", "ha_time", "ha_result"
-        Order = objectsToList("15165165", hotelID, username, "Abnormal", hotelName, "Single", 2, "511", 2, 0,
+        Order = objectsToList("15165165", hotelID, username, "异常订单", hotelName, "单人房", 2, "511", 2, 0,
                                 null, datetime, datetime, datetime, datetime, datetime, datetime,
-                                100.0, 80.0, "BirthdayPromotion", datetime, 4, "好", datetime, "All");
+                                100.0, 80.0, "生日特惠折扣", datetime, 4, "好", datetime, "恢复所有信用值");
         // "personnel_id", "password", "personnel_type", "name", "hotel_id"
-        Personnel = objectsToList(personnelID, password, "HotelWorker", username, hotelID);
+        Personnel = objectsToList(personnelID, password, "酒店工作人员", username, hotelID);
         // "promotion_id", "promotion_type", "hotel_id", "discount", "least_rooms", "begin_time", "end_time",
         // "enterprise1", "enterprise2", "enterprise3", "enterprise4", "enterprise5",
         // "trading_area1", "tra_discount1", "trading_area2", "tra_discount2", "trading_area3", "tra_discount3", "trading_area4", "tra_discount4", "trading_area5", "tra_discount5",
         // "credit1", "mem_discount1", "credit2", "mem_discount2", "credit3", "mem_discount3", "credit4", "mem_discount4", "credit5", "mem_discount", "credit6", "mem_discount6"
-        Promotion = objectsToList(promotionID, "BirthdayPromotion", hotelID, 0.1, 4, datetime, datetime,
+        Promotion = objectsToList(promotionID, "生日特惠折扣", hotelID, 0.1, 4, datetime, datetime,
                     enterprise, enterprise, enterprise, enterprise, enterprise,
                     tradingArea, 0.8, tradingArea, 0.8, tradingArea, 0.8, tradingArea, 0.8, tradingArea, 0.8,
                     1000.0, 0.7, 1000.0, 0.7, 1000.0, 0.7, 1000.0, 0.7, 1000.0, 0.7, 1000.0, 0.7);
         // "room_id", "hotel_id", "room_type", "total", "available", "price"
-        Room = objectsToList(roomID, hotelID, "Single", 12, 11, 100.0);
+        Room = objectsToList(roomID, hotelID, "单人房", 12, 11, 100.0);
         // "username", "password", "name", "gender", "phone", "member_type", "level", "birthday", "enterprise"
-        User = objectsToList(Coder.encode(username), Coder.encode(password), Coder.encode("啊"), 1, Coder.encode("11011011010"), "Normal", 5, null, enterprise);
+        User = objectsToList(Coder.encode(username), Coder.encode(password), Coder.encode("啊"), 1, Coder.encode("11011011010"), "普通会员", 5, null, enterprise);
 
     }
 
