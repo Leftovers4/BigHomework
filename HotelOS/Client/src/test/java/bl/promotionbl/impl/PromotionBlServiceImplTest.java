@@ -26,7 +26,7 @@ public class PromotionBlServiceImplTest {
 
     @Test
     public void create() throws Exception {
-//        PromotionVO promotionVO = new PromotionVO();
+        PromotionVO promotionVO = new PromotionVO();
 
         //说明：当创建促销策略时，hotelID跟promotionType是一定要赋值的，
         //      当促销策略是网站营销人员制定时，调用IDProducer.produceHotelIDforWP（）
@@ -34,37 +34,38 @@ public class PromotionBlServiceImplTest {
         //      没有就不用赋值。
 
         //等级优惠
-//        promotionVO.hotelID = IDProducer.produceHotelIDForWP();
-//        promotionVO.promotionType = PromotionType.UserLevelPromotion;
-//        promotionVO.promotionMRVOs.get(0).credit = 500;
-//        promotionVO.promotionMRVOs.get(1).credit = 1000;
-//        promotionVO.promotionMRVOs.get(2).credit = 1500;
-//        promotionVO.promotionMRVOs.get(3).credit = 2000;
-//        promotionVO.promotionMRVOs.get(4).credit = 3000;
-//        promotionVO.promotionMRVOs.get(5).credit = 5000;
-//        promotionVO.promotionMRVOs.get(0).memberDiscount = 0.98;
-//        promotionVO.promotionMRVOs.get(1).memberDiscount = 0.95;
-//        promotionVO.promotionMRVOs.get(2).memberDiscount = 0.9;
-//        promotionVO.promotionMRVOs.get(3).memberDiscount = 0.85;
-//        promotionVO.promotionMRVOs.get(4).memberDiscount = 0.75;
-//        promotionVO.promotionMRVOs.get(5).memberDiscount = 0.6;
+        promotionVO.hotelID = IDProducer.produceHotelIDForWP();
+        promotionVO.promotionType = PromotionType.UserLevelPromotion;
+        promotionVO.promotionMRVOs.get(0).credit = 500;
+        promotionVO.promotionMRVOs.get(1).credit = 1000;
+        promotionVO.promotionMRVOs.get(2).credit = 1500;
+        promotionVO.promotionMRVOs.get(3).credit = 2000;
+        promotionVO.promotionMRVOs.get(4).credit = 3000;
+        promotionVO.promotionMRVOs.get(5).credit = 5000;
+        promotionVO.promotionMRVOs.get(0).memberDiscount = 0.98;
+        promotionVO.promotionMRVOs.get(1).memberDiscount = 0.95;
+        promotionVO.promotionMRVOs.get(2).memberDiscount = 0.9;
+        promotionVO.promotionMRVOs.get(3).memberDiscount = 0.85;
+        promotionVO.promotionMRVOs.get(4).memberDiscount = 0.75;
+        promotionVO.promotionMRVOs.get(5).memberDiscount = 0.6;
 //
 //        //多间优惠
 //        promotionVO.hotelID = 961529;
 //        promotionVO.promotionType = PromotionType.MultipleRoomPromotion;
 //        promotionVO.leastRooms = 2;
-//        promotionVO.discount = 0.9;
-        PromotionVO promotionVO = new PromotionVO();
-        promotionVO.promotionTraAreaVOs.get(0).tradingArea = "xianlin";
-        promotionVO.promotionTraAreaVOs.get(0).traDiscount = 0.9;
-        promotionVO.hotelID = IDProducer.produceHotelIDForWP();
-        promotionVO.promotionType = PromotionType.VIPSpecialAreaPromotion;
+////        promotionVO.discount = 0.9;
+//        PromotionVO promotionVO = new PromotionVO();
+//        promotionVO.promotionTraAreaVOs.get(0).tradingArea = "xianlin";
+//        promotionVO.promotionTraAreaVOs.get(0).traDiscount = 0.9;
+//        promotionVO.hotelID = IDProducer.produceHotelIDForWP();
+//        promotionVO.promotionType = PromotionType.VIPSpecialAreaPromotion;
+
         ResultMessage resultMessage = tested.create(promotionVO);
     }
 
     @Test
     public void delete() throws Exception {
-        tested.delete(100001);
+        ResultMessage resultMessage = tested.delete(809274);
     }
 
     @Test

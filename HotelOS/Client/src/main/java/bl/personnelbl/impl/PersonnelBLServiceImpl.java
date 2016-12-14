@@ -70,6 +70,7 @@ public class PersonnelBLServiceImpl implements PersonnelBLService{
         personnelPO.setName(personnelVO.name);
         personnelPO.setHotelID(personnelVO.hotelID);
 
+        personnelDAO.insert(personnelPO);
         return personnelPO.getPersonnelID();
     }
 
@@ -82,6 +83,7 @@ public class PersonnelBLServiceImpl implements PersonnelBLService{
         personnelPO.setPersonnelType(PersonnelType.WebMarketer);
         personnelPO.setName(personnelVO.name);
 
+        personnelDAO.insert(personnelPO);
         return personnelPO.getPersonnelID();
     }
 

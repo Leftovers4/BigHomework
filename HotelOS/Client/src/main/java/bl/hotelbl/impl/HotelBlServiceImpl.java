@@ -61,6 +61,7 @@ public class HotelBlServiceImpl implements HotelBLService {
         hotelPO.setAddress(hotelVO.address);
         hotelPO.setTradingArea(hotelVO.tradingArea);
 
+        hotelDAO.insert(hotelPO);
         return hotelPO.getHotelID();
     }
 
