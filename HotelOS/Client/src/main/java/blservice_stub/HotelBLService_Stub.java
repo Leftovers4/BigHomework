@@ -118,6 +118,11 @@ public class HotelBLService_Stub implements HotelBLService {
         return 0;
     }
 
+    @Override
+    public ResultMessage setHotelImage(long hotelID, byte[] image) throws RemoteException {
+        return null;
+    }
+
     public List<RoomVO> findRoomsByHotelID(long hotelID) {
 
         list.add(logicVOHelper.create(hotelID,RoomType.Single,10,100));

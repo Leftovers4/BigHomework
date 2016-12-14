@@ -69,6 +69,15 @@ public interface UserBLService {
     ResultMessage updateBasicUserInfo(UserVO userVO) throws RemoteException;
 
     /**
+     * 客户修改个人图片
+     *
+     * @param username 用户名
+     * @param image 图片
+     * @return UsernameNotExisted, 以及数据库返回的result message
+     */
+    ResultMessage updateUserImage(String username, byte[] image) throws RemoteException;
+
+    /**
      * 客户注册普通会员
      *
      * @param userVO 注册普通会员时填写的信息

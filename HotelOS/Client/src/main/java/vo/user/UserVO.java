@@ -38,6 +38,11 @@ public class UserVO {
     public String phone;
 
     /**
+     * 图片
+     */
+    public byte[] image;
+
+    /**
      * 会员信息
      */
     public MemberVO memberVO;

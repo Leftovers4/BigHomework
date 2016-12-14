@@ -113,6 +113,18 @@ public class UserBlServiceImpl implements UserBLService {
     }
 
     @Override
+    public ResultMessage updateUserImage(String username, byte[] image) throws RemoteException {
+        UserPO userPO = userDAO.findByUsername(username);
+
+        //客户不存在的情况
+        if (userPO == null)
+            return ResultMessage.UsernameNotExisted;
+
+        //客户存在的情况
+        return userDAO.setImage(username, image);
+    }
+
+    @Override
     public ResultMessage registerNormalMember(UserVO userVO) throws RemoteException {
         UserPO userPO = userDAO.findByUsername(userVO.username);
 

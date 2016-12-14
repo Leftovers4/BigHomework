@@ -7,6 +7,7 @@ import po.hotel.HotelPO;
 import po.hotel.RoomPO;
 import po.order.OrderPO;
 import po.personnel.PersonnelPO;
+import rmi.RemoteHelper;
 import util.RoomType;
 import vo.order.OrderVO;
 import vo.order.OrderVOCreator;
@@ -22,7 +23,7 @@ import java.util.List;
  */
 public class HotelVOCreator {
 
-    public HotelVO create(HotelPO hotelPO){
+    public HotelVO create(HotelPO hotelPO) throws RemoteException {
         HotelVO res = new HotelVO();
 
         res.hotelID = hotelPO.getHotelID();
@@ -32,11 +33,12 @@ public class HotelVOCreator {
         res.tradingArea = hotelPO.getTradingArea();
         res.description = hotelPO.getDescription();
         res.service = hotelPO.getService();
+        res.image = RemoteHelper.getInstance().getHotelDAO().getImage(hotelPO.getHotelID());
 
         return res;
     }
 
-    public List<HotelVO> createAll(List<HotelPO> hotelPOList){
+    public List<HotelVO> createAll(List<HotelPO> hotelPOList) throws RemoteException {
         List<HotelVO> res = new ArrayList<>();
 
         for (int i = 0; i < hotelPOList.size(); i++) {
@@ -46,7 +48,7 @@ public class HotelVOCreator {
         return res;
     }
 
-    public HotelVO create(HotelPO hotelPO, PersonnelPO personnelPO, List<OrderPO> orderPOList) {
+    public HotelVO create(HotelPO hotelPO, PersonnelPO personnelPO, List<OrderPO> orderPOList) throws RemoteException {
         HotelVO res = new HotelVO();
 
         res.hotelID = hotelPO.getHotelID();
@@ -56,6 +58,7 @@ public class HotelVOCreator {
         res.tradingArea = hotelPO.getTradingArea();
         res.description = hotelPO.getDescription();
         res.service = hotelPO.getService();
+        res.image = RemoteHelper.getInstance().getHotelDAO().getImage(hotelPO.getHotelID());
 
         res.hotelWorkerID = personnelPO.getPersonnelID();
         res.hotelWorkerName = personnelPO.getName();
@@ -78,6 +81,7 @@ public class HotelVOCreator {
         res.service = hotelPO.getService();
         res.price = new RoomList(roomPOList).getHotelPrice();
         res.rating = new OrderList(orderPOListForRating).filterByHasReview().getHotelRating();
+        res.image = RemoteHelper.getInstance().getHotelDAO().getImage(hotelPO.getHotelID());
 
         List<OrderVO> orderVOList = new ArrayList<>();
         for (int i = 0; i < orderPOListForOrders.size(); i++) {

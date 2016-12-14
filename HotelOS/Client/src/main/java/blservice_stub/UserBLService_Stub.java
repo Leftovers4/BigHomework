@@ -50,6 +50,11 @@ public class UserBLService_Stub implements UserBLService {
     }
 
     @Override
+    public ResultMessage updateUserImage(String username, byte[] image) throws RemoteException {
+        return null;
+    }
+
+    @Override
     public List<CreditRecordVO> getCreditRecordsByUsername(String username) {
         ArrayList<CreditRecordVO> list = new ArrayList<>();
         CreditRecordVO creditRecordVO = new CreditRecordVO();

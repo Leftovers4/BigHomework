@@ -110,6 +110,11 @@ public class HotelBlServiceImplTest {
     }
 
     @Test
+    public void setHotelImage() throws Exception {
+
+    }
+
+    @Test
     public void sortHotels() throws Exception {
         List<HotelVO> hotelVOList1 = tested.viewFullHotelList();
         HotelVOList hotelVOList2 = new HotelVOList(hotelVOList1);

@@ -3,6 +3,7 @@ package vo.user;
 import bl.userbl.impl.CreditRecordList;
 import po.user.CreditRecordPO;
 import po.user.UserPO;
+import rmi.RemoteHelper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
@@ -25,6 +26,7 @@ public class UserVOCreater {
         res.name = userPO.getName();
         res.gender = userPO.isGender();
         res.phone = userPO.getPhone();
+        res.image = RemoteHelper.getInstance().getUserDAO().getImage(userPO.getUsername());
         res.creditVO.credit = new CreditRecordList(creditRecordPOList).getCurrentCredit();
         res.creditVO.creditRecords = createAllOrdinaryCreditRecordVO(creditRecordPOList);
         res.memberVO.memberType = userPO.getMemberPO().getMemberType();

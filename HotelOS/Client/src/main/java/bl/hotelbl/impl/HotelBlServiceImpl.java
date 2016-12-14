@@ -178,6 +178,18 @@ public class HotelBlServiceImpl implements HotelBLService {
         return new RoomList(hotelDAO.findRoomsByHotelID(hotelID)).getOfflineCheckInRoomAmount();
     }
 
+    @Override
+    public ResultMessage setHotelImage(long hotelID, byte[] image) throws RemoteException {
+        HotelPO hotelPO = hotelDAO.findByHotelID(hotelID);
+
+        //酒店不存在的情况
+        if (hotelPO == null)
+            return ResultMessage.DataNotExisted;
+
+        //酒店存在的情况
+        return hotelDAO.setImage(hotelID, image);
+    }
+
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     @Override

@@ -96,6 +96,8 @@ public interface HotelBLService {
 
     int viewOfflineCheckInRoomAmount(long hotelID) throws RemoteException;
 
+    ResultMessage setHotelImage(long hotelID, byte[] image) throws RemoteException;
+
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     /**

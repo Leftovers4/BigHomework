@@ -64,6 +64,11 @@ public class UserBlServiceImplTest {
     }
 
     @Test
+    public void updateUserImage() throws Exception {
+
+    }
+
+    @Test
     public void registerNormalMember() throws Exception {
         UserVO userVO = new UserVO();
 
