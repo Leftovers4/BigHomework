@@ -33,6 +33,26 @@ public class OrderList extends ArrayList<OrderPO>{
         return sum;
     }
 
+    public OrderList filterByDifferentHotels(){
+        OrderList res = new OrderList(new ArrayList<>());
+
+        for (int i = 0; i < this.size(); i++) {
+            boolean same = false;
+
+            for (int j = 0; j < res.size(); j++) {
+                if (this.get(i).getHotelID() == res.get(j).getHotelID()){
+                    same = true;
+                    break;
+                }
+            }
+
+            if (!same)
+                res.add(this.get(i));
+        }
+
+        return res;
+    }
+
     public OrderList filterByHasReview(){
         OrderList res = new OrderList(new ArrayList<>());
 

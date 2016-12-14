@@ -1,6 +1,7 @@
 package bl.hotelbl.impl;
 
 import bl.hotelbl.HotelBLService;
+import bl.orderbl.impl.OrderList;
 import bl.personnelbl.impl.PersonnelList;
 import dataservice.hoteldataservice.HotelDataService;
 import dataservice.orderdataservice.OrderDataService;
@@ -238,7 +239,7 @@ public class HotelBlServiceImpl implements HotelBLService {
 
         //找出所有预定过的酒店的PO
         List<HotelPO> hotelPOList = new ArrayList<>();
-        List<OrderPO> orderPOList = orderDAO.findByUsername(username);
+        List<OrderPO> orderPOList = new OrderList(orderDAO.findByUsername(username)).filterByDifferentHotels();
         for (int i = 0; i < orderPOList.size(); i++) {
             hotelPOList.add(hotelDAO.findByHotelID(orderPOList.get(i).getHotelID()));
         }
