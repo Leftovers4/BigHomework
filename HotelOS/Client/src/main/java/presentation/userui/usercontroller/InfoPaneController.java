@@ -77,6 +77,8 @@ public class InfoPaneController {
         this.userID = username;
         this.leftBarBtnArr = leftBarBtnArr;
 
+        alertController = new AlertController();
+
         try {
             userBlService = new UserBlServiceImpl();
         } catch (RemoteException e) {

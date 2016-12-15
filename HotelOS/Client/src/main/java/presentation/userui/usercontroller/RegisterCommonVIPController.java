@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.InfoPane;
+import presentation.util.alert.AlertController;
 import presentation.util.alert.InputWrongAlert;
 import util.MemberType;
 import util.ResultMessage;
@@ -38,12 +39,16 @@ public class RegisterCommonVIPController {
 
     private UserBlServiceImpl userBlService;
 
+    private AlertController alertController;
+
     public void launch(Stage primaryStage, Pane mainPane, String userID, ImageView topbarphoto, ArrayList<Button> leftBarArr) {
         this.stage = primaryStage;
         this.userID = userID;
         this.mainPane = mainPane;
         this.topbarphoto = topbarphoto;
         this.leftBarArr = leftBarArr;
+
+        alertController = new AlertController();
 
         try {
             userBlService = new UserBlServiceImpl();
@@ -119,10 +124,11 @@ public class RegisterCommonVIPController {
                         userVO.memberVO.memberType = MemberType.Both;
                     }
 
+                    alertController.showUpdateSuccessAlert("注册成功！", "成功提示");
+
                 } else if (resultMessage == ResultMessage.UsernameNotExisted) {
                     System.out.println("common vip exits");
-                } else if (resultMessage == ResultMessage.UsernameNotExisted) {
-                    System.out.println("user not exits");
+                    alertController.showNullWrongAlert("用户不存在！", "错误提示");
                 }
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -132,9 +138,9 @@ public class RegisterCommonVIPController {
             mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto, userID, leftBarArr));
 
         } else if (!isempty && !isphoneok) {
-            new InputWrongAlert("联系方式格式错误", "格式错误").showAndWait();
+            alertController.showInputWrongAlert("联系方式格式错误！", "格式错误");
         } else {
-            new InputWrongAlert("信息填写不完整", "保存失败").showAndWait();
+            alertController.showInputWrongAlert("信息填写不完整", "格式错误");
         }
     }
 

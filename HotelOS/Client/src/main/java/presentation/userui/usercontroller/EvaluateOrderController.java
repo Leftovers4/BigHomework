@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import presentation.util.alert.AlertController;
 import util.ResultMessage;
 import vo.order.OrderVO;
 import vo.order.ReviewVO;
@@ -35,6 +36,8 @@ public class EvaluateOrderController {
     private ArrayList<ImageView> starGroup;
     private boolean isClicked = false;
     private OrderBlServiceImpl orderBlService;
+
+    private AlertController alertController;
 
     private int rate;
 
@@ -180,8 +183,10 @@ public class EvaluateOrderController {
             ResultMessage resultMessage = orderBlService.reviewOrder(reviewVO);
 
             if (resultMessage == ResultMessage.Success) {
+                alertController.showUpdateSuccessAlert("评价成功！", "成功提示");
                 System.out.println("review success");
             } else if (resultMessage ==ResultMessage.DataExisted){
+                alertController.showInputWrongAlert("您已评价过", "失败提示");
                 System.out.println("review failed");
             }
         } catch (RemoteException e) {
