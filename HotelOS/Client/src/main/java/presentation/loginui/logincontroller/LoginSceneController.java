@@ -22,6 +22,7 @@ import presentation.hotelworkerui.hotelworkerscene.ComWorkerScene;
 import presentation.userui.userscene.ComUserScene;
 import presentation.webmanagerui.webmanagerscene.WebmanagerComScene;
 import presentation.webmarketerui.webmarketerscene.ComMarketerScene;
+import util.EnumFactory;
 import util.PersonnelType;
 import util.ResultMessage;
 import vo.personnel.PersonnelVO;

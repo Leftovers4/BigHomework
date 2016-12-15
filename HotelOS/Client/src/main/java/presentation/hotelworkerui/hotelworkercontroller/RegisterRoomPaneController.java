@@ -15,6 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
 import presentation.util.other.DisableColumnChangeListener;
+import util.EnumFactory;
 import util.RoomType;
 import vo.hotel.RoomVO;
 
@@ -104,8 +105,8 @@ public class RegisterRoomPaneController {
     }
 
     private void initBox() {
-        //TODO 初始化房间类型选择项
-        roomBox.getItems().addAll("单人房", "双人房");
+        roomBox.getItems().addAll("单人房", "双人房", "标准房", "套房", "总统套房", "商务套房", "大床房", "家庭房", "情侣房");
+        roomBox.setValue("单人房");
     }
 
     private void initData() {
@@ -149,15 +150,7 @@ public class RegisterRoomPaneController {
                         //添加客房
                         RoomVO roomVO = new RoomVO();
                         roomVO.hotelID = 522000;
-                        //TODO 枚举类型
-                        switch (roomBox.getValue().toString()) {
-                            case "单人房":
-                                roomVO.roomType = RoomType.Single;
-                                break;
-                            case "双人房":
-                                roomVO.roomType = RoomType.Couple;
-                                break;
-                        }
+                        roomVO.roomType = (RoomType) EnumFactory.getEnum(roomBox.getValue().toString());
                         roomVO.total = roomAmount;
                         roomVO.price = roomPrice;
                         try {

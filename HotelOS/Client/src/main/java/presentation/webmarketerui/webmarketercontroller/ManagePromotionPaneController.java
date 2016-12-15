@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
 import presentation.util.other.*;
+import util.AddTradProducer;
 import util.IDProducer;
 import util.PromotionType;
 import util.TradingArea;
@@ -209,9 +210,15 @@ public class ManagePromotionPaneController {
 
 
     private void initAreaBox() {
-        //TODo
-        cityBox.getItems().addAll("南京");
-        areaBox.getItems().addAll("仙林商圈");
+        while (AddTradProducer.getAllAddress().hasNext()){
+            cityBox.getItems().add(AddTradProducer.getAllAddress().next());
+        }
+        cityBox.getSelectionModel().selectedItemProperty().addListener(
+                (o, oldValue, newValue) ->{
+                    while (AddTradProducer.getTradingAreasByAddress(newValue.toString()).hasNext())
+                    areaBox.getItems().add(AddTradProducer.getTradingAreasByAddress(newValue.toString()).next());
+                }
+        );
     }
 
     private void initData(TableView tableView, PromotionType promotionType) {
@@ -342,8 +349,7 @@ public class ManagePromotionPaneController {
         if(!JudgeInput.judgeDiscount(areaDiscountField)) return;
         PromotionVO promotionVO = new PromotionVO();
         try {
-            //TODO 更换商圈
-            promotionVO.promotionTraAreaVOs.get(0).tradingArea = String.valueOf(TradingArea.XIANLIN_CENTER);
+            promotionVO.promotionTraAreaVOs.get(0).tradingArea = String.valueOf(areaBox.getValue());
             promotionVO.promotionTraAreaVOs.get(0).traDiscount = Double.parseDouble(areaDiscountField.getText());
             promotionVO.hotelID = IDProducer.produceHotelIDForWP();
             if(isAreaAdd){

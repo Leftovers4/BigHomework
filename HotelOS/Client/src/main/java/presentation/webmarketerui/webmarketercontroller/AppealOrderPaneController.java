@@ -77,7 +77,6 @@ public class AppealOrderPaneController {
         }
     }
 
-    //TODO
     @FXML
     private void cancelAbnOrder(){
         if(allCreditBtn.isSelected()){
