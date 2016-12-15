@@ -40,6 +40,8 @@ public class CancelOrderController {
         this.stage = primaryStage;
         this.orderID = orderID;
 
+        alertController = new AlertController();
+
         try {
             orderBlService = new OrderBlServiceImpl();
         } catch (RemoteException e) {

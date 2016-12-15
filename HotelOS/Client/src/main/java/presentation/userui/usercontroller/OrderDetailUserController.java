@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.CheckMyReviewPane;
 import presentation.userui.userscene.EvaluateOrderPane;
+import presentation.util.alert.AlertController;
 import util.DateTimeFormat;
 import util.EnumFactory;
 import util.OrderType;
@@ -48,11 +49,15 @@ public class OrderDetailUserController {
 
     private OrderBlServiceImpl orderBlService;
 
+    private AlertController alertController;
+
     public void launch(Stage primaryStage, Pane mainPane, String userID, String orderID) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         this.orderID = orderID;
         this.userID = userID;
+
+        alertController = new AlertController();
 
         try {
             orderBlService = new OrderBlServiceImpl();
@@ -142,20 +147,25 @@ public class OrderDetailUserController {
 
     @FXML
     private void cancelOrderEvent() {
-        try {
-            ResultMessage resultMessage = orderBlService.cancelOrder(orderID);
+        boolean confirm = alertController.showConfirmDeleteAlert("确认撤销订单？", "撤销提示");
 
-            if (resultMessage == ResultMessage.Success) {
-                System.out.println("cancel success");
+        if (confirm) {
+            try {
+                ResultMessage resultMessage = orderBlService.cancelOrder(orderID);
 
-                initialData();
-            } else {
-                System.out.println("cancel failed");
+                if (resultMessage == ResultMessage.Success) {
+                    System.out.println("cancel success");
+
+                    initialData();
+                } else {
+                    System.out.println("cancel failed");
+                }
+
+            } catch (RemoteException e) {
+                e.printStackTrace();
             }
-
-        } catch (RemoteException e) {
-            e.printStackTrace();
         }
+
     }
 
     @FXML

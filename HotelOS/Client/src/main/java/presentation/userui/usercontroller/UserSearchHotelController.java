@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.userui.userscene.OrderDetailUserPane;
+import presentation.util.alert.AlertController;
 import presentation.util.buttoncell.UserHotelListButtonCell;
 import util.AddTradProducer;
 import util.RoomType;
@@ -85,11 +86,15 @@ public class UserSearchHotelController {
     private HotelBlServiceImpl hotelBlService;
 
     private AddTradProducer addTradProducer;
+    private AlertController alertController;
 
     public void launch(Stage primaryStage, Pane mainPane, String userID) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         this.userID = userID;
+
+        addTradProducer = new AddTradProducer();
+        alertController = new AlertController();
 
         try {
             hotelBlService = new HotelBlServiceImpl();
@@ -199,10 +204,9 @@ public class UserSearchHotelController {
     @FXML
     private void confirmChoose() {
         HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
-
         hotelConditionsVO.address = cityComBox.getValue().toString();
-//        initeBusinessAreaComBox(cityComBox.getValue().toString());
         hotelConditionsVO.tradingArea = tradingAreaCombox.getValue().toString();
+
         hotelConditionsVO.name = searchField.getText();
 
         hotelConditionsVO.expectedCheckInTime = checkInDate.getValue();
@@ -222,7 +226,12 @@ public class UserSearchHotelController {
         hotelConditionsVO.hasOrdered = onlyCheckRegistered.isSelected();
 
 
-        initalTable(hotelConditionsVO);
+        if (hotelConditionsVO.address == null || hotelConditionsVO.tradingArea == null) {
+            alertController.showNullWrongAlert("请选择地址", "错误提示");
+        } else {
+            initalTable(hotelConditionsVO);
+        }
+
     }
 
     /**

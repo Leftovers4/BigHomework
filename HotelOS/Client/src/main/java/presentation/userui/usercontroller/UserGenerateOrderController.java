@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.util.alert.AlertController;
 import presentation.util.other.CancelDateBefore;
 import presentation.util.alert.InputWrongAlert;
 import util.EnumFactory;
@@ -71,12 +72,16 @@ public class UserGenerateOrderController {
     private OrderBlServiceImpl orderBlService;
     private HotelBlServiceImpl hotelBlService;
 
+    private AlertController alertController;
+
     public void launch(Stage primaryStage, Pane mainPane, String userID, long hotelID, RoomType roomType) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         this.userID = userID;
         this.hotelID = hotelID;
         this.choseRoom = roomType;
+
+        alertController = new AlertController();
 
         try {
             orderBlService = new OrderBlServiceImpl();
@@ -237,7 +242,7 @@ public class UserGenerateOrderController {
                 child.setText("无");
             }
         } else {
-            new InputWrongAlert("信息填写不完整", "警告").showAndWait();
+            alertController.showInputWrongAlert("信息填写不完整", "警告");
         }
 
 
@@ -332,7 +337,9 @@ public class UserGenerateOrderController {
 
             if (resultMessage == ResultMessage.Success) {
                 System.out.println("new order");
+                alertController.showUpdateSuccessAlert("订单已生成！", "成功提示");
             } else {
+                alertController.showInputWrongAlert("订单生成失败", "错误提示");
                 System.out.println(resultMessage);
             }
         } catch (RemoteException e) {
