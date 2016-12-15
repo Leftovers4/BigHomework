@@ -169,8 +169,39 @@
 .table-view .MidAlignCol{
     -fx-alignment: center;
 }
+/**
+客户界面*****************************************************************************************************
+ */
 
+/*
+基本信息---------------------------------------------------------------------------------------
+ */
 
+/*编辑头像*/
+#changePhotoBtn {
+    -fx-background-color: transparent;
+    -fx-text-fill: deepskyblue;
+}
+#changePhotoBtn:hover {
+    -fx-underline: true;
+    -fx-background-color: transparent;
+}
+#changePhotoBtn:armed {
+    -fx-underline: true;
+    -fx-background-color: transparent;
+}
+
+/*注册会员按钮*/
+.VipBtn{
+    -fx-font-size: 16px;
+    -fx-border-color: #55acee;
+    -fx-background-color: #55acee;
+    -fx-text-fill:white;
+}
+.VipBtn:hover{
+    -fx-border-color: #49BCFF;
+    -fx-background-color: #49BCFF;
+}
 
 
 /**

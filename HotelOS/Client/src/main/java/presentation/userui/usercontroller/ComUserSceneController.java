@@ -7,6 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.*;
+import presentation.util.alert.AlertController;
 import presentation.util.other.LeftBarEffect;
 
 import java.util.ArrayList;
@@ -24,7 +25,6 @@ public class ComUserSceneController {
     private String userID;
 
     @FXML private Pane mainPane;
-    @FXML private Button indexBtn;
     @FXML private Button userInfoBtn;
     @FXML private Button orderListBtn;
     @FXML private Button searchHotelBtn;
@@ -32,9 +32,10 @@ public class ComUserSceneController {
     @FXML private ImageView leftBarSlider;
 
     @FXML private ImageView topbarphoto;
-    private Button currentBtn = null;
-
     @FXML private Label timeLabel;
+
+    private Button currentBtn = null;
+    private AlertController alertController;
 
     //左边栏按钮集合
     private ArrayList<Button> leftBarBtnArr;
@@ -42,23 +43,16 @@ public class ComUserSceneController {
     LeftBarEffect leftBarEffect = new LeftBarEffect();
 
     public void launch(Stage primaryStage, String username){
-
-
-
         this.stage = primaryStage;
         this.userID = username;
 
         leftBarBtnArr = new ArrayList<>(Arrays.asList(userInfoBtn, orderListBtn, searchHotelBtn,
-                hotelRegisteredBtn, indexBtn));
+                hotelRegisteredBtn));
+        alertController = new AlertController();
 
         currentBtn = userInfoBtn;
         userInfoBtn.setStyle("-fx-background-color: #0F81C7");
-        primaryStage.setX(400);
-        primaryStage.setY(200);
         mainPane.getChildren().add(new InfoPane(primaryStage, mainPane, topbarphoto, userID, leftBarBtnArr));
-
-
-
 
         EnableShowTime(timeLabel);
     }
@@ -66,7 +60,7 @@ public class ComUserSceneController {
 
     @FXML
     private void closeWindow(){
-        stage.close();
+        if(alertController.showConfirmExitAlert()) stage.close();
     }
     @FXML
     private void minWindow(){
@@ -90,15 +84,7 @@ public class ComUserSceneController {
     private void leftBarBtnEffect(Button button) {
         leftBarEffect.buttonActionEffect(button, leftBarBtnArr);
     }
-    @FXML
-    private void index() {
-        leftBarSlider.setVisible(false);
-        leftBarBtnEffect(indexBtn);
-        indexBtn.setStyle("-fx-background-color: transparent");
-        currentBtn = null;
-//        mainPane.getChildren().remove(0);
-//        mainPane.getChildren().add(new UserGenerateOrderPane(stage, mainPane, userID, hotelID));
-    }
+
     @FXML
     private void userInfo() {
         changeSliderPos(260);

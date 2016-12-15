@@ -65,18 +65,6 @@
 
 
 
-#changePhotoBtn {
-    -fx-background-color: transparent;
-    -fx-text-fill: deepskyblue;
-}
-#changePhotoBtn:hover {
-    -fx-underline: true;
-    -fx-background-color: transparent;
-}
-#changePhotoBtn:armed {
-    -fx-underline: true;
-    -fx-background-color: transparent;
-}
 
 
 .table-view {
