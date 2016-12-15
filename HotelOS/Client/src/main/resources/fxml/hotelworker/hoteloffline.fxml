@@ -16,7 +16,7 @@
             <Label layoutX="20.0" layoutY="20.0" text="线下已入住客房间数：" />
             <Label fx:id="busyRoomLabel" layoutX="220.0" layoutY="20.0" text="12" />
             <ComboBox fx:id="roomTypeBox" layoutX="80.0" layoutY="83.0" prefHeight="36.0" prefWidth="120.0" />
-            <TextField fx:id="roomAmountField" alignment="CENTER" layoutX="290.0" layoutY="85.0" prefHeight="36.0" prefWidth="120.0" />
+            <ComboBox fx:id="roomAmountBox" layoutX="290.0" layoutY="85.0" prefHeight="36.0" prefWidth="96.0" />
          </children>
       </Pane>
       <Button fx:id="checkInBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="542.0" layoutY="432.0" maxWidth="100.0" mnemonicParsing="false" onAction="#checkIn" prefWidth="100.0" styleClass="roomBtn" text="入住">

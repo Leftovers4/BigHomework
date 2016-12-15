@@ -15,11 +15,13 @@ import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
 import presentation.util.other.DisableColumnChangeListener;
+import presentation.util.other.MyComboBox;
 import util.EnumFactory;
 import util.RoomType;
 import vo.hotel.RoomVO;
 
 import java.rmi.RemoteException;
+import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -75,7 +77,7 @@ public class RegisterRoomPaneController {
 
         initService();
         initTable();
-        initBox();
+        MyComboBox.initRoomBox(roomBox);
         initData();
     }
 
@@ -104,10 +106,6 @@ public class RegisterRoomPaneController {
         roomTable.getColumns().addListener(new DisableColumnChangeListener(roomTable, proMemColumns));
     }
 
-    private void initBox() {
-        roomBox.getItems().addAll("单人房", "双人房", "标准房", "套房", "总统套房", "商务套房", "大床房", "家庭房", "情侣房");
-        roomBox.setValue("单人房");
-    }
 
     private void initData() {
         roomTable.setItems(getRoomVoList());

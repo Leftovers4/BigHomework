@@ -2,6 +2,7 @@ package presentation.util.other;
 
 import javafx.scene.control.ComboBox;
 import util.AddTradProducer;
+import util.EnumFactory;
 
 import java.time.LocalTime;
 import java.util.Iterator;
@@ -35,17 +36,18 @@ public class MyComboBox {
         cityBox.getSelectionModel().selectedItemProperty().addListener(
                 (o, oldValue, newValue) ->{
                     areaBox.getItems().clear();
-                    String area = "";
                     Iterator<String> areaList = AddTradProducer.getTradingAreasByAddress(newValue.toString());
-                    while (areaList.hasNext()){
-                        if (area == ""){
-                            area = areaList.next();
-                            areaBox.getItems().add(area);
-                        } else areaBox.getItems().add(areaList.next());
-                    }
+                    while (areaList.hasNext()) areaBox.getItems().add(areaList.next());
 
-                    areaBox.setValue(area);
+                    areaBox.setValue(areaBox.getItems().get(0));
                 }
         );
+    }
+
+    public static void initRoomBox(ComboBox comboBox){
+        Iterator<String> roomList = EnumFactory.getAllRoomTypes();
+        while (roomList.hasNext()) comboBox.getItems().add(roomList.next());
+        comboBox.getItems().remove(comboBox.getItems().size()-1);
+        comboBox.setValue(comboBox.getItems().get(0));
     }
 }

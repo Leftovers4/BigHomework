@@ -12,9 +12,13 @@ import presentation.hotelworkerui.hotelworkerscene.FindOrderPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateCheckInPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateOutPane;
 import presentation.util.alert.AlertController;
+import util.EnumFactory;
 import util.ResultMessage;
+import vo.hotel.RoomVO;
 
 import java.rmi.RemoteException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,13 +32,14 @@ public class UpdateOfflinePaneController {
     @FXML private Button checkOutBtn;
     @FXML private Label  busyRoomLabel;
     @FXML private ComboBox roomTypeBox;
-    @FXML private TextField roomAmountField;
+    @FXML private ComboBox roomAmountBox;
     @FXML private Label updateTitleLabel;
 
     private Pane mainPane;
     private AlertController alertController;
     private Boolean isCheckIn;
     private HotelBLService hotelBLService;
+    private  HashMap<String, RoomVO> typeToRoomVOMap;
 
     public void launch(Pane mainPane, Boolean isCheckIn) {
         this.mainPane = mainPane;
@@ -65,9 +70,32 @@ public class UpdateOfflinePaneController {
     }
 
     private void initBox() {
-        //TODO 房间类型
-        roomTypeBox.getItems().addAll("单人房", "双人房");
-        roomTypeBox.setValue("单人房");
+        typeToRoomVOMap = new HashMap<>();
+        List<RoomVO> list= null;
+        try {
+            list = hotelBLService.viewAllHotelRooms(ComWorkerSceneController.hotelID);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        for (RoomVO roomVO : list){
+            String roomType = EnumFactory.getString(roomVO.roomType);
+            roomTypeBox.getItems().add(roomType);
+
+            typeToRoomVOMap.put(roomType, roomVO);
+        }
+
+        roomTypeBox.getSelectionModel().selectedItemProperty().addListener(
+                (o, oldValue, newValue) -> {
+                    if(isCheckIn){
+                        int roomNum = typeToRoomVOMap.get(roomTypeBox.getValue().toString()).bookable;
+                        for (int i = 0; i < roomNum; i++) roomAmountBox.getItems().add(i+1);
+                    }else {
+                        RoomVO temp = typeToRoomVOMap.get(roomTypeBox.getValue().toString());
+                        int roomNum = temp.total - temp.available;
+                        for (int i = 0; i < roomNum; i++) roomAmountBox.getItems().add(i+1);
+                    }
+                }
+        );
     }
 
     private void setBtnVisible() {
@@ -75,50 +103,36 @@ public class UpdateOfflinePaneController {
         checkOutBtn.setVisible(!isCheckIn);
     }
 
-    private Boolean judgeInput(){
-        if(roomAmountField.getText().equals("")) return false;
-        else {
-            //用正则表达式判断输入格式，非数字报错
-            Pattern pattern = Pattern.compile("^[0-9]*$");
-            Matcher matcherAmount = pattern.matcher(roomAmountField.getText());
-            if(!matcherAmount.matches()) return false;
-        }
-        return true;
-    }
     @FXML
     private void checkIn(){
-        if(judgeInput()){
+        if(roomAmountBox.getValue() != null){
             try {
-                ResultMessage resultMessage = hotelBLService.offlineCheckIn(121121, Integer.parseInt(roomAmountField.getText()));
+                ResultMessage resultMessage = hotelBLService.offlineCheckIn(typeToRoomVOMap.get(roomTypeBox.getValue().toString()).roomID, Integer.parseInt(roomAmountBox.getValue().toString()));
                 if(resultMessage == ResultMessage.Success){
                     if(alertController.showUpdateSuccessAlert("更新线下入住信息成功", "入住成功"))
                         mainPane.getChildren().add(new UpdateCheckInPane(mainPane));
-                }else {
-                    //酒店工作人员输入的数量不合理
                 }
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
         }
-        else alertController.showInputWrongAlert("请选择客房类型和数量","入住失败");
+        else alertController.showInputWrongAlert("无可入住的房间","入住失败");
 
     }
     @FXML
     private void checkOut(){
-        if(judgeInput()){
+        if(roomAmountBox.getValue() != null){
             try {
-                ResultMessage resultMessage = hotelBLService.offlineCheckOut(121121, Integer.parseInt(roomAmountField.getText()));
+                ResultMessage resultMessage = hotelBLService.offlineCheckOut(typeToRoomVOMap.get(roomTypeBox.getValue().toString()).roomID, Integer.parseInt(roomAmountBox.getValue().toString()));
                 if(resultMessage == ResultMessage.Success){
                     if(alertController.showUpdateSuccessAlert("更新线下退房信息成功", "退房成功"))
                         mainPane.getChildren().add(new UpdateOutPane(mainPane));
-                }else {
-                    //酒店工作人员输入的数量不合理
                 }
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
         }
-        else alertController.showInputWrongAlert("请选择客房类型和数量","退房失败");
+        else alertController.showInputWrongAlert("无可退房的房间","退房失败");
     }
 
     @FXML
