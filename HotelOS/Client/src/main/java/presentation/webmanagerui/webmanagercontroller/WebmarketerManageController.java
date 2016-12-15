@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import presentation.util.alert.AlertController;
 import presentation.webmanagerui.webmanagerscene.WebmarketerManagePane;
 import util.PersonnelType;
 import util.ResultMessage;
@@ -41,6 +42,8 @@ public class WebmarketerManageController {
 
     @FXML private Pane fillinfoPane;
     @FXML private TextField newworkernameField;
+    @FXML private TextField initialpasswordField;
+    @FXML private TextField passwordField;
     @FXML private Button nextStepBtn;
 
     @FXML private Pane confirmPane;
@@ -51,11 +54,15 @@ public class WebmarketerManageController {
     private PersonnelBLServiceImpl personnelBLService;
     private WebManMarketerButtonCell webManMarketerButtonCell;
 
+    private AlertController alertController;
+
     private long newmarketerID;
 
     public void launch(Stage primaryStage, Pane mainPane) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
+
+        alertController = new AlertController();
 
         try {
             personnelBLService = new PersonnelBLServiceImpl();
@@ -121,13 +128,35 @@ public class WebmarketerManageController {
             editBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
 
+                PersonnelVO personnelVO = (PersonnelVO) webmarketerlist.getItems().get(selectedIndex);
+
+                workernameField.setText(personnelVO.name);
+                passwordField.setText(personnelVO.password);
+
                 webmarketerlist.setPrefHeight(300);
                 webmarketerlist.setDisable(true);
                 modifywebmarketerPane.setVisible(true);
             });
 
             deleteBtn.setOnAction(event -> {
-                selectedIndex = getTableRow().getIndex();
+                boolean confirm = alertController.showConfirmDeleteAlert("确认删除？", "删除确认");
+
+                if (confirm) {
+                    selectedIndex = getTableRow().getIndex();
+                    PersonnelVO personnelVO = (PersonnelVO) webmarketerlist.getItems().get(selectedIndex);
+
+                    try {
+                        ResultMessage resultMessage = personnelBLService.deletePersonnel(personnelVO.personnelID);
+
+                        if (resultMessage == ResultMessage.Success) {
+                            System.out.println(resultMessage);
+
+                            new WebmarketerManagePane(stage, mainPane);
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
             });
         }
 
@@ -161,6 +190,7 @@ public class WebmarketerManageController {
         PersonnelVO personnelVO = (PersonnelVO) webmarketerlist.getItems().get(webManMarketerButtonCell.getSelectedIndex());
 
         personnelVO.name = workernameField.getText();
+        personnelVO.password = passwordField.getText();
 
         try {
             ResultMessage resultMessage = personnelBLService.updatePersonnelInfo(personnelVO);
@@ -173,6 +203,8 @@ public class WebmarketerManageController {
                 modifywebmarketerPane.setVisible(false);
                 mainPane.getChildren().remove(0);
                 mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
+            } else {
+                System.out.println(resultMessage+"==============");
             }
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -196,25 +228,15 @@ public class WebmarketerManageController {
     @FXML
     private void toAddNewWebMarketer() {
         webmarketerlist.setPrefHeight(300);
+        webmarketerlist.setDisable(true);
 
         fillinfoPane.setVisible(true);
         fillinfoPane.setDisable(false);
         confirmPane.setDisable(true);
         confirmPane.setVisible(false);
-
-        nextStepBtn.setOnAction(event -> {
-            PersonnelVO personnelVO = new PersonnelVO();
-
-            personnelVO.name = newworkernameField.getText();
-
-            try {
-                newmarketerID = personnelBLService.addWebMarketer(personnelVO);
-
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        });
     }
+
+
 
     /**
      * 下一步，确认新网站营销人员信息
@@ -226,17 +248,20 @@ public class WebmarketerManageController {
         confirmPane.setDisable(false);
         confirmPane.setVisible(true);
 
-        confirminfoBtn.setOnAction(event -> {
-            try {
-                PersonnelVO personnelVO = personnelBLService.searchPersonnelByID(newmarketerID);
+        PersonnelVO personnelVO = new PersonnelVO();
 
-                workerIDLabel.setText(String.valueOf(newmarketerID));
-                workernameLabel.setText(personnelVO.name);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
+        personnelVO.name = newworkernameField.getText();
+        personnelVO.password = initialpasswordField.getText();
+        personnelVO.personnelType = PersonnelType.WebMarketer;
 
-        });
+        try {
+            newmarketerID = personnelBLService.addWebMarketer(personnelVO);
+
+            workerIDLabel.setText(String.valueOf(newmarketerID));
+            workernameLabel.setText(personnelVO.name);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -244,12 +269,17 @@ public class WebmarketerManageController {
      */
     @FXML
     private void confirmMarketerInfo() {
-        confirmPane.setVisible(false);
-        confirmPane.setDisable(true);
+        boolean confirm = alertController.showConfirmCancelAlert();
 
-        webmarketerlist.setPrefHeight(400);
-        webmarketerlist.setDisable(false);
-        mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
+        if (confirm) {
+            confirmPane.setVisible(false);
+            confirmPane.setDisable(true);
+
+            webmarketerlist.setPrefHeight(400);
+            webmarketerlist.setDisable(false);
+            mainPane.getChildren().remove(0);
+            mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
+        }
+
     }
 }

@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import presentation.util.alert.AlertController;
 import presentation.webmanagerui.webmanagerscene.CheckUserInfoPane;
 import presentation.webmanagerui.webmanagerscene.UserManagePane;
 import util.ResultMessage;
@@ -44,9 +45,13 @@ public class UserManageController {
     private UserBlServiceImpl userBlService;
     private WebManUserButtonCell webManUserButtonCell;
 
+    private AlertController alertController;
+
     public void launch(Stage primaryStage, Pane mainPane) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
+
+        alertController = new AlertController();
 
         try {
             userBlService = new UserBlServiceImpl();
@@ -180,6 +185,8 @@ public class UserManageController {
             if (resultMessage == ResultMessage.Success) {
                 System.out.println("modify success");
 
+                alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
+
                 userlist.setPrefHeight(400);
                 userlist.setDisable(false);
                 modifyUserInfoPane.setVisible(false);
@@ -195,8 +202,12 @@ public class UserManageController {
      */
     @FXML
     private void cancelModify() {
-        userlist.setPrefHeight(400);
-        userlist.setDisable(false);
-        modifyUserInfoPane.setVisible(false);
+        boolean confirm = alertController.showConfirmCancelAlert();
+
+        if (confirm) {
+            userlist.setPrefHeight(400);
+            userlist.setDisable(false);
+            modifyUserInfoPane.setVisible(false);
+        }
     }
 }

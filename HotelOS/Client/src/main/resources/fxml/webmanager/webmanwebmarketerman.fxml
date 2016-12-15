@@ -39,17 +39,21 @@
       </Button>
       <Pane fx:id="modifywebmarketerPane" layoutX="125.0" layoutY="460.0" prefHeight="150.0" prefWidth="600.0" visible="false">
          <children>
-            <TextField fx:id="workernameField" layoutX="275.0" layoutY="23.0" prefHeight="30.0" prefWidth="148.0" />
+            <TextField fx:id="workernameField" layoutX="152.0" layoutY="23.0" prefHeight="30.0" prefWidth="130.0" />
             <Button fx:id="confirmBtn" layoutX="313.0" layoutY="85.0" mnemonicParsing="false" onAction="#confirmModify" styleClass="actionBtn" text="确认修改" />
             <Button fx:id="cancelBtn" layoutX="229.0" layoutY="85.0" mnemonicParsing="false" onAction="#cancelModify" styleClass="actionBtn" text="取消" />
-            <Label layoutX="178.0" layoutY="28.0" text="姓       名：" />
+            <Label layoutX="95.0" layoutY="28.0" text="姓名：" />
+            <Label layoutX="320.0" layoutY="28.0" text="密码：" />
+            <TextField fx:id="passwordField" layoutX="376.0" layoutY="23.0" prefHeight="30.0" prefWidth="130.0" />
          </children>
       </Pane>
       <Pane fx:id="fillinfoPane" layoutX="125.0" layoutY="460.0" prefHeight="150.0" prefWidth="600.0" visible="false">
          <children>
-            <Label layoutX="180.0" layoutY="42.0" text="姓名：" />
-            <TextField fx:id="newworkernameField" layoutX="251.0" layoutY="37.0" prefHeight="30.0" prefWidth="170.0" />
+            <Label layoutX="88.0" layoutY="39.0" text="姓名：" />
+            <TextField fx:id="newworkernameField" layoutX="144.0" layoutY="34.0" prefHeight="30.0" prefWidth="130.0" />
             <Button fx:id="nextStepBtn" layoutX="230.0" layoutY="96.0" mnemonicParsing="false" onAction="#toConfirmNewMarketerInfo" styleClass="actionBtn" text="下一步，生成账号" />
+            <Label layoutX="307.0" layoutY="39.0" text="初始密码：" />
+            <TextField fx:id="initialpasswordField" layoutX="382.0" layoutY="34.0" prefHeight="30.0" prefWidth="130.0" />
          </children>
       </Pane>
       <Pane fx:id="confirmPane" layoutX="125.0" layoutY="460.0" prefHeight="150.0" prefWidth="600.0" visible="false">

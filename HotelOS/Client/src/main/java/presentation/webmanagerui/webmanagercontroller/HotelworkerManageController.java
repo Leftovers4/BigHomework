@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import presentation.util.alert.AlertController;
 import presentation.webmanagerui.webmanagerscene.CheckHotelInfoPane;
 import presentation.webmanagerui.webmanagerscene.HotelworkerManagePane;
 import util.PersonnelType;
@@ -38,15 +39,20 @@ public class HotelworkerManageController {
 
     @FXML private Pane modifyhotelworkerPane;
     @FXML private TextField workernameField;
+    @FXML private TextField passwordField;
     @FXML private Button confirmBtn;
     @FXML private Button cancelBtn;
 
     private PersonnelBLServiceImpl personnelBLService;
     private WebManHotelworkerButtonCell webManHotelworkerButtonCell;
 
+    private AlertController alertController;
+
     public void launch(Stage primaryStage, Pane mainPane) {
         this.stage = primaryStage;
         this.pane = mainPane;
+
+        alertController = new AlertController();
 
         try {
             personnelBLService = new PersonnelBLServiceImpl();
@@ -128,24 +134,27 @@ public class HotelworkerManageController {
             });
 
             deleteBtn.setOnAction(event -> {
-                selectedIndex = getTableRow().getIndex();
+                boolean confirm = alertController.showConfirmDeleteAlert("确认删除？", "删除确认");
+                if (confirm) {
+                    selectedIndex = getTableRow().getIndex();
 
-                PersonnelVO personnelVO = (PersonnelVO) hotelworkerList.getItems().get(selectedIndex);
+                    PersonnelVO personnelVO = (PersonnelVO) hotelworkerList.getItems().get(selectedIndex);
 
-                try {
-                    ResultMessage resultMessage = personnelBLService.deletePersonnel(personnelVO.personnelID);
+                    try {
+                        ResultMessage resultMessage = personnelBLService.deletePersonnel(personnelVO.personnelID);
 
-                    if (resultMessage == ResultMessage.Success) {
-                        System.out.println("delete success");
+                        if (resultMessage == ResultMessage.Success) {
+                            System.out.println("delete success");
 
-                        hotelworkerList.setPrefHeight(400);
-                        hotelworkerList.setDisable(false);
-                        modifyhotelworkerPane.setVisible(false);
-                        pane.getChildren().remove(0);
-                        pane.getChildren().add(new HotelworkerManagePane(stage, pane));
+                            hotelworkerList.setPrefHeight(400);
+                            hotelworkerList.setDisable(false);
+                            modifyhotelworkerPane.setVisible(false);
+                            pane.getChildren().remove(0);
+                            pane.getChildren().add(new HotelworkerManagePane(stage, pane));
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
                     }
-                } catch (RemoteException e) {
-                    e.printStackTrace();
                 }
             });
 
@@ -192,6 +201,7 @@ public class HotelworkerManageController {
         PersonnelVO personnelVO = (PersonnelVO) hotelworkerList.getItems().get(webManHotelworkerButtonCell.getSelectedIndex());
 
         personnelVO.name = workernameField.getText();
+        personnelVO.password = passwordField.getText();
 
         try {
             ResultMessage resultMessage = personnelBLService.updatePersonnelInfo(personnelVO);
@@ -201,6 +211,8 @@ public class HotelworkerManageController {
 
                 hotelworkerList.setPrefHeight(400);
                 modifyhotelworkerPane.setVisible(false);
+
+                alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
                 pane.getChildren().remove(0);
                 pane.getChildren().add(new HotelworkerManagePane(stage, pane));
             } else {
@@ -216,8 +228,12 @@ public class HotelworkerManageController {
      */
     @FXML
     private void cancelModify() {
-        hotelworkerList.setPrefHeight(400);
-        hotelworkerList.setDisable(false);
-        modifyhotelworkerPane.setVisible(false);
+        boolean confirm = alertController.showConfirmCancelAlert();
+
+        if (confirm) {
+            hotelworkerList.setPrefHeight(400);
+            hotelworkerList.setDisable(false);
+            modifyhotelworkerPane.setVisible(false);
+        }
     }
 }

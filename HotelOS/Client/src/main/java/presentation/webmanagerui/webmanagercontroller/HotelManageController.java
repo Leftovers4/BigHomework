@@ -14,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import presentation.util.alert.AlertController;
 import presentation.webmanagerui.webmanagerscene.AddHotelPane;
 import presentation.webmanagerui.webmanagerscene.CheckHotelInfoPane;
 import presentation.webmanagerui.webmanagerscene.HotelManagePane;
@@ -40,7 +41,7 @@ public class HotelManageController {
     @FXML private ComboBox tracingareaCB;
     @FXML private ComboBox star;
 
-    @FXML private HBox editBox;
+    @FXML private Pane modifyPane;
 
     @FXML private TableView hotelList;
     @FXML private TableColumn hotelIDCol;
@@ -52,9 +53,13 @@ public class HotelManageController {
     private HotelBlServiceImpl hotelBlService;
     private WebManHotelListButtonCell webManHotelListButtonCell;
 
+    private AlertController alertController;
+
 
     public void launch(Pane mainPane) {
         this.pane = mainPane;
+
+        alertController = new AlertController();
 
         try {
             hotelBlService = new HotelBlServiceImpl();
@@ -170,7 +175,7 @@ public class HotelManageController {
 
                 hotelList.setPrefHeight(300);
                 hotelList.setDisable(true);
-                editBox.setVisible(true);
+                modifyPane.setVisible(true);
 
                 HotelVO hotelVO = (HotelVO) hotelList.getItems().get(selectedIndex);
                 hotelnameinput.setText(hotelVO.hotelName);
@@ -181,20 +186,27 @@ public class HotelManageController {
 
 
             deleteBtn.setOnAction(event -> {
-                selectedIndex = getTableRow().getIndex();
 
-                HotelVO hotelVO = (HotelVO) hotelList.getItems().get(selectedIndex);
-                try {
-                    ResultMessage resultMessage = hotelBlService.deleteHotel(hotelVO.hotelID);
+                boolean confirm = alertController.showConfirmDeleteAlert("确认删除？", "删除确认");
 
-                    if (resultMessage == ResultMessage.Success) {
-                        System.out.println("delete success");
+                if (confirm) {
+                    selectedIndex = getTableRow().getIndex();
 
-                        pane.getChildren().remove(0);
-                        pane.getChildren().add(new HotelManagePane(pane));
+                    HotelVO hotelVO = (HotelVO) hotelList.getItems().get(selectedIndex);
+                    try {
+                        ResultMessage resultMessage = hotelBlService.deleteHotel(hotelVO.hotelID);
+
+                        if (resultMessage == ResultMessage.Success) {
+                            System.out.println("delete success");
+
+                            alertController.showUpdateSuccessAlert("删除成功！", "成功提示");
+
+                            pane.getChildren().remove(0);
+                            pane.getChildren().add(new HotelManagePane(pane));
+                        }
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
                     }
-                } catch (RemoteException e) {
-                    e.printStackTrace();
                 }
             });
 
@@ -249,9 +261,11 @@ public class HotelManageController {
             if (resultMessage == ResultMessage.Success) {
                 System.out.println("update success");
 
+                alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
+
                 hotelList.setPrefHeight(400);
                 hotelList.setDisable(false);
-                editBox.setVisible(false);
+                modifyPane.setVisible(false);
 
                 new HotelManagePane(pane);
             }
@@ -265,9 +279,12 @@ public class HotelManageController {
      */
     @FXML
     private void cancelModify() {
-        hotelList.setPrefHeight(400);
-        hotelList.setDisable(false);
-        editBox.setVisible(false);
+        boolean confirm = alertController.showConfirmCancelAlert();
+        if (confirm) {
+            hotelList.setPrefHeight(400);
+            hotelList.setDisable(false);
+            modifyPane.setVisible(false);
+        }
     }
 }
 

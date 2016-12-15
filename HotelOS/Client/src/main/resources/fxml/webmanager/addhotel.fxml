@@ -36,14 +36,13 @@
             <Label layoutX="170.0" layoutY="165.0" text="酒店地址：" />
             <Label layoutX="170.0" layoutY="225.0" text="所属商圈：" />
             <Label layoutX="170.0" layoutY="285.0" text="星       级：" />
-            <Button layoutX="284.0" layoutY="362.0" mnemonicParsing="false" onAction="#toaddHotelWorkerEvent" styleClass="actionBtn" text="下一步，添加酒店工作人员" />
+            <Button layoutX="225.0" layoutY="362.0" mnemonicParsing="false" onAction="#toaddHotelWorkerEvent" styleClass="actionBtn" text="下一步，添加酒店工作人员" />
             <Label layoutX="170.0" layoutY="45.0" text="酒店编号：" />
             <Label fx:id="hotelidLabel" layoutX="270.0" layoutY="45.0" text="Label" />
             <Label fx:id="hotelnameLabel" layoutX="270.0" layoutY="105.0" text="Label" />
             <Label fx:id="hoteladdressLabel" layoutX="270.0" layoutY="165.0" text="Label" />
             <Label fx:id="hoteltracingareaLabel" layoutX="270.0" layoutY="225.0" text="Label" />
             <Label fx:id="hotelstarLabel" layoutX="270.0" layoutY="285.0" text="Label" />
-            <Button layoutX="167.0" layoutY="362.0" mnemonicParsing="false" styleClass="actionBtn" text="上一步" />
          </children>
       </Pane>
       <Pane fx:id="addhotelworkerPane" layoutX="100.0" layoutY="157.0" prefHeight="435.0" prefWidth="650.0" visible="false">
@@ -51,8 +50,7 @@
             <Pane fx:id="workerinfopane" layoutY="93.0" prefHeight="249.0" prefWidth="650.0">
                <children>
                   <Label layoutX="186.0" layoutY="34.0" text="姓       名：" />
-                  <Button layoutX="347.0" layoutY="171.0" mnemonicParsing="false" onAction="#confirmAddWorker" styleClass="actionBtn" text="添加" />
-                  <Button layoutX="253.0" layoutY="171.0" mnemonicParsing="false" styleClass="actionBtn" text="上一步" />
+                  <Button layoutX="269.0" layoutY="168.0" mnemonicParsing="false" onAction="#confirmAddWorker" prefHeight="30.0" prefWidth="112.0" styleClass="actionBtn" text="添加" />
                   <TextField fx:id="workernameField" layoutX="282.0" layoutY="29.0" prefHeight="30.0" prefWidth="170.0" />
                   <Label layoutX="186.0" layoutY="102.0" text="初始密码：" />
                   <TextField fx:id="initialPasswordField" layoutX="281.0" layoutY="97.0" prefHeight="30.0" prefWidth="170.0" />
@@ -66,7 +64,7 @@
                   <Label fx:id="hotelworkernameLabel" layoutX="314.0" layoutY="165.0" text="Label" />
                   <Label layoutX="196.0" layoutY="107.0" text="所  属  酒  店：" />
                   <Label fx:id="workerhotelLabel" layoutX="314.0" layoutY="107.0" text="Label" />
-                  <Button onAction="#confirmHotelWorkerAdd" layoutX="272.0" layoutY="248.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="122.0" styleClass="actionBtn" text="提交" />
+                  <Button layoutX="272.0" layoutY="248.0" mnemonicParsing="false" onAction="#confirmHotelWorkerAdd" prefHeight="30.0" prefWidth="122.0" styleClass="actionBtn" text="提交" />
                </children>
             </Pane>
          </children>

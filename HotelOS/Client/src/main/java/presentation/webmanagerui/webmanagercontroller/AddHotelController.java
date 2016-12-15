@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import presentation.util.alert.AlertController;
 import presentation.webmanagerui.webmanagerscene.HotelManagePane;
 import util.AddTradProducer;
 import util.PersonnelType;
@@ -63,8 +64,12 @@ public class AddHotelController {
     private PersonnelBLServiceImpl personnelBLService;
     private long hotelID;
 
+    private AlertController alertController;
+
     public void launch(Pane mainPane) {
         this.mainPane = mainPane;
+
+        alertController = new AlertController();
         try {
             hotelBlService = new HotelBlServiceImpl();
             personnelBLService = new PersonnelBLServiceImpl();
@@ -175,6 +180,8 @@ public class AddHotelController {
 
     @FXML
     private void confirmHotelWorkerAdd() {
+
+        alertController.showUpdateSuccessAlert("添加成功！", "成功提示");
         mainPane.getChildren().remove(0);
         mainPane.getChildren().add(new HotelManagePane(mainPane));
     }
