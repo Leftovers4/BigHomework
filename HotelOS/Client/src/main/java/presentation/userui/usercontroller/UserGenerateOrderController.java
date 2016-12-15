@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.util.other.CancelDateBefore;
 import presentation.util.alert.InputWrongAlert;
+import util.EnumFactory;
 import util.ResultMessage;
 import util.RoomType;
 import vo.hotel.HotelVO;
@@ -32,6 +33,7 @@ public class UserGenerateOrderController {
     private Pane mainPane;
     private String userID;
     private long hotelID;
+    private RoomType choseRoom;
 
     @FXML private DatePicker checkInDatePicker;
     @FXML private DatePicker checkOutDatePicker;
@@ -69,11 +71,12 @@ public class UserGenerateOrderController {
     private OrderBlServiceImpl orderBlService;
     private HotelBlServiceImpl hotelBlService;
 
-    public void launch(Stage primaryStage, Pane mainPane, String userID, long hotelID) {
+    public void launch(Stage primaryStage, Pane mainPane, String userID, long hotelID, RoomType roomType) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         this.userID = userID;
         this.hotelID = hotelID;
+        this.choseRoom = roomType;
 
         try {
             orderBlService = new OrderBlServiceImpl();
@@ -86,6 +89,11 @@ public class UserGenerateOrderController {
     }
 
     private void initial() {
+
+        if (choseRoom != null) {
+            roomType.setValue(EnumFactory.getString(choseRoom));
+        }
+
         for (int i = 0; i<24; i++) {
             if (i<10) {
                 checkInHour.getItems().add("0" +i);
@@ -110,7 +118,7 @@ public class UserGenerateOrderController {
             roomVO = hotelBlService.viewAllHotelRooms(hotelID);
 
             for (int i = 0; i<roomVO.size(); i++) {
-                roomType.getItems().add(roomVO.get(i).roomType);
+                roomType.getItems().add(EnumFactory.getString(roomVO.get(i).roomType));
             }
 
 

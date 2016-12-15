@@ -13,10 +13,11 @@
    <children>
       <TableView fx:id="hotelworkerList" layoutX="100.0" layoutY="150.0" prefHeight="400.0" prefWidth="650.0">
          <columns>
-            <TableColumn fx:id="hotelIDCol" prefWidth="190.0" text="酒店ID" />
-            <TableColumn fx:id="hotelworkerIDCol" minWidth="0.0" prefWidth="135.0" text="账号" />
-            <TableColumn fx:id="hotelworkerNameCol" prefWidth="118.0" text="姓名" />
-            <TableColumn fx:id="btnCol" prefWidth="75.0" />
+            <TableColumn fx:id="hotelIDCol" prefWidth="125.0" text="酒店ID" />
+            <TableColumn fx:id="hotelnameCol" prefWidth="124.0" text="酒店名称" />
+            <TableColumn fx:id="hotelworkerIDCol" minWidth="0.0" prefWidth="143.0" text="账号" />
+            <TableColumn fx:id="hotelworkerNameCol" prefWidth="127.0" text="姓名" />
+            <TableColumn fx:id="btnCol" prefWidth="108.0" />
          </columns>
       </TableView>
       <TextField layoutX="100.0" layoutY="100.0" prefHeight="30.0" prefWidth="235.0" promptText="输入编号、姓名" />
@@ -60,8 +61,8 @@
          <children>
             <Label layoutX="204.0" layoutY="28.0" text="姓       名：" />
             <TextField fx:id="workernameField" layoutX="289.0" layoutY="23.0" prefHeight="30.0" prefWidth="165.0" />
-            <Button onAction="#confirmModify" fx:id="confirmBtn" layoutX="329.0" layoutY="88.0" mnemonicParsing="false" styleClass="actionBtn" text="确认修改" />
-            <Button onAction="#cancelModify" fx:id="cancelBtn" layoutX="242.0" layoutY="88.0" mnemonicParsing="false" styleClass="actionBtn" text="取消" />
+            <Button fx:id="confirmBtn" layoutX="329.0" layoutY="88.0" mnemonicParsing="false" onAction="#confirmModify" styleClass="actionBtn" text="确认修改" />
+            <Button fx:id="cancelBtn" layoutX="242.0" layoutY="88.0" mnemonicParsing="false" onAction="#cancelModify" styleClass="actionBtn" text="取消" />
          </children>
       </Pane>
    </children>

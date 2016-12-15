@@ -36,7 +36,7 @@
          </image>
       </ImageView>
       <Label layoutX="325.0" layoutY="400.0" text="预计入住人数：" />
-      <ComboBox fx:id="peopleNum" layoutX="435.0" layoutY="395.0" prefHeight="30.0" prefWidth="60.0" />
+      <ComboBox fx:id="peopleNum" layoutX="435.0" layoutY="395.0" prefHeight="30.0" prefWidth="80.0" />
       <Label fx:id="writeOrder" layoutX="220.0" layoutY="110.0" text="填写订单信息" />
       <ImageView fitHeight="40.0" fitWidth="150.0" layoutX="330.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
          <image>

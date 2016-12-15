@@ -29,7 +29,6 @@ import java.util.Iterator;
  */
 public class HotelManageController {
 
-    private Stage stage;
     private Pane pane;
 
     @FXML private Button confirmBtn;
@@ -54,10 +53,8 @@ public class HotelManageController {
     private WebManHotelListButtonCell webManHotelListButtonCell;
 
 
-    public void launch(Stage primaryStage, Pane mainPane) {
+    public void launch(Pane mainPane) {
         this.pane = mainPane;
-        this.stage = primaryStage;
-
 
         try {
             hotelBlService = new HotelBlServiceImpl();
@@ -125,7 +122,7 @@ public class HotelManageController {
     @FXML
     private void newHotel() {
         pane.getChildren().remove(0);
-        pane.getChildren().add(new AddHotelPane(stage));
+        pane.getChildren().add(new AddHotelPane(pane));
     }
 
 
@@ -145,8 +142,6 @@ public class HotelManageController {
         final private Button checkDetailBtn = new Button();
 
         private int selectedIndex;
-
-        private HotelBlServiceImpl hotelBlService;
 
         public WebManHotelListButtonCell() {
 
@@ -174,7 +169,14 @@ public class HotelManageController {
                 selectedIndex = getTableRow().getIndex();
 
                 hotelList.setPrefHeight(300);
+                hotelList.setDisable(true);
                 editBox.setVisible(true);
+
+                HotelVO hotelVO = (HotelVO) hotelList.getItems().get(selectedIndex);
+                hotelnameinput.setText(hotelVO.hotelName);
+                cityCB.setValue(hotelVO.address);
+                tracingareaCB.setValue(hotelVO.tradingArea);
+                star.setValue(hotelVO.star);
             });
 
 
@@ -189,7 +191,7 @@ public class HotelManageController {
                         System.out.println("delete success");
 
                         pane.getChildren().remove(0);
-                        pane.getChildren().add(new HotelManagePane(stage, pane));
+                        pane.getChildren().add(new HotelManagePane(pane));
                     }
                 } catch (RemoteException e) {
                     e.printStackTrace();
@@ -248,7 +250,10 @@ public class HotelManageController {
                 System.out.println("update success");
 
                 hotelList.setPrefHeight(400);
+                hotelList.setDisable(false);
                 editBox.setVisible(false);
+
+                new HotelManagePane(pane);
             }
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -261,6 +266,7 @@ public class HotelManageController {
     @FXML
     private void cancelModify() {
         hotelList.setPrefHeight(400);
+        hotelList.setDisable(false);
         editBox.setVisible(false);
     }
 }

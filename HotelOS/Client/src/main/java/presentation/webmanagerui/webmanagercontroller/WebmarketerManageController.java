@@ -122,6 +122,7 @@ public class WebmarketerManageController {
                 selectedIndex = getTableRow().getIndex();
 
                 webmarketerlist.setPrefHeight(300);
+                webmarketerlist.setDisable(true);
                 modifywebmarketerPane.setVisible(true);
             });
 
@@ -168,6 +169,7 @@ public class WebmarketerManageController {
                 System.out.println("update success");
 
                 webmarketerlist.setPrefHeight(400);
+                webmarketerlist.setDisable(false);
                 modifywebmarketerPane.setVisible(false);
                 mainPane.getChildren().remove(0);
                 mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
@@ -183,6 +185,7 @@ public class WebmarketerManageController {
     @FXML
     private void cancelModify() {
         webmarketerlist.setPrefHeight(400);
+        webmarketerlist.setDisable(false);
         modifywebmarketerPane.setVisible(false);
     }
 
@@ -245,7 +248,7 @@ public class WebmarketerManageController {
         confirmPane.setDisable(true);
 
         webmarketerlist.setPrefHeight(400);
-
+        webmarketerlist.setDisable(false);
         mainPane.getChildren().remove(0);
         mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
     }

@@ -4,11 +4,20 @@ import bl.hotelbl.impl.HotelBlServiceImpl;
 import bl.personnelbl.impl.PersonnelBLServiceImpl;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import presentation.webmanagerui.webmanagerscene.HotelManagePane;
 import util.AddTradProducer;
+import util.PersonnelType;
+import util.ResultMessage;
 import vo.hotel.HotelVO;
 import vo.personnel.PersonnelVO;
 
@@ -20,7 +29,7 @@ import java.util.Iterator;
  */
 public class AddHotelController {
 
-    private Stage stage;
+    private Pane mainPane;
 
     @FXML private Pane finishInfoPane;
     @FXML private Pane addhotelworkerPane;
@@ -41,7 +50,12 @@ public class AddHotelController {
     @FXML private Label hoteltracingareaLabel;
     @FXML private Label hotelstarLabel;
 
-    @FXML private TableView hotelworkerList;
+    @FXML private Label hotelworkeridLabel;
+    @FXML private Label hotelworkernameLabel;
+    @FXML private Label workerhotelLabel;
+    @FXML private Pane workerinfopane;
+    @FXML private Pane confirmworkerpane;
+
     @FXML private TextField workernameField;
     @FXML private TextField initialPasswordField;
 
@@ -49,8 +63,8 @@ public class AddHotelController {
     private PersonnelBLServiceImpl personnelBLService;
     private long hotelID;
 
-    public void launch(Stage primaryStage) {
-        this.stage = primaryStage;
+    public void launch(Pane mainPane) {
+        this.mainPane = mainPane;
         try {
             hotelBlService = new HotelBlServiceImpl();
             personnelBLService = new PersonnelBLServiceImpl();
@@ -113,13 +127,11 @@ public class AddHotelController {
         try {
             hotelID = hotelBlService.addHotel(hotelVO);
 
-            HotelVO basicHotelInfo = hotelBlService.viewBasicHotelInfo(hotelID);
-
-            hotelidLabel.setText(String.valueOf(basicHotelInfo.hotelID));
-            hotelnameLabel.setText(basicHotelInfo.hotelName);
-            hoteladdressLabel.setText(basicHotelInfo.address);
-            hoteltracingareaLabel.setText(basicHotelInfo.tradingArea);
-            hotelstarLabel.setText(String.valueOf(basicHotelInfo.star));
+            hotelidLabel.setText(String.valueOf(hotelID));
+            hotelnameLabel.setText(hotelVO.hotelName);
+            hoteladdressLabel.setText(hotelVO.address);
+            hoteltracingareaLabel.setText(hotelVO.tradingArea);
+            hotelstarLabel.setText(String.valueOf(hotelVO.star));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -148,9 +160,22 @@ public class AddHotelController {
         personnelVO.hotelID = hotelID;
 
         try {
-            personnelBLService.addHotelWorker(personnelVO);
+            long hotelWorkerID = personnelBLService.addHotelWorker(personnelVO);
+
+            workerinfopane.setVisible(false);
+            confirmworkerpane.setVisible(true);
+
+            hotelworkeridLabel.setText(String.valueOf(hotelWorkerID));
+            hotelworkernameLabel.setText(personnelVO.name);
+            workerhotelLabel.setText(hotelBlService.viewBasicHotelInfo(hotelID).hotelName);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void confirmHotelWorkerAdd() {
+        mainPane.getChildren().remove(0);
+        mainPane.getChildren().add(new HotelManagePane(mainPane));
     }
 }

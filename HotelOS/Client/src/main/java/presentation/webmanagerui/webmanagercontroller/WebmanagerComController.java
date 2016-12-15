@@ -47,7 +47,7 @@ public class WebmanagerComController {
         primaryStage.setX(400);
         primaryStage.setY(200);
 
-        mainPane.getChildren().add(new HotelManagePane(primaryStage, mainPane));
+        mainPane.getChildren().add(new HotelManagePane(mainPane));
 
         EnableShowTime(timelabel);
     }
@@ -80,7 +80,7 @@ public class WebmanagerComController {
         leftBarEffect.buttonActionEffect(hotelManageBtn, buttons);
         changeSliderPos(260);
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new HotelManagePane(stage, mainPane));
+        mainPane.getChildren().add(new HotelManagePane(mainPane));
     }
     @FXML
     private void userManageEvent() {

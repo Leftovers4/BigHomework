@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.webmanagerui.webmanagerscene.CheckUserInfoPane;
+import presentation.webmanagerui.webmanagerscene.UserManagePane;
 import util.ResultMessage;
 import vo.hotel.HotelVO;
 import vo.user.UserVO;
@@ -121,7 +122,13 @@ public class UserManageController {
             editBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
 
+                UserVO userVO = (UserVO) userlist.getItems().get(selectedIndex);
+
+                nameField.setText(userVO.username);
+                phoneField.setText(userVO.phone);
+
                 userlist.setPrefHeight(300);
+                userlist.setDisable(true);
                 modifyUserInfoPane.setVisible(true);
             });
 
@@ -174,7 +181,9 @@ public class UserManageController {
                 System.out.println("modify success");
 
                 userlist.setPrefHeight(400);
+                userlist.setDisable(false);
                 modifyUserInfoPane.setVisible(false);
+                new UserManagePane(stage, mainPane);
             }
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -187,6 +196,7 @@ public class UserManageController {
     @FXML
     private void cancelModify() {
         userlist.setPrefHeight(400);
+        userlist.setDisable(false);
         modifyUserInfoPane.setVisible(false);
     }
 }

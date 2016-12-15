@@ -38,6 +38,8 @@ public class CheckUserInfoController {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+
+        initialData();
     }
 
     private void initialData() {
@@ -46,6 +48,7 @@ public class CheckUserInfoController {
 
             userIdLabel.setText(userVO.username);
             usernameLabel.setText(userVO.name);
+
             if (userVO.gender) {
                 userSex.setText("男");
             } else {
@@ -54,6 +57,7 @@ public class CheckUserInfoController {
             birthDate.setText(userVO.memberVO.birthday.toString());
             phone.setText(userVO.phone);
             creditLabel.setText(String.valueOf(userVO.creditVO.credit));
+
             if (userVO.memberVO.memberType == MemberType.NormalMember) {
                 vipLevel.setText(String.valueOf(userVO.memberVO.level));
                 vipCompany.setText("无");

@@ -41,12 +41,12 @@
       <Button layoutX="740.0" layoutY="478.0" mnemonicParsing="false" text="查看详情" />
       <Pane fx:id="modifyUserInfoPane" layoutX="150.0" layoutY="478.0" prefHeight="120.0" prefWidth="550.0" visible="false">
          <children>
-            <Label layoutX="282.0" layoutY="35.0" text="客户姓名：" />
-            <TextField fx:id="nameField" layoutX="357.0" layoutY="30.0" prefHeight="30.0" prefWidth="134.0" />
-            <Button layoutX="332.0" layoutY="76.0" mnemonicParsing="false" onAction="#cancelModify" styleClass="actionBtn" text="取消" />
-            <Button layoutX="411.0" layoutY="76.0" mnemonicParsing="false" onAction="#confirmModify" styleClass="actionBtn" text="确认修改" />
-            <Label layoutX="35.0" layoutY="81.0" text="联系方式：" />
-            <TextField fx:id="phoneField" layoutX="118.0" layoutY="76.0" prefHeight="30.0" prefWidth="134.0" />
+            <Label layoutX="43.0" layoutY="28.0" text="客户姓名：" />
+            <TextField fx:id="nameField" layoutX="118.0" layoutY="23.0" prefHeight="30.0" prefWidth="134.0" />
+            <Button layoutX="196.0" layoutY="76.0" mnemonicParsing="false" onAction="#cancelModify" styleClass="actionBtn" text="取消" />
+            <Button layoutX="275.0" layoutY="76.0" mnemonicParsing="false" onAction="#confirmModify" styleClass="actionBtn" text="确认修改" />
+            <Label layoutX="284.0" layoutY="28.0" text="联系方式：" />
+            <TextField fx:id="phoneField" layoutX="367.0" layoutY="23.0" prefHeight="30.0" prefWidth="134.0" />
          </children>
       </Pane>
    </children>

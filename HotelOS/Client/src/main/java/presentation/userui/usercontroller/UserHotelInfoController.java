@@ -179,8 +179,9 @@ public class UserHotelInfoController {
 
             bookBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
+                RoomVO roomVO = (RoomVO) hotelRoomList.getItems().get(selectedIndex);
                 mainPane.getChildren().remove(0);
-                mainPane.getChildren().add(new UserGenerateOrderPane(stage, mainPane, userID, hotelID));
+                mainPane.getChildren().add(new UserGenerateOrderPane(stage, mainPane, userID, hotelID, roomVO.roomType));
             });
         }
 

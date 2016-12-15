@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import presentation.userui.userscene.CheckMyReviewPane;
 import presentation.userui.userscene.EvaluateOrderPane;
 import util.DateTimeFormat;
+import util.EnumFactory;
 import util.OrderType;
 import util.ResultMessage;
 import vo.order.OrderVO;
@@ -104,32 +105,20 @@ public class OrderDetailUserController {
                 }
             }
 
-            roomTypeLabeldet.setText(orderVO.roomType.toString());
+            roomTypeLabeldet.setText(EnumFactory.getString(orderVO.roomType));
             roomNumLabeldet.setText(String.valueOf(orderVO.roomAmount));
             peopleNumLabeldet.setText(String.valueOf(orderVO.personAmount));
             childdet.setText(orderVO.withChildren ? "有" : "无");
 
-            try {
-                orderBlService.getOrderActualPrice(orderVO);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            }
-
 
             if (orderVO.orderPromoInfoVO.promotionType != null) {
-                bestpromotionLabel.setText(orderVO.orderPromoInfoVO.promotionType.toString());
+                bestpromotionLabel.setText(EnumFactory.getString(orderVO.orderPromoInfoVO.promotionType));
             } else {
                 bestpromotionLabel.setText("无");
             }
 
             finalpriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
-            ordertypeLabel.setText(String.valueOf(orderVO.orderType));
+            ordertypeLabel.setText(EnumFactory.getString(orderVO.orderType));
 
             hotelNameLabel.setText(orderVO.hotelName);
             hotelAddressLabel.setText(orderVO.hotelAddress);
