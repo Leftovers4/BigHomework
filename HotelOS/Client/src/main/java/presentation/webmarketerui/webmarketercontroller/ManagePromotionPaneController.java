@@ -209,18 +209,6 @@ public class ManagePromotionPaneController {
     }
 
 
-    private void initAreaBox() {
-        while (AddTradProducer.getAllAddress().hasNext()){
-            cityBox.getItems().add(AddTradProducer.getAllAddress().next());
-        }
-        cityBox.getSelectionModel().selectedItemProperty().addListener(
-                (o, oldValue, newValue) ->{
-                    while (AddTradProducer.getTradingAreasByAddress(newValue.toString()).hasNext())
-                    areaBox.getItems().add(AddTradProducer.getTradingAreasByAddress(newValue.toString()).next());
-                }
-        );
-    }
-
     private void initData(TableView tableView, PromotionType promotionType) {
         try {
             tableView.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(IDProducer.produceHotelIDForWP(), promotionType)));
@@ -340,7 +328,7 @@ public class ManagePromotionPaneController {
     private void addMemPromotion() {
         isAreaAdd = true;
         setMemComponentsVisible(true);
-        initAreaBox();
+        MyComboBox.initAreaBox(cityBox,areaBox);
     }
 
 
@@ -532,10 +520,11 @@ public class ManagePromotionPaneController {
                     initTimeBOX();
                     iniDatePicker();
                 }else if(proType == PromotionType.VIPSpecialAreaPromotion){
-                    //特定期间优惠
+                    //商圈优惠
                     isAreaAdd = false;
                     proMemTable.setDisable(true);
                     setMemComponentsVisible(true);
+                    MyComboBox.initAreaBox(cityBox,areaBox);
                 }
             });
 

@@ -57,41 +57,9 @@
                            <HBox.margin>
                               <Insets />
                            </HBox.margin></Label>
-                        <HBox alignment="CENTER" layoutX="224.0" layoutY="19.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0">
-                           <children>
-                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/star.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="55.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/star.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="70.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/star.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="85.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/star.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="15.0" fitWidth="15.0" layoutX="100.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../img/hotelworker/star.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                           <HBox.margin>
-                              <Insets top="5.0" />
-                           </HBox.margin>
-                        </HBox>
                         <Label id="userReviewLabel" layoutX="16.0" layoutY="32.0" text="客户评分：">
                            <HBox.margin>
-                              <Insets left="50.0" top="10.0" />
+                              <Insets left="20.0" top="10.0" />
                            </HBox.margin>
                         </Label>
                         <ComboBox fx:id="rankBox" layoutX="721.0" layoutY="81.0" prefHeight="36.0" prefWidth="101.0" promptText="评分">

@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import presentation.util.alert.AlertController;
 import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
+import presentation.util.other.MyComboBox;
 import vo.hotel.HotelVO;
 
 import java.rmi.RemoteException;
@@ -67,7 +68,6 @@ public class InfoPaneController {
         alertController = new AlertController();
         //初始化接口
         initService();
-        initBox();
         //初始化数据
         initData();
         //显示查看信息界面
@@ -81,11 +81,6 @@ public class InfoPaneController {
         } catch (RemoteException e) {
             alertController.showNetConnectAlert();
         }
-    }
-
-    private void initBox() {
-        cityBox.getItems().addAll("南京","苏州","无锡");
-        tradeAreaBox.getItems().addAll("仙林商圈","新街口商圈");
     }
 
     private void initData() {
@@ -121,6 +116,7 @@ public class InfoPaneController {
      */
     @FXML
     private void editHotelInfo(){
+        MyComboBox.initAreaBox(cityBox,tradeAreaBox);
         setCheckInfoComponentsVisible(false);
         setEditInfoComponentsVisible(true);
         cityBox.setValue(city);

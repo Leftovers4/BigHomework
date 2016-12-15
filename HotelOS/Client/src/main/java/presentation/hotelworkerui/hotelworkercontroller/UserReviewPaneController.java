@@ -6,6 +6,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
+import util.DateTimeFormat;
 import vo.order.OrderVO;
 import vo.order.ReviewVO;
 
@@ -57,7 +58,7 @@ public class UserReviewPaneController {
     }
 
     private void initReview(LocalDateTime reviewTime, String review) {
-        reviewTimeLabel.setText(reviewTime.toString());
+        reviewTimeLabel.setText(reviewTime.format(DateTimeFormat.dateHourFormat));
         reviewLabel.setText(review);
     }
 

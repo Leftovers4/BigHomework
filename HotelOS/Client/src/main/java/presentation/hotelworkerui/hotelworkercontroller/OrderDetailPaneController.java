@@ -11,6 +11,7 @@ import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
 import presentation.hotelworkerui.hotelworkerscene.UserReviewPane;
 import presentation.util.alert.AlertController;
 import util.DateTimeFormat;
+import util.EnumFactory;
 import util.OrderType;
 import vo.order.OrderVO;
 import vo.order.ReviewVO;
@@ -80,9 +81,9 @@ public class OrderDetailPaneController {
 
     private void initOrderLabel(OrderVO orderVO) {
         orderIDLabel.setText(orderVO.orderID);
-        orderTypeLabel.setText(orderVO.orderType.toString());
+        orderTypeLabel.setText(EnumFactory.getString(orderVO.orderType));
         orderOriPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.originPrice));
-        orderProLabel.setText(String.valueOf(orderVO.orderPromoInfoVO.promotionType == null ? "无优惠" : String.valueOf(orderVO.orderPromoInfoVO.promotionType)));
+        orderProLabel.setText(String.valueOf(orderVO.orderPromoInfoVO.promotionType == null ? "无优惠" : EnumFactory.getString(orderVO.orderPromoInfoVO.promotionType)));
         orderActPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
 
         generateTimeLabel.setText(orderVO.orderTimeVO.generateTime.format(DateTimeFormat.dateHourFormat));
@@ -94,7 +95,7 @@ public class OrderDetailPaneController {
         userNameLabel.setText(orderVO.username);
         withChildrenLabel.setText(orderVO.withChildren ? "有" : "无");
         peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
-        roomTypeLabel.setText(String.valueOf(orderVO.roomType));
+        roomTypeLabel.setText(EnumFactory.getString(orderVO.roomType));
         roomAmountLabel.setText(String.valueOf(orderVO.roomAmount));
         roomIDLabel.setText(orderVO.roomNumber == null ? "" : orderVO.roomNumber);
     }
