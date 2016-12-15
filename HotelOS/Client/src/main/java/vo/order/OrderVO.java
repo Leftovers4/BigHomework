@@ -1,8 +1,6 @@
 package vo.order;
 
-import util.OrderType;
-import util.PromotionType;
-import util.RoomType;
+import util.*;
 import vo.hotel.RoomVO;
 
 import java.time.LocalDateTime;
@@ -120,8 +118,8 @@ public class OrderVO {
         return username;
     }
 
-    public OrderType getOrderType() {
-        return orderType;
+    public String getOrderType() {
+        return EnumFactory.getString(orderType);
     }
 
     public String getHotelName() {
@@ -144,8 +142,8 @@ public class OrderVO {
         return roomAmount;
     }
 
-    public RoomType getRoomType() {
-        return roomType;
+    public String getRoomType() {
+        return EnumFactory.getString(roomType);
     }
 
     public String getRoomNumber() {
@@ -160,8 +158,8 @@ public class OrderVO {
         return withChildren;
     }
 
-    public LocalDateTime getCheckinTime() {
-        return orderTimeVO.checkinTime;
+    public String getCheckinTime() {
+        return orderTimeVO.checkinTime.format(DateTimeFormat.dateTimeFormat);
     }
 
     public double getActualPrice() {

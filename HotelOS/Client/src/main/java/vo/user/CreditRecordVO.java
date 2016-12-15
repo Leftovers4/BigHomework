@@ -2,6 +2,7 @@ package vo.user;
 
 import util.CreditChangedCause;
 import util.DateTimeFormat;
+import util.EnumFactory;
 
 import java.time.LocalDateTime;
 
@@ -62,8 +63,8 @@ public class CreditRecordVO {
         return orderID;
     }
 
-    public CreditChangedCause getCreditChangedCause() {
-        return creditChangedCause;
+    public String getCreditChangedCause() {
+        return EnumFactory.getString(creditChangedCause);
     }
 
     public double getChangedCredit() {

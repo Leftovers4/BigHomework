@@ -1,5 +1,6 @@
 package vo.order;
 
+import util.EnumFactory;
 import util.PromotionType;
 
 /**
@@ -13,6 +14,10 @@ public class OrderPromoInfoVO {
 
     public OrderPromoInfoVO(){
         discount = 1;
+    }
+
+    public String getPromotionType(){
+        return EnumFactory.getString(promotionType);
     }
 
 }

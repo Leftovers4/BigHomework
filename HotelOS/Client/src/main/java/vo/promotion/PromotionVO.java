@@ -1,8 +1,6 @@
 package vo.promotion;
 
-import util.Const;
-import util.PromotionType;
-import util.RoomType;
+import util.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -86,8 +84,8 @@ public class PromotionVO {
         return promotionID;
     }
 
-    public PromotionType getPromotionType() {
-        return promotionType;
+    public String getPromotionType() {
+        return EnumFactory.getString(promotionType);
     }
 
     public long getHotelID() {
@@ -102,20 +100,20 @@ public class PromotionVO {
         return leastRooms;
     }
 
-    public RoomType getRoomType() {
-        return roomType;
+    public String getRoomType() {
+        return EnumFactory.getString(roomType);
     }
 
     public double getBestPrice() {
         return bestPrice;
     }
 
-    public LocalDateTime getBeginTime(){
-        return promotionTimeVO.beginTime;
+    public String getBeginTime(){
+        return promotionTimeVO.beginTime.format(DateTimeFormat.dateTimeFormat);
     }
 
-    public LocalDateTime getEndTime(){
-        return promotionTimeVO.endTime;
+    public String getEndTime(){
+        return promotionTimeVO.endTime.format(DateTimeFormat.dateTimeFormat);
     }
 
     public String getComName(){

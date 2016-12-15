@@ -1,5 +1,6 @@
 package vo.hotel;
 
+import util.EnumFactory;
 import util.RoomType;
 
 /**
@@ -47,8 +48,8 @@ public class RoomVO {
         return hotelID;
     }
 
-    public RoomType getRoomType() {
-        return roomType;
+    public String getRoomType() {
+        return EnumFactory.getString(roomType);
     }
 
     public int getTotal() {

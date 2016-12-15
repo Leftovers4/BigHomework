@@ -1,5 +1,6 @@
 package vo.personnel;
 
+import util.EnumFactory;
 import util.PersonnelType;
 
 /**
@@ -44,8 +45,8 @@ public class PersonnelVO {
         return name;
     }
 
-    public PersonnelType getPersonnelType() {
-        return personnelType;
+    public String getPersonnelType() {
+        return EnumFactory.getString(personnelType);
     }
 
     public long getHotelID() {

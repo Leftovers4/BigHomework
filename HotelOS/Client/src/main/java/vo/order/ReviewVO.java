@@ -1,6 +1,7 @@
 package vo.order;
 
 import util.DateTimeFormat;
+import util.EnumFactory;
 import util.RoomType;
 
 import java.time.LocalDateTime;
@@ -52,8 +53,8 @@ public class ReviewVO {
         return rating;
     }
 
-    public RoomType getRoomType() {
-        return roomType;
+    public String getRoomType() {
+        return EnumFactory.getString(roomType);
     }
 
     public String getReviewTime() {
