@@ -4,6 +4,7 @@ import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import presentation.util.alert.AlertController;
 import util.DateTimeFormat;
 import util.ResultMessage;
 import vo.order.OrderVO;
@@ -32,6 +33,8 @@ public class CancelOrderController {
     @FXML private Label hotelServiceLabel;
 
     private OrderBlServiceImpl orderBlService;
+
+    private AlertController alertController;
 
     public void launch(Stage primaryStage, String orderID) {
         this.stage = primaryStage;
@@ -75,19 +78,23 @@ public class CancelOrderController {
 
     @FXML
     private void cancelOrderEvent() {
-        try {
-            ResultMessage resultMessage = orderBlService.cancelOrder(orderID);
+        boolean confirm = alertController.showConfirmDeleteAlert("确认撤销？", "撤销提示");
 
-            if (resultMessage == ResultMessage.Success) {
-                System.out.println("cancel success");
+        if (confirm) {
+            try {
+                ResultMessage resultMessage = orderBlService.cancelOrder(orderID);
 
-                initialData();
-            } else {
-                System.out.println("cancel failed");
+                if (resultMessage == ResultMessage.Success) {
+                    System.out.println("cancel success");
+                    alertController.showUpdateSuccessAlert("撤销成功！", "撤销提示");
+                    initialData();
+                } else {
+                    System.out.println("cancel failed");
+                }
+
+            } catch (RemoteException e) {
+                e.printStackTrace();
             }
-
-        } catch (RemoteException e) {
-            e.printStackTrace();
         }
     }
 }

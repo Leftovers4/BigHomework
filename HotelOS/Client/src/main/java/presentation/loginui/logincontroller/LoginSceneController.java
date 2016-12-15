@@ -20,9 +20,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import presentation.hotelworkerui.hotelworkerscene.ComWorkerScene;
 import presentation.userui.userscene.ComUserScene;
+import presentation.util.alert.AlertController;
 import presentation.webmanagerui.webmanagerscene.WebmanagerComScene;
 import presentation.webmarketerui.webmarketerscene.ComMarketerScene;
-import util.EnumFactory;
 import util.PersonnelType;
 import util.ResultMessage;
 import vo.personnel.PersonnelVO;
@@ -53,6 +53,8 @@ public class LoginSceneController {
     private UserBlServiceImpl userBlService;
     private PersonnelBLServiceImpl personnelBLService;
 
+    private AlertController alertController;
+
     private String currentUser = null;
 
     //用于客户登录和工作人员登录界面切换
@@ -62,6 +64,8 @@ public class LoginSceneController {
     public void setStage(Stage stage) {
         this.stage = stage;
         currentUser = "user";
+
+        alertController = new AlertController();
 
         try {
             userBlService = new UserBlServiceImpl();
@@ -204,8 +208,10 @@ public class LoginSceneController {
                 ResultMessage resultMessage = userBlService.login(loginUsername.getText(), loginPassword.getText());
 
                 if (resultMessage == ResultMessage.UsernameNotExisted) {
+                    alertController.showInputWrongAlert("用户名不存在！", "登录失败");
                     System.out.println("not exits");
                 } else if (resultMessage == ResultMessage.PasswordWrong) {
+                    alertController.showInputWrongAlert("密码错误！", "登录失败");
                     System.out.println("wrong password");
                 } else if (resultMessage == ResultMessage.Success) {
                     stage.setScene(new ComUserScene(new Group(), stage, loginUsername.getText()));
@@ -230,6 +236,7 @@ public class LoginSceneController {
                     }
 
                 } else {
+                    alertController.showInputWrongAlert("登录失败！", "登录失败");
                     System.out.println("personnel login failed");
                 }
             }
@@ -248,7 +255,10 @@ public class LoginSceneController {
             ResultMessage resultMessage = userBlService.registerUser(loginUsername.getText(), loginPassword.getText());
 
             if (resultMessage == ResultMessage.DataExisted) {
+                alertController.showInputWrongAlert("用户名已存在！", "注册失败");
                 System.out.printf("exits");
+            } else if (resultMessage == ResultMessage.Success) {
+                alertController.showUpdateSuccessAlert("注册成功！", "注册成功");
             }
 
             loginUsername.setText(null);

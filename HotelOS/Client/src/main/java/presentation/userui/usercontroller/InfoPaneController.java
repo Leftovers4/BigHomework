@@ -14,6 +14,7 @@ import presentation.userui.userscene.CreditRecordPane;
 import presentation.userui.userscene.InfoPane;
 import presentation.userui.userscene.RegisterCommonVIPPane;
 import presentation.userui.userscene.RegisterCompanyVIPPane;
+import presentation.util.alert.AlertController;
 import presentation.util.alert.InputWrongAlert;
 import util.MemberType;
 import util.ResultMessage;
@@ -66,6 +67,8 @@ public class InfoPaneController {
     private ArrayList<Button> leftBarBtnArr;
 
     private ImageView topbarphoto;
+
+    private AlertController alertController;
 
     public void launch(Stage primaryStage, Pane mainPane, ImageView topbarphoto, String username, ArrayList<Button> leftBarBtnArr) {
         this.stage = primaryStage;
@@ -289,9 +292,9 @@ public class InfoPaneController {
 
             initialData();
         } else if (!isempty && !phoneisright) {
-            new InputWrongAlert("联系方式格式错误", "格式错误").showAndWait();
+            alertController.showInputWrongAlert("联系方式格式错误！", "格式错误");
         } else {
-            new InputWrongAlert("信息填写不完整", "保存失败").showAndWait();
+            alertController.showInputWrongAlert("信息填写不完整", "格式错误");
         }
 
 
