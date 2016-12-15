@@ -8,6 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.InfoPane;
 import presentation.util.alert.InputWrongAlert;
+import presentation.util.other.JudgeInput;
 import util.MemberType;
 import util.ResultMessage;
 import vo.user.UserVO;
@@ -97,7 +98,7 @@ public class RegisterCommonVIPController {
     @FXML
     private void confirmRegister() {
         boolean isempty = isEmpty();
-        boolean isphoneok = judgePhoneNumber(phoneField.getText());
+        boolean isphoneok = JudgeInput.judgePhoneNumber(phoneField.getText());
 
         UserVO userVO = new UserVO();
 
@@ -152,25 +153,4 @@ public class RegisterCommonVIPController {
         return username || sex || birthday;
     }
 
-    /**
-     * 判断输入的联系方式是否符合格式
-     * @param str
-     * @return
-     */
-    private boolean judgePhoneNumber(String str) {
-        boolean judge = true;
-        int length = str.length();
-        if (length != 11) {
-            judge = false;
-        }
-        for(int i = 0; i<length; i++) {
-            int temp = str.charAt(i) - '0';
-            if (temp >= 0 && temp <= 9) {
-                judge = judge && true;
-            } else {
-                judge = judge && false;
-            }
-        }
-        return judge;
-    }
 }

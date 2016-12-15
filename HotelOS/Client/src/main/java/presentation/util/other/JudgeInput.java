@@ -28,4 +28,23 @@ public class JudgeInput {
         }
         return true;
     }
+
+    public static boolean judgePhoneNumber(String str) {
+        boolean judge = true;
+
+        int length = str.length();
+        if (length != 11) {
+            judge = false;
+        }
+
+        for(int i = 0; i<length; i++) {
+            int temp = str.charAt(i) - '0';
+            if (temp >= 0 && temp <= 9) {
+                judge = judge && true;
+            } else {
+                judge = judge && false;
+            }
+        }
+        return judge;
+    }
 }
