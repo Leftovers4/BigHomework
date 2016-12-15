@@ -9,6 +9,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.layout.Pane;
 import presentation.util.alert.AlertController;
 import presentation.webmarketerui.webmarketerscene.FindOrderPane;
+import util.EnumFactory;
 import util.OrderType;
 import util.ResultMessage;
 import vo.order.OrderVO;
@@ -66,7 +67,7 @@ public class AppealOrderPaneController {
         hotelNameLabel.setText(orderVO.hotelName);
         webOrderPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
 
-        webOrderTypeLabel.setText(orderVO.orderType.toString());
+        webOrderTypeLabel.setText(EnumFactory.getString(orderVO.orderType));
 
         if(orderVO.orderType != OrderType.Abnormal){
             cancelAbnOrderBtn.setDisable(true);

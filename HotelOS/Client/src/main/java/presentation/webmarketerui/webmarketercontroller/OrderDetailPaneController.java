@@ -6,6 +6,7 @@ import javafx.scene.layout.Pane;
 import presentation.util.alert.AlertController;
 import presentation.webmarketerui.webmarketerscene.OrderListPane;
 import util.DateTimeFormat;
+import util.EnumFactory;
 import util.OrderType;
 import vo.order.OrderVO;
 
@@ -46,13 +47,9 @@ public class OrderDetailPaneController {
     @FXML private Label roomIDLabel;
 
     private Pane mainPane;
-    private AlertController alertController;
-    private OrderVO orderVO;
 
     public void launch(Pane mainPane,OrderVO orderVO) {
         this.mainPane = mainPane;
-        this.orderVO = orderVO;
-        alertController = new AlertController();
 
         //初始化便签
         initOrderLabel(orderVO);
@@ -60,9 +57,9 @@ public class OrderDetailPaneController {
 
     private void initOrderLabel(OrderVO orderVO) {
         orderIDLabel.setText(orderVO.orderID);
-        orderTypeLabel.setText(orderVO.orderType.toString());
+        orderTypeLabel.setText(EnumFactory.getString(orderVO.orderType));
         orderOriPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.originPrice));
-        orderProLabel.setText(String.valueOf(orderVO.orderPromoInfoVO.promotionType));
+        orderProLabel.setText(String.valueOf(orderVO.orderPromoInfoVO.promotionType == null ? "无优惠" : EnumFactory.getString(orderVO.orderPromoInfoVO.promotionType)));
         orderActPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
 
         generateTimeLabel.setText(orderVO.orderTimeVO.generateTime.format(DateTimeFormat.dateHourFormat));
@@ -71,7 +68,7 @@ public class OrderDetailPaneController {
         expLeaveTimeLabel.setText(orderVO.orderTimeVO.expectedLeaveTime == null ? "尚未入住" : orderVO.orderTimeVO.expectedLeaveTime.format(DateTimeFormat.dateHourFormat));
         actLeaveTimeLabel.setText(orderVO.orderTimeVO.leaveTime == null ? (orderVO.orderType == OrderType.Executed ? "尚未退房" : "尚未入住") : orderVO.orderTimeVO.leaveTime.format(DateTimeFormat.dateHourFormat));
 
-        roomTypeLabel.setText(String.valueOf(orderVO.roomType));
+        roomTypeLabel.setText(EnumFactory.getString(orderVO.roomType));
         roomAmountLabel.setText(String.valueOf(orderVO.roomAmount));
         roomIDLabel.setText(orderVO.roomNumber == null ? "" : orderVO.roomNumber);
         userNameLabel.setText(orderVO.username);

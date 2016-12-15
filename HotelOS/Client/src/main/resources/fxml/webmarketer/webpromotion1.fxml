@@ -17,13 +17,13 @@
       </HBox>
       <Separator layoutX="36.0" layoutY="183.0" prefWidth="778.0" />
       <Label id="sliderPromotionLabel" fx:id="sliderPromotionLabel" layoutX="36.0" layoutY="180.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="3.0" prefWidth="132.0" />
-      <VBox fx:id="timeVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0">
+      <VBox fx:id="timeVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0" visible="false">
          <children>
             <TableView fx:id="proTimeTable" prefHeight="320.0">
                <columns>
                   <TableColumn fx:id="proStartTimeCol" editable="false" prefWidth="255.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="开始日期" />
                   <TableColumn fx:id="proEndTimeCol" editable="false" prefWidth="250.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="结束日期" />
-                  <TableColumn fx:id="proTimeDiscountCol" editable="false" minWidth="0.0" prefWidth="140.0" resizable="false" styleClass="RightAlignCol" text="折扣（%）" />
+                  <TableColumn fx:id="proTimeDiscountCol" editable="false" minWidth="0.0" prefWidth="140.0" resizable="false" styleClass="RightAlignCol" text="折扣" />
                   <TableColumn fx:id="proTimeOpCol" editable="false" minWidth="0.0" prefWidth="105.0" resizable="false" styleClass="MIdAlignCol" text="操作" />
                </columns>
             </TableView>
@@ -60,11 +60,6 @@
                               <Insets bottom="5.0" left="10.0" />
                            </HBox.margin>
                         </TextField>
-                        <Label layoutX="466.0" layoutY="16.0" text="\%">
-                           <HBox.margin>
-                              <Insets bottom="10.0" left="5.0" />
-                           </HBox.margin>
-                        </Label>
                      </children>
                   </HBox>
                   <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="220.0">
@@ -151,7 +146,7 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
-                        <ComboBox fx:id="cityBox" layoutX="263.0" layoutY="10.0" prefHeight="36.0" prefWidth="101.0" promptText="城市">
+                        <ComboBox fx:id="cityBox" layoutX="263.0" layoutY="10.0" prefHeight="36.0" prefWidth="123.0" promptText="城市">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>

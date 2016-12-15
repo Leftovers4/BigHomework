@@ -83,6 +83,7 @@ public class OrderListPaneController {
         try {
             ArrayList<HotelVO> list = (ArrayList<HotelVO>) hotelBLService.viewFullHotelList();
             nameToIdMap = new HashMap<>();
+            hotelBox.getItems().add("所有酒店");
             for (HotelVO hotelVO: list) {
                 hotelBox.getItems().add(hotelVO.hotelName);
                 nameToIdMap.put(hotelVO.hotelName, hotelVO.hotelID);
@@ -161,7 +162,8 @@ public class OrderListPaneController {
         hotelBox.getSelectionModel().selectedItemProperty().addListener(
                 (o , oldValue, newValue) -> {
                     try {
-                        orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewFullHotelOrderList((nameToIdMap.get((String) newValue)))));
+                        if(newValue == "所有酒店")  orderTable.setItems(getOrderVoList());
+                        else orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewFullHotelOrderList((nameToIdMap.get(newValue)))));
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }

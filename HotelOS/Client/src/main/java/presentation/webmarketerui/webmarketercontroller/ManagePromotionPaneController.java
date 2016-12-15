@@ -416,22 +416,6 @@ public class ManagePromotionPaneController {
     }
 
     private boolean judgeInput() {
-//        if(lv1CreditField.getText().equals("") ||
-//           lv2CreditField.getText().equals("") ||
-//           lv4CreditField.getText().equals("") ||
-//           lv3CreditField.getText().equals("") ||
-//           lv5CreditField.getText().equals("") ||
-//           lv6CreditField.getText().equals("") ||
-//           lv1DiscountField.getText().equals("") ||
-//           lv2DiscountField.getText().equals("") ||
-//           lv3DiscountField.getText().equals("") ||
-//           lv4DiscountField.getText().equals("") ||
-//           lv5DiscountField.getText().equals("") ||
-//           lv6DiscountField.getText().equals(""))
-//        {
-//            alertController.showInputWrongAlert("请填写全部的信用值和折扣","制定失败");
-//            return false;
-//        }else {
             //用正则表达式判断输入格式，非数字报错
             Pattern pattern = Pattern.compile("^[0-9].*$");
             Matcher matcherCredit1 = pattern.matcher(lv1CreditField.getText());
@@ -446,23 +430,25 @@ public class ManagePromotionPaneController {
             Matcher matcherDiscount4 = pattern.matcher(lv4DiscountField.getText());
             Matcher matcherDiscount5 = pattern.matcher(lv5DiscountField.getText());
             Matcher matcherDiscount6 = pattern.matcher(lv6DiscountField.getText());
-            if(!matcherCredit1.matches() ||
-               !matcherCredit2.matches() ||
-               !matcherCredit3.matches() ||
-               !matcherCredit4.matches() ||
-               !matcherCredit5.matches() ||
-               !matcherCredit6.matches() ||
-               !matcherDiscount1.matches() ||
-               !matcherDiscount2.matches() ||
-               !matcherDiscount3.matches() ||
-               !matcherDiscount4.matches() ||
-               !matcherDiscount5.matches() ||
-               !matcherDiscount6.matches())
+            if(!matcherCredit1.matches() || !matcherCredit2.matches() ||
+               !matcherCredit3.matches() || !matcherCredit4.matches() ||
+               !matcherCredit5.matches() || !matcherCredit6.matches() ||
+               !matcherDiscount1.matches() || !matcherDiscount2.matches() ||
+               !matcherDiscount3.matches() || !matcherDiscount4.matches() ||
+               !matcherDiscount5.matches() || !matcherDiscount6.matches())
             {
                 alertController.showInputWrongAlert("信用值和折扣必须为数字，请重新输入","制定失败");
                 return false;
-            }
-//        }
+            }else if((Integer.parseInt(lv1DiscountField.getText()) > 1) ||
+                   (Integer.parseInt(lv2DiscountField.getText())> 1) ||
+                   (Integer.parseInt(lv3DiscountField.getText()) > 1) ||
+                   (Integer.parseInt(lv4DiscountField.getText()) > 1 ||
+                   (Integer.parseInt(lv5DiscountField.getText()) > 1) ||
+                   (Integer.parseInt(lv6DiscountField.getText()) > 1)))
+                {
+                    alertController.showInputWrongAlert("折扣必须小于1，请重新输入","制定失败");
+                    return false;
+                }
         return true;
     }
 
