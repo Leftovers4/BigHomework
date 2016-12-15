@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -9,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<fx:root fx:id="orderDetailPane" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.OrderDetailUserController">
+<fx:root fx:id="orderDetailPane" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.OrderDetailUserController">
    <children>
       <GridPane layoutX="355.0" layoutY="97.0" prefHeight="385.0" prefWidth="75.0">
          <columnConstraints>
@@ -54,7 +58,7 @@
       <Label layoutX="355.0" layoutY="547.0" text="订单状态：" />
       <Label fx:id="ordertypeLabel" layoutX="465.0" layoutY="547.0" text="状态" />
       <Button fx:id="evaluateBtn" layoutX="597.0" layoutY="542.0" mnemonicParsing="false" onAction="#evaluateOrder" prefHeight="30.0" prefWidth="102.0" styleClass="actionBtn" text="评价晒单" visible="false" />
-      <Button onAction="#cancelOrderEvent" fx:id="cancelBtn" layoutX="597.0" layoutY="542.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="102.0" styleClass="actionBtn" text="撤销订单" visible="false" />
-      <Button onAction="#checkMyReviewEvent" fx:id="checkMyReviewBtn" layoutX="606.0" layoutY="542.0" mnemonicParsing="false" styleClass="actionBtn" text="查看我的评价" visible="false" />
+      <Button fx:id="cancelBtn" layoutX="597.0" layoutY="542.0" mnemonicParsing="false" onAction="#cancelOrderEvent" prefHeight="30.0" prefWidth="102.0" styleClass="actionBtn" text="撤销订单" visible="false" />
+      <Button fx:id="checkMyReviewBtn" layoutX="606.0" layoutY="542.0" mnemonicParsing="false" onAction="#checkMyReviewEvent" styleClass="actionBtn" text="查看我的评价" visible="false" />
    </children>
 </fx:root>

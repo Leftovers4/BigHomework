@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
@@ -8,7 +12,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.EvaluateOrderController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.EvaluateOrderController">
    <children>
       <Label layoutX="371.0" layoutY="178.0" text="评分：" />
       <ImageView fx:id="star1" fitHeight="40.0" fitWidth="40.0" layoutX="371.0" layoutY="243.0" onMouseClicked="#star1event" onMouseEntered="#star1hover" onMouseExited="#star1out" pickOnBounds="true" preserveRatio="true">
@@ -43,7 +47,7 @@
             <Image url="@../../img/common/initialPhoto.png" />
          </image>
       </ImageView>
-      <Button fx:id="evalusteSubmit" onAction="#confirmSubmit" layoutX="574.0" layoutY="565.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" styleClass="actionBtn" text="提交" />
+      <Button fx:id="evalusteSubmit" layoutX="574.0" layoutY="565.0" mnemonicParsing="false" onAction="#confirmSubmit" prefHeight="30.0" prefWidth="77.0" styleClass="actionBtn" text="提交" />
       <CheckBox layoutX="254.0" layoutY="505.0" mnemonicParsing="false" text="匿名" />
       <Button fx:id="evaluateCancel" layoutX="459.0" layoutY="565.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" styleClass="actionBtn" text="取消" />
    </children>
