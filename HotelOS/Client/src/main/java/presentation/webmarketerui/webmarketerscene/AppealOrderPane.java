@@ -18,7 +18,7 @@ public class AppealOrderPane extends Pane{
     }
 
     private void loadFxml(Pane mainPane, OrderVO orderVO) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/webmarketer/weborderappeal.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/webmarketer/weborderappeal.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

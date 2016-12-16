@@ -19,7 +19,7 @@ public class UserReviewPane extends Pane{
     }
 
     private void loadFxml(Pane mainPane, Boolean isCheckIn, Boolean isFromList, OrderVO orderVO, ReviewVO reviewVO) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/hotelworker/hoteluserreview.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hoteluserreview.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

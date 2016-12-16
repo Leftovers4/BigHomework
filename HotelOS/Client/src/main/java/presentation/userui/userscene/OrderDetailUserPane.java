@@ -17,7 +17,7 @@ public class OrderDetailUserPane extends Pane {
     }
 
     private void loadFxml(Stage primaryStage, Pane mainPane, String userID, String orderID) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/user/orderDetailUser.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/orderdetailuser.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

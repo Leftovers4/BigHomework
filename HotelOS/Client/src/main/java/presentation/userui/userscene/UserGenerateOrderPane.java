@@ -1,7 +1,6 @@
 package presentation.userui.userscene;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.usercontroller.UserGenerateOrderController;
@@ -19,7 +18,7 @@ public class UserGenerateOrderPane extends Pane {
     }
 
     private void loadFxml(Stage primaryStage, Pane mainPane, String userID, long hotelID, RoomType roomType) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/user/UserGenerateOrder.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/user/usergenerateorder.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

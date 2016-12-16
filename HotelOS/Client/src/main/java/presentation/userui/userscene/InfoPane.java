@@ -21,7 +21,7 @@ public class InfoPane extends Pane{
     }
 
     private void loadFxml(Stage primaryStage, Pane mainPane, ImageView topbarphoto, String username, ArrayList<Button> leftBarBtnArr) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/user/userInfo1.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/userinfo.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

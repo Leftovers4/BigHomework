@@ -16,7 +16,7 @@ public class UpdateOutPane extends Pane {
     }
 
     private void loadFxml(Pane mainPane) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/hotelworker/hotelupdateout1.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelupdateout.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();
