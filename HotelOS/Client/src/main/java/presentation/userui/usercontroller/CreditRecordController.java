@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import presentation.userui.userscene.InfoPane;
 import presentation.util.buttoncell.CreditTabelButtonCell;
 import util.CreditChangedCause;
 import vo.user.CreditRecordVO;
@@ -95,5 +96,8 @@ public class CreditRecordController {
         return list;
     }
 
-
+    @FXML
+    private void back(){
+        //TODO
+    }
 }

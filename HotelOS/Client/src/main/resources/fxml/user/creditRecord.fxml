@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -12,14 +13,28 @@
    <children>
       <TableView fx:id="creditRecordTable" layoutX="50.0" layoutY="150.0" maxHeight="450.0" prefWidth="750.0">
         <columns>
-          <TableColumn fx:id="timeCol" prefWidth="183.0" resizable="false" text="时间" />
-          <TableColumn fx:id="orderidCol" prefWidth="204.0" resizable="false" text="订单号" />
-            <TableColumn fx:id="causeCol" prefWidth="87.0" resizable="false" text="变更原因" />
-            <TableColumn fx:id="changeNumCol" prefWidth="77.0" resizable="false" text="变更额度" />
-            <TableColumn fx:id="finalNumCol" prefWidth="116.0" resizable="false" text="变更后的信用值" />
-            <TableColumn fx:id="optCol" resizable="false" />
+          <TableColumn fx:id="timeCol" editable="false" prefWidth="160.0" resizable="false" styleClass="LeftAlignCol" text="时间" />
+          <TableColumn fx:id="orderidCol" editable="false" prefWidth="160.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="订单号" />
+            <TableColumn fx:id="causeCol" prefWidth="100.0" resizable="false" styleClass="LeftAlignCol" text="变更原因" />
+            <TableColumn fx:id="changeNumCol" prefWidth="83.0" resizable="false" styleClass="RightAlignCol" text="变更额度" />
+            <TableColumn fx:id="finalNumCol" prefWidth="151.0" resizable="false" styleClass="RightAlignCol" text="变更后的信用值" />
+            <TableColumn fx:id="optCol" prefWidth="73.0" resizable="false" text="操作" />
         </columns>
       </TableView>
-      <Button layoutX="645.0" layoutY="569.0" mnemonicParsing="false" styleClass="actionBtn" text="查看详情" />
+      <Label id="detailTitleLabel" layoutX="71.0" layoutY="82.0" text="信用记录" />
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="28.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/hotelworker/bar.png" />
+         </image>
+      </ImageView>
+      <Button layoutY="78.0" mnemonicParsing="false" onAction="#back" styleClass="BackBtn">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/hotelworker/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </fx:root>

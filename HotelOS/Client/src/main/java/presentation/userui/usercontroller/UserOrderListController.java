@@ -129,8 +129,7 @@ public class UserOrderListController {
 
 
     @FXML
-    private void cancelOrder() {
-        mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new CancelOrderPane(stage, orderID));
+    private void searchOrderByID() {
+
     }
 }
