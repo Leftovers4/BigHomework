@@ -314,21 +314,9 @@ public class OrderBlServiceImpl implements OrderBLService {
         orderPO.setPersonAmount(orderVO.personAmount);
         orderPO.setWithChildren(orderVO.withChildren);
         orderPO.getOrderTimePO().setGenerateTime(LocalDateTime.now());
-            //处理预计入住时间
-        LocalDate today = LocalDate.now();
-        LocalDate expectedCheckInDate = orderVO.orderTimeVO.expectedCheckinTime.toLocalDate();
-        if (expectedCheckInDate.isEqual(today)){
-            if (LocalDateTime.now().isAfter(LocalDateTime.now().withHour(14).withMinute(0).withSecond(0)))
-                orderPO.getOrderTimePO().setExpectedCheckinTime(LocalDateTime.now());
-            else
-                orderPO.getOrderTimePO().setExpectedCheckinTime(LocalDateTime.now().withHour(14).withMinute(0).withSecond(0));
-        }else {
-            orderPO.getOrderTimePO().setExpectedCheckinTime(orderVO.orderTimeVO.expectedCheckinTime.withHour(14).withMinute(0).withSecond(0));
-        }
-            //处理预计离开时间
-        orderPO.getOrderTimePO().setExpectedLeaveTime(orderVO.orderTimeVO.expectedLeaveTime.withHour(12).withMinute(0).withSecond(0));
-            //处理最晚执行时间
-        orderPO.getOrderTimePO().setLastExecuteTime(orderPO.getOrderTimePO().getExpectedCheckinTime().plusHours(6));
+        orderPO.getOrderTimePO().setExpectedCheckinTime(OrderTimeRule.getExpectedCheckInTime(orderVO.orderTimeVO.expectedCheckinTime.toLocalDate()));
+        orderPO.getOrderTimePO().setExpectedLeaveTime(OrderTimeRule.getExpectedLeaveTime(orderVO.orderTimeVO.expectedLeaveTime.toLocalDate()));
+        orderPO.getOrderTimePO().setLastExecuteTime(OrderTimeRule.getLastExecuteTime(orderPO.getOrderTimePO().getExpectedCheckinTime()));
         orderPO.getOrderPricePO().setOriginPrice(orderVO.orderPriceVO.originPrice);
         orderPO.getOrderPricePO().setActualPrice(orderVO.orderPriceVO.actualPrice);
         orderPO.setPromotionType(orderVO.orderPromoInfoVO.promotionType);

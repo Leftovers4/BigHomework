@@ -23,4 +23,10 @@ public class Const {
     //
     public final static String DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
 
+    //客户注册会员的信用值门槛
+    public final static double MemberRegisterThreshold = 1000;
+
+    //客户下单的信用值门槛
+    public final static double AddOrderThreshold = 0;
+
 }

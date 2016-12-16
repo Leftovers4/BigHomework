@@ -4,6 +4,7 @@ import bl.personnelbl.PersonnelBLService;
 import org.junit.Before;
 import org.junit.Test;
 import util.PersonnelType;
+import util.ResultMessage;
 import vo.personnel.PersonnelVO;
 
 import java.util.List;
@@ -60,7 +61,7 @@ public class PersonnelBLServiceImplTest {
         personnelVO.name = "marketer";
         personnelVO.password = "abc";
 
-        tested.addWebMarketer(personnelVO);
+        long id = tested.addWebMarketer(personnelVO);
     }
 
     @Test
@@ -72,11 +73,11 @@ public class PersonnelBLServiceImplTest {
     public void updatePersonnelInfo() throws Exception {
         PersonnelVO personnelVO = new PersonnelVO();
 
-        personnelVO.personnelID = 559870;
+        personnelVO.personnelID = 129964; //提供唯一标识
         personnelVO.name = "hhhhhh";
         personnelVO.password = "000000";
 
-        tested.updatePersonnelInfo(personnelVO);
+        ResultMessage resultMessage = tested.updatePersonnelInfo(personnelVO);
     }
 
     @Test

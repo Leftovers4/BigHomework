@@ -132,12 +132,16 @@ public class UserBlServiceImpl implements UserBLService {
         if (userPO == null)
             return ResultMessage.UsernameNotExisted;
 
-        //客户存在且已经注册了普通会员的情况
+        //客户存在且信用值不足的情况
+        if (!new CreditRecordList(userDAO.findCreditRecordsByUsername(userVO.username)).canRegisterMember())
+            return ResultMessage.CreditNotEnough;
+
+        //客户存在且信用值充足且已经注册了普通会员的情况
         MemberType memberType = userPO.getMemberPO().getMemberType();
         if (memberType.equals(MemberType.NormalMember) || memberType.equals(MemberType.Both))
             return ResultMessage.DataExisted;
 
-        //客户存在且未注册普通会员的情况
+        //客户存在且信用值充足且未注册普通会员的情况
         userPO.getMemberPO().setMemberType(memberType.equals(MemberType.EnterpriseMember) ? MemberType.Both : MemberType.NormalMember);
         userPO.setName(userVO.name);
         userPO.setGender(userVO.gender);
@@ -155,12 +159,16 @@ public class UserBlServiceImpl implements UserBLService {
         if (userPO == null)
             return ResultMessage.UsernameNotExisted;
 
-        //客户存在且已经注册了企业会员的情况
+        //客户存在且信用值不足的情况
+        if (!new CreditRecordList(userDAO.findCreditRecordsByUsername(userVO.username)).canRegisterMember())
+            return ResultMessage.CreditNotEnough;
+
+        //客户存在且信用值充足且已经注册了企业会员的情况
         MemberType memberType = userPO.getMemberPO().getMemberType();
         if (memberType.equals(MemberType.EnterpriseMember) || memberType.equals(MemberType.Both))
             return ResultMessage.DataExisted;
 
-        //客户存在且未注册企业会员的情况
+        //客户存在且信用值充足且未注册企业会员的情况
         userPO.getMemberPO().setMemberType(memberType.equals(MemberType.NormalMember) ? MemberType.Both : MemberType.EnterpriseMember);
         userPO.setName(userVO.name);
         userPO.setGender(userVO.gender);

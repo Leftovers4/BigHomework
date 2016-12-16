@@ -4,6 +4,7 @@ import bl.promotionbl.impl.Context;
 import po.promotion.PromotionPO;
 import po.user.CreditRecordPO;
 import rmi.RemoteHelper;
+import util.Const;
 import util.IDProducer;
 import util.PromotionType;
 
@@ -55,7 +56,11 @@ public class CreditRecordList extends ArrayList<CreditRecordPO> {
     }
 
     public boolean canAddOrder(){
-        return (getCurrentCredit() >= 0);
+        return (getCurrentCredit() >= Const.AddOrderThreshold);
+    }
+
+    public boolean canRegisterMember(){
+        return (getCurrentCredit() >= Const.MemberRegisterThreshold);
     }
 
 }

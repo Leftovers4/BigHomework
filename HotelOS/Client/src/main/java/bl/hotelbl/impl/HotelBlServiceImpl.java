@@ -2,6 +2,7 @@ package bl.hotelbl.impl;
 
 import bl.hotelbl.HotelBLService;
 import bl.orderbl.impl.OrderList;
+import bl.orderbl.impl.OrderTimeRule;
 import bl.personnelbl.impl.PersonnelList;
 import dataservice.hoteldataservice.HotelDataService;
 import dataservice.orderdataservice.OrderDataService;
@@ -213,20 +214,7 @@ public class HotelBlServiceImpl implements HotelBLService {
 
         //筛选出房间条件符合的
         if (hotelConditionsVO.expectedCheckInTime != null && hotelConditionsVO.expectedLeaveTime != null && !hotelConditionsVO.roomTypeList.isEmpty()){
-            //处理预计入住时间
-            LocalDateTime beginTime;
-            if (hotelConditionsVO.expectedCheckInTime.isEqual(LocalDate.now())){
-                if (LocalDateTime.now().isAfter(LocalDateTime.now().withHour(14).withMinute(0).withSecond(0)))
-                    beginTime = LocalDateTime.now();
-                else
-                    beginTime = LocalDateTime.now().withHour(14).withMinute(0).withSecond(0);
-            }else {
-                beginTime = hotelConditionsVO.expectedCheckInTime.atTime(14, 0, 0);
-            }
-            //处理预计离开时间
-            LocalDateTime endTime = hotelConditionsVO.expectedLeaveTime.atTime(12, 0, 0);
-
-            hotelList = hotelList.filterByHasRoom(beginTime, endTime, hotelConditionsVO.roomTypeList);
+            hotelList = hotelList.filterByHasRoom(OrderTimeRule.getExpectedCheckInTime(hotelConditionsVO.expectedCheckInTime), OrderTimeRule.getExpectedLeaveTime(hotelConditionsVO.expectedLeaveTime), hotelConditionsVO.roomTypeList);
         }
 
         //筛选出自己预定过的
