@@ -10,6 +10,8 @@ import vo.hotel.HotelConditionsVO;
 import vo.hotel.HotelVO;
 import vo.hotel.RoomVO;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -35,7 +37,7 @@ public class HotelBlServiceImplTest {
         hotelVO.address = "nanjing";
         hotelVO.tradingArea = "xinjiekou";
 
-        tested.addHotel(hotelVO);
+        long ID = tested.addHotel(hotelVO);
     }
 
     @Test
@@ -65,8 +67,8 @@ public class HotelBlServiceImplTest {
     public void addRoom() throws Exception {
         RoomVO roomVO = new RoomVO();
 
-        roomVO.hotelID = 522000;
-        roomVO.roomType = RoomType.Couple;
+        roomVO.hotelID = 362355;
+        roomVO.roomType = RoomType.BusinessSuite;
         roomVO.total = 20;
         roomVO.price = 150;
 
@@ -82,7 +84,7 @@ public class HotelBlServiceImplTest {
     public void updateRoomInfo() throws Exception {
         RoomVO roomVO = new RoomVO();
 
-        roomVO.roomID = 220176; //提供唯一标识
+        roomVO.roomID = 236992; //提供唯一标识
         roomVO.total = 15;
         roomVO.price = 150;
 
@@ -90,13 +92,18 @@ public class HotelBlServiceImplTest {
     }
 
     @Test
+    public void viewFullRoomInfo() throws Exception {
+        RoomVO roomVO = tested.viewFullRoomInfo(236992, LocalDateTime.now(), LocalDateTime.now().plusDays(2));
+    }
+
+    @Test
     public void viewAllHotelRooms() throws Exception {
-        List<RoomVO> roomVOList = tested.viewAllHotelRooms(522000);
+        List<RoomVO> roomVOList = tested.viewAllHotelRooms(362355);
     }
 
     @Test
     public void offlineCheckIn() throws Exception {
-        tested.offlineCheckIn(522000, 1);
+        ResultMessage resultMessage = tested.offlineCheckIn(236992, 1);
     }
 
     @Test

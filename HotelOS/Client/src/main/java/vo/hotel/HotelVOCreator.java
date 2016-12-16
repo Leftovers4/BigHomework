@@ -3,6 +3,7 @@ package vo.hotel;
 import bl.hotelbl.impl.Room;
 import bl.hotelbl.impl.RoomList;
 import bl.orderbl.impl.OrderList;
+import bl.orderbl.impl.OrderTimeRule;
 import po.hotel.HotelPO;
 import po.hotel.RoomPO;
 import po.order.OrderPO;
@@ -60,15 +61,16 @@ public class HotelVOCreator {
         res.service = hotelPO.getService();
         res.image = RemoteHelper.getInstance().getHotelDAO().getImage(hotelPO.getHotelID());
 
-        res.hotelWorkerID = personnelPO.getPersonnelID();
-        res.hotelWorkerName = personnelPO.getName();
+        if (personnelPO != null){
+            res.hotelWorkerID = personnelPO.getPersonnelID();
+            res.hotelWorkerName = personnelPO.getName();
+        }
 
         res.rating = new OrderList(orderPOList).filterByHasReview().getHotelRating();
 
         return res;
     }
 
-    //todo 获取可用房间
     public HotelVO create(HotelPO hotelPO, List<OrderPO> orderPOListForRating, List<OrderPO> orderPOListForOrders, List<RoomPO> roomPOList) throws RemoteException {
         HotelVO res = new HotelVO();
 
@@ -92,14 +94,14 @@ public class HotelVOCreator {
 
         List<RoomVO> roomVOList = new ArrayList<>();
         for (int i = 0; i < roomPOList.size(); i++) {
-            roomVOList.add(create(roomPOList.get(i)));
+            roomVOList.add(createGeneralRoomVO(roomPOList.get(i)));
         }
         res.rooms = roomVOList;
 
         return res;
     }
 
-    public RoomVO create(RoomPO roomPO) throws RemoteException {
+    public RoomVO createGeneralRoomVO(RoomPO roomPO){
         RoomVO res = new RoomVO();
 
         res.roomID = roomPO.getroomID();
@@ -107,7 +109,19 @@ public class HotelVOCreator {
         res.total = roomPO.getTotal();
         res.available = roomPO.getAvailable();
         res.price = roomPO.getPrice();
-        res.bookable = new Room(roomPO).getBookableRoomAmount(LocalDateTime.now(), LocalDate.now().plusDays(1).atTime(12, 0, 0));
+
+        return res;
+    }
+
+    public RoomVO createFullRoomVO(RoomPO roomPO, LocalDateTime expectedCheckInTime, LocalDateTime expectedLeaveTime) throws RemoteException {
+        RoomVO res = new RoomVO();
+
+        res.roomID = roomPO.getroomID();
+        res.roomType = roomPO.getRoomType();
+        res.total = roomPO.getTotal();
+        res.available = roomPO.getAvailable();
+        res.price = roomPO.getPrice();
+        res.bookable = new Room(roomPO).getBookableRoomAmount(expectedCheckInTime, expectedLeaveTime);
 
         return res;
     }
@@ -116,7 +130,7 @@ public class HotelVOCreator {
         List<RoomVO> res = new ArrayList<>();
 
         for (int i = 0; i < roomPOList.size(); i++) {
-            res.add(create(roomPOList.get(i)));
+            res.add(createFullRoomVO(roomPOList.get(i), LocalDateTime.now(), OrderTimeRule.getOfflineLeaveTime(LocalDateTime.now())));
         }
 
         return res;

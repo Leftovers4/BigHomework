@@ -60,6 +60,15 @@
     -fx-background-color: deepskyblue;
 }
 
+.OpBtn{
+    -fx-border-color: #55acee;
+    -fx-background-color: #55acee;
+    -fx-text-fill:white;
+}
+.OpBtn:hover{
+    -fx-border-color: #49BCFF;
+    -fx-background-color: #49BCFF;
+}
 
 
 /*关闭按钮*/
@@ -212,11 +221,42 @@
     -fx-font-size: 16px;
     -fx-text-fill: #55acee;
 }
+
+/*
+生成订单---------------------------------------------------------------------------------------------------
+ */
+/*提示步骤标签*/
+.StepLabel{
+    -fx-font-size: 24px;
+}
+
+/*不限按钮*/
+.unlimitedBtn{
+    -fx-border-color: #78BBE6;
+    -fx-background-color: #78BBE6;
+    -fx-text-fill:white;
+    /*-fx-padding:px;*/
+    -fx-font-size: 15px;
+}
+.unlimitedBtn:hover{
+    -fx-border-color: #55acee;
+    -fx-background-color: #55acee;
+}
+
+#showMoreChoiceBtn{
+    -fx-border-color: #dddddd;
+    -fx-background-color: transparent;
+    -fx-text-fill:#757575;
+}
+
 /**
-基本信息界面-----------------------------------------------------------------------------------------------------------
+酒店工作人员******************************************************************************************************
  */
 
 
+/**
+基本信息界面-----------------------------------------------------------------------------------------------------------
+ */
 
 /*查看评价链接*/
 #reviewLink{

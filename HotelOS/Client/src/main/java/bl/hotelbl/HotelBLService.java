@@ -7,6 +7,8 @@ import vo.hotel.RoomVO;
 import vo.order.ReviewVO;
 
 import java.rmi.RemoteException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,26 +22,17 @@ public interface HotelBLService {
      * 添加新的酒店
      *
      * @param hotelVO 酒店信息
-     * @return SUCCESS或者FAIL，FAIL表示已存在相同的酒店
+     * @return 新添加的酒店的ID
      */
     long addHotel(HotelVO hotelVO) throws RemoteException;
 
     /**
      * 删除已有的酒店
      *
-     * @param hotelID 要被删除的酒店的id
-     * @return SUCCESS或者FAIL，FAIL表示不存在该酒店
+     * @param hotelID 要被删除的酒店的ID
+     * @return 数据库返回的result message
      */
     ResultMessage deleteHotel(long hotelID) throws RemoteException;
-
-    /**
-     * 根据酒店id查找酒店
-     *
-     * @param hotelID 酒店的id
-     * @return 酒店的详细信息
-     * @deprecated
-     */
-    HotelVO findHotelByID(long hotelID);
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
@@ -89,6 +82,8 @@ public interface HotelBLService {
      * @return SUCCESS或者FAIL，FAIL表示不存在该房间类型
      */
     ResultMessage updateRoomInfo(RoomVO roomVO) throws RemoteException;
+
+    RoomVO viewFullRoomInfo(long roomID, LocalDateTime expectedCheckInTime, LocalDateTime expectedLeaveTime) throws RemoteException;
 
     ResultMessage offlineCheckIn(long roomID, int amount) throws RemoteException;
 

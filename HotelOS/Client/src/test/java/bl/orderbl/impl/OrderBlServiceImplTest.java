@@ -150,8 +150,8 @@ public class OrderBlServiceImplTest {
         OrderVO orderVO = new OrderVO();
 
         orderVO.username = "Hikii";
-        orderVO.hotelID = 961529;
-        orderVO.roomType = RoomType.Couple;
+        orderVO.hotelID = 362355;
+        orderVO.roomType = RoomType.BusinessSuite;
         orderVO.roomAmount = 2;
         orderVO.personAmount = 4;
         orderVO.withChildren = false;
@@ -166,7 +166,7 @@ public class OrderBlServiceImplTest {
 
     @Test
     public void handleAppeal() throws Exception {
-        tested.handleAppeal("52200020161111000", 0.5);
+        ResultMessage resultMessage = tested.handleAppeal("96152920161216717", 0.5);
     }
 
     @Test

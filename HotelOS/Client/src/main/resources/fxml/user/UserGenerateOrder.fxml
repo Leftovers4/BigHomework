@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -10,61 +14,85 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<fx:root fx:id="generateOrderPane" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.UserGenerateOrderController">
+<fx:root fx:id="generateOrderPane" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.UserGenerateOrderController">
    <children>
-      <Label layoutX="325.0" layoutY="180.0" text="预计入住时间：" />
-      <Label layoutX="325.0" layoutY="235.0" text="预计离开时间：" />
-      <DatePicker fx:id="checkInDatePicker" layoutX="435.0" layoutY="175.0" prefHeight="30.0" prefWidth="150.0" />
-      <DatePicker fx:id="checkOutDatePicker" layoutX="435.0" layoutY="230.0" prefHeight="30.0" prefWidth="151.0" />
-      <ComboBox fx:id="checkInHour" layoutX="605.0" layoutY="175.0" prefHeight="30.0" prefWidth="80.0" />
-      <ComboBox fx:id="checkInMin" layoutX="700.0" layoutY="175.0" prefHeight="30.0" prefWidth="80.0" />
-      <ComboBox fx:id="checkOutHour" layoutX="605.0" layoutY="230.0" prefHeight="30.0" prefWidth="80.0" />
-      <ComboBox fx:id="checkOutMin" layoutX="700.0" layoutY="230.0" prefHeight="30.0" prefWidth="80.0" />
-      <Label layoutX="328.0" layoutY="290.0" text="房  间  类  型：" />
-      <ComboBox fx:id="roomType" layoutX="435.0" layoutY="285.0" prefHeight="30.0" prefWidth="125.0" />
-      <ComboBox fx:id="roomNum" layoutX="435.0" layoutY="340.0" prefHeight="30.0" prefWidth="125.0" />
-      <Label layoutX="328.0" layoutY="345.0" text="房  间  数  量：" />
-      <Label layoutX="556.0" layoutY="400.0" text="有  无  儿  童：" />
-      <RadioButton fx:id="childHave" layoutX="663.0" layoutY="400.0" mnemonicParsing="false" text="有">
-         <toggleGroup>
-            <ToggleGroup fx:id="withchild" />
-         </toggleGroup></RadioButton>
-      <RadioButton fx:id="childNone" layoutX="729.0" layoutY="400.0" mnemonicParsing="false" text="无" toggleGroup="$withchild" />
-      <ImageView fitHeight="168.0" fitWidth="161.0" layoutX="69.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/common/initialPhoto.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="325.0" layoutY="400.0" text="预计入住人数：" />
-      <ComboBox fx:id="peopleNum" layoutX="435.0" layoutY="395.0" prefHeight="30.0" prefWidth="80.0" />
-      <Label fx:id="writeOrder" layoutX="220.0" layoutY="110.0" text="填写订单信息" />
-      <ImageView fitHeight="40.0" fitWidth="150.0" layoutX="330.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/user/arrow.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="confirmPromotion" layoutX="390.0" layoutY="110.0" text="确认优惠信息" />
-      <ImageView fitHeight="40.0" fitWidth="150.0" layoutX="500.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/user/arrow.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="submit" layoutX="560.0" layoutY="110.0" text="提交订单" />
-      <Button fx:id="nextBtn" layoutX="450.0" layoutY="579.0" mnemonicParsing="false" onAction="#nextBtnEvent" prefHeight="30.0" prefWidth="140.0" styleClass="actionBtn" text="下一步" />
-      <Label layoutX="328.0" layoutY="455.0" text="最  优  优  惠：" />
-      <Label fx:id="promotionLabel" layoutX="435.0" layoutY="455.0" />
-      <Label fx:id="hotelnameLabel" layoutX="69.0" layoutY="358.0" text="酒店名" />
-      <Label fx:id="hoteladdressLabel" layoutX="69.0" layoutY="415.0" text="酒店地址" />
-      <Label fx:id="hotelserviceLabel" layoutX="69.0" layoutY="469.0" text="酒店设施" />
-      <Label layoutX="325.0" layoutY="510.0" text="价  格  总  计：" />
-      <Label fx:id="priceLabel" layoutX="435.0" layoutY="510.0" />
-      <Button fx:id="confirmBtn" layoutX="532.0" layoutY="579.0" mnemonicParsing="false" onAction="#submitBtnEvent" styleClass="actionBtn" text="确认并提交订单" visible="false" />
-      <Button fx:id="backToEdit" layoutX="448.0" layoutY="579.0" mnemonicParsing="false" onAction="#backToEdit" styleClass="actionBtn" text="返回" visible="false" />
-      <Label fx:id="checkInTimeLabel" layoutX="440.0" layoutY="180.0" text="时间" visible="false" />
-      <Label fx:id="checkOutTime" layoutX="440.0" layoutY="235.0" text="时间" visible="false" />
-      <Label fx:id="roomTypeLabel" layoutX="440.0" layoutY="290.0" text="类型" visible="false" />
-      <Label fx:id="roomNumLabel" layoutX="440.0" layoutY="345.0" text="数量" visible="false" />
-      <Label fx:id="peopleNumLabel" layoutX="440.0" layoutY="400.0" text="人数" visible="false" />
-      <Label fx:id="child" layoutX="666.0" layoutY="400.0" text="有无" visible="false" />
+      <Pane layoutX="289.0" layoutY="175.0" prefHeight="117.0" prefWidth="531.0" styleClass="BackgroundPanel">
+         <children>
+            <ComboBox fx:id="checkOutMin" layoutX="411.0" layoutY="65.0" prefHeight="30.0" prefWidth="80.0" />
+            <ComboBox fx:id="checkInMin" layoutX="411.0" layoutY="10.0" prefHeight="30.0" prefWidth="80.0" />
+            <Label layoutX="15.0" layoutY="15.0" text="预计入住时间：" />
+            <ComboBox fx:id="checkInHour" layoutX="316.0" layoutY="10.0" prefHeight="30.0" prefWidth="80.0" />
+            <DatePicker fx:id="checkOutDatePicker" layoutX="146.0" layoutY="65.0" prefHeight="30.0" prefWidth="151.0" />
+            <Label layoutX="15.0" layoutY="70.0" text="预计离开时间：" />
+            <DatePicker fx:id="checkInDatePicker" layoutX="146.0" layoutY="10.0" prefHeight="30.0" prefWidth="150.0" />
+            <ComboBox fx:id="checkOutHour" layoutX="316.0" layoutY="65.0" prefHeight="30.0" prefWidth="80.0" />
+            <Label fx:id="checkInTimeLabel" layoutX="146.0" layoutY="15.0" text="时间" visible="false" />
+            <Label fx:id="checkOutTime" layoutX="146.0" layoutY="70.0" text="时间" visible="false" />
+         </children>
+      </Pane>
+      <Pane layoutX="289.0" layoutY="317.0" prefHeight="161.0" prefWidth="531.0" styleClass="BackgroundPanel">
+         <children>
+            <Label fx:id="roomTypeLabel" layoutX="146.0" layoutY="15.0" text="类型" visible="false" />
+            <Label fx:id="roomNumLabel" layoutX="146.0" layoutY="63.0" text="数量" visible="false" />
+            <Label fx:id="peopleNumLabel" layoutX="146.0" layoutY="112.0" text="人数" visible="false" />
+            <Label fx:id="child" layoutX="360.0" layoutY="112.0" text="有无" visible="false" />
+            <Label layoutX="15.0" layoutY="15.0" text="房间类型：" />
+            <ComboBox fx:id="roomNum" layoutX="146.0" layoutY="60.0" prefHeight="30.0" prefWidth="80.0" />
+            <RadioButton fx:id="childHave" layoutX="374.0" layoutY="115.0" mnemonicParsing="false" text="有">
+               <toggleGroup>
+                  <ToggleGroup fx:id="withchild" />
+               </toggleGroup>
+            </RadioButton>
+            <ComboBox fx:id="peopleNum" layoutX="146.0" layoutY="112.0" prefHeight="30.0" prefWidth="80.0" />
+            <Label layoutX="267.0" layoutY="112.0" text="有无儿童：" />
+            <Label layoutX="15.0" layoutY="112.0" text="预计入住人数：" />
+            <RadioButton fx:id="childNone" layoutX="440.0" layoutY="115.0" mnemonicParsing="false" text="无" toggleGroup="$withchild" />
+            <ComboBox fx:id="roomType" layoutX="146.0" layoutY="10.0" prefHeight="30.0" prefWidth="125.0" />
+            <Label layoutX="15.0" layoutY="63.0" text="房间数量：" />
+         </children>
+      </Pane>
+      <Pane layoutX="69.0" layoutY="178.0" prefHeight="435.0" prefWidth="161.0">
+         <children>
+            <Label fx:id="hoteladdressLabel" layoutY="237.0" text="酒店地址" />
+            <ImageView fitHeight="168.0" fitWidth="161.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/common/initialPhoto.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="hotelnameLabel" layoutY="180.0" text="酒店名" />
+            <Label fx:id="hotelserviceLabel" alignment="TOP_LEFT" layoutY="291.0" prefHeight="145.0" prefWidth="161.0" text="酒店设施" />
+            <Separator layoutY="213.0" prefHeight="2.0" prefWidth="161.0" />
+            <Separator layoutY="270.0" prefHeight="2.0" prefWidth="161.0" />
+         </children>
+      </Pane>
+      <HBox alignment="CENTER_LEFT" layoutX="193.0" layoutY="92.0">
+         <children>
+            <Label fx:id="writeOrder" layoutX="220.0" layoutY="110.0" styleClass="StepLabel" text="填写订单信息" />
+            <ImageView fitHeight="40.0" fitWidth="150.0" layoutX="330.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/user/arrow.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="confirmPromotion" layoutX="390.0" layoutY="110.0" styleClass="StepLabel" text="确认优惠信息" />
+            <ImageView fitHeight="40.0" fitWidth="150.0" layoutX="500.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/user/arrow.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="submit" layoutX="560.0" layoutY="110.0" styleClass="StepLabel" text="提交订单" />
+         </children>
+      </HBox>
+      <Pane layoutX="289.0" layoutY="504.0" prefHeight="108.0" prefWidth="271.0" styleClass="BackgroundPanel">
+         <children>
+            <Label layoutX="15.0" layoutY="63.0" text="价格总计：" />
+            <Label id="orderActPriceLabel" fx:id="priceLabel" layoutX="161.0" layoutY="60.0" text="1200" />
+            <Label layoutX="15.0" layoutY="15.0" text="最优优惠：" />
+            <Label id="orderProLabel" fx:id="promotionLabel" layoutX="146.0" layoutY="10.0" text="优惠" />
+            <Label layoutX="146.0" layoutY="65.0" text="¥" />
+         </children>
+      </Pane>
+      <Button fx:id="nextBtn" layoutX="680.0" layoutY="574.0" mnemonicParsing="false" onAction="#nextBtnEvent" prefHeight="30.0" prefWidth="140.0" styleClass="OpBtn" text="下一步" />
+      <Button fx:id="confirmBtn" layoutX="668.0" layoutY="574.0" mnemonicParsing="false" onAction="#submitBtnEvent" styleClass="OpBtn" text="确认并提交订单" />
+      <Button fx:id="backToEdit" layoutX="595.0" layoutY="574.0" mnemonicParsing="false" onAction="#backToEdit" styleClass="OpBtn" text="返回" />
    </children>
 </fx:root>

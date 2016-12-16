@@ -2,8 +2,6 @@ package presentation.userui.userscene;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import presentation.userui.usercontroller.CancelOrderController;
 import presentation.userui.usercontroller.CheckMyReviewController;
 
 import java.io.IOException;

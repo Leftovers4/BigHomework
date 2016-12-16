@@ -11,6 +11,8 @@ import vo.order.ReviewVO;
 
 import java.net.HttpCookie;
 import java.rmi.RemoteException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,11 +47,6 @@ public class HotelBLService_Stub implements HotelBLService {
     @Override
     public List<RoomVO> viewAllHotelRooms(long hotelID) throws RemoteException {
         return null;
-    }
-
-    @Override
-    public HotelVO findHotelByID(long hotelID) {
-        return logicVOHelper.create(1,"如家", "工作人员", 4, 4.3, "南京", "新街口地区", "好", "Wifi");
     }
 
     public List<HotelVO> findHotelsByConditions(HotelVO hotelVO) {
@@ -101,6 +98,11 @@ public class HotelBLService_Stub implements HotelBLService {
     @Override
     public ResultMessage updateRoomInfo(RoomVO roomVO) {
         return ResultMessage.Success;
+    }
+
+    @Override
+    public RoomVO viewFullRoomInfo(long roomID, LocalDateTime expectedCheckInDate, LocalDateTime expectedLeaveDate) throws RemoteException {
+        return null;
     }
 
     @Override
