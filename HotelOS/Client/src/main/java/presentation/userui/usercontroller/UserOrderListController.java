@@ -1,5 +1,6 @@
 package presentation.userui.usercontroller;
 
+import bl.orderbl.OrderBLService;
 import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,7 +40,7 @@ public class UserOrderListController {
 
     private UserOrderListButtonCell userOrderListButtonCell;
     private OrderType choseOrderType = null;
-    private OrderBlServiceImpl orderBlService;
+    private OrderBLService orderBlService;
 
     public void launch(Stage primaryStage, Pane mainPane, String userID) {
         this.stage = primaryStage;

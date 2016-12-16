@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.OrderDetailUserPane;
+import presentation.util.other.ToolTipShow;
 import vo.order.OrderVO;
 import vo.user.CreditRecordVO;
 
@@ -45,6 +46,7 @@ public class UserHotelOrderListButtonCell extends TableCell<OrderVO, Boolean> {
             setText(null);
         } else {
             btnBox.getChildren().clear();
+            checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
             btnBox.getChildren().add(checkDetailBtn);
             setGraphic(btnBox);
             setText(null);

@@ -11,6 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import presentation.hotelworkerui.hotelworkerscene.UpdateOrderInfoPane;
+import presentation.util.other.ToolTipShow;
 import util.OrderType;
 import vo.order.OrderVO;
 
@@ -43,6 +44,7 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
             detailButton.setGraphic(new ImageView(detailImage));
             detailButton.getStyleClass().add("TableButtonCell");
 
+            detailButton.setTooltip(ToolTipShow.setTool("查看详情"));
             detailButton.setOnAction(event -> {
                 int selectedIndex = getTableRow().getIndex();
                 OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
@@ -68,6 +70,7 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
                     checkOutButton.setGraphic(new ImageView(checkOutImage));
                     checkOutButton.getStyleClass().add("TableButtonCell");
 
+                    checkOutButton.setTooltip(ToolTipShow.setTool("客户退房"));
                     checkOutButton.setOnAction(event -> {
                         int selectedIndex = getTableRow().getIndex();
                         OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
@@ -86,6 +89,7 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
                 }else {
                     Button checkInButton = new Button();
 
+                    checkInButton.setTooltip(ToolTipShow.setTool("客户入住"));
                     Image checkInImage = new Image("/img/hotelworker/checkin.png");
                     checkInButton.setGraphic(new ImageView(checkInImage));
                     checkInButton.getStyleClass().add("TableButtonCell");

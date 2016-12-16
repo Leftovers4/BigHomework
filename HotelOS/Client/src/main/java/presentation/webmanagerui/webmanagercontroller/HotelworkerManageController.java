@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
+import presentation.util.other.ToolTipShow;
 import presentation.webmanagerui.webmanagerscene.CheckHotelInfoPane;
 import presentation.webmanagerui.webmanagerscene.HotelworkerManagePane;
 import util.PersonnelType;
@@ -179,8 +180,11 @@ public class HotelworkerManageController {
                 setText(null);
             } else {
                 btnBox.getChildren().clear();
+                editBtn.setTooltip(ToolTipShow.setTool("编辑"));
                 btnBox.getChildren().add(editBtn);
+                deleteBtn.setTooltip(ToolTipShow.setTool("删除"));
                 btnBox.getChildren().add(deleteBtn);
+                checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
                 btnBox.getChildren().add(checkDetailBtn);
                 setGraphic(btnBox);
                 setText(null);

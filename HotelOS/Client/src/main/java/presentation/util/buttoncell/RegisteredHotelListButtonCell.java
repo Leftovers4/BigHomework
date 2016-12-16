@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.OrderDetailUserPane;
 import presentation.userui.userscene.UserHotelInfoPane;
+import presentation.util.other.ToolTipShow;
 import vo.hotel.HotelVO;
 
 /**
@@ -45,6 +46,7 @@ public class RegisteredHotelListButtonCell extends TableCell<HotelVO, Boolean> {
             setGraphic(null);
             setText(null);
         } else {
+            checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
             btnBox.getChildren().add(checkDetailBtn);
             setGraphic(btnBox);
             setText(null);

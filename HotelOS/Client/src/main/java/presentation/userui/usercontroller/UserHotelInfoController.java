@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.userui.userscene.UserGenerateOrderPane;
 import presentation.util.buttoncell.UserHotelOrderListButtonCell;
+import presentation.util.other.ToolTipShow;
 import vo.hotel.HotelVO;
 import vo.hotel.RoomVO;
 import vo.order.OrderVO;
@@ -177,6 +178,7 @@ public class UserHotelInfoController {
             bookBtn.setGraphic(bookimgview);
             bookBtn.getStyleClass().add("tableCellBtn");
 
+            bookBtn.setTooltip(ToolTipShow.setTool("立即预订"));
             bookBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
                 RoomVO roomVO = (RoomVO) hotelRoomList.getItems().get(selectedIndex);

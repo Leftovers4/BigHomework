@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import presentation.util.other.ToolTipShow;
 import presentation.webmarketerui.webmarketerscene.AppealOrderPane;
 import presentation.webmarketerui.webmarketerscene.OrderDetailPane;
 import util.OrderType;
@@ -43,6 +44,7 @@ public class WebMarketListButtonCell extends TableCell<OrderVO, Boolean> {
             detailButton.setGraphic(new ImageView(detailImage));
             detailButton.getStyleClass().add("TableButtonCell");
 
+            detailButton.setTooltip(ToolTipShow.setTool("查看详情"));
             detailButton.setOnAction(event -> {
                 int selectedIndex = getTableRow().getIndex();
                 OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
@@ -63,6 +65,7 @@ public class WebMarketListButtonCell extends TableCell<OrderVO, Boolean> {
                 appealButton.setId("appealButton");
                 appealButton.getStyleClass().add("TableButtonCell");
 
+                appealButton.setTooltip(ToolTipShow.setTool("申诉"));
                 appealButton.setOnAction(event -> {
                     int selectedIndex = getTableRow().getIndex();
                     OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);

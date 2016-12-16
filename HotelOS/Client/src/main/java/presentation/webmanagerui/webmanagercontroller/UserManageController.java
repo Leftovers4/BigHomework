@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
+import presentation.util.other.ToolTipShow;
 import presentation.webmanagerui.webmanagerscene.CheckUserInfoPane;
 import presentation.webmanagerui.webmanagerscene.UserManagePane;
 import util.ResultMessage;
@@ -156,7 +157,9 @@ public class UserManageController {
                 setText(null);
             } else {
                 btnBox.getChildren().clear();
+                editBtn.setTooltip(ToolTipShow.setTool("编辑"));
                 btnBox.getChildren().add(editBtn);
+                checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
                 btnBox.getChildren().add(checkDetailBtn);
                 setGraphic(btnBox);
                 setText(null);

@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.UserGenerateOrderPane;
 import presentation.userui.userscene.UserHotelInfoPane;
+import presentation.util.other.ToolTipShow;
 import vo.hotel.HotelVO;
 
 /**
@@ -58,7 +59,9 @@ public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
             setText(null);
         } else {
             btnBox.getChildren().clear();
+            checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
             btnBox.getChildren().add(checkDetailBtn);
+            generateOrderBtn.setTooltip(ToolTipShow.setTool("立即预订"));
             btnBox.getChildren().add(generateOrderBtn);
             setGraphic(btnBox);
             setText(null);

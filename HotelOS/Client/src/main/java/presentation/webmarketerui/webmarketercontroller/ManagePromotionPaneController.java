@@ -496,6 +496,7 @@ public class ManagePromotionPaneController {
             deleteButton.setGraphic(new ImageView(deleteImage));
             deleteButton.getStyleClass().add("TableButtonCell");
 
+            modifyButton.setTooltip(ToolTipShow.setTool("修改"));
             modifyButton.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
                 if(proType == PromotionType.SpecialTimePromotion){
@@ -514,6 +515,7 @@ public class ManagePromotionPaneController {
                 }
             });
 
+            deleteButton.setTooltip(ToolTipShow.setTool("删除"));
             deleteButton.setOnAction(event -> {
                 if (alertController.showConfirmDeleteAlert("您确定要删除此优惠吗？", "确认删除")) {
                     selectedIndex = getTableRow().getIndex();
