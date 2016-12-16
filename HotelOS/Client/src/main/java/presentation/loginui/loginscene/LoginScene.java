@@ -13,7 +13,7 @@ public class LoginScene extends Scene {
 
     public LoginScene(Parent parent,Stage primaryStage) {
         super(parent);
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/login/loginScene.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/login/loginScene.fxml"));
         Parent root= null;
         try {
             root = fxmlLoader.load();
