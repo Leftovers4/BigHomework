@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import util.DateTimeFormat;
 import vo.order.OrderVO;
 import vo.order.ReviewVO;
 
@@ -26,6 +27,7 @@ public class CheckMyReviewController {
     @FXML private ImageView star5;
 
     @FXML private Label reviewContent;
+    @FXML private Label reviewTimeLabel;
 
     private OrderBlServiceImpl orderBlService;
 
@@ -54,13 +56,16 @@ public class CheckMyReviewController {
                 star.get(i).setImage(new Image("/img/user/yellowStar.png"));
             }
 
-            if (reviewVO.review.equals("")) {
-                reviewContent.setText("无");
-            } else {
-                reviewContent.setText(reviewVO.review);
-            }
+            reviewContent.setText(reviewVO.review.equals("") ? "无" : reviewVO.review);
+            reviewTimeLabel.setText(reviewVO.reviewTime.format(DateTimeFormat.dateHourFormat));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+    }
+
+    //TODO
+    @FXML
+    private void back(){
+
     }
 }
