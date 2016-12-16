@@ -15,8 +15,8 @@
     -fx-font-size: 18px;
     -fx-cursor: hand;
 
-    -fx-background-color: transparent;
-    -fx-text-fill: white;
+    /*-fx-background-color: transparent;*/
+    /*-fx-text-fill: white;*/
 }
 
 
@@ -378,6 +378,7 @@
 .roomBtn{
     -fx-background-color: white;
     -fx-border-color: #dddddd;
+    -fx-text-fill: #757575;
     -fx-padding: 0;
 }
 .roomBtn:hover {
@@ -445,6 +446,7 @@
 .PromotionAddBtn{
     -fx-background-color: white;
     -fx-border-color: #dddddd;
+    -fx-text-fill: #757575;
     -fx-padding: 0;
 }
 /*滑块*/
@@ -465,6 +467,7 @@
 /*线上入住、退房按钮*/
 .checkOnlineBtn{
     -fx-background-color: transparent;
+    -fx-text-fill: #757575;
 }
 .checkOnlineBtn:hover{
     -fx-graphic: url("../../img/hotelworker/checkonline_hover.png");
@@ -472,6 +475,11 @@
 /*线下入住、退房按钮*/
 .checkOfflineBtn{
     -fx-background-color: transparent;
+    -fx-text-fill: #757575;
+}
+/*TODO*/
+.checkOfflineBtn:hover{
+    -fx-graphic: url("../../img/hotelworker/checkonline_hover.png");
 }
 
 

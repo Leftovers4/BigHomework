@@ -74,8 +74,8 @@
             </GridPane>
          </children>
       </Pane>
-            <Button id="cancelEditBtn" fx:id="cancelEditBtn" layoutX="695.0" layoutY="630.0" mnemonicParsing="false" onAction="#cancelEdit" prefWidth="70.0" text="取消" visible="false" />
-      <Button id="saveEditBtn" fx:id="saveEditBtn" layoutX="600.0" layoutY="630.0" mnemonicParsing="false" onAction="#saveEdit" prefHeight="36.0" prefWidth="70.0" text="保存" visible="false" />
+            <Button fx:id="cancelEditBtn" layoutX="695.0" layoutY="630.0" mnemonicParsing="false" onAction="#cancelEdit" prefWidth="70.0" styleClass="cancelEditBtn" text="取消" visible="false" />
+      <Button fx:id="saveEditBtn" layoutX="600.0" layoutY="630.0" mnemonicParsing="false" onAction="#saveEdit" prefHeight="36.0" prefWidth="70.0" styleClass="saveEditBtn" text="保存" visible="false" />
       <Button id="editInfoBtn" fx:id="editBtn" layoutX="695.0" layoutY="630.0" mnemonicParsing="false" onAction="#editHotelInfo" prefWidth="70.0" text="编辑" />
       <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="119.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
          <image>

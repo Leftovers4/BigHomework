@@ -47,7 +47,7 @@ public class MyComboBox {
     public static void initRoomBox(ComboBox comboBox){
         Iterator<String> roomList = EnumFactory.getAllRoomTypes();
         while (roomList.hasNext()) comboBox.getItems().add(roomList.next());
-        comboBox.getItems().remove(comboBox.getItems().size()-1);
+        comboBox.getItems().remove(0);
         comboBox.setValue(comboBox.getItems().get(0));
     }
 }

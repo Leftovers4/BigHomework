@@ -235,7 +235,6 @@ public class InfoPaneController {
             UserVO userVO = new UserVO();
 
             userVO.username = userID;
-            userVO.newUsername = userID;
             userVO.name = userNameField.getText();
             userVO.gender = sexMan.isSelected();
             userVO.phone = phoneField.getText();
