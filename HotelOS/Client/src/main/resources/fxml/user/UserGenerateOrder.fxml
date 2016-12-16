@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<fx:root fx:id="generateOrderPane" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.UserGenerateOrderController">
+<fx:root fx:id="generateOrderPane" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.UserGenerateOrderController">
    <children>
       <Pane layoutX="289.0" layoutY="175.0" prefHeight="117.0" prefWidth="531.0" styleClass="BackgroundPanel">
          <children>
@@ -37,7 +35,7 @@
             <Label fx:id="peopleNumLabel" layoutX="146.0" layoutY="112.0" text="人数" visible="false" />
             <Label fx:id="child" layoutX="360.0" layoutY="112.0" text="有无" visible="false" />
             <Label layoutX="15.0" layoutY="15.0" text="房间类型：" />
-            <ComboBox fx:id="roomNum" layoutX="146.0" layoutY="60.0" prefHeight="30.0" prefWidth="80.0" />
+            <ComboBox fx:id="roomNum" layoutX="146.0" layoutY="60.0" onMouseClicked="#actionInitRoomNum" prefHeight="30.0" prefWidth="80.0" />
             <RadioButton fx:id="childHave" layoutX="374.0" layoutY="115.0" mnemonicParsing="false" text="有">
                <toggleGroup>
                   <ToggleGroup fx:id="withchild" />
@@ -85,14 +83,14 @@
       <Pane layoutX="289.0" layoutY="504.0" prefHeight="108.0" prefWidth="271.0" styleClass="BackgroundPanel">
          <children>
             <Label layoutX="15.0" layoutY="63.0" text="价格总计：" />
-            <Label id="orderActPriceLabel" fx:id="priceLabel" layoutX="161.0" layoutY="60.0" text="1200" />
+            <Label id="orderActPriceLabel" fx:id="priceLabel" layoutX="161.0" layoutY="60.0" text="0.0" />
             <Label layoutX="15.0" layoutY="15.0" text="最优优惠：" />
             <Label id="orderProLabel" fx:id="promotionLabel" layoutX="146.0" layoutY="10.0" text="优惠" />
             <Label layoutX="146.0" layoutY="65.0" text="¥" />
          </children>
       </Pane>
       <Button fx:id="nextBtn" layoutX="680.0" layoutY="574.0" mnemonicParsing="false" onAction="#nextBtnEvent" prefHeight="30.0" prefWidth="140.0" styleClass="OpBtn" text="下一步" />
-      <Button fx:id="confirmBtn" layoutX="668.0" layoutY="574.0" mnemonicParsing="false" onAction="#submitBtnEvent" styleClass="OpBtn" text="确认并提交订单" />
-      <Button fx:id="backToEdit" layoutX="595.0" layoutY="574.0" mnemonicParsing="false" onAction="#backToEdit" styleClass="OpBtn" text="返回" />
+      <Button fx:id="confirmBtn" layoutX="668.0" layoutY="574.0" mnemonicParsing="false" onAction="#submitBtnEvent" styleClass="OpBtn" text="确认并提交订单" visible="false" />
+      <Button fx:id="backToEdit" layoutX="595.0" layoutY="574.0" mnemonicParsing="false" onAction="#backToEdit" styleClass="OpBtn" text="返回" visible="false" />
    </children>
 </fx:root>

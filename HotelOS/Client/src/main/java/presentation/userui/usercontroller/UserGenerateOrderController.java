@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.userui.userscene.OrderDetailUserPane;
+import presentation.userui.userscene.UserOrderListPane;
 import presentation.util.alert.AlertController;
 import presentation.util.other.CancelDateBefore;
 import presentation.util.alert.InputWrongAlert;
@@ -81,6 +83,8 @@ public class UserGenerateOrderController {
         this.hotelID = hotelID;
         this.choseRoom = roomType;
 
+        writeOrder.setStyle("-fx-text-fill: deepskyblue");
+
         alertController = new AlertController();
 
         try {
@@ -127,20 +131,6 @@ public class UserGenerateOrderController {
             }
 
 
-            roomType.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
-                @Override
-                public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-                    for (int i = 0; i<roomVO.size(); i++) {
-                        if (EnumFactory.getString(roomVO.get(i).roomType) == newValue) {
-                            for (int j = 0; j<roomVO.get(i).bookable; j++) {
-                                roomNum.getItems().add(j+1);
-                            }
-                        }
-                    }
-                }
-            });
-
-
             HotelVO hotelVO = hotelBlService.viewDetailedHotelInfo(hotelID, userID);
 
             hotelnameLabel.setText(hotelVO.hotelName);
@@ -160,6 +150,57 @@ public class UserGenerateOrderController {
             checkOutDatePicker.setDayCellFactory(new CancelDateBefore(checkOutDatePicker, checkInDatePicker.getValue()));
         });
 
+    }
+
+
+    @FXML
+    private void actionInitRoomNum() {
+        try {
+            List<RoomVO> roomVOList = hotelBlService.viewAllHotelRooms(hotelID);
+
+            if (roomType.getValue() != null) {
+
+
+                if (judgedateblank()) {
+
+                    LocalDateTime checkin = LocalDateTime.of(checkInDatePicker.getValue(),
+                            LocalTime.of(Integer.parseInt(checkInHour.getValue().toString()),
+                                    Integer.parseInt(checkInMin.getValue().toString())));
+                    LocalDateTime checkout = LocalDateTime.of(checkOutDatePicker.getValue(),
+                            LocalTime.of(Integer.parseInt(checkOutHour.getValue().toString()),
+                                    Integer.parseInt(checkOutMin.getValue().toString())));
+
+
+                    for (int i = 0; i<roomVOList.size(); i++) {
+                        if (EnumFactory.getString(roomVOList.get(i).roomType) == roomType.getValue()) {
+                            RoomVO roomVO = hotelBlService.viewFullRoomInfo(roomVOList.get(i).roomID, checkin, checkout);
+
+                            for (int j = 0; j<roomVO.bookable; j++) {
+                                roomNum.getItems().add(j);
+                            }
+                        }
+                    }
+                } else {
+                    alertController.showInputWrongAlert("请先选择入住时间", "错误提示");
+                }
+            } else {
+                alertController.showInputWrongAlert("请先选择房间类型", "错误提示");
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean judgedateblank() {
+        boolean checkindate = checkInDatePicker.getValue() != null;
+        boolean checkinhour = checkInHour.getValue() != null;
+        boolean checkinmin = checkInMin.getValue() != null;
+
+        boolean checkoutdate = checkOutDatePicker.getValue() != null;
+        boolean checkouthour = checkOutHour.getValue() != null;
+        boolean checkoutmin = checkOutMin.getValue()!= null;
+
+        return checkindate && checkinhour && checkinmin && checkoutdate && checkouthour && checkoutmin;
     }
 
 
@@ -203,7 +244,7 @@ public class UserGenerateOrderController {
             orderVO.orderTimeVO.expectedLeaveTime = LocalDateTime.of(checkOutDatePicker.getValue(),
                     LocalTime.of(Integer.parseInt(checkOutHour.getValue().toString()),
                             Integer.parseInt(checkOutMin.getValue().toString())));
-            orderVO.roomType = (RoomType) roomType.getValue();
+            orderVO.roomType = (RoomType) EnumFactory.getEnum(roomType.getValue().toString());
             orderVO.roomAmount = (int) (roomNum.getValue());
             orderVO.personAmount = (int) (peopleNum.getValue());
             orderVO.withChildren = childHave.isSelected();
@@ -215,7 +256,7 @@ public class UserGenerateOrderController {
                 if (orderVO.orderPromoInfoVO.promotionType == null) {
                     promotionLabel.setText("无");
                 } else {
-                    promotionLabel.setText(orderVO.orderPromoInfoVO.promotionType.toString());
+                    promotionLabel.setText(EnumFactory.getString(orderVO.orderPromoInfoVO.promotionType));
                 }
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -327,7 +368,7 @@ public class UserGenerateOrderController {
         orderVO.orderTimeVO.expectedLeaveTime = LocalDateTime.of(checkOutDatePicker.getValue(),
                 LocalTime.of(Integer.parseInt(checkOutHour.getValue().toString()),
                         Integer.parseInt(checkOutMin.getValue().toString())));
-        orderVO.roomType = (RoomType) roomType.getValue();
+        orderVO.roomType = (RoomType) EnumFactory.getEnum(roomType.getValue().toString());
         orderVO.roomAmount = (int) (roomNum.getValue());
         orderVO.personAmount = (int) (peopleNum.getValue());
         orderVO.withChildren = childHave.isSelected();
@@ -338,6 +379,8 @@ public class UserGenerateOrderController {
             if (resultMessage == ResultMessage.Success) {
                 System.out.println("new order");
                 alertController.showUpdateSuccessAlert("订单已生成！", "成功提示");
+                mainPane.getChildren().remove(0);
+                mainPane.getChildren().add(new UserOrderListPane(stage, mainPane, userID));
             } else {
                 alertController.showInputWrongAlert("订单生成失败", "错误提示");
                 System.out.println(resultMessage);

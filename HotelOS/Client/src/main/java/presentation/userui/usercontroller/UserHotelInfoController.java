@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
 import presentation.userui.userscene.UserGenerateOrderPane;
 import presentation.util.buttoncell.UserHotelOrderListButtonCell;
 import presentation.util.other.ToolTipShow;
@@ -209,4 +210,9 @@ public class UserHotelInfoController {
     }
 
 
+
+    @FXML
+    private void checkHotelReview() {
+//        mainPane.getChildren().add(new ReviewPane(mainPane, hotelRatingLabel.getText()));
+    }
 }

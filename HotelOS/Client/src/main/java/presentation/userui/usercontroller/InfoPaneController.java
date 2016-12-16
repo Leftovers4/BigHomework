@@ -1,5 +1,6 @@
 package presentation.userui.usercontroller;
 
+import bl.userbl.UserBLService;
 import bl.userbl.impl.UserBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -17,6 +18,7 @@ import presentation.userui.userscene.RegisterCommonVIPPane;
 import presentation.userui.userscene.RegisterCompanyVIPPane;
 import presentation.util.alert.AlertController;
 import presentation.util.alert.InputWrongAlert;
+import presentation.util.other.ChangePhoto;
 import presentation.util.other.JudgeInput;
 import util.MemberType;
 import util.ResultMessage;
@@ -68,8 +70,10 @@ public class InfoPaneController {
     @FXML private Button registerCompanyvipBtn;
     @FXML private Button editInfoBtn;
 
-    private UserBlServiceImpl userBlService;
+    private UserBLService userBlService;
     private ArrayList<Button> leftBarBtnArr;
+
+    private String newpath = "C:/Leftovers/client/userImage/";
 
     private ImageView topbarphoto;
 
@@ -84,6 +88,7 @@ public class InfoPaneController {
 
         alertController = new AlertController();
 
+//        initialPhoto();
         initialService();
         initialData();
     }
@@ -310,39 +315,76 @@ public class InfoPaneController {
 
         if (selectedDirectory!=null) {
             try {
-                String newpath = "C:/Leftovers/client/userImage/";
+
                 String fileName = newpath + selectedDirectory.getName().toString();
-                File testFile = new File(fileName);
-                if (!testFile.exists()) {
-                    File file = new File(newpath);
-                    file.mkdirs();
-                    FileInputStream input = null;
-                    FileOutputStream output = null;
 
-                    input = new FileInputStream(selectedDirectory);
-                    output = new FileOutputStream(fileName);
+                File file = new File(fileName);
 
-                    byte[] b = new byte[1024 * 5];
-                    int len;
-                    while ((len = input.read(b)) != -1) {
-                        output.write(b, 0, len);
-                    }
+                byte[] imgbyte = ChangePhoto.toBytesFromFile(file);
 
-                    output.flush();
-                    output.close();
-                    input.close();
-                }
-//                Image image = new Image("file:///"+fileName);
-//                userPhoto.setImage(image);
-                updatePhoto(userPhoto, fileName);
-                updatePhoto(topbarphoto, fileName);
-//                topBarPhoto.setImage(image);
+//                ChangePhoto.setImage(newpath, userID, imgbyte);
+
+
+
+//                File testFile = new File(fileName);
+//                if (!testFile.exists()) {
+//                    File file = new File(newpath);
+//                    file.mkdirs();
+//                    FileInputStream input = null;
+//                    FileOutputStream output = null;
+//
+//                    input = new FileInputStream(selectedDirectory);
+//                    output = new FileOutputStream(fileName);
+//
+//                    byte[] b = new byte[1024 * 5];
+//                    int len;
+//                    while ((len = input.read(b)) != -1) {
+//                        output.write(b, 0, len);
+//                    }
+//
+//                    output.flush();
+//                    output.close();
+//                    input.close();
+//                }
+////                Image image = new Image("file:///"+fileName);
+////                userPhoto.setImage(image);
+//                updatePhoto(userPhoto, newpath + userID +".jpg");
+//                updatePhoto(topbarphoto, newpath + userID +".jpg");
+////                topBarPhoto.setImage(image);
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
+
+    private void initialPhoto() {
+        File file = new File(newpath);
+
+        if (!file.exists()) {
+            try {
+                UserVO userVO = userBlService.viewBasicUserInfo(userID);
+
+                ChangePhoto.setImage(newpath, userID, userVO.image);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } else {
+            ChangePhoto.updatePhoto(userPhoto, newpath+userID+".jpg");
+            ChangePhoto.updatePhoto(topbarphoto, newpath+userID+".jpg");
+        }
+
+    }
 
     /**
      * 查看信用变更记录
