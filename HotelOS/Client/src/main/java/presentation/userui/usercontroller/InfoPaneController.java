@@ -52,7 +52,6 @@ public class InfoPaneController {
     @FXML private Button cleanAllBtn;
     @FXML private Hyperlink checkcreditentrance;
 
-    //TODO 会员等级换图片
     @FXML private ImageView levelImage;
     @FXML private Label vipCompany;
 
@@ -119,6 +118,7 @@ public class InfoPaneController {
             try {
                 UserVO userVO = userBlService.viewBasicUserInfo(userID);
 
+                usernameLabel.setText(userVO.name);
                 userSex.setText(userVO.gender ? "男" : "女");
                 phone.setText(userVO.phone);
                 birthDate.setText(userVO.memberVO.birthday.toString());
@@ -127,19 +127,20 @@ public class InfoPaneController {
                 //会员信息显示
                 MemberType memberType = userVO.memberVO.memberType;
 
-                //TODo 根据会员等级换图片
                 if (memberType == MemberType.None) {
                     setMemberComponentsVisible(false,false);
                 } else if (memberType == MemberType.NormalMember) {
                     setMemberComponentsVisible(true,false);
+                    setVipLevel(userVO.memberVO.level);
                 } else if (memberType == MemberType.EnterpriseMember) {
                     vipCompany.setText(userVO.memberVO.enterprise);
                     setMemberComponentsVisible(false,true);
                 } else if (memberType == MemberType.Both) {
+                    setVipLevel(userVO.memberVO.level);
                     vipCompany.setText(userVO.memberVO.enterprise);
                     setMemberComponentsVisible(true,true);
                 } else {
-
+                    setMemberComponentsVisible(false,false);
                 }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
@@ -157,10 +158,16 @@ public class InfoPaneController {
     }
 
     private void setMemberComponentsVisible(Boolean isCommonVIP, Boolean isComVip){
-        //TODO
-        registerCommonvipBtn.setVisible(isCommonVIP);
+        registerCommonvipBtn.setVisible(!isCommonVIP);
         registerCompanyvipBtn.setVisible(!isComVip);
         vipCompany.setVisible(isComVip);
+    }
+
+    private void setVipLevel(int level) {
+        String path = "/img/webmarketer/" + level + ".png";
+        Image image = new Image(path);
+        levelImage.setImage(image);
+        levelImage.setVisible(true);
     }
     /**
      * 判断用户信息是否已填写

@@ -114,7 +114,7 @@ public class UserHotelInfoController {
         System.out.println(userID);
 
         orderidCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
-        ordertimeCol.setCellValueFactory(new PropertyValueFactory<>("orderTimeVO"));
+        ordertimeCol.setCellValueFactory(new PropertyValueFactory<>("generateTime"));
         ordertypeCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override

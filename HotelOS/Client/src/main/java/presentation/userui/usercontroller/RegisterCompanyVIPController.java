@@ -1,5 +1,6 @@
 package presentation.userui.usercontroller;
 
+import bl.userbl.UserBLService;
 import bl.userbl.impl.UserBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -38,7 +39,7 @@ public class RegisterCompanyVIPController {
     @FXML private TextField phoneField;
     @FXML private TextField enterpriseField;
 
-    private UserBlServiceImpl userBlService;
+    private UserBLService userBlService;
 
     private AlertController alertController;
 
@@ -154,10 +155,11 @@ public class RegisterCompanyVIPController {
         boolean username = usernameField.getText().equals("");
         boolean birthday = birthdayPicker.getValue().toString().equals("");
         boolean sex = true;
+        boolean company = enterpriseField.getText().toString().equals("");
         if (sexMan.isSelected() || sexWoman.isSelected()) {
             sex = false;
         }
-        return username || sex || birthday;
+        return username || sex || birthday || company;
     }
 
     /**

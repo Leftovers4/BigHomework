@@ -77,6 +77,7 @@ public class UserSearchHotelController {
 
     @FXML private TableColumn hotelNameCol;
     @FXML private TableColumn hotelAddressCol;
+    @FXML private TableColumn hoteltracingAreaCol;
     @FXML private TableColumn hotelScoreCol;
     @FXML private TableColumn registerRecordCol;
     @FXML private TableColumn priceCol;
@@ -208,6 +209,7 @@ public class UserSearchHotelController {
     private void confirmChoose() {
 
         hotelList.setVisible(true);
+        FlowPane.setMargin(hotelList, new Insets(40, 0, 0, 50));
 
         HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
         hotelConditionsVO.address = cityComBox.getValue().toString();
@@ -498,6 +500,7 @@ public class UserSearchHotelController {
 
         hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
         hotelAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        hoteltracingAreaCol.setCellValueFactory(new PropertyValueFactory<>("tradingArea"));
         hotelScoreCol.setCellValueFactory(new PropertyValueFactory<>("rating"));
         registerRecordCol.setCellValueFactory(new PropertyValueFactory<>("hasOrdered"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
