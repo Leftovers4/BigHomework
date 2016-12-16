@@ -30,10 +30,10 @@
                         <Image url="@../../img/common/initialPhoto.png" />
                      </image>
                      <FlowPane.margin>
-                        <Insets bottom="40.0" left="120.0" top="100.0" />
+                        <Insets bottom="20.0" left="130.0" top="100.0" />
                      </FlowPane.margin>
                   </ImageView>
-                  <Pane prefHeight="170.0" prefWidth="400.0">
+                  <Pane prefHeight="148.0" prefWidth="400.0" styleClass="BackgroundPanel">
                      <children>
                         <Label fx:id="hotelRatingLabel" layoutX="89.0" layoutY="127.0" text="4.8" />
                         <Hyperlink id="reviewLink" fx:id="showReviewLink" layoutX="290.0" layoutY="123.0" text="查看评价" />
@@ -83,42 +83,42 @@
                         </GridPane>
                      </children>
                      <FlowPane.margin>
-                        <Insets left="90.0" top="100.0" />
+                        <Insets left="80.0" top="90.0" />
                      </FlowPane.margin>
                   </Pane>
-                  <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="667.0">
+                  <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="667.0" styleClass="BackgroundPanel">
                      <children>
-                        <Label layoutX="20.0" layoutY="100.0" text="服务：" />
-                        <Label fx:id="addressLabel" layoutX="80.0" text="江苏南京市" />
-                        <Label layoutX="20.0" layoutY="40.0" text="简介：" />
-                        <Label fx:id="hotelServiceLabel" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="80.0" layoutY="100.0" prefHeight="90.0" prefWidth="578.0" text="为散客提供免费的WIFI。房间服务，接送服务（额外收费），24小时前台服务，货币兑换，行礼寄存，礼宾台，洗衣服务，干洗服务，熨衣服务是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
-                        <Label fx:id="simpleIntroLabel" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="80.0" layoutY="40.0" prefHeight="62.0" prefWidth="578.0" text="座落于半山园林美景之中，是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
-                        <Label layoutX="20.0" text="地址：" />
+                        <Label layoutX="20.0" layoutY="108.0" text="服务：" />
+                        <Label fx:id="addressLabel" layoutX="80.0" layoutY="8.0" text="江苏南京市" />
+                        <Label layoutX="20.0" layoutY="43.0" text="简介：" />
+                        <Label fx:id="hotelServiceLabel" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="80.0" layoutY="108.0" prefHeight="90.0" prefWidth="578.0" text="为散客提供免费的WIFI。房间服务，接送服务（额外收费），24小时前台服务，货币兑换，行礼寄存，礼宾台，洗衣服务，干洗服务，熨衣服务是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
+                        <Label fx:id="simpleIntroLabel" alignment="TOP_LEFT" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="80.0" layoutY="43.0" prefHeight="62.0" prefWidth="578.0" text="座落于半山园林美景之中，是六朝古都南京最优雅的五星级酒店之一。" wrapText="true" />
+                        <Label layoutX="20.0" layoutY="8.0" text="地址：" />
                      </children>
                      <FlowPane.margin>
-                        <Insets left="98.0" />
+                        <Insets left="95.0" top="20.0" />
                      </FlowPane.margin>
                   </Pane>
-                  <TableView fx:id="hotelRoomList" prefHeight="200.0" prefWidth="520.0">
+                  <TableView fx:id="hotelRoomList" prefHeight="200.0" prefWidth="636.0">
                     <columns>
-                      <TableColumn fx:id="roomtypeCol" prefWidth="163.0" resizable="false" text="房间类型" />
-                      <TableColumn fx:id="roomnumCol" prefWidth="134.0" resizable="false" text="可预订房间数量" />
-                        <TableColumn fx:id="roompriceCol" prefWidth="142.0" resizable="false" text="价格" />
-                        <TableColumn fx:id="generateBtnCol" prefWidth="75.0" resizable="false" />
+                      <TableColumn fx:id="roomtypeCol" editable="false" prefWidth="180.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="房间类型" />
+                      <TableColumn fx:id="roomnumCol" editable="false" prefWidth="180.0" resizable="false" styleClass="RightAlignCol" text="可预订房间数量" />
+                        <TableColumn fx:id="roompriceCol" editable="false" prefWidth="180.0" resizable="false" styleClass="RightAlignCol" text="价格" />
+                        <TableColumn fx:id="generateBtnCol" editable="false" prefWidth="75.0" resizable="false" sortable="false" styleClass="MidAlignCol" />
                     </columns>
                      <FlowPane.margin>
-                        <Insets left="155.0" />
+                        <Insets left="110.0" top="20.0" />
                      </FlowPane.margin>
                   </TableView>
-                  <TableView fx:id="hotelOrderList" prefHeight="200.0" prefWidth="520.0">
+                  <TableView fx:id="hotelOrderList" prefHeight="200.0" prefWidth="636.0">
                     <columns>
-                      <TableColumn fx:id="orderidCol" prefWidth="211.0" resizable="false" text="订单号" />
-                      <TableColumn fx:id="ordertimeCol" prefWidth="131.0" resizable="false" text="订单时间" />
-                        <TableColumn fx:id="ordertypeCol" prefWidth="109.0" resizable="false" text="订单状态" />
-                        <TableColumn fx:id="btnCol" prefWidth="64.0" resizable="false" />
+                      <TableColumn fx:id="orderidCol" prefWidth="210.0" resizable="false" styleClass="LeftAlignCol" text="订单号" />
+                      <TableColumn fx:id="ordertimeCol" editable="false" prefWidth="180.0" resizable="false" styleClass="LeftAlignCol" text="订单时间" />
+                        <TableColumn fx:id="ordertypeCol" editable="false" prefWidth="150.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="订单状态" />
+                        <TableColumn fx:id="btnCol" editable="false" prefWidth="75.0" resizable="false" sortable="false" styleClass="MidAlignCol" />
                     </columns>
                      <FlowPane.margin>
-                        <Insets left="155.0" top="30.0" />
+                        <Insets left="110.0" top="20.0" />
                      </FlowPane.margin>
                   </TableView>
                </children>
