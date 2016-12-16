@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.WebmarketerManageController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.WebmarketerManageController">
    <children>
       <TableView fx:id="webmarketerlist" layoutX="175.0" layoutY="155.0" prefHeight="400.0" prefWidth="500.0">
          <columns>
@@ -28,7 +28,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="625.0" layoutY="100.0" mnemonicParsing="false" onAction="#toAddNewWebMarketer">
+      <Button layoutX="473.0" layoutY="101.0" mnemonicParsing="false" onAction="#toAddNewWebMarketer" text="添加网站营销人员">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -40,8 +40,8 @@
       <Pane fx:id="modifywebmarketerPane" layoutX="125.0" layoutY="460.0" prefHeight="150.0" prefWidth="600.0" visible="false">
          <children>
             <TextField fx:id="workernameField" layoutX="152.0" layoutY="23.0" prefHeight="30.0" prefWidth="130.0" />
-            <Button fx:id="confirmBtn" layoutX="313.0" layoutY="85.0" mnemonicParsing="false" onAction="#confirmModify" styleClass="actionBtn" text="确认修改" />
-            <Button fx:id="cancelBtn" layoutX="229.0" layoutY="85.0" mnemonicParsing="false" onAction="#cancelModify" styleClass="actionBtn" text="取消" />
+            <Button fx:id="confirmBtn" layoutX="313.0" layoutY="85.0" mnemonicParsing="false" onAction="#confirmModify" styleClass="saveEditBtn" text="确认修改" />
+            <Button fx:id="cancelBtn" layoutX="199.0" layoutY="85.0" mnemonicParsing="false" onAction="#cancelModify" prefHeight="36.0" prefWidth="90.0" styleClass="cancelEditBtn" text="取消" />
             <Label layoutX="95.0" layoutY="28.0" text="姓名：" />
             <Label layoutX="320.0" layoutY="28.0" text="密码：" />
             <TextField fx:id="passwordField" layoutX="376.0" layoutY="23.0" prefHeight="30.0" prefWidth="130.0" />

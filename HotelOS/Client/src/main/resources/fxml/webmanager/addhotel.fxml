@@ -6,18 +6,21 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.AddHotelController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.AddHotelController">
    <children>
-      <Pane fx:id="finishInfoPane" layoutX="100.0" layoutY="157.0" prefHeight="435.0" prefWidth="650.0">
+      <Pane fx:id="finishInfoPane" layoutX="100.0" layoutY="140.0" prefHeight="435.0" prefWidth="650.0" styleClass="innerPane">
          <children>
             <Label layoutX="170.0" layoutY="45.0" text="酒店名称：" />
             <Label layoutX="170.0" layoutY="110.0" text="酒店地址：" />
             <Label layoutX="170.0" layoutY="170.0" text="所属商圈：" />
-            <TextField fx:id="hotelnameField" layoutX="260.0" layoutY="40.0" prefHeight="30.0" prefWidth="211.0" />
-            <ComboBox fx:id="hotelcity" layoutX="260.0" layoutY="105.0" prefHeight="30.0" prefWidth="133.0" promptText="-城市-" />
-            <ComboBox fx:id="hoteltracingarea" layoutX="260.0" layoutY="165.0" prefHeight="30.0" prefWidth="133.0" />
+            <TextField fx:id="hotelnameField" layoutX="264.0" layoutY="40.0" prefHeight="30.0" prefWidth="211.0" />
+            <ComboBox fx:id="hotelcity" layoutX="264.0" layoutY="105.0" prefHeight="36.0" prefWidth="133.0" promptText="-城市-" />
+            <ComboBox fx:id="hoteltracingarea" layoutX="264.0" layoutY="165.0" prefHeight="30.0" prefWidth="133.0" promptText="-商圈-" />
             <Label layoutX="170.0" layoutY="235.0" text="星       级：" />
             <RadioButton fx:id="onestar" layoutX="260.0" layoutY="235.0" mnemonicParsing="false" text="一星级">
                <toggleGroup>
@@ -27,44 +30,59 @@
             <RadioButton fx:id="threestar" layoutX="473.0" layoutY="235.0" mnemonicParsing="false" text="三星级" toggleGroup="$hotelstar" />
             <RadioButton fx:id="fourstar" layoutX="260.0" layoutY="270.0" mnemonicParsing="false" text="四星级" toggleGroup="$hotelstar" />
             <RadioButton fx:id="fivestar" layoutX="367.0" layoutY="270.0" mnemonicParsing="false" text="五星级" toggleGroup="$hotelstar" />
-            <Button layoutX="247.0" layoutY="340.0" mnemonicParsing="false" onAction="#toconfirmHotelInfoEvent" styleClass="actionBtn" text="下一步，确认酒店信息" />
+            <Button layoutX="230.0" layoutY="339.0" mnemonicParsing="false" onAction="#toconfirmHotelInfoEvent" styleClass="actionBtn" text="下一步，确认酒店信息" />
          </children>
       </Pane>
-      <Pane fx:id="confirmHotelInfoPane" layoutX="100.0" layoutY="157.0" prefHeight="435.0" prefWidth="650.0" visible="false">
+      <Pane fx:id="confirmHotelInfoPane" layoutX="100.0" layoutY="140.0" prefHeight="435.0" prefWidth="650.0" styleClass="innerPane" visible="false">
          <children>
-            <Label layoutX="170.0" layoutY="105.0" text="酒店名称：" />
-            <Label layoutX="170.0" layoutY="165.0" text="酒店地址：" />
-            <Label layoutX="170.0" layoutY="225.0" text="所属商圈：" />
-            <Label layoutX="170.0" layoutY="285.0" text="星       级：" />
-            <Button layoutX="225.0" layoutY="362.0" mnemonicParsing="false" onAction="#toaddHotelWorkerEvent" styleClass="actionBtn" text="下一步，添加酒店工作人员" />
-            <Label layoutX="170.0" layoutY="45.0" text="酒店编号：" />
-            <Label fx:id="hotelidLabel" layoutX="270.0" layoutY="45.0" text="Label" />
-            <Label fx:id="hotelnameLabel" layoutX="270.0" layoutY="105.0" text="Label" />
-            <Label fx:id="hoteladdressLabel" layoutX="270.0" layoutY="165.0" text="Label" />
-            <Label fx:id="hoteltracingareaLabel" layoutX="270.0" layoutY="225.0" text="Label" />
-            <Label fx:id="hotelstarLabel" layoutX="270.0" layoutY="285.0" text="Label" />
-         </children>
-      </Pane>
-      <Pane fx:id="addhotelworkerPane" layoutX="100.0" layoutY="157.0" prefHeight="435.0" prefWidth="650.0" visible="false">
-         <children>
-            <Pane fx:id="workerinfopane" layoutY="93.0" prefHeight="249.0" prefWidth="650.0">
+            <GridPane layoutX="183.0" layoutY="46.0" prefHeight="281.0" prefWidth="356.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="89.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="243.0" minWidth="10.0" prefWidth="242.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <Label layoutX="186.0" layoutY="34.0" text="姓       名：" />
-                  <Button layoutX="269.0" layoutY="168.0" mnemonicParsing="false" onAction="#confirmAddWorker" prefHeight="30.0" prefWidth="112.0" styleClass="actionBtn" text="添加" />
-                  <TextField fx:id="workernameField" layoutX="282.0" layoutY="29.0" prefHeight="30.0" prefWidth="170.0" />
-                  <Label layoutX="186.0" layoutY="102.0" text="初始密码：" />
-                  <TextField fx:id="initialPasswordField" layoutX="281.0" layoutY="97.0" prefHeight="30.0" prefWidth="170.0" />
+                  <Label text="酒店名称：" GridPane.rowIndex="1" />
+                  <Label text="酒店地址：" GridPane.rowIndex="2" />
+                  <Label text="所属商圈：" GridPane.rowIndex="3" />
+                  <Label text="星       级：" GridPane.rowIndex="4" />
+                  <Label text="酒店编号：" />
+                  <Label fx:id="hotelidLabel" text="Label" GridPane.columnIndex="1" />
+                  <Label fx:id="hotelnameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="hoteladdressLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="hoteltracingareaLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="hotelstarLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+               </children>
+            </GridPane>
+            <Button layoutX="225.0" layoutY="362.0" mnemonicParsing="false" onAction="#toaddHotelWorkerEvent" styleClass="actionBtn" text="下一步，添加酒店工作人员" />
+         </children>
+      </Pane>
+      <Pane fx:id="addhotelworkerPane" layoutX="100.0" layoutY="140.0" prefHeight="435.0" prefWidth="650.0" visible="false">
+         <children>
+            <Pane fx:id="workerinfopane" layoutY="93.0" prefHeight="249.0" prefWidth="650.0" styleClass="innerPane">
+               <children>
+                  <Label layoutX="186.0" layoutY="40.0" text="姓       名：" />
+                  <Button layoutX="269.0" layoutY="174.0" mnemonicParsing="false" onAction="#confirmAddWorker" prefHeight="30.0" prefWidth="112.0" styleClass="actionBtn" text="添加" />
+                  <TextField fx:id="workernameField" layoutX="282.0" layoutY="35.0" prefHeight="30.0" prefWidth="170.0" />
+                  <Label layoutX="186.0" layoutY="108.0" text="初始密码：" />
+                  <TextField fx:id="initialPasswordField" layoutX="281.0" layoutY="103.0" prefHeight="30.0" prefWidth="170.0" />
                </children>
             </Pane>
-            <Pane fx:id="confirmworkerpane" layoutY="43.0" prefHeight="350.0" prefWidth="650.0" visible="false">
+            <Pane fx:id="confirmworkerpane" layoutY="43.0" prefHeight="350.0" prefWidth="650.0" styleClass="innerPane" visible="false">
                <children>
                   <Label layoutX="194.0" layoutY="50.0" text="工作人员编号：" />
-                  <Label fx:id="hotelworkeridLabel" layoutX="314.0" layoutY="50.0" text="Label" />
-                  <Label layoutX="194.0" layoutY="165.0" text="工作人员姓名：" />
-                  <Label fx:id="hotelworkernameLabel" layoutX="314.0" layoutY="165.0" text="Label" />
-                  <Label layoutX="196.0" layoutY="107.0" text="所  属  酒  店：" />
-                  <Label fx:id="workerhotelLabel" layoutX="314.0" layoutY="107.0" text="Label" />
-                  <Button layoutX="272.0" layoutY="248.0" mnemonicParsing="false" onAction="#confirmHotelWorkerAdd" prefHeight="30.0" prefWidth="122.0" styleClass="actionBtn" text="提交" />
+                  <Label fx:id="hotelworkeridLabel" layoutX="325.0" layoutY="50.0" text="Label" />
+                  <Label layoutX="193.0" layoutY="182.0" text="工作人员姓名：" />
+                  <Label fx:id="hotelworkernameLabel" layoutX="325.0" layoutY="182.0" text="Label" />
+                  <Label layoutX="194.0" layoutY="118.0" text="所  属  酒  店：" />
+                  <Label fx:id="workerhotelLabel" layoutX="325.0" layoutY="118.0" text="Label" />
+                  <Button layoutX="276.0" layoutY="268.0" mnemonicParsing="false" onAction="#confirmHotelWorkerAdd" prefHeight="30.0" prefWidth="122.0" styleClass="actionBtn" text="提交" />
                </children>
             </Pane>
          </children>

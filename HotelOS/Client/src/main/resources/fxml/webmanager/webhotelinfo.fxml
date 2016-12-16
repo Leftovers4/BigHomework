@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<fx:root type="Pane" prefHeight="690.0" prefWidth="850.0" styleClass="panel" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.CheckHotelInfoController">
+<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.CheckHotelInfoController">
    <children>
-      <Pane layoutX="98.0" layoutY="338.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="271.0" prefWidth="667.0">
+      <Pane layoutX="92.0" layoutY="324.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="271.0" prefWidth="667.0" styleClass="innerPane">
          <children>
             <Label layoutX="20.0" layoutY="170.0" text="服务：" />
             <Label fx:id="addressLabel" layoutX="80.0" layoutY="20.0" text="江苏南京市" />
@@ -21,7 +21,7 @@
             <Label layoutX="20.0" layoutY="20.0" text="地址：" />
          </children>
       </Pane>
-      <Pane layoutX="365.0" layoutY="110.0" prefHeight="200.0" prefWidth="400.0">
+      <Pane layoutX="359.0" layoutY="96.0" prefHeight="200.0" prefWidth="400.0" styleClass="innerPane">
          <children>
             <Label fx:id="hotelRatingLabel" layoutX="90.0" layoutY="155.0" text="4.8" />
             <Hyperlink id="reviewLink" fx:id="showReviewLink" layoutX="291.0" layoutY="151.0" text="查看评价" />
@@ -73,7 +73,7 @@
             </GridPane>
          </children>
       </Pane>
-      <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="119.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="92.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/common/initialPhoto.png" />
          </image>

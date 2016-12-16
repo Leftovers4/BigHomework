@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../../css/webmanager/webManagerStyle.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.WebmanagerComController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.WebmanagerComController">
    <children>
-      <VBox fx:id="left_area" prefHeight="690.0" prefWidth="230.0">
+      <VBox fx:id="LeftArea" prefHeight="690.0" prefWidth="230.0">
          <children>
             <Button mnemonicParsing="false">
                <graphic>
@@ -24,7 +24,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button id="userInfoBtn" fx:id="hotelManageBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#hotelManageEvent" onMouseEntered="#hotelManageMouseOn" onMouseExited="#hotelManageMouseOut" prefHeight="45.0" prefWidth="230.0" text="酒店管理">
+            <Button id="userInfoBtn" fx:id="hotelManageBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#hotelManageEvent" onMouseEntered="#hotelManageMouseOn" onMouseExited="#hotelManageMouseOut" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="酒店管理">
                <VBox.margin>
                   <Insets top="150.0" />
                </VBox.margin>
@@ -39,7 +39,7 @@
                   <Insets right="50.0" />
                </padding>
             </Button>
-            <Button fx:id="userBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#userManageEvent" onMouseEntered="#userManageMouseOn" onMouseExited="#userManageMouseOut" prefHeight="45.0" prefWidth="230.0" text="客户管理">
+            <Button fx:id="userBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#userManageEvent" onMouseEntered="#userManageMouseOn" onMouseExited="#userManageMouseOut" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="客户管理">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -54,7 +54,7 @@
                   <Insets right="50.0" />
                </padding>
             </Button>
-            <Button fx:id="hotelworkerBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#hotelWorkerEvent" onMouseEntered="#hotelWorkerMouseOn" onMouseExited="#hotelWorkerMouseOut" prefHeight="45.0" prefWidth="230.0" text="酒店工作人员管理">
+            <Button fx:id="hotelworkerBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#hotelWorkerEvent" onMouseEntered="#hotelWorkerMouseOn" onMouseExited="#hotelWorkerMouseOut" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="酒店工作人员管理">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -65,7 +65,7 @@
                <padding>
                   <Insets left="10.0" />
                </padding></Button>
-            <Button fx:id="webmarketerBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#webMarketerEvent" onMouseEntered="#webMarketerMouseOn" onMouseExited="#webMarketerMouseOut" prefHeight="45.0" prefWidth="230.0" text="网站营销人员管理">
+            <Button fx:id="webmarketerBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#webMarketerEvent" onMouseEntered="#webMarketerMouseOn" onMouseExited="#webMarketerMouseOut" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="网站营销人员管理">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -82,7 +82,7 @@
             </Button>
          </children>
       </VBox>
-      <HBox id="stateBar" alignment="CENTER_RIGHT" layoutY="690.0" prefHeight="30.0" prefWidth="1080.0">
+      <HBox id="stateBar" fx:id="bottomHBox" alignment="CENTER_RIGHT" layoutY="690.0" prefHeight="30.0" prefWidth="1080.0">
          <children>
             <Label fx:id="timelabel" />
          </children></HBox>
@@ -92,7 +92,7 @@
          </image>
       </ImageView>
       <Pane fx:id="mainPane" layoutX="230.0" prefHeight="690.0" prefWidth="850.0" styleClass="panel" visible="true" />
-      <HBox id="topBar" fx:id="topbar" layoutX="230.0" prefHeight="50.0" prefWidth="850.0">
+      <HBox id="topBar" fx:id="topBar" layoutX="230.0" prefHeight="50.0" prefWidth="850.0">
          <children>
             <Button mnemonicParsing="false">
                <graphic>

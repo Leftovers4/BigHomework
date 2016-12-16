@@ -131,7 +131,7 @@ public class UserGenerateOrderController {
                 @Override
                 public void changed(ObservableValue observable, Object oldValue, Object newValue) {
                     for (int i = 0; i<roomVO.size(); i++) {
-                        if (roomVO.get(i).roomType == newValue) {
+                        if (EnumFactory.getString(roomVO.get(i).roomType) == newValue) {
                             for (int j = 0; j<roomVO.get(i).bookable; j++) {
                                 roomNum.getItems().add(j+1);
                             }
