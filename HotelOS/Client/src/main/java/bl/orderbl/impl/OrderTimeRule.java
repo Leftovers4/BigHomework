@@ -26,4 +26,12 @@ public class OrderTimeRule {
         return expectedCheckInTime.plusHours(6);
     }
 
+    public static LocalDateTime getOfflineLeaveTime(LocalDateTime offlineCheckInTime){
+        if(offlineCheckInTime.isAfter(offlineCheckInTime.withHour(0).withMinute(0).withSecond(0)) && offlineCheckInTime.isBefore(offlineCheckInTime.withHour(12).withMinute(0).withSecond(0))){
+            return offlineCheckInTime.withHour(12).withMinute(0).withSecond(0);
+        }else {
+            return offlineCheckInTime.plusDays(1).withHour(12).withMinute(0).withSecond(0);
+        }
+    }
+
 }

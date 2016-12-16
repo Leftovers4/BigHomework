@@ -52,12 +52,6 @@ public class UserVO {
      */
     public CreditVO creditVO;
 
-/*--------------------------------------------------------------------------------------------------------------------*/
-    /*
-     * 新用户名，供客户修改基本信息时使用
-     */
-    public String newUsername;
-
     public UserVO(){
         memberVO = new MemberVO();
         creditVO = new CreditVO();

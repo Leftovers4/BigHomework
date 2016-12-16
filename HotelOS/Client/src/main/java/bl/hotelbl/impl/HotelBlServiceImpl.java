@@ -72,11 +72,6 @@ public class HotelBlServiceImpl implements HotelBLService {
         return hotelDAO.delete(hotelID);
     }
 
-    @Override
-    public HotelVO findHotelByID(long hotelID) {
-        return null;
-    }
-
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     @Override
@@ -149,6 +144,18 @@ public class HotelBlServiceImpl implements HotelBLService {
         roomPO.setPrice(roomVO.price);
 
         return hotelDAO.updateRoom(roomPO);
+    }
+
+    @Override
+    public RoomVO viewFullRoomInfo(long roomID, LocalDateTime expectedCheckInTime, LocalDateTime expectedLeaveTime) throws RemoteException {
+        RoomPO roomPO = hotelDAO.findRoomByID(roomID);
+
+        //房间类型不存在的情况
+        if(roomPO == null)
+            return null;
+
+        //房间类型存在的情况
+        return hotelVOCreator.createFullRoomVO(roomPO, OrderTimeRule.getExpectedCheckInTime(expectedCheckInTime.toLocalDate()), OrderTimeRule.getExpectedLeaveTime(expectedLeaveTime.toLocalDate()));
     }
 
     @Override
