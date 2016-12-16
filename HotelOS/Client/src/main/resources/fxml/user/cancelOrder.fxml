@@ -12,32 +12,60 @@
 
 <fx:root fx:id="orderDetailPane" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.CancelOrderController">
    <children>
-      <Label layoutX="355.0" layoutY="116.0" text="预计入住时间：" />
-      <Label layoutX="355.0" layoutY="171.0" text="预计离开时间：" />
-      <Label layoutX="358.0" layoutY="226.0" text="房  间  类  型：" />
-      <Label layoutX="358.0" layoutY="281.0" text="房  间  数  量：" />
-      <Label layoutX="586.0" layoutY="336.0" text="有  无  儿  童：" />
-      <ImageView fitHeight="168.0" fitWidth="161.0" layoutX="99.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="168.0" fitWidth="161.0" layoutX="112.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/common/initialPhoto.png" />
          </image>
       </ImageView>
-      <Label layoutX="355.0" layoutY="336.0" text="预计入住人数：" />
-      <Label layoutX="358.0" layoutY="391.0" text="最  优  优  惠：" />
-      <Label fx:id="bestpromotionLabelcan" layoutX="465.0" layoutY="391.0" text="Label" />
-      <Label fx:id="hotelNameLabel" layoutX="99.0" layoutY="294.0" text="酒店名" />
-      <Label fx:id="hotelAddressLabel" layoutX="99.0" layoutY="346.0" text="酒店地址" />
-      <Label fx:id="hotelServiceLabel" layoutX="99.0" layoutY="426.0" text="酒店设施" />
-      <Label layoutX="355.0" layoutY="446.0" text="价  格  总  计：" />
-      <Label fx:id="finalpriceLabel" layoutX="465.0" layoutY="446.0" text="Label" />
-      <Label fx:id="checkintimeLabelcan" layoutX="472.0" layoutY="116.0" text="日期" />
-      <Label fx:id="checkouttimeLabelcan" layoutX="472.0" layoutY="171.0" text="日期" />
-      <Label fx:id="roomTypeLabelcan" layoutX="472.0" layoutY="226.0" text="类型" />
-      <Label fx:id="roomNumLabelcan" layoutX="472.0" layoutY="281.0" text="数量" />
-      <Label fx:id="peopleNumLabelcan" layoutX="472.0" layoutY="336.0" text="人数" />
-      <Label fx:id="childLabelcan" layoutX="698.0" layoutY="336.0" text="有无" />
-      <Label layoutX="355.0" layoutY="547.0" text="订  单  状  态：" />
-      <Label fx:id="ordertypeLabel" layoutX="465.0" layoutY="547.0" text="状态" />
-      <Button fx:id="cancelOrderBtn" layoutX="597.0" layoutY="542.0" mnemonicParsing="false" onAction="#cancelOrderEvent" prefHeight="35.0" prefWidth="110.0" styleClass="actionBtn" text="撤销订单" />
+      <Label fx:id="hotelNameLabel" layoutX="112.0" layoutY="294.0" text="酒店名" />
+      <Label fx:id="hotelAddressLabel" layoutX="112.0" layoutY="346.0" text="酒店地址" />
+      <Label fx:id="hotelServiceLabel" layoutX="112.0" layoutY="408.0" text="酒店设施" />
+      <Pane layoutX="332.0" layoutY="503.0" prefHeight="97.0" prefWidth="406.0" styleClass="BackgroundPanel">
+         <children>
+            <Label fx:id="ordertypeLabel" layoutX="191.0" layoutY="61.0" text="状态" />
+            <Label layoutX="15.0" layoutY="15.0" text="价  格  总  计：" />
+            <Label id="orderActPriceLabel" fx:id="finalpriceLabel" layoutX="191.0" layoutY="11.0" text="1200" />
+            <Label layoutX="15.0" layoutY="61.0" text="订  单  状  态：" />
+            <Label layoutX="178.0" layoutY="18.0" text="¥" />
+         </children>
+      </Pane>
+      <Button id="editInfoBtn" fx:id="cancelOrderBtn" layoutX="638.0" layoutY="622.0" mnemonicParsing="false" onAction="#cancelOrderEvent" prefWidth="100.0" text="撤销订单" />
+      <Pane layoutX="332.0" layoutY="110.0" prefHeight="362.0" prefWidth="406.0" styleClass="BackgroundPanel">
+         <children>
+            <GridPane hgap="50.0" layoutX="15.0" layoutY="15.0" vgap="20.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="预计入住时间：" />
+                  <Label fx:id="checkintimeLabelcan" text="日期" GridPane.columnIndex="1" />
+                  <Label text="预计离开时间：" GridPane.rowIndex="1" />
+                  <Label fx:id="checkouttimeLabelcan" text="日期" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label text="房  间  类  型：" GridPane.rowIndex="2" />
+                  <Label fx:id="roomTypeLabelcan" text="类型" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label text="房  间  数  量：" GridPane.rowIndex="3" />
+                  <Label fx:id="roomNumLabelcan" text="数量" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="预计入住人数：" GridPane.rowIndex="4" />
+                  <Label fx:id="peopleNumLabelcan" text="人数" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label text="最  优  优  惠：" GridPane.rowIndex="6" />
+                  <Label fx:id="bestpromotionLabelcan" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label text="有  无  儿  童：" GridPane.rowIndex="5" />
+                  <Label fx:id="childLabelcan" text="有无" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+         </children>
+      </Pane>
+      <Separator layoutX="112.0" layoutY="331.0" prefHeight="2.0" prefWidth="161.0" />
+      <Separator layoutX="112.0" layoutY="387.0" prefHeight="2.0" prefWidth="161.0" />
    </children>
 </fx:root>
