@@ -4,6 +4,8 @@ import bl.personnelbl.impl.PersonnelBLServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -14,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
 import presentation.util.other.DisableColumnChangeListener;
+import presentation.util.other.ToolTipShow;
 import presentation.webmanagerui.webmanagerscene.WebmarketerManagePane;
 import util.PersonnelType;
 import util.ResultMessage;
@@ -115,18 +118,14 @@ public class WebmarketerManageController {
 
         public WebManMarketerButtonCell() {
 
-            Image editImg = new Image("/img/webmanager/edit.png");
+            Image editImg = new Image("/img/hotelworker/modifyroom.png");
             ImageView editimgview = new ImageView(editImg);
-            editimgview.setFitHeight(20);
-            editimgview.setFitWidth(20);
             editBtn.setGraphic(editimgview);
-            editBtn.getStyleClass().add("tableCellBtn");
-            Image deleteImg = new Image("/img/webmanager/delete.png");
+            editBtn.getStyleClass().add("TableEditButtonCell");
+            Image deleteImg = new Image("/img/hotelworker/deleteroom.png");
             ImageView deleteimgview = new ImageView(deleteImg);
-            deleteimgview.setFitWidth(20);
-            deleteimgview.setFitHeight(20);
             deleteBtn.setGraphic(deleteimgview);
-            deleteBtn.getStyleClass().add("tableCellBtn");
+            deleteBtn.getStyleClass().add("TableDeleteButtonCell");
 
             editBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
@@ -172,8 +171,13 @@ public class WebmarketerManageController {
                 setText(null);
             } else {
                 btnBox.getChildren().clear();
-                btnBox.getChildren().add(editBtn);
-                btnBox.getChildren().add(deleteBtn);
+                editBtn.setTooltip(ToolTipShow.setTool("编辑"));
+                deleteBtn.setTooltip(ToolTipShow.setTool("删除"));
+
+                btnBox.setAlignment(Pos.CENTER);
+                btnBox.setSpacing(10);
+                btnBox.setPadding(new Insets(0, 0, 0 ,10));
+                btnBox.getChildren().addAll(editBtn, deleteBtn);
                 setGraphic(btnBox);
                 setText(null);
             }

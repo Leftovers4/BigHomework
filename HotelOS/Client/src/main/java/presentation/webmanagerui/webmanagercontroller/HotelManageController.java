@@ -6,6 +6,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -154,24 +156,18 @@ public class HotelManageController {
 
         public WebManHotelListButtonCell() {
 
-            Image editImg = new Image("/img/webmanager/edit.png");
+            Image editImg = new Image("/img/hotelworker/modifyroom.png");
             ImageView editimgview = new ImageView(editImg);
-            editimgview.setFitWidth(20);
-            editimgview.setFitHeight(20);
             editBtn.setGraphic(editimgview);
-            editBtn.getStyleClass().add("tableCellBtn");
-            Image deleteImg = new Image("/img/webmanager/delete.png");
+            editBtn.getStyleClass().add("TableEditButtonCell");
+            Image deleteImg = new Image("/img/hotelworker/deleteroom.png");
             ImageView deleteimgview = new ImageView(deleteImg);
-            deleteimgview.setFitWidth(20);
-            deleteimgview.setFitHeight(20);
             deleteBtn.setGraphic(deleteimgview);
-            deleteBtn.getStyleClass().add("tableCellBtn");
-            Image checkdetailimg = new Image("/img/user/checkdetail.png");
+            deleteBtn.getStyleClass().add("TableDeleteButtonCell");
+            Image checkdetailimg = new Image("/img/webmanager/information.png");
             ImageView checkdetailimgview = new ImageView(checkdetailimg);
-            checkdetailimgview.setFitHeight(20);
-            checkdetailimgview.setFitWidth(20);
             checkDetailBtn.setGraphic(checkdetailimgview);
-            checkDetailBtn.getStyleClass().add("tableCellBtn");
+            checkDetailBtn.getStyleClass().add("TableInfoButtonCell");
 
 
             editBtn.setOnAction(event -> {
@@ -233,11 +229,12 @@ public class HotelManageController {
             } else {
                 btnBox.getChildren().clear();
                 editBtn.setTooltip(ToolTipShow.setTool("编辑"));
-                btnBox.getChildren().add(editBtn);
                 deleteBtn.setTooltip(ToolTipShow.setTool("删除"));
-                btnBox.getChildren().add(deleteBtn);
                 checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
-                btnBox.getChildren().add(checkDetailBtn);
+                btnBox.setAlignment(Pos.CENTER);
+                btnBox.setSpacing(10);
+                btnBox.setPadding(new Insets(0, 0, 0 ,10));
+                btnBox.getChildren().addAll(checkDetailBtn, editBtn, deleteBtn);
                 setGraphic(btnBox);
                 setText(null);
             }

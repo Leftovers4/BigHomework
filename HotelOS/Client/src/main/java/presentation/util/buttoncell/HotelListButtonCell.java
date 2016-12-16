@@ -42,7 +42,7 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
 
             Image detailImage = new Image("/img/hotelworker/checkorderdetail.png");
             detailButton.setGraphic(new ImageView(detailImage));
-            detailButton.getStyleClass().add("TableButtonCell");
+            detailButton.getStyleClass().add("TableDetailButtonCell");
 
             detailButton.setTooltip(ToolTipShow.setTool("查看详情"));
             detailButton.setOnAction(event -> {
@@ -61,14 +61,14 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
             if(temp.orderType == OrderType.Executed){
                 if(temp.orderTimeVO.leaveTime != null){
                     btnBox.setAlignment(Pos.CENTER_LEFT);
-                    btnBox.setPadding(new Insets(0,0,0,13));
+                    btnBox.setPadding(new Insets(0,0,0,18));
                     btnBox.getChildren().add(detailButton);
                 }else {
                     Button checkOutButton = new Button();
 
                     Image checkOutImage = new Image("/img/hotelworker/checkout.png");
                     checkOutButton.setGraphic(new ImageView(checkOutImage));
-                    checkOutButton.getStyleClass().add("TableButtonCell");
+                    checkOutButton.getStyleClass().add("TableLeaveButtonCell");
 
                     checkOutButton.setTooltip(ToolTipShow.setTool("客户退房"));
                     checkOutButton.setOnAction(event -> {
@@ -78,13 +78,13 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
                         mainPane.getChildren().add(new UpdateOrderInfoPane(mainPane, false, true, orderVO));
                     });
 
-                    btnBox.setPadding(new Insets(0,5,0,20));
+                    btnBox.setPadding(new Insets(0,5,0,25));
                     btnBox.getChildren().addAll(detailButton, checkOutButton);
                 }
             }else {
                 if(temp.orderType == OrderType.Canceled){
                     btnBox.setAlignment(Pos.CENTER_LEFT);
-                    btnBox.setPadding(new Insets(0,0,0,13));
+                    btnBox.setPadding(new Insets(0,0,0,18));
                     btnBox.getChildren().add(detailButton);
                 }else {
                     Button checkInButton = new Button();
@@ -92,7 +92,7 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
                     checkInButton.setTooltip(ToolTipShow.setTool("客户入住"));
                     Image checkInImage = new Image("/img/hotelworker/checkin.png");
                     checkInButton.setGraphic(new ImageView(checkInImage));
-                    checkInButton.getStyleClass().add("TableButtonCell");
+                    checkInButton.getStyleClass().add("TableInButtonCell");
 
                     checkInButton.setOnAction(event -> {
                         int selectedIndex = getTableRow().getIndex();
@@ -101,7 +101,7 @@ public class HotelListButtonCell extends TableCell<OrderVO, Boolean> {
                         mainPane.getChildren().add(new UpdateOrderInfoPane(mainPane, true, true, orderVO));
                     });
 
-                    btnBox.setPadding(new Insets(0,5,0,20));
+                    btnBox.setPadding(new Insets(0,5,0,25));
                     btnBox.getChildren().addAll(detailButton, checkInButton);
                 }
             }

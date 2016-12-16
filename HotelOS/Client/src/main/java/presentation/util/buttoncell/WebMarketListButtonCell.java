@@ -42,7 +42,7 @@ public class WebMarketListButtonCell extends TableCell<OrderVO, Boolean> {
 
             Image detailImage = new Image("/img/hotelworker/checkorderdetail.png");
             detailButton.setGraphic(new ImageView(detailImage));
-            detailButton.getStyleClass().add("TableButtonCell");
+            detailButton.getStyleClass().add("TableDetailButtonCell");
 
             detailButton.setTooltip(ToolTipShow.setTool("查看详情"));
             detailButton.setOnAction(event -> {
@@ -63,7 +63,7 @@ public class WebMarketListButtonCell extends TableCell<OrderVO, Boolean> {
                 Image appealImage = new Image("/img/webmarketer/appealbutton.png");
                 appealButton.setGraphic(new ImageView(appealImage));
                 appealButton.setId("appealButton");
-                appealButton.getStyleClass().add("TableButtonCell");
+                appealButton.getStyleClass().add("TableAppealButtonCell");
 
                 appealButton.setTooltip(ToolTipShow.setTool("申诉"));
                 appealButton.setOnAction(event -> {

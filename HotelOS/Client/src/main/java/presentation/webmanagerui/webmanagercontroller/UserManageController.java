@@ -4,6 +4,8 @@ import bl.userbl.impl.UserBlServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -115,18 +117,14 @@ public class UserManageController {
 
         public WebManUserButtonCell() {
 
-            Image editImg = new Image("/img/webmanager/edit.png");
+            Image editImg = new Image("/img/hotelworker/modifyroom.png");
             ImageView editimgview = new ImageView(editImg);
-            editimgview.setFitHeight(20);
-            editimgview.setFitWidth(20);
             editBtn.setGraphic(editimgview);
-            editBtn.getStyleClass().add("tableCellBtn");
-            Image checkdetailimg = new Image("/img/user/checkdetail.png");
+            editBtn.getStyleClass().add("TableEditButtonCell");
+            Image checkdetailimg = new Image("/img/webmanager/information.png");
             ImageView checkdetailimgview = new ImageView(checkdetailimg);
-            checkdetailimgview.setFitHeight(20);
-            checkdetailimgview.setFitWidth(20);
             checkDetailBtn.setGraphic(checkdetailimgview);
-            checkDetailBtn.getStyleClass().add("tableCellBtn");
+            checkDetailBtn.getStyleClass().add("TableInfoButtonCell");
 
             editBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
@@ -161,9 +159,12 @@ public class UserManageController {
             } else {
                 btnBox.getChildren().clear();
                 editBtn.setTooltip(ToolTipShow.setTool("编辑"));
-                btnBox.getChildren().add(editBtn);
                 checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
-                btnBox.getChildren().add(checkDetailBtn);
+
+                btnBox.setAlignment(Pos.CENTER);
+                btnBox.setSpacing(10);
+                btnBox.setPadding(new Insets(0, 0, 0 ,10));
+                btnBox.getChildren().addAll(checkDetailBtn, editBtn);
                 setGraphic(btnBox);
                 setText(null);
             }
