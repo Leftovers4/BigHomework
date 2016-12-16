@@ -11,30 +11,21 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.HotelworkerManageController">
    <children>
-      <TableView fx:id="hotelworkerList" layoutX="100.0" layoutY="150.0" prefHeight="400.0" prefWidth="650.0">
+      <TableView fx:id="hotelworkerList" layoutX="100.0" layoutY="150.0" prefHeight="480.0" prefWidth="650.0">
          <columns>
-            <TableColumn fx:id="hotelIDCol" prefWidth="125.0" resizable="false" text="酒店ID" />
-            <TableColumn fx:id="hotelnameCol" prefWidth="124.0" resizable="false" text="酒店名称" />
-            <TableColumn fx:id="hotelworkerIDCol" minWidth="0.0" prefWidth="126.0" resizable="false" text="账号" />
-            <TableColumn fx:id="hotelworkerNameCol" prefWidth="118.0" resizable="false" text="姓名" />
-            <TableColumn fx:id="btnCol" prefWidth="134.0" resizable="false" />
+            <TableColumn fx:id="hotelIDCol" prefWidth="88.0" resizable="false" styleClass="LeftAlignCol" text="酒店ID" />
+            <TableColumn fx:id="hotelnameCol" prefWidth="186.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="酒店名称" />
+            <TableColumn fx:id="hotelworkerIDCol" minWidth="0.0" prefWidth="101.0" resizable="false" styleClass="LeftAlignCol" text="账号" />
+            <TableColumn fx:id="hotelworkerNameCol" prefWidth="118.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="姓名" />
+            <TableColumn fx:id="btnCol" prefWidth="134.0" resizable="false" sortable="false" styleClass="MidAlignCol" />
          </columns>
       </TableView>
-      <TextField layoutX="100.0" layoutY="100.0" prefHeight="30.0" prefWidth="235.0" promptText="输入编号、姓名" />
+      <TextField focusTraversable="false" layoutX="100.0" layoutY="100.0" prefHeight="30.0" prefWidth="235.0" promptText="输入编号、姓名" />
       <Button layoutX="335.0" layoutY="100.0" mnemonicParsing="false">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/webmanager/search.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="548.0" layoutY="96.0" mnemonicParsing="false" text="添加酒店工作人员">
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/webmanager/newhotel.png" />
                </image>
             </ImageView>
          </graphic>

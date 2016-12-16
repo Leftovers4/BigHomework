@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
+import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.ToolTipShow;
 import presentation.webmanagerui.webmanagerscene.AddHotelPane;
 import presentation.webmanagerui.webmanagerscene.CheckHotelInfoPane;
@@ -109,6 +110,8 @@ public class HotelManageController {
                 return webManHotelListButtonCell;
             }
         });
+        final TableColumn[] tableColumns = {hotelIDCol, hotelNameCol, hotelCityCol, hotelBusinessCol, btnCol};
+        hotelList.getColumns().addListener(new DisableColumnChangeListener(hotelList, tableColumns));
         hotelList.setItems(getHotelList());
     }
     private ObservableList getHotelList() {
@@ -252,29 +255,33 @@ public class HotelManageController {
      */
     @FXML
     private void confirmModify() {
-        HotelVO hotelVO = (HotelVO) hotelList.getItems().get(webManHotelListButtonCell.getSelectedIndex());
+        if (isHotelInfoFull()) {
+            HotelVO hotelVO = (HotelVO) hotelList.getItems().get(webManHotelListButtonCell.getSelectedIndex());
 
-        hotelVO.hotelName = hotelnameinput.getText();
-        hotelVO.address = cityCB.getValue().toString();
-        hotelVO.tradingArea = tracingareaCB.getValue().toString();
-        hotelVO.star = Integer.parseInt(star.getValue().toString());
+            hotelVO.hotelName = hotelnameinput.getText();
+            hotelVO.address = cityCB.getValue().toString();
+            hotelVO.tradingArea = tracingareaCB.getValue().toString();
+            hotelVO.star = Integer.parseInt(star.getValue().toString());
 
-        try {
-            ResultMessage resultMessage = hotelBlService.updateBasicHotelInfo(hotelVO);
+            try {
+                ResultMessage resultMessage = hotelBlService.updateBasicHotelInfo(hotelVO);
 
-            if (resultMessage == ResultMessage.Success) {
-                System.out.println("update success");
+                if (resultMessage == ResultMessage.Success) {
+                    System.out.println("update success");
 
-                alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
+                    alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
 
-                hotelList.setPrefHeight(400);
-                hotelList.setDisable(false);
-                modifyPane.setVisible(false);
+                    hotelList.setPrefHeight(491);
+                    hotelList.setDisable(false);
+                    modifyPane.setVisible(false);
 
-                new HotelManagePane(pane);
+                    new HotelManagePane(pane);
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
             }
-        } catch (RemoteException e) {
-            e.printStackTrace();
+        } else {
+            alertController.showInputWrongAlert("输入信息不完整", "错误提示");
         }
     }
 
@@ -285,11 +292,21 @@ public class HotelManageController {
     private void cancelModify() {
         boolean confirm = alertController.showConfirmCancelAlert();
         if (confirm) {
-            hotelList.setPrefHeight(400);
+            hotelList.setPrefHeight(491);
             hotelList.setDisable(false);
             modifyPane.setVisible(false);
         }
     }
+
+    private boolean isHotelInfoFull() {
+        boolean name = !hotelnameinput.getText().equals("");
+        boolean city = !cityCB.getValue().equals("");
+        boolean area = !tracingareaCB.getValue().equals("");
+        boolean s = !star.getValue().equals("");
+
+        return name && city && area && s;
+    }
+
 }
 
 

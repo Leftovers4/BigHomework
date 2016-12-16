@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
+import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.ToolTipShow;
 import presentation.webmanagerui.webmanagerscene.CheckHotelInfoPane;
 import presentation.webmanagerui.webmanagerscene.HotelworkerManagePane;
@@ -77,6 +78,8 @@ public class HotelworkerManageController {
                 return webManHotelworkerButtonCell;
             }
         });
+        final TableColumn[] tableColumns = {hotelIDCol, hotelnameCol, hotelworkerIDCol, hotelworkerNameCol, btnCol};
+        hotelworkerList.getColumns().addListener(new DisableColumnChangeListener(hotelworkerList, tableColumns));
         hotelworkerList.setItems(getHotelWorkerList());
     }
     private ObservableList getHotelWorkerList() {
@@ -202,28 +205,32 @@ public class HotelworkerManageController {
      */
     @FXML
     private void confirmModify() {
-        PersonnelVO personnelVO = (PersonnelVO) hotelworkerList.getItems().get(webManHotelworkerButtonCell.getSelectedIndex());
+        if (!workernameField.getText().equals("")) {
+            PersonnelVO personnelVO = (PersonnelVO) hotelworkerList.getItems().get(webManHotelworkerButtonCell.getSelectedIndex());
 
-        personnelVO.name = workernameField.getText();
-        personnelVO.password = passwordField.getText();
+            personnelVO.name = workernameField.getText();
+            personnelVO.password = passwordField.getText();
 
-        try {
-            ResultMessage resultMessage = personnelBLService.updatePersonnelInfo(personnelVO);
+            try {
+                ResultMessage resultMessage = personnelBLService.updatePersonnelInfo(personnelVO);
 
-            if (resultMessage == ResultMessage.Success) {
-                System.out.println("modify success");
+                if (resultMessage == ResultMessage.Success) {
+                    System.out.println("modify success");
 
-                hotelworkerList.setPrefHeight(400);
-                modifyhotelworkerPane.setVisible(false);
+                    hotelworkerList.setPrefHeight(480);
+                    modifyhotelworkerPane.setVisible(false);
 
-                alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
-                pane.getChildren().remove(0);
-                pane.getChildren().add(new HotelworkerManagePane(stage, pane));
-            } else {
-                System.out.println(resultMessage);
+                    alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
+                    pane.getChildren().remove(0);
+                    pane.getChildren().add(new HotelworkerManagePane(stage, pane));
+                } else {
+                    System.out.println(resultMessage);
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
             }
-        } catch (RemoteException e) {
-            e.printStackTrace();
+        } else {
+            alertController.showInputWrongAlert("信息填写不完整", "错误提示");
         }
     }
 
@@ -235,7 +242,7 @@ public class HotelworkerManageController {
         boolean confirm = alertController.showConfirmCancelAlert();
 
         if (confirm) {
-            hotelworkerList.setPrefHeight(400);
+            hotelworkerList.setPrefHeight(480);
             hotelworkerList.setDisable(false);
             modifyhotelworkerPane.setVisible(false);
         }

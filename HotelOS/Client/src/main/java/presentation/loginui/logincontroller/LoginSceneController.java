@@ -205,39 +205,46 @@ public class LoginSceneController {
 
         try {
             if (currentUser.equals("user")) {
-                ResultMessage resultMessage = userBlService.login(loginUsername.getText(), loginPassword.getText());
+                if (!loginUsername.getText().equals("") && !loginPassword.getText().equals("")) {
+                    ResultMessage resultMessage = userBlService.login(loginUsername.getText(), loginPassword.getText());
 
-                if (resultMessage == ResultMessage.UsernameNotExisted) {
-                    alertController.showInputWrongAlert("用户名不存在！", "登录失败");
-                    System.out.println("not exits");
-                } else if (resultMessage == ResultMessage.PasswordWrong) {
-                    alertController.showInputWrongAlert("密码错误！", "登录失败");
-                    System.out.println("wrong password");
-                } else if (resultMessage == ResultMessage.Success) {
-                    stage.setScene(new ComUserScene(new Group(), stage, loginUsername.getText()));
-                    centerStage(stage);
-                    System.out.println("success");
-                }
-            } else {
-                ResultMessage resultMessage = personnelBLService.login(Integer.valueOf(loginUsername.getText()), loginPassword.getText());
-
-                if (resultMessage == ResultMessage.Success) {
-                    System.out.println("personnel login success");
-                    PersonnelVO personnelVO = personnelBLService.searchPersonnelByID(Integer.valueOf(loginUsername.getText()));
-                    if(personnelVO.personnelType == PersonnelType.HotelWorker){
-                        stage.setScene(new ComWorkerScene(new Group(), stage, personnelVO.hotelID));
+                    if (resultMessage == ResultMessage.UsernameNotExisted) {
+                        alertController.showInputWrongAlert("用户名不存在！", "登录失败");
+                        System.out.println("not exits");
+                    } else if (resultMessage == ResultMessage.PasswordWrong) {
+                        alertController.showInputWrongAlert("密码错误！", "登录失败");
+                        System.out.println("wrong password");
+                    } else if (resultMessage == ResultMessage.Success) {
+                        stage.setScene(new ComUserScene(new Group(), stage, loginUsername.getText()));
                         centerStage(stage);
-                    }else if(personnelVO.personnelType == PersonnelType.WebMarketer){
-                        stage.setScene(new ComMarketerScene(new Group(), stage));
-                        centerStage(stage);
-                    }else {
-                        stage.setScene(new WebmanagerComScene(new Group(), stage));
-                        centerStage(stage);
+                        System.out.println("success");
                     }
-
                 } else {
-                    alertController.showInputWrongAlert("登录失败！", "登录失败");
-                    System.out.println("personnel login failed");
+                    alertController.showInputWrongAlert("请输入用户名和密码", "错误提示");
+                }
+
+            } else {
+                if (!loginUsername.getText().equals("") && !loginPassword.getText().equals("")) {
+                    ResultMessage resultMessage = personnelBLService.login(Integer.valueOf(loginUsername.getText()), loginPassword.getText());
+
+                    if (resultMessage == ResultMessage.Success) {
+                        System.out.println("personnel login success");
+                        PersonnelVO personnelVO = personnelBLService.searchPersonnelByID(Integer.valueOf(loginUsername.getText()));
+                        if(personnelVO.personnelType == PersonnelType.HotelWorker){
+                            stage.setScene(new ComWorkerScene(new Group(), stage, personnelVO.hotelID));
+                            centerStage(stage);
+                        }else if(personnelVO.personnelType == PersonnelType.WebMarketer){
+                            stage.setScene(new ComMarketerScene(new Group(), stage));
+                            centerStage(stage);
+                        }else {
+                            stage.setScene(new WebmanagerComScene(new Group(), stage));
+                            centerStage(stage);
+                        }
+
+                    } else {
+                        alertController.showInputWrongAlert("登录失败！", "登录失败");
+                        System.out.println("personnel login failed");
+                    }
                 }
             }
         } catch (RemoteException e) {
@@ -251,26 +258,51 @@ public class LoginSceneController {
      */
     @FXML
     private void userRegister() {
-        try {
-            ResultMessage resultMessage = userBlService.registerUser(loginUsername.getText(), loginPassword.getText());
+        if (!loginUsername.getText().equals("") && !loginPassword.getText().equals("")) {
 
-            if (resultMessage == ResultMessage.DataExisted) {
-                alertController.showInputWrongAlert("用户名已存在！", "注册失败");
-                System.out.printf("exits");
-            } else if (resultMessage == ResultMessage.Success) {
-                alertController.showUpdateSuccessAlert("注册成功！", "注册成功");
+            if (isFormatTrue(loginUsername.getText())) {
+                try {
+                    ResultMessage resultMessage = userBlService.registerUser(loginUsername.getText(), loginPassword.getText());
+
+                    if (resultMessage == ResultMessage.DataExisted) {
+                        alertController.showInputWrongAlert("用户名已存在！", "注册失败");
+                        System.out.printf("exits");
+                    } else if (resultMessage == ResultMessage.Success) {
+                        alertController.showUpdateSuccessAlert("注册成功！", "注册成功");
+                    }
+
+                    loginUsername.setText(null);
+                    loginPassword.setText(null);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                alertController.showInputWrongAlert("用户名格式错误", "错误提示");
             }
-
-            loginUsername.setText(null);
-            loginPassword.setText(null);
-        } catch (RemoteException e) {
-            e.printStackTrace();
+        } else {
+            alertController.showInputWrongAlert("请输入用户名和密码", "错误提示");
         }
+
     }
 
     private void centerStage(Stage newStage){
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         newStage.setX((primScreenBounds.getWidth() - newStage.getWidth()) / 2);
         newStage.setY((primScreenBounds.getHeight() - newStage.getHeight()) / 2);
+    }
+
+    private boolean isFormatTrue(String str) {
+        char ch[] = str.toCharArray();
+        boolean result = true;
+        for (int i = 0; i<ch.length; i++) {
+            if (ch[i] >= '0' && ch[i] <= '9') {
+                result = result && true;
+            } else {
+                result = result && false;
+                break;
+            }
+        }
+
+        return result;
     }
 }

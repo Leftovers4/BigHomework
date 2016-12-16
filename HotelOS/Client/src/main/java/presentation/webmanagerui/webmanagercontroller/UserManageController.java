@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
+import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.ToolTipShow;
 import presentation.webmanagerui.webmanagerscene.CheckUserInfoPane;
 import presentation.webmanagerui.webmanagerscene.UserManagePane;
@@ -75,6 +76,8 @@ public class UserManageController {
                 return webManUserButtonCell;
             }
         });
+        final TableColumn[] tableColumns = {userIDCol, userNameCol, phoneCol, btnCol};
+        userlist.getColumns().addListener(new DisableColumnChangeListener(userlist, tableColumns));
         userlist.setItems(getUserList());
     }
 
@@ -177,26 +180,30 @@ public class UserManageController {
      */
     @FXML
     private void confirmModify() {
-        UserVO userVO = (UserVO) userlist.getItems().get(webManUserButtonCell.getSelectedIndex());
+        if (!nameField.getText().equals("") && !phoneField.getText().equals("")) {
+            UserVO userVO = (UserVO) userlist.getItems().get(webManUserButtonCell.getSelectedIndex());
 
-        userVO.name = nameField.getText();
-        userVO.phone = phoneField.getText();
+            userVO.name = nameField.getText();
+            userVO.phone = phoneField.getText();
 
-        try {
-            ResultMessage resultMessage = userBlService.updateBasicUserInfo(userVO);
+            try {
+                ResultMessage resultMessage = userBlService.updateBasicUserInfo(userVO);
 
-            if (resultMessage == ResultMessage.Success) {
-                System.out.println("modify success");
+                if (resultMessage == ResultMessage.Success) {
+                    System.out.println("modify success");
 
-                alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
+                    alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
 
-                userlist.setPrefHeight(400);
-                userlist.setDisable(false);
-                modifyUserInfoPane.setVisible(false);
-                new UserManagePane(stage, mainPane);
+                    userlist.setPrefHeight(470);
+                    userlist.setDisable(false);
+                    modifyUserInfoPane.setVisible(false);
+                    new UserManagePane(stage, mainPane);
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
             }
-        } catch (RemoteException e) {
-            e.printStackTrace();
+        } else {
+            alertController.showInputWrongAlert("信息填写不完整", "错误提示");
         }
     }
 
@@ -208,7 +215,7 @@ public class UserManageController {
         boolean confirm = alertController.showConfirmCancelAlert();
 
         if (confirm) {
-            userlist.setPrefHeight(400);
+            userlist.setPrefHeight(470);
             userlist.setDisable(false);
             modifyUserInfoPane.setVisible(false);
         }
