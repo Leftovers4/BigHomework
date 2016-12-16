@@ -26,10 +26,10 @@ public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
     public UserOrderListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView, final String userID) {
         this.tableView = tableView;
 
-        this.getStylesheets().add(UserOrderListButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
-        Image detailImg = new Image("/img/user/checkdetail.png");
+        this.getStylesheets().add(UserOrderListButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
+        Image detailImg = new Image("/img/hotelworker/checkorderdetail.png");
         checkDetailBtn.setGraphic(new ImageView(detailImg));
-        checkDetailBtn.getStyleClass().add("tableCellBtn");
+        checkDetailBtn.getStyleClass().add("TableButtonCell");
 
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();

@@ -368,6 +368,20 @@
     -fx-background-color: #49BCFF;
 }
 
+.TableDeleteButtonCell{
+    -fx-background-radius: 50%;
+    -fx-cursor: hand;
+    -fx-background-color: rgba(233, 77, 61, 0.8);
+    -fx-pref-width: 32px;
+    -fx-pref-height: 32px;
+    -fx-min-width: 32px;
+    -fx-min-height: 32px;
+    -fx-padding: 0;
+    -fx-margin: 0;
+}
+.TableDeleteButtonCell:hover{
+    -fx-background-color: rgba(255, 83, 67, 0.8);
+}
 
 
 /**

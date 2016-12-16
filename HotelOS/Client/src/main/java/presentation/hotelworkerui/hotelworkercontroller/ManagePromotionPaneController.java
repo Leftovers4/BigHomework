@@ -541,7 +541,7 @@ public class ManagePromotionPaneController {
 
             Image deleteImage = new Image("/img/hotelworker/deleteroom.png");
             deleteButton.setGraphic(new ImageView(deleteImage));
-            deleteButton.getStyleClass().add("TableButtonCell");
+            deleteButton.getStyleClass().add("TableDeleteButtonCell");
 
             modifyButton.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();

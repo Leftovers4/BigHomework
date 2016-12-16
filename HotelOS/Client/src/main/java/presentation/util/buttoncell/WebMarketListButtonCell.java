@@ -40,7 +40,7 @@ public class WebMarketListButtonCell extends TableCell<OrderVO, Boolean> {
             HBox btnBox = new HBox();
             Button detailButton = new Button();
 
-            Image detailImage = new Image("/img/webmarketer/checkorderdetail.png");
+            Image detailImage = new Image("/img/hotelworker/checkorderdetail.png");
             detailButton.setGraphic(new ImageView(detailImage));
             detailButton.getStyleClass().add("TableButtonCell");
 

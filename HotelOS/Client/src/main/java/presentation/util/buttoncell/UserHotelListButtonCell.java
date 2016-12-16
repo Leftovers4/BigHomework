@@ -27,14 +27,14 @@ public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
     public UserHotelListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView, final String userID) {
         this.tableView = tableView;
 
-        this.getStylesheets().add(UserHotelListButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
+        this.getStylesheets().add(UserHotelListButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
         Image detailImg = new Image("/img/user/checkdetail.png");
         checkDetailBtn.setGraphic(new ImageView(detailImg));
-        checkDetailBtn.getStyleClass().add("tableCellBtn");
+        checkDetailBtn.getStyleClass().add("TableButtonCell");
 
         Image generateImg = new Image("/img/user/generateOrder.png");
         generateOrderBtn.setGraphic(new ImageView(generateImg));
-        generateOrderBtn.getStyleClass().add("tableCellBtn");
+        generateOrderBtn.getStyleClass().add("TableButtonCell");
 
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
