@@ -18,8 +18,8 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="132.0" layoutX="250.0" layoutY="84.0" stroke="BLACK" strokeType="INSIDE" width="351.0" />
       <Label layoutX="316.0" layoutY="260.0" text="姓名：" />
       <Label layoutX="316.0" layoutY="310.0" text="性别：" />
-      <Label layoutX="286.0" layoutY="360.0" text="出生日期：" />
-      <Label layoutX="286.0" layoutY="410.0" text="联系方式：" />
+      <Label layoutX="280.0" layoutY="361.0" text="出生日期：" />
+      <Label layoutX="280.0" layoutY="411.0" text="联系方式：" />
       <Label layoutX="288.0" layoutY="124.0" text="企业会员：" wrapText="true" />
       <Label layoutX="373.0" layoutY="157.0" text="2、享受合作企业优惠" />
       <Label layoutX="373.0" layoutY="124.0" text="1、享受企业会员专属折扣" />
@@ -28,9 +28,9 @@
       <RadioButton fx:id="sexWoman" layoutX="465.0" layoutY="310.0" mnemonicParsing="false" text="女" />
       <DatePicker fx:id="birthdayPicker" layoutX="376.0" layoutY="355.0" prefWidth="175.0" />
       <TextField fx:id="phoneField" layoutX="376.0" layoutY="405.0" prefWidth="175.0" />
-      <Button fx:id="registerCompanyBtn" disable="true" layoutX="315.0" layoutY="553.0" mnemonicParsing="false" onAction="#confirmRegister" prefHeight="45.0" prefWidth="220.0" styleClass="actionBtn" text="立即注册" />
-      <Label layoutX="286.0" layoutY="460.0" text="企业名称：" />
+      <Button fx:id="registerCompanyBtn" disable="true" layoutX="317.0" layoutY="577.0" mnemonicParsing="false" onAction="#confirmRegister" prefHeight="45.0" prefWidth="220.0" styleClass="actionBtn" text="立即注册" />
+      <Label layoutX="280.0" layoutY="461.0" text="企业名称：" />
       <TextField fx:id="enterpriseField" layoutX="377.0" layoutY="455.0" prefWidth="175.0" />
-      <CheckBox fx:id="confirmCompanyvipInfo" layoutX="362.0" layoutY="509.0" mnemonicParsing="false" onAction="#checkCompanyvipInfo" onMouseClicked="#checkCompanyvipInfo" text="我已核对信息无误" />
+      <CheckBox fx:id="confirmCompanyvipInfo" layoutX="352.0" layoutY="537.0" mnemonicParsing="false" onAction="#checkCompanyvipInfo" onMouseClicked="#checkCompanyvipInfo" text="我已核对信息无误" />
    </children>
 </fx:root>

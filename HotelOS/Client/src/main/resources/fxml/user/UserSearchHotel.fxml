@@ -20,18 +20,18 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/user/userstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.UserSearchHotelController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.UserSearchHotelController">
    <children>
       <ScrollPane layoutY="50.0" prefHeight="640.0" prefWidth="850.0" styleClass="panel">
          <content>
             <FlowPane layoutY="50.0" prefHeight="630.0" prefWidth="830.0">
                <children>
-                  <Pane fx:id="searchArea" prefHeight="130.0" prefWidth="528.0">
+                  <Pane fx:id="searchArea" prefHeight="130.0" prefWidth="528.0" styleClass="BackgroundPanel">
                      <children>
                         <Label layoutX="50.0" layoutY="25.0" text="城市：" />
-                        <ComboBox fx:id="cityComBox" layoutX="110.0" layoutY="20.0" prefHeight="34.0" prefWidth="110.0" promptText="-城市-" />
+                        <ComboBox fx:id="cityComBox" layoutX="110.0" layoutY="20.0" prefHeight="36.0" prefWidth="118.0" promptText="-城市-" />
                         <Label layoutX="255.0" layoutY="25.0" text="商圈：" />
-                        <ComboBox fx:id="tradingAreaCombox" layoutX="315.0" layoutY="20.0" prefHeight="34.0" prefWidth="145.0" promptText="-商圈-" />
+                        <ComboBox fx:id="tradingAreaCombox" layoutX="315.0" layoutY="20.0" prefHeight="36.0" prefWidth="153.0" promptText="-商圈-" />
                         <TextField fx:id="searchField" layoutX="50.0" layoutY="75.0" prefHeight="34.0" prefWidth="285.0" promptText="酒店名称" />
                         <Button fx:id="searchHotelButton" layoutX="350.0" layoutY="75.0" mnemonicParsing="false" onAction="#confirmChoose" prefHeight="34.0" prefWidth="110.0" styleClass="actionBtn" text="搜索酒店" />
                      </children>
@@ -39,22 +39,22 @@
                         <Insets bottom="-10.0" left="160.0" top="30.0" />
                      </FlowPane.margin>
                   </Pane>
-                  <Pane fx:id="contentmainpane" prefHeight="260.0" prefWidth="528.0" styleClass="contentPane">
+                  <Pane fx:id="contentmainpane" prefHeight="260.0" prefWidth="528.0" styleClass="BackgroundPanel">
                      <children>
                         <Label layoutX="10.0" layoutY="66.0" text="房间类型：" />
-                        <Button fx:id="roomTypeBtn" layoutX="100.0" layoutY="61.0" mnemonicParsing="false" styleClass="actionBtn" text="不限" />
+                        <Button fx:id="roomTypeBtn" layoutX="100.0" layoutY="61.0" mnemonicParsing="false" styleClass="unlimitedBtn" text="不限" />
                         <CheckBox fx:id="singleRoomCB" layoutX="165.0" layoutY="66.0" mnemonicParsing="false" text="单人房" />
                         <CheckBox fx:id="coupleRoomCB" layoutX="274.0" layoutY="66.0" mnemonicParsing="false" text="双人房" />
                         <CheckBox fx:id="standardRoomCB" layoutX="384.0" layoutY="66.0" mnemonicParsing="false" text="标准房" />
                         <CheckBox fx:id="queenCB" layoutX="165.0" layoutY="106.0" mnemonicParsing="false" text="大床房" />
                         <CheckBox fx:id="loverroomCB" layoutX="274.0" layoutY="106.0" mnemonicParsing="false" text="情侣房" />
                         <CheckBox fx:id="familyRoomCB" layoutX="384.0" layoutY="106.0" mnemonicParsing="false" text="家庭房" />
-                        <Label layoutX="10.0" layoutY="21.0" text="入住：" />
-                        <DatePicker fx:id="checkInDate" layoutX="71.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" />
+                        <Label layoutX="46.0" layoutY="21.0" text="入住：" />
+                        <DatePicker fx:id="checkInDate" layoutX="102.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" />
                         <Label layoutX="264.0" layoutY="21.0" text="退房：" />
                         <DatePicker fx:id="checkOutDate" layoutX="324.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" />
                         <Label layoutX="41.0" layoutY="188.0" text="价格：" />
-                        <Button fx:id="priceBtn" layoutX="101.0" layoutY="183.0" mnemonicParsing="false" styleClass="actionBtn" text="不限" />
+                        <Button fx:id="priceBtn" layoutX="101.0" layoutY="183.0" mnemonicParsing="false" styleClass="unlimitedBtn" text="不限" />
                         <CheckBox fx:id="twoHundredLess" layoutX="166.0" layoutY="188.0" mnemonicParsing="false" text="¥200以下" />
                         <CheckBox fx:id="twoToFourHundred" layoutX="276.0" layoutY="188.0" mnemonicParsing="false" text="¥200-400" />
                         <CheckBox fx:id="fourToSixHundred" layoutX="385.0" layoutY="188.0" mnemonicParsing="false" text="¥400-600" />
@@ -73,7 +73,7 @@
                         <Insets left="160.0" />
                      </FlowPane.margin>
                      <children>
-                        <Button fx:id="showMoreChoiceBtn" layoutX="197.0" layoutY="59.0" mnemonicParsing="false" onAction="#showMoreChoice" text="星级、评分等">
+                        <Button fx:id="showMoreChoiceBtn" layoutX="186.0" layoutY="59.0" mnemonicParsing="false" onAction="#showMoreChoice" text="星级、评分等">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -82,20 +82,20 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="resetShow" layoutX="172.0" layoutY="10.0" mnemonicParsing="false" onAction="#resetChoice" prefWidth="70.0" styleClass="actionBtn" text="重置" />
-                        <Button fx:id="confirmShow" layoutX="286.0" layoutY="10.0" mnemonicParsing="false" onAction="#confirmChoose" prefWidth="70.0" styleClass="actionBtn" text="确认" />
+                        <Button fx:id="resetShow" layoutX="172.0" layoutY="12.0" mnemonicParsing="false" onAction="#resetChoice" prefWidth="70.0" styleClass="cancelEditBtn" text="重置" />
+                        <Button fx:id="confirmShow" layoutX="286.0" layoutY="12.0" mnemonicParsing="false" onAction="#confirmChoose" prefWidth="70.0" styleClass="saveEditBtn" text="确认" />
                      </children>
                   </Pane>
-                  <Pane fx:id="moreInfoChoice" disable="true" prefHeight="170.0" prefWidth="528.0" styleClass="contentPane" visible="false">
+                  <Pane fx:id="moreInfoChoice" disable="true" prefHeight="170.0" prefWidth="528.0" styleClass="BackgroundPanel" visible="false">
                      <children>
                         <Label layoutX="40.0" layoutY="25.0" text="星级：" />
-                        <Button fx:id="hotelStarBtn" layoutX="100.0" layoutY="20.0" mnemonicParsing="false" styleClass="actionBtn" text="不限" />
+                        <Button fx:id="hotelStarBtn" layoutX="100.0" layoutY="20.0" mnemonicParsing="false" styleClass="unlimitedBtn" text="不限" />
                         <CheckBox fx:id="threeStar" layoutX="278.0" layoutY="25.0" mnemonicParsing="false" text="三星级" />
                         <CheckBox fx:id="fourStar" layoutX="359.0" layoutY="25.0" mnemonicParsing="false" text="四星级" />
                         <CheckBox fx:id="fiveStar" layoutX="441.0" layoutY="25.0" mnemonicParsing="false" text="五星级" />
                         <CheckBox fx:id="twoStarLess" layoutX="165.0" layoutY="25.0" mnemonicParsing="false" text="二星级以下" />
                         <Label layoutX="40.0" layoutY="80.0" text="评分：" />
-                        <Button fx:id="hotelGradeBtn" layoutX="100.0" layoutY="75.0" mnemonicParsing="false" styleClass="actionBtn" text="不限" />
+                        <Button fx:id="hotelGradeBtn" layoutX="100.0" layoutY="75.0" mnemonicParsing="false" styleClass="unlimitedBtn" text="不限" />
                         <CheckBox fx:id="fourPoFiveMore" layoutX="165.0" layoutY="80.0" mnemonicParsing="false" text="大于4.5" />
                         <CheckBox fx:id="threeToFour" layoutX="350.0" layoutY="80.0" mnemonicParsing="false" text="3.0-4.0" />
                         <CheckBox fx:id="threeLess" layoutX="442.0" layoutY="80.0" mnemonicParsing="false" text="小于3.0" />
@@ -108,7 +108,7 @@
                   </Pane>
                   <Pane fx:id="upMoreInfo" disable="true" prefHeight="60.0" prefWidth="528.0" styleClass="contentPane" visible="false">
                      <children>
-                        <Button fx:id="hideMoreChoiceBtn1" layoutX="227.0" layoutY="59.0" mnemonicParsing="false" onAction="#hideMoreChoice" text="收起">
+                        <Button id="showMoreChoiceBtn" fx:id="hideMoreChoiceBtn1" layoutX="227.0" layoutY="80.0" mnemonicParsing="false" onAction="#hideMoreChoice" text="收起">
                            <graphic>
                               <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                                  <image>
@@ -117,24 +117,25 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="resetHide" layoutX="172.0" layoutY="15.0" mnemonicParsing="false" onAction="#resetChoice" prefWidth="70.0" styleClass="actionBtn" text="重置" />
-                        <Button fx:id="confirmHide" layoutX="286.0" layoutY="15.0" mnemonicParsing="false" onAction="#confirmChoose" prefWidth="70.0" styleClass="actionBtn" text="确认" />
+                        <Button fx:id="resetHide" layoutX="172.0" layoutY="30.0" mnemonicParsing="false" onAction="#resetChoice" prefWidth="70.0" styleClass="cancelEditBtn" text="重置" />
+                        <Button fx:id="confirmHide" layoutX="286.0" layoutY="30.0" mnemonicParsing="false" onAction="#confirmChoose" prefWidth="70.0" styleClass="saveEditBtn" text="确认" />
                      </children>
                      <FlowPane.margin>
                         <Insets left="160.0" top="-20.0" />
                      </FlowPane.margin>
                   </Pane>
-                  <TableView fx:id="hotelList" maxHeight="-Infinity" prefWidth="578.0">
+                  <TableView fx:id="hotelList" maxHeight="-Infinity" prefHeight="400.0" prefWidth="740.0">
                      <columns>
-                        <TableColumn fx:id="hotelNameCol" prefWidth="149.0" resizable="false" text="酒店名称" />
-                        <TableColumn fx:id="hotelAddressCol" prefWidth="137.0" resizable="false" text="地址/商圈" />
-                        <TableColumn fx:id="hotelScoreCol" prefWidth="45.0" resizable="false" text="评分" />
-                        <TableColumn fx:id="registerRecordCol" prefWidth="70.0" resizable="false" text="预订记录" />
-                        <TableColumn fx:id="priceCol" prefWidth="67.0" resizable="false" text="价格区间" />
-                        <TableColumn fx:id="btnCol" prefWidth="106.0" resizable="false" />
+                        <TableColumn fx:id="hotelNameCol" editable="false" prefWidth="150.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="酒店名称" />
+                        <TableColumn fx:id="hotelAddressCol" editable="false" resizable="false" sortable="false" styleClass="LeftAlignCol" text="城市" />
+                        <TableColumn fx:id="hotelAddressCol1" editable="false" prefWidth="100.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="商圈" />
+                        <TableColumn fx:id="hotelScoreCol" editable="false" prefWidth="61.0" resizable="false" styleClass="RightAlignCol" text="评分" />
+                        <TableColumn fx:id="registerRecordCol" editable="false" prefWidth="107.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="预订记录" />
+                        <TableColumn fx:id="priceCol" prefWidth="118.0" resizable="false" styleClass="RightAlignCol" text="价格区间" />
+                        <TableColumn fx:id="btnCol" minWidth="0.0" prefWidth="100.0" resizable="false" />
                      </columns>
                      <FlowPane.margin>
-                        <Insets left="135.0" />
+                        <Insets left="50.0" top="70.0" />
                      </FlowPane.margin>
                   </TableView>
                </children>

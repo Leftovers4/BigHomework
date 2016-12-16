@@ -85,9 +85,9 @@
          </image>
       </ImageView>
       <Button fx:id="changePhotoBtn" layoutX="137.0" layoutY="292.0" mnemonicParsing="false" onAction="#changePhoto" text="编辑头像" />
-      <Button id="saveEditBtn" fx:id="saveInfo" layoutX="528.0" layoutY="632.0" mnemonicParsing="false" onAction="#saveUserInfo" prefHeight="38.0" prefWidth="70.0" text="保存" visible="false" />
-      <Button id="cancelEditBtn" fx:id="cleanAllBtn" layoutX="627.0" layoutY="632.0" mnemonicParsing="false" onAction="#cleanAll" prefHeight="38.0" prefWidth="70.0" styleClass="actionBtn" text="重置" visible="false" />
-      <Button fx:id="editInfoBtn" layoutX="627.0" layoutY="632.0" mnemonicParsing="false" onAction="#editUserInfo" prefWidth="70.0" styleClass="actionBtn" text="编辑" />
+      <Button fx:id="saveInfo" layoutX="528.0" layoutY="632.0" mnemonicParsing="false" onAction="#saveUserInfo" prefHeight="38.0" prefWidth="70.0" styleClass="saveEditBtn" text="保存" visible="false" />
+      <Button fx:id="cleanAllBtn" graphicTextGap="0.0" layoutX="627.0" layoutY="632.0" mnemonicParsing="false" onAction="#cleanAll" prefHeight="38.0" prefWidth="70.0" styleClass="cancelEditBtn" text="重置" visible="false" />
+      <Button fx:id="editInfoBtn" layoutX="627.0" layoutY="632.0" mnemonicParsing="false" onAction="#editUserInfo" prefWidth="70.0" styleClass="OpBtn" text="编辑" />
       <Pane layoutX="333.0" layoutY="416.0" prefHeight="195.0" prefWidth="364.0" styleClass="BackgroundPanel">
          <children>
             <Label layoutX="15.0" layoutY="75.0" text="会员信息：" />

@@ -56,7 +56,7 @@
          <children>
             <Label layoutX="15.0" layoutY="15.0" text="最优优惠：" />
             <Label layoutX="15.0" layoutY="59.0" text="价格总计：" />
-            <Label fx:id="ordertypeLabel" layoutX="203.0" layoutY="103.0" text="状态" />
+            <Label fx:id="ordertypeLabel" layoutX="198.0" layoutY="103.0" text="状态" />
             <Label layoutX="15.0" layoutY="103.0" text="订单状态：" />
             <Label id="orderActPriceLabel" fx:id="finalpriceLabel" layoutX="214.0" layoutY="55.0" text="1200" />
             <Label id="orderProLabel" fx:id="bestpromotionLabel" layoutX="199.0" layoutY="10.0" text="生日优惠" />
@@ -66,9 +66,9 @@
       <Label fx:id="hotelNameLabel" layoutX="117.0" layoutY="294.0" text="酒店名" />
       <Label fx:id="hotelAddressLabel" layoutX="117.0" layoutY="346.0" text="酒店地址" />
       <Label fx:id="hotelServiceLabel" layoutX="117.0" layoutY="400.0" text="酒店设施" />
-      <Button id="editInfoBtn" fx:id="evaluateBtn" layoutX="631.0" layoutY="609.0" mnemonicParsing="false" onAction="#evaluateOrder" prefHeight="30.0" prefWidth="102.0" text="评价晒单" visible="false" />
-      <Button id="editInfoBtn" fx:id="cancelBtn" layoutX="631.0" layoutY="609.0" mnemonicParsing="false" onAction="#cancelOrderEvent" prefHeight="30.0" prefWidth="102.0" text="撤销订单" visible="false" />
-      <Button id="editInfoBtn" fx:id="checkMyReviewBtn" layoutX="631.0" layoutY="609.0" mnemonicParsing="false" onAction="#checkMyReviewEvent" text="查看评价" visible="false" />
+      <Button fx:id="evaluateBtn" layoutX="631.0" layoutY="609.0" mnemonicParsing="false" onAction="#evaluateOrder" prefHeight="30.0" prefWidth="102.0" styleClass="OpBtn" text="评价晒单" visible="false" />
+      <Button fx:id="cancelBtn" layoutX="631.0" layoutY="609.0" mnemonicParsing="false" onAction="#cancelOrderEvent" prefHeight="30.0" prefWidth="102.0" styleClass="OpBtn" text="撤销订单" visible="false" />
+      <Button fx:id="checkMyReviewBtn" layoutX="631.0" layoutY="609.0" mnemonicParsing="false" onAction="#checkMyReviewEvent" styleClass="OpBtn" text="查看评价" visible="false" />
       <Separator layoutX="117.0" layoutY="330.0" prefHeight="2.0" prefWidth="161.0" />
       <Separator layoutX="117.0" layoutY="383.0" prefHeight="2.0" prefWidth="161.0" />
    </children>
