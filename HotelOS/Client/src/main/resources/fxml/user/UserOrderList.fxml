@@ -21,7 +21,7 @@
       <TableView fx:id="orderList" layoutX="70.0" layoutY="170.0" prefHeight="360.0" prefWidth="711.0">
         <columns>
           <TableColumn fx:id="orderIDCol" prefWidth="190.0" resizable="false" styleClass="LeftAlignCol" text="订单号" />
-          <TableColumn fx:id="orderTimeCol" minWidth="0.0" prefWidth="170.0" resizable="false" styleClass="LeftAlignCol" text="订单时间" />
+          <TableColumn fx:id="orderTimeCol" minWidth="0.0" prefWidth="170.0" resizable="false" styleClass="LeftAlignCol" text="生成时间" />
             <TableColumn fx:id="orderStateCol" prefWidth="123.0" resizable="false" styleClass="LeftAlignCol" text="订单状态" />
             <TableColumn fx:id="hotelNameCol" prefWidth="148.0" resizable="false" styleClass="LeftAlignCol" text="酒店名称" />
             <TableColumn fx:id="btnCol" minWidth="0.0" prefWidth="60.0" resizable="false" />

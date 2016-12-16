@@ -165,4 +165,9 @@ public class OrderVO {
     public double getActualPrice() {
         return orderPriceVO.actualPrice;
     }
+
+    public String getGenerateTime() {
+        return orderTimeVO.generateTime.format(DateTimeFormat.dateTimeFormat);
+    }
+
 }

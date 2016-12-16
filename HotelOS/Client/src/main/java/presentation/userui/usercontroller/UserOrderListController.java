@@ -61,7 +61,7 @@ public class UserOrderListController {
      */
     private void initialOrderListData() {
         orderIDCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
-        orderTimeCol.setCellValueFactory(new PropertyValueFactory<>("orderTimeVO"));
+        orderTimeCol.setCellValueFactory(new PropertyValueFactory<>("generateTime"));
         orderStateCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
         hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
