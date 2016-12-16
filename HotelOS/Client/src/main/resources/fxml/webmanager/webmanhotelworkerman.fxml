@@ -21,7 +21,7 @@
          </columns>
       </TableView>
       <TextField focusTraversable="false" layoutX="100.0" layoutY="100.0" prefHeight="30.0" prefWidth="235.0" promptText="输入编号、姓名" />
-      <Button layoutX="335.0" layoutY="100.0" mnemonicParsing="false">
+      <Button layoutX="335.0" layoutY="100.0" mnemonicParsing="false" styleClass="searchBtn">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

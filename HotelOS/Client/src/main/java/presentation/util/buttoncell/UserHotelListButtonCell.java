@@ -59,9 +59,9 @@ public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
             setText(null);
         } else {
             btnBox.getChildren().clear();
-            checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
+            checkDetailBtn.setTooltip(ToolTipShow.setTool("详情"));
             btnBox.getChildren().add(checkDetailBtn);
-            generateOrderBtn.setTooltip(ToolTipShow.setTool("立即预订"));
+            generateOrderBtn.setTooltip(ToolTipShow.setTool("立即"));
             btnBox.getChildren().add(generateOrderBtn);
             setGraphic(btnBox);
             setText(null);

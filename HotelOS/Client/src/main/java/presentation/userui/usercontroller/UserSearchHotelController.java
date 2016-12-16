@@ -93,6 +93,9 @@ public class UserSearchHotelController {
         this.mainPane = mainPane;
         this.userID = userID;
 
+        hotelList.setVisible(false);
+        FlowPane.setMargin(hotelList, new Insets(-170, 0, 0, 50));
+
         addTradProducer = new AddTradProducer();
         alertController = new AlertController();
 
@@ -147,7 +150,7 @@ public class UserSearchHotelController {
         moreInfoChoice.setDisable(false);
         upMoreInfo.setDisable(false);
         upMoreInfo.setVisible(true);
-        FlowPane.setMargin(hotelList, new Insets(50, 0, 0, 160));
+        FlowPane.setMargin(hotelList, new Insets(90, 0, 0, 50));
         downMoreInfo.setVisible(false);
         downMoreInfo.setDisable(true);
     }
@@ -159,7 +162,7 @@ public class UserSearchHotelController {
         moreInfoChoice.setDisable(true);
         downMoreInfo.setVisible(true);
         downMoreInfo.setDisable(false);
-        FlowPane.setMargin(hotelList, new Insets(0, 0, 0, 160));
+        FlowPane.setMargin(hotelList, new Insets(40, 0, 0, 50));
         upMoreInfo.setVisible(false);
         upMoreInfo.setDisable(true);
     }
@@ -203,6 +206,9 @@ public class UserSearchHotelController {
      */
     @FXML
     private void confirmChoose() {
+
+        hotelList.setVisible(true);
+
         HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
         hotelConditionsVO.address = cityComBox.getValue().toString();
         hotelConditionsVO.tradingArea = tradingAreaCombox.getValue().toString();

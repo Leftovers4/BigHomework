@@ -18,8 +18,8 @@
             <TableColumn fx:id="btnCol" prefWidth="113.0" resizable="false" sortable="false" styleClass="MidAlignCol" />
          </columns>
       </TableView>
-      <TextField focusTraversable="false" layoutX="175.0" layoutY="105.0" prefHeight="30.0" prefWidth="235.0" promptText="输入账号、姓名" />
-      <Button layoutX="410.0" layoutY="105.0" mnemonicParsing="false">
+      <TextField focusTraversable="false" layoutX="175.0" layoutY="105.0" prefHeight="36.0" prefWidth="190.0" promptText="输入账号、姓名" />
+      <Button layoutX="365.0" layoutY="106.0" mnemonicParsing="false" styleClass="searchBtn">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,7 +28,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="473.0" layoutY="101.0" mnemonicParsing="false" onAction="#toAddNewWebMarketer" text="添加网站营销人员">
+      <Button layoutX="495.0" layoutY="107.0" mnemonicParsing="false" onAction="#toAddNewWebMarketer" styleClass="roomBtn" text="添加网站营销人员">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>

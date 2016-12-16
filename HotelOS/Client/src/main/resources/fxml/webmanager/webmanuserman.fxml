@@ -20,7 +20,7 @@
          </columns>
       </TableView>
       <TextField focusTraversable="false" layoutX="150.0" layoutY="105.0" prefHeight="30.0" prefWidth="235.0" promptText="搜索酒店编号、名称" />
-      <Button layoutX="385.0" layoutY="105.0" mnemonicParsing="false">
+      <Button layoutX="385.0" layoutY="105.0" mnemonicParsing="false" styleClass="searchBtn">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
