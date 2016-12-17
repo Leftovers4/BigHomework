@@ -2,17 +2,25 @@ package presentation.userui.usercontroller;
 
 import bl.hotelbl.HotelBLService;
 import bl.hotelbl.impl.HotelBlServiceImpl;
+import bl.userbl.UserBLService;
+import bl.userbl.impl.UserBlServiceImpl;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.loginui.loginscene.LoginScene;
 import presentation.userui.userscene.*;
 import presentation.util.alert.AlertController;
 import presentation.util.other.ChangePhoto;
 import presentation.util.other.LeftBarEffect;
+import util.ResultMessage;
 import vo.hotel.HotelVO;
+import vo.user.UserVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -40,6 +48,8 @@ public class ComUserSceneController {
     @FXML private ImageView topbarphoto;
     @FXML private Label timeLabel;
 
+    @FXML private SplitMenuButton topname;
+
     private Button currentBtn = null;
     private AlertController alertController;
 
@@ -47,14 +57,17 @@ public class ComUserSceneController {
     private ArrayList<Button> leftBarBtnArr;
 
     private HotelBLService hotelBLService;
+    private UserBLService userBLService;
 
     LeftBarEffect leftBarEffect = new LeftBarEffect();
 
     public void launch(Stage primaryStage, String username){
         this.stage = primaryStage;
         this.userID = username;
+        topname.setText(username);
         try {
             hotelBLService = new HotelBlServiceImpl();
+            userBLService = new UserBlServiceImpl();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -192,11 +205,22 @@ public class ComUserSceneController {
             for (int i = 0; i<hotelVOList.size(); i++) {
 
                 if (hotelVOList.get(i).image != null) {
-                    ChangePhoto.setImage(path, hotelVOList.get(i).hotelID, hotelVOList.get(i).image);
+                    ChangePhoto.setImage(path + String.valueOf(hotelVOList.get(i).hotelID) + "/", hotelVOList.get(i).hotelID, hotelVOList.get(i).image);
                 }
             }
         } catch (RemoteException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void logout() {
+        ResultMessage resultMessage = userBLService.logout(userID);
+
+        if (resultMessage == ResultMessage.Success) {
+            stage.setScene(new LoginScene(new Group(), stage));
+        } else {
+            System.out.println(resultMessage+"=====================================================");
         }
     }
 }

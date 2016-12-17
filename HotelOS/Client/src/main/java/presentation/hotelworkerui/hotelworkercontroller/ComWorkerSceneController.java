@@ -1,18 +1,25 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
+import bl.personnelbl.PersonnelBLService;
+import bl.personnelbl.impl.PersonnelBLServiceImpl;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.*;
+import presentation.loginui.loginscene.LoginScene;
 import presentation.util.alert.AlertController;
 import presentation.util.other.MyTimeLabel;
 import presentation.util.other.LeftBarEffect;
+import util.ResultMessage;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -32,7 +39,6 @@ public class ComWorkerSceneController {
     @FXML private Button updateCheckInBtn;
     @FXML private Button updateOutBtn;
 
-    @FXML private ImageView topbarphoto;
     @FXML private ImageView slider;
     //时间按钮
     @FXML private Label timeLabel;
@@ -46,16 +52,17 @@ public class ComWorkerSceneController {
     private AlertController alertController;
     public static long hotelID;
 
-    public void launch(Stage primaryStage,long hotelID){
+    public void launch(Stage primaryStage, long hotelID){
         this.stage = primaryStage;
         this.hotelID = hotelID;
         alertController = new AlertController();
-        mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto));
+        mainPane.getChildren().add(new InfoPane(stage, mainPane));
         leftBarBtnArr = new ArrayList<>(Arrays.asList(hotelInfoBtn, orderListBtn, registerRoomBtn,
                 managePromotionBtn, updateCheckInBtn, updateOutBtn));
 
         //实时刷新time
         MyTimeLabel.EnableShowTime(timeLabel);
+
 
     }
 
@@ -80,7 +87,7 @@ public class ComWorkerSceneController {
     private void showHotelInfo(){
         leftBarBtnEffect(hotelInfoBtn);
         changeSliderPos(260);
-        changePane(new InfoPane(stage, mainPane, topbarphoto));
+        changePane(new InfoPane(stage, mainPane));
         currentBtn = hotelInfoBtn;
     }
 
@@ -211,4 +218,6 @@ public class ComWorkerSceneController {
     private void mouseOutUpdateOut() {
         mouseOutEffect(updateOutBtn);
     }
+
+
 }

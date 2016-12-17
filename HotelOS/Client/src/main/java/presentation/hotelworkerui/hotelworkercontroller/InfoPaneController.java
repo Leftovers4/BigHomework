@@ -69,15 +69,13 @@ public class InfoPaneController {
     private String newpath = "C:/Leftovers/client/totelImage/";
 
     private Stage stage;
-    private ImageView topbarphoto;
     @FXML private ImageView hotelphoto;
 
     //提示框控制器
     private AlertController alertController;
 
-    public void launch(Stage stage, Pane mainPane, ImageView topbarphoto) {
+    public void launch(Stage stage, Pane mainPane) {
         this.mainPane = mainPane;
-        this.topbarphoto = topbarphoto;
         this.stage = stage;
 
 
@@ -100,7 +98,6 @@ public class InfoPaneController {
         if (file.exists()) {
             Image image = new Image("file:///" + path);
             hotelphoto.setImage(image);
-            topbarphoto.setImage(image);
         }
     }
 
@@ -237,7 +234,6 @@ public class InfoPaneController {
 ////                Image image = new Image("file:///"+fileName);
 ////                userPhoto.setImage(image);
                 updatePhoto(hotelphoto, newpath + String.valueOf(hotelID) + "/" + hotelID +".jpg");
-                updatePhoto(topbarphoto, newpath + String.valueOf(hotelID) + "/" + hotelID +".jpg");
 ////                topBarPhoto.setImage(image);
 
 

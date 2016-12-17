@@ -3,6 +3,7 @@ package presentation.webmanagerui.webmanagercontroller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SplitMenuButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -34,6 +35,8 @@ public class WebmanagerComController {
 
     @FXML private Label timelabel;
 
+    @FXML private SplitMenuButton topname;
+
     private Button currentBtn = null;
     LeftBarEffect leftBarEffect = new LeftBarEffect();
     private ArrayList<Button> buttons;
@@ -41,7 +44,6 @@ public class WebmanagerComController {
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
-
 
         buttons = new ArrayList<>(Arrays.asList(hotelManageBtn, userBtn, hotelworkerBtn, webmarketerBtn));
         alertController = new AlertController();
