@@ -98,6 +98,6 @@ public class CreditRecordController {
 
     @FXML
     private void back(){
-        //TODO
+        mainPane.getChildren().remove(1);
     }
 }

@@ -398,7 +398,6 @@ public class InfoPaneController {
      */
     @FXML
     private void checkCreditRecord() {
-        mainPane.getChildren().clear();
         mainPane.getChildren().add(new CreditRecordPane(stage, mainPane, userID));
     }
 

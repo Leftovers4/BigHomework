@@ -18,7 +18,7 @@ public class PersonnelVO {
      */
     public String password;
 
-    /*
+    /**
      * 名字
      */
     public String name;
@@ -28,7 +28,7 @@ public class PersonnelVO {
      */
     public PersonnelType personnelType;
 
-    /*
+    /**
      * 酒店id
      */
     public long hotelID;

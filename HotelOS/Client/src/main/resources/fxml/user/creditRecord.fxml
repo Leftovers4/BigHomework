@@ -18,7 +18,7 @@
             <TableColumn fx:id="causeCol" prefWidth="100.0" resizable="false" styleClass="LeftAlignCol" text="变更原因" />
             <TableColumn fx:id="changeNumCol" prefWidth="83.0" resizable="false" styleClass="RightAlignCol" text="变更额度" />
             <TableColumn fx:id="finalNumCol" prefWidth="151.0" resizable="false" styleClass="RightAlignCol" text="变更后的信用值" />
-            <TableColumn fx:id="optCol" prefWidth="73.0" resizable="false" text="操作" />
+            <TableColumn fx:id="optCol" prefWidth="73.0" resizable="false" />
         </columns>
       </TableView>
       <Label id="detailTitleLabel" layoutX="71.0" layoutY="82.0" text="信用记录" />

@@ -73,7 +73,7 @@ public class ComUserSceneController {
      */
     private void changeSliderPos(double y) {
         leftBarSlider.setVisible(true);
-        leftBarSlider.setLayoutX(193);
+        leftBarSlider.setLayoutX(184);
         leftBarSlider.setLayoutY(y);
     }
 
@@ -88,7 +88,7 @@ public class ComUserSceneController {
     @FXML
     private void userInfo() {
         changeSliderPos(260);
-        mainPane.getChildren().remove(0);
+        mainPane.getChildren().clear();
         mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto, userID, leftBarBtnArr));
         leftBarBtnEffect(userInfoBtn);
         currentBtn = userInfoBtn;
@@ -96,15 +96,16 @@ public class ComUserSceneController {
     @FXML
     private void orderList() {
         changeSliderPos(305);
-        mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new UserOrderListPane(stage, mainPane, userID, false));
+
+        mainPane.getChildren().clear();
+        mainPane.getChildren().add(new UserOrderListPane(stage, mainPane, userID, false);
         leftBarBtnEffect(orderListBtn);
         currentBtn = orderListBtn;
     }
     @FXML
     private void searchHotel() {
         changeSliderPos(350);
-        mainPane.getChildren().remove(0);
+        mainPane.getChildren().clear();
         mainPane.getChildren().add(new SearchHotelPane(stage, mainPane, userID));
         leftBarBtnEffect(searchHotelBtn);
         currentBtn = searchHotelBtn;
@@ -112,7 +113,7 @@ public class ComUserSceneController {
     @FXML
     private void hotelRegistered() {
         changeSliderPos(395);
-        mainPane.getChildren().remove(0);
+        mainPane.getChildren().clear();
         mainPane.getChildren().add(new RegisteredHotelPane(stage, mainPane, userID));
         leftBarBtnEffect(hotelRegisteredBtn);
         currentBtn = hotelRegisteredBtn;

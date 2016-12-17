@@ -66,6 +66,7 @@ public class HotelList extends ArrayList<HotelPO> {
             for (int i = 0; i < orderPOList.size(); i++) {
                 if (hotelPO.getHotelID() == orderPOList.get(i).getHotelID()) {
                     res.add(hotelPO);
+                    break;
                 }
             }
         }

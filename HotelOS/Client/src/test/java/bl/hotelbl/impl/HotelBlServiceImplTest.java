@@ -135,7 +135,7 @@ public class HotelBlServiceImplTest {
 
     @Test
     public void viewOrderedHotelList() throws Exception {
-        List<HotelVO> hotelVOList = tested.viewOrderedHotelList("Hiki");
+        List<HotelVO> hotelVOList = tested.viewOrderedHotelList("Hikii");
     }
 
     @Test

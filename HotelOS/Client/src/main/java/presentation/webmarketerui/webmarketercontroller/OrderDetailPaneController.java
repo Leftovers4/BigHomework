@@ -72,7 +72,7 @@ public class OrderDetailPaneController {
 
         roomTypeLabel.setText(EnumFactory.getString(orderVO.roomType));
         roomAmountLabel.setText(String.valueOf(orderVO.roomAmount));
-        roomIDLabel.setText(orderVO.roomNumber == null ? "" : orderVO.roomNumber);
+        roomIDLabel.setText(orderVO.roomNumber == null ? "未入住" : orderVO.roomNumber);
         userNameLabel.setText(orderVO.username);
         withChildrenLabel.setText(orderVO.withChildren ? "有" : "无");
         peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
