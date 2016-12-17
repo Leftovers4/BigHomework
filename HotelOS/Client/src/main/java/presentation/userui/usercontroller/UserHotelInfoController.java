@@ -60,6 +60,8 @@ public class UserHotelInfoController {
     private UserHotelOrderListButtonCell userHotelOrderListButtonCell;
     private HotelBlServiceImpl hotelBlService;
 
+    private String rating;
+
     private ArrayList<ImageView> star;
 
     public void launch(Stage stage, Pane mainPane, String userID, Long hotelID) {
@@ -91,6 +93,7 @@ public class UserHotelInfoController {
 
             hotelNameLabel.setText(hotelVO.hotelName);
             showStar(hotelVO.star);
+            rating = String.valueOf(hotelVO.rating);
             hotelRatingLabel.setText(String.valueOf(hotelVO.rating));
             addressLabel.setText(hotelVO.address);
             simpleIntroLabel.setText(hotelVO.description);
@@ -213,6 +216,6 @@ public class UserHotelInfoController {
 
     @FXML
     private void checkHotelReview() {
-//        mainPane.getChildren().add(new ReviewPane(mainPane, hotelRatingLabel.getText()));
+        mainPane.getChildren().add(new ReviewPane(mainPane, rating, hotelID));
     }
 }

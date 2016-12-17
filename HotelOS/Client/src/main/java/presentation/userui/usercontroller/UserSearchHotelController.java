@@ -208,35 +208,34 @@ public class UserSearchHotelController {
     @FXML
     private void confirmChoose() {
 
-        hotelList.setVisible(true);
-        FlowPane.setMargin(hotelList, new Insets(40, 0, 0, 50));
-
-        HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
-        hotelConditionsVO.address = cityComBox.getValue().toString();
-        hotelConditionsVO.tradingArea = tradingAreaCombox.getValue().toString();
-
-        hotelConditionsVO.name = searchField.getText();
-
-        hotelConditionsVO.expectedCheckInTime = checkInDate.getValue();
-        hotelConditionsVO.expectedLeaveTime = checkOutDate.getValue();
-
-        hotelConditionsVO.roomTypeList = getRoomType();
-
-        hotelConditionsVO.priceLowerBound = getPriceBound()[0];
-        hotelConditionsVO.priceUpperBound = getPriceBound()[1];
-
-        hotelConditionsVO.starLowerBound = getStarBound()[0];
-        hotelConditionsVO.starUpperBound = getStarBound()[1];
-
-        hotelConditionsVO.ratingLowerBound = getRateBound()[0];
-        hotelConditionsVO.ratingUpperBound = getRateBound()[1];
-
-        hotelConditionsVO.hasOrdered = onlyCheckRegistered.isSelected();
-
-
-        if (hotelConditionsVO.address == null || hotelConditionsVO.tradingArea == null) {
+        if (cityComBox.getValue() == null || tradingAreaCombox.getValue() == null) {
             alertController.showNullWrongAlert("请选择地址", "错误提示");
         } else {
+            hotelList.setVisible(true);
+            FlowPane.setMargin(hotelList, new Insets(60, 0, 0, 50));
+
+            HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
+            hotelConditionsVO.address = cityComBox.getValue().toString();
+            hotelConditionsVO.tradingArea = tradingAreaCombox.getValue().toString();
+
+            hotelConditionsVO.name = searchField.getText();
+
+            hotelConditionsVO.expectedCheckInTime = checkInDate.getValue();
+            hotelConditionsVO.expectedLeaveTime = checkOutDate.getValue();
+
+            hotelConditionsVO.roomTypeList = getRoomType();
+
+            hotelConditionsVO.priceLowerBound = getPriceBound()[0];
+            hotelConditionsVO.priceUpperBound = getPriceBound()[1];
+
+            hotelConditionsVO.starLowerBound = getStarBound()[0];
+            hotelConditionsVO.starUpperBound = getStarBound()[1];
+
+            hotelConditionsVO.ratingLowerBound = getRateBound()[0];
+            hotelConditionsVO.ratingUpperBound = getRateBound()[1];
+
+            hotelConditionsVO.hasOrdered = onlyCheckRegistered.isSelected();
+
             initalTable(hotelConditionsVO);
         }
 

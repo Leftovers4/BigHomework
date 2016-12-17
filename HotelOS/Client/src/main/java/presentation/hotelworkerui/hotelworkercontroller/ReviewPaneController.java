@@ -130,7 +130,7 @@ public class ReviewPaneController {
                     try {
                         String temp = newValue.toString();
                         if(temp.equals("所有")) reviewTable.setItems(getReviewVoList());
-                        else reviewTable.setItems(FXCollections.observableArrayList(orderBLService.viewHotelReviewListByRating(ComWorkerSceneController.hotelID, Integer.parseInt(temp))));
+                        else reviewTable.setItems(FXCollections.observableArrayList(orderBLService.viewHotelReviewListByRating(hotelID, Integer.parseInt(temp))));
                     }catch (RemoteException e){
                         e.printStackTrace();
                     }
