@@ -218,4 +218,9 @@ public class UserHotelInfoController {
     private void checkHotelReview() {
         mainPane.getChildren().add(new ReviewPane(mainPane, rating, hotelID));
     }
+
+    @FXML
+    private void back(){
+        mainPane.getChildren().remove(1);
+    }
 }

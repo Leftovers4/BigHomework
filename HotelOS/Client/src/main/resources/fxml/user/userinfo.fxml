@@ -109,7 +109,7 @@
                   <Image url="@../../img/user/companyVIP.png" />
                </image>
             </ImageView>
-            <Label fx:id="creditLabel" layoutX="190.0" layoutY="15.0" text="120" />
+            <Label fx:id="creditLabel" layoutX="190.0" layoutY="15.0" text="0" />
             <Hyperlink id="creditLink" fx:id="checkcreditentrance" layoutX="260.0" layoutY="13.0" onAction="#checkCreditRecord" text="查看信用记录" />
             <Label fx:id="vipCompany" layoutX="190.0" layoutY="135.0" visible="false" />
             <Label layoutX="15.0" layoutY="15.0" text="信用值：" />

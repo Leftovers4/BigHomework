@@ -41,14 +41,14 @@ public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
             HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
-            mainPane.getChildren().remove(0);
+//            mainPane.getChildren().remove(0);
             mainPane.getChildren().add(new UserHotelInfoPane(stage, mainPane, userID, hotelVO.hotelID));
         });
 
         generateOrderBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
             HotelVO hotelVO = (HotelVO) tableView.getItems().get(selectedIndex);
-            mainPane.getChildren().remove(0);
+//            mainPane.getChildren().remove(0);
             mainPane.getChildren().add(new UserGenerateOrderPane(stage, mainPane, userID, hotelVO.hotelID, null));
         });
     }
