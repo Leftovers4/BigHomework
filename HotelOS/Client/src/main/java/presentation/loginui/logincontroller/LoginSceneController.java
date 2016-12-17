@@ -1,6 +1,8 @@
 package presentation.loginui.logincontroller;
 
+import bl.personnelbl.PersonnelBLService;
 import bl.personnelbl.impl.PersonnelBLServiceImpl;
+import bl.userbl.UserBLService;
 import bl.userbl.impl.UserBlServiceImpl;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -50,8 +52,8 @@ public class LoginSceneController {
     @FXML private ImageView passwordPic;
     @FXML private Pane movingSection;
 
-    private UserBlServiceImpl userBlService;
-    private PersonnelBLServiceImpl personnelBLService;
+    private UserBLService userBlService;
+    private PersonnelBLService personnelBLService;
 
     private AlertController alertController;
 

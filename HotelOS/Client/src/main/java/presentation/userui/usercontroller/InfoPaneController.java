@@ -87,9 +87,21 @@ public class InfoPaneController {
 
         alertController = new AlertController();
 
-//        initialPhoto();
+        initialPhoto();
         initialService();
         initialData();
+    }
+
+    private void initialPhoto() {
+        String path = newpath + userID + ".jpg";
+        File file = new File(newpath);
+
+
+        if (file.exists()) {
+            Image image = new Image("file:///" + path);
+            topbarphoto.setImage(image);
+            userPhoto.setImage(image);
+        }
     }
 
     private void initialService() {
@@ -323,40 +335,20 @@ public class InfoPaneController {
         if (selectedDirectory!=null) {
             try {
 
-                String fileName = newpath + selectedDirectory.getName().toString();
+                String fileName = selectedDirectory.getAbsolutePath();
+
 
                 File file = new File(fileName);
 
                 byte[] imgbyte = ChangePhoto.toBytesFromFile(file);
 
-//                ChangePhoto.setImage(newpath, userID, imgbyte);
+                ResultMessage resultMessage = userBlService.updateUserImage(userID, imgbyte);
 
-
-
-//                File testFile = new File(fileName);
-//                if (!testFile.exists()) {
-//                    File file = new File(newpath);
-//                    file.mkdirs();
-//                    FileInputStream input = null;
-//                    FileOutputStream output = null;
-//
-//                    input = new FileInputStream(selectedDirectory);
-//                    output = new FileOutputStream(fileName);
-//
-//                    byte[] b = new byte[1024 * 5];
-//                    int len;
-//                    while ((len = input.read(b)) != -1) {
-//                        output.write(b, 0, len);
-//                    }
-//
-//                    output.flush();
-//                    output.close();
-//                    input.close();
-//                }
+                ChangePhoto.setImage(newpath, userID, imgbyte);
 ////                Image image = new Image("file:///"+fileName);
 ////                userPhoto.setImage(image);
-//                updatePhoto(userPhoto, newpath + userID +".jpg");
-//                updatePhoto(topbarphoto, newpath + userID +".jpg");
+                updatePhoto(userPhoto, newpath + userID +".jpg");
+                updatePhoto(topbarphoto, newpath + userID +".jpg");
 ////                topBarPhoto.setImage(image);
 
 
@@ -366,32 +358,6 @@ public class InfoPaneController {
         }
     }
 
-
-    private void initialPhoto() {
-        File file = new File(newpath);
-
-        if (!file.exists()) {
-            try {
-                UserVO userVO = userBlService.viewBasicUserInfo(userID);
-
-                ChangePhoto.setImage(newpath, userID, userVO.image);
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        } else {
-            ChangePhoto.updatePhoto(userPhoto, newpath+userID+".jpg");
-            ChangePhoto.updatePhoto(topbarphoto, newpath+userID+".jpg");
-        }
-
-    }
 
     /**
      * 查看信用变更记录
