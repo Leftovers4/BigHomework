@@ -85,12 +85,12 @@
                   </ImageView>
                </graphic></Button>
             </children></VBox>
-        <Pane fx:id="mainPane" layoutX="230.0" layoutY="-8.0" maxHeight="690.0" maxWidth="850.0" minHeight="690.0" minWidth="850.0" prefHeight="690.0" prefWidth="850.0" style="-fx-background-color: #ffffff;" />
-      <ImageView fx:id="slider" fitHeight="56.0" fitWidth="56.0" layoutX="194.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">
+      <ImageView fx:id="slider" fitHeight="56.0" fitWidth="56.0" layoutX="184.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">
          <image>
             <Image url="@../../img/common/triangle2.png" />
          </image>
       </ImageView>
+        <Pane fx:id="mainPane" layoutX="230.0" layoutY="-8.0" maxHeight="690.0" maxWidth="850.0" minHeight="690.0" minWidth="850.0" prefHeight="690.0" prefWidth="850.0" style="-fx-background-color: #ffffff;" />
         <HBox id="bottomHBox" alignment="CENTER_RIGHT" layoutY="690.0" prefHeight="30.0" prefWidth="1080.0">
          <children>
             <Label fx:id="timeLabel" text="Label" />

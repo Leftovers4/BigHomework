@@ -10,7 +10,7 @@
    <children>
       <VBox id="LeftArea" fx:id="user_left_area" prefHeight="690.0" prefWidth="230.0">
          <children>
-            <ImageView fitHeight="230.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="230.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/login/logo.png" />
                </image>

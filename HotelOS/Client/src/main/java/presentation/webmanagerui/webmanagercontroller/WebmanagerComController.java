@@ -67,7 +67,7 @@ public class WebmanagerComController {
      */
     private void changeSliderPos(double y) {
         leftBarSlider.setVisible(true);
-        leftBarSlider.setLayoutX(193);
+        leftBarSlider.setLayoutX(184);
         leftBarSlider.setLayoutY(y);
     }
 

@@ -100,7 +100,7 @@ public class OrderDetailPaneController {
         peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));
         roomTypeLabel.setText(EnumFactory.getString(orderVO.roomType));
         roomAmountLabel.setText(String.valueOf(orderVO.roomAmount));
-        roomIDLabel.setText(orderVO.roomNumber == null ? "" : orderVO.roomNumber);
+        roomIDLabel.setText(orderVO.roomNumber == null ? "未入住" : orderVO.roomNumber);
     }
 
     private void initReviewBtn(OrderType orderType) {
