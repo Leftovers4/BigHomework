@@ -100,7 +100,7 @@ public class UserHotelInfoController {
                 File file = new File(path);
 
                 if (file.exists()) {
-                    Image image = new Image(path);
+                    Image image = new Image("file:///"+path);
                     hotelphoto.setImage(image);
                 }
             }

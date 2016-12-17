@@ -230,10 +230,10 @@ public class InfoPaneController {
 
                 ResultMessage resultMessage = hotelBLService.setHotelImage(hotelID, imgbyte);
 
-                ChangePhoto.setImage(newpath, hotelID, imgbyte);
+                ChangePhoto.setImage(newpath + String.valueOf(hotelID) + "/", hotelID, imgbyte);
 ////                Image image = new Image("file:///"+fileName);
 ////                userPhoto.setImage(image);
-                updatePhoto(hotelphoto, newpath + String.valueOf(hotelID) + "/" + hotelID +".jpg");
+                updatePhoto(hotelphoto, newpath + String.valueOf(hotelID) + "/" + String.valueOf(hotelID) +".jpg");
 ////                topBarPhoto.setImage(image);
 
 

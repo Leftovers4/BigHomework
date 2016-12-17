@@ -205,7 +205,7 @@ public class ComUserSceneController {
             for (int i = 0; i<hotelVOList.size(); i++) {
 
                 if (hotelVOList.get(i).image != null) {
-                    ChangePhoto.setImage(path + String.valueOf(hotelVOList.get(i).hotelID) + "/", hotelVOList.get(i).hotelID, hotelVOList.get(i).image);
+                    ChangePhoto.setImage(path, hotelVOList.get(i).hotelID, hotelVOList.get(i).image);
                 }
             }
         } catch (RemoteException e) {
