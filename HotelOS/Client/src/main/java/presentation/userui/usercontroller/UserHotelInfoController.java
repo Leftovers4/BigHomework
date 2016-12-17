@@ -20,6 +20,7 @@ import vo.hotel.HotelVO;
 import vo.hotel.RoomVO;
 import vo.order.OrderVO;
 
+import java.io.File;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,12 +58,15 @@ public class UserHotelInfoController {
     @FXML private TableColumn roompriceCol;
     @FXML private TableColumn generateBtnCol;
 
+    @FXML private ImageView hotelphoto;
+
     private UserHotelOrderListButtonCell userHotelOrderListButtonCell;
     private HotelBlServiceImpl hotelBlService;
 
     private String rating;
 
     private ArrayList<ImageView> star;
+    private String newpath = "C:/Leftovers/client/user/hotelImg/";
 
     public void launch(Stage stage, Pane mainPane, String userID, Long hotelID) {
         this.stage = stage;
@@ -81,9 +85,28 @@ public class UserHotelInfoController {
             star.get(i).setVisible(false);
         }
 
+        initPhoto(hotelID);
         initialHotelRoomTable();
         initialOrderTable();
         initialData();
+    }
+
+    private void initPhoto(long hotelID) {
+        try {
+            HotelVO hotelVO = hotelBlService.viewBasicHotelInfo(hotelID);
+
+            if (hotelVO.image != null) {
+                String path = newpath + hotelID + ".jpg";
+                File file = new File(path);
+
+                if (file.exists()) {
+                    Image image = new Image(path);
+                    hotelphoto.setImage(image);
+                }
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initialData() {
