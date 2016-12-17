@@ -72,7 +72,7 @@ public class InfoPaneController {
     private UserBLService userBlService;
     private ArrayList<Button> leftBarBtnArr;
 
-    private String newpath = "C:/Leftovers/client/userImage/";
+    private String newpath = "C:/Leftovers/client/user/userImage/";
 
     private ImageView topbarphoto;
 
@@ -93,8 +93,8 @@ public class InfoPaneController {
     }
 
     private void initialPhoto() {
-        String path = newpath + userID + ".jpg";
-        File file = new File(newpath);
+        String path = newpath + String.valueOf(userID)+ "/" + userID + ".jpg";
+        File file = new File(newpath + String.valueOf(userID) + "/");
 
 
         if (file.exists()) {
@@ -344,11 +344,11 @@ public class InfoPaneController {
 
                 ResultMessage resultMessage = userBlService.updateUserImage(userID, imgbyte);
 
-                ChangePhoto.setImage(newpath, userID, imgbyte);
+                ChangePhoto.setImage(newpath + String.valueOf(userID) + "/", userID, imgbyte);
 ////                Image image = new Image("file:///"+fileName);
 ////                userPhoto.setImage(image);
-                updatePhoto(userPhoto, newpath + userID +".jpg");
-                updatePhoto(topbarphoto, newpath + userID +".jpg");
+                updatePhoto(userPhoto, newpath + String.valueOf(userID) + "/" + userID +".jpg");
+                updatePhoto(topbarphoto, newpath + String.valueOf(userID) + "/" + userID +".jpg");
 ////                topBarPhoto.setImage(image);
 
 

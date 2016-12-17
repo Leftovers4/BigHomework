@@ -1,5 +1,7 @@
 package presentation.userui.usercontroller;
 
+import bl.hotelbl.HotelBLService;
+import bl.hotelbl.impl.HotelBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,10 +10,14 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.*;
 import presentation.util.alert.AlertController;
+import presentation.util.other.ChangePhoto;
 import presentation.util.other.LeftBarEffect;
+import vo.hotel.HotelVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static presentation.util.other.MyTimeLabel.EnableShowTime;
 
@@ -40,11 +46,18 @@ public class ComUserSceneController {
     //左边栏按钮集合
     private ArrayList<Button> leftBarBtnArr;
 
+    private HotelBLService hotelBLService;
+
     LeftBarEffect leftBarEffect = new LeftBarEffect();
 
     public void launch(Stage primaryStage, String username){
         this.stage = primaryStage;
         this.userID = username;
+        try {
+            hotelBLService = new HotelBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
         leftBarBtnArr = new ArrayList<>(Arrays.asList(userInfoBtn, orderListBtn, searchHotelBtn,
                 hotelRegisteredBtn));
@@ -55,6 +68,7 @@ public class ComUserSceneController {
         mainPane.getChildren().add(new InfoPane(primaryStage, mainPane, topbarphoto, userID, leftBarBtnArr));
 
         EnableShowTime(timeLabel);
+        getAllHotelPhoto();
     }
 
 
@@ -167,5 +181,22 @@ public class ComUserSceneController {
     @FXML
     private void mouseOutHotelRegisteredBtn() {
         mouseOutEffect(hotelRegisteredBtn);
+    }
+
+
+    private void getAllHotelPhoto() {
+        String path = "C:/Leftovers/client/user/hotelImg/";
+        try {
+            List<HotelVO> hotelVOList = hotelBLService.viewFullHotelList();
+
+            for (int i = 0; i<hotelVOList.size(); i++) {
+
+                if (hotelVOList.get(i).image != null) {
+                    ChangePhoto.setImage(path, hotelVOList.get(i).hotelID, hotelVOList.get(i).image);
+                }
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -32,6 +32,7 @@ public class ComWorkerSceneController {
     @FXML private Button updateCheckInBtn;
     @FXML private Button updateOutBtn;
 
+    @FXML private ImageView topbarphoto;
     @FXML private ImageView slider;
     //时间按钮
     @FXML private Label timeLabel;
@@ -49,7 +50,7 @@ public class ComWorkerSceneController {
         this.stage = primaryStage;
         this.hotelID = hotelID;
         alertController = new AlertController();
-        mainPane.getChildren().add(new InfoPane(mainPane));
+        mainPane.getChildren().add(new InfoPane(stage, mainPane, topbarphoto));
         leftBarBtnArr = new ArrayList<>(Arrays.asList(hotelInfoBtn, orderListBtn, registerRoomBtn,
                 managePromotionBtn, updateCheckInBtn, updateOutBtn));
 
@@ -79,7 +80,7 @@ public class ComWorkerSceneController {
     private void showHotelInfo(){
         leftBarBtnEffect(hotelInfoBtn);
         changeSliderPos(260);
-        changePane(new InfoPane(mainPane));
+        changePane(new InfoPane(stage, mainPane, topbarphoto));
         currentBtn = hotelInfoBtn;
     }
 

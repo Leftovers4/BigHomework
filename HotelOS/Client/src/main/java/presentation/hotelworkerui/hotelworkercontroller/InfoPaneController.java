@@ -7,14 +7,21 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import presentation.util.alert.AlertController;
 import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
+import presentation.util.other.ChangePhoto;
 import presentation.util.other.MyComboBox;
+import util.ResultMessage;
 import vo.hotel.HotelVO;
 
+import java.io.File;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import static presentation.util.other.ChangePhoto.updatePhoto;
 
 /**
  * Created by Hitiger on 2016/11/18.
@@ -58,11 +65,20 @@ public class InfoPaneController {
     private Pane mainPane;
     private String city;
     private String tradeArea;
+
+    private String newpath = "C:/Leftovers/client/totelImage/";
+
+    private Stage stage;
+    private ImageView topbarphoto;
+    @FXML private ImageView hotelphoto;
+
     //提示框控制器
     private AlertController alertController;
 
-    public void launch(Pane mainPane) {
+    public void launch(Stage stage, Pane mainPane, ImageView topbarphoto) {
         this.mainPane = mainPane;
+        this.topbarphoto = topbarphoto;
+        this.stage = stage;
 
 
         alertController = new AlertController();
@@ -72,6 +88,20 @@ public class InfoPaneController {
         initData();
         //显示查看信息界面
         setCheckInfoComponentsVisible(true);
+
+        initialPhoto();
+    }
+
+    private void initialPhoto() {
+        String path = newpath + String.valueOf(ComWorkerSceneController.hotelID) + "/" + ComWorkerSceneController.hotelID + ".jpg";
+        File file = new File(newpath + String.valueOf(ComWorkerSceneController.hotelID) + "/");
+
+
+        if (file.exists()) {
+            Image image = new Image("file:///" + path);
+            hotelphoto.setImage(image);
+            topbarphoto.setImage(image);
+        }
     }
 
 
@@ -180,4 +210,40 @@ public class InfoPaneController {
         showReviewLink.setVisible(isVisible);
     }
 
+
+    /**
+     * 更换账号头像
+     */
+    @FXML
+    private void changePhoto() {
+        long hotelID = ComWorkerSceneController.hotelID;
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("选择图片");
+        File selectedDirectory = fileChooser.showOpenDialog(stage);
+
+        if (selectedDirectory!=null) {
+            try {
+
+                String fileName = selectedDirectory.getAbsolutePath();
+
+
+                File file = new File(fileName);
+
+                byte[] imgbyte = ChangePhoto.toBytesFromFile(file);
+
+                ResultMessage resultMessage = hotelBLService.setHotelImage(hotelID, imgbyte);
+
+                ChangePhoto.setImage(newpath, hotelID, imgbyte);
+////                Image image = new Image("file:///"+fileName);
+////                userPhoto.setImage(image);
+                updatePhoto(hotelphoto, newpath + String.valueOf(hotelID) + "/" + hotelID +".jpg");
+                updatePhoto(topbarphoto, newpath + String.valueOf(hotelID) + "/" + hotelID +".jpg");
+////                topBarPhoto.setImage(image);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
