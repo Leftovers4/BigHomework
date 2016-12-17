@@ -110,19 +110,19 @@ public class OrderListPaneController {
                     try {
                         switch ((String) newValue) {
                             case "所有订单":
-                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewFullHotelOrderList(522000)));
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewFullHotelOrderList(ComWorkerSceneController.hotelID)));
                                 break;
                             case "未执行订单":
-                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeHotelOrderList(522000, OrderType.Unexecuted)));
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeHotelOrderList(ComWorkerSceneController.hotelID, OrderType.Unexecuted)));
                                 break;
                             case "已执行订单":
-                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeHotelOrderList(522000, OrderType.Executed)));
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeHotelOrderList(ComWorkerSceneController.hotelID, OrderType.Executed)));
                                 break;
                             case "异常订单":
-                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeHotelOrderList(522000, OrderType.Abnormal)));
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeHotelOrderList(ComWorkerSceneController.hotelID, OrderType.Abnormal)));
                                 break;
                             case "撤销订单":
-                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeHotelOrderList(522000, OrderType.Canceled)));
+                                orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewTypeHotelOrderList(ComWorkerSceneController.hotelID, OrderType.Canceled)));
                                 break;
                         }
                     } catch (RemoteException e) {
