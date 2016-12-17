@@ -55,6 +55,11 @@
                         <Insets left="15.0" />
                      </GridPane.margin></Label>
                   <Label text="¥" GridPane.columnIndex="1" />
+                  <Separator maxWidth="-Infinity" minWidth="-Infinity" prefWidth="40.0" rotate="18.4" style="-fx-background-color: #000000;" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Separator>
                </children>
                <columnConstraints>
                   <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" />
@@ -184,6 +189,11 @@
             <Insets bottom="10.0" left="10.0" top="10.0" />
          </padding>
       </HBox>
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="23.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/hotelworker/bar.png" />
+         </image>
+      </ImageView>
       <Button layoutY="78.0" mnemonicParsing="false" onAction="#back" styleClass="BackBtn">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
@@ -194,10 +204,5 @@
          </graphic>
       </Button>
       <Label id="detailTitleLabel" fx:id="updateTitleLabel" layoutX="71.0" layoutY="82.0" text="更新入住信息" />
-      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="23.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/hotelworker/bar.png" />
-         </image>
-      </ImageView>
     </children>
 </fx:root>

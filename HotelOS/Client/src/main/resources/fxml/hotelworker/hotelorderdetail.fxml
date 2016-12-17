@@ -165,6 +165,11 @@
                      </padding>
                   </Label>
                   <Label text="¥" GridPane.columnIndex="1" />
+                  <Separator maxWidth="-Infinity" minWidth="-Infinity" prefWidth="40.0" rotate="18.4" style="-fx-background-color: #000000;" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Separator>
                </children>
                <columnConstraints>
                   <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" />

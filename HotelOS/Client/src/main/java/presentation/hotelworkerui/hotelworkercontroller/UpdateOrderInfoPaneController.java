@@ -11,6 +11,7 @@ import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
 import presentation.util.alert.AlertController;
 import presentation.util.other.CancelDateBefore;
 import presentation.util.other.MyComboBox;
+import presentation.util.other.MyOrderLabel;
 import util.DateTimeFormat;
 import util.EnumFactory;
 import util.OrderType;
@@ -133,6 +134,7 @@ public class UpdateOrderInfoPaneController {
 
         orderIDLabel.setText(orderVO.orderID);
         orderTypeLabel.setText(EnumFactory.getString(orderVO.orderType));
+        MyOrderLabel.changeColor(orderVO.orderType, orderTypeLabel);
         orderOriPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.originPrice));
         orderProLabel.setText(String.valueOf(orderVO.orderPromoInfoVO.promotionType == null ? "无优惠" : EnumFactory.getString(orderVO.orderPromoInfoVO.promotionType)));
         orderActPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));

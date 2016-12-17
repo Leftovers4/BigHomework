@@ -561,7 +561,7 @@
 }
 /*TODO*/
 .checkOfflineBtn:hover{
-    -fx-graphic: url("../../img/hotelworker/checkonline_hover.png");
+    -fx-graphic: url("../../img/hotelworker/download_hover.png");
 }
 
 
