@@ -15,7 +15,7 @@
 
 <fx:root fx:id="orderDetailPane" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.OrderDetailUserController">
    <children>
-      <Pane layoutX="350.0" layoutY="110.0" prefHeight="278.0" prefWidth="383.0" styleClass="BackgroundPanel">
+      <Pane layoutX="350.0" layoutY="136.0" prefHeight="278.0" prefWidth="383.0" styleClass="BackgroundPanel">
          <children>
             <GridPane hgap="50.0" layoutX="15.0" layoutY="15.0" vgap="20.0">
                <columnConstraints>
@@ -47,12 +47,21 @@
             </GridPane>
          </children>
       </Pane>
-      <ImageView fitHeight="168.0" fitWidth="161.0" layoutX="117.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/common/initialPhoto.png" />
-         </image>
-      </ImageView>
-      <Pane layoutX="350.0" layoutY="430.0" prefHeight="141.0" prefWidth="383.0" styleClass="BackgroundPanel">
+      <Pane layoutX="117.0" layoutY="136.0">
+         <children>
+            <Separator layoutY="273.0" prefHeight="2.0" prefWidth="161.0" />
+            <Label fx:id="hotelAddressLabel" layoutY="236.0" text="酒店地址" />
+            <Label fx:id="hotelServiceLabel" alignment="TOP_LEFT" layoutY="290.0" prefHeight="250.0" prefWidth="161.0" text="酒店设施" wrapText="true" />
+            <ImageView fitHeight="168.0" fitWidth="161.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/common/initialPhoto.png" />
+               </image>
+            </ImageView>
+            <Separator layoutY="220.0" prefHeight="2.0" prefWidth="161.0" />
+            <Label fx:id="hotelNameLabel" layoutY="184.0" text="酒店名" />
+         </children>
+      </Pane>
+      <Pane layoutX="350.0" layoutY="456.0" prefHeight="141.0" prefWidth="383.0" styleClass="BackgroundPanel">
          <children>
             <Label layoutX="15.0" layoutY="15.0" text="最优优惠：" />
             <Label layoutX="15.0" layoutY="59.0" text="价格总计：" />
@@ -63,13 +72,23 @@
             <Label layoutX="199.0" layoutY="62.0" text="¥" />
          </children>
       </Pane>
-      <Label fx:id="hotelNameLabel" layoutX="117.0" layoutY="294.0" text="酒店名" />
-      <Label fx:id="hotelAddressLabel" layoutX="117.0" layoutY="346.0" text="酒店地址" />
-      <Label fx:id="hotelServiceLabel" layoutX="117.0" layoutY="400.0" text="酒店设施" />
-      <Button fx:id="evaluateBtn" layoutX="631.0" layoutY="609.0" mnemonicParsing="false" onAction="#evaluateOrder" prefHeight="30.0" prefWidth="102.0" styleClass="OpBtn" text="评价晒单" visible="false" />
-      <Button fx:id="cancelBtn" layoutX="631.0" layoutY="609.0" mnemonicParsing="false" onAction="#cancelOrderEvent" prefHeight="30.0" prefWidth="102.0" styleClass="OpBtn" text="撤销订单" visible="false" />
-      <Button fx:id="checkMyReviewBtn" layoutX="631.0" layoutY="609.0" mnemonicParsing="false" onAction="#checkMyReviewEvent" styleClass="OpBtn" text="查看评价" visible="false" />
-      <Separator layoutX="117.0" layoutY="330.0" prefHeight="2.0" prefWidth="161.0" />
-      <Separator layoutX="117.0" layoutY="383.0" prefHeight="2.0" prefWidth="161.0" />
+      <Button fx:id="evaluateBtn" layoutX="631.0" layoutY="628.0" mnemonicParsing="false" onAction="#evaluateOrder" prefHeight="30.0" prefWidth="102.0" styleClass="OpBtn" text="评价晒单" visible="false" />
+      <Button fx:id="cancelBtn" layoutX="631.0" layoutY="628.0" mnemonicParsing="false" onAction="#cancelOrderEvent" prefHeight="30.0" prefWidth="102.0" styleClass="OpBtn" text="撤销订单" visible="false" />
+      <Button fx:id="checkMyReviewBtn" layoutX="631.0" layoutY="628.0" mnemonicParsing="false" onAction="#checkMyReviewEvent" prefHeight="30.0" prefWidth="102.0" styleClass="OpBtn" text="查看评价" />
+      <Label id="detailTitleLabel" layoutX="71.0" layoutY="82.0" text="订单详情" />
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="23.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/hotelworker/bar.png" />
+         </image>
+      </ImageView>
+      <Button layoutY="78.0" mnemonicParsing="false" onAction="#back" styleClass="BackBtn">
+         <graphic>
+            <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/hotelworker/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </fx:root>

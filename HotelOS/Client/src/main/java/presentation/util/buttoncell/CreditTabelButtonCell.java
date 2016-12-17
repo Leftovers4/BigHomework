@@ -1,6 +1,8 @@
 package presentation.util.buttoncell;
 
 import bl.orderbl.impl.OrderBlServiceImpl;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
@@ -32,13 +34,14 @@ public class CreditTabelButtonCell extends TableCell<CreditRecordVO, Boolean> {
         this.tableView = tableView;
 
         this.getStylesheets().add(CreditTabelButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
-        Image detailimg = new Image("/img/webmanager/information.png");
+        Image detailimg = new Image("/img/hotelworker/checkorderdetail.png");
         checkDetailBtn.setGraphic(new ImageView(detailimg));
-        checkDetailBtn.getStyleClass().add("TableInfoButtonCell");
+        checkDetailBtn.getStyleClass().add("TableDetailButtonCell");
 
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
             CreditRecordVO creditRecordVO = (CreditRecordVO) tableView.getItems().get(selectedIndex);
+            //TODO
             mainPane.getChildren().remove(0);
             mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane, userID, creditRecordVO.orderID));
         });
@@ -53,6 +56,8 @@ public class CreditTabelButtonCell extends TableCell<CreditRecordVO, Boolean> {
         } else {
             btnBox.getChildren().clear();
             checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
+            btnBox.setAlignment(Pos.CENTER);
+            btnBox.setPadding(new Insets(0, 0, 0, 20));
             btnBox.getChildren().add(checkDetailBtn);
             setGraphic(btnBox);
             setText(null);

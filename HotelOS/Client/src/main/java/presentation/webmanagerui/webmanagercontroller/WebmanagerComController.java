@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.util.alert.AlertController;
 import presentation.util.other.LeftBarEffect;
 import presentation.webmanagerui.webmanagerscene.HotelManagePane;
 import presentation.webmanagerui.webmanagerscene.HotelworkerManagePane;
@@ -36,25 +37,22 @@ public class WebmanagerComController {
     private Button currentBtn = null;
     LeftBarEffect leftBarEffect = new LeftBarEffect();
     private ArrayList<Button> buttons;
+    private AlertController alertController;
 
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
 
-        hotelManageBtn.setStyle("-fx-background-color: #0F81C7");
 
         buttons = new ArrayList<>(Arrays.asList(hotelManageBtn, userBtn, hotelworkerBtn, webmarketerBtn));
-
-        primaryStage.setX(400);
-        primaryStage.setY(200);
-
+        alertController = new AlertController();
+        hotelManageBtn.setStyle("-fx-background-color: #0F81C7");
         mainPane.getChildren().add(new HotelManagePane(mainPane));
-
         EnableShowTime(timelabel);
     }
 
     @FXML
     private void closeWindow(){
-        stage.close();
+        if(alertController.showConfirmExitAlert())stage.close();
     }
     @FXML
     private void minWindow(){
@@ -79,7 +77,7 @@ public class WebmanagerComController {
         currentBtn = hotelManageBtn;
         leftBarEffect.buttonActionEffect(hotelManageBtn, buttons);
         changeSliderPos(260);
-        mainPane.getChildren().remove(0);
+        mainPane.getChildren().clear();
         mainPane.getChildren().add(new HotelManagePane(mainPane));
     }
     @FXML
@@ -87,7 +85,7 @@ public class WebmanagerComController {
         currentBtn = userBtn;
         leftBarEffect.buttonActionEffect(userBtn, buttons);
         changeSliderPos(305);
-        mainPane.getChildren().remove(0);
+        mainPane.getChildren().clear();
         mainPane.getChildren().add(new UserManagePane(stage, mainPane));
     }
     @FXML
@@ -95,7 +93,7 @@ public class WebmanagerComController {
         currentBtn = hotelworkerBtn;
         leftBarEffect.buttonActionEffect(hotelworkerBtn, buttons);
         changeSliderPos(350);
-        mainPane.getChildren().remove(0);
+        mainPane.getChildren().clear();
         mainPane.getChildren().add(new HotelworkerManagePane(stage, mainPane));
     }
     @FXML
@@ -103,7 +101,7 @@ public class WebmanagerComController {
         currentBtn = webmarketerBtn;
         leftBarEffect.buttonActionEffect(webmarketerBtn, buttons);
         changeSliderPos(395);
-        mainPane.getChildren().remove(0);
+        mainPane.getChildren().clear();
         mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
     }
 
