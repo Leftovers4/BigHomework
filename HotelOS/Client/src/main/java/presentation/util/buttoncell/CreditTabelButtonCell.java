@@ -32,9 +32,9 @@ public class CreditTabelButtonCell extends TableCell<CreditRecordVO, Boolean> {
         this.tableView = tableView;
 
         this.getStylesheets().add(CreditTabelButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
-        Image detailimg = new Image("/img/user/checkdetail.png");
+        Image detailimg = new Image("/img/webmanager/information.png");
         checkDetailBtn.setGraphic(new ImageView(detailimg));
-        checkDetailBtn.getStyleClass().add("TableButtonCell");
+        checkDetailBtn.getStyleClass().add("TableInfoButtonCell");
 
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();

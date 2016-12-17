@@ -252,6 +252,8 @@ public class UserGenerateOrderController {
             try {
                 double price = orderBlService.getOrderActualPrice(orderVO);
 
+                System.out.println(price+"---------------------------------------");
+
                 priceLabel.setText(String.valueOf(price));
                 if (orderVO.orderPromoInfoVO.promotionType == null) {
                     promotionLabel.setText("无");

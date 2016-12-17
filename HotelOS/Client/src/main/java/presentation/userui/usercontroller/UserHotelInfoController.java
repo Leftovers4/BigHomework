@@ -180,7 +180,7 @@ public class UserHotelInfoController {
             Image image = new Image("/img/user/generateOrder.png");
             ImageView bookimgview = new ImageView(image);
             bookBtn.setGraphic(bookimgview);
-            bookBtn.getStyleClass().add("tableCellBtn");
+            bookBtn.getStyleClass().add("TableCreateButtonCell");
 
             bookBtn.setTooltip(ToolTipShow.setTool("立即预订"));
             bookBtn.setOnAction(event -> {
