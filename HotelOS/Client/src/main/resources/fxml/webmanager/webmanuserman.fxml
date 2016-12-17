@@ -11,16 +11,16 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.UserManageController">
    <children>
-      <TableView fx:id="userlist" layoutX="150.0" layoutY="155.0" prefHeight="400.0" prefWidth="550.0">
+      <TableView fx:id="userlist" layoutX="150.0" layoutY="155.0" prefHeight="470.0" prefWidth="550.0">
          <columns>
-            <TableColumn fx:id="userIDCol" prefWidth="200.0" text="用户名" />
-            <TableColumn fx:id="userNameCol" prefWidth="94.0" text="客户姓名" />
-            <TableColumn fx:id="phoneCol" prefWidth="137.0" text="联系方式" />
-            <TableColumn fx:id="btnCol" prefWidth="94.0" />
+            <TableColumn fx:id="userIDCol" prefWidth="145.0" styleClass="LeftAlignCol" text="用户名" />
+            <TableColumn fx:id="userNameCol" prefWidth="132.0" sortable="false" styleClass="LeftAlignCol" text="客户姓名" />
+            <TableColumn fx:id="phoneCol" prefWidth="154.0" sortable="false" styleClass="LeftAlignCol" text="联系方式" />
+            <TableColumn fx:id="btnCol" prefWidth="94.0" sortable="false" styleClass="MidAlignCol" />
          </columns>
       </TableView>
-      <TextField layoutX="150.0" layoutY="105.0" prefHeight="30.0" prefWidth="235.0" promptText="搜索酒店编号、名称" />
-      <Button layoutX="385.0" layoutY="105.0" mnemonicParsing="false">
+      <TextField focusTraversable="false" layoutX="150.0" layoutY="105.0" prefHeight="30.0" prefWidth="235.0" promptText="搜索酒店编号、名称" />
+      <Button layoutX="385.0" layoutY="105.0" mnemonicParsing="false" styleClass="searchBtn">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>

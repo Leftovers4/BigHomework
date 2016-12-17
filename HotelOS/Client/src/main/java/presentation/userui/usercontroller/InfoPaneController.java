@@ -1,5 +1,6 @@
 package presentation.userui.usercontroller;
 
+import bl.userbl.UserBLService;
 import bl.userbl.impl.UserBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -17,6 +18,7 @@ import presentation.userui.userscene.RegisterCommonVIPPane;
 import presentation.userui.userscene.RegisterCompanyVIPPane;
 import presentation.util.alert.AlertController;
 import presentation.util.alert.InputWrongAlert;
+import presentation.util.other.ChangePhoto;
 import presentation.util.other.JudgeInput;
 import util.MemberType;
 import util.ResultMessage;
@@ -50,7 +52,6 @@ public class InfoPaneController {
     @FXML private Button cleanAllBtn;
     @FXML private Hyperlink checkcreditentrance;
 
-    //TODO 会员等级换图片
     @FXML private ImageView levelImage;
     @FXML private Label vipCompany;
 
@@ -68,8 +69,10 @@ public class InfoPaneController {
     @FXML private Button registerCompanyvipBtn;
     @FXML private Button editInfoBtn;
 
-    private UserBlServiceImpl userBlService;
+    private UserBLService userBlService;
     private ArrayList<Button> leftBarBtnArr;
+
+    private String newpath = "C:/Leftovers/client/userImage/";
 
     private ImageView topbarphoto;
 
@@ -84,6 +87,7 @@ public class InfoPaneController {
 
         alertController = new AlertController();
 
+//        initialPhoto();
         initialService();
         initialData();
     }
@@ -114,6 +118,7 @@ public class InfoPaneController {
             try {
                 UserVO userVO = userBlService.viewBasicUserInfo(userID);
 
+                usernameLabel.setText(userVO.name);
                 userSex.setText(userVO.gender ? "男" : "女");
                 phone.setText(userVO.phone);
                 birthDate.setText(userVO.memberVO.birthday.toString());
@@ -122,19 +127,20 @@ public class InfoPaneController {
                 //会员信息显示
                 MemberType memberType = userVO.memberVO.memberType;
 
-                //TODo 根据会员等级换图片
                 if (memberType == MemberType.None) {
                     setMemberComponentsVisible(false,false);
                 } else if (memberType == MemberType.NormalMember) {
                     setMemberComponentsVisible(true,false);
+                    setVipLevel(userVO.memberVO.level);
                 } else if (memberType == MemberType.EnterpriseMember) {
                     vipCompany.setText(userVO.memberVO.enterprise);
                     setMemberComponentsVisible(false,true);
                 } else if (memberType == MemberType.Both) {
+                    setVipLevel(userVO.memberVO.level);
                     vipCompany.setText(userVO.memberVO.enterprise);
                     setMemberComponentsVisible(true,true);
                 } else {
-
+                    setMemberComponentsVisible(false,false);
                 }
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
@@ -152,10 +158,16 @@ public class InfoPaneController {
     }
 
     private void setMemberComponentsVisible(Boolean isCommonVIP, Boolean isComVip){
-        //TODO
-        registerCommonvipBtn.setVisible(isCommonVIP);
+        registerCommonvipBtn.setVisible(!isCommonVIP);
         registerCompanyvipBtn.setVisible(!isComVip);
         vipCompany.setVisible(isComVip);
+    }
+
+    private void setVipLevel(int level) {
+        String path = "/img/webmarketer/" + level + ".png";
+        Image image = new Image(path);
+        levelImage.setImage(image);
+        levelImage.setVisible(true);
     }
     /**
      * 判断用户信息是否已填写
@@ -235,7 +247,6 @@ public class InfoPaneController {
             UserVO userVO = new UserVO();
 
             userVO.username = userID;
-            userVO.newUsername = userID;
             userVO.name = userNameField.getText();
             userVO.gender = sexMan.isSelected();
             userVO.phone = phoneField.getText();
@@ -311,33 +322,44 @@ public class InfoPaneController {
 
         if (selectedDirectory!=null) {
             try {
-                String newpath = "C:/Leftovers/client/userImage/";
+
                 String fileName = newpath + selectedDirectory.getName().toString();
-                File testFile = new File(fileName);
-                if (!testFile.exists()) {
-                    File file = new File(newpath);
-                    file.mkdirs();
-                    FileInputStream input = null;
-                    FileOutputStream output = null;
 
-                    input = new FileInputStream(selectedDirectory);
-                    output = new FileOutputStream(fileName);
+                File file = new File(fileName);
 
-                    byte[] b = new byte[1024 * 5];
-                    int len;
-                    while ((len = input.read(b)) != -1) {
-                        output.write(b, 0, len);
-                    }
+                byte[] imgbyte = ChangePhoto.toBytesFromFile(file);
 
-                    output.flush();
-                    output.close();
-                    input.close();
-                }
-//                Image image = new Image("file:///"+fileName);
-//                userPhoto.setImage(image);
-                updatePhoto(userPhoto, fileName);
-                updatePhoto(topbarphoto, fileName);
-//                topBarPhoto.setImage(image);
+//                ChangePhoto.setImage(newpath, userID, imgbyte);
+
+
+
+//                File testFile = new File(fileName);
+//                if (!testFile.exists()) {
+//                    File file = new File(newpath);
+//                    file.mkdirs();
+//                    FileInputStream input = null;
+//                    FileOutputStream output = null;
+//
+//                    input = new FileInputStream(selectedDirectory);
+//                    output = new FileOutputStream(fileName);
+//
+//                    byte[] b = new byte[1024 * 5];
+//                    int len;
+//                    while ((len = input.read(b)) != -1) {
+//                        output.write(b, 0, len);
+//                    }
+//
+//                    output.flush();
+//                    output.close();
+//                    input.close();
+//                }
+////                Image image = new Image("file:///"+fileName);
+////                userPhoto.setImage(image);
+//                updatePhoto(userPhoto, newpath + userID +".jpg");
+//                updatePhoto(topbarphoto, newpath + userID +".jpg");
+////                topBarPhoto.setImage(image);
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -345,12 +367,37 @@ public class InfoPaneController {
     }
 
 
+    private void initialPhoto() {
+        File file = new File(newpath);
+
+        if (!file.exists()) {
+            try {
+                UserVO userVO = userBlService.viewBasicUserInfo(userID);
+
+                ChangePhoto.setImage(newpath, userID, userVO.image);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } else {
+            ChangePhoto.updatePhoto(userPhoto, newpath+userID+".jpg");
+            ChangePhoto.updatePhoto(topbarphoto, newpath+userID+".jpg");
+        }
+
+    }
+
     /**
      * 查看信用变更记录
      */
     @FXML
     private void checkCreditRecord() {
-        mainPane.getChildren().clear();
         mainPane.getChildren().add(new CreditRecordPane(stage, mainPane, userID));
     }
 

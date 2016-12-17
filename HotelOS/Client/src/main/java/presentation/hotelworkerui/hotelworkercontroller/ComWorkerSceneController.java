@@ -143,7 +143,7 @@ public class ComWorkerSceneController {
      */
     private void changeSliderPos(double y) {
         slider.setVisible(true);
-        slider.setLayoutX(193);
+        slider.setLayoutX(184);
         slider.setLayoutY(y);
     }
 

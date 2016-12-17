@@ -14,35 +14,35 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.HotelManageController">
    <children>
-      <TableView fx:id="hotelList" editable="true" layoutX="95.0" layoutY="155.0" prefHeight="400.0" prefWidth="660.0">
+      <TableView fx:id="hotelList" editable="true" layoutX="95.0" layoutY="155.0" prefHeight="491.0" prefWidth="660.0">
         <columns>
-          <TableColumn fx:id="hotelIDCol" prefWidth="124.0" text="酒店编号" />
-          <TableColumn fx:id="hotelNameCol" prefWidth="173.0" text="酒店名称" />
-            <TableColumn fx:id="hotelCityCol" prefWidth="118.0" text="城市" />
-            <TableColumn fx:id="hotelBusinessCol" prefWidth="131.0" text="商圈" />
-            <TableColumn fx:id="btnCol" prefWidth="93.0" />
+          <TableColumn fx:id="hotelIDCol" prefWidth="102.0" resizable="false" styleClass="LeftAlignCol" text="酒店编号" />
+          <TableColumn fx:id="hotelNameCol" prefWidth="174.0" resizable="false" styleClass="LeftAlignCol" text="酒店名称" />
+            <TableColumn fx:id="hotelCityCol" prefWidth="95.0" resizable="false" styleClass="LeftAlignCol" text="城市" />
+            <TableColumn fx:id="hotelBusinessCol" prefWidth="139.0" resizable="false" styleClass="LeftAlignCol" text="商圈" />
+            <TableColumn fx:id="btnCol" prefWidth="126.0" resizable="false" sortable="false" styleClass="MidAlignCol" />
         </columns>
       </TableView>
-      <TextField layoutX="95.0" layoutY="104.0" prefHeight="30.0" prefWidth="235.0" promptText="搜索酒店编号、名称" />
-      <Button fx:id="searchhotelBtn" layoutX="335.0" layoutY="104.0" mnemonicParsing="false">
+      <TextField focusTraversable="false" layoutX="95.0" layoutY="104.0" prefHeight="30.0" prefWidth="235.0" promptText="搜索酒店编号、名称" />
+      <Button fx:id="searchhotelBtn" layoutX="330.0" layoutY="104.0" mnemonicParsing="false" styleClass="searchBtn">
          <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/webmanager/search.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="newhotelBtn" layoutX="625.0" layoutY="100.0" mnemonicParsing="false" onAction="#newHotel" text="添加酒店">
+      <Button fx:id="newhotelBtn" layoutX="647.0" layoutY="107.0" mnemonicParsing="false" onAction="#newHotel" styleClass="roomBtn" text="添加酒店">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../img/webmanager/newhotel.png" />
+                  <Image url="@../../img/hotelworker/addroom.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Pane fx:id="modifyPane" layoutX="95.0" layoutY="270.0" prefHeight="370.0" prefWidth="660.0" styleClass="innerPane" visible="false">
+      <Pane fx:id="modifyPane" layoutX="95.0" layoutY="280.0" prefHeight="370.0" prefWidth="660.0" styleClass="innerPane" visible="false">
          <children>
             <TextField fx:id="hotelnameinput" layoutX="260.0" layoutY="24.0" prefHeight="36.0" prefWidth="255.0" promptText="酒店名称" />
             <ComboBox fx:id="cityCB" layoutX="260.0" layoutY="88.0" prefHeight="36.0" prefWidth="163.0" promptText="-城市-" />

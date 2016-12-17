@@ -1,5 +1,7 @@
 package presentation.util.buttoncell;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
@@ -27,14 +29,14 @@ public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
     public UserHotelListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView, final String userID) {
         this.tableView = tableView;
 
-        this.getStylesheets().add(UserHotelListButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
-        Image detailImg = new Image("/img/user/checkdetail.png");
+        this.getStylesheets().add(UserHotelListButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
+        Image detailImg = new Image("/img/webmanager/information.png");
         checkDetailBtn.setGraphic(new ImageView(detailImg));
-        checkDetailBtn.getStyleClass().add("tableCellBtn");
+        checkDetailBtn.getStyleClass().add("TableInfoButtonCell");
 
         Image generateImg = new Image("/img/user/generateOrder.png");
         generateOrderBtn.setGraphic(new ImageView(generateImg));
-        generateOrderBtn.getStyleClass().add("tableCellBtn");
+        generateOrderBtn.getStyleClass().add("TableCreateButtonCell");
 
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
@@ -59,10 +61,13 @@ public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
             setText(null);
         } else {
             btnBox.getChildren().clear();
-            checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
-            btnBox.getChildren().add(checkDetailBtn);
-            generateOrderBtn.setTooltip(ToolTipShow.setTool("立即预订"));
-            btnBox.getChildren().add(generateOrderBtn);
+            btnBox.setSpacing(10);
+            btnBox.setAlignment(Pos.CENTER);
+            btnBox.setPadding(new Insets(0, 10, 0, 20));
+            btnBox.setPadding(new Insets(0, 10, 0, 20));
+            checkDetailBtn.setTooltip(ToolTipShow.setTool("详情"));
+            generateOrderBtn.setTooltip(ToolTipShow.setTool("预订"));
+            btnBox.getChildren().addAll(checkDetailBtn, generateOrderBtn);
             setGraphic(btnBox);
             setText(null);
         }

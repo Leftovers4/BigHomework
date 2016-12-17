@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
 import vo.hotel.HotelVO;
 
 import java.rmi.RemoteException;
@@ -35,6 +36,8 @@ public class CheckHotelInfoController {
 
     private ArrayList<ImageView> star;
 
+    private String rating;
+
     public void launch(Pane mainPane, long hotelID) {
         this.mainPane = mainPane;
         this.hotelID = hotelID;
@@ -60,6 +63,7 @@ public class CheckHotelInfoController {
             hotelNameLabel.setText(hotelVO.hotelName);
             hotelWorkerNameLabel.setText(hotelVO.hotelWorkerName);
             showStar(hotelVO.star);
+            rating = String.valueOf(hotelVO.rating);
             hotelRatingLabel.setText(String.valueOf(hotelVO.rating));
             addressLabel.setText(hotelVO.address + hotelVO.tradingArea);
             simpleIntroLabel.setText(hotelVO.description);
@@ -73,5 +77,10 @@ public class CheckHotelInfoController {
         for (int i = 0; i<starNum; i++) {
             star.get(i).setVisible(true);
         }
+    }
+
+    @FXML
+    private void checkHotelReview() {
+        mainPane.getChildren().add(new ReviewPane(mainPane, rating, hotelID));
     }
 }

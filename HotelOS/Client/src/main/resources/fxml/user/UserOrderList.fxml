@@ -1,29 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 
-<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.UserOrderListController">
+<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.UserOrderListController">
    <children>
-      <TableView fx:id="orderList" layoutX="70.0" layoutY="170.0" prefHeight="360.0" prefWidth="711.0">
+      <TableView fx:id="orderList" layoutX="70.0" layoutY="170.0" prefHeight="464.0" prefWidth="711.0">
         <columns>
           <TableColumn fx:id="orderIDCol" prefWidth="190.0" resizable="false" styleClass="LeftAlignCol" text="订单号" />
           <TableColumn fx:id="orderTimeCol" minWidth="0.0" prefWidth="170.0" resizable="false" styleClass="LeftAlignCol" text="生成时间" />
             <TableColumn fx:id="orderStateCol" prefWidth="123.0" resizable="false" styleClass="LeftAlignCol" text="订单状态" />
-            <TableColumn fx:id="hotelNameCol" prefWidth="148.0" resizable="false" styleClass="LeftAlignCol" text="酒店名称" />
+            <TableColumn fx:id="hotelNameCol" prefWidth="141.0" resizable="false" styleClass="LeftAlignCol" text="酒店名称" />
             <TableColumn fx:id="btnCol" minWidth="0.0" prefWidth="60.0" resizable="false" />
         </columns>
       </TableView>

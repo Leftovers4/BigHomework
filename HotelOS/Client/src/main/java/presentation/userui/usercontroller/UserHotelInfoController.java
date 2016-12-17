@@ -12,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
 import presentation.userui.userscene.UserGenerateOrderPane;
 import presentation.util.buttoncell.UserHotelOrderListButtonCell;
 import presentation.util.other.ToolTipShow;
@@ -59,6 +60,8 @@ public class UserHotelInfoController {
     private UserHotelOrderListButtonCell userHotelOrderListButtonCell;
     private HotelBlServiceImpl hotelBlService;
 
+    private String rating;
+
     private ArrayList<ImageView> star;
 
     public void launch(Stage stage, Pane mainPane, String userID, Long hotelID) {
@@ -90,6 +93,7 @@ public class UserHotelInfoController {
 
             hotelNameLabel.setText(hotelVO.hotelName);
             showStar(hotelVO.star);
+            rating = String.valueOf(hotelVO.rating);
             hotelRatingLabel.setText(String.valueOf(hotelVO.rating));
             addressLabel.setText(hotelVO.address);
             simpleIntroLabel.setText(hotelVO.description);
@@ -113,7 +117,7 @@ public class UserHotelInfoController {
         System.out.println(userID);
 
         orderidCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
-        ordertimeCol.setCellValueFactory(new PropertyValueFactory<>("orderTimeVO"));
+        ordertimeCol.setCellValueFactory(new PropertyValueFactory<>("generateTime"));
         ordertypeCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
@@ -176,7 +180,7 @@ public class UserHotelInfoController {
             Image image = new Image("/img/user/generateOrder.png");
             ImageView bookimgview = new ImageView(image);
             bookBtn.setGraphic(bookimgview);
-            bookBtn.getStyleClass().add("tableCellBtn");
+            bookBtn.getStyleClass().add("TableCreateButtonCell");
 
             bookBtn.setTooltip(ToolTipShow.setTool("立即预订"));
             bookBtn.setOnAction(event -> {
@@ -209,4 +213,9 @@ public class UserHotelInfoController {
     }
 
 
+
+    @FXML
+    private void checkHotelReview() {
+        mainPane.getChildren().add(new ReviewPane(mainPane, rating, hotelID));
+    }
 }

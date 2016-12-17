@@ -2,8 +2,6 @@ package presentation.userui.userscene;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-import presentation.userui.usercontroller.CancelOrderController;
 import presentation.userui.usercontroller.CheckMyReviewController;
 
 import java.io.IOException;
@@ -18,7 +16,7 @@ public class CheckMyReviewPane extends Pane {
     }
 
     private void loadFxml(String orderID) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/user/checkMyReview.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/checkmyreview.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

@@ -160,8 +160,7 @@ public class InfoPaneController {
 
     @FXML
     private void showReview(){
-        mainPane.getChildren().clear();
-        mainPane.getChildren().add(new ReviewPane(mainPane, hotelRatingLabel.getText()));
+        mainPane.getChildren().add(new ReviewPane(mainPane, hotelRatingLabel.getText(), ComWorkerSceneController.hotelID));
     }
 
     private void setEditInfoComponentsVisible(Boolean isVisible){

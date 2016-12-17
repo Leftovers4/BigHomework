@@ -77,6 +77,7 @@ public class UserSearchHotelController {
 
     @FXML private TableColumn hotelNameCol;
     @FXML private TableColumn hotelAddressCol;
+    @FXML private TableColumn hoteltracingAreaCol;
     @FXML private TableColumn hotelScoreCol;
     @FXML private TableColumn registerRecordCol;
     @FXML private TableColumn priceCol;
@@ -92,6 +93,9 @@ public class UserSearchHotelController {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         this.userID = userID;
+
+        hotelList.setVisible(false);
+        FlowPane.setMargin(hotelList, new Insets(-170, 0, 0, 50));
 
         addTradProducer = new AddTradProducer();
         alertController = new AlertController();
@@ -147,7 +151,7 @@ public class UserSearchHotelController {
         moreInfoChoice.setDisable(false);
         upMoreInfo.setDisable(false);
         upMoreInfo.setVisible(true);
-        FlowPane.setMargin(hotelList, new Insets(50, 0, 0, 160));
+        FlowPane.setMargin(hotelList, new Insets(90, 0, 0, 50));
         downMoreInfo.setVisible(false);
         downMoreInfo.setDisable(true);
     }
@@ -159,7 +163,7 @@ public class UserSearchHotelController {
         moreInfoChoice.setDisable(true);
         downMoreInfo.setVisible(true);
         downMoreInfo.setDisable(false);
-        FlowPane.setMargin(hotelList, new Insets(0, 0, 0, 160));
+        FlowPane.setMargin(hotelList, new Insets(40, 0, 0, 50));
         upMoreInfo.setVisible(false);
         upMoreInfo.setDisable(true);
     }
@@ -203,32 +207,35 @@ public class UserSearchHotelController {
      */
     @FXML
     private void confirmChoose() {
-        HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
-        hotelConditionsVO.address = cityComBox.getValue().toString();
-        hotelConditionsVO.tradingArea = tradingAreaCombox.getValue().toString();
 
-        hotelConditionsVO.name = searchField.getText();
-
-        hotelConditionsVO.expectedCheckInTime = checkInDate.getValue();
-        hotelConditionsVO.expectedLeaveTime = checkOutDate.getValue();
-
-        hotelConditionsVO.roomTypeList = getRoomType();
-
-        hotelConditionsVO.priceLowerBound = getPriceBound()[0];
-        hotelConditionsVO.priceUpperBound = getPriceBound()[1];
-
-        hotelConditionsVO.starLowerBound = getStarBound()[0];
-        hotelConditionsVO.starUpperBound = getStarBound()[1];
-
-        hotelConditionsVO.ratingLowerBound = getRateBound()[0];
-        hotelConditionsVO.ratingUpperBound = getRateBound()[1];
-
-        hotelConditionsVO.hasOrdered = onlyCheckRegistered.isSelected();
-
-
-        if (hotelConditionsVO.address == null || hotelConditionsVO.tradingArea == null) {
+        if (cityComBox.getValue() == null || tradingAreaCombox.getValue() == null) {
             alertController.showNullWrongAlert("请选择地址", "错误提示");
         } else {
+            hotelList.setVisible(true);
+            FlowPane.setMargin(hotelList, new Insets(60, 0, 0, 50));
+
+            HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
+            hotelConditionsVO.address = cityComBox.getValue().toString();
+            hotelConditionsVO.tradingArea = tradingAreaCombox.getValue().toString();
+
+            hotelConditionsVO.name = searchField.getText();
+
+            hotelConditionsVO.expectedCheckInTime = checkInDate.getValue();
+            hotelConditionsVO.expectedLeaveTime = checkOutDate.getValue();
+
+            hotelConditionsVO.roomTypeList = getRoomType();
+
+            hotelConditionsVO.priceLowerBound = getPriceBound()[0];
+            hotelConditionsVO.priceUpperBound = getPriceBound()[1];
+
+            hotelConditionsVO.starLowerBound = getStarBound()[0];
+            hotelConditionsVO.starUpperBound = getStarBound()[1];
+
+            hotelConditionsVO.ratingLowerBound = getRateBound()[0];
+            hotelConditionsVO.ratingUpperBound = getRateBound()[1];
+
+            hotelConditionsVO.hasOrdered = onlyCheckRegistered.isSelected();
+
             initalTable(hotelConditionsVO);
         }
 
@@ -492,6 +499,7 @@ public class UserSearchHotelController {
 
         hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
         hotelAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        hoteltracingAreaCol.setCellValueFactory(new PropertyValueFactory<>("tradingArea"));
         hotelScoreCol.setCellValueFactory(new PropertyValueFactory<>("rating"));
         registerRecordCol.setCellValueFactory(new PropertyValueFactory<>("hasOrdered"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));

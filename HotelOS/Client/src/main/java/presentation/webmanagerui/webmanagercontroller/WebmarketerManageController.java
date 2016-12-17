@@ -4,6 +4,8 @@ import bl.personnelbl.impl.PersonnelBLServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -13,6 +15,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
+import presentation.util.other.DisableColumnChangeListener;
+import presentation.util.other.ToolTipShow;
 import presentation.webmanagerui.webmanagerscene.WebmarketerManagePane;
 import util.PersonnelType;
 import util.ResultMessage;
@@ -84,6 +88,8 @@ public class WebmarketerManageController {
                 return webManMarketerButtonCell;
             }
         });
+        final TableColumn[] tableColumns = {webmarketerIDCol, webmarketerNameCol, btnCol};
+        webmarketerlist.getColumns().addListener(new DisableColumnChangeListener(webmarketerlist, tableColumns));
         webmarketerlist.setItems(getWebMarketerList());
     }
     private ObservableList getWebMarketerList() {
@@ -112,18 +118,14 @@ public class WebmarketerManageController {
 
         public WebManMarketerButtonCell() {
 
-            Image editImg = new Image("/img/webmanager/edit.png");
+            Image editImg = new Image("/img/hotelworker/modifyroom.png");
             ImageView editimgview = new ImageView(editImg);
-            editimgview.setFitHeight(20);
-            editimgview.setFitWidth(20);
             editBtn.setGraphic(editimgview);
-            editBtn.getStyleClass().add("tableCellBtn");
-            Image deleteImg = new Image("/img/webmanager/delete.png");
+            editBtn.getStyleClass().add("TableEditButtonCell");
+            Image deleteImg = new Image("/img/hotelworker/deleteroom.png");
             ImageView deleteimgview = new ImageView(deleteImg);
-            deleteimgview.setFitWidth(20);
-            deleteimgview.setFitHeight(20);
             deleteBtn.setGraphic(deleteimgview);
-            deleteBtn.getStyleClass().add("tableCellBtn");
+            deleteBtn.getStyleClass().add("TableDeleteButtonCell");
 
             editBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
@@ -169,8 +171,13 @@ public class WebmarketerManageController {
                 setText(null);
             } else {
                 btnBox.getChildren().clear();
-                btnBox.getChildren().add(editBtn);
-                btnBox.getChildren().add(deleteBtn);
+                editBtn.setTooltip(ToolTipShow.setTool("编辑"));
+                deleteBtn.setTooltip(ToolTipShow.setTool("删除"));
+
+                btnBox.setAlignment(Pos.CENTER);
+                btnBox.setSpacing(10);
+                btnBox.setPadding(new Insets(0, 0, 0 ,10));
+                btnBox.getChildren().addAll(editBtn, deleteBtn);
                 setGraphic(btnBox);
                 setText(null);
             }
@@ -187,27 +194,31 @@ public class WebmarketerManageController {
      */
     @FXML
     private void confirmModify() {
-        PersonnelVO personnelVO = (PersonnelVO) webmarketerlist.getItems().get(webManMarketerButtonCell.getSelectedIndex());
+        if (!workernameField.getText().equals("") && !passwordField.getText().equals("")) {
+            PersonnelVO personnelVO = (PersonnelVO) webmarketerlist.getItems().get(webManMarketerButtonCell.getSelectedIndex());
 
-        personnelVO.name = workernameField.getText();
-        personnelVO.password = passwordField.getText();
+            personnelVO.name = workernameField.getText();
+            personnelVO.password = passwordField.getText();
 
-        try {
-            ResultMessage resultMessage = personnelBLService.updatePersonnelInfo(personnelVO);
+            try {
+                ResultMessage resultMessage = personnelBLService.updatePersonnelInfo(personnelVO);
 
-            if (resultMessage == ResultMessage.Success) {
-                System.out.println("update success");
+                if (resultMessage == ResultMessage.Success) {
+                    System.out.println("update success");
 
-                webmarketerlist.setPrefHeight(400);
-                webmarketerlist.setDisable(false);
-                modifywebmarketerPane.setVisible(false);
-                mainPane.getChildren().remove(0);
-                mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
-            } else {
-                System.out.println(resultMessage+"==============");
+                    webmarketerlist.setPrefHeight(472);
+                    webmarketerlist.setDisable(false);
+                    modifywebmarketerPane.setVisible(false);
+                    mainPane.getChildren().remove(0);
+                    mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
+                } else {
+                    System.out.println(resultMessage+"==============");
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
             }
-        } catch (RemoteException e) {
-            e.printStackTrace();
+        } else {
+            alertController.showInputWrongAlert("信息填写不完整", "错误提示");
         }
     }
 
@@ -216,7 +227,7 @@ public class WebmarketerManageController {
      */
     @FXML
     private void cancelModify() {
-        webmarketerlist.setPrefHeight(400);
+        webmarketerlist.setPrefHeight(472);
         webmarketerlist.setDisable(false);
         modifywebmarketerPane.setVisible(false);
     }
@@ -248,19 +259,23 @@ public class WebmarketerManageController {
         confirmPane.setDisable(false);
         confirmPane.setVisible(true);
 
-        PersonnelVO personnelVO = new PersonnelVO();
+        if (!newworkernameField.getText().equals("") && !initialpasswordField.getText().equals("")) {
+            PersonnelVO personnelVO = new PersonnelVO();
 
-        personnelVO.name = newworkernameField.getText();
-        personnelVO.password = initialpasswordField.getText();
-        personnelVO.personnelType = PersonnelType.WebMarketer;
+            personnelVO.name = newworkernameField.getText();
+            personnelVO.password = initialpasswordField.getText();
+            personnelVO.personnelType = PersonnelType.WebMarketer;
 
-        try {
-            newmarketerID = personnelBLService.addWebMarketer(personnelVO);
+            try {
+                newmarketerID = personnelBLService.addWebMarketer(personnelVO);
 
-            workerIDLabel.setText(String.valueOf(newmarketerID));
-            workernameLabel.setText(personnelVO.name);
-        } catch (RemoteException e) {
-            e.printStackTrace();
+                workerIDLabel.setText(String.valueOf(newmarketerID));
+                workernameLabel.setText(personnelVO.name);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } else {
+            alertController.showInputWrongAlert("信息填写不完整", "错误提示");
         }
     }
 
@@ -275,7 +290,7 @@ public class WebmarketerManageController {
             confirmPane.setVisible(false);
             confirmPane.setDisable(true);
 
-            webmarketerlist.setPrefHeight(400);
+            webmarketerlist.setPrefHeight(472);
             webmarketerlist.setDisable(false);
             mainPane.getChildren().remove(0);
             mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));

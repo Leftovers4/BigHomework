@@ -173,4 +173,7 @@ public class OrderDetailUserController {
         mainPane.getChildren().remove(0);
         mainPane.getChildren().add(new CheckMyReviewPane(orderID));
     }
+
+    @FXML
+    private void back(){}
 }

@@ -209,11 +209,11 @@ public class RegisterRoomPaneController {
         public RoomListButtonCell() {
             Image modifyImage = new Image("/img/hotelworker/modifyroom.png");
             modifyButton.setGraphic(new ImageView(modifyImage));
-            modifyButton.getStyleClass().add("TableButtonCell");
+            modifyButton.getStyleClass().add("TableEditButtonCell");
 
             Image deleteImage = new Image("/img/hotelworker/deleteroom.png");
             deleteButton.setGraphic(new ImageView(deleteImage));
-            deleteButton.getStyleClass().add("TableButtonCell");
+            deleteButton.getStyleClass().add("TableDeleteButtonCell");
 
             modifyButton.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();

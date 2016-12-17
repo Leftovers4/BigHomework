@@ -17,7 +17,7 @@ public class ComWorkerScene extends Scene{
 
     public ComWorkerScene(Parent parent, Stage primaryStage, long hotelID) {
         super(parent);
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/hotelworker/hotelcommon.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelcommon.fxml"));
 
         try {
             this.setRoot(fxmlLoader.load());

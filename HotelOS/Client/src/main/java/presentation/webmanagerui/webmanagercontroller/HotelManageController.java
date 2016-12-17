@@ -6,6 +6,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -15,6 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
+import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.ToolTipShow;
 import presentation.webmanagerui.webmanagerscene.AddHotelPane;
 import presentation.webmanagerui.webmanagerscene.CheckHotelInfoPane;
@@ -109,6 +112,8 @@ public class HotelManageController {
                 return webManHotelListButtonCell;
             }
         });
+        final TableColumn[] tableColumns = {hotelIDCol, hotelNameCol, hotelCityCol, hotelBusinessCol, btnCol};
+        hotelList.getColumns().addListener(new DisableColumnChangeListener(hotelList, tableColumns));
         hotelList.setItems(getHotelList());
     }
     private ObservableList getHotelList() {
@@ -151,24 +156,18 @@ public class HotelManageController {
 
         public WebManHotelListButtonCell() {
 
-            Image editImg = new Image("/img/webmanager/edit.png");
+            Image editImg = new Image("/img/hotelworker/modifyroom.png");
             ImageView editimgview = new ImageView(editImg);
-            editimgview.setFitWidth(20);
-            editimgview.setFitHeight(20);
             editBtn.setGraphic(editimgview);
-            editBtn.getStyleClass().add("tableCellBtn");
-            Image deleteImg = new Image("/img/webmanager/delete.png");
+            editBtn.getStyleClass().add("TableEditButtonCell");
+            Image deleteImg = new Image("/img/hotelworker/deleteroom.png");
             ImageView deleteimgview = new ImageView(deleteImg);
-            deleteimgview.setFitWidth(20);
-            deleteimgview.setFitHeight(20);
             deleteBtn.setGraphic(deleteimgview);
-            deleteBtn.getStyleClass().add("tableCellBtn");
-            Image checkdetailimg = new Image("/img/user/checkdetail.png");
+            deleteBtn.getStyleClass().add("TableDeleteButtonCell");
+            Image checkdetailimg = new Image("/img/webmanager/information.png");
             ImageView checkdetailimgview = new ImageView(checkdetailimg);
-            checkdetailimgview.setFitHeight(20);
-            checkdetailimgview.setFitWidth(20);
             checkDetailBtn.setGraphic(checkdetailimgview);
-            checkDetailBtn.getStyleClass().add("tableCellBtn");
+            checkDetailBtn.getStyleClass().add("TableInfoButtonCell");
 
 
             editBtn.setOnAction(event -> {
@@ -230,11 +229,12 @@ public class HotelManageController {
             } else {
                 btnBox.getChildren().clear();
                 editBtn.setTooltip(ToolTipShow.setTool("编辑"));
-                btnBox.getChildren().add(editBtn);
                 deleteBtn.setTooltip(ToolTipShow.setTool("删除"));
-                btnBox.getChildren().add(deleteBtn);
                 checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
-                btnBox.getChildren().add(checkDetailBtn);
+                btnBox.setAlignment(Pos.CENTER);
+                btnBox.setSpacing(10);
+                btnBox.setPadding(new Insets(0, 0, 0 ,10));
+                btnBox.getChildren().addAll(checkDetailBtn, editBtn, deleteBtn);
                 setGraphic(btnBox);
                 setText(null);
             }
@@ -252,29 +252,33 @@ public class HotelManageController {
      */
     @FXML
     private void confirmModify() {
-        HotelVO hotelVO = (HotelVO) hotelList.getItems().get(webManHotelListButtonCell.getSelectedIndex());
+        if (isHotelInfoFull()) {
+            HotelVO hotelVO = (HotelVO) hotelList.getItems().get(webManHotelListButtonCell.getSelectedIndex());
 
-        hotelVO.hotelName = hotelnameinput.getText();
-        hotelVO.address = cityCB.getValue().toString();
-        hotelVO.tradingArea = tracingareaCB.getValue().toString();
-        hotelVO.star = Integer.parseInt(star.getValue().toString());
+            hotelVO.hotelName = hotelnameinput.getText();
+            hotelVO.address = cityCB.getValue().toString();
+            hotelVO.tradingArea = tracingareaCB.getValue().toString();
+            hotelVO.star = Integer.parseInt(star.getValue().toString());
 
-        try {
-            ResultMessage resultMessage = hotelBlService.updateBasicHotelInfo(hotelVO);
+            try {
+                ResultMessage resultMessage = hotelBlService.updateBasicHotelInfo(hotelVO);
 
-            if (resultMessage == ResultMessage.Success) {
-                System.out.println("update success");
+                if (resultMessage == ResultMessage.Success) {
+                    System.out.println("update success");
 
-                alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
+                    alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
 
-                hotelList.setPrefHeight(400);
-                hotelList.setDisable(false);
-                modifyPane.setVisible(false);
+                    hotelList.setPrefHeight(491);
+                    hotelList.setDisable(false);
+                    modifyPane.setVisible(false);
 
-                new HotelManagePane(pane);
+                    new HotelManagePane(pane);
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
             }
-        } catch (RemoteException e) {
-            e.printStackTrace();
+        } else {
+            alertController.showInputWrongAlert("输入信息不完整", "错误提示");
         }
     }
 
@@ -285,11 +289,21 @@ public class HotelManageController {
     private void cancelModify() {
         boolean confirm = alertController.showConfirmCancelAlert();
         if (confirm) {
-            hotelList.setPrefHeight(400);
+            hotelList.setPrefHeight(491);
             hotelList.setDisable(false);
             modifyPane.setVisible(false);
         }
     }
+
+    private boolean isHotelInfoFull() {
+        boolean name = !hotelnameinput.getText().equals("");
+        boolean city = !cityCB.getValue().equals("");
+        boolean area = !tracingareaCB.getValue().equals("");
+        boolean s = !star.getValue().equals("");
+
+        return name && city && area && s;
+    }
+
 }
 
 

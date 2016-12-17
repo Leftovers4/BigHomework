@@ -4,7 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.usercontroller.CreditRecordController;
-import presentation.userui.usercontroller.InfoPaneController;
 
 import java.io.IOException;
 
@@ -19,7 +18,7 @@ public class CreditRecordPane extends Pane {
     }
 
     private void loadFxml(Stage primaryStage, Pane mainPane, String userID) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/user/creditRecord.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/creditrecord.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

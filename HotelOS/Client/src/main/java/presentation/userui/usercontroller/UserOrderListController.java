@@ -10,7 +10,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import presentation.userui.userscene.CancelOrderPane;
 import presentation.util.buttoncell.UserOrderListButtonCell;
 import util.OrderType;
 import vo.order.OrderVO;
@@ -25,12 +24,9 @@ public class UserOrderListController {
     private Stage stage;
     private Pane mainPane;
     private String userID;
-    private String orderID;
 
     @FXML private ComboBox orderStateComBox;
-    @FXML private DatePicker datebegin;
-    @FXML private DatePicker dateend;
-
+    @FXML private TextField searchField;
     @FXML private TableColumn orderIDCol;
     @FXML private TableColumn orderTimeCol;
     @FXML private TableColumn orderStateCol;
@@ -39,7 +35,6 @@ public class UserOrderListController {
     @FXML private TableView orderList;
 
     private UserOrderListButtonCell userOrderListButtonCell;
-    private OrderType choseOrderType = null;
     private OrderBLService orderBlService;
 
     public void launch(Stage primaryStage, Pane mainPane, String userID) {
@@ -102,23 +97,18 @@ public class UserOrderListController {
                         switch ((String) newValue) {
                             case "全部订单":
                                 orderList.setItems(getOrderList());
-                                choseOrderType = null;
                                 break;
                             case "已执行订单":
                                 orderList.setItems(FXCollections.observableArrayList(orderBlService.viewTypeUserOrderList(userID, OrderType.Executed)));
-                                choseOrderType = OrderType.Executed;
                                 break;
                             case "未执行订单":
                                 orderList.setItems(FXCollections.observableArrayList(orderBlService.viewTypeUserOrderList(userID, OrderType.Unexecuted)));
-                                choseOrderType = OrderType.Unexecuted;
                                 break;
                             case "异常订单":
                                 orderList.setItems(FXCollections.observableArrayList(orderBlService.viewTypeUserOrderList(userID, OrderType.Abnormal)));
-                                choseOrderType = OrderType.Abnormal;
                                 break;
                             case "撤销订单":
                                 orderList.setItems(FXCollections.observableArrayList(orderBlService.viewTypeUserOrderList(userID, OrderType.Canceled)));
-                                choseOrderType = OrderType.Canceled;
                                 break;
                         }
                     } catch (RemoteException e) {
@@ -131,6 +121,14 @@ public class UserOrderListController {
 
     @FXML
     private void searchOrderByID() {
-
+        OrderVO orderVO = null;
+        ObservableList<OrderVO> list = FXCollections.observableArrayList();
+        try {
+            orderVO = orderBlService.searchOrderByID(searchField.getText());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        if(orderVO != null) list.add(orderVO);
+        orderList.setItems(list);
     }
 }

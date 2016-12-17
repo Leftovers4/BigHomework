@@ -117,7 +117,7 @@ public class RegisterCommonVIPController {
             try {
                 ResultMessage resultMessage = userBlService.registerNormalMember(userVO);
                 if (resultMessage == ResultMessage.Success) {
-                    System.out.println("success");
+                    System.out.println("success" + "=======================");
 
                     if (userVO.memberVO.memberType == MemberType.None) {
                         userVO.memberVO.memberType = MemberType.NormalMember;

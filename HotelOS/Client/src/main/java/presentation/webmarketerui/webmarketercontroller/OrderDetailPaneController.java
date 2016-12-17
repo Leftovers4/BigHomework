@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import presentation.util.alert.AlertController;
+import presentation.util.other.MyOrderLabel;
 import presentation.webmarketerui.webmarketerscene.OrderListPane;
 import util.DateTimeFormat;
 import util.EnumFactory;
@@ -58,6 +59,7 @@ public class OrderDetailPaneController {
     private void initOrderLabel(OrderVO orderVO) {
         orderIDLabel.setText(orderVO.orderID);
         orderTypeLabel.setText(EnumFactory.getString(orderVO.orderType));
+        MyOrderLabel.changeColor(orderVO.orderType, orderTypeLabel);
         orderOriPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.originPrice));
         orderProLabel.setText(String.valueOf(orderVO.orderPromoInfoVO.promotionType == null ? "无优惠" : EnumFactory.getString(orderVO.orderPromoInfoVO.promotionType)));
         orderActPriceLabel.setText(String.valueOf(orderVO.orderPriceVO.actualPrice));
@@ -70,7 +72,7 @@ public class OrderDetailPaneController {
 
         roomTypeLabel.setText(EnumFactory.getString(orderVO.roomType));
         roomAmountLabel.setText(String.valueOf(orderVO.roomAmount));
-        roomIDLabel.setText(orderVO.roomNumber == null ? "" : orderVO.roomNumber);
+        roomIDLabel.setText(orderVO.roomNumber == null ? "未入住" : orderVO.roomNumber);
         userNameLabel.setText(orderVO.username);
         withChildrenLabel.setText(orderVO.withChildren ? "有" : "无");
         peopleAmountLabel.setText(String.valueOf(orderVO.personAmount));

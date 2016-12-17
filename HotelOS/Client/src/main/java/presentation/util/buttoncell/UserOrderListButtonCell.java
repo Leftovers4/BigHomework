@@ -1,5 +1,7 @@
 package presentation.util.buttoncell;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
@@ -8,7 +10,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import presentation.userui.userscene.CancelOrderPane;
 import presentation.userui.userscene.OrderDetailUserPane;
 import presentation.util.other.ToolTipShow;
 import vo.order.OrderVO;
@@ -27,10 +28,10 @@ public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
     public UserOrderListButtonCell(final Stage stage, final Pane mainPane, final TableView tableView, final String userID) {
         this.tableView = tableView;
 
-        this.getStylesheets().add(UserOrderListButtonCell.class.getResource("/css/user/userstyle.css").toExternalForm());
-        Image detailImg = new Image("/img/user/checkdetail.png");
+        this.getStylesheets().add(UserOrderListButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
+        Image detailImg = new Image("/img/hotelworker/checkorderdetail.png");
         checkDetailBtn.setGraphic(new ImageView(detailImg));
-        checkDetailBtn.getStyleClass().add("tableCellBtn");
+        checkDetailBtn.getStyleClass().add("TableDetailButtonCell");
 
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
@@ -51,6 +52,8 @@ public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
         } else {
             btnBox.getChildren().clear();
             checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
+            btnBox.setPadding(new Insets(0, 0, 0, 20));
+            btnBox.setAlignment(Pos.CENTER);
             btnBox.getChildren().add(checkDetailBtn);
             setGraphic(btnBox);
             setText(null);

@@ -27,6 +27,7 @@ public class RegisteredHotelController {
 
     @FXML private TableColumn hotelNameCol;
     @FXML private TableColumn hotelAddressCol;
+    @FXML private TableColumn hoteltracingCol;
     @FXML private TableColumn btnCol;
     @FXML private TableView registeredHotelList;
 
@@ -51,6 +52,7 @@ public class RegisteredHotelController {
     private void initialData() {
         hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
         hotelAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
+        hoteltracingCol.setCellValueFactory(new PropertyValueFactory<>("tradingArea"));
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {

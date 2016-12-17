@@ -18,7 +18,7 @@ public class OrderDetailPane extends Pane{
     }
 
     private void loadFxml(Pane mainPane, OrderVO orderVO) {
-        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getClassLoader().getResource("fxml/webmarketer/weborderdetail.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/webmarketer/weborderdetail.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

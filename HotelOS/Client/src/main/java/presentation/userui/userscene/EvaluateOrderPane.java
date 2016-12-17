@@ -17,7 +17,7 @@ public class EvaluateOrderPane extends Pane {
     }
 
     private void loadFxml(Stage primaryStage, String orderID, String userID) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/user/EvaluateOrder.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/user/evaluateorder.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

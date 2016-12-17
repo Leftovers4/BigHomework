@@ -17,7 +17,7 @@ public class HotelManagePane extends Pane {
     }
 
     private void loadFxml(Pane mainPane) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("fxml/webmanager/webmanhotelman.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/webmanager/webmanhotelman.fxml"));
         fxmlLoader.setRoot(this);
         try {
             fxmlLoader.load();

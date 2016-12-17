@@ -106,40 +106,45 @@ public class AddHotelController {
      */
     @FXML
     private void toconfirmHotelInfoEvent() {
-        finishInfoPane.setVisible(false);
-        addhotelworkerPane.setVisible(false);
-        confirmHotelInfoPane.setVisible(true);
+        if (isHotelInfoFull()) {
+            finishInfoPane.setVisible(false);
+            addhotelworkerPane.setVisible(false);
+            confirmHotelInfoPane.setVisible(true);
 
-        HotelVO hotelVO = new HotelVO();
+            HotelVO hotelVO = new HotelVO();
 
-        hotelVO.hotelName = hotelnameField.getText();
-        hotelVO.address = hotelcity.getValue().toString();
-        hotelVO.tradingArea = hoteltracingarea.getValue().toString();
+            hotelVO.hotelName = hotelnameField.getText();
+            hotelVO.address = hotelcity.getValue().toString();
+            hotelVO.tradingArea = hoteltracingarea.getValue().toString();
 
-        if (onestar.isSelected()) {
-            hotelVO.star = 1;
-        } else if (twostar.isSelected()) {
-            hotelVO.star = 2;
-        } else if (threestar.isSelected()) {
-            hotelVO.star = 3;
-        } else if (fourstar.isSelected()) {
-            hotelVO.star = 4;
-        } else if (fivestar.isSelected()) {
-            hotelVO.star = 5;
+            if (onestar.isSelected()) {
+                hotelVO.star = 1;
+            } else if (twostar.isSelected()) {
+                hotelVO.star = 2;
+            } else if (threestar.isSelected()) {
+                hotelVO.star = 3;
+            } else if (fourstar.isSelected()) {
+                hotelVO.star = 4;
+            } else if (fivestar.isSelected()) {
+                hotelVO.star = 5;
+            }
+
+
+            try {
+                hotelID = hotelBlService.addHotel(hotelVO);
+
+                hotelidLabel.setText(String.valueOf(hotelID));
+                hotelnameLabel.setText(hotelVO.hotelName);
+                hoteladdressLabel.setText(hotelVO.address);
+                hoteltracingareaLabel.setText(hotelVO.tradingArea);
+                hotelstarLabel.setText(String.valueOf(hotelVO.star));
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } else {
+            alertController.showInputWrongAlert("信息填写不完整", "错误提示");
         }
 
-
-        try {
-            hotelID = hotelBlService.addHotel(hotelVO);
-
-            hotelidLabel.setText(String.valueOf(hotelID));
-            hotelnameLabel.setText(hotelVO.hotelName);
-            hoteladdressLabel.setText(hotelVO.address);
-            hoteltracingareaLabel.setText(hotelVO.tradingArea);
-            hotelstarLabel.setText(String.valueOf(hotelVO.star));
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -158,23 +163,27 @@ public class AddHotelController {
      */
     @FXML
     private void confirmAddWorker() {
-        PersonnelVO personnelVO = new PersonnelVO();
+        if (isWorkerInfoFull()) {
+            PersonnelVO personnelVO = new PersonnelVO();
 
-        personnelVO.name = workernameField.getText();
-        personnelVO.password = initialPasswordField.getText();
-        personnelVO.hotelID = hotelID;
+            personnelVO.name = workernameField.getText();
+            personnelVO.password = initialPasswordField.getText();
+            personnelVO.hotelID = hotelID;
 
-        try {
-            long hotelWorkerID = personnelBLService.addHotelWorker(personnelVO);
+            try {
+                long hotelWorkerID = personnelBLService.addHotelWorker(personnelVO);
 
-            workerinfopane.setVisible(false);
-            confirmworkerpane.setVisible(true);
+                workerinfopane.setVisible(false);
+                confirmworkerpane.setVisible(true);
 
-            hotelworkeridLabel.setText(String.valueOf(hotelWorkerID));
-            hotelworkernameLabel.setText(personnelVO.name);
-            workerhotelLabel.setText(hotelBlService.viewBasicHotelInfo(hotelID).hotelName);
-        } catch (RemoteException e) {
-            e.printStackTrace();
+                hotelworkeridLabel.setText(String.valueOf(hotelWorkerID));
+                hotelworkernameLabel.setText(personnelVO.name);
+                workerhotelLabel.setText(hotelBlService.viewBasicHotelInfo(hotelID).hotelName);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        } else {
+            alertController.showInputWrongAlert("信息填写不完整", "错误提示");
         }
     }
 
@@ -184,5 +193,22 @@ public class AddHotelController {
         alertController.showUpdateSuccessAlert("添加成功！", "成功提示");
         mainPane.getChildren().remove(0);
         mainPane.getChildren().add(new HotelManagePane(mainPane));
+    }
+
+    private boolean isHotelInfoFull() {
+        boolean hotelname = !hotelnameField.getText().equals("");
+        boolean city = !hotelcity.getValue().toString().equals("");
+        boolean area = !hoteltracingarea.getValue().toString().equals("");
+        boolean star = onestar.isSelected() || twostar.isSelected() || threestar.isSelected() ||
+                fourstar.isSelected() || fivestar.isSelected();
+
+        return hotelname && city && area && star;
+    }
+
+    private boolean isWorkerInfoFull() {
+        boolean name = !workernameField.getText().equals("");
+        boolean password = !initialPasswordField.getText().equals("");
+
+        return  name && password;
     }
 }

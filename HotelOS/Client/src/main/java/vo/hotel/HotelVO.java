@@ -141,4 +141,11 @@ public class HotelVO {
         return hotelWorkerName;
     }
 
+    public String getHasOrdered() {
+        if (ordersByUserAndHotel.size() == 0) {
+            return "否";
+        } else {
+            return "是";
+        }
+    }
 }

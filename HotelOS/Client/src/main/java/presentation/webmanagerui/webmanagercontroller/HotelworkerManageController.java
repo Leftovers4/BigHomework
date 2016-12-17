@@ -4,6 +4,8 @@ import bl.personnelbl.impl.PersonnelBLServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -13,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
+import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.ToolTipShow;
 import presentation.webmanagerui.webmanagerscene.CheckHotelInfoPane;
 import presentation.webmanagerui.webmanagerscene.HotelworkerManagePane;
@@ -77,6 +80,8 @@ public class HotelworkerManageController {
                 return webManHotelworkerButtonCell;
             }
         });
+        final TableColumn[] tableColumns = {hotelIDCol, hotelnameCol, hotelworkerIDCol, hotelworkerNameCol, btnCol};
+        hotelworkerList.getColumns().addListener(new DisableColumnChangeListener(hotelworkerList, tableColumns));
         hotelworkerList.setItems(getHotelWorkerList());
     }
     private ObservableList getHotelWorkerList() {
@@ -104,24 +109,18 @@ public class HotelworkerManageController {
 
         public WebManHotelworkerButtonCell() {
 
-            Image editImg = new Image("/img/webmanager/edit.png");
+            Image editImg = new Image("/img/hotelworker/modifyroom.png");
             ImageView editimgview = new ImageView(editImg);
-            editimgview.setFitHeight(20);
-            editimgview.setFitWidth(20);
             editBtn.setGraphic(editimgview);
-            editBtn.getStyleClass().add("tableCellBtn");
-            Image deleteImg = new Image("/img/webmanager/delete.png");
+            editBtn.getStyleClass().add("TableEditButtonCell");
+            Image deleteImg = new Image("/img/hotelworker/deleteroom.png");
             ImageView deleteimgview = new ImageView(deleteImg);
-            deleteimgview.setFitWidth(20);
-            deleteimgview.setFitHeight(20);
             deleteBtn.setGraphic(deleteimgview);
-            deleteBtn.getStyleClass().add("tableCellBtn");
-            Image checkdetailImg = new Image("/img/user/checkdetail.png");
-            ImageView detailimgview = new ImageView(checkdetailImg);
-            detailimgview.setFitWidth(20);
-            detailimgview.setFitHeight(20);
-            checkDetailBtn.setGraphic(detailimgview);
-            checkDetailBtn.getStyleClass().add("tableCellBtn");
+            deleteBtn.getStyleClass().add("TableDeleteButtonCell");
+            Image checkdetailimg = new Image("/img/webmanager/information.png");
+            ImageView checkdetailimgview = new ImageView(checkdetailimg);
+            checkDetailBtn.setGraphic(checkdetailimgview);
+            checkDetailBtn.getStyleClass().add("TableInfoButtonCell");
 
             editBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
@@ -180,12 +179,13 @@ public class HotelworkerManageController {
                 setText(null);
             } else {
                 btnBox.getChildren().clear();
-                editBtn.setTooltip(ToolTipShow.setTool("编辑"));
-                btnBox.getChildren().add(editBtn);
                 deleteBtn.setTooltip(ToolTipShow.setTool("删除"));
-                btnBox.getChildren().add(deleteBtn);
                 checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
-                btnBox.getChildren().add(checkDetailBtn);
+                editBtn.setTooltip(ToolTipShow.setTool("编辑"));
+                btnBox.setAlignment(Pos.CENTER);
+                btnBox.setSpacing(10);
+                btnBox.setPadding(new Insets(0, 0, 0 ,10));
+                btnBox.getChildren().addAll(checkDetailBtn, editBtn, deleteBtn);
                 setGraphic(btnBox);
                 setText(null);
             }
@@ -202,28 +202,32 @@ public class HotelworkerManageController {
      */
     @FXML
     private void confirmModify() {
-        PersonnelVO personnelVO = (PersonnelVO) hotelworkerList.getItems().get(webManHotelworkerButtonCell.getSelectedIndex());
+        if (!workernameField.getText().equals("")) {
+            PersonnelVO personnelVO = (PersonnelVO) hotelworkerList.getItems().get(webManHotelworkerButtonCell.getSelectedIndex());
 
-        personnelVO.name = workernameField.getText();
-        personnelVO.password = passwordField.getText();
+            personnelVO.name = workernameField.getText();
+            personnelVO.password = passwordField.getText();
 
-        try {
-            ResultMessage resultMessage = personnelBLService.updatePersonnelInfo(personnelVO);
+            try {
+                ResultMessage resultMessage = personnelBLService.updatePersonnelInfo(personnelVO);
 
-            if (resultMessage == ResultMessage.Success) {
-                System.out.println("modify success");
+                if (resultMessage == ResultMessage.Success) {
+                    System.out.println("modify success");
 
-                hotelworkerList.setPrefHeight(400);
-                modifyhotelworkerPane.setVisible(false);
+                    hotelworkerList.setPrefHeight(480);
+                    modifyhotelworkerPane.setVisible(false);
 
-                alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
-                pane.getChildren().remove(0);
-                pane.getChildren().add(new HotelworkerManagePane(stage, pane));
-            } else {
-                System.out.println(resultMessage);
+                    alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
+                    pane.getChildren().remove(0);
+                    pane.getChildren().add(new HotelworkerManagePane(stage, pane));
+                } else {
+                    System.out.println(resultMessage);
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
             }
-        } catch (RemoteException e) {
-            e.printStackTrace();
+        } else {
+            alertController.showInputWrongAlert("信息填写不完整", "错误提示");
         }
     }
 
@@ -235,7 +239,7 @@ public class HotelworkerManageController {
         boolean confirm = alertController.showConfirmCancelAlert();
 
         if (confirm) {
-            hotelworkerList.setPrefHeight(400);
+            hotelworkerList.setPrefHeight(480);
             hotelworkerList.setDisable(false);
             modifyhotelworkerPane.setVisible(false);
         }
