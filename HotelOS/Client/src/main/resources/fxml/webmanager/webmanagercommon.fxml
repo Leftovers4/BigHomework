@@ -94,6 +94,19 @@
       <Pane fx:id="mainPane" layoutX="230.0" prefHeight="690.0" prefWidth="850.0" styleClass="panel" visible="true" />
       <HBox id="topBar" alignment="CENTER_RIGHT" layoutX="230.0" prefHeight="50.0" prefWidth="850.0">
          <children>
+            <ImageView fx:id="topbarphoto" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/common/initialPhoto.png" />
+               </image>
+            </ImageView>
+            <SplitMenuButton fx:id="topname" maxWidth="120.0" mnemonicParsing="false" text="name">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="退出登录" />
+               </items>
+               <HBox.margin>
+                  <Insets left="10.0" right="50.0" />
+               </HBox.margin>
+            </SplitMenuButton>
             <Button fx:id="minWindowBtn" mnemonicParsing="false" onAction="#minWindow" prefHeight="50.0" prefWidth="50.0" styleClass="MinButton">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -118,16 +131,6 @@
                   <Insets />
                </HBox.margin>
             </Button>
-            <ImageView fx:id="topbarphoto" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/common/initialPhoto.png" />
-               </image>
-            </ImageView>
-            <SplitMenuButton maxWidth="120.0" mnemonicParsing="false" text="name">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="退出登录" />
-               </items>
-            </SplitMenuButton>
          </children>
       </HBox>
    </children>

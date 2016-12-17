@@ -29,6 +29,9 @@ public class OrderDetailUserController {
     private String orderID;
     private String userID;
 
+    @FXML private Label checkinbeforeLabel;
+    @FXML private Label checkoutbeforeLabel;
+
     @FXML private Label checkInTimeLabeldet;
     @FXML private Label checkOutTimeLabeldet;
     @FXML private Label roomTypeLabeldet;
@@ -77,11 +80,15 @@ public class OrderDetailUserController {
 
             if (orderType == OrderType.Executed) {
                 if (orderVO.orderTimeVO.leaveTime == null) {
+                    checkinbeforeLabel.setText("入住时间：");
+                    checkoutbeforeLabel.setText("预计离开时间：");
                     checkInTimeLabeldet.setText(orderVO.orderTimeVO.checkinTime.format(DateTimeFormat.dateTimeFormat));
                     checkOutTimeLabeldet.setText(orderVO.orderTimeVO.expectedLeaveTime.format(DateTimeFormat.dateTimeFormat));
                     evaluateBtn.setVisible(false);
                     checkMyReviewBtn.setVisible(false);
                 } else {
+                    checkinbeforeLabel.setText("入住时间：");
+                    checkoutbeforeLabel.setText("离开时间：");
                     checkInTimeLabeldet.setText(orderVO.orderTimeVO.checkinTime.format(DateTimeFormat.dateTimeFormat));
                     checkOutTimeLabeldet.setText(orderVO.orderTimeVO.leaveTime.format(DateTimeFormat.dateTimeFormat));
 
@@ -96,6 +103,8 @@ public class OrderDetailUserController {
 
                 cancelBtn.setVisible(false);
             } else {
+                checkinbeforeLabel.setText("预计入住时间：");
+                checkoutbeforeLabel.setText("预计离开时间：");
                 checkInTimeLabeldet.setText(orderVO.orderTimeVO.expectedCheckinTime.format(DateTimeFormat.dateTimeFormat));
                 checkOutTimeLabeldet.setText(orderVO.orderTimeVO.expectedLeaveTime.format(DateTimeFormat.dateTimeFormat));
 

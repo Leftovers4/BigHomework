@@ -97,7 +97,7 @@ public class ComUserSceneController {
     private void orderList() {
         changeSliderPos(305);
         mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new UserOrderListPane(stage, mainPane, userID));
+        mainPane.getChildren().add(new UserOrderListPane(stage, mainPane, userID, false));
         leftBarBtnEffect(orderListBtn);
         currentBtn = orderListBtn;
     }

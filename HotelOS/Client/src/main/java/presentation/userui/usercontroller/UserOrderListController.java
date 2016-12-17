@@ -11,6 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.buttoncell.UserOrderListButtonCell;
+import util.EnumFactory;
 import util.OrderType;
 import vo.order.OrderVO;
 
@@ -24,6 +25,7 @@ public class UserOrderListController {
     private Stage stage;
     private Pane mainPane;
     private String userID;
+    private boolean isFromNewOrder;
 
     @FXML private ComboBox orderStateComBox;
     @FXML private TextField searchField;
@@ -37,10 +39,11 @@ public class UserOrderListController {
     private UserOrderListButtonCell userOrderListButtonCell;
     private OrderBLService orderBlService;
 
-    public void launch(Stage primaryStage, Pane mainPane, String userID) {
+    public void launch(Stage primaryStage, Pane mainPane, String userID, boolean isFromNewOrder) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         this.userID = userID;
+        this.isFromNewOrder = isFromNewOrder;
 
         try {
             orderBlService = new OrderBlServiceImpl();
@@ -67,12 +70,26 @@ public class UserOrderListController {
                 return userOrderListButtonCell;
             }
         });
-        orderList.setItems(getOrderList());
+        if (isFromNewOrder) {
+            orderList.setItems(getTypeOrderList());
+            orderStateComBox.setValue(EnumFactory.getString(OrderType.Unexecuted));
+        } else {
+            orderList.setItems(getFullOrderList());
+        }
     }
-    private ObservableList getOrderList() {
+    private ObservableList getFullOrderList() {
         ObservableList<OrderVO> list = null;
         try {
             list = FXCollections.observableArrayList(orderBlService.viewFullUserOrderList(userID));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    private ObservableList getTypeOrderList() {
+        ObservableList<OrderVO> list = null;
+        try {
+            list = FXCollections.observableArrayList(orderBlService.viewTypeUserOrderList(userID, OrderType.Unexecuted));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -96,7 +113,7 @@ public class UserOrderListController {
                     try {
                         switch ((String) newValue) {
                             case "全部订单":
-                                orderList.setItems(getOrderList());
+                                orderList.setItems(getFullOrderList());
                                 break;
                             case "已执行订单":
                                 orderList.setItems(FXCollections.observableArrayList(orderBlService.viewTypeUserOrderList(userID, OrderType.Executed)));

@@ -1,6 +1,9 @@
 package presentation.userui.usercontroller;
 
+import bl.hotelbl.HotelBLService;
 import bl.hotelbl.impl.HotelBlServiceImpl;
+import bl.hotelbl.impl.Room;
+import bl.orderbl.OrderBLService;
 import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -71,10 +74,12 @@ public class UserGenerateOrderController {
     @FXML private Label priceLabel;
     @FXML private Label promotionLabel;
 
-    private OrderBlServiceImpl orderBlService;
-    private HotelBlServiceImpl hotelBlService;
+    private OrderBLService orderBlService;
+    private HotelBLService hotelBlService;
 
     private AlertController alertController;
+
+    private HotelVO hotelVO;
 
     public void launch(Stage primaryStage, Pane mainPane, String userID, long hotelID, RoomType roomType) {
         this.stage = primaryStage;
@@ -131,7 +136,7 @@ public class UserGenerateOrderController {
             }
 
 
-            HotelVO hotelVO = hotelBlService.viewDetailedHotelInfo(hotelID, userID);
+            hotelVO = hotelBlService.viewDetailedHotelInfo(hotelID, userID);
 
             hotelnameLabel.setText(hotelVO.hotelName);
             hoteladdressLabel.setText(hotelVO.address + hotelVO.tradingArea);
@@ -174,7 +179,7 @@ public class UserGenerateOrderController {
                     for (int i = 0; i<roomVOList.size(); i++) {
                         if (EnumFactory.getString(roomVOList.get(i).roomType) == roomType.getValue()) {
                             RoomVO roomVO = hotelBlService.viewFullRoomInfo(roomVOList.get(i).roomID, checkin, checkout);
-
+                            roomNum.getItems().clear();
                             for (int j = 0; j<roomVO.bookable; j++) {
                                 roomNum.getItems().add(j);
                             }
@@ -248,13 +253,19 @@ public class UserGenerateOrderController {
             orderVO.roomAmount = (int) (roomNum.getValue());
             orderVO.personAmount = (int) (peopleNum.getValue());
             orderVO.withChildren = childHave.isSelected();
+            List<RoomVO> roomVOList = hotelVO.rooms;
+            for (int i = 0; i<roomVOList.size(); i++) {
+                if (roomVOList.get(i).roomType == orderVO.roomType) {
+                    orderVO.orderPriceVO.originPrice = roomVOList.get(i).price;
+                }
+            }
 
             try {
                 double price = orderBlService.getOrderActualPrice(orderVO);
 
                 System.out.println(price+"---------------------------------------");
 
-                priceLabel.setText(String.valueOf(price));
+                priceLabel.setText(String.valueOf((price * orderVO.roomAmount)));
                 if (orderVO.orderPromoInfoVO.promotionType == null) {
                     promotionLabel.setText("无");
                 } else {
@@ -342,6 +353,9 @@ public class UserGenerateOrderController {
         backToEdit.setVisible(true);
         nextBtn.setVisible(true);
 
+        promotionLabel.setText("无");
+        priceLabel.setText("0");
+
         checkInTimeLabel.setVisible(false);
         checkOutTime.setVisible(false);
         roomTypeLabel.setVisible(false);
@@ -382,7 +396,7 @@ public class UserGenerateOrderController {
                 System.out.println("new order");
                 alertController.showUpdateSuccessAlert("订单已生成！", "成功提示");
                 mainPane.getChildren().remove(0);
-                mainPane.getChildren().add(new UserOrderListPane(stage, mainPane, userID));
+                mainPane.getChildren().add(new UserOrderListPane(stage, mainPane, userID, true));
             } else {
                 alertController.showInputWrongAlert("订单生成失败", "错误提示");
                 System.out.println(resultMessage);
