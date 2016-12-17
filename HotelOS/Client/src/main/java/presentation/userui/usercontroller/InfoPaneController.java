@@ -65,8 +65,8 @@ public class InfoPaneController {
     @FXML private Label userSex;
     @FXML private Label birthDate;
     @FXML private Label phone;
-    @FXML private Button registerCommonvipBtn;
-    @FXML private Button registerCompanyvipBtn;
+    @FXML private Hyperlink registerCommonvipBtn;
+    @FXML private Hyperlink registerCompanyvipBtn;
     @FXML private Button editInfoBtn;
 
     private UserBLService userBlService;
