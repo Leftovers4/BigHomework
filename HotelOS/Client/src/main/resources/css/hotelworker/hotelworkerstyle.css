@@ -351,7 +351,19 @@
     -fx-background-color: transparent;
     /*-fx-background-radius: 10;*/
 }
-
+.TableCreateButtonCell{
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+    -fx-pref-width: 32px;
+    -fx-pref-height: 32px;
+    -fx-min-width: 32px;
+    -fx-min-height: 32px;
+    -fx-padding: 0;
+    -fx-margin: 0;
+}
+.TableCreateButtonCell:hover{
+    -fx-graphic: url("../../img/user/generateOrder_hover.png");
+}
 
 .TableDetailButtonCell{
     -fx-cursor: hand;

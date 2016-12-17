@@ -41,9 +41,11 @@ public class ReviewPaneController {
     private Pane mainPane;
     private OrderBLService orderBLService;
     private AlertController alertController;
+    private long hotelID;
 
-    public void launch(Pane mainPane, String rating) {
+    public void launch(Pane mainPane, String rating, long hotelID) {
         this.mainPane = mainPane;
+        this.hotelID = hotelID;
 
         alertController = new AlertController();
 
@@ -112,7 +114,7 @@ public class ReviewPaneController {
     private ObservableList<ReviewVO> getReviewVoList() {
         ObservableList<ReviewVO> list = null;
         try {
-            list = FXCollections.observableArrayList(orderBLService.viewHotelReviewList(ComWorkerSceneController.hotelID));
+            list = FXCollections.observableArrayList(orderBLService.viewHotelReviewList(hotelID));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -136,7 +138,6 @@ public class ReviewPaneController {
     }
     @FXML
     private void back(){
-        mainPane.getChildren().clear();
-        mainPane.getChildren().add(new InfoPane(mainPane));
+        mainPane.getChildren().remove(1);
     }
 }

@@ -28,7 +28,7 @@ public class UserHotelOrderListButtonCell extends TableCell<OrderVO, Boolean> {
         this.getStylesheets().add(CreditTabelButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
         Image detailimg = new Image("/img/hotelworker/checkorderdetail.png");
         checkDetailBtn.setGraphic(new ImageView(detailimg));
-        checkDetailBtn.getStyleClass().add("TableButtonCell");
+        checkDetailBtn.getStyleClass().add("TableDetailButtonCell");
 
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();

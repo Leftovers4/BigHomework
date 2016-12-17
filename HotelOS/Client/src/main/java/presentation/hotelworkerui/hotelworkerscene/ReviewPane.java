@@ -12,11 +12,11 @@ import java.io.IOException;
  * Description :
  */
 public class ReviewPane extends Pane{
-    public ReviewPane(Pane mainPane, String rating) {
-        loadFxml(mainPane, rating);
+    public ReviewPane(Pane mainPane, String rating, long hotelID) {
+        loadFxml(mainPane, rating, hotelID);
     }
 
-    private void loadFxml(Pane mainPane, String rating) {
+    private void loadFxml(Pane mainPane, String rating, long hotelID) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/hotelworker/hotelreview.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -26,6 +26,6 @@ public class ReviewPane extends Pane{
         }
 
         ReviewPaneController reviewPaneController = fxmlLoader.getController();
-        reviewPaneController.launch(mainPane, rating);
+        reviewPaneController.launch(mainPane, rating, hotelID);
     }
 }

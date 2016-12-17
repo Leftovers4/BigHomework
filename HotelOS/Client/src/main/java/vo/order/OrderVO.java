@@ -159,7 +159,7 @@ public class OrderVO {
     }
 
     public String getCheckinTime() {
-        return orderTimeVO.checkinTime.format(DateTimeFormat.dateTimeFormat);
+        return orderTimeVO.checkinTime == null ? "未入住" : orderTimeVO.checkinTime.format(DateTimeFormat.dateTimeFormat);
     }
 
     public double getActualPrice() {

@@ -45,11 +45,6 @@ public class OrderListPaneController {
     //订单类型框
     @FXML
     private ComboBox orderTypeBox;
-    //日期选择器
-    @FXML
-    private DatePicker createDatePicker;
-    @FXML
-    private DatePicker exeDatePicker;
     @FXML
     private TextField searchField;
 
@@ -65,7 +60,6 @@ public class OrderListPaneController {
         alertController = new AlertController();
         initService();
         initBox();
-        initDatePicker();
         initTable();
     }
 
@@ -75,20 +69,6 @@ public class OrderListPaneController {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-    }
-
-    private void initDatePicker() {
-        createDatePicker.setDayCellFactory(new CancelDateBefore(createDatePicker, LocalDate.now()));
-        exeDatePicker.setDayCellFactory(new CancelDateBefore(createDatePicker, LocalDate.now()));
-
-        createDatePicker.setOnAction(event -> {
-            exeDatePicker.setDayCellFactory(new CancelDateBefore(exeDatePicker, createDatePicker.getValue()));
-        });
-        exeDatePicker.setOnAction(event -> {
-            if (createDatePicker.getValue() != null) {
-                //TODO 按时间区间筛选订单
-            }
-        });
     }
 
     private void initBox() {

@@ -1,5 +1,6 @@
 package presentation.util.buttoncell;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
@@ -27,9 +28,9 @@ public class RegisteredHotelListButtonCell extends TableCell<HotelVO, Boolean> {
         this.tableView = tableView;
 
         this.getStylesheets().add(CreditTabelButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
-        Image detailimg = new Image("/img/user/checkdetail.png");
+        Image detailimg = new Image("/img/webmanager/information.png");
         checkDetailBtn.setGraphic(new ImageView(detailimg));
-        checkDetailBtn.getStyleClass().add("TableButtonCell");
+        checkDetailBtn.getStyleClass().add("TableInfoButtonCell");
 
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
@@ -47,6 +48,7 @@ public class RegisteredHotelListButtonCell extends TableCell<HotelVO, Boolean> {
             setText(null);
         } else {
             checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
+            btnBox.setAlignment(Pos.CENTER);
             btnBox.getChildren().add(checkDetailBtn);
             setGraphic(btnBox);
             setText(null);

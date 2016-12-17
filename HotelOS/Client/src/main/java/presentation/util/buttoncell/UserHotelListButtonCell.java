@@ -1,5 +1,7 @@
 package presentation.util.buttoncell;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
@@ -28,13 +30,13 @@ public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
         this.tableView = tableView;
 
         this.getStylesheets().add(UserHotelListButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
-        Image detailImg = new Image("/img/user/checkdetail.png");
+        Image detailImg = new Image("/img/webmanager/information.png");
         checkDetailBtn.setGraphic(new ImageView(detailImg));
-        checkDetailBtn.getStyleClass().add("TableButtonCell");
+        checkDetailBtn.getStyleClass().add("TableInfoButtonCell");
 
         Image generateImg = new Image("/img/user/generateOrder.png");
         generateOrderBtn.setGraphic(new ImageView(generateImg));
-        generateOrderBtn.getStyleClass().add("TableButtonCell");
+        generateOrderBtn.getStyleClass().add("TableCreateButtonCell");
 
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
@@ -59,10 +61,13 @@ public class UserHotelListButtonCell extends TableCell<HotelVO, Boolean> {
             setText(null);
         } else {
             btnBox.getChildren().clear();
+            btnBox.setSpacing(10);
+            btnBox.setAlignment(Pos.CENTER);
+            btnBox.setPadding(new Insets(0, 10, 0, 20));
+            btnBox.setPadding(new Insets(0, 10, 0, 20));
             checkDetailBtn.setTooltip(ToolTipShow.setTool("详情"));
-            btnBox.getChildren().add(checkDetailBtn);
-            generateOrderBtn.setTooltip(ToolTipShow.setTool("立即"));
-            btnBox.getChildren().add(generateOrderBtn);
+            generateOrderBtn.setTooltip(ToolTipShow.setTool("预订"));
+            btnBox.getChildren().addAll(checkDetailBtn, generateOrderBtn);
             setGraphic(btnBox);
             setText(null);
         }

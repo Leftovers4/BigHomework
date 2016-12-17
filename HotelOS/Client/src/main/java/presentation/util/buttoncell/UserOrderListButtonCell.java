@@ -29,7 +29,7 @@ public class UserOrderListButtonCell extends TableCell<OrderVO, Boolean> {
         this.getStylesheets().add(UserOrderListButtonCell.class.getResource("/css/hotelworker/hotelworkerstyle.css").toExternalForm());
         Image detailImg = new Image("/img/hotelworker/checkorderdetail.png");
         checkDetailBtn.setGraphic(new ImageView(detailImg));
-        checkDetailBtn.getStyleClass().add("TableButtonCell");
+        checkDetailBtn.getStyleClass().add("TableDetailButtonCell");
 
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
