@@ -395,7 +395,7 @@ public class UserGenerateOrderController {
             if (resultMessage == ResultMessage.Success) {
                 System.out.println("new order");
                 alertController.showUpdateSuccessAlert("订单已生成！", "成功提示");
-                mainPane.getChildren().remove(0);
+                mainPane.getChildren().clear();
                 mainPane.getChildren().add(new UserOrderListPane(stage, mainPane, userID, true));
             } else {
                 alertController.showInputWrongAlert("订单生成失败", "错误提示");
@@ -406,4 +406,8 @@ public class UserGenerateOrderController {
         }
     }
 
+    @FXML
+    private void back(){
+        mainPane.getChildren().remove(mainPane.getChildren().size() - 1);
+    }
 }

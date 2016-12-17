@@ -41,8 +41,6 @@ public class CreditTabelButtonCell extends TableCell<CreditRecordVO, Boolean> {
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
             CreditRecordVO creditRecordVO = (CreditRecordVO) tableView.getItems().get(selectedIndex);
-            //TODO
-            mainPane.getChildren().remove(0);
             mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane, userID, creditRecordVO.orderID));
         });
     }

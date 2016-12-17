@@ -33,7 +33,6 @@ public class UserHotelOrderListButtonCell extends TableCell<OrderVO, Boolean> {
         checkDetailBtn.setOnAction(event -> {
             int selectedIndex = getTableRow().getIndex();
             OrderVO orderVO = (OrderVO) tableView.getItems().get(selectedIndex);
-            mainPane.getChildren().remove(0);
             mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane, userID, orderVO.orderID));
         });
     }
