@@ -184,5 +184,7 @@ public class OrderDetailUserController {
     }
 
     @FXML
-    private void back(){}
+    private void back(){
+        mainPane.getChildren().remove(mainPane.getChildren().size()-1);
+    }
 }

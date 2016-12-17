@@ -97,11 +97,6 @@ public class ReviewPaneController {
 
         });
 
-//        reviewTable.setFixedCellSize(reviewContentCol.);
-//        reviewTable.prefHeightProperty().bind(reviewTable.fixedCellSizeProperty().multiply(Bindings.size(reviewTable.getItems()).add(1.01)));
-//        reviewTable.minHeightProperty().bind(reviewTable.prefHeightProperty());
-//        reviewTable.maxHeightProperty().bind(reviewTable.prefHeightProperty());
-
         final TableColumn[] columns = {reviewContentCol, reviewRatingCol, roomTypeCol, reviewTimeCol, userNameCol};
         reviewTable.getColumns().addListener(new DisableColumnChangeListener(reviewTable, columns));
 
@@ -138,6 +133,6 @@ public class ReviewPaneController {
     }
     @FXML
     private void back(){
-        mainPane.getChildren().remove(1);
+        mainPane.getChildren().remove(mainPane.getChildren().size() - 1);
     }
 }
