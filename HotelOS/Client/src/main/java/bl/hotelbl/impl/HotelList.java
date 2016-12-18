@@ -51,8 +51,6 @@ public class HotelList extends ArrayList<HotelPO> {
                     }
                 }
             }
-
-            return res;
         }
 
         return res;
