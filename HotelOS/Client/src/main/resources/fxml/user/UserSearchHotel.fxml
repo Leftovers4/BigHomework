@@ -37,7 +37,7 @@
                   <Pane fx:id="contentmainpane" prefHeight="260.0" prefWidth="528.0" styleClass="BackgroundPanel">
                      <children>
                         <Label layoutX="10.0" layoutY="66.0" text="房间类型：" />
-                        <Button fx:id="roomTypeBtn" layoutX="100.0" layoutY="61.0" mnemonicParsing="false" styleClass="unlimitedBtn" text="不限" />
+                        <Button fx:id="roomTypeBtn" onAction="#allRoomType" layoutX="100.0" layoutY="61.0" mnemonicParsing="false" styleClass="unlimitedBtn" text="不限" />
                         <CheckBox fx:id="singleRoomCB" layoutX="165.0" layoutY="66.0" mnemonicParsing="false" text="单人房" />
                         <CheckBox fx:id="coupleRoomCB" layoutX="274.0" layoutY="66.0" mnemonicParsing="false" text="双人房" />
                         <CheckBox fx:id="standardRoomCB" layoutX="384.0" layoutY="66.0" mnemonicParsing="false" text="标准房" />
@@ -49,7 +49,7 @@
                         <Label layoutX="264.0" layoutY="21.0" text="退房：" />
                         <DatePicker fx:id="checkOutDate" layoutX="324.0" layoutY="16.0" prefHeight="30.0" prefWidth="140.0" />
                         <Label layoutX="41.0" layoutY="188.0" text="价格：" />
-                        <Button fx:id="priceBtn" layoutX="101.0" layoutY="183.0" mnemonicParsing="false" styleClass="unlimitedBtn" text="不限" />
+                        <Button fx:id="priceBtn" onAction="#allPrice" layoutX="101.0" layoutY="183.0" mnemonicParsing="false" styleClass="unlimitedBtn" text="不限" />
                         <CheckBox fx:id="twoHundredLess" layoutX="166.0" layoutY="188.0" mnemonicParsing="false" text="¥200以下" />
                         <CheckBox fx:id="twoToFourHundred" layoutX="276.0" layoutY="188.0" mnemonicParsing="false" text="¥200-400" />
                         <CheckBox fx:id="fourToSixHundred" layoutX="385.0" layoutY="188.0" mnemonicParsing="false" text="¥400-600" />
@@ -84,13 +84,13 @@
                   <Pane fx:id="moreInfoChoice" disable="true" prefHeight="170.0" prefWidth="528.0" styleClass="BackgroundPanel" visible="false">
                      <children>
                         <Label layoutX="40.0" layoutY="25.0" text="星级：" />
-                        <Button fx:id="hotelStarBtn" layoutX="100.0" layoutY="20.0" mnemonicParsing="false" styleClass="unlimitedBtn" text="不限" />
+                        <Button fx:id="hotelStarBtn" onAction="#allStar" layoutX="100.0" layoutY="20.0" mnemonicParsing="false" styleClass="unlimitedBtn" text="不限" />
                         <CheckBox fx:id="threeStar" layoutX="278.0" layoutY="25.0" mnemonicParsing="false" text="三星级" />
                         <CheckBox fx:id="fourStar" layoutX="359.0" layoutY="25.0" mnemonicParsing="false" text="四星级" />
                         <CheckBox fx:id="fiveStar" layoutX="441.0" layoutY="25.0" mnemonicParsing="false" text="五星级" />
                         <CheckBox fx:id="twoStarLess" layoutX="165.0" layoutY="25.0" mnemonicParsing="false" text="二星级以下" />
                         <Label layoutX="40.0" layoutY="80.0" text="评分：" />
-                        <Button fx:id="hotelGradeBtn" layoutX="100.0" layoutY="75.0" mnemonicParsing="false" styleClass="unlimitedBtn" text="不限" />
+                        <Button fx:id="hotelGradeBtn" onAction="#allRating" layoutX="100.0" layoutY="75.0" mnemonicParsing="false" styleClass="unlimitedBtn" text="不限" />
                         <CheckBox fx:id="fourPoFiveMore" layoutX="165.0" layoutY="80.0" mnemonicParsing="false" text="大于4.5" />
                         <CheckBox fx:id="threeToFour" layoutX="350.0" layoutY="80.0" mnemonicParsing="false" text="3.0-4.0" />
                         <CheckBox fx:id="threeLess" layoutX="442.0" layoutY="80.0" mnemonicParsing="false" text="小于3.0" />

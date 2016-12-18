@@ -146,7 +146,7 @@ public class UserGenerateOrderController {
             hotelserviceLabel.setText(hotelVO.service);
 
             for (int i = 0; i<10; i++) {
-                peopleNum.getItems().add(i);
+                peopleNum.getItems().add(i+1);
             }
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -184,7 +184,7 @@ public class UserGenerateOrderController {
                             RoomVO roomVO = hotelBlService.viewFullRoomInfo(roomVOList.get(i).roomID, checkin, checkout);
                             roomNum.getItems().clear();
                             for (int j = 0; j<roomVO.bookable; j++) {
-                                roomNum.getItems().add(j);
+                                roomNum.getItems().add(j+1);
                             }
                         }
                     }

@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
@@ -43,7 +44,6 @@ public class HotelworkerManageController {
     @FXML private TableColumn hotelworkerIDCol;
     @FXML private TableColumn hotelworkerNameCol;
     @FXML private TableColumn btnCol;
-    @FXML private TableColumn hotelnameCol;
 
     @FXML private Pane modifyhotelworkerPane;
     @FXML private TextField workernameField;
@@ -73,20 +73,14 @@ public class HotelworkerManageController {
             e.printStackTrace();
         }
 
+        index = -1;
         initialData();
     }
 
 
     private void initialData() {
-        index = -1;
+
         hotelIDCol.setCellValueFactory(new PropertyValueFactory<>("hotelID"));
-        hotelnameCol.setCellFactory(new Callback<TableColumn, TableCell>() {
-            @Override
-            public TableCell call(TableColumn param) {
-                index++;
-                return new HotelNameButtonCell(getHotelWorkerList(), index);
-            }
-        });
         hotelworkerIDCol.setCellValueFactory(new PropertyValueFactory<>("personnelID"));
         hotelworkerNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
@@ -96,7 +90,7 @@ public class HotelworkerManageController {
                 return webManHotelworkerButtonCell;
             }
         });
-        final TableColumn[] tableColumns = {hotelIDCol, hotelnameCol, hotelworkerIDCol, hotelworkerNameCol, btnCol};
+        final TableColumn[] tableColumns = {hotelIDCol, hotelworkerIDCol, hotelworkerNameCol, btnCol};
         hotelworkerList.getColumns().addListener(new DisableColumnChangeListener(hotelworkerList, tableColumns));
         hotelworkerList.setItems(getHotelWorkerList());
     }
@@ -108,50 +102,6 @@ public class HotelworkerManageController {
             e.printStackTrace();
         }
         return list;
-    }
-
-//    private ObservableList getHotelList() {
-//        ObservableList<HotelVO> list = null;
-//        try {
-//            list = FXCollections.observableArrayList(hotelBLService.viewFullHotelList());
-//        } catch (RemoteException e) {
-//            e.printStackTrace();
-//        }
-//        return list;
-//    }
-
-
-    private class HotelNameButtonCell extends TableCell<PersonnelVO, Boolean> {
-        final private Label label = new Label();
-
-        public HotelNameButtonCell(ObservableList<PersonnelVO> list, int index) {
-
-            try {
-                if (index < list.size()) {
-                    HotelVO hotelVO = hotelBLService.viewBasicHotelInfo((list.get(index)).hotelID);
-                    label.setText(hotelVO.hotelName);
-                    System.out.println(hotelVO.hotelName+"----------------------------------------------");
-
-                    label.setStyle("-fx-font-size: 15px; -fx-text-fill: #37474F");
-                }
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        @Override
-        protected void updateItem(Boolean t, boolean empty) {
-            super.updateItem(t, empty);
-            if (empty) {
-                setGraphic(null);
-                setText(null);
-            } else {
-                setGraphic(label);
-                setText(null);
-            }
-        }
-
     }
 
 

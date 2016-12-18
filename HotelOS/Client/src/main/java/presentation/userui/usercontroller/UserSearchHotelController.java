@@ -547,4 +547,42 @@ public class UserSearchHotelController {
 
 
 
+
+    @FXML
+    private void allRoomType() {
+        singleRoomCB.setSelected(true);
+        coupleRoomCB.setSelected(true);
+        standardRoomCB.setSelected(true);
+        queenCB.setSelected(true);
+        loverroomCB.setSelected(true);
+        familyRoomCB.setSelected(true);
+        suiteroomCB.setSelected(true);
+        presidentialsuiteroomCB.setSelected(true);
+        businessroomCB.setSelected(true);
+    }
+
+    @FXML
+    private void allPrice() {
+        twoHundredLess.setSelected(true);
+        twoToFourHundred.setSelected(true);
+        fourToSixHundred.setSelected(true);
+        sixToEightHundred.setSelected(true);
+        eightHundredMore.setSelected(true);
+    }
+
+    @FXML
+    private void allStar() {
+        twoStarLess.setSelected(true);
+        threeStar.setSelected(true);
+        fourStar.setSelected(true);
+        fiveStar.setSelected(true);
+    }
+
+    @FXML
+    private void allRating() {
+        fourPoFiveMore.setSelected(true);
+        fourToFourPoFive.setSelected(true);
+        threeToFour.setSelected(true);
+        threeLess.setSelected(true);
+    }
 }
