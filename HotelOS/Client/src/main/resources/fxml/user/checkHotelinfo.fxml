@@ -121,15 +121,15 @@
             </FlowPane>
          </content>
       </ScrollPane>
-      <Pane layoutY="75.0">
+      <Pane layoutY="50.0" prefHeight="75.0" prefWidth="830.0" styleClass="panel">
          <children>
-            <Label id="detailTitleLabel" layoutX="71.0" layoutY="7.0" text="酒店详情" />
-            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="23.0" pickOnBounds="true" preserveRatio="true">
+            <Label id="detailTitleLabel" layoutX="71.0" layoutY="32.0" text="酒店详情" />
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="23.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/hotelworker/bar.png" />
                </image>
             </ImageView>
-            <Button layoutY="3.0" mnemonicParsing="false" onAction="#back" styleClass="BackBtn">
+            <Button layoutY="28.0" mnemonicParsing="false" onAction="#back" styleClass="BackBtn">
                <graphic>
                   <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
