@@ -20,12 +20,14 @@ import presentation.userui.userscene.OrderDetailUserPane;
 import presentation.util.alert.AlertController;
 import presentation.util.buttoncell.HotelPhotoButtonCell;
 import presentation.util.buttoncell.UserHotelListButtonCell;
+import presentation.util.other.CancelDateBefore;
 import util.AddTradProducer;
 import util.RoomType;
 import vo.hotel.HotelConditionsVO;
 import vo.hotel.HotelVO;
 
 import java.rmi.RemoteException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -111,6 +113,12 @@ public class UserSearchHotelController {
             e.printStackTrace();
         }
 
+
+        initData();
+    }
+
+
+    private void initData() {
         Iterator<String> cityList = addTradProducer.getAllAddress();
         while (cityList.hasNext()) {
             cityComBox.getItems().add(cityList.next());
@@ -136,6 +144,12 @@ public class UserSearchHotelController {
                     }
                 }
             }
+        });
+
+
+        checkInDate.setDayCellFactory(new CancelDateBefore(checkInDate, LocalDate.now()));
+        checkInDate.setOnAction(event -> {
+            checkOutDate.setDayCellFactory(new CancelDateBefore(checkOutDate, checkInDate.getValue()));
         });
     }
 
