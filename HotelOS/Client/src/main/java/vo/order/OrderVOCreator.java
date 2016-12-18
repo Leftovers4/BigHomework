@@ -57,6 +57,7 @@ public class OrderVOCreator {
         res.orderTimeVO.leaveTime = orderPO.getOrderTimePO().getLeaveTime();
         res.orderTimeVO.cancelTime = orderPO.getOrderTimePO().getCancelTime();
         res.orderTimeVO.lastExecuteTime = orderPO.getOrderTimePO().getLastExecuteTime();
+        res.hotelID = orderPO.getHotelID();
         res.hotelName = orderPO.getHotelName();
         res.username = orderPO.getUsername();
         res.personAmount = orderPO.getPersonAmount();
@@ -86,6 +87,7 @@ public class OrderVOCreator {
         res.orderID = orderPO.getOrderID();
         res.orderTimeVO.generateTime = orderPO.getOrderTimePO().getGenerateTime();
         res.orderType = orderPO.getOrderType();
+        res.hotelID = orderPO.getHotelID();
         res.hotelName = orderPO.getHotelName();
         if(hotelPO != null) {
             res.hotelAddress = hotelPO.getAddress();
