@@ -179,6 +179,8 @@ public class OrderDetailUserController {
                 hotelServiceLabel.setText(orderVO.hotelService);
             }
 
+            colorOrderType(orderType);
+
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -211,6 +213,22 @@ public class OrderDetailUserController {
             }
         }
 
+    }
+
+    private void colorOrderType(OrderType orderType) {
+        switch (orderType) {
+            case Executed:
+                ordertypeLabel.setStyle("-fx-text-fill: #2fe17f");
+                break;
+            case Unexecuted:
+                ordertypeLabel.setStyle("-fx-text-fill: #fd9301");
+                break;
+            case Abnormal:
+                ordertypeLabel.setStyle("-fx-text-fill: #dd3333");
+                break;
+            case Canceled:
+                ordertypeLabel.setStyle("-fx-text-fill: crimson");
+        }
     }
 
     @FXML
