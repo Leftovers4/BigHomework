@@ -29,6 +29,7 @@ import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Period;
 import java.util.List;
 
 /**
@@ -257,9 +258,11 @@ public class UserGenerateOrderController {
             orderVO.personAmount = (int) (peopleNum.getValue());
             orderVO.withChildren = childHave.isSelected();
             List<RoomVO> roomVOList = hotelVO.rooms;
+            Period gap = Period.between(checkInDatePicker.getValue(), checkOutDatePicker.getValue());
+            System.out.println(gap.getDays()+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
             for (int i = 0; i<roomVOList.size(); i++) {
                 if (roomVOList.get(i).roomType == orderVO.roomType) {
-                    orderVO.orderPriceVO.originPrice = roomVOList.get(i).price * orderVO.roomAmount;
+                    orderVO.orderPriceVO.originPrice = roomVOList.get(i).price * orderVO.roomAmount * gap.getDays();
                 }
             }
 
@@ -381,21 +384,6 @@ public class UserGenerateOrderController {
         confirmPromotion.setStyle("-fx-text-fill: black");
         backToEdit.setVisible(false);
 
-//        OrderVO orderVO = new OrderVO();
-//
-//        orderVO.hotelID = hotelID;
-//        orderVO.username = userID;
-//        orderVO.orderTimeVO.expectedCheckinTime = LocalDateTime.of(checkInDatePicker.getValue(),
-//                LocalTime.of(Integer.parseInt(checkInHour.getValue().toString()),
-//                        Integer.parseInt(checkInMin.getValue().toString())));
-//        orderVO.orderTimeVO.expectedLeaveTime = LocalDateTime.of(checkOutDatePicker.getValue(),
-//                LocalTime.of(Integer.parseInt(checkOutHour.getValue().toString()),
-//                        Integer.parseInt(checkOutMin.getValue().toString())));
-//        orderVO.roomType = (RoomType) EnumFactory.getEnum(roomType.getValue().toString());
-//        orderVO.roomAmount = (int) (roomNum.getValue());
-//        orderVO.personAmount = (int) (peopleNum.getValue());
-//        orderVO.withChildren = childHave.isSelected();
-
         try {
             ResultMessage resultMessage = orderBlService.addOrder(newOrder);
 
@@ -404,6 +392,9 @@ public class UserGenerateOrderController {
                 alertController.showUpdateSuccessAlert("订单已生成！", "成功提示");
                 mainPane.getChildren().clear();
                 mainPane.getChildren().add(new UserOrderListPane(stage, mainPane, userID, true));
+            } else if (resultMessage == ResultMessage.CreditNotEnough){
+                alertController.showInputWrongAlert("订单生成失败，您的信用值不足", "错误提示");
+                System.out.println(resultMessage);
             } else {
                 alertController.showInputWrongAlert("订单生成失败", "错误提示");
                 System.out.println(resultMessage);

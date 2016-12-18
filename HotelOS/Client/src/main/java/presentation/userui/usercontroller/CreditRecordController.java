@@ -84,6 +84,8 @@ public class CreditRecordController {
         }
 
         creditRecordTable.setItems(getCreditRecordList());
+
+        final TableColumn[] tableColumns = {timeCol, orderidCol, causeCol, changeNumCol, finalNumCol};
     }
 
     private ObservableList getCreditRecordList() {

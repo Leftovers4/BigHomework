@@ -194,7 +194,7 @@ public class OrderDetailUserController {
 
     @FXML
     private void cancelOrderEvent() {
-        boolean confirm = alertController.showConfirmDeleteAlert("确认撤销订单？", "撤销提示");
+        boolean confirm = alertController.showConfirmDeleteAlert("确认撤销订单？这可能会扣除你的信用值", "撤销提示");
 
         if (confirm) {
             try {
