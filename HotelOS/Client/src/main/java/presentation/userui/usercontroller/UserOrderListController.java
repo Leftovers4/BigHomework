@@ -32,6 +32,7 @@ public class UserOrderListController {
     @FXML private TableColumn orderIDCol;
     @FXML private TableColumn orderTimeCol;
     @FXML private TableColumn orderStateCol;
+    @FXML private TableColumn orderReviewCol;
     @FXML private TableColumn hotelNameCol;
     @FXML private TableColumn btnCol;
     @FXML private TableView orderList;
@@ -62,6 +63,7 @@ public class UserOrderListController {
         orderIDCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         orderTimeCol.setCellValueFactory(new PropertyValueFactory<>("generateTime"));
         orderStateCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
+        orderReviewCol.setCellValueFactory(new PropertyValueFactory<>("reviewState"));
         hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override

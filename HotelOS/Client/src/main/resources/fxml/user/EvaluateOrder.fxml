@@ -52,7 +52,6 @@
          </image>
       </ImageView>
       <Button id="saveEditBtn" fx:id="evalusteSubmit" layoutX="574.0" layoutY="565.0" mnemonicParsing="false" onAction="#confirmSubmit" prefHeight="30.0" prefWidth="77.0" styleClass="saveEditBtn" text="提交" />
-      <Button id="cancelEditBtn" fx:id="evaluateCancel" layoutX="461.0" layoutY="565.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" styleClass="cancelEditBtn" text="取消" />
       <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="28.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/hotelworker/bar.png" />

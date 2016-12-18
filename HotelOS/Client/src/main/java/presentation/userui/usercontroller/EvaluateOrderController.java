@@ -196,7 +196,6 @@ public class EvaluateOrderController {
         }
     }
 
-    //TODO
     @FXML
     private void back(){
         mainPane.getChildren().remove(mainPane.getChildren().size() - 1);

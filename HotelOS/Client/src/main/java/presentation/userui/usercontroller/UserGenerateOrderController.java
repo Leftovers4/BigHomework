@@ -229,7 +229,7 @@ public class UserGenerateOrderController {
             childHave.setVisible(false);
             childNone.setVisible(false);
             peopleNum.setVisible(false);
-            writeOrder.setStyle("-fx-text-fill: black");
+            writeOrder.setStyle("-fx-text-fill: #757575");
             confirmPromotion.setStyle("-fx-text-fill: deepskyblue");
             confirmBtn.setVisible(true);
             backToEdit.setVisible(true);
