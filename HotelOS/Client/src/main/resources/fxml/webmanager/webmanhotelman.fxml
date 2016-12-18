@@ -35,8 +35,8 @@
       <Pane fx:id="modifyPane" layoutX="95.0" layoutY="280.0" prefHeight="370.0" prefWidth="660.0" styleClass="innerPane" visible="false">
          <children>
             <TextField fx:id="hotelnameinput" layoutX="260.0" layoutY="24.0" prefHeight="36.0" prefWidth="255.0" promptText="酒店名称" />
-            <ComboBox fx:id="cityCB" layoutX="260.0" layoutY="88.0" prefHeight="36.0" prefWidth="163.0" promptText="-城市-" />
-            <ComboBox fx:id="tracingareaCB" layoutX="260.0" layoutY="152.0" prefHeight="36.0" prefWidth="163.0" promptText="-商圈-" />
+            <ComboBox fx:id="cityCB" layoutX="260.0" layoutY="88.0" prefHeight="36.0" prefWidth="190.0" promptText="-城市-" />
+            <ComboBox fx:id="tracingareaCB" layoutX="260.0" layoutY="152.0" prefHeight="36.0" prefWidth="190.0" promptText="-商圈-" />
             <ComboBox fx:id="star" layoutX="260.0" layoutY="217.0" prefHeight="36.0" prefWidth="117.0" promptText="-星级-" />
             <Button fx:id="confirmBtn" layoutX="374.0" layoutY="293.0" mnemonicParsing="false" onAction="#confirmModify" prefHeight="36.0" prefWidth="92.0" styleClass="saveEditBtn" text="确认" />
             <Button fx:id="cancelBtn" layoutX="218.0" layoutY="293.0" mnemonicParsing="false" onAction="#cancelModify" prefHeight="36.0" prefWidth="90.0" styleClass="cancelEditBtn" text="取消" />

@@ -17,6 +17,7 @@ import presentation.userui.userscene.UserOrderListPane;
 import presentation.util.alert.AlertController;
 import presentation.util.other.CancelDateBefore;
 import presentation.util.alert.InputWrongAlert;
+import presentation.util.other.JudgeInput;
 import util.EnumFactory;
 import util.ResultMessage;
 import util.RoomType;
@@ -254,6 +255,10 @@ public class UserGenerateOrderController {
             orderVO.orderTimeVO.expectedLeaveTime = LocalDateTime.of(checkOutDatePicker.getValue(),
                     LocalTime.of(Integer.parseInt(checkOutHour.getValue().toString()),
                             Integer.parseInt(checkOutMin.getValue().toString())));
+
+            boolean isdetaok = JudgeInput.judgeDateSeq(orderVO.orderTimeVO.expectedCheckinTime,
+                    orderVO.orderTimeVO.expectedLeaveTime);
+
             orderVO.roomType = (RoomType) EnumFactory.getEnum(roomType.getValue().toString());
             orderVO.roomAmount = (int) (roomNum.getValue());
             orderVO.personAmount = (int) (peopleNum.getValue());
@@ -261,51 +266,65 @@ public class UserGenerateOrderController {
             List<RoomVO> roomVOList = hotelVO.rooms;
             Period gap = Period.between(checkInDatePicker.getValue(), checkOutDatePicker.getValue());
             System.out.println(gap.getDays()+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-            for (int i = 0; i<roomVOList.size(); i++) {
-                if (roomVOList.get(i).roomType == orderVO.roomType) {
-                    orderVO.orderPriceVO.originPrice = roomVOList.get(i).price * orderVO.roomAmount * gap.getDays();
+            if (checkInDatePicker.getValue() != checkOutDatePicker.getValue()) {
+                for (int i = 0; i<roomVOList.size(); i++) {
+                    if (roomVOList.get(i).roomType == orderVO.roomType) {
+                        orderVO.orderPriceVO.originPrice = roomVOList.get(i).price * orderVO.roomAmount * gap.getDays();
+                    }
+                }
+            } else {
+                for (int i = 0; i<roomVOList.size(); i++) {
+                    if (roomVOList.get(i).roomType == orderVO.roomType) {
+                        orderVO.orderPriceVO.originPrice = roomVOList.get(i).price * orderVO.roomAmount;
+                    }
                 }
             }
 
             newOrder = orderVO;
 
-            try {
-                double price = orderBlService.getOrderActualPrice(orderVO);
+            if (isdetaok) {
+                try {
+                    double price = orderBlService.getOrderActualPrice(orderVO);
 
-                newOrder.orderPriceVO.actualPrice = price;
+                    newOrder.orderPriceVO.actualPrice = price;
 
-                System.out.println(price+"---------------------------------------");
+                    System.out.println(price+"---------------------------------------");
 
-                priceLabel.setText(String.valueOf(price));
-                if (orderVO.orderPromoInfoVO.promotionType == null) {
-                    promotionLabel.setText("无");
-                } else {
-                    promotionLabel.setText(EnumFactory.getString(orderVO.orderPromoInfoVO.promotionType));
+                    priceLabel.setText(String.valueOf(price));
+                    if (orderVO.orderPromoInfoVO.promotionType == null) {
+                        promotionLabel.setText("无");
+                    } else {
+                        promotionLabel.setText(EnumFactory.getString(orderVO.orderPromoInfoVO.promotionType));
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
                 }
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
+
+
+                checkInTimeLabel.setText(checkInDatePicker.getValue().toString() + "  " +
+                        checkInHour.getValue().toString() + ":" + checkInMin.getValue().toString());
+                checkOutTime.setText(checkOutDatePicker.getValue().toString() + "  " +
+                        checkOutHour.getValue().toString() + ":" + checkOutMin.getValue().toString());
+                roomTypeLabel.setText(roomType.getValue().toString());
+                roomNumLabel.setText(roomNum.getValue().toString());
+                peopleNumLabel.setText(peopleNum.getValue().toString());
+                if (childHave.isSelected()) {
+                    child.setText("有");
+                } else {
+                    child.setText("无");
+                }
+            } else {
+                return;
             }
 
-            checkInTimeLabel.setText(checkInDatePicker.getValue().toString() + "  " +
-                    checkInHour.getValue().toString() + ":" + checkInMin.getValue().toString());
-            checkOutTime.setText(checkOutDatePicker.getValue().toString() + "  " +
-                    checkOutHour.getValue().toString() + ":" + checkOutMin.getValue().toString());
-            roomTypeLabel.setText(roomType.getValue().toString());
-            roomNumLabel.setText(roomNum.getValue().toString());
-            peopleNumLabel.setText(peopleNum.getValue().toString());
-            if (childHave.isSelected()) {
-                child.setText("有");
-            } else {
-                child.setText("无");
-            }
         } else {
             alertController.showInputWrongAlert("信息填写不完整", "警告");
         }
