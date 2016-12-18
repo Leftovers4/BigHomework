@@ -132,7 +132,7 @@ public class RegisterCommonVIPController {
                     System.out.println("common vip exits");
                     alertController.showNullWrongAlert("用户不存在！", "错误提示");
                 } else if (resultMessage == ResultMessage.CreditNotEnough) {
-                    alertController.showNullWrongAlert("信用值不足，无法注册会员", "注册失败");
+                    alertController.showNullWrongAlert("信用值不足1000，无法注册会员", "注册失败");
                 }
             } catch (RemoteException e) {
                 e.printStackTrace();
