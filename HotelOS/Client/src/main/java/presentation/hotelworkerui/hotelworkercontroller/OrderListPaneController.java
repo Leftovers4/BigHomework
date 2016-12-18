@@ -134,7 +134,7 @@ public class OrderListPaneController {
     private ObservableList<OrderVO> getOrderVoList() {
         ObservableList<OrderVO> list = null;
         try {
-            list = FXCollections.observableArrayList(orderBLService.viewFullHotelOrderList(522000));
+            list = FXCollections.observableArrayList(orderBLService.viewFullHotelOrderList(ComWorkerSceneController.hotelID));
         } catch (RemoteException e) {
             e.printStackTrace();
         }

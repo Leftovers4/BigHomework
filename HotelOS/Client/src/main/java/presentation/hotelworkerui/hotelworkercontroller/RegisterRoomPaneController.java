@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
+import presentation.hotelworkerui.hotelworkerscene.ComWorkerScene;
 import presentation.util.alert.AlertController;
 import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.MyComboBox;
@@ -114,7 +115,7 @@ public class RegisterRoomPaneController {
     private ObservableList getRoomVoList() {
         ObservableList<RoomVO> list = null;
         try {
-            list = FXCollections.observableArrayList(hotelBLService.viewAllHotelRooms(522000));
+            list = FXCollections.observableArrayList(hotelBLService.viewAllHotelRooms(ComWorkerSceneController.hotelID));
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -147,7 +148,7 @@ public class RegisterRoomPaneController {
                         roomTable.setDisable(false);
                         //添加客房
                         RoomVO roomVO = new RoomVO();
-                        roomVO.hotelID = 522000;
+                        roomVO.hotelID = ComWorkerSceneController.hotelID;
                         roomVO.roomType = (RoomType) EnumFactory.getEnum(roomBox.getValue().toString());
                         roomVO.total = roomAmount;
                         roomVO.price = roomPrice;
@@ -222,7 +223,7 @@ public class RegisterRoomPaneController {
                 isAdd = false;
                 roomTable.setDisable(true);
                 setAddComponentsVisible(true);
-                roomBox.setValue(roomVO.roomType);
+                roomBox.setValue(EnumFactory.getString(roomVO.roomType));
                 roomBox.setDisable(true);
                 roomAmountField.setText(String.valueOf(roomVO.total));
                 roomPriceField.setText(String.valueOf(roomVO.price));

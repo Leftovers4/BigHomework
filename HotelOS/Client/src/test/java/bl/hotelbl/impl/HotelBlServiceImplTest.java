@@ -130,7 +130,12 @@ public class HotelBlServiceImplTest {
 
     @Test
     public void searchHotelsByConditions() throws Exception {
-        List<HotelVO> hotelVOList = tested.searchHotelsByConditions("Hiki", new HotelConditionsVO());
+        HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
+
+        hotelConditionsVO.address = "南京市";
+        hotelConditionsVO.tradingArea = "珠江路商圈";
+
+        List<HotelVO> hotelVOList = tested.searchHotelsByConditions("Hiki", hotelConditionsVO);
     }
 
     @Test

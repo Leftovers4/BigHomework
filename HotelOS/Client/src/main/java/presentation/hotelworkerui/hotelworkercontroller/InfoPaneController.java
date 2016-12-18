@@ -159,7 +159,7 @@ public class InfoPaneController {
         setEditInfoComponentsVisible(false);
 
         HotelVO hotelVO = new HotelVO();
-        hotelVO.hotelID = 522000;
+        hotelVO.hotelID = ComWorkerSceneController.hotelID;
         hotelVO.address = cityBox.getValue()+"";
         hotelVO.tradingArea = tradeAreaBox.getValue()+"";
         hotelVO.description = simpleIntroArea.getText();
