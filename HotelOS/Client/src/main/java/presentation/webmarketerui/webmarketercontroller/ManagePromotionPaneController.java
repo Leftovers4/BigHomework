@@ -113,6 +113,8 @@ public class ManagePromotionPaneController {
     //是添加还是修改
     private Boolean isTimeAdd = false;
     private Boolean isAreaAdd = false;
+    private Boolean isExistMemberPro = false;
+    private long promotionID = 0;
     private ProListButtonCell proTimeListButtonCell;
     private ProListButtonCell proAreaListButtonCell;
 
@@ -243,20 +245,23 @@ public class ManagePromotionPaneController {
             e.printStackTrace();
         }
         if(!list.isEmpty()){
+            isExistMemberPro = true;
+
             PromotionVO promotionVO = list.get(0);
+            promotionID = promotionVO.promotionID;
             lv1CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(0).credit));
             lv2CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(1).credit));
             lv3CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(2).credit));
             lv4CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(3).credit));
             lv5CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(4).credit));
             lv6CreditLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(5).credit));
-            lv1DiscountLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(0).memberDiscount));
-            lv2DiscountLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(1).memberDiscount));
-            lv3DiscountLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(2).memberDiscount));
-            lv4DiscountLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(3).memberDiscount));
-            lv5DiscountLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(4).memberDiscount));
-            lv6DiscountLabel.setText(String.valueOf(promotionVO.promotionMRVOs.get(5).memberDiscount));
-        }
+            lv1DiscountLabel.setText(String.valueOf(Math.round(promotionVO.promotionMRVOs.get(0).memberDiscount*100)));
+            lv2DiscountLabel.setText(String.valueOf(Math.round(promotionVO.promotionMRVOs.get(1).memberDiscount*100)));
+            lv3DiscountLabel.setText(String.valueOf(Math.round(promotionVO.promotionMRVOs.get(2).memberDiscount*100)));
+            lv4DiscountLabel.setText(String.valueOf(Math.round(promotionVO.promotionMRVOs.get(3).memberDiscount*100)));
+            lv5DiscountLabel.setText(String.valueOf(Math.round(promotionVO.promotionMRVOs.get(4).memberDiscount*100)));
+            lv6DiscountLabel.setText(String.valueOf(Math.round(promotionVO.promotionMRVOs.get(5).memberDiscount*100)));
+        }else isExistMemberPro = false;
 
     }
 
@@ -338,6 +343,10 @@ public class ManagePromotionPaneController {
     @FXML
     private void confirmMemAdd() {
         if(!JudgeInput.judgeDiscount(areaDiscountField)) return;
+        if(areaBox.getValue() == null) {
+            alertController.showInputWrongAlert("请选择商圈", "添加失败");
+            return;
+        }
         PromotionVO promotionVO = new PromotionVO();
         try {
             promotionVO.promotionTraAreaVOs.get(0).tradingArea = String.valueOf(areaBox.getValue());
@@ -380,6 +389,7 @@ public class ManagePromotionPaneController {
     @FXML
     private void manageRank(){
         setManageComponentsVisible(true);
+        //TODO 初始化textfield
     }
 
     @FXML
@@ -408,7 +418,14 @@ public class ManagePromotionPaneController {
             promotionVO.promotionMRVOs.get(5).memberDiscount = Double.parseDouble(lv6DiscountField.getText())/100.0;
 
             try {
-                promotionBLService.create(promotionVO);
+                if(isExistMemberPro){
+                    //更新
+                    promotionVO.promotionID = promotionID;
+                    promotionBLService.update(promotionVO);
+                }else {
+                    //生成
+                    promotionBLService.create(promotionVO);
+                }
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
