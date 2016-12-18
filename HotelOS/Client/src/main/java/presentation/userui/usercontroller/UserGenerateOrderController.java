@@ -221,30 +221,6 @@ public class UserGenerateOrderController {
     @FXML
     private void nextBtnEvent() {
         if (!judgeBlank()) {
-            checkInDatePicker.setVisible(false);
-            checkOutDatePicker.setVisible(false);
-            checkInHour.setVisible(false);
-            checkInMin.setVisible(false);
-            checkOutHour.setVisible(false);
-            checkOutMin.setVisible(false);
-            roomType.setVisible(false);
-            roomNum.setVisible(false);
-            childHave.setVisible(false);
-            childNone.setVisible(false);
-            peopleNum.setVisible(false);
-            writeOrder.setStyle("-fx-text-fill: #757575");
-            confirmPromotion.setStyle("-fx-text-fill: deepskyblue");
-            confirmBtn.setVisible(true);
-            backToEdit.setVisible(true);
-            nextBtn.setVisible(false);
-
-            checkInTimeLabel.setVisible(true);
-            checkOutTime.setVisible(true);
-            roomTypeLabel.setVisible(true);
-            roomNumLabel.setVisible(true);
-            peopleNumLabel.setVisible(true);
-            child.setVisible(true);
-
             OrderVO orderVO = new OrderVO();
 
             orderVO.hotelID = hotelID;
@@ -256,8 +232,8 @@ public class UserGenerateOrderController {
                     LocalTime.of(Integer.parseInt(checkOutHour.getValue().toString()),
                             Integer.parseInt(checkOutMin.getValue().toString())));
 
-            boolean isdetaok = JudgeInput.judgeDateSeq(orderVO.orderTimeVO.expectedCheckinTime,
-                    orderVO.orderTimeVO.expectedLeaveTime);
+//            boolean isdetaok = JudgeInput.judgeDateSeq(orderVO.orderTimeVO.expectedCheckinTime,
+//                    orderVO.orderTimeVO.expectedLeaveTime);
 
             orderVO.roomType = (RoomType) EnumFactory.getEnum(roomType.getValue().toString());
             orderVO.roomAmount = (int) (roomNum.getValue());
@@ -282,7 +258,7 @@ public class UserGenerateOrderController {
 
             newOrder = orderVO;
 
-            if (isdetaok) {
+            if (orderVO.orderTimeVO.expectedLeaveTime.isAfter(orderVO.orderTimeVO.expectedCheckinTime)) {
                 try {
                     double price = orderBlService.getOrderActualPrice(orderVO);
 
@@ -307,31 +283,54 @@ public class UserGenerateOrderController {
                 } catch (InvocationTargetException e) {
                     e.printStackTrace();
                 }
-
-
-                checkInTimeLabel.setText(checkInDatePicker.getValue().toString() + "  " +
-                        checkInHour.getValue().toString() + ":" + checkInMin.getValue().toString());
-                checkOutTime.setText(checkOutDatePicker.getValue().toString() + "  " +
-                        checkOutHour.getValue().toString() + ":" + checkOutMin.getValue().toString());
-                roomTypeLabel.setText(roomType.getValue().toString());
-                roomNumLabel.setText(roomNum.getValue().toString());
-                peopleNumLabel.setText(peopleNum.getValue().toString());
-                if (childHave.isSelected()) {
-                    child.setText("有");
-                } else {
-                    child.setText("无");
-                }
             } else {
+                alertController.showInputWrongAlert("开始日期需要小于结束日期，请重新输入","格式错误");
                 return;
             }
+
+            checkInTimeLabel.setText(checkInDatePicker.getValue().toString() + "  " +
+                    checkInHour.getValue().toString() + ":" + checkInMin.getValue().toString());
+            checkOutTime.setText(checkOutDatePicker.getValue().toString() + "  " +
+                    checkOutHour.getValue().toString() + ":" + checkOutMin.getValue().toString());
+            roomTypeLabel.setText(roomType.getValue().toString());
+            roomNumLabel.setText(roomNum.getValue().toString());
+            peopleNumLabel.setText(peopleNum.getValue().toString());
+            if (childHave.isSelected()) {
+                child.setText("有");
+            } else {
+                child.setText("无");
+            }
+
+
+            checkInDatePicker.setVisible(false);
+            checkOutDatePicker.setVisible(false);
+            checkInHour.setVisible(false);
+            checkInMin.setVisible(false);
+            checkOutHour.setVisible(false);
+            checkOutMin.setVisible(false);
+            roomType.setVisible(false);
+            roomNum.setVisible(false);
+            childHave.setVisible(false);
+            childNone.setVisible(false);
+            peopleNum.setVisible(false);
+            writeOrder.setStyle("-fx-text-fill: #757575");
+            confirmPromotion.setStyle("-fx-text-fill: deepskyblue");
+            confirmBtn.setVisible(true);
+            backToEdit.setVisible(true);
+            nextBtn.setVisible(false);
+
+            checkInTimeLabel.setVisible(true);
+            checkOutTime.setVisible(true);
+            roomTypeLabel.setVisible(true);
+            roomNumLabel.setVisible(true);
+            peopleNumLabel.setVisible(true);
+            child.setVisible(true);
 
         } else {
             alertController.showInputWrongAlert("信息填写不完整", "警告");
         }
 
-
-
-
+        
     }
 
     /**

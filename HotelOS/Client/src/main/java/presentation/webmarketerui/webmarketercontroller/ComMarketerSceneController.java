@@ -51,6 +51,7 @@ public class ComMarketerSceneController {
         stage = primaryStage;
         mainPane.getChildren().add(new ManagePromotionPane());
         changeSliderPos(260);
+        managePromotionBtn.setStyle("-fx-background-color: #0F81C7");
         leftBarBtnArr = new ArrayList<>(Arrays.asList(managePromotionBtn, orderListBtn, appealOrderBtn, addCreditBtn));
 
         alertController = new AlertController();
