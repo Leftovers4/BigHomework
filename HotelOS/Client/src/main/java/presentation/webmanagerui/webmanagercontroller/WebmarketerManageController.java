@@ -288,7 +288,7 @@ public class WebmarketerManageController {
      */
     @FXML
     private void confirmMarketerInfo() {
-        boolean confirm = alertController.showConfirmCancelAlert();
+        boolean confirm = alertController.showUpdateSuccessAlert("网站营销人员添加成功","添加成功");
 
         if (confirm) {
             confirmPane.setVisible(false);
