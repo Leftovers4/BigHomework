@@ -17,7 +17,7 @@
       </HBox>
       <Separator layoutX="36.0" layoutY="183.0" prefWidth="778.0" />
       <Label id="sliderPromotionLabel" fx:id="sliderPromotionLabel" layoutX="36.0" layoutY="180.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="3.0" prefWidth="132.0" />
-      <VBox fx:id="timeVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0" visible="false">
+      <VBox fx:id="timeVBox" layoutX="36.0" layoutY="213.0" prefHeight="440.0" prefWidth="778.0">
          <children>
             <TableView fx:id="proTimeTable" prefHeight="320.0">
                <columns>
@@ -29,19 +29,22 @@
             </TableView>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="99.0" prefWidth="778.0">
                <children>
-                  <HBox fx:id="addTimeHBox" alignment="BOTTOM_LEFT" prefHeight="90.0" prefWidth="504.0" visible="false">
+                  <HBox fx:id="addTimeHBox" alignment="BOTTOM_LEFT" prefHeight="89.0" prefWidth="560.0" visible="false">
                      <children>
-                        <GridPane hgap="10.0">
+                        <GridPane hgap="5.0">
                            <children>
-                              <DatePicker fx:id="startTimeDatePicker" prefHeight="36.0" prefWidth="155.0" promptText="开始日期" />
-                              <ComboBox fx:id="startHourBox" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="1" />
-                              <ComboBox fx:id="startMinBox" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" />
-                              <DatePicker fx:id="endTimeDatePicker" prefHeight="36.0" prefWidth="155.0" promptText="结束日期" GridPane.rowIndex="1" />
-                              <ComboBox fx:id="endHourBox" layoutX="110.0" layoutY="2.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <ComboBox fx:id="endMinBox" layoutX="110.0" layoutY="22.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <DatePicker fx:id="startTimeDatePicker" editable="false" prefHeight="36.0" prefWidth="160.0" promptText="2016-22-98" GridPane.columnIndex="1" />
+                              <ComboBox fx:id="startHourBox" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" />
+                              <ComboBox fx:id="startMinBox" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="3" />
+                              <DatePicker fx:id="endTimeDatePicker" editable="false" prefHeight="36.0" prefWidth="160.0" promptText="结束日期" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="endHourBox" layoutX="110.0" layoutY="2.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <ComboBox fx:id="endMinBox" layoutX="110.0" layoutY="22.0" prefHeight="36.0" prefWidth="85.0" promptText="24" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                              <Label style="-fx-font-size: 12;" text="开始日期：" />
+                              <Label layoutX="10.0" layoutY="21.0" style="-fx-font-size: 12;" text="结束日期：" GridPane.rowIndex="1" />
                            </children>
                            <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="61.0" minWidth="10.0" prefWidth="61.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.0" minWidth="10.0" prefWidth="160.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                            </columnConstraints>
@@ -50,14 +53,14 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
-                        <Label text="折扣：">
+                        <Label prefHeight="24.0" prefWidth="55.0" text="折扣：">
                            <HBox.margin>
-                              <Insets bottom="10.0" left="18.0" />
+                              <Insets bottom="10.0" left="8.0" />
                            </HBox.margin>
                         </Label>
                         <TextField fx:id="timeDiscountField" alignment="CENTER" layoutX="191.0" layoutY="10.0" prefHeight="36.0" prefWidth="50.0" promptText="80">
                            <HBox.margin>
-                              <Insets bottom="5.0" left="10.0" />
+                              <Insets bottom="5.0" left="8.0" />
                            </HBox.margin>
                         </TextField>
                      </children>
@@ -96,7 +99,7 @@
                         </Button>
                      </children>
                      <HBox.margin>
-                        <Insets bottom="6.0" left="50.0" right="-5.0" />
+                        <Insets bottom="6.0" left="30.0" right="-5.0" />
                      </HBox.margin>
                   </Pane>
                </children>

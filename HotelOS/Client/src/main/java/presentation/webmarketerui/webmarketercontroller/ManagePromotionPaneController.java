@@ -276,18 +276,21 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmTimeAdd(){
-        if(!JudgeInput.judgeDiscount(timeDiscountField)) return;
+        LocalDate startTimeDate = startTimeDatePicker.getValue();
+        LocalDate endTimeDate = endTimeDatePicker.getValue();
+        int startHour = (int) (startHourBox.getValue());
+        int startMin = (int) (startMinBox.getValue());
+        int endHour = (int) (endHourBox.getValue());
+        int endMin = (int) (endMinBox.getValue());
+        LocalDateTime startTime = LocalDateTime.of(startTimeDate, LocalTime.of(startHour, startMin));
+        LocalDateTime endTime = LocalDateTime.of(endTimeDate, LocalTime.of(endHour, endMin));
+        if(!JudgeInput.judgeDiscount(timeDiscountField) || !JudgeInput.judgeDateSeq(startTime,endTime)) return;
         PromotionVO promotionVO = new PromotionVO();
         try {
-            LocalDate startTimeDate = startTimeDatePicker.getValue();
-            LocalDate endTimeDate = endTimeDatePicker.getValue();
-            int startHour = (int) (startHourBox.getValue());
-            int startMin = (int) (startMinBox.getValue());
-            int endHour = (int) (endHourBox.getValue());
-            int endMin = (int) (endMinBox.getValue());
+
             double timeDiscount = Double.parseDouble(timeDiscountField.getText());
-            promotionVO.promotionTimeVO.beginTime = LocalDateTime.of(startTimeDate, LocalTime.of(startHour, startMin));
-            promotionVO.promotionTimeVO.endTime = LocalDateTime.of(endTimeDate, LocalTime.of(endHour, endMin));
+            promotionVO.promotionTimeVO.beginTime = startTime;
+            promotionVO.promotionTimeVO.endTime = endTime;
             promotionVO.discount = timeDiscount;
             promotionVO.hotelID = IDProducer.produceHotelIDForWP();
             if(isTimeAdd){
