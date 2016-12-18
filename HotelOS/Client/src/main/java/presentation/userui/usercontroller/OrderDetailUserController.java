@@ -1,5 +1,6 @@
 package presentation.userui.usercontroller;
 
+import bl.orderbl.OrderBLService;
 import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -50,7 +51,7 @@ public class OrderDetailUserController {
     @FXML private Button cancelBtn;
     @FXML private Button checkMyReviewBtn;
 
-    private OrderBlServiceImpl orderBlService;
+    private OrderBLService orderBlService;
 
     private AlertController alertController;
 

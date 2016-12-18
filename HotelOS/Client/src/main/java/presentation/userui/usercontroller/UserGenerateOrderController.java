@@ -4,6 +4,7 @@ import bl.hotelbl.HotelBLService;
 import bl.hotelbl.impl.HotelBlServiceImpl;
 import bl.hotelbl.impl.Room;
 import bl.orderbl.OrderBLService;
+import bl.orderbl.impl.Order;
 import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -80,6 +81,8 @@ public class UserGenerateOrderController {
     private AlertController alertController;
 
     private HotelVO hotelVO;
+
+    private OrderVO newOrder;
 
     public void launch(Stage primaryStage, Pane mainPane, String userID, long hotelID, RoomType roomType) {
         this.stage = primaryStage;
@@ -256,16 +259,20 @@ public class UserGenerateOrderController {
             List<RoomVO> roomVOList = hotelVO.rooms;
             for (int i = 0; i<roomVOList.size(); i++) {
                 if (roomVOList.get(i).roomType == orderVO.roomType) {
-                    orderVO.orderPriceVO.originPrice = roomVOList.get(i).price;
+                    orderVO.orderPriceVO.originPrice = roomVOList.get(i).price * orderVO.roomAmount;
                 }
             }
+
+            newOrder = orderVO;
 
             try {
                 double price = orderBlService.getOrderActualPrice(orderVO);
 
+                newOrder.orderPriceVO.actualPrice = price;
+
                 System.out.println(price+"---------------------------------------");
 
-                priceLabel.setText(String.valueOf((price * orderVO.roomAmount)));
+                priceLabel.setText(String.valueOf(price));
                 if (orderVO.orderPromoInfoVO.promotionType == null) {
                     promotionLabel.setText("无");
                 } else {
@@ -374,23 +381,23 @@ public class UserGenerateOrderController {
         confirmPromotion.setStyle("-fx-text-fill: black");
         backToEdit.setVisible(false);
 
-        OrderVO orderVO = new OrderVO();
-
-        orderVO.hotelID = hotelID;
-        orderVO.username = userID;
-        orderVO.orderTimeVO.expectedCheckinTime = LocalDateTime.of(checkInDatePicker.getValue(),
-                LocalTime.of(Integer.parseInt(checkInHour.getValue().toString()),
-                        Integer.parseInt(checkInMin.getValue().toString())));
-        orderVO.orderTimeVO.expectedLeaveTime = LocalDateTime.of(checkOutDatePicker.getValue(),
-                LocalTime.of(Integer.parseInt(checkOutHour.getValue().toString()),
-                        Integer.parseInt(checkOutMin.getValue().toString())));
-        orderVO.roomType = (RoomType) EnumFactory.getEnum(roomType.getValue().toString());
-        orderVO.roomAmount = (int) (roomNum.getValue());
-        orderVO.personAmount = (int) (peopleNum.getValue());
-        orderVO.withChildren = childHave.isSelected();
+//        OrderVO orderVO = new OrderVO();
+//
+//        orderVO.hotelID = hotelID;
+//        orderVO.username = userID;
+//        orderVO.orderTimeVO.expectedCheckinTime = LocalDateTime.of(checkInDatePicker.getValue(),
+//                LocalTime.of(Integer.parseInt(checkInHour.getValue().toString()),
+//                        Integer.parseInt(checkInMin.getValue().toString())));
+//        orderVO.orderTimeVO.expectedLeaveTime = LocalDateTime.of(checkOutDatePicker.getValue(),
+//                LocalTime.of(Integer.parseInt(checkOutHour.getValue().toString()),
+//                        Integer.parseInt(checkOutMin.getValue().toString())));
+//        orderVO.roomType = (RoomType) EnumFactory.getEnum(roomType.getValue().toString());
+//        orderVO.roomAmount = (int) (roomNum.getValue());
+//        orderVO.personAmount = (int) (peopleNum.getValue());
+//        orderVO.withChildren = childHave.isSelected();
 
         try {
-            ResultMessage resultMessage = orderBlService.addOrder(orderVO);
+            ResultMessage resultMessage = orderBlService.addOrder(newOrder);
 
             if (resultMessage == ResultMessage.Success) {
                 System.out.println("new order");

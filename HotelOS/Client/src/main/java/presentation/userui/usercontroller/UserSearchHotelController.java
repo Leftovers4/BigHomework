@@ -1,6 +1,7 @@
 package presentation.userui.usercontroller;
 
 import bl.hotelbl.impl.HotelBlServiceImpl;
+import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -9,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -88,6 +91,7 @@ public class UserSearchHotelController {
 
     private AddTradProducer addTradProducer;
     private AlertController alertController;
+    private int index;
 
     public void launch(Stage primaryStage, Pane mainPane, String userID) {
         this.stage = primaryStage;
@@ -496,8 +500,15 @@ public class UserSearchHotelController {
      * @param hotelConditionsVO
      */
     private void initalTable(HotelConditionsVO hotelConditionsVO) {
+        index = -1;
 
-        hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
+        hotelNameCol.setCellFactory(new Callback<TableColumn, TableCell>() {
+            @Override
+            public TableCell call(TableColumn param) {
+                index++;
+                return new HotelPhotoColum(getSearchedHotelList(hotelConditionsVO), index);
+            }
+        });
         hotelAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
         hoteltracingAreaCol.setCellValueFactory(new PropertyValueFactory<>("tradingArea"));
         hotelScoreCol.setCellValueFactory(new PropertyValueFactory<>("rating"));
@@ -510,8 +521,17 @@ public class UserSearchHotelController {
                 return userHotelListButtonCell;
             }
         });
+
         hotelList.setItems(getSearchedHotelList(hotelConditionsVO));
+
+        hotelList.setFixedCellSize(170);
+        hotelList.prefHeightProperty().bind(hotelList.fixedCellSizeProperty().multiply(Bindings.size(hotelList.getItems()).add(1.01)));
+        hotelList.minHeightProperty().bind(hotelList.prefHeightProperty());
+        hotelList.maxHeightProperty().bind(hotelList.prefHeightProperty());
+
+
     }
+
 
     private ObservableList getSearchedHotelList(HotelConditionsVO hotelConditionsVO) {
         ObservableList<HotelVO> list = null;
@@ -524,4 +544,47 @@ public class UserSearchHotelController {
         return list;
     }
 
+
+    private class HotelPhotoColum extends TableCell<HotelVO, Boolean> {
+
+        final private Label hotel = new Label();
+        private ImageView imageView = new ImageView();
+
+        public HotelPhotoColum(ObservableList<HotelVO> list, int index) {
+            String path = "C:/Leftovers/client/user/hotelImg/";
+            imageView.setFitWidth(140);
+            imageView.setFitHeight(140);
+            try {
+                if(index < list.size()){
+                    HotelVO hotelVO = hotelBlService.viewBasicHotelInfo(list.get(index).hotelID);
+
+                    if (hotelVO.image != null) {
+                        Image image = new Image(path + list.get(index).hotelID + ".jpg");
+                        imageView.setImage(image);
+                    } else {
+                        Image image = new Image("/img/common/initialPhoto.png");
+                        imageView.setImage(image);
+                    }
+
+                    hotel.setText(hotelVO.hotelName);
+                    hotel.setGraphic(imageView);
+                    hotel.setContentDisplay(ContentDisplay.TOP);
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if (empty) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                setGraphic(hotel);
+                setText(null);
+            }
+        }
+    }
 }
