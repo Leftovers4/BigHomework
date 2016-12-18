@@ -227,18 +227,22 @@ public class EvaluateOrderController {
         reviewVO.rating = rate;
         reviewVO.review = reviewField.getText();
 
-        try {
-            ResultMessage resultMessage = orderBlService.reviewOrder(reviewVO);
+        if (rate != 0) {
+            try {
+                ResultMessage resultMessage = orderBlService.reviewOrder(reviewVO);
 
-            if (resultMessage == ResultMessage.Success) {
-                alertController.showUpdateSuccessAlert("评价成功！", "成功提示");
-                System.out.println("review success");
-            } else if (resultMessage ==ResultMessage.DataExisted){
-                alertController.showInputWrongAlert("您已评价过", "失败提示");
-                System.out.println("review failed");
+                if (resultMessage == ResultMessage.Success) {
+                    alertController.showUpdateSuccessAlert("评价成功！", "成功提示");
+                    System.out.println("review success");
+                } else if (resultMessage ==ResultMessage.DataExisted){
+                    alertController.showInputWrongAlert("您已评价过", "失败提示");
+                    System.out.println("review failed");
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
             }
-        } catch (RemoteException e) {
-            e.printStackTrace();
+        } else {
+            alertController.showInputWrongAlert("评分不可为0", "错误提示");
         }
     }
 
