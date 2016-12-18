@@ -11,11 +11,11 @@ import java.io.IOException;
  */
 public class CheckMyReviewPane extends Pane {
 
-    public CheckMyReviewPane(String orderID) {
-        loadFxml(orderID);
+    public CheckMyReviewPane(String orderID, Pane mainPane) {
+        loadFxml(orderID, mainPane);
     }
 
-    private void loadFxml(String orderID) {
+    private void loadFxml(String orderID, Pane mainPane) {
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/user/checkmyreview.fxml"));
         fxmlLoader.setRoot(this);
         try {
@@ -25,6 +25,6 @@ public class CheckMyReviewPane extends Pane {
         }
 
         CheckMyReviewController checkMyReviewController = fxmlLoader.getController();
-        checkMyReviewController.launch(orderID);
+        checkMyReviewController.launch(orderID, mainPane);
     }
 }

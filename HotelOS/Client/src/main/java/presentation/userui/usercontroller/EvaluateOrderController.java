@@ -6,6 +6,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.util.alert.AlertController;
 import util.ResultMessage;
@@ -38,14 +39,14 @@ public class EvaluateOrderController {
     private OrderBlServiceImpl orderBlService;
 
     private AlertController alertController;
-
+    private Pane mainPane;
     private int rate;
 
-    public void launch(Stage primaryStage, String orderID, String userID) {
+    public void launch(Stage primaryStage, String orderID, String userID, Pane mainPane) {
         this.stage = primaryStage;
         this.orderID = orderID;
         this.userID = userID;
-
+        this.mainPane = mainPane;
         try {
             orderBlService = new OrderBlServiceImpl();
         } catch (RemoteException e) {
@@ -53,6 +54,7 @@ public class EvaluateOrderController {
         }
 
         starGroup = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
+        alertController = new AlertController();
     }
 
 
@@ -197,6 +199,6 @@ public class EvaluateOrderController {
     //TODO
     @FXML
     private void back(){
-
+        mainPane.getChildren().remove(mainPane.getChildren().size() - 1);
     }
 }

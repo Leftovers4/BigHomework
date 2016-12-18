@@ -4,6 +4,8 @@ import bl.hotelbl.impl.HotelBlServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -227,6 +229,8 @@ public class UserHotelInfoController {
                 setText(null);
             } else {
                 btnBox.getChildren().clear();
+                btnBox.setAlignment(Pos.CENTER);
+                btnBox.setPadding(new Insets(0, 0, 0, 13));
                 btnBox.getChildren().add(bookBtn);
                 setGraphic(btnBox);
                 setText(null);

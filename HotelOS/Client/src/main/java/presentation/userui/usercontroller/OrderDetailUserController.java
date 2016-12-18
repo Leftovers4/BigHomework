@@ -93,7 +93,7 @@ public class OrderDetailUserController {
                     checkInTimeLabeldet.setText(orderVO.orderTimeVO.checkinTime.format(DateTimeFormat.dateTimeFormat));
                     checkOutTimeLabeldet.setText(orderVO.orderTimeVO.leaveTime.format(DateTimeFormat.dateTimeFormat));
 
-                    if (reviewVO.reviewTime == null) {
+                    if (reviewVO == null) {
                         evaluateBtn.setVisible(true);
                         checkMyReviewBtn.setVisible(false);
                     } else {
@@ -151,8 +151,7 @@ public class OrderDetailUserController {
 
     @FXML
     private void evaluateOrder() {
-        mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new EvaluateOrderPane(stage, orderID, userID));
+        mainPane.getChildren().add(new EvaluateOrderPane(stage, orderID, userID, mainPane));
     }
 
     @FXML
@@ -180,8 +179,7 @@ public class OrderDetailUserController {
 
     @FXML
     private void checkMyReviewEvent() {
-        mainPane.getChildren().remove(0);
-        mainPane.getChildren().add(new CheckMyReviewPane(orderID));
+        mainPane.getChildren().add(new CheckMyReviewPane(orderID, mainPane));
     }
 
     @FXML

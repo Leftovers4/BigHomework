@@ -1,5 +1,7 @@
 package presentation.util.buttoncell;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
@@ -46,6 +48,8 @@ public class UserHotelOrderListButtonCell extends TableCell<OrderVO, Boolean> {
         } else {
             btnBox.getChildren().clear();
             checkDetailBtn.setTooltip(ToolTipShow.setTool("查看详情"));
+            btnBox.setAlignment(Pos.CENTER);
+            btnBox.setPadding(new Insets(0, 0, 0, 13));
             btnBox.getChildren().add(checkDetailBtn);
             setGraphic(btnBox);
             setText(null);

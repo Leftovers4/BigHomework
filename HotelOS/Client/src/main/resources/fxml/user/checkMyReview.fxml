@@ -49,7 +49,7 @@
       </ImageView>
       <Label fx:id="reviewContent" alignment="TOP_LEFT" layoutX="250.0" layoutY="356.0" prefHeight="178.0" prefWidth="405.0" styleClass="BackgroundHBox" text="Label" wrapText="true" />
       <Label id="detailTitleLabel" layoutX="71.0" layoutY="82.0" text="订单评价" />
-      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="23.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="28.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/hotelworker/bar.png" />
          </image>

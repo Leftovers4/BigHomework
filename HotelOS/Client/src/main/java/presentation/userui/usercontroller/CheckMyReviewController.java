@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import util.DateTimeFormat;
 import vo.order.OrderVO;
 import vo.order.ReviewVO;
@@ -30,11 +31,13 @@ public class CheckMyReviewController {
     @FXML private Label reviewTimeLabel;
 
     private OrderBlServiceImpl orderBlService;
+    private Pane mainPane;
 
     private ArrayList<ImageView> star;
 
-    public void launch(String orderID) {
+    public void launch(String orderID, Pane mainPane) {
         this.orderID = orderID;
+        this.mainPane = mainPane;
 
         star = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
 
@@ -66,6 +69,6 @@ public class CheckMyReviewController {
     //TODO
     @FXML
     private void back(){
-
+        mainPane.getChildren().remove(mainPane.getChildren().size() - 1);
     }
 }
