@@ -291,7 +291,7 @@ public class ManagePromotionPaneController {
             double timeDiscount = Double.parseDouble(timeDiscountField.getText());
             promotionVO.promotionTimeVO.beginTime = startTime;
             promotionVO.promotionTimeVO.endTime = endTime;
-            promotionVO.discount = timeDiscount;
+            promotionVO.discount = timeDiscount/100.0;
             promotionVO.hotelID = IDProducer.produceHotelIDForWP();
             if(isTimeAdd){
                 promotionVO.promotionType = PromotionType.SpecialTimePromotion;
@@ -341,7 +341,7 @@ public class ManagePromotionPaneController {
         PromotionVO promotionVO = new PromotionVO();
         try {
             promotionVO.promotionTraAreaVOs.get(0).tradingArea = String.valueOf(areaBox.getValue());
-            promotionVO.promotionTraAreaVOs.get(0).traDiscount = Double.parseDouble(areaDiscountField.getText());
+            promotionVO.promotionTraAreaVOs.get(0).traDiscount = Double.parseDouble(areaDiscountField.getText())/100.0;
             promotionVO.hotelID = IDProducer.produceHotelIDForWP();
             if(isAreaAdd){
                 promotionVO.promotionType = PromotionType.VIPSpecialAreaPromotion;
@@ -400,12 +400,12 @@ public class ManagePromotionPaneController {
             promotionVO.promotionMRVOs.get(3).credit = Double.parseDouble(lv3CreditField.getText());
             promotionVO.promotionMRVOs.get(4).credit = Double.parseDouble(lv5CreditField.getText());
             promotionVO.promotionMRVOs.get(5).credit = Double.parseDouble(lv6CreditField.getText());
-            promotionVO.promotionMRVOs.get(0).memberDiscount = Double.parseDouble(lv1DiscountField.getText());
-            promotionVO.promotionMRVOs.get(1).memberDiscount = Double.parseDouble(lv2DiscountField.getText());
-            promotionVO.promotionMRVOs.get(2).memberDiscount = Double.parseDouble(lv3DiscountField.getText());
-            promotionVO.promotionMRVOs.get(3).memberDiscount = Double.parseDouble(lv4DiscountField.getText());
-            promotionVO.promotionMRVOs.get(4).memberDiscount = Double.parseDouble(lv5DiscountField.getText());
-            promotionVO.promotionMRVOs.get(5).memberDiscount = Double.parseDouble(lv6DiscountField.getText());
+            promotionVO.promotionMRVOs.get(0).memberDiscount = Double.parseDouble(lv1DiscountField.getText())/100.0;
+            promotionVO.promotionMRVOs.get(1).memberDiscount = Double.parseDouble(lv2DiscountField.getText())/100.0;
+            promotionVO.promotionMRVOs.get(2).memberDiscount = Double.parseDouble(lv3DiscountField.getText())/100.0;
+            promotionVO.promotionMRVOs.get(3).memberDiscount = Double.parseDouble(lv4DiscountField.getText())/100.0;
+            promotionVO.promotionMRVOs.get(4).memberDiscount = Double.parseDouble(lv5DiscountField.getText())/100.0;
+            promotionVO.promotionMRVOs.get(5).memberDiscount = Double.parseDouble(lv6DiscountField.getText())/100.0;
 
             try {
                 promotionBLService.create(promotionVO);
@@ -442,14 +442,14 @@ public class ManagePromotionPaneController {
             {
                 alertController.showInputWrongAlert("信用值和折扣必须为数字，请重新输入","制定失败");
                 return false;
-            }else if((Integer.parseInt(lv1DiscountField.getText()) > 1) ||
-                   (Integer.parseInt(lv2DiscountField.getText())> 1) ||
-                   (Integer.parseInt(lv3DiscountField.getText()) > 1) ||
-                   (Integer.parseInt(lv4DiscountField.getText()) > 1 ||
-                   (Integer.parseInt(lv5DiscountField.getText()) > 1) ||
-                   (Integer.parseInt(lv6DiscountField.getText()) > 1)))
+            }else if((Double.parseDouble(lv1DiscountField.getText()) >= 100) ||
+                   (Double.parseDouble(lv2DiscountField.getText()) >= 100) ||
+                   (Double.parseDouble(lv3DiscountField.getText()) >= 100) ||
+                   (Double.parseDouble(lv4DiscountField.getText()) >= 100 ||
+                   (Double.parseDouble(lv5DiscountField.getText()) >= 100) ||
+                   (Double.parseDouble(lv6DiscountField.getText()) >= 100)))
                 {
-                    alertController.showInputWrongAlert("折扣必须小于1，请重新输入","制定失败");
+                    alertController.showInputWrongAlert("折扣必须小于100，请重新输入","制定失败");
                     return false;
                 }
         return true;
