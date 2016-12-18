@@ -1,5 +1,7 @@
 package presentation.webmanagerui.webmanagercontroller;
 
+import bl.hotelbl.HotelBLService;
+import bl.hotelbl.impl.HotelBlServiceImpl;
 import bl.personnelbl.impl.PersonnelBLServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
+import presentation.util.buttoncell.HotelPhotoButtonCell;
 import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.ToolTipShow;
 import presentation.webmanagerui.webmanagerscene.CheckHotelInfoPane;
@@ -47,8 +50,12 @@ public class HotelworkerManageController {
     @FXML private Button confirmBtn;
     @FXML private Button cancelBtn;
 
+    private int index;
+
     private PersonnelBLServiceImpl personnelBLService;
     private WebManHotelworkerButtonCell webManHotelworkerButtonCell;
+
+    private HotelBLService hotelBLService;
 
     private AlertController alertController;
 
@@ -60,6 +67,7 @@ public class HotelworkerManageController {
 
         try {
             personnelBLService = new PersonnelBLServiceImpl();
+            hotelBLService = new HotelBlServiceImpl();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -70,7 +78,13 @@ public class HotelworkerManageController {
 
     private void initialData() {
         hotelIDCol.setCellValueFactory(new PropertyValueFactory<>("hotelID"));
-        hotelnameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
+        hotelnameCol.setCellFactory(new Callback<TableColumn, TableCell>() {
+            @Override
+            public TableCell call(TableColumn param) {
+                index++;
+                return new HotelNameButtonCell(getHotelList(), index);
+            }
+        });
         hotelworkerIDCol.setCellValueFactory(new PropertyValueFactory<>("personnelID"));
         hotelworkerNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
@@ -92,6 +106,49 @@ public class HotelworkerManageController {
             e.printStackTrace();
         }
         return list;
+    }
+
+    private ObservableList getHotelList() {
+        ObservableList<HotelVO> list = null;
+        try {
+            list = FXCollections.observableArrayList(hotelBLService.viewFullHotelList());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+    private class HotelNameButtonCell extends TableCell<HotelVO, Boolean> {
+        final private Label label = new Label();
+
+        public HotelNameButtonCell(ObservableList<HotelVO> list, int index) {
+
+            try {
+
+                if (index < list.size()) {
+                    HotelVO hotelVO = hotelBLService.viewBasicHotelInfo(list.get(index).hotelID);
+                    label.setText(hotelVO.hotelName);
+                    label.setStyle("-fx-font-size: 15px; -fx-text-fill: #37474F");
+                }
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if (empty) {
+                setGraphic(null);
+                setText(null);
+            } else {
+                setGraphic(label);
+                setText(null);
+            }
+        }
+
     }
 
 

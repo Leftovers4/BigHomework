@@ -11,15 +11,15 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.WebmarketerManageController">
    <children>
-      <TableView fx:id="webmarketerlist" layoutX="175.0" layoutY="155.0" prefHeight="472.0" prefWidth="500.0">
+      <TableView fx:id="webmarketerlist" layoutX="95.0" layoutY="155.0" prefHeight="491.0" prefWidth="660.0">
          <columns>
-            <TableColumn fx:id="webmarketerIDCol" prefWidth="174.0" resizable="false" styleClass="MidAlignCol" text="账号" />
-            <TableColumn fx:id="webmarketerNameCol" prefWidth="187.0" resizable="false" sortable="false" styleClass="MidAlignCol" text="姓名" />
-            <TableColumn fx:id="btnCol" prefWidth="113.0" resizable="false" sortable="false" styleClass="MidAlignCol" />
+            <TableColumn fx:id="webmarketerIDCol" prefWidth="243.0" resizable="false" styleClass="MidAlignCol" text="账号" />
+            <TableColumn fx:id="webmarketerNameCol" prefWidth="256.0" resizable="false" sortable="false" styleClass="MidAlignCol" text="姓名" />
+            <TableColumn fx:id="btnCol" prefWidth="122.0" resizable="false" sortable="false" styleClass="MidAlignCol" />
          </columns>
       </TableView>
-      <TextField focusTraversable="false" layoutX="175.0" layoutY="105.0" prefHeight="36.0" prefWidth="190.0" promptText="输入账号、姓名" />
-      <Button layoutX="365.0" layoutY="106.0" mnemonicParsing="false" styleClass="searchBtn">
+      <TextField focusTraversable="false" layoutX="94.0" layoutY="104.0" prefHeight="36.0" prefWidth="235.0" promptText="输入账号、姓名" />
+      <Button layoutX="330.0" layoutY="104.0" mnemonicParsing="false" styleClass="searchBtn">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,7 +28,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button layoutX="495.0" layoutY="107.0" mnemonicParsing="false" onAction="#toAddNewWebMarketer" styleClass="roomBtn" text="添加网站营销人员">
+      <Button layoutX="575.0" layoutY="105.0" mnemonicParsing="false" onAction="#toAddNewWebMarketer" styleClass="roomBtn" text="添加网站营销人员">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>

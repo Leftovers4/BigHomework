@@ -50,6 +50,7 @@ public class ComMarketerSceneController {
     public void launch(Stage primaryStage) {
         stage = primaryStage;
         mainPane.getChildren().add(new ManagePromotionPane());
+        changeSliderPos(260);
         leftBarBtnArr = new ArrayList<>(Arrays.asList(managePromotionBtn, orderListBtn, appealOrderBtn, addCreditBtn));
 
         alertController = new AlertController();

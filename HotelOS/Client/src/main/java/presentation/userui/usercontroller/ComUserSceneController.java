@@ -65,6 +65,7 @@ public class ComUserSceneController {
         this.stage = primaryStage;
         this.userID = username;
         topname.setText(username);
+        changeSliderPos(260);
         try {
             hotelBLService = new HotelBlServiceImpl();
             userBLService = new UserBlServiceImpl();

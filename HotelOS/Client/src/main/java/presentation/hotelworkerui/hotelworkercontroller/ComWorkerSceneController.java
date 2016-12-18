@@ -57,6 +57,7 @@ public class ComWorkerSceneController {
         this.hotelID = hotelID;
         alertController = new AlertController();
         mainPane.getChildren().add(new InfoPane(stage, mainPane));
+        changeSliderPos(260);
         leftBarBtnArr = new ArrayList<>(Arrays.asList(hotelInfoBtn, orderListBtn, registerRoomBtn,
                 managePromotionBtn, updateCheckInBtn, updateOutBtn));
 

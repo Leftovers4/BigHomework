@@ -1,5 +1,9 @@
 package presentation.webmanagerui.webmanagercontroller;
 
+import bl.hotelbl.HotelBLService;
+import bl.hotelbl.impl.HotelBlServiceImpl;
+import bl.userbl.UserBLService;
+import bl.userbl.impl.UserBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,14 +12,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.util.alert.AlertController;
+import presentation.util.other.ChangePhoto;
 import presentation.util.other.LeftBarEffect;
 import presentation.webmanagerui.webmanagerscene.HotelManagePane;
 import presentation.webmanagerui.webmanagerscene.HotelworkerManagePane;
 import presentation.webmanagerui.webmanagerscene.UserManagePane;
 import presentation.webmanagerui.webmanagerscene.WebmarketerManagePane;
+import vo.hotel.HotelVO;
+import vo.user.UserVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static presentation.util.other.MyTimeLabel.EnableShowTime;
 
@@ -42,14 +51,29 @@ public class WebmanagerComController {
     private ArrayList<Button> buttons;
     private AlertController alertController;
 
+    private HotelBLService hotelBLService;
+    private UserBLService userBLService;
+
     public void launch(Stage primaryStage) {
         this.stage = primaryStage;
+
+        changeSliderPos(260);
+
+        try {
+            hotelBLService = new HotelBlServiceImpl();
+            userBLService = new UserBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
 
         buttons = new ArrayList<>(Arrays.asList(hotelManageBtn, userBtn, hotelworkerBtn, webmarketerBtn));
         alertController = new AlertController();
         hotelManageBtn.setStyle("-fx-background-color: #0F81C7");
         mainPane.getChildren().add(new HotelManagePane(mainPane));
         EnableShowTime(timelabel);
+
+        getPhoto();
     }
 
     @FXML
@@ -145,5 +169,29 @@ public class WebmanagerComController {
     @FXML
     private void webMarketerMouseOut() {
         leftBarEffect.buttonMouseOutEffect(webmarketerBtn, currentBtn);
+    }
+
+
+    private void getPhoto() {
+        String pathhotel = "C:/Leftovers/client/webmanager/hotelImg/";
+        String pathuser = "C:/Leftovers/client/webmanager/userImg/";
+
+        try {
+            List<HotelVO> hotelList = hotelBLService.viewFullHotelList();
+            List<UserVO> userList = userBLService.getAllUsers();
+
+            for (int i = 0; i<hotelList.size(); i++) {
+                if (hotelList.get(i).image != null) {
+                    ChangePhoto.setImage(pathhotel, hotelList.get(i).hotelID, hotelList.get(i).image);
+                }
+            }
+            for (int j = 0; j<userList.size(); j++) {
+                if (userList.get(j).image != null) {
+                    ChangePhoto.setImage(pathuser, userList.get(j).username, userList.get(j).image);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.userui.userscene.OrderDetailUserPane;
 import presentation.util.alert.AlertController;
+import presentation.util.buttoncell.HotelPhotoButtonCell;
 import presentation.util.buttoncell.UserHotelListButtonCell;
 import util.AddTradProducer;
 import util.RoomType;
@@ -506,7 +507,7 @@ public class UserSearchHotelController {
             @Override
             public TableCell call(TableColumn param) {
                 index++;
-                return new HotelPhotoColum(getSearchedHotelList(hotelConditionsVO), index);
+                return new HotelPhotoButtonCell(getSearchedHotelList(hotelConditionsVO), index, hotelBlService);
             }
         });
         hotelAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -545,46 +546,5 @@ public class UserSearchHotelController {
     }
 
 
-    private class HotelPhotoColum extends TableCell<HotelVO, Boolean> {
 
-        final private Label hotel = new Label();
-        private ImageView imageView = new ImageView();
-
-        public HotelPhotoColum(ObservableList<HotelVO> list, int index) {
-            String path = "C:/Leftovers/client/user/hotelImg/";
-            imageView.setFitWidth(140);
-            imageView.setFitHeight(140);
-            try {
-                if(index < list.size()){
-                    HotelVO hotelVO = hotelBlService.viewBasicHotelInfo(list.get(index).hotelID);
-
-                    if (hotelVO.image != null) {
-                        Image image = new Image(path + list.get(index).hotelID + ".jpg");
-                        imageView.setImage(image);
-                    } else {
-                        Image image = new Image("/img/common/initialPhoto.png");
-                        imageView.setImage(image);
-                    }
-
-                    hotel.setText(hotelVO.hotelName);
-                    hotel.setGraphic(imageView);
-                    hotel.setContentDisplay(ContentDisplay.TOP);
-                }
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        protected void updateItem(Boolean t, boolean empty) {
-            super.updateItem(t, empty);
-            if (empty) {
-                setGraphic(null);
-                setText(null);
-            } else {
-                setGraphic(hotel);
-                setText(null);
-            }
-        }
-    }
 }

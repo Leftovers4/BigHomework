@@ -1,10 +1,14 @@
 package presentation.userui.usercontroller;
 
+import bl.hotelbl.HotelBLService;
+import bl.hotelbl.impl.HotelBlServiceImpl;
 import bl.orderbl.OrderBLService;
 import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.CheckMyReviewPane;
@@ -14,9 +18,11 @@ import util.DateTimeFormat;
 import util.EnumFactory;
 import util.OrderType;
 import util.ResultMessage;
+import vo.hotel.HotelVO;
 import vo.order.OrderVO;
 import vo.order.ReviewVO;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
 
@@ -51,7 +57,10 @@ public class OrderDetailUserController {
     @FXML private Button cancelBtn;
     @FXML private Button checkMyReviewBtn;
 
+    @FXML private ImageView hotelPhoto;
+
     private OrderBLService orderBlService;
+    private HotelBLService hotelBLService;
 
     private AlertController alertController;
 
@@ -65,11 +74,36 @@ public class OrderDetailUserController {
 
         try {
             orderBlService = new OrderBlServiceImpl();
+            hotelBLService = new HotelBlServiceImpl();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
 
+
         initialData();
+        initPhoto();
+    }
+
+    private void initPhoto() {
+        String newpath = "C:/Leftovers/client/user/hotelImg/";
+
+        try {
+            long hotelID = (orderBlService.searchExtraOrderByID(orderID)).hotelID;
+
+            HotelVO hotelVO = hotelBLService.viewBasicHotelInfo(hotelID);
+
+            if (hotelVO.image != null) {
+                String path = newpath + hotelID + ".jpg";
+                File file = new File(path);
+
+                if (file.exists()) {
+                    Image image = new Image("file:///"+path);
+                    hotelPhoto.setImage(image);
+                }
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initialData() {

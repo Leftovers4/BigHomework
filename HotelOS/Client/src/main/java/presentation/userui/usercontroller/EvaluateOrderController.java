@@ -1,5 +1,8 @@
 package presentation.userui.usercontroller;
 
+import bl.hotelbl.HotelBLService;
+import bl.hotelbl.impl.HotelBlServiceImpl;
+import bl.orderbl.OrderBLService;
 import bl.orderbl.impl.OrderBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -10,9 +13,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.util.alert.AlertController;
 import util.ResultMessage;
+import vo.hotel.HotelVO;
 import vo.order.OrderVO;
 import vo.order.ReviewVO;
 
+import java.io.File;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -34,9 +39,12 @@ public class EvaluateOrderController {
 
     @FXML private TextArea reviewField;
 
+    @FXML private ImageView hotelPhoto;
+
     private ArrayList<ImageView> starGroup;
     private boolean isClicked = false;
-    private OrderBlServiceImpl orderBlService;
+    private OrderBLService orderBlService;
+    private HotelBLService hotelBLService;
 
     private AlertController alertController;
     private Pane mainPane;
@@ -49,12 +57,38 @@ public class EvaluateOrderController {
         this.mainPane = mainPane;
         try {
             orderBlService = new OrderBlServiceImpl();
+            hotelBLService = new HotelBlServiceImpl();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
 
         starGroup = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
         alertController = new AlertController();
+
+        initPhoto();
+    }
+
+
+    private void initPhoto() {
+        String newpath = "C:/Leftovers/client/user/hotelImg/";
+
+        try {
+            long hotelID = (orderBlService.searchExtraOrderByID(orderID)).hotelID;
+
+            HotelVO hotelVO = hotelBLService.viewBasicHotelInfo(hotelID);
+
+            if (hotelVO.image != null) {
+                String path = newpath + hotelID + ".jpg";
+                File file = new File(path);
+
+                if (file.exists()) {
+                    Image image = new Image("file:///"+path);
+                    hotelPhoto.setImage(image);
+                }
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
 

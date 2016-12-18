@@ -24,7 +24,7 @@
       <Pane layoutX="359.0" layoutY="96.0" prefHeight="200.0" prefWidth="400.0" styleClass="innerPane">
          <children>
             <Label fx:id="hotelRatingLabel" layoutX="90.0" layoutY="155.0" text="4.8" />
-            <Hyperlink id="reviewLink" fx:id="showReviewLink" onAction="#checkHotelReview" layoutX="291.0" layoutY="151.0" text="查看评价" />
+            <Hyperlink id="reviewLink" fx:id="showReviewLink" layoutX="291.0" layoutY="151.0" onAction="#checkHotelReview" text="查看评价" />
             <Label fx:id="hotelNameLabel" layoutX="90.0" layoutY="15.0" text="如家酒店" />
             <Label layoutX="200.0" layoutY="15.0" text="工作人员：" />
             <Label layoutX="15.0" layoutY="15.0" text="名称：" />
@@ -73,7 +73,7 @@
             </GridPane>
          </children>
       </Pane>
-      <ImageView fitHeight="200.0" fitWidth="300.0" layoutX="92.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="hotelPhoto" fitHeight="200.0" fitWidth="300.0" layoutX="92.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/common/initialPhoto.png" />
          </image>

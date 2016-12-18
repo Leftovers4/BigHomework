@@ -10,52 +10,56 @@
 
 <fx:root prefHeight="690.0" prefWidth="850.0" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.CheckUserInfoController">
    <children>
-      <GridPane layoutX="307.0" layoutY="95.0" prefHeight="417.0" prefWidth="93.0">
-         <columnConstraints>
-            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-         </rowConstraints>
+      <Pane layoutX="290.0" layoutY="95.0" prefHeight="471.0" prefWidth="441.0" styleClass="BackgroundPanel">
          <children>
-            <Label text="用户名：" />
-            <Label text="姓名：" GridPane.rowIndex="1" />
-            <Label text="性别：" GridPane.rowIndex="2" />
-            <Label text="联系方式：" GridPane.rowIndex="4" />
-            <Label text="出生日期：" GridPane.rowIndex="3" />
-            <Label text="信用值：" GridPane.rowIndex="5" />
-            <Label text="会员信息：" GridPane.rowIndex="6" />
+            <GridPane layoutX="20.0" prefHeight="417.0" prefWidth="93.0">
+               <columnConstraints>
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="用户名：" />
+                  <Label text="姓名：" GridPane.rowIndex="1" />
+                  <Label text="性别：" GridPane.rowIndex="2" />
+                  <Label text="联系方式：" GridPane.rowIndex="4" />
+                  <Label text="出生日期：" GridPane.rowIndex="3" />
+                  <Label text="信用值：" GridPane.rowIndex="5" />
+                  <Label text="会员信息：" GridPane.rowIndex="6" />
+               </children>
+            </GridPane>
+            <Label fx:id="userIdLabel" layoutX="209.0" layoutY="17.0" text="name" />
+            <Label fx:id="usernameLabel" layoutX="209.0" layoutY="78.0" text="Label" />
+            <Label fx:id="userSex" layoutX="209.0" layoutY="137.0" text="Label" />
+            <Label fx:id="birthDate" layoutX="209.0" layoutY="198.0" text="2016-09-12" />
+            <Label fx:id="phone" layoutX="209.0" layoutY="258.0" text="Label" />
+            <Label fx:id="creditLabel" layoutX="209.0" layoutY="317.0" text="0" />
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="137.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/user/commonVIP.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="137.0" layoutY="425.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/user/companyVIP.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="vipCompany" layoutX="210.0" layoutY="428.0" text="22" />
+            <Label fx:id="vipLevel" layoutX="209.0" layoutY="379.0" text="22" />
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="205.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true" />
          </children>
-      </GridPane>
+      </Pane>
       <ImageView fx:id="userPhoto" fitHeight="170.0" fitWidth="170.0" layoutX="80.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../img/common/initialPhoto.png" />
          </image>
       </ImageView>
-      <Label fx:id="userIdLabel" layoutX="425.0" layoutY="112.0" text="name" />
-      <Label fx:id="usernameLabel" layoutX="425.0" layoutY="173.0" text="Label" />
-      <Label fx:id="userSex" layoutX="425.0" layoutY="232.0" text="Label" />
-      <Label fx:id="birthDate" layoutX="425.0" layoutY="293.0" text="2016-09-12" />
-      <Label fx:id="phone" layoutX="425.0" layoutY="353.0" text="Label" />
-      <Label fx:id="creditLabel" layoutX="425.0" layoutY="412.0" text="0" />
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="425.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/user/commonVIP.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="425.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/user/companyVIP.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="vipCompany" layoutX="517.0" layoutY="523.0" text="22" />
-      <Label fx:id="vipLevel" layoutX="516.0" layoutY="474.0" text="22" />
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="512.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </fx:root>

@@ -13,15 +13,11 @@
    <children>
       <VBox fx:id="LeftArea" prefHeight="690.0" prefWidth="230.0">
          <children>
-            <Button mnemonicParsing="false">
-               <graphic>
-                  <ImageView fitHeight="230.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/login/logo.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+            <ImageView fitHeight="230.0" fitWidth="230.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/login/logo.png" />
+               </image>
+            </ImageView>
             <Button id="userInfoBtn" fx:id="hotelManageBtn" graphicTextGap="10.0" mnemonicParsing="false" onAction="#hotelManageEvent" onMouseEntered="#hotelManageMouseOn" onMouseExited="#hotelManageMouseOut" prefHeight="45.0" prefWidth="230.0" styleClass="sideButton" text="酒店管理">
                <VBox.margin>
                   <Insets top="150.0" />

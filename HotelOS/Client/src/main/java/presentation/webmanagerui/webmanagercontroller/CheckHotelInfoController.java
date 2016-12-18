@@ -3,11 +3,13 @@ package presentation.webmanagerui.webmanagercontroller;
 import bl.hotelbl.impl.HotelBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
 import vo.hotel.HotelVO;
 
+import java.io.File;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +33,7 @@ public class CheckHotelInfoController {
     @FXML private Label addressLabel;
     @FXML private Label simpleIntroLabel;
     @FXML private Label hotelServiceLabel;
+    @FXML private ImageView hotelPhoto;
 
     private HotelBlServiceImpl hotelBlService;
 
@@ -53,7 +56,28 @@ public class CheckHotelInfoController {
             e.printStackTrace();
         }
 
+        initialPhoto();
         initialData();
+    }
+
+    private void initialPhoto() {
+        String pathhotel = "C:/Leftovers/client/webmanager/hotelImg/";
+
+        try {
+            HotelVO hotelVO = hotelBlService.viewBasicHotelInfo(hotelID);
+
+            if (hotelVO.image != null) {
+                String path = pathhotel + hotelID + ".jpg";
+                File file = new File(pathhotel);
+
+                if (file.exists()) {
+                    Image image = new Image("file:///" + path);
+                    hotelPhoto.setImage(image);
+                }
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initialData() {

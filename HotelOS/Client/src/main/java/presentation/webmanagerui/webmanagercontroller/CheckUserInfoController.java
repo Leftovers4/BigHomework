@@ -1,14 +1,21 @@
 package presentation.webmanagerui.webmanagercontroller;
 
+import bl.userbl.UserBLService;
 import bl.userbl.impl.UserBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import util.MemberType;
+import vo.hotel.HotelVO;
 import vo.user.UserVO;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
+
+import static presentation.hotelworkerui.hotelworkercontroller.ComWorkerSceneController.hotelID;
 
 /**
  * Created by wyj on 2016/12/12.
@@ -26,8 +33,9 @@ public class CheckUserInfoController {
     @FXML private Label birthDate;
     @FXML private Label phone;
     @FXML private Label creditLabel;
+    @FXML private ImageView userPhoto;
 
-    private UserBlServiceImpl userBlService;
+    private UserBLService userBlService;
 
     public void launch(Pane mainPane, String userID) {
         this.mainPane = mainPane;
@@ -40,6 +48,38 @@ public class CheckUserInfoController {
         }
 
         initialData();
+        initialPhoto();
+    }
+
+
+    private void initialPhoto() {
+        String pathuser = "C:/Leftovers/client/webmanager/userImg/";
+
+        try {
+            UserVO userVO = userBlService.viewBasicUserInfo(userID);
+
+            if (userVO.image != null) {
+                String path = pathuser + userID + ".jpg";
+                File file = new File(pathuser);
+
+                if (file.exists()) {
+                    Image image = new Image("file:///" + path);
+                    userPhoto.setImage(image);
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     private void initialData() {

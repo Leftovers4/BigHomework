@@ -1,6 +1,7 @@
 package presentation.webmanagerui.webmanagercontroller;
 
 import bl.hotelbl.impl.HotelBlServiceImpl;
+import javafx.beans.binding.Bindings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -115,6 +116,7 @@ public class HotelManageController {
         final TableColumn[] tableColumns = {hotelIDCol, hotelNameCol, hotelCityCol, hotelBusinessCol, btnCol};
         hotelList.getColumns().addListener(new DisableColumnChangeListener(hotelList, tableColumns));
         hotelList.setItems(getHotelList());
+
     }
     private ObservableList getHotelList() {
         ObservableList<HotelVO> list = null;
