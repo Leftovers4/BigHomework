@@ -286,7 +286,7 @@ public class ManagePromotionPaneController {
         PromotionVO promotionVO = new PromotionVO();
 
         try {
-            promotionVO.discount = Double.parseDouble(birthDiscountField.getText());
+            promotionVO.discount = Double.parseDouble(birthDiscountField.getText())/100.0;
             if(isBirthAdd){
                 promotionVO.hotelID = hotelID;
                 promotionVO.promotionType = PromotionType.BirthdayPromotion;
@@ -359,7 +359,7 @@ public class ManagePromotionPaneController {
         PromotionVO promotionVO = new PromotionVO();
         try {
             promotionVO.leastRooms = Integer.parseInt(leastRoomsField.getText());
-            promotionVO.discount = Double.parseDouble(roomDiscountField.getText());
+            promotionVO.discount = Double.parseDouble(roomDiscountField.getText())/100.0;
             if(isRoomAdd){
                 promotionVO.hotelID = hotelID;
                 promotionVO.promotionType = PromotionType.MultipleRoomPromotion;
@@ -400,19 +400,23 @@ public class ManagePromotionPaneController {
 
     @FXML
     private void confirmTimeAdd(){
-        if(!JudgeInput.judgeDiscount(timeDiscountField)) return;
+        LocalDate startTimeDate = startTimeDatePicker.getValue();
+        LocalDate endTimeDate = endTimeDatePicker.getValue();
+        int startHour = (int) (startHourBox.getValue());
+        int startMin = (int) (startMinBox.getValue());
+        int endHour = (int) (endHourBox.getValue());
+        int endMin = (int) (endMinBox.getValue());
+        LocalDateTime startTime = LocalDateTime.of(startTimeDate, LocalTime.of(startHour, startMin));
+        LocalDateTime endTime = LocalDateTime.of(endTimeDate, LocalTime.of(endHour, endMin));
+
+        if(!JudgeInput.judgeDiscount(timeDiscountField) || !JudgeInput.judgeDateSeq(startTime,endTime)) return;
         PromotionVO promotionVO = new PromotionVO();
         try {
-            LocalDate startTimeDate = startTimeDatePicker.getValue();
-            LocalDate endTimeDate = endTimeDatePicker.getValue();
-            int startHour = (int) (startHourBox.getValue());
-            int startMin = (int) (startMinBox.getValue());
-            int endHour = (int) (endHourBox.getValue());
-            int endMin = (int) (endMinBox.getValue());
+
             double timeDiscount = Double.parseDouble(timeDiscountField.getText());
             promotionVO.promotionTimeVO.beginTime = LocalDateTime.of(startTimeDate, LocalTime.of(startHour, startMin));
             promotionVO.promotionTimeVO.endTime = LocalDateTime.of(endTimeDate, LocalTime.of(endHour, endMin));
-            promotionVO.discount = timeDiscount;
+            promotionVO.discount = timeDiscount/100.0;
             if(isTimeAdd){
                 promotionVO.hotelID = hotelID;
                 promotionVO.promotionType = PromotionType.SpecialTimePromotion;
@@ -457,7 +461,7 @@ public class ManagePromotionPaneController {
             String comName = comNameField.getText();
             double comDiscount = Double.parseDouble(comDiscountField.getText());
             promotionVO.promotionEnterprises.add(comName);
-            promotionVO.discount = comDiscount;
+            promotionVO.discount = comDiscount/100.0;
             if(isComAdd){
                 promotionVO.hotelID = hotelID;
                 promotionVO.promotionType = PromotionType.EnterprisePromotion;

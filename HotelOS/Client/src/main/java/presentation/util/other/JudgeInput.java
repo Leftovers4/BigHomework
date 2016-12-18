@@ -21,12 +21,12 @@ public class JudgeInput {
         Matcher matcher = pattern.matcher(textField.getText());
         if(matcher.matches()){
             double discount = Double.parseDouble(textField.getText());
-            if(discount >= 1) {
-                alertController.showInputWrongAlert("折扣必须小于1，请重新输入","格式错误");
+            if(discount >= 100) {
+                alertController.showInputWrongAlert("折扣必须小于100，请重新输入","格式错误");
                 return false;
             }
         }else {
-            alertController.showInputWrongAlert("折扣应输入小数","格式错误");
+            alertController.showInputWrongAlert("折扣应输入数字","格式错误");
             return false;
         }
         return true;
