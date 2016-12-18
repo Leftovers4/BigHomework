@@ -207,7 +207,7 @@
             </Pane>
          </children>
       </VBox>
-      <Pane fx:id="memberManagePane" layoutX="36.0" layoutY="213.0" prefHeight="462.0" prefWidth="778.0" visible="false">
+      <Pane fx:id="memberManagePane" layoutX="36.0" layoutY="213.0" prefHeight="462.0" prefWidth="778.0">
          <children>
             <Button fx:id="cancelManageBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="678.0" layoutY="406.0" mnemonicParsing="false" onAction="#cancelManage" prefWidth="100.0" styleClass="PromotionAddBtn" text="取消" visible="false">
                <graphic>
@@ -415,7 +415,7 @@
                   </GridPane>
                </children>
             </Pane>
-            <Button id="manageMemRankBtn" fx:id="manageMemRankBtn" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="678.0" layoutY="406.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#manageRank" prefHeight="32.0" prefWidth="100.0" text="制定等级" />
+            <Button id="manageMemRankBtn" fx:id="manageMemRankBtn" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="678.0" layoutY="406.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#manageRank" text="制定等级" />
          </children>
       </Pane>
    </children>

@@ -93,7 +93,7 @@ public class PromotionVO {
     }
 
     public double getDiscount() {
-        return discount;
+        return Math.round(discount*100);
     }
 
     public int getLeastRooms() {
