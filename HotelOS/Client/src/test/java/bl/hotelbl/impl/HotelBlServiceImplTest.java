@@ -134,6 +134,9 @@ public class HotelBlServiceImplTest {
 
         hotelConditionsVO.address = "南京市";
         hotelConditionsVO.tradingArea = "珠江路商圈";
+        hotelConditionsVO.roomTypeList.add(RoomType.Single);
+        hotelConditionsVO.expectedCheckInTime = LocalDate.now().plusDays(2);
+        hotelConditionsVO.expectedLeaveTime = LocalDate.now().plusDays(4);
 
         List<HotelVO> hotelVOList = tested.searchHotelsByConditions("Hiki", hotelConditionsVO);
     }
