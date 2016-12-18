@@ -108,6 +108,7 @@ public class EvaluateOrderController {
             star4.setImage(image);
             star5.setImage(image);
         }
+        rateShow();
     }
     private void starEvent(ImageView star) {
         isClicked = true;
@@ -203,6 +204,15 @@ public class EvaluateOrderController {
     private void star5event() {
         starEvent(star5);
         rate = 5;
+    }
+
+    private void rateShow() {
+        if (rate != 0) {
+            for (int i = 0; i<starGroup.size(); i++) {
+                Image image = new Image("/img/user/yellowStar.png");
+                starGroup.get(i).setImage(image);
+            }
+        }
     }
 
     /**
