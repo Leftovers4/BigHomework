@@ -216,7 +216,9 @@ public class HotelworkerManageController {
             PersonnelVO personnelVO = (PersonnelVO) hotelworkerList.getItems().get(webManHotelworkerButtonCell.getSelectedIndex());
 
             personnelVO.name = workernameField.getText();
-            personnelVO.password = passwordField.getText();
+            if (!passwordField.getText().equals("")) {
+                personnelVO.password = passwordField.getText();
+            }
 
             try {
                 ResultMessage resultMessage = personnelBLService.updatePersonnelInfo(personnelVO);

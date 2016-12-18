@@ -194,11 +194,14 @@ public class WebmarketerManageController {
      */
     @FXML
     private void confirmModify() {
-        if (!workernameField.getText().equals("") && !passwordField.getText().equals("")) {
+        if (!workernameField.getText().equals("")) {
             PersonnelVO personnelVO = (PersonnelVO) webmarketerlist.getItems().get(webManMarketerButtonCell.getSelectedIndex());
 
             personnelVO.name = workernameField.getText();
-            personnelVO.password = passwordField.getText();
+
+            if (!passwordField.getText().equals("")) {
+                personnelVO.password = passwordField.getText();
+            }
 
             try {
                 ResultMessage resultMessage = personnelBLService.updatePersonnelInfo(personnelVO);
