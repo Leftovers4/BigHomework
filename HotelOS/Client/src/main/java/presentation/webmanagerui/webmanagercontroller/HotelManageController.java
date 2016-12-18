@@ -93,6 +93,7 @@ public class HotelManageController {
                 if (newValue != null) {
                     Iterator<String> tracingArea = AddTradProducer.getTradingAreasByAddress(newValue.toString());
                     while (tracingArea.hasNext()) {
+                        tracingareaCB.getItems().clear();
                         tracingareaCB.getItems().add(tracingArea.next());
                     }
                 }

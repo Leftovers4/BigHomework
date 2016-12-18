@@ -21,6 +21,7 @@ import java.util.ArrayList;
 
 /**
  * Created by wyj on 2016/11/25.
+ * description: 注册普通会员
  */
 public class RegisterCommonVIPController {
 

@@ -22,6 +22,7 @@ import java.util.List;
 
 /**
  * Created by wyj on 2016/11/25.
+ * description: 查看信用记录
  */
 public class CreditRecordController {
 

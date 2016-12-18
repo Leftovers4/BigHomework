@@ -28,6 +28,9 @@ Button:hover {
 #loginPassword {
     -fx-background-radius: 7px;
 }
+#confirmPasswordField {
+    -fx-background-radius: 7px;
+}
 
 #buttonLogin {
     -fx-background-color: #00bfff;

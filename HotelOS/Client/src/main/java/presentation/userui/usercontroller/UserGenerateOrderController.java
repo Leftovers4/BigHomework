@@ -34,6 +34,7 @@ import java.util.List;
 
 /**
  * Created by wyj on 2016/11/24.
+ * description: 生成订单
  */
 public class UserGenerateOrderController {
 

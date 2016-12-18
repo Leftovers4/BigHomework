@@ -28,6 +28,7 @@ import java.rmi.RemoteException;
 
 /**
  * Created by wyj on 2016/11/25.
+ * description: 订单详情
  */
 public class OrderDetailUserController {
 

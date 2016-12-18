@@ -18,17 +18,7 @@
             <TableColumn fx:id="btnCol" prefWidth="122.0" resizable="false" sortable="false" styleClass="MidAlignCol" />
          </columns>
       </TableView>
-      <TextField focusTraversable="false" layoutX="94.0" layoutY="104.0" prefHeight="36.0" prefWidth="235.0" promptText="输入账号、姓名" />
-      <Button layoutX="330.0" layoutY="104.0" mnemonicParsing="false" styleClass="searchBtn">
-         <graphic>
-            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/webmanager/search.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button layoutX="575.0" layoutY="105.0" mnemonicParsing="false" onAction="#toAddNewWebMarketer" styleClass="roomBtn" text="添加网站营销人员">
+      <Button layoutX="95.0" layoutY="105.0" mnemonicParsing="false" onAction="#toAddNewWebMarketer" styleClass="roomBtn" text="添加网站营销人员">
          <graphic>
             <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -51,9 +41,10 @@
          <children>
             <Label layoutX="88.0" layoutY="39.0" text="姓名：" />
             <TextField fx:id="newworkernameField" layoutX="144.0" layoutY="34.0" prefHeight="30.0" prefWidth="130.0" />
-            <Button fx:id="nextStepBtn" layoutX="230.0" layoutY="96.0" mnemonicParsing="false" onAction="#toConfirmNewMarketerInfo" styleClass="actionBtn" text="下一步，生成账号" />
+            <Button fx:id="nextStepBtn" layoutX="279.0" layoutY="94.0" mnemonicParsing="false" onAction="#toConfirmNewMarketerInfo" styleClass="actionBtn" text="下一步，生成账号" />
             <Label layoutX="307.0" layoutY="39.0" text="初始密码：" />
             <TextField fx:id="initialpasswordField" layoutX="382.0" layoutY="34.0" prefHeight="30.0" prefWidth="130.0" />
+            <Button layoutX="191.0" layoutY="94.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="73.0" styleClass="cancelEditBtn" text="取消" />
          </children>
       </Pane>
       <Pane fx:id="confirmPane" layoutX="125.0" layoutY="460.0" prefHeight="150.0" prefWidth="600.0" visible="false">

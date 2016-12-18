@@ -153,7 +153,8 @@ public class WebmarketerManageController {
                         if (resultMessage == ResultMessage.Success) {
                             System.out.println(resultMessage);
 
-                            new WebmarketerManagePane(stage, mainPane);
+                            mainPane.getChildren().clear();
+                            mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
                         }
                     } catch (RemoteException e) {
                         e.printStackTrace();

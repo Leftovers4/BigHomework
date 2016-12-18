@@ -20,6 +20,7 @@ import java.rmi.RemoteException;
 
 /**
  * Created by wyj on 2016/11/22.
+ * description: 查看预订过的酒店
  */
 public class RegisteredHotelController {
 

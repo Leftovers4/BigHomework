@@ -52,6 +52,9 @@ public class LoginSceneController {
     @FXML private ImageView passwordPic;
     @FXML private Pane movingSection;
 
+    @FXML private PasswordField confirmPasswordField;
+    @FXML private Label confirmPasswordLabel;
+
     private UserBLService userBlService;
     private PersonnelBLService personnelBLService;
 
@@ -108,6 +111,8 @@ public class LoginSceneController {
         passwordPic.setVisible(true);
         nameLabel.setVisible(false);
         passwordLabel.setVisible(false);
+        confirmPasswordField.setVisible(false);
+        confirmPasswordLabel.setVisible(false);
         isFromLogin = true;
     }
     @FXML
@@ -117,6 +122,8 @@ public class LoginSceneController {
         passwordPic.setVisible(false);
         nameLabel.setVisible(true);
         passwordLabel.setVisible(true);
+        confirmPasswordField.setVisible(true);
+        confirmPasswordLabel.setVisible(true);
         isFromLogin = false;
     }
 
@@ -262,22 +269,26 @@ public class LoginSceneController {
      */
     @FXML
     private void userRegister() {
-        if (!loginUsername.getText().equals("") && !loginPassword.getText().equals("")) {
+        if (!loginUsername.getText().equals("") && !loginPassword.getText().equals("") && !confirmPasswordField.getText().equals("")) {
 
-            try {
-                ResultMessage resultMessage = userBlService.registerUser(loginUsername.getText(), loginPassword.getText());
+            if (loginPassword.getText().equals(confirmPasswordField.getText())) {
+                try {
+                    ResultMessage resultMessage = userBlService.registerUser(loginUsername.getText(), loginPassword.getText());
 
-                if (resultMessage == ResultMessage.DataExisted) {
-                    alertController.showInputWrongAlert("用户名已存在！", "注册失败");
-                    System.out.printf("exits");
-                } else if (resultMessage == ResultMessage.Success) {
-                    alertController.showUpdateSuccessAlert("注册成功！", "注册成功");
+                    if (resultMessage == ResultMessage.DataExisted) {
+                        alertController.showInputWrongAlert("用户名已存在！", "注册失败");
+                        System.out.printf("exits");
+                    } else if (resultMessage == ResultMessage.Success) {
+                        alertController.showUpdateSuccessAlert("注册成功！", "注册成功");
+                    }
+
+                    loginUsername.setText(null);
+                    loginPassword.setText(null);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
                 }
-
-                loginUsername.setText(null);
-                loginPassword.setText(null);
-            } catch (RemoteException e) {
-                e.printStackTrace();
+            } else {
+                alertController.showInputWrongAlert("密码不一致", "错误提示");
             }
         } else {
             alertController.showInputWrongAlert("请输入用户名和密码", "错误提示");

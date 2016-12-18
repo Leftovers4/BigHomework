@@ -21,6 +21,7 @@ import java.util.Arrays;
 
 /**
  * Created by wyj on 2016/12/13.
+ * description: 查看我的评价
  */
 public class CheckMyReviewController {
 

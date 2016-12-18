@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
 import presentation.util.other.DisableColumnChangeListener;
+import presentation.util.other.JudgeInput;
 import presentation.util.other.ToolTipShow;
 import presentation.webmanagerui.webmanagerscene.CheckUserInfoPane;
 import presentation.webmanagerui.webmanagerscene.UserManagePane;
@@ -186,22 +187,28 @@ public class UserManageController {
 
             userVO.name = nameField.getText();
             userVO.phone = phoneField.getText();
+            boolean isphoneok = JudgeInput.judgePhoneNumber(phoneField.getText());
 
-            try {
-                ResultMessage resultMessage = userBlService.updateBasicUserInfo(userVO);
+            if (isphoneok) {
+                try {
+                    ResultMessage resultMessage = userBlService.updateBasicUserInfo(userVO);
 
-                if (resultMessage == ResultMessage.Success) {
-                    System.out.println("modify success");
+                    if (resultMessage == ResultMessage.Success) {
+                        System.out.println("modify success");
 
-                    alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
+                        alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
 
-                    userlist.setPrefHeight(470);
-                    userlist.setDisable(false);
-                    modifyUserInfoPane.setVisible(false);
-                    new UserManagePane(stage, mainPane);
+                        userlist.setPrefHeight(470);
+                        userlist.setDisable(false);
+                        modifyUserInfoPane.setVisible(false);
+                        mainPane.getChildren().clear();
+                        mainPane.getChildren().add(new UserManagePane(stage, mainPane));
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
                 }
-            } catch (RemoteException e) {
-                e.printStackTrace();
+            } else {
+                alertController.showInputWrongAlert("联系方式格式错误", "格式错误");
             }
         } else {
             alertController.showInputWrongAlert("信息填写不完整", "错误提示");

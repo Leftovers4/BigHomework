@@ -58,6 +58,7 @@ public class ComWorkerSceneController {
         alertController = new AlertController();
         mainPane.getChildren().add(new InfoPane(stage, mainPane));
         changeSliderPos(260);
+        hotelInfoBtn.setStyle("-fx-background-color: #0F81C7");
         leftBarBtnArr = new ArrayList<>(Arrays.asList(hotelInfoBtn, orderListBtn, registerRoomBtn,
                 managePromotionBtn, updateCheckInBtn, updateOutBtn));
 

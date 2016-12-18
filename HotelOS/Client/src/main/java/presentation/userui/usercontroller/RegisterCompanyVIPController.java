@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 /**
  * Created by wyj on 2016/11/25.
+ * description: 注册企业会员
  */
 public class RegisterCompanyVIPController {
 

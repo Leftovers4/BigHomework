@@ -10,7 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="mainpane" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../css/login/style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginui.logincontroller.LoginSceneController">
+<Pane fx:id="mainpane" prefHeight="500.0" prefWidth="600.0" stylesheets="@../../css/login/style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginui.logincontroller.LoginSceneController">
 
    <children>
       <Button id="minimum" fx:id="minimum" layoutX="530.0" layoutY="5.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#minimizeWindow" prefHeight="30.0" prefWidth="30.0">
@@ -36,7 +36,7 @@
             <Image url="@../../img/login/logo.png" />
          </image>
       </ImageView>
-      <Button id="managerEntrance" fx:id="managerEntrance" alignment="CENTER" contentDisplay="RIGHT" layoutX="475.0" layoutY="370.0" onAction="#changeToManager" text="工作人员入口">
+      <Button id="managerEntrance" fx:id="managerEntrance" alignment="CENTER" contentDisplay="RIGHT" layoutX="463.0" layoutY="456.0" onAction="#changeToManager" text="工作人员入口">
          <graphic>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -73,7 +73,9 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </Button>
-            <Button id="buttonRegister" fx:id="buttonRegister" onAction="#userRegister" layoutX="50.0" layoutY="123.0" minHeight="35.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="注册" visible="false" />
+            <Button id="buttonRegister" fx:id="buttonRegister" layoutX="50.0" layoutY="170.0" minHeight="35.0" mnemonicParsing="false" onAction="#userRegister" prefHeight="35.0" prefWidth="200.0" text="注册" visible="false" />
+            <PasswordField fx:id="confirmPasswordField" layoutX="89.0" layoutY="123.0" prefWidth="170.0" visible="false" />
+            <Label fx:id="confirmPasswordLabel" layoutX="6.0" layoutY="126.0" text="确认密码：" visible="false" />
          </children>
       </Pane>
       <Button fx:id="changeToLogin" layoutX="226.0" layoutY="145.0" mnemonicParsing="false" onAction="#changeToLogin" text="登录" />
