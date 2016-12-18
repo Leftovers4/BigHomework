@@ -583,6 +583,7 @@
  */
 .actionBtn {
     -fx-background-color: deepskyblue;
+    -fx-text-fill: white;
     -fx-border-radius: 7px;
 }
 .actionBtn:hover {
