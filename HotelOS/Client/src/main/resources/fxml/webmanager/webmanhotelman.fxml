@@ -16,10 +16,10 @@
    <children>
       <TableView fx:id="hotelList" editable="true" layoutX="95.0" layoutY="155.0" prefHeight="491.0" prefWidth="660.0">
         <columns>
-          <TableColumn fx:id="hotelIDCol" prefWidth="102.0" resizable="false" styleClass="LeftAlignCol" text="酒店编号" />
-          <TableColumn fx:id="hotelNameCol" prefWidth="174.0" resizable="false" styleClass="LeftAlignCol" text="酒店名称" />
-            <TableColumn fx:id="hotelCityCol" prefWidth="95.0" resizable="false" styleClass="LeftAlignCol" text="城市" />
-            <TableColumn fx:id="hotelBusinessCol" prefWidth="139.0" resizable="false" styleClass="LeftAlignCol" text="商圈" />
+          <TableColumn fx:id="hotelIDCol" prefWidth="102.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="酒店编号" />
+          <TableColumn fx:id="hotelNameCol" prefWidth="174.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="酒店名称" />
+            <TableColumn fx:id="hotelCityCol" prefWidth="95.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="城市" />
+            <TableColumn fx:id="hotelBusinessCol" prefWidth="139.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="商圈" />
             <TableColumn fx:id="btnCol" prefWidth="126.0" resizable="false" sortable="false" styleClass="MidAlignCol" />
         </columns>
       </TableView>

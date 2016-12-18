@@ -77,13 +77,15 @@ public class EvaluateOrderController {
 
             HotelVO hotelVO = hotelBLService.viewBasicHotelInfo(hotelID);
 
-            if (hotelVO.image != null) {
-                String path = newpath + hotelID + ".jpg";
-                File file = new File(path);
+            if (hotelVO != null) {
+                if (hotelVO.image != null) {
+                    String path = newpath + hotelID + ".jpg";
+                    File file = new File(path);
 
-                if (file.exists()) {
-                    Image image = new Image("file:///"+path);
-                    hotelPhoto.setImage(image);
+                    if (file.exists()) {
+                        Image image = new Image("file:///"+path);
+                        hotelPhoto.setImage(image);
+                    }
                 }
             }
         } catch (RemoteException e) {

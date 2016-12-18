@@ -13,9 +13,9 @@
    <children>
       <TableView fx:id="hotelworkerList" layoutX="95.0" layoutY="155.0" prefHeight="491.0" prefWidth="660.0">
          <columns>
-            <TableColumn fx:id="hotelIDCol" prefWidth="94.0" resizable="false" styleClass="LeftAlignCol" text="酒店ID" />
+            <TableColumn fx:id="hotelIDCol" prefWidth="94.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="酒店ID" />
             <TableColumn fx:id="hotelnameCol" prefWidth="173.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="酒店名称" />
-            <TableColumn fx:id="hotelworkerIDCol" minWidth="0.0" prefWidth="117.0" resizable="false" styleClass="LeftAlignCol" text="账号" />
+            <TableColumn fx:id="hotelworkerIDCol" minWidth="0.0" prefWidth="117.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="账号" />
             <TableColumn fx:id="hotelworkerNameCol" prefWidth="119.0" resizable="false" sortable="false" styleClass="LeftAlignCol" text="姓名" />
             <TableColumn fx:id="btnCol" prefWidth="131.0" resizable="false" sortable="false" styleClass="MidAlignCol" />
          </columns>

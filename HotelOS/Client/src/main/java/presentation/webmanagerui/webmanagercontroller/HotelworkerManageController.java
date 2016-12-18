@@ -2,6 +2,7 @@ package presentation.webmanagerui.webmanagercontroller;
 
 import bl.hotelbl.HotelBLService;
 import bl.hotelbl.impl.HotelBlServiceImpl;
+import bl.personnelbl.PersonnelBLService;
 import bl.personnelbl.impl.PersonnelBLServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -52,7 +53,7 @@ public class HotelworkerManageController {
 
     private int index;
 
-    private PersonnelBLServiceImpl personnelBLService;
+    private PersonnelBLService personnelBLService;
     private WebManHotelworkerButtonCell webManHotelworkerButtonCell;
 
     private HotelBLService hotelBLService;
@@ -77,12 +78,13 @@ public class HotelworkerManageController {
 
 
     private void initialData() {
+        index = -1;
         hotelIDCol.setCellValueFactory(new PropertyValueFactory<>("hotelID"));
         hotelnameCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {
                 index++;
-                return new HotelNameButtonCell(getHotelList(), index);
+                return new HotelNameButtonCell(getHotelWorkerList(), index);
             }
         });
         hotelworkerIDCol.setCellValueFactory(new PropertyValueFactory<>("personnelID"));
@@ -108,27 +110,28 @@ public class HotelworkerManageController {
         return list;
     }
 
-    private ObservableList getHotelList() {
-        ObservableList<HotelVO> list = null;
-        try {
-            list = FXCollections.observableArrayList(hotelBLService.viewFullHotelList());
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
+//    private ObservableList getHotelList() {
+//        ObservableList<HotelVO> list = null;
+//        try {
+//            list = FXCollections.observableArrayList(hotelBLService.viewFullHotelList());
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
+//        return list;
+//    }
 
 
-    private class HotelNameButtonCell extends TableCell<HotelVO, Boolean> {
+    private class HotelNameButtonCell extends TableCell<PersonnelVO, Boolean> {
         final private Label label = new Label();
 
-        public HotelNameButtonCell(ObservableList<HotelVO> list, int index) {
+        public HotelNameButtonCell(ObservableList<PersonnelVO> list, int index) {
 
             try {
-
                 if (index < list.size()) {
-                    HotelVO hotelVO = hotelBLService.viewBasicHotelInfo(list.get(index).hotelID);
+                    HotelVO hotelVO = hotelBLService.viewBasicHotelInfo((list.get(index)).hotelID);
                     label.setText(hotelVO.hotelName);
+                    System.out.println(hotelVO.hotelName+"----------------------------------------------");
+
                     label.setStyle("-fx-font-size: 15px; -fx-text-fill: #37474F");
                 }
             } catch (RemoteException e) {
