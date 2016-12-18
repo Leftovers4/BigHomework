@@ -1,5 +1,6 @@
 package vo.order;
 
+import bl.orderbl.impl.Order;
 import po.hotel.HotelPO;
 import po.order.OrderPO;
 
@@ -64,6 +65,7 @@ public class OrderVOCreator {
         res.roomAmount = orderPO.getRoomAmount();
         res.roomNumber = orderPO.getRoomNumber();
         res.orderPromoInfoVO.promotionType = orderPO.getPromotionType();
+        res.hasReview = new Order(orderPO).hasReview();
 
         return res;
     }
@@ -103,6 +105,7 @@ public class OrderVOCreator {
         res.orderPriceVO.actualPrice = orderPO.getOrderPricePO().getActualPrice();
         res.orderPriceVO.originPrice = orderPO.getOrderPricePO().getOriginPrice();
         res.orderPromoInfoVO.promotionType = orderPO.getPromotionType();
+        res.hasReview = new Order(orderPO).hasReview();
 
         return res;
     }

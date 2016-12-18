@@ -51,6 +51,7 @@ public class OrderVO {
 
     public RoomType roomType;
 
+    public boolean hasReview;
 
     /**
      * 房间号
@@ -168,6 +169,10 @@ public class OrderVO {
 
     public String getGenerateTime() {
         return orderTimeVO.generateTime.format(DateTimeFormat.dateTimeFormat);
+    }
+
+    public String HasReview() {
+        return hasReview == true ? "有" : "无" ;
     }
 
 }
