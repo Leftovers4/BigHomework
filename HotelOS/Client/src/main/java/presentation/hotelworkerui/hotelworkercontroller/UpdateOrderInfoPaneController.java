@@ -10,6 +10,7 @@ import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import presentation.hotelworkerui.hotelworkerscene.OrderListPane;
 import presentation.util.alert.AlertController;
 import presentation.util.other.CancelDateBefore;
+import presentation.util.other.JudgeInput;
 import presentation.util.other.MyComboBox;
 import presentation.util.other.MyOrderLabel;
 import util.DateTimeFormat;
@@ -118,6 +119,7 @@ public class UpdateOrderInfoPaneController {
         checkInTimeDatePicker.setDayCellFactory(new CancelDateBefore(checkInTimeDatePicker, LocalDate.now()));
         expLeaveTimeDatePicker.setDayCellFactory(new CancelDateBefore(expLeaveTimeDatePicker, LocalDate.now()));
         expLeaveTimeDatePicker.setValue(orderVO.orderTimeVO.expectedLeaveTime.toLocalDate());
+        actLeaveTimeDatePicker.setDayCellFactory(new CancelDateBefore(actLeaveTimeDatePicker, LocalDate.now()));
     }
 
     private void initBox() {
@@ -161,6 +163,9 @@ public class UpdateOrderInfoPaneController {
                 LocalDateTime checkinTime = LocalDateTime.of(checkInTimeDatePicker.getValue(), LocalTime.of((int) (checkInTimeHourBox.getValue()),(int)(checkInTimeMinBox.getValue())));
                 LocalDateTime expectedLeaveTime = LocalDateTime.of(expLeaveTimeDatePicker.getValue(), LocalTime.of((int) (expLeaveTimeHourBox.getValue()),(int)(expLeaveTimeMinBox.getValue())));
                 String roomNumber = roomIDField.getText();
+
+                if(!JudgeInput.judgeDateSeq(checkinTime,expectedLeaveTime)) return;
+                System.out.println("here");
 
                 orderVO.orderTimeVO.checkinTime = checkinTime;
                 orderVO.orderTimeVO.expectedLeaveTime = expectedLeaveTime;
