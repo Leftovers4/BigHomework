@@ -63,7 +63,7 @@ public class UserOrderListController {
         orderIDCol.setCellValueFactory(new PropertyValueFactory<>("orderID"));
         orderTimeCol.setCellValueFactory(new PropertyValueFactory<>("generateTime"));
         orderStateCol.setCellValueFactory(new PropertyValueFactory<>("orderType"));
-        orderReviewCol.setCellValueFactory(new PropertyValueFactory<>("reviewState"));
+        orderReviewCol.setCellValueFactory(new PropertyValueFactory<>("hasReview"));
         hotelNameCol.setCellValueFactory(new PropertyValueFactory<>("hotelName"));
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override

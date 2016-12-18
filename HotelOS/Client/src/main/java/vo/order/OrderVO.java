@@ -171,8 +171,8 @@ public class OrderVO {
         return orderTimeVO.generateTime.format(DateTimeFormat.dateTimeFormat);
     }
 
-    public String HasReview() {
-        return hasReview == true ? "有" : "无" ;
+    public String getHasReview() {
+        return orderType == OrderType.Executed ? (hasReview == true ? "有" : "无") : "-";
     }
 
 }
