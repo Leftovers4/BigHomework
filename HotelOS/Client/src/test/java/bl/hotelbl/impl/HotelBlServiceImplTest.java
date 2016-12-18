@@ -108,7 +108,7 @@ public class HotelBlServiceImplTest {
 
     @Test
     public void offlineCheckOut() throws Exception {
-        tested.offlineCheckOut(530680, 2);
+        tested.offlineCheckOut(236992, 2);
     }
 
     @Test

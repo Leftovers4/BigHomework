@@ -73,7 +73,7 @@ public class PromotionBlServiceImplTest {
         PromotionVO promotionVO = new PromotionVO();
 
         //说明：此处仅以等级优惠为例，ID一定要，其他看界面。
-        promotionVO.promotionID = 809274;
+        promotionVO.promotionID = 208400;
         promotionVO.promotionMRVOs.get(0).credit = 500;
         promotionVO.promotionMRVOs.get(1).credit = 1000;
         promotionVO.promotionMRVOs.get(2).credit = 1500;

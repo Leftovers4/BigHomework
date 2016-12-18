@@ -77,7 +77,7 @@ public class ImageHelperParent {
      * @return
      */
     private static byte[] toBytesFromFile(File f){
-        if(f == null)
+        if(!f.exists())
             return null;
         try {
             FileInputStream stream = new FileInputStream(f);

@@ -30,7 +30,7 @@ public class OrderList extends ArrayList<OrderPO>{
 
         sum = this.size() == 0 ? sum : sum / this.size();
 
-        return sum;
+        return Math.round(sum * 100) / 100;
     }
 
     public OrderList filterByDifferentHotels(){

@@ -149,7 +149,7 @@ public class OrderBlServiceImplTest {
     public void addOrder() throws Exception {
         OrderVO orderVO = new OrderVO();
 
-        orderVO.username = "Hikii";
+        orderVO.username = "Hikiii";
         orderVO.hotelID = 362355;
         orderVO.roomType = RoomType.BusinessSuite;
         orderVO.roomAmount = 2;
