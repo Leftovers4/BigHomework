@@ -10,10 +10,7 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -37,37 +34,29 @@ import java.rmi.RemoteException;
  */
 public class LoginSceneController {
 
-    @FXML private Button changeToLogin;
-    @FXML private Button changeToRegister;
-    @FXML private Label slider;
     @FXML private Button buttonLogin;
     @FXML private Button buttonRegister;
     @FXML private TextField loginUsername;
     @FXML private PasswordField loginPassword;
     @FXML private Button managerEntrance;
     @FXML private Button userEntrance;
-    @FXML private Label nameLabel;
-    @FXML private Label passwordLabel;
-    @FXML private ImageView namePic;
-    @FXML private ImageView passwordPic;
-    @FXML private Pane movingSection;
 
     @FXML private PasswordField confirmPasswordField;
-    @FXML private Label confirmPasswordLabel;
+    @FXML private Hyperlink toregisterBtn;
+    @FXML private Hyperlink tologinBtn;
 
     private UserBLService userBlService;
     private PersonnelBLService personnelBLService;
 
     private AlertController alertController;
 
-    private String currentUser = null;
-
-    //用于客户登录和工作人员登录界面切换
     private boolean isFromLogin = true;
+    private String currentUser;
 
     private Stage stage;
     public void setStage(Stage stage) {
         this.stage = stage;
+
         currentUser = "user";
 
         alertController = new AlertController();
@@ -83,48 +72,64 @@ public class LoginSceneController {
     /**
      * 登录、注册的切换
      * 滑块slider特效
-     *
-     * @param x
-     * @param showTag
-     * @param hideTag
-     * @param showButton
-     * @param hideButton
+     * @param
+     * @param
      */
-    private void changeLoginAndRegister(int x, Button showTag, Button hideTag, Button showButton, Button hideButton) {
-        Timeline timeline = new Timeline();
-        timeline.setAutoReverse(false);
-        KeyValue kv = new KeyValue(slider.layoutXProperty(), x);
-        KeyFrame kf = new KeyFrame(Duration.millis(500), kv);
-        timeline.getKeyFrames().add(kf);
-        timeline.play();
-        showTag.setTextFill(Color.DEEPSKYBLUE);
-        hideTag.setTextFill(Color.BLACK);
-        showButton.setVisible(true);
-        hideButton.setVisible(false);
+    private void changeLoginAndRegister(boolean isfromtogintoregister) {
+        if (isfromtogintoregister) {
+            Timeline timeline = new Timeline();
+            timeline.setAutoReverse(false);
+            KeyValue kv1 = new KeyValue(loginUsername.layoutYProperty(), 29);
+            KeyFrame kf1= new KeyFrame(Duration.millis(400), kv1);
+            KeyValue kv2 = new KeyValue(loginPassword.layoutYProperty(), 89);
+            KeyFrame kf2 = new KeyFrame(Duration.millis(400), kv2);
+            KeyValue kv3 = new KeyValue(buttonLogin.layoutYProperty(), 237);
+            KeyFrame kf3 = new KeyFrame(Duration.millis(400), kv3);
+            KeyValue kv4 = new KeyValue(buttonRegister.layoutYProperty(), 237);
+            KeyFrame kf4 = new KeyFrame(Duration.millis(400), kv4);
+            timeline.getKeyFrames().addAll(kf1, kf2, kf3, kf4);
+            timeline.play();
+            buttonLogin.setVisible(false);
+            buttonRegister.setVisible(true);
+        } else {
+            confirmPasswordField.setVisible(false);
+            Timeline timeline = new Timeline();
+            timeline.setAutoReverse(false);
+            KeyValue kv1 = new KeyValue(loginUsername.layoutYProperty(), 57);
+            KeyFrame kf1= new KeyFrame(Duration.millis(400), kv1);
+            KeyValue kv2 = new KeyValue(loginPassword.layoutYProperty(), 128);
+            KeyFrame kf2 = new KeyFrame(Duration.millis(400), kv2);
+            KeyValue kv3 = new KeyValue(buttonLogin.layoutYProperty(), 226);
+            KeyFrame kf3 = new KeyFrame(Duration.millis(400), kv3);
+            KeyValue kv4 = new KeyValue(buttonRegister.layoutYProperty(), 226);
+            KeyFrame kf4 = new KeyFrame(Duration.millis(400), kv4);
+            timeline.getKeyFrames().addAll(kf1, kf2, kf3, kf4);
+            timeline.play();
+            buttonRegister.setVisible(false);
+            buttonLogin.setVisible(true);
+        }
         loginUsername.clear();
         loginPassword.clear();
         confirmPasswordField.clear();
     }
     @FXML
     private void changeToLogin() {
-        changeLoginAndRegister(236, changeToLogin, changeToRegister, buttonLogin, buttonRegister);
-        namePic.setVisible(true);
-        passwordPic.setVisible(true);
-        nameLabel.setVisible(false);
-        passwordLabel.setVisible(false);
+        changeLoginAndRegister(false);
+        tologinBtn.setVisible(false);
+        toregisterBtn.setVisible(true);
         confirmPasswordField.setVisible(false);
-        confirmPasswordLabel.setVisible(false);
+        buttonLogin.setVisible(true);
+        buttonRegister.setVisible(false);
         isFromLogin = true;
     }
     @FXML
     private void changeToRegister() {
-        changeLoginAndRegister(329, changeToRegister, changeToLogin, buttonRegister, buttonLogin);
-        namePic.setVisible(false);
-        passwordPic.setVisible(false);
-        nameLabel.setVisible(true);
-        passwordLabel.setVisible(true);
+        changeLoginAndRegister(true);
         confirmPasswordField.setVisible(true);
-        confirmPasswordLabel.setVisible(true);
+        tologinBtn.setVisible(true);
+        toregisterBtn.setVisible(false);
+        buttonRegister.setVisible(true);
+        buttonLogin.setVisible(false);
         isFromLogin = false;
     }
 
@@ -133,34 +138,20 @@ public class LoginSceneController {
      */
     @FXML
     private void changeToManager() {
-        currentUser = "personnel";
-
-        changeToLogin.setVisible(false);
-        changeToRegister.setVisible(false);
-        slider.setVisible(false);
         managerEntrance.setVisible(false);
         userEntrance.setVisible(true);
         loginUsername.clear();
         loginPassword.clear();
         confirmPasswordField.clear();
         confirmPasswordField.setVisible(false);
-        confirmPasswordLabel.setVisible(false);
-        if (!isFromLogin) {
-            nameLabel.setVisible(false);
-            namePic.setVisible(true);
-            passwordLabel.setVisible(false);
-            passwordPic.setVisible(true);
-            buttonRegister.setVisible(false);
-            buttonLogin.setVisible(true);
-        }
+        buttonLogin.setVisible(true);
+        buttonRegister.setVisible(false);
+        toregisterBtn.setVisible(false);
+        tologinBtn.setVisible(false);
+        currentUser = "worker";
+        loginUsername.setPromptText("账号");
 
-        Timeline timeline = new Timeline();
-        timeline.setAutoReverse(false);
-        KeyValue kvLoginBtn = new KeyValue(movingSection.layoutYProperty(), 165);
-        KeyFrame kfLoginBtn = new KeyFrame(Duration.millis(400), kvLoginBtn);
-        timeline.getKeyFrames().add(kfLoginBtn);
-        timeline.play();
-
+        changeLoginAndRegister(false);
     }
 
     /**
@@ -168,33 +159,21 @@ public class LoginSceneController {
      */
     @FXML
     private void changeToUser() {
-        currentUser = "user";
 
-        changeToLogin.setVisible(true);
-        changeToRegister.setVisible(true);
-        slider.setVisible(true);
         managerEntrance.setVisible(true);
         userEntrance.setVisible(false);
         loginUsername.clear();
         loginPassword.clear();
         confirmPasswordField.clear();
-        if (!isFromLogin) {
-            buttonLogin.setVisible(false);
-            buttonRegister.setVisible(true);
-            confirmPasswordField.setVisible(true);
-            confirmPasswordLabel.setVisible(true);
-            nameLabel.setVisible(true);
-            passwordLabel.setVisible(true);
-            namePic.setVisible(false);
-            passwordPic.setVisible(false);
-        }
+        buttonLogin.setVisible(true);
+        buttonRegister.setVisible(false);
+        confirmPasswordField.setVisible(false);
+        tologinBtn.setVisible(true);
+        toregisterBtn.setVisible(true);
+        currentUser = "user";
+        loginUsername.setPromptText("用户名");
 
-        Timeline timeline = new Timeline();
-        timeline.setAutoReverse(false);
-        KeyValue kvLoginBtn = new KeyValue(movingSection.layoutYProperty(), 195);
-        KeyFrame kfLoginBtn = new KeyFrame(Duration.millis(400), kvLoginBtn);
-        timeline.getKeyFrames().add(kfLoginBtn);
-        timeline.play();
+        changeLoginAndRegister(false);
     }
 
     /**
