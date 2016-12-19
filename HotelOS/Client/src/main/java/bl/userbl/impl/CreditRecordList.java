@@ -23,6 +23,7 @@ public class CreditRecordList extends ArrayList<CreditRecordPO> {
         for (int i = 0; i < creditRecordPOList.size(); i++) {
             this.add(creditRecordPOList.get(i));
         }
+        sortByTime();
     }
 
     public int getLevel() throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, RemoteException {
@@ -53,6 +54,32 @@ public class CreditRecordList extends ArrayList<CreditRecordPO> {
         }
 
         return res;
+    }
+
+    public CreditRecordList sortByTime(){
+        int num = this.size();
+
+        for (int i = 0; i < num - 1; i++) {
+            int chosenKeyValueIndex = 0;
+            LocalDateTime chosenKeyValue = this.get(0).getChangedTime();
+
+            for (int j = 1; j < num - i; j++) {
+                LocalDateTime keyValue = this.get(j).getChangedTime();
+
+                boolean compareValue = chosenKeyValue.isAfter(keyValue);
+
+                if (compareValue == true){
+                    chosenKeyValueIndex = j;
+                    chosenKeyValue = keyValue;
+                }
+            }
+
+            CreditRecordPO tempCreditRecordPO = this.get(chosenKeyValueIndex);
+            this.remove(chosenKeyValueIndex);
+            this.add(num - 1 - i, tempCreditRecordPO);
+        }
+
+        return this;
     }
 
     public boolean canAddOrder(){

@@ -78,7 +78,7 @@ public class UserBlServiceImpl implements UserBLService {
 
     @Override
     public List<CreditRecordVO> getCreditRecordsByUsername(String username) throws RemoteException {
-        return userVOCreater.createAllOrdinaryCreditRecordVO(userDAO.findCreditRecordsByUsername(username));
+        return userVOCreater.createAllOrdinaryCreditRecordVO(new CreditRecordList(userDAO.findCreditRecordsByUsername(username)));
     }
 
 /*--------------------------------------------------------------------------------------------------------------------*/

@@ -93,6 +93,8 @@ public interface HotelBLService {
 
     ResultMessage setHotelImage(long hotelID, byte[] image) throws RemoteException;
 
+    int getHotelMinRoomNum(long hotelID) throws RemoteException;
+
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     /**

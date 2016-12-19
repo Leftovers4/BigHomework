@@ -198,6 +198,11 @@ public class HotelBlServiceImpl implements HotelBLService {
         return hotelDAO.setImage(hotelID, image);
     }
 
+    @Override
+    public int getHotelMinRoomNum(long hotelID) throws RemoteException {
+        return new RoomList(hotelDAO.findRoomsByHotelID(hotelID)).getHotelMinRoomNum();
+    }
+
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     @Override
@@ -234,8 +239,8 @@ public class HotelBlServiceImpl implements HotelBLService {
         for (int i = 0; i < hotelList.size(); i++) {
             HotelPO hotelPO = hotelList.get(i);
             long hotelID = hotelPO.getHotelID();
-            res.add(hotelVOCreator.create(hotelPO, orderDAO.findByHotelID(hotelID)
-                    , orderDAO.findByUsernameAndHotelID(username,hotelID), hotelDAO.findRoomsByHotelID(hotelID)));
+            res.add(hotelVOCreator.create(hotelPO, new OrderList(orderDAO.findByHotelID(hotelID))
+                    , new OrderList(orderDAO.findByUsernameAndHotelID(username,hotelID)), hotelDAO.findRoomsByHotelID(hotelID)));
         }
         return res;
     }
@@ -255,8 +260,8 @@ public class HotelBlServiceImpl implements HotelBLService {
         for (int i = 0; i < hotelPOList.size(); i++) {
             HotelPO hotelPO = hotelPOList.get(i);
             long hotelID = hotelPO.getHotelID();
-            res.add(hotelVOCreator.create(hotelPO, orderDAO.findByHotelID(hotelID)
-                    , orderDAO.findByUsernameAndHotelID(username,hotelID), hotelDAO.findRoomsByHotelID(hotelID)));
+            res.add(hotelVOCreator.create(hotelPO, new OrderList(orderDAO.findByHotelID(hotelID))
+                    , new OrderList(orderDAO.findByUsernameAndHotelID(username,hotelID)), hotelDAO.findRoomsByHotelID(hotelID)));
         }
 
         return res;
@@ -271,7 +276,7 @@ public class HotelBlServiceImpl implements HotelBLService {
             return null;
 
         //酒店存在的情况
-        return hotelVOCreator.create(hotelPO, orderDAO.findByHotelID(hotelID), orderDAO.findByUsernameAndHotelID(username, hotelID), hotelDAO.findRoomsByHotelID(hotelID));
+        return hotelVOCreator.create(hotelPO, new OrderList(orderDAO.findByHotelID(hotelID)), new OrderList(orderDAO.findByUsernameAndHotelID(username, hotelID)), hotelDAO.findRoomsByHotelID(hotelID));
     }
 
 /*--------------------------------------------------------------------------------------------------------------------*/

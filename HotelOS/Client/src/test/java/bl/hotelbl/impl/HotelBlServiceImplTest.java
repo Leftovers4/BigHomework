@@ -122,6 +122,11 @@ public class HotelBlServiceImplTest {
     }
 
     @Test
+    public void getHotelMinRoomNum() throws Exception {
+        int num = tested.getHotelMinRoomNum(362355);
+    }
+
+    @Test
     public void sortHotels() throws Exception {
         List<HotelVO> hotelVOList1 = tested.viewFullHotelList();
         HotelVOList hotelVOList2 = new HotelVOList(hotelVOList1);
@@ -143,7 +148,7 @@ public class HotelBlServiceImplTest {
 
     @Test
     public void viewOrderedHotelList() throws Exception {
-        List<HotelVO> hotelVOList = tested.viewOrderedHotelList("Hikii");
+        List<HotelVO> hotelVOList = tested.viewOrderedHotelList("Kevin");
     }
 
     @Test

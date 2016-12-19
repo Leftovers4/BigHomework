@@ -7,6 +7,7 @@ import util.TableName;
 
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class OrderList extends ArrayList<OrderPO>{
         for (int i = 0; i < orderPOList.size(); i++) {
             this.add(orderPOList.get(i));
         }
+        sortByTime();
     }
 
     public double getHotelRating(){
@@ -105,6 +107,32 @@ public class OrderList extends ArrayList<OrderPO>{
         for (int i = 0; i < this.size(); i++) {
             timeline.addPeriod(new Order(this.get(i)).getOrderedPeriod(), this.get(i).getRoomAmount());
         }
+    }
+
+    public OrderList sortByTime(){
+        int num = this.size();
+
+        for (int i = 0; i < num - 1; i++) {
+            int chosenKeyValueIndex = 0;
+            LocalDateTime chosenKeyValue = this.get(0).getOrderTimePO().getGenerateTime();
+
+            for (int j = 1; j < num - i; j++) {
+                LocalDateTime keyValue = this.get(j).getOrderTimePO().getGenerateTime();
+
+                boolean compareValue = chosenKeyValue.isAfter(keyValue);
+
+                if (compareValue == true){
+                    chosenKeyValueIndex = j;
+                    chosenKeyValue = keyValue;
+                }
+            }
+
+            OrderPO tempOrderPO = this.get(chosenKeyValueIndex);
+            this.remove(chosenKeyValueIndex);
+            this.add(num - 1 - i, tempOrderPO);
+        }
+
+        return this;
     }
 
 }
