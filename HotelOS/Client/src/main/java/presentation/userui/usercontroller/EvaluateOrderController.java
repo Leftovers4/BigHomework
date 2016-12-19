@@ -11,6 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import presentation.userui.userscene.OrderDetailUserPane;
+import presentation.userui.userscene.UserOrderListPane;
 import presentation.util.alert.AlertController;
 import util.ResultMessage;
 import vo.hotel.HotelVO;
@@ -209,7 +211,7 @@ public class EvaluateOrderController {
 
     private void rateShow() {
         if (rate != 0) {
-            for (int i = 0; i<starGroup.size(); i++) {
+            for (int i = 0; i < rate; i++) {
                 Image image = new Image("/img/user/yellowStar.png");
                 starGroup.get(i).setImage(image);
             }
@@ -235,6 +237,9 @@ public class EvaluateOrderController {
                 if (resultMessage == ResultMessage.Success) {
                     alertController.showUpdateSuccessAlert("评价成功！", "成功提示");
                     System.out.println("review success");
+                    mainPane.getChildren().clear();
+                    mainPane.getChildren().add(new UserOrderListPane(stage, mainPane, userID, false));
+                    mainPane.getChildren().add(new OrderDetailUserPane(stage, mainPane, userID, orderID));
                 } else if (resultMessage ==ResultMessage.DataExisted){
                     alertController.showInputWrongAlert("您已评价过", "失败提示");
                     System.out.println("review failed");

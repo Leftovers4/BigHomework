@@ -105,7 +105,7 @@ public class PromotionVO {
     }
 
     public double getBestPrice() {
-        return bestPrice;
+        return Math.round(bestPrice);
     }
 
     public String getBeginTime(){

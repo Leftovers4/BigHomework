@@ -1,5 +1,7 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
+import bl.hotelbl.HotelBLService;
+import bl.hotelbl.impl.HotelBlServiceImpl;
 import bl.promotionbl.PromotionBLService;
 import bl.promotionbl.impl.PromotionBlServiceImpl;
 import javafx.application.Platform;
@@ -65,6 +67,7 @@ public class ManagePromotionPaneController {
     @FXML private TableColumn roomDiscountCol;
     @FXML private TableColumn roomPriceCol;
     @FXML private TableColumn roomOpCol;
+    private int minRoomNum;
 
     //特定期间优惠
     @FXML private Button addTimeBtn;
@@ -114,6 +117,7 @@ public class ManagePromotionPaneController {
     private Boolean isTimeAdd = false;
     private Boolean isComAdd = false;
     private PromotionBLService promotionBLService;
+    private HotelBLService hotelBLService;
     private ProListButtonCell proRoomListButtonCell;
     private ProListButtonCell proTimeListButtonCell;
     private ProListButtonCell proComListButtonCell;
@@ -133,6 +137,7 @@ public class ManagePromotionPaneController {
     private void initService() {
         try {
             promotionBLService = new PromotionBlServiceImpl();
+            hotelBLService = new HotelBlServiceImpl();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -164,6 +169,8 @@ public class ManagePromotionPaneController {
 
         initRoomTable();
         setRoomsComponentsVisible(false);
+        minRoomNum = getHotelMinRoomNum();
+        leastRoomsField.setPromptText("最多间数："+ minRoomNum);
 
         MySlider.moveSliderLabel(sliderPromotionLabel,168);
     }
@@ -353,9 +360,20 @@ public class ManagePromotionPaneController {
         setRoomsComponentsVisible(true);
     }
 
+    private int getHotelMinRoomNum() {
+        int num = 0;
+        try {
+            num = hotelBLService.getHotelMinRoomNum(ComWorkerSceneController.hotelID);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return num;
+    }
+
     @FXML
     private void confirmRoomAdd(){
         if(!judgeLeastRoom(leastRoomsField) || !JudgeInput.judgeDiscount(roomDiscountField)) return;
+
         PromotionVO promotionVO = new PromotionVO();
         try {
             promotionVO.leastRooms = Integer.parseInt(leastRoomsField.getText());
@@ -504,6 +522,12 @@ public class ManagePromotionPaneController {
         Matcher matcher = pattern.matcher(textField.getText());
         if(!matcher.matches()){
             alertController.showInputWrongAlert("最少预订间数需填入整数，请重新输入","格式错误");
+            return false;
+        }
+
+        int temp = Integer.parseInt(textField.getText());
+        if(temp <= 0 || temp > minRoomNum){
+            alertController.showInputWrongAlert("最少预订间数需要在1到" + minRoomNum + "之间" , "添加失败");
             return false;
         }
         return true;
