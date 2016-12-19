@@ -125,12 +125,18 @@ public class LoginSceneController {
     @FXML
     private void changeToRegister() {
         changeLoginAndRegister(true);
-        confirmPasswordField.setVisible(true);
         tologinBtn.setVisible(true);
         toregisterBtn.setVisible(false);
         buttonRegister.setVisible(true);
         buttonLogin.setVisible(false);
         isFromLogin = false;
+
+        Timeline timeline = new Timeline();
+        timeline.setAutoReverse(false);
+        KeyValue kv = new KeyValue(confirmPasswordField.visibleProperty(), true);
+        KeyFrame kf = new KeyFrame(Duration.millis(400), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.play();
     }
 
     /**
@@ -168,7 +174,7 @@ public class LoginSceneController {
         buttonLogin.setVisible(true);
         buttonRegister.setVisible(false);
         confirmPasswordField.setVisible(false);
-        tologinBtn.setVisible(true);
+        tologinBtn.setVisible(false);
         toregisterBtn.setVisible(true);
         currentUser = "user";
         loginUsername.setPromptText("用户名");
