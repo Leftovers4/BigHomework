@@ -121,7 +121,7 @@
             </FlowPane>
          </content>
       </ScrollPane>
-      <Pane layoutY="50.0" prefHeight="75.0" prefWidth="830.0" styleClass="panel">
+      <Pane layoutY="50.0" prefHeight="75.0" prefWidth="830.0" styleClass="topBtnPane">
          <children>
             <Label id="detailTitleLabel" layoutX="71.0" layoutY="32.0" text="酒店详情" />
             <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="23.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">

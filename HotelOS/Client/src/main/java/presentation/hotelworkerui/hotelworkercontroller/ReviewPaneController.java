@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -20,6 +22,9 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -38,7 +43,26 @@ public class ReviewPaneController {
     @FXML private Label ratingLabel;
     @FXML private ComboBox rankBox;
 
+    @FXML private ImageView reviewstar1;
+    @FXML private ImageView reviewstar2;
+    @FXML private ImageView reviewstar3;
+    @FXML private ImageView reviewstar4;
+    @FXML private ImageView reviewstar5;
+    @FXML private Label reviewperson;
+    @FXML private ProgressBar star5bar;
+    @FXML private ProgressBar star4bar;
+    @FXML private ProgressBar star3bar;
+    @FXML private ProgressBar star2bar;
+    @FXML private ProgressBar star1bar;
+    @FXML private Label star5person;
+    @FXML private Label star4person;
+    @FXML private Label star3person;
+    @FXML private Label star2person;
+    @FXML private Label star1person;
+
+
     private Pane mainPane;
+    private String rating;
     private OrderBLService orderBLService;
     private AlertController alertController;
     private long hotelID;
@@ -46,19 +70,58 @@ public class ReviewPaneController {
     public void launch(Pane mainPane, String rating, long hotelID) {
         this.mainPane = mainPane;
         this.hotelID = hotelID;
+        this.rating = rating;
 
         alertController = new AlertController();
 
         initService();
+        initialReviewData();
         initLabel(rating);
         initTable();
         initBox();
         initData();
     }
 
+
+
     private void initService() {
         try {
             orderBLService = new OrderBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void initialReviewData() {
+        try {
+            List<ReviewVO> list = orderBLService.viewHotelReviewList(hotelID);
+
+            int reviewnum = list.size();
+            reviewperson.setText(String.valueOf(reviewnum));
+
+            List<ReviewVO> star1list = orderBLService.viewHotelReviewListByRating(hotelID, 1);
+            List<ReviewVO> star2list = orderBLService.viewHotelReviewListByRating(hotelID, 2);
+            List<ReviewVO> star3list = orderBLService.viewHotelReviewListByRating(hotelID, 3);
+            List<ReviewVO> star4list = orderBLService.viewHotelReviewListByRating(hotelID, 4);
+            List<ReviewVO> star5list = orderBLService.viewHotelReviewListByRating(hotelID, 5);
+            star1person.setText(String.valueOf(star1list.size()));
+            star2person.setText(String.valueOf(star2list.size()));
+            star3person.setText(String.valueOf(star3list.size()));
+            star4person.setText(String.valueOf(star4list.size()));
+            star5person.setText(String.valueOf(star5list.size()));
+
+            long rate = Math.round(Double.valueOf(rating));
+            ArrayList<ImageView> starlist = new ArrayList<>(Arrays.asList(reviewstar1, reviewstar2, reviewstar3, reviewstar4, reviewstar5));
+            Image image = new Image("/img/hotelworker/yellowstar.png");
+            for (int i = 0; i<rate; i++) {
+                starlist.get(i).setImage(image);
+            }
+
+            star1bar.setProgress(star1list.size()/reviewnum);
+            star2bar.setProgress(star2list.size()/reviewnum);
+            star3bar.setProgress(star3list.size()/reviewnum);
+            star4bar.setProgress(star4list.size()/reviewnum);
+            star5bar.setProgress(star5list.size()/reviewnum);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

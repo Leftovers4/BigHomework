@@ -182,6 +182,28 @@
 .table-view .MidAlignCol{
     -fx-alignment: center;
 }
+
+/*酒店评分部分*/
+.topBtnPane {
+    -fx-background-color: #F5F4F1;
+    -fx-effect: dropshadow(three-pass-box, #dcdcdc, 0, 0, 0, 2);
+}
+.progress-bar {
+    -fx-background-insets: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-border-style: none;
+}
+.progress-bar > .bar {
+    -fx-background-insets: 1 1 2 1;
+    -fx-padding: 0.37em;
+    -fx-background-color: #f4ea2a;
+    -fx-border-style: none;
+}
+.progress-bar > .track {
+    -fx-text-box-border: transparent;
+    -fx-control-inner-background: #fafafa;
+}
 /**
 客户界面*****************************************************************************************************
  */
