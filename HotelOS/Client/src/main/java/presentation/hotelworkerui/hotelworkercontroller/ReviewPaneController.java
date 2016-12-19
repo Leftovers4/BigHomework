@@ -117,11 +117,13 @@ public class ReviewPaneController {
                 starlist.get(i).setImage(image);
             }
 
-            star1bar.setProgress(star1list.size()/reviewnum);
-            star2bar.setProgress(star2list.size()/reviewnum);
-            star3bar.setProgress(star3list.size()/reviewnum);
-            star4bar.setProgress(star4list.size()/reviewnum);
-            star5bar.setProgress(star5list.size()/reviewnum);
+            if(reviewnum > 0) {
+                star1bar.setProgress(star1list.size()/reviewnum);
+                star2bar.setProgress(star2list.size()/reviewnum);
+                star3bar.setProgress(star3list.size()/reviewnum);
+                star4bar.setProgress(star4list.size()/reviewnum);
+                star5bar.setProgress(star5list.size()/reviewnum);
+            }
         } catch (RemoteException e) {
             e.printStackTrace();
         }

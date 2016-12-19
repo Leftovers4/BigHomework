@@ -1,6 +1,7 @@
 package presentation.userui.usercontroller;
 
 import bl.hotelbl.impl.HotelBlServiceImpl;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -152,6 +153,11 @@ public class UserHotelInfoController {
             }
         });
         hotelOrderList.setItems(getUserHotelOrderList());
+
+        hotelOrderList.setFixedCellSize(50);
+        hotelOrderList.prefHeightProperty().bind(hotelOrderList.fixedCellSizeProperty().multiply(Bindings.size(hotelOrderList.getItems()).add(1.01)));
+        hotelOrderList.minHeightProperty().bind(hotelOrderList.prefHeightProperty());
+        hotelOrderList.maxHeightProperty().bind(hotelOrderList.prefHeightProperty());
     }
     private ObservableList getUserHotelOrderList() {
 
@@ -179,6 +185,11 @@ public class UserHotelInfoController {
             }
         });
         hotelRoomList.setItems(getHotelRoomList());
+
+        hotelRoomList.setFixedCellSize(50);
+        hotelRoomList.prefHeightProperty().bind(hotelRoomList.fixedCellSizeProperty().multiply(Bindings.size(hotelRoomList.getItems()).add(1.01)));
+        hotelRoomList.minHeightProperty().bind(hotelRoomList.prefHeightProperty());
+        hotelRoomList.maxHeightProperty().bind(hotelRoomList.prefHeightProperty());
     }
     private ObservableList getHotelRoomList() {
         ObservableList<RoomVO> list = null;

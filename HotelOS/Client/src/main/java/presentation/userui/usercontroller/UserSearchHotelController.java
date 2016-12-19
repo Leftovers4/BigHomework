@@ -88,6 +88,7 @@ public class UserSearchHotelController {
     @FXML private TableColumn registerRecordCol;
     @FXML private TableColumn priceCol;
     @FXML private TableColumn btnCol;
+    @FXML private ScrollPane scrollPane;
 
     private UserHotelListButtonCell userHotelListButtonCell;
     private HotelBlServiceImpl hotelBlService;
@@ -99,6 +100,7 @@ public class UserSearchHotelController {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         this.userID = userID;
+
 
         hotelList.setVisible(false);
         FlowPane.setMargin(hotelList, new Insets(-170, 0, 0, 50));
@@ -229,8 +231,6 @@ public class UserSearchHotelController {
         if (cityComBox.getValue() == null || tradingAreaCombox.getValue() == null) {
             alertController.showNullWrongAlert("请选择地址", "错误提示");
         } else {
-            hotelList.setVisible(true);
-            FlowPane.setMargin(hotelList, new Insets(60, 0, 0, 50));
 
             HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
             hotelConditionsVO.address = cityComBox.getValue().toString();
@@ -254,7 +254,15 @@ public class UserSearchHotelController {
 
             hotelConditionsVO.hasOrdered = onlyCheckRegistered.isSelected();
 
-            initalTable(hotelConditionsVO);
+            ObservableList<HotelVO> list = getSearchedHotelList(hotelConditionsVO);
+            if(list.size() == 0){
+                alertController.showNullWrongAlert("无符合筛选条件的酒店", "搜索提示");
+            }else {
+                scrollPane.setVvalue(1.0d);
+                FlowPane.setMargin(hotelList, new Insets(60, 0, 0, 50));
+                initalTable(list);
+            }
+
         }
 
     }
@@ -511,9 +519,9 @@ public class UserSearchHotelController {
 
     /**
      * 初始化列表数据
-     * @param hotelConditionsVO
+     * @param
      */
-    private void initalTable(HotelConditionsVO hotelConditionsVO) {
+    private void initalTable(ObservableList<HotelVO> list) {
 
         hotelNameCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
@@ -534,14 +542,17 @@ public class UserSearchHotelController {
             }
         });
 
-        hotelList.setItems(getSearchedHotelList(hotelConditionsVO));
+            hotelList.setVisible(true);
+            hotelList.setItems(list);
 
-        hotelList.setFixedCellSize(170);
-        hotelList.prefHeightProperty().bind(hotelList.fixedCellSizeProperty().multiply(Bindings.size(hotelList.getItems()).add(1.01)));
-        hotelList.minHeightProperty().bind(hotelList.prefHeightProperty());
-        hotelList.maxHeightProperty().bind(hotelList.prefHeightProperty());
+            hotelList.setFixedCellSize(170);
+            hotelList.prefHeightProperty().bind(hotelList.fixedCellSizeProperty().multiply(Bindings.size(hotelList.getItems()).add(1.01)));
+            hotelList.minHeightProperty().bind(hotelList.prefHeightProperty());
+            hotelList.maxHeightProperty().bind(hotelList.prefHeightProperty());
 
 
+
+//        }
     }
 
 

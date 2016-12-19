@@ -210,7 +210,10 @@ public class ComUserSceneController {
             try {
                 UserVO userVO = userBLService.viewBasicUserInfo(userID);
 
-                ChangePhoto.setImage(userpath, userVO.username, userVO.image);
+                if (userVO.image != null) {
+                    ChangePhoto.setImage(userpath, userVO.username, userVO.image);
+                }
+
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (InvocationTargetException e) {
