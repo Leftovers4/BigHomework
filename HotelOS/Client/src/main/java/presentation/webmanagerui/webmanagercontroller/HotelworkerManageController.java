@@ -19,6 +19,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
+import presentation.util.buttoncell.HotelNameCell;
 import presentation.util.buttoncell.HotelPhotoButtonCell;
 import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.ToolTipShow;
@@ -41,6 +42,7 @@ public class HotelworkerManageController {
 
     @FXML private TableView hotelworkerList;
     @FXML private TableColumn hotelIDCol;
+    @FXML private TableColumn hotelnameCol;
     @FXML private TableColumn hotelworkerIDCol;
     @FXML private TableColumn hotelworkerNameCol;
     @FXML private TableColumn btnCol;
@@ -81,6 +83,12 @@ public class HotelworkerManageController {
     private void initialData() {
 
         hotelIDCol.setCellValueFactory(new PropertyValueFactory<>("hotelID"));
+        hotelnameCol.setCellFactory(new Callback<TableColumn, TableCell>() {
+            @Override
+            public TableCell call(TableColumn param) {
+                return new HotelNameCell(hotelworkerList);
+            }
+        });
         hotelworkerIDCol.setCellValueFactory(new PropertyValueFactory<>("personnelID"));
         hotelworkerNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         btnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
@@ -103,6 +111,8 @@ public class HotelworkerManageController {
         }
         return list;
     }
+
+
 
 
     /**

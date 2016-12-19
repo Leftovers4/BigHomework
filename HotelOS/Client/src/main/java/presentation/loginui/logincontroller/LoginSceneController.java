@@ -101,8 +101,9 @@ public class LoginSceneController {
         hideTag.setTextFill(Color.BLACK);
         showButton.setVisible(true);
         hideButton.setVisible(false);
-        loginUsername.setText("");
-        loginPassword.setText("");
+        loginUsername.clear();
+        loginPassword.clear();
+        confirmPasswordField.clear();
     }
     @FXML
     private void changeToLogin() {
@@ -139,8 +140,11 @@ public class LoginSceneController {
         slider.setVisible(false);
         managerEntrance.setVisible(false);
         userEntrance.setVisible(true);
-        loginUsername.setText("");
-        loginPassword.setText("");
+        loginUsername.clear();
+        loginPassword.clear();
+        confirmPasswordField.clear();
+        confirmPasswordField.setVisible(false);
+        confirmPasswordLabel.setVisible(false);
         if (!isFromLogin) {
             nameLabel.setVisible(false);
             namePic.setVisible(true);
@@ -171,11 +175,14 @@ public class LoginSceneController {
         slider.setVisible(true);
         managerEntrance.setVisible(true);
         userEntrance.setVisible(false);
-        loginUsername.setText("");
-        loginPassword.setText("");
+        loginUsername.clear();
+        loginPassword.clear();
+        confirmPasswordField.clear();
         if (!isFromLogin) {
             buttonLogin.setVisible(false);
             buttonRegister.setVisible(true);
+            confirmPasswordField.setVisible(true);
+            confirmPasswordLabel.setVisible(true);
             nameLabel.setVisible(true);
             passwordLabel.setVisible(true);
             namePic.setVisible(false);
@@ -277,9 +284,11 @@ public class LoginSceneController {
 
                     if (resultMessage == ResultMessage.DataExisted) {
                         alertController.showInputWrongAlert("用户名已存在！", "注册失败");
+                        confirmPasswordField.clear();
                         System.out.printf("exits");
                     } else if (resultMessage == ResultMessage.Success) {
                         alertController.showUpdateSuccessAlert("注册成功！", "注册成功");
+                        changeToLogin();
                     }
 
                     loginUsername.setText(null);

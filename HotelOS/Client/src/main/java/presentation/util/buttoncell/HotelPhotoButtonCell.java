@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import vo.hotel.HotelVO;
@@ -16,32 +17,13 @@ import java.rmi.RemoteException;
  */
 public class HotelPhotoButtonCell extends TableCell<HotelVO, Boolean> {
 
+    private TableView tableView;
     final private Label hotel = new Label();
     private ImageView imageView = new ImageView();
 
-    public HotelPhotoButtonCell(ObservableList<HotelVO> list, int index, HotelBLService hotelBlService) {
-        String path = "C:/Leftovers/client/user/hotelImg/";
-        imageView.setFitWidth(140);
-        imageView.setFitHeight(140);
-        try {
-            if(index < list.size()){
-                HotelVO hotelVO = hotelBlService.viewBasicHotelInfo(list.get(index).hotelID);
+    public HotelPhotoButtonCell(TableView tableView) {
+        this.tableView = tableView;
 
-                if (hotelVO.image != null) {
-                    Image image = new Image("file:///" + path + list.get(index).hotelID + ".jpg");
-                    imageView.setImage(image);
-                } else {
-                    Image image = new Image("/img/common/initialPhoto.png");
-                    imageView.setImage(image);
-                }
-
-                hotel.setText(hotelVO.hotelName);
-                hotel.setGraphic(imageView);
-                hotel.setContentDisplay(ContentDisplay.TOP);
-            }
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -51,6 +33,22 @@ public class HotelPhotoButtonCell extends TableCell<HotelVO, Boolean> {
             setGraphic(null);
             setText(null);
         } else {
+            String path = "C:/Leftovers/client/user/hotelImg/";
+            imageView.setFitWidth(140);
+            imageView.setFitHeight(140);
+            HotelVO hotelVO = (HotelVO) tableView.getItems().get(getTableRow().getIndex());
+
+            if (hotelVO.image != null) {
+                Image image = new Image("file:///" + path + hotelVO.hotelID + ".jpg");
+                imageView.setImage(image);
+            } else {
+                Image image = new Image("/img/common/initialPhoto.png");
+                imageView.setImage(image);
+            }
+
+            hotel.setText(hotelVO.hotelName);
+            hotel.setGraphic(imageView);
+            hotel.setContentDisplay(ContentDisplay.TOP);
             setGraphic(hotel);
             setText(null);
         }

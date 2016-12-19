@@ -34,8 +34,6 @@ public class RegisteredHotelController {
     @FXML private TableColumn btnCol;
     @FXML private TableView registeredHotelList;
 
-    private int index;
-
     private RegisteredHotelListButtonCell registeredHotelListButtonCell;
     private HotelBlServiceImpl hotelBlService;
 
@@ -55,13 +53,11 @@ public class RegisteredHotelController {
 
 
     private void initialData() {
-        index = -1;
 
         hotelNameCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {
-                index++;
-                return new HotelPhotoButtonCell(getRegisteredHotelList(), index, hotelBlService);
+                return new HotelPhotoButtonCell(registeredHotelList);
             }
         });
         hotelAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));

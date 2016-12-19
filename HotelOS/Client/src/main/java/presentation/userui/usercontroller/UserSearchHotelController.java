@@ -94,7 +94,6 @@ public class UserSearchHotelController {
 
     private AddTradProducer addTradProducer;
     private AlertController alertController;
-    private int index;
 
     public void launch(Stage primaryStage, Pane mainPane, String userID) {
         this.stage = primaryStage;
@@ -515,13 +514,11 @@ public class UserSearchHotelController {
      * @param hotelConditionsVO
      */
     private void initalTable(HotelConditionsVO hotelConditionsVO) {
-        index = -1;
 
         hotelNameCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
             public TableCell call(TableColumn param) {
-                index++;
-                return new HotelPhotoButtonCell(getSearchedHotelList(hotelConditionsVO), index, hotelBlService);
+                return new HotelPhotoButtonCell(hotelList);
             }
         });
         hotelAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
