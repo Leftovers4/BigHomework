@@ -54,4 +54,21 @@ public class RoomList extends ArrayList<RoomPO> {
         return null;
     }
 
+    public int getHotelMinRoomNum(){
+        //表为空的情况
+        if (this.isEmpty())
+            return 0;
+
+        //表不为空的情况
+        int res = this.get(0).getTotal();
+
+        for (int i = 0; i < this.size(); i++) {
+            if (this.get(i).getTotal() < res){
+                res = this.get(i).getTotal();
+            }
+        }
+
+        return res;
+    }
+
 }

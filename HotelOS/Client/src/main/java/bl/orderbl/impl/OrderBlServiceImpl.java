@@ -60,7 +60,7 @@ public class OrderBlServiceImpl implements OrderBLService {
 
     @Override
     public List<OrderVO> searchOrderByHotelIDAndUsername(long hotelID, String username) throws RemoteException {
-        return orderVOCreator.createAllDetailedOrderVO(orderDAO.findByUsernameAndHotelID(username, hotelID));
+        return orderVOCreator.createAllDetailedOrderVO(new OrderList(orderDAO.findByUsernameAndHotelID(username, hotelID)));
     }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -77,12 +77,12 @@ public class OrderBlServiceImpl implements OrderBLService {
 
     @Override
     public List<OrderVO> viewFullHotelOrderList(long hotelID) throws RemoteException {
-        return orderVOCreator.createAllDetailedOrderVO(orderDAO.findByHotelID(hotelID));
+        return orderVOCreator.createAllDetailedOrderVO(new OrderList(orderDAO.findByHotelID(hotelID)));
     }
 
     @Override
     public List<OrderVO> viewTypeHotelOrderList(long hotelID, OrderType orderType) throws RemoteException {
-        return orderVOCreator.createAllDetailedOrderVO(orderDAO.findByHotelIDAndType(hotelID, orderType));
+        return orderVOCreator.createAllDetailedOrderVO(new OrderList(orderDAO.findByHotelIDAndType(hotelID, orderType)));
     }
 
     @Override
@@ -248,7 +248,7 @@ public class OrderBlServiceImpl implements OrderBLService {
     public List<OrderVO> viewFullUserOrderList(String username) throws RemoteException {
         List<OrderVO> res = new ArrayList<>();
 
-        List<OrderPO> orderPOList = orderDAO.findByUsername(username);
+        List<OrderPO> orderPOList = new OrderList(orderDAO.findByUsername(username));
         for (int i = 0; i < orderPOList.size(); i++) {
             OrderPO orderPO = orderPOList.get(i);
             res.add(orderVOCreator.createExtraOrderVO(orderPO, hotelDAO.findByHotelID(orderPO.getHotelID())));
@@ -261,7 +261,7 @@ public class OrderBlServiceImpl implements OrderBLService {
     public List<OrderVO> viewTypeUserOrderList(String username, OrderType orderType) throws RemoteException {
         List<OrderVO> res = new ArrayList<>();
 
-        List<OrderPO> orderPOList = orderDAO.findByUsernameAndType(username, orderType);
+        List<OrderPO> orderPOList = new OrderList(orderDAO.findByUsernameAndType(username, orderType));
         for (int i = 0; i < orderPOList.size(); i++) {
             OrderPO orderPO = orderPOList.get(i);
             res.add(orderVOCreator.createExtraOrderVO(orderPO, hotelDAO.findByHotelID(orderPO.getHotelID())));
@@ -363,12 +363,12 @@ public class OrderBlServiceImpl implements OrderBLService {
 
     @Override
     public List<OrderVO> viewFullOrderList() throws RemoteException {
-        return orderVOCreator.createAllDetailedOrderVO(orderDAO.findAll());
+        return orderVOCreator.createAllDetailedOrderVO(new OrderList(orderDAO.findAll()));
     }
 
     @Override
     public List<OrderVO> viewTypeOrderList(OrderType orderType) throws RemoteException {
-        return orderVOCreator.createAllDetailedOrderVO(orderDAO.findByType(orderType));
+        return orderVOCreator.createAllDetailedOrderVO(new OrderList(orderDAO.findByType(orderType)));
     }
 
 }

@@ -125,6 +125,11 @@ public class HotelBLService_Stub implements HotelBLService {
         return null;
     }
 
+    @Override
+    public int getHotelMinRoomNum(long hotelID) throws RemoteException {
+        return 0;
+    }
+
     public List<RoomVO> findRoomsByHotelID(long hotelID) {
 
         list.add(logicVOHelper.create(hotelID,RoomType.Single,10,100));

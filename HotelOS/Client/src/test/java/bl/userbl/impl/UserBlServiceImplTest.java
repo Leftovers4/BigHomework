@@ -42,7 +42,7 @@ public class UserBlServiceImplTest {
 
     @Test
     public void getCreditRecordsByUsername() throws Exception {
-        List<CreditRecordVO> creditRecordVOList = tested.getCreditRecordsByUsername("lisii");
+        List<CreditRecordVO> creditRecordVOList = tested.getCreditRecordsByUsername("Kevin");
     }
 
     @Test
