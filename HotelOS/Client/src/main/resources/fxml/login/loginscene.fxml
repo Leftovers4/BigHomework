@@ -11,7 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="mainpane" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../css/login/style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginui.logincontroller.LoginSceneController">
+<Pane fx:id="mainpane" prefHeight="510.0" prefWidth="800.0" stylesheets="@../../css/login/style.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginui.logincontroller.LoginSceneController">
 
    <children>
       <Button id="minimum" fx:id="minimum" layoutX="721.0" layoutY="7.0" minHeight="30.0" minWidth="30.0" mnemonicParsing="false" onAction="#minimizeWindow" prefHeight="30.0" prefWidth="30.0">
@@ -36,10 +36,10 @@
             <Image url="@../../img/login/logo.png" />
          </image>
       </ImageView>
-      <Pane fx:id="movingSection" layoutX="352.0" layoutY="125.0" prefHeight="350.0" prefWidth="427.0">
+      <Pane fx:id="movingSection" layoutX="352.0" layoutY="106.0" prefHeight="350.0" prefWidth="427.0">
          <children>
-            <TextField fx:id="loginUsername" layoutX="80.0" layoutY="57.0" prefHeight="50.0" prefWidth="270.0" promptText="用户名" />
-            <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="80.0" layoutY="128.0" prefHeight="50.0" prefWidth="270.0" promptText="密码" />
+            <TextField fx:id="loginUsername" layoutX="80.0" layoutY="57.0" prefHeight="50.0" prefWidth="270.0" promptText="用户名" styleClass="loginfield" />
+            <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="80.0" layoutY="128.0" prefHeight="50.0" prefWidth="270.0" promptText="密码" styleClass="loginfield" />
             <Button id="buttonLogin" fx:id="buttonLogin" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="79.0" layoutY="226.0" mnemonicParsing="false" onAction="#Login" prefHeight="50.0" prefWidth="270.0" styleClass="loginBtn" text="登      录" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
@@ -56,8 +56,8 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Hyperlink fx:id="toregisterBtn" onAction="#changeToRegister" layoutX="81.0" layoutY="302.0" text="注  册" />
-            <Hyperlink fx:id="tologinBtn" onAction="#changeToLogin" layoutX="79.0" layoutY="302.0" text="登  录" visible="false" />
+            <Hyperlink fx:id="toregisterBtn" layoutX="81.0" layoutY="302.0" onAction="#changeToRegister" text="注  册" />
+            <Hyperlink fx:id="tologinBtn" layoutX="79.0" layoutY="302.0" onAction="#changeToLogin" text="登  录" visible="false" />
             <Button id="userEntrance" fx:id="userEntrance" contentDisplay="RIGHT" layoutX="245.0" layoutY="301.0" mnemonicParsing="false" onAction="#changeToUser" styleClass="entrance" text="客户入口" visible="false">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">

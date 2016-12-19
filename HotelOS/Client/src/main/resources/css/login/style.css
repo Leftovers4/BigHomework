@@ -76,7 +76,7 @@ Button:hover {
 
 
 #mainpane {
-    -fx-background-color: #F1FAFB;
+    -fx-background-color: white;
 }
 
 .loginBtn {
