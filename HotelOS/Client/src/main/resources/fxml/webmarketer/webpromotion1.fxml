@@ -147,7 +147,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Pane>
-                  <HBox fx:id="addMemHBox" alignment="CENTER_LEFT" layoutY="28.0">
+                  <HBox fx:id="addMemHBox" alignment="CENTER_LEFT" layoutY="28.0" visible="false">
                      <children>
                         <Label layoutX="199.0" layoutY="16.0" text="城市：">
                            <HBox.margin>
@@ -164,14 +164,14 @@
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
-                        <ComboBox fx:id="areaBox" prefHeight="36.0" prefWidth="156.0" promptText="商圈" GridPane.columnIndex="1">
+                        <ComboBox fx:id="areaBox" prefHeight="36.0" prefWidth="194.0" promptText="商圈" GridPane.columnIndex="1">
                            <HBox.margin>
                               <Insets left="10.0" />
                            </HBox.margin>
                         </ComboBox>
                         <Label text="折扣：" GridPane.rowIndex="1">
                            <HBox.margin>
-                              <Insets left="50.0" />
+                              <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
                         <TextField fx:id="areaDiscountField" alignment="CENTER" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="36.0" prefWidth="57.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -207,7 +207,7 @@
             </Pane>
          </children>
       </VBox>
-      <Pane fx:id="memberManagePane" layoutX="36.0" layoutY="213.0" prefHeight="462.0" prefWidth="778.0">
+      <Pane fx:id="memberManagePane" layoutX="36.0" layoutY="213.0" prefHeight="462.0" prefWidth="778.0" visible="false">
          <children>
             <Button fx:id="cancelManageBtn" alignment="TOP_LEFT" graphicTextGap="15.0" layoutX="678.0" layoutY="406.0" mnemonicParsing="false" onAction="#cancelManage" prefWidth="100.0" styleClass="PromotionAddBtn" text="取消" visible="false">
                <graphic>
@@ -413,6 +413,15 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
+                  <Label fx:id="alertLabel" contentDisplay="TOP" graphicTextGap="20.0" layoutX="82.0" layoutY="56.0" prefHeight="192.0" prefWidth="156.0" text="您未制定会员等级折扣！" textAlignment="CENTER" visible="false" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/webmarketer/alert.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Label>
                </children>
             </Pane>
             <Button id="manageMemRankBtn" fx:id="manageMemRankBtn" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" layoutX="678.0" layoutY="406.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#manageRank" text="制定等级" />

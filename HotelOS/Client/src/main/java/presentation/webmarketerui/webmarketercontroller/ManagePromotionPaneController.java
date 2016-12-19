@@ -107,6 +107,7 @@ public class ManagePromotionPaneController {
     @FXML private Label lv6DiscountLabel;
     //滑块
     @FXML private Label sliderPromotionLabel;
+    @FXML private Label alertLabel;
 
     private AlertController alertController;
     private PromotionBLService promotionBLService;
@@ -246,6 +247,7 @@ public class ManagePromotionPaneController {
         }
         if(!list.isEmpty()){
             isExistMemberPro = true;
+            alertLabel.setVisible(false);
 
             PromotionVO promotionVO = list.get(0);
             promotionID = promotionVO.promotionID;
@@ -261,7 +263,10 @@ public class ManagePromotionPaneController {
             lv4DiscountLabel.setText(String.valueOf(Math.round(promotionVO.promotionMRVOs.get(3).memberDiscount*100)));
             lv5DiscountLabel.setText(String.valueOf(Math.round(promotionVO.promotionMRVOs.get(4).memberDiscount*100)));
             lv6DiscountLabel.setText(String.valueOf(Math.round(promotionVO.promotionMRVOs.get(5).memberDiscount*100)));
-        }else isExistMemberPro = false;
+        }else {
+            isExistMemberPro = false;
+            alertLabel.setVisible(true);
+        }
 
     }
 
@@ -388,13 +393,28 @@ public class ManagePromotionPaneController {
      */
     @FXML
     private void manageRank(){
+        alertLabel.setVisible(false);
         setManageComponentsVisible(true);
-        //TODO 初始化textfield
+        if(isExistMemberPro){
+            lv1CreditField.setText(lv1CreditLabel.getText());
+            lv2CreditField.setText(lv2CreditLabel.getText());
+            lv4CreditField.setText(lv3CreditLabel.getText());
+            lv3CreditField.setText(lv4CreditLabel.getText());
+            lv5CreditField.setText(lv5CreditLabel.getText());
+            lv6CreditField.setText(lv6CreditLabel.getText());
+            lv1DiscountField.setText(lv1DiscountLabel.getText());
+            lv2DiscountField.setText(lv2DiscountLabel.getText());
+            lv3DiscountField.setText(lv3DiscountLabel.getText());
+            lv4DiscountField.setText(lv4DiscountLabel.getText());
+            lv5DiscountField.setText(lv5DiscountLabel.getText());
+            lv6DiscountField.setText(lv6DiscountLabel.getText());
+        }
     }
 
     @FXML
     private void cancelManage(){
         setManageComponentsVisible(false);
+        alertLabel.setVisible(!isExistMemberPro);
     }
 
     @FXML
@@ -479,6 +499,8 @@ public class ManagePromotionPaneController {
 
         editGridPane.setVisible(isVisible);
         showGridPane.setVisible(!isVisible);
+
+        if(!isExistMemberPro) showGridPane.setVisible(false);
     }
 
 

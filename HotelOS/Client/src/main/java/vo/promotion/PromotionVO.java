@@ -125,6 +125,6 @@ public class PromotionVO {
     }
 
     public double getTraDiscount(){
-        return promotionTraAreaVOs.get(0).traDiscount;
+        return Math.round(promotionTraAreaVOs.get(0).traDiscount*100);
     }
 }

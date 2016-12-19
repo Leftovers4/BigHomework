@@ -5,6 +5,7 @@ import util.AddTradProducer;
 import util.EnumFactory;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -46,8 +47,14 @@ public class MyComboBox {
 
     public static void initRoomBox(ComboBox comboBox){
         Iterator<String> roomList = EnumFactory.getAllRoomTypes();
-        while (roomList.hasNext()) comboBox.getItems().add(roomList.next());
-        comboBox.getItems().remove(0);
+        ArrayList<String> roomTypeList = new ArrayList<>();
+        while (roomList.hasNext()) roomTypeList.add(roomList.next());
+
+        comboBox.getItems().clear();
+        for(int i = 0; i < roomTypeList.size(); i++){
+            if(!roomTypeList.get(i).equals("不限"))
+                comboBox.getItems().add(roomTypeList.get(i));
+        }
         comboBox.setValue(comboBox.getItems().get(0));
     }
 }
