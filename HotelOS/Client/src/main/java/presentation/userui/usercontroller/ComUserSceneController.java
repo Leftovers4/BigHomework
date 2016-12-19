@@ -22,6 +22,7 @@ import util.ResultMessage;
 import vo.hotel.HotelVO;
 import vo.user.UserVO;
 
+import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -73,6 +74,8 @@ public class ComUserSceneController {
             e.printStackTrace();
         }
 
+        getAllHotelPhoto();
+
         leftBarBtnArr = new ArrayList<>(Arrays.asList(userInfoBtn, orderListBtn, searchHotelBtn,
                 hotelRegisteredBtn));
         alertController = new AlertController();
@@ -82,7 +85,7 @@ public class ComUserSceneController {
         mainPane.getChildren().add(new InfoPane(primaryStage, mainPane, topbarphoto, userID, leftBarBtnArr));
 
         EnableShowTime(timeLabel);
-        getAllHotelPhoto();
+
     }
 
 
@@ -200,8 +203,23 @@ public class ComUserSceneController {
 
     private void getAllHotelPhoto() {
         String path = "C:/Leftovers/client/user/hotelImg/";
+        String userpath = "C:/Leftovers/client/user/userImage/" + userID + "/";
         try {
             List<HotelVO> hotelVOList = hotelBLService.viewFullHotelList();
+
+            try {
+                UserVO userVO = userBLService.viewBasicUserInfo(userID);
+
+                ChangePhoto.setImage(userpath, userVO.username, userVO.image);
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
 
             for (int i = 0; i<hotelVOList.size(); i++) {
 
