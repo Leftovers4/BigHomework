@@ -45,7 +45,7 @@ public class PersonnelBLServiceImpl implements PersonnelBLService{
 
     @Override
     public ResultMessage logout(long personnelID) {
-        return null;
+        return ResultMessage.Success;
     }
 
 /*--------------------------------------------------------------------------------------------------------------------*/

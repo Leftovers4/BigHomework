@@ -73,7 +73,7 @@ public class UserBlServiceImpl implements UserBLService {
 
     @Override
     public ResultMessage logout(String username) {
-        return null;
+        return ResultMessage.Success;
     }
 
     @Override
