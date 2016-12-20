@@ -46,6 +46,7 @@ Button:hover {
     -fx-underline: true;
     -fx-border-style: none;
     -fx-background-color: transparent;
+    -fx-text-fill: #757575;
 }
 
 #buttonLogin:hover {
@@ -60,14 +61,25 @@ Button:hover {
 #buttonRegister:armed {
     -fx-effect: none;
 }
-#close {
-    -fx-background-color: transparent;
+/*关闭按钮*/
+.CloseButton{
     -fx-border-style: none;
-}
-#minimum {
     -fx-background-color: transparent;
-    -fx-border-style: none;
 }
+.CloseButton:hover{
+    -fx-background-color: #e74c3c;
+    -fx-graphic: url("../../img/common/close_hover.png");
+}
+
+/*最小化按钮*/
+.MinButton{
+    -fx-border-style: none;
+    -fx-background-color: transparent;
+}
+.MinButton:hover{
+    -fx-background-color:#E5E5E5;
+}
+
 #userEntrance {
     -fx-underline: true;
     -fx-background-color: transparent;
@@ -85,3 +97,4 @@ Button:hover {
 .entrance {
     -fx-font-size: 0.9em;
 }
+

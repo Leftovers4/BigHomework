@@ -111,6 +111,40 @@
     -fx-background-color: white;
 }
 
+#topname{
+    -fx-background-color: transparent
+}
+#topname .label{
+    -fx-background-color: transparent;
+
+}
+#topname .arrow-button{
+    -fx-background-color: transparent;
+}
+#topname .arrow-button:hover{
+    -fx-cursor: hand;
+    -fx-background-color: white;
+}
+
+.menu-item .label {
+    -fx-text-fill: #55acee;
+}
+
+.menu-item:focused {
+    -fx-background-color: #55acee;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: white;
+}
+
+.context-menu {
+    -fx-background-color: white;
+    /*-fx-background-insets: 0, 1, 2;*/
+    /*-fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;*/
+    /*!*    -fx-padding: 0.666667em 0.083333em 0.666667em 0.083333em;  8 1 8 1 *!*/
+    /*-fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; !* 4 1 8 1 *!*/
+}
 /*ComboBox*/
 .combo-box{
     -fx-font-size: 18px;
