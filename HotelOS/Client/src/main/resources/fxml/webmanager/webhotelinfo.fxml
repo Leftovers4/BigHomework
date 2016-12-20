@@ -75,7 +75,7 @@
       </Pane>
       <ImageView fx:id="hotelPhoto" fitHeight="200.0" fitWidth="300.0" layoutX="92.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../img/common/initialPhoto.png" />
+            <Image url="@../../img/common/initialHotel.png" />
          </image>
       </ImageView>
    </children>

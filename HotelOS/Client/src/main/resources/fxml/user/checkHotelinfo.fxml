@@ -23,7 +23,7 @@
                <children>
                   <ImageView fx:id="hotelphoto" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../img/common/initialPhoto.png" />
+                        <Image url="@../../img/common/initialHotel.png" />
                      </image>
                      <FlowPane.margin>
                         <Insets bottom="20.0" left="130.0" top="100.0" />

@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.InfoPaneController">
+<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelworkerui.hotelworkercontroller.InfoPaneController">
          <children>
       <Pane layoutX="98.0" layoutY="338.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="271.0" prefWidth="667.0" styleClass="BackgroundPanel">
          <children>
@@ -79,9 +85,9 @@
       <Button id="editInfoBtn" fx:id="editBtn" layoutX="695.0" layoutY="630.0" mnemonicParsing="false" onAction="#editHotelInfo" prefWidth="70.0" text="编辑" />
       <ImageView fx:id="hotelphoto" fitHeight="172.0" fitWidth="173.0" layoutX="119.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../img/common/initialPhoto.png" />
+            <Image url="@../../img/common/initialHotel.png" />
          </image>
       </ImageView>
-      <Hyperlink id="reviewLink" onAction="#changePhoto" layoutX="145.0" layoutY="283.0" text="修改酒店图片" />
+      <Hyperlink id="reviewLink" layoutX="145.0" layoutY="283.0" onAction="#changePhoto" text="修改酒店图片" />
          </children>
 </fx:root>

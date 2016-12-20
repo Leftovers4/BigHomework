@@ -197,8 +197,8 @@ public class AddHotelController {
 
     private boolean isHotelInfoFull() {
         boolean hotelname = !hotelnameField.getText().equals("");
-        boolean city = !hotelcity.getValue().toString().equals("");
-        boolean area = !hoteltracingarea.getValue().toString().equals("");
+        boolean city = hotelcity.getValue() != null;
+        boolean area = hoteltracingarea.getValue() != null;
         boolean star = onestar.isSelected() || twostar.isSelected() || threestar.isSelected() ||
                 fourstar.isSelected() || fivestar.isSelected();
 

@@ -200,6 +200,8 @@ public class WebmarketerManageController {
 
             if (!passwordField.getText().equals("")) {
                 personnelVO.password = passwordField.getText();
+            } else {
+                alertController.showInputWrongAlert("密码不能为空", "错误提示");
             }
 
             try {
@@ -256,12 +258,9 @@ public class WebmarketerManageController {
      */
     @FXML
     private void toConfirmNewMarketerInfo() {
-        fillinfoPane.setVisible(false);
-        fillinfoPane.setDisable(true);
-        confirmPane.setDisable(false);
-        confirmPane.setVisible(true);
 
         if (!newworkernameField.getText().equals("") && !initialpasswordField.getText().equals("")) {
+
             PersonnelVO personnelVO = new PersonnelVO();
 
             personnelVO.name = newworkernameField.getText();
@@ -276,6 +275,11 @@ public class WebmarketerManageController {
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
+
+            fillinfoPane.setVisible(false);
+            fillinfoPane.setDisable(true);
+            confirmPane.setDisable(false);
+            confirmPane.setVisible(true);
         } else {
             alertController.showInputWrongAlert("信息填写不完整", "错误提示");
         }

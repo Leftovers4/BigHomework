@@ -66,7 +66,7 @@ public class WebmanagerComController {
             e.printStackTrace();
         }
 
-
+        currentBtn = hotelManageBtn;
         buttons = new ArrayList<>(Arrays.asList(hotelManageBtn, userBtn, hotelworkerBtn, webmarketerBtn));
         alertController = new AlertController();
         hotelManageBtn.setStyle("-fx-background-color: #0F81C7");

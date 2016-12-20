@@ -51,7 +51,7 @@
             <Label fx:id="hotelServiceLabel" alignment="TOP_LEFT" layoutY="290.0" prefHeight="250.0" prefWidth="161.0" text="酒店设施" wrapText="true" />
             <ImageView fx:id="hotelPhoto" fitHeight="168.0" fitWidth="161.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../img/common/initialPhoto.png" />
+                  <Image url="@../../img/common/initialHotel.png" />
                </image>
             </ImageView>
             <Separator layoutY="220.0" prefHeight="2.0" prefWidth="161.0" />

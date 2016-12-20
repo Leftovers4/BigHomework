@@ -42,7 +42,7 @@ public class HotelPhotoButtonCell extends TableCell<HotelVO, Boolean> {
                 Image image = new Image("file:///" + path + hotelVO.hotelID + ".jpg");
                 imageView.setImage(image);
             } else {
-                Image image = new Image("/img/common/initialPhoto.png");
+                Image image = new Image("/img/common/initialHotel.png");
                 imageView.setImage(image);
             }
 

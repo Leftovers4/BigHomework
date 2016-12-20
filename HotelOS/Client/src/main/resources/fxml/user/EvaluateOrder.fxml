@@ -44,7 +44,7 @@
       <TextArea fx:id="reviewField" layoutX="250.0" layoutY="356.0" prefHeight="178.0" prefWidth="405.0" wrapText="true" />
       <ImageView fx:id="hotelPhoto" fitHeight="150.0" fitWidth="200.0" layoutX="254.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../img/common/initialPhoto.png" />
+            <Image url="@../../img/common/initialHotel.png" />
          </image>
       </ImageView>
       <Button id="saveEditBtn" fx:id="evalusteSubmit" layoutX="574.0" layoutY="565.0" mnemonicParsing="false" onAction="#confirmSubmit" prefHeight="30.0" prefWidth="77.0" styleClass="saveEditBtn" text="提交" />
