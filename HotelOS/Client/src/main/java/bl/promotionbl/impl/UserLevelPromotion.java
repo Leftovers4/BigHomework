@@ -1,12 +1,14 @@
 package bl.promotionbl.impl;
 
 import bl.userbl.impl.CreditRecordList;
+import bl.userbl.impl.User;
 import po.promotion.PromotionPO;
 import po.user.CreditRecordPO;
 import rmi.RemoteHelper;
 import util.Const;
 import vo.order.OrderVO;
 
+import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -36,11 +38,11 @@ public class UserLevelPromotion implements Sale, Level{
     }
 
     @Override
-    public double getActualPrice(OrderVO orderVO) throws RemoteException {
+    public double getActualPrice(OrderVO orderVO) throws RemoteException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException {
         double price = orderVO.orderPriceVO.originPrice;
 
         List<CreditRecordPO> creditRecordPOList = RemoteHelper.getInstance().getUserDAO().findCreditRecordsByUsername(orderVO.username);
-        int level = getLevel(new CreditRecordList(creditRecordPOList).getCurrentCredit());
+        int level = new CreditRecordList(creditRecordPOList).getLevel(new User(RemoteHelper.getInstance().getUserDAO().findByUsername(orderVO.username)).isMember());
 
         //等级为零的情况
         if (level == 0)

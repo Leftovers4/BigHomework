@@ -1,9 +1,11 @@
 package vo.user;
 
 import bl.userbl.impl.CreditRecordList;
+import bl.userbl.impl.User;
 import po.user.CreditRecordPO;
 import po.user.UserPO;
 import rmi.RemoteHelper;
+import util.MemberType;
 
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
@@ -31,7 +33,7 @@ public class UserVOCreater {
         res.creditVO.creditRecords = createAllOrdinaryCreditRecordVO(creditRecordPOList);
         res.memberVO.memberType = userPO.getMemberPO().getMemberType();
         res.memberVO.birthday = userPO.getMemberPO().getBirthday();
-        res.memberVO.level = new CreditRecordList(creditRecordPOList).getLevel();
+        res.memberVO.level = new CreditRecordList(creditRecordPOList).getLevel(new User(userPO).isMember());
         res.memberVO.enterprise = userPO.getMemberPO().getEnterprise();
 
         return res;

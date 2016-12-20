@@ -42,4 +42,8 @@ public class User{
         return enterpriseName.equals(enterprise);
     }
 
+    public boolean isMember(){
+        return !userPO.getMemberPO().getMemberType().equals(MemberType.None);
+    }
+
 }

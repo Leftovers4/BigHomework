@@ -26,14 +26,14 @@ public class CreditRecordList extends ArrayList<CreditRecordPO> {
         sortByTime();
     }
 
-    public int getLevel() throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, RemoteException {
+    public int getLevel(boolean isMember) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, RemoteException {
         List<PromotionPO> promotionPOList = RemoteHelper.getInstance().getPromotionDAO().findByHotelIDAndType(IDProducer.produceHotelIDForWP(), PromotionType.UserLevelPromotion);
 
-        //没有等级策略的情况
-        if (promotionPOList.isEmpty())
+        //没有等级策略或不是会员的情况
+        if (promotionPOList.isEmpty() || !isMember)
             return 0;
 
-        //有等级策略的情况
+        //有等级策略且是会员的情况
         return new Context(promotionPOList.get(0)).getLevel(getCurrentCredit());
     }
 

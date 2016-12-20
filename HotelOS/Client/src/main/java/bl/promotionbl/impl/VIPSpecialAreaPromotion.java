@@ -2,6 +2,7 @@ package bl.promotionbl.impl;
 
 import bl.hotelbl.HotelBLService;
 import bl.userbl.impl.CreditRecordList;
+import bl.userbl.impl.User;
 import blservice_stub.HotelBLService_Stub;
 import po.hotel.HotelPO;
 import po.promotion.PromotionPO;
@@ -69,7 +70,7 @@ public class VIPSpecialAreaPromotion implements Sale{
         for (int i = 0; i < tradingAreas.size(); i++) {
             if ((hotelPO.getAddress() + hotelPO.getTradingArea()).equals(tradingAreas.get(i))){
                 List<CreditRecordPO> creditRecordPOList = RemoteHelper.getInstance().getUserDAO().findCreditRecordsByUsername(orderVO.username);
-                int level = new CreditRecordList(creditRecordPOList).getLevel();
+                int level = new CreditRecordList(creditRecordPOList).getLevel(new User(RemoteHelper.getInstance().getUserDAO().findByUsername(orderVO.username)).isMember());
 
                 if (level == 0)
                     return price * traDiscounts.get(i);
