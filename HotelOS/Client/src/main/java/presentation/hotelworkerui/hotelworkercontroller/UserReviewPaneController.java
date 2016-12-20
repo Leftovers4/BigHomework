@@ -1,5 +1,7 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
+import bl.userbl.UserBLService;
+import bl.userbl.impl.UserBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -7,9 +9,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
 import util.DateTimeFormat;
+import vo.hotel.HotelVO;
 import vo.order.OrderVO;
 import vo.order.ReviewVO;
+import vo.user.UserVO;
 
+import java.io.File;
+import java.lang.reflect.InvocationTargetException;
+import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,11 +36,15 @@ public class UserReviewPaneController {
     @FXML private Label reviewLabel;
     @FXML private Label reviewTimeLabel;
 
+    @FXML private ImageView userphoto;
+
     private Pane mainPane;
     private Boolean isCheckIn;
     private Boolean isFromList;
     private ArrayList<ImageView> starLists;
     private OrderVO orderVO;
+
+    private UserBLService userBLService;
 
     public void launch(Pane mainPane, Boolean isCheckIn, Boolean isFromList, OrderVO orderVO, ReviewVO reviewVO) {
         this.mainPane = mainPane;
@@ -43,6 +54,45 @@ public class UserReviewPaneController {
 
         starLists = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
         initData(reviewVO);
+
+        try {
+            userBLService = new UserBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        initPhoto();
+    }
+
+
+    private void initPhoto() {
+        String newpath = "C:/Leftovers/client/hotel/userImg/";
+
+        try {
+            UserVO userVO = userBLService.viewBasicUserInfo(orderVO.username);
+
+            if (userVO != null) {
+                if (userVO.image != null) {
+                    String path = newpath + orderVO.username + ".jpg";
+                    File file = new File(path);
+
+                    if (file.exists()) {
+                        Image image = new Image("file:///" + path);
+                        userphoto.setImage(image);
+                    }
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void initData(ReviewVO reviewVO) {

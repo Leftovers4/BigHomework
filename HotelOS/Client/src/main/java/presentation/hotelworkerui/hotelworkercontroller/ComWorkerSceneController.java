@@ -1,7 +1,11 @@
 package presentation.hotelworkerui.hotelworkercontroller;
 
+import bl.hotelbl.HotelBLService;
+import bl.hotelbl.impl.HotelBlServiceImpl;
 import bl.personnelbl.PersonnelBLService;
 import bl.personnelbl.impl.PersonnelBLServiceImpl;
+import bl.userbl.UserBLService;
+import bl.userbl.impl.UserBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -15,13 +19,18 @@ import javafx.stage.Stage;
 import presentation.hotelworkerui.hotelworkerscene.*;
 import presentation.loginui.loginscene.LoginScene;
 import presentation.util.alert.AlertController;
+import presentation.util.other.ChangePhoto;
 import presentation.util.other.MyTimeLabel;
 import presentation.util.other.LeftBarEffect;
 import util.ResultMessage;
+import vo.hotel.HotelVO;
+import vo.user.UserVO;
 
+import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Hitiger on 2016/11/18.
@@ -52,20 +61,31 @@ public class ComWorkerSceneController {
     private AlertController alertController;
     public static long hotelID;
 
+    private HotelBLService hotelBLService;
+    private UserBLService userBLService;
+
     public void launch(Stage primaryStage, long hotelID){
         this.stage = primaryStage;
         this.hotelID = hotelID;
         alertController = new AlertController();
+        currentBtn = hotelInfoBtn;
+        hotelInfoBtn.setStyle("-fx-background-color: #0F81C7");
         mainPane.getChildren().add(new InfoPane(stage, mainPane));
         changeSliderPos(260);
-        hotelInfoBtn.setStyle("-fx-background-color: #0F81C7");
         leftBarBtnArr = new ArrayList<>(Arrays.asList(hotelInfoBtn, orderListBtn, registerRoomBtn,
                 managePromotionBtn, updateCheckInBtn, updateOutBtn));
 
         //实时刷新time
         MyTimeLabel.EnableShowTime(timeLabel);
 
+        try {
+            hotelBLService = new HotelBlServiceImpl();
+            userBLService = new UserBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
+        getAllPhoto();
     }
 
 
@@ -78,6 +98,17 @@ public class ComWorkerSceneController {
     }
 
     /**
+     * 侧边栏滑块位置改变
+     * @param y
+     */
+    private void changeSliderPos(double y) {
+        slider.setVisible(true);
+        slider.setLayoutX(184);
+        slider.setLayoutY(y);
+    }
+
+
+    /**
      * 鼠标点击按钮效果
      * @param button
      */
@@ -87,6 +118,7 @@ public class ComWorkerSceneController {
 
     @FXML
     private void showHotelInfo(){
+        getAllPhoto();
         leftBarBtnEffect(hotelInfoBtn);
         changeSliderPos(260);
         changePane(new InfoPane(stage, mainPane));
@@ -98,6 +130,7 @@ public class ComWorkerSceneController {
      */
     @FXML
     private void showOrderList(){
+        getAllPhoto();
         leftBarBtnEffect(orderListBtn);
         changeSliderPos(305);
         changePane(new OrderListPane(mainPane));
@@ -106,6 +139,7 @@ public class ComWorkerSceneController {
 
     @FXML
     private void showRegisterRoom(){
+        getAllPhoto();
         leftBarBtnEffect(registerRoomBtn);
         changeSliderPos(350);
         changePane(new RegisterRoomPane());
@@ -114,6 +148,7 @@ public class ComWorkerSceneController {
 
     @FXML
     private void showManagePromotion(){
+        getAllPhoto();
         leftBarBtnEffect(managePromotionBtn);
         changeSliderPos(395);
         changePane(new ManagePromotionPane());
@@ -122,6 +157,7 @@ public class ComWorkerSceneController {
 
     @FXML
     private void showUpdateCheckIn(){
+        getAllPhoto();
         leftBarBtnEffect(updateCheckInBtn);
         changeSliderPos(440);
         changePane(new UpdateCheckInPane(mainPane));
@@ -130,6 +166,7 @@ public class ComWorkerSceneController {
 
     @FXML
     private void showUpdateOut(){
+        getAllPhoto();
         leftBarBtnEffect(updateOutBtn);
         changeSliderPos(485);
         changePane(new UpdateOutPane(mainPane));
@@ -146,16 +183,6 @@ public class ComWorkerSceneController {
         stage.setIconified(true);
     }
 
-
-    /**
-     * 侧边栏滑块位置改变
-     * @param y
-     */
-    private void changeSliderPos(double y) {
-        slider.setVisible(true);
-        slider.setLayoutX(184);
-        slider.setLayoutY(y);
-    }
 
     /**
      * 鼠标悬停按钮效果
@@ -222,4 +249,39 @@ public class ComWorkerSceneController {
     }
 
 
+
+
+
+    private void getAllPhoto() {
+        String path = "C:/Leftovers/client/hotel/hotelImg/" + hotelID + "/";
+        String userpath = "C:/Leftovers/client/hotel/userImage/";
+        try {
+
+            try {
+                List<UserVO> userVOList = userBLService.getAllUsers();
+
+                for (int i = 0; i<userVOList.size(); i++) {
+                    if (userVOList.get(i).image != null) {
+                        ChangePhoto.setImage(userpath, userVOList.get(i).username, userVOList.get(i).image);
+                    }
+                }
+
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
+            HotelVO hotelVO = hotelBLService.viewBasicHotelInfo(hotelID);
+            if (hotelVO.image != null) {
+                ChangePhoto.setImage(path, hotelID, hotelVO.image);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 }

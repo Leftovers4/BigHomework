@@ -1,5 +1,7 @@
 package presentation.webmarketerui.webmarketercontroller;
 
+import bl.userbl.UserBLService;
+import bl.userbl.impl.UserBlServiceImpl;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -7,15 +9,21 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.util.alert.AlertController;
+import presentation.util.other.ChangePhoto;
 import presentation.util.other.MyTimeLabel;
 import presentation.util.other.LeftBarEffect;
 import presentation.webmarketerui.webmarketerscene.FindOrderPane;
 import presentation.webmarketerui.webmarketerscene.FindUserPane;
 import presentation.webmarketerui.webmarketerscene.ManagePromotionPane;
 import presentation.webmarketerui.webmarketerscene.OrderListPane;
+import vo.hotel.HotelVO;
+import vo.user.UserVO;
 
+import java.lang.reflect.InvocationTargetException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Hitiger on 2016/11/18.
@@ -43,7 +51,9 @@ public class ComMarketerSceneController {
     private Button currentBtn = null;
     //左边栏按钮集合
     private ArrayList<Button> leftBarBtnArr;
-    LeftBarEffect leftBarEffect = new LeftBarEffect();
+    private LeftBarEffect leftBarEffect = new LeftBarEffect();
+
+    private UserBLService userBLService;
 
     private Stage stage;
     private AlertController alertController;
@@ -57,6 +67,13 @@ public class ComMarketerSceneController {
         alertController = new AlertController();
         //实时刷新time
         MyTimeLabel.EnableShowTime(timeLabel);
+        try {
+            userBLService = new UserBlServiceImpl();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        getAllPhoto();
     }
 
     /**
@@ -98,6 +115,7 @@ public class ComMarketerSceneController {
     }
     @FXML
     private void showManagePromotion() {
+        getAllPhoto();
         leftBarBtnEffect(managePromotionBtn);
         changePane(new ManagePromotionPane());
         currentBtn = managePromotionBtn;
@@ -109,6 +127,7 @@ public class ComMarketerSceneController {
      */
     @FXML
     private void showOrderList() {
+        getAllPhoto();
         leftBarBtnEffect(orderListBtn);
         changePane(new OrderListPane(mainPane));
         currentBtn = orderListBtn;
@@ -118,6 +137,7 @@ public class ComMarketerSceneController {
 
     @FXML
     private void showAppealOrder() {
+        getAllPhoto();
         leftBarBtnEffect(appealOrderBtn);
         changePane(new FindOrderPane(mainPane));
         currentBtn = appealOrderBtn;
@@ -126,6 +146,7 @@ public class ComMarketerSceneController {
 
     @FXML
     private void showAddCredit() {
+        getAllPhoto();
         leftBarBtnEffect(addCreditBtn);
         changePane(new FindUserPane(mainPane));
         currentBtn = addCreditBtn;
@@ -181,5 +202,31 @@ public class ComMarketerSceneController {
     @FXML
     private void mouseOutAddCreditBtn() {
         mouseOutEffect(managePromotionBtn);
+    }
+
+
+    private void getAllPhoto() {
+        String userpath = "C:/Leftovers/client/hotel/userImage/";
+        try {
+            List<UserVO> userVOList = userBLService.getAllUsers();
+
+
+            for (int i = 0; i<userVOList.size(); i++) {
+                if (userVOList.get(i).image != null) {
+                    ChangePhoto.setImage(userpath, userVOList.get(i).username, userVOList.get(i).image);
+                }
+            }
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }
