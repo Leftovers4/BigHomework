@@ -57,13 +57,14 @@ public class HotelManageController {
 
     private HotelBlServiceImpl hotelBlService;
     private WebManHotelListButtonCell webManHotelListButtonCell;
+    private int chooseModifyIndex;
 
     private AlertController alertController;
 
 
     public void launch(Pane mainPane) {
         this.pane = mainPane;
-
+        chooseModifyIndex = 0;
         alertController = new AlertController();
 
         try {
@@ -175,6 +176,7 @@ public class HotelManageController {
 
             editBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
+                chooseModifyIndex = selectedIndex;
 
                 hotelList.setPrefHeight(300);
                 hotelList.setDisable(true);
@@ -243,10 +245,6 @@ public class HotelManageController {
             }
         }
 
-
-        public int getSelectedIndex() {
-            return selectedIndex;
-        }
     }
 
 
@@ -256,7 +254,7 @@ public class HotelManageController {
     @FXML
     private void confirmModify() {
         if (isHotelInfoFull()) {
-            HotelVO hotelVO = (HotelVO) hotelList.getItems().get(webManHotelListButtonCell.getSelectedIndex());
+            HotelVO hotelVO = (HotelVO) hotelList.getItems().get(chooseModifyIndex);
 
             hotelVO.hotelName = hotelnameinput.getText();
             hotelVO.address = cityCB.getValue().toString();

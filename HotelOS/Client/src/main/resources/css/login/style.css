@@ -1,8 +1,7 @@
 * {
     -fx-font-family: "微软雅黑";
 }
-
-Button:hover {
+.button:hover{
     -fx-cursor: hand;
 }
 
@@ -82,8 +81,9 @@ Button:hover {
 
 #userEntrance {
     -fx-underline: true;
-    -fx-background-color: transparent;
     -fx-border-style: none;
+    -fx-background-color: transparent;
+    -fx-text-fill: #757575;
 }
 
 

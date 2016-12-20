@@ -55,15 +55,7 @@
             <Button id="managerEntrance" fx:id="managerEntrance" alignment="CENTER" contentDisplay="RIGHT" layoutX="256.0" layoutY="302.0" onAction="#changeToManager" styleClass="entrance" text="工作人员入口" />
             <Hyperlink fx:id="toregisterBtn" layoutX="81.0" layoutY="302.0" onAction="#changeToRegister" text="注  册" />
             <Hyperlink fx:id="tologinBtn" layoutX="79.0" layoutY="302.0" onAction="#changeToLogin" text="登  录" visible="false" />
-            <Button id="userEntrance" fx:id="userEntrance" contentDisplay="RIGHT" layoutX="245.0" layoutY="301.0" mnemonicParsing="false" onAction="#changeToUser" styleClass="entrance" text="客户入口" visible="false">
-               <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../img/login/entrance.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
+            <Button id="userEntrance" fx:id="userEntrance" contentDisplay="RIGHT" layoutX="276.0" layoutY="302.0" mnemonicParsing="false" onAction="#changeToUser" styleClass="entrance" text="客户入口" visible="false" />
          </children>
       </Pane>
       <Separator layoutX="325.0" layoutY="163.0" orientation="VERTICAL" prefHeight="257.0" prefWidth="0.0" />
