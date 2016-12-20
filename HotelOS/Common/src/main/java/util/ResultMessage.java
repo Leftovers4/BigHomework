@@ -17,6 +17,11 @@ public enum ResultMessage {
     Fail,
 
     /**
+     * 合作企业名称已存在
+     */
+    CoEnterpriseExists,
+
+    /**
      * 连接服务器失败
      */
     ServerConnectionFail,

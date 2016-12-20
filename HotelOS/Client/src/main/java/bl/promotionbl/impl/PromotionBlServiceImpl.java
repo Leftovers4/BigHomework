@@ -35,6 +35,11 @@ public class PromotionBlServiceImpl implements PromotionBLService {
 
     @Override
     public ResultMessage create(PromotionVO promotionVO) throws RemoteException {
+        //合作企业已存在的情况
+        if(new PromotionList(promotionDAO.findByHotelIDAndType(promotionVO.getHotelID(), promotionVO.promotionType)).hotelCoEnterpriseExists(promotionVO.promotionEnterprises))
+            return ResultMessage.CoEnterpriseExists;
+
+        //合作企业不存在的情况
         promotionVO.promotionID = IDProducer.produceGeneralID();
         PromotionPO promotionPO = new PromotionPOCreator().create(promotionVO);
         return promotionDAO.insert(promotionPO);

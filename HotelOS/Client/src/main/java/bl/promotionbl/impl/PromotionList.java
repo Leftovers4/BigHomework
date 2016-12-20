@@ -43,4 +43,24 @@ public class PromotionList extends ArrayList<PromotionPO>{
         return res;
     }
 
+    public boolean hotelCoEnterpriseExists(List<String> enterprises){
+        boolean res = false;
+
+        for (String enterprise : enterprises) {
+            if (!enterprise.equals("")) {
+                for (int i = 0; i < this.size(); i++) {
+                    if (new EnterprisePromotion(this.get(i)).hotelCoEnterpriseExists(enterprise)) {
+                        res = true;
+                        break;
+                    }
+                }
+            }
+
+            if (res)
+                break;
+        }
+
+        return res;
+    }
+
 }

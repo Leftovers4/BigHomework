@@ -7,6 +7,7 @@ import rmi.RemoteHelper;
 import vo.order.OrderVO;
 
 import java.rmi.RemoteException;
+import java.util.List;
 
 /**
  * Created by kevin on 2016/11/6.
@@ -30,6 +31,20 @@ public class EnterprisePromotion implements Sale{
         }
 
         return price;
+    }
+
+    public boolean hotelCoEnterpriseExists(String enterprise){
+        boolean res = false;
+
+        List<String> coEnterprises = promotionPO.getPromotionEnterprises();
+        for (String coEnterprise: coEnterprises) {
+            if (enterprise.equals(coEnterprise)){
+                res = true;
+                break;
+            }
+        }
+
+        return res;
     }
 
 }
