@@ -10,6 +10,8 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import presentation.userui.userscene.OrderDetailUserPane;
@@ -25,6 +27,7 @@ import vo.hotel.HotelVO;
 import vo.hotel.RoomVO;
 import vo.order.OrderVO;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
@@ -78,6 +81,8 @@ public class UserGenerateOrderController {
     @FXML private Label priceLabel;
     @FXML private Label promotionLabel;
 
+    @FXML private ImageView hotelphoto;
+
     private OrderBLService orderBlService;
     private HotelBLService hotelBlService;
 
@@ -106,6 +111,30 @@ public class UserGenerateOrderController {
         }
 
         initial();
+        initPhoto();
+    }
+
+    private void initPhoto() {
+        String newpath = "C:/Leftovers/client/user/hotelImg/";
+
+        try {
+
+            HotelVO hotelVO = hotelBlService.viewBasicHotelInfo(hotelID);
+
+            if (hotelVO != null) {
+                if (hotelVO.image != null) {
+                    String path = newpath + hotelID + ".jpg";
+                    File file = new File(path);
+
+                    if (file.exists()) {
+                        Image image = new Image("file:///"+path);
+                        hotelphoto.setImage(image);
+                    }
+                }
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initial() {
