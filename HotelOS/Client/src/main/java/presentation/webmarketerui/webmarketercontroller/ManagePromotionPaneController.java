@@ -227,9 +227,11 @@ public class ManagePromotionPaneController {
         memberAreaVBox.setVisible(false);
         timeVBox.setVisible(false);
 
-        setManageComponentsVisible(false);
+
 
         initLabel();
+
+        setManageComponentsVisible(false);
         //移动滑块
         MySlider.moveSliderLabel(sliderPromotionLabel,300);
     }
@@ -427,8 +429,8 @@ public class ManagePromotionPaneController {
             promotionVO.promotionType = PromotionType.UserLevelPromotion;
             promotionVO.promotionMRVOs.get(0).credit = Double.parseDouble(lv1CreditField.getText());
             promotionVO.promotionMRVOs.get(1).credit = Double.parseDouble(lv2CreditField.getText());
-            promotionVO.promotionMRVOs.get(2).credit = Double.parseDouble(lv4CreditField.getText());
-            promotionVO.promotionMRVOs.get(3).credit = Double.parseDouble(lv3CreditField.getText());
+            promotionVO.promotionMRVOs.get(2).credit = Double.parseDouble(lv3CreditField.getText());
+            promotionVO.promotionMRVOs.get(3).credit = Double.parseDouble(lv4CreditField.getText());
             promotionVO.promotionMRVOs.get(4).credit = Double.parseDouble(lv5CreditField.getText());
             promotionVO.promotionMRVOs.get(5).credit = Double.parseDouble(lv6CreditField.getText());
             promotionVO.promotionMRVOs.get(0).memberDiscount = Double.parseDouble(lv1DiscountField.getText())/100.0;
@@ -555,7 +557,7 @@ public class ManagePromotionPaneController {
                     isAreaAdd = false;
                     proMemTable.setDisable(true);
                     setMemComponentsVisible(true);
-                    MyComboBox.initAreaBox(cityBox,areaBox);
+//                    MyComboBox.initAreaBox(cityBox,areaBox);
                 }
             });
 
