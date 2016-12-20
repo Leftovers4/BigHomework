@@ -57,7 +57,7 @@ public class HotelworkerManageController {
 
     private PersonnelBLService personnelBLService;
     private WebManHotelworkerButtonCell webManHotelworkerButtonCell;
-
+    private int chooseModifyIndex;
     private HotelBLService hotelBLService;
 
     private AlertController alertController;
@@ -65,7 +65,7 @@ public class HotelworkerManageController {
     public void launch(Stage primaryStage, Pane mainPane) {
         this.stage = primaryStage;
         this.pane = mainPane;
-
+        chooseModifyIndex = 0;
         alertController = new AlertController();
 
         try {
@@ -144,6 +144,7 @@ public class HotelworkerManageController {
 
             editBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
+                chooseModifyIndex = selectedIndex;
 
                 PersonnelVO personnelVO = (PersonnelVO) hotelworkerList.getItems().get(selectedIndex);
                 workernameField.setText(personnelVO.name);
@@ -210,10 +211,6 @@ public class HotelworkerManageController {
                 setText(null);
             }
         }
-
-        public int getSelectedIndex() {
-            return selectedIndex;
-        }
     }
 
 
@@ -223,7 +220,7 @@ public class HotelworkerManageController {
     @FXML
     private void confirmModify() {
         if (!workernameField.getText().equals("")) {
-            PersonnelVO personnelVO = (PersonnelVO) hotelworkerList.getItems().get(webManHotelworkerButtonCell.getSelectedIndex());
+            PersonnelVO personnelVO = (PersonnelVO) hotelworkerList.getItems().get(chooseModifyIndex);
 
             personnelVO.name = workernameField.getText();
             if (!passwordField.getText().equals("")) {

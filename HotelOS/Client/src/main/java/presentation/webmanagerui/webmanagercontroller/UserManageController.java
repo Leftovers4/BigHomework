@@ -49,13 +49,13 @@ public class UserManageController {
 
     private UserBlServiceImpl userBlService;
     private WebManUserButtonCell webManUserButtonCell;
-
+    private int chooseModifyIndex;
     private AlertController alertController;
 
     public void launch(Stage primaryStage, Pane mainPane) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
-
+        chooseModifyIndex = 0;
         alertController = new AlertController();
 
         try {
@@ -129,6 +129,7 @@ public class UserManageController {
 
             editBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
+                chooseModifyIndex = selectedIndex;
 
                 UserVO userVO = (UserVO) userlist.getItems().get(selectedIndex);
 
@@ -171,9 +172,6 @@ public class UserManageController {
             }
         }
 
-        public int getSelectedIndex() {
-            return selectedIndex;
-        }
     }
 
 
@@ -183,7 +181,7 @@ public class UserManageController {
     @FXML
     private void confirmModify() {
         if (!nameField.getText().equals("") && !phoneField.getText().equals("")) {
-            UserVO userVO = (UserVO) userlist.getItems().get(webManUserButtonCell.getSelectedIndex());
+            UserVO userVO = (UserVO) userlist.getItems().get(chooseModifyIndex);
 
             userVO.name = nameField.getText();
             userVO.phone = phoneField.getText();

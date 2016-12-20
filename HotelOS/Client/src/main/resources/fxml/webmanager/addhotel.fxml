@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -11,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.AddHotelController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.AddHotelController">
    <children>
       <Pane fx:id="finishInfoPane" layoutX="100.0" layoutY="140.0" prefHeight="435.0" prefWidth="650.0" styleClass="innerPane">
          <children>
@@ -19,8 +22,8 @@
             <Label layoutX="170.0" layoutY="110.0" text="酒店地址：" />
             <Label layoutX="170.0" layoutY="170.0" text="所属商圈：" />
             <TextField fx:id="hotelnameField" layoutX="264.0" layoutY="40.0" prefHeight="30.0" prefWidth="211.0" />
-            <ComboBox fx:id="hotelcity" layoutX="264.0" layoutY="105.0" prefHeight="36.0" prefWidth="133.0" promptText="-城市-" />
-            <ComboBox fx:id="hoteltracingarea" layoutX="264.0" layoutY="165.0" prefHeight="30.0" prefWidth="133.0" promptText="-商圈-" />
+            <ComboBox fx:id="hotelcity" layoutX="264.0" layoutY="105.0" prefHeight="36.0" prefWidth="189.0" promptText="-城市-" />
+            <ComboBox fx:id="hoteltracingarea" layoutX="264.0" layoutY="165.0" prefHeight="36.0" prefWidth="189.0" promptText="-商圈-" />
             <Label layoutX="170.0" layoutY="235.0" text="星       级：" />
             <RadioButton fx:id="onestar" layoutX="263.0" layoutY="235.0" mnemonicParsing="false" text="一星级">
                <toggleGroup>

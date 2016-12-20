@@ -59,7 +59,7 @@ public class WebmarketerManageController {
     private WebManMarketerButtonCell webManMarketerButtonCell;
 
     private AlertController alertController;
-
+    private int chooseModifyIndex;
     private long newmarketerID;
 
     public void launch(Stage primaryStage, Pane mainPane) {
@@ -67,6 +67,7 @@ public class WebmarketerManageController {
         this.mainPane = mainPane;
 
         alertController = new AlertController();
+        chooseModifyIndex = 0;
 
         try {
             personnelBLService = new PersonnelBLServiceImpl();
@@ -129,6 +130,7 @@ public class WebmarketerManageController {
 
             editBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
+                chooseModifyIndex = selectedIndex;
 
                 PersonnelVO personnelVO = (PersonnelVO) webmarketerlist.getItems().get(selectedIndex);
 
@@ -183,10 +185,6 @@ public class WebmarketerManageController {
                 setText(null);
             }
         }
-
-        public int getSelectedIndex() {
-            return selectedIndex;
-        }
     }
 
 
@@ -196,7 +194,7 @@ public class WebmarketerManageController {
     @FXML
     private void confirmModify() {
         if (!workernameField.getText().equals("")) {
-            PersonnelVO personnelVO = (PersonnelVO) webmarketerlist.getItems().get(webManMarketerButtonCell.getSelectedIndex());
+            PersonnelVO personnelVO = (PersonnelVO) webmarketerlist.getItems().get(chooseModifyIndex);
 
             personnelVO.name = workernameField.getText();
 
