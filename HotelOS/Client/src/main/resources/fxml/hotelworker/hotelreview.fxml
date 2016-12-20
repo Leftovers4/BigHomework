@@ -308,7 +308,7 @@
       </ScrollPane>
       <Pane layoutY="50.0" prefHeight="75.0" prefWidth="830.0" styleClass="topBtnPane">
          <children>
-            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="24.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="23.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/hotelworker/bar.png" />
                </image>

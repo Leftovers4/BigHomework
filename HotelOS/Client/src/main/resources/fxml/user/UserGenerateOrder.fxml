@@ -96,6 +96,11 @@
       <Button fx:id="nextBtn" layoutX="680.0" layoutY="574.0" mnemonicParsing="false" onAction="#nextBtnEvent" prefHeight="30.0" prefWidth="140.0" styleClass="OpBtn" text="下一步" />
       <Button fx:id="confirmBtn" layoutX="668.0" layoutY="574.0" mnemonicParsing="false" onAction="#submitBtnEvent" styleClass="OpBtn" text="确认并提交订单" visible="false" />
       <Button fx:id="backToEdit" layoutX="595.0" layoutY="574.0" mnemonicParsing="false" onAction="#backToEdit" styleClass="OpBtn" text="返回" visible="false" />
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="28.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/hotelworker/bar.png" />
+         </image>
+      </ImageView>
       <Button layoutY="67.0" mnemonicParsing="false" onAction="#back" styleClass="BackBtn">
          <graphic>
             <ImageView fitHeight="28.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
@@ -105,11 +110,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="28.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/hotelworker/bar.png" />
-         </image>
-      </ImageView>
       <Label id="detailTitleLabel" layoutX="71.0" layoutY="71.0" text="生成订单" />
    </children>
 </fx:root>

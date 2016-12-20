@@ -84,6 +84,7 @@ public class UserSearchHotelController {
     @FXML private TableColumn hotelNameCol;
     @FXML private TableColumn hotelAddressCol;
     @FXML private TableColumn hoteltracingAreaCol;
+    @FXML private TableColumn hotelRankCol;
     @FXML private TableColumn hotelScoreCol;
     @FXML private TableColumn registerRecordCol;
     @FXML private TableColumn priceCol;
@@ -259,7 +260,7 @@ public class UserSearchHotelController {
                 alertController.showNullWrongAlert("无符合筛选条件的酒店", "搜索提示");
             }else {
                 scrollPane.setVvalue(1.0d);
-                FlowPane.setMargin(hotelList, new Insets(60, 0, 0, 50));
+                FlowPane.setMargin(hotelList, new Insets(60, 0, 0, 10));
                 initalTable(list);
             }
 
@@ -531,6 +532,7 @@ public class UserSearchHotelController {
         });
         hotelAddressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
         hoteltracingAreaCol.setCellValueFactory(new PropertyValueFactory<>("tradingArea"));
+        hotelRankCol.setCellValueFactory(new PropertyValueFactory<>("star"));
         hotelScoreCol.setCellValueFactory(new PropertyValueFactory<>("rating"));
         registerRecordCol.setCellValueFactory(new PropertyValueFactory<>("hasOrdered"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
