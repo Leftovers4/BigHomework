@@ -66,6 +66,7 @@ public class RegisterRoomPaneController {
 
     private HotelBLService hotelBLService;
     private RoomListButtonCell roomListButtonCell;
+    private int modifyChooseIndex;
 
     //提示框控制器
     private AlertController alertController;
@@ -75,6 +76,7 @@ public class RegisterRoomPaneController {
 
     public void launch() {
         alertController = new AlertController();
+        modifyChooseIndex = 0;
 
         initService();
         initTable();
@@ -162,7 +164,7 @@ public class RegisterRoomPaneController {
                         roomTable.setDisable(false);
                         roomBox.setDisable(false);
                         RoomVO roomVO = new RoomVO();
-                        roomVO.roomID = ((RoomVO) roomTable.getItems().get(roomListButtonCell.getSelectedIndex())).roomID;
+                        roomVO.roomID = ((RoomVO) roomTable.getItems().get(modifyChooseIndex)).roomID;
                         roomVO.total = roomAmount;
                         roomVO.price = roomPrice;
                         try {
@@ -205,46 +207,10 @@ public class RegisterRoomPaneController {
         final private HBox btnBox = new HBox();
         final private Button modifyButton = new Button();
         final private Button deleteButton = new Button();
-        private int selectedIndex;
+        private int selectedIndex = 0;
 
         public RoomListButtonCell() {
-            Image modifyImage = new Image("/img/hotelworker/modifyroom.png");
-            modifyButton.setGraphic(new ImageView(modifyImage));
-            modifyButton.getStyleClass().add("TableEditButtonCell");
 
-            Image deleteImage = new Image("/img/hotelworker/deleteroom.png");
-            deleteButton.setGraphic(new ImageView(deleteImage));
-            deleteButton.getStyleClass().add("TableDeleteButtonCell");
-
-            modifyButton.setOnAction(event -> {
-                selectedIndex = getTableRow().getIndex();
-                RoomVO roomVO = (RoomVO) roomTable.getItems().get(selectedIndex);
-
-                isAdd = false;
-                roomTable.setDisable(true);
-                setAddComponentsVisible(true);
-                roomBox.setValue(EnumFactory.getString(roomVO.roomType));
-                roomBox.setDisable(true);
-                roomAmountField.setText(String.valueOf(roomVO.total));
-                roomPriceField.setText(String.valueOf(roomVO.price));
-            });
-
-            deleteButton.setOnAction(event -> {
-                selectedIndex = getTableRow().getIndex();
-                if (alertController.showConfirmDeleteAlert("您确定要删除此类客房吗？", "确认删除")) {
-                    RoomVO roomVO = (RoomVO) roomTable.getItems().get(selectedIndex);
-                    try {
-                        hotelBLService.deleteRoom(roomVO.roomID);
-                    } catch (RemoteException e) {
-                        e.printStackTrace();
-                    }
-                    initData();
-                }
-            });
-
-            btnBox.setSpacing(10);
-            btnBox.setAlignment(Pos.CENTER);
-            btnBox.setPadding(new Insets(0, 10, 0, 20));
         }
 
         @Override
@@ -254,6 +220,44 @@ public class RegisterRoomPaneController {
                 setGraphic(null);
                 setText(null);
             } else {
+                Image modifyImage = new Image("/img/hotelworker/modifyroom.png");
+                modifyButton.setGraphic(new ImageView(modifyImage));
+                modifyButton.getStyleClass().add("TableEditButtonCell");
+
+                Image deleteImage = new Image("/img/hotelworker/deleteroom.png");
+                deleteButton.setGraphic(new ImageView(deleteImage));
+                deleteButton.getStyleClass().add("TableDeleteButtonCell");
+
+                modifyButton.setOnAction(event -> {
+                    selectedIndex = getTableRow().getIndex();
+                    modifyChooseIndex = selectedIndex;
+                    RoomVO roomVO = (RoomVO) roomTable.getItems().get(selectedIndex);
+
+                    isAdd = false;
+                    roomTable.setDisable(true);
+                    setAddComponentsVisible(true);
+                    roomBox.setValue(EnumFactory.getString(roomVO.roomType));
+                    roomBox.setDisable(true);
+                    roomAmountField.setText(String.valueOf(roomVO.total));
+                    roomPriceField.setText(String.valueOf(roomVO.price));
+                });
+
+                deleteButton.setOnAction(event -> {
+                    selectedIndex = getTableRow().getIndex();
+                    if (alertController.showConfirmDeleteAlert("您确定要删除此类客房吗？", "确认删除")) {
+                        RoomVO roomVO = (RoomVO) roomTable.getItems().get(selectedIndex);
+                        try {
+                            hotelBLService.deleteRoom(roomVO.roomID);
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
+                        initData();
+                    }
+                });
+
+                btnBox.setSpacing(10);
+                btnBox.setAlignment(Pos.CENTER);
+                btnBox.setPadding(new Insets(0, 10, 0, 20));
                 btnBox.getChildren().clear();
                 btnBox.getChildren().addAll(modifyButton, deleteButton);
                 setGraphic(btnBox);
@@ -261,8 +265,5 @@ public class RegisterRoomPaneController {
             }
         }
 
-        public int getSelectedIndex() {
-            return selectedIndex;
-        }
     }
 }

@@ -118,10 +118,11 @@ public class ManagePromotionPaneController {
     private long promotionID = 0;
     private ProListButtonCell proTimeListButtonCell;
     private ProListButtonCell proAreaListButtonCell;
+    private int modifyChooseIndex;
 
     public void launch() {
         alertController = new AlertController();
-
+        modifyChooseIndex = 0;
         initService();
         showTimePromotion();
         //设置特定期间优惠按钮默认被选中
@@ -308,7 +309,7 @@ public class ManagePromotionPaneController {
                 promotionBLService.create(promotionVO);
             }else{
                 proTimeTable.setDisable(false);
-                promotionVO.promotionID = ((PromotionVO) proTimeTable.getItems().get(proTimeListButtonCell.getSelectedIndex())).promotionID;
+                promotionVO.promotionID = ((PromotionVO) proTimeTable.getItems().get(modifyChooseIndex)).promotionID;
                 promotionBLService.update(promotionVO);
             }
         } catch (RemoteException e) {
@@ -362,7 +363,7 @@ public class ManagePromotionPaneController {
                 promotionBLService.create(promotionVO);
             }else{
                 proMemTable.setDisable(false);
-                promotionVO.promotionID = ((PromotionVO) proMemTable.getItems().get(proAreaListButtonCell.getSelectedIndex())).promotionID;
+                promotionVO.promotionID = ((PromotionVO) proMemTable.getItems().get(modifyChooseIndex)).promotionID;
                 promotionBLService.update(promotionVO);
             }
         } catch (RemoteException e) {
@@ -541,6 +542,7 @@ public class ManagePromotionPaneController {
             modifyButton.setTooltip(ToolTipShow.setTool("修改"));
             modifyButton.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
+                modifyChooseIndex = selectedIndex;
                 if(proType == PromotionType.SpecialTimePromotion){
                     //特定期间
                     isTimeAdd = false;
@@ -591,8 +593,5 @@ public class ManagePromotionPaneController {
             }
         }
 
-        public int getSelectedIndex() {
-            return selectedIndex;
-        }
     }
 }

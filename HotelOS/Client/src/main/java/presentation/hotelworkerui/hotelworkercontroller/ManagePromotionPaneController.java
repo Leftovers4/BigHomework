@@ -122,11 +122,13 @@ public class ManagePromotionPaneController {
     private ProListButtonCell proTimeListButtonCell;
     private ProListButtonCell proComListButtonCell;
     private long hotelID;
+    private int modifyChooseIndex;
 
     public void launch() {
         alertController = new AlertController();
         vBoxes = new ArrayList<>(Arrays.asList(birthVBox,roomVBox,timeVBox,comVBox));
         hotelID = ComWorkerSceneController.hotelID;
+        modifyChooseIndex = 0;
         //设置生日优惠按钮默认被选中
         makeBirthFocused();
         initService();
@@ -384,7 +386,7 @@ public class ManagePromotionPaneController {
                 promotionBLService.create(promotionVO);
             }else{
                 roomTable.setDisable(false);
-                promotionVO.promotionID = ((PromotionVO) roomTable.getItems().get(proRoomListButtonCell.getSelectedIndex())).promotionID;
+                promotionVO.promotionID = ((PromotionVO) roomTable.getItems().get(modifyChooseIndex)).promotionID;
                 promotionBLService.update(promotionVO);
             }
         } catch (RemoteException e) {
@@ -441,7 +443,7 @@ public class ManagePromotionPaneController {
                 promotionBLService.create(promotionVO);
             }else{
                 timeTable.setDisable(false);
-                promotionVO.promotionID = ((PromotionVO) timeTable.getItems().get(proTimeListButtonCell.getSelectedIndex())).promotionID;
+                promotionVO.promotionID = ((PromotionVO) timeTable.getItems().get(modifyChooseIndex)).promotionID;
                 promotionBLService.update(promotionVO);
             }
         } catch (RemoteException e) {
@@ -486,9 +488,12 @@ public class ManagePromotionPaneController {
                 promotionBLService.create(promotionVO);
             }else{
                 comTable.setDisable(false);
-                promotionVO.promotionID = ((PromotionVO) comTable.getItems().get(proComListButtonCell.getSelectedIndex())).promotionID;
+                promotionVO.promotionID = ((PromotionVO) comTable.getItems().get(modifyChooseIndex)).promotionID;
                 promotionBLService.update(promotionVO);
             }
+
+            comDiscountField.clear();
+            comNameField.clear();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -573,6 +578,7 @@ public class ManagePromotionPaneController {
 
             modifyButton.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
+                modifyChooseIndex = selectedIndex;
                 if(proType == PromotionType.MultipleRoomPromotion){
                     //多间预订
                     isRoomAdd = false;
@@ -624,10 +630,6 @@ public class ManagePromotionPaneController {
                 setText(null);
                 setGraphic(btnBox);
             }
-        }
-
-        public int getSelectedIndex() {
-            return selectedIndex;
         }
     }
 }
