@@ -233,35 +233,39 @@ public class UserSearchHotelController {
             alertController.showNullWrongAlert("请选择地址", "错误提示");
         } else {
 
-            HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
-            hotelConditionsVO.address = cityComBox.getValue().toString();
-            hotelConditionsVO.tradingArea = tradingAreaCombox.getValue().toString();
+            if (chooseselected() && checkInDate.getValue()==null && checkOutDate.getValue()==null) {
+                alertController.showUnSelectItemAlert("请选择入住、退房日期", "错误提示");
+            } else if (!chooseselected()) {
+                HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
+                hotelConditionsVO.address = cityComBox.getValue().toString();
+                hotelConditionsVO.tradingArea = tradingAreaCombox.getValue().toString();
 
-            hotelConditionsVO.name = searchField.getText();
+                hotelConditionsVO.name = searchField.getText();
 
-            hotelConditionsVO.expectedCheckInTime = checkInDate.getValue();
-            hotelConditionsVO.expectedLeaveTime = checkOutDate.getValue();
+                hotelConditionsVO.expectedCheckInTime = checkInDate.getValue();
+                hotelConditionsVO.expectedLeaveTime = checkOutDate.getValue();
 
-            hotelConditionsVO.roomTypeList = getRoomType();
+                hotelConditionsVO.roomTypeList = getRoomType();
 
-            hotelConditionsVO.priceLowerBound = getPriceBound()[0];
-            hotelConditionsVO.priceUpperBound = getPriceBound()[1];
+                hotelConditionsVO.priceLowerBound = getPriceBound()[0];
+                hotelConditionsVO.priceUpperBound = getPriceBound()[1];
 
-            hotelConditionsVO.starLowerBound = getStarBound()[0];
-            hotelConditionsVO.starUpperBound = getStarBound()[1];
+                hotelConditionsVO.starLowerBound = getStarBound()[0];
+                hotelConditionsVO.starUpperBound = getStarBound()[1];
 
-            hotelConditionsVO.ratingLowerBound = getRateBound()[0];
-            hotelConditionsVO.ratingUpperBound = getRateBound()[1];
+                hotelConditionsVO.ratingLowerBound = getRateBound()[0];
+                hotelConditionsVO.ratingUpperBound = getRateBound()[1];
 
-            hotelConditionsVO.hasOrdered = onlyCheckRegistered.isSelected();
+                hotelConditionsVO.hasOrdered = onlyCheckRegistered.isSelected();
 
-            ObservableList<HotelVO> list = getSearchedHotelList(hotelConditionsVO);
-            if(list.size() == 0){
-                alertController.showNullWrongAlert("无符合筛选条件的酒店", "搜索提示");
-            }else {
-                scrollPane.setVvalue(1.0d);
-                FlowPane.setMargin(hotelList, new Insets(60, 0, 0, 10));
-                initalTable(list);
+                ObservableList<HotelVO> list = getSearchedHotelList(hotelConditionsVO);
+                if(list.size() == 0){
+                    alertController.showNullWrongAlert("无符合筛选条件的酒店", "搜索提示");
+                }else {
+                    scrollPane.setVvalue(1.0d);
+                    FlowPane.setMargin(hotelList, new Insets(60, 0, 0, 10));
+                    initalTable(list);
+                }
             }
 
         }
@@ -608,5 +612,40 @@ public class UserSearchHotelController {
         fourToFourPoFive.setSelected(true);
         threeToFour.setSelected(true);
         threeLess.setSelected(true);
+    }
+
+
+    private boolean chooseselected() {
+        boolean single = singleRoomCB.isSelected();
+        boolean couple = coupleRoomCB.isSelected();
+        boolean standard = standardRoomCB.isSelected();
+        boolean queen = queenCB.isSelected();
+        boolean lover = loverroomCB.isSelected();
+        boolean family = familyRoomCB.isSelected();
+        boolean suite = suiteroomCB.isSelected();
+        boolean president = presidentialsuiteroomCB.isSelected();
+        boolean business = businessroomCB.isSelected();
+
+        boolean twoless = twoHundredLess.isSelected();
+        boolean twotofour = twoToFourHundred.isSelected();
+        boolean fourtosix = fourToSixHundred.isSelected();
+        boolean sixtoeight = sixToEightHundred.isSelected();
+        boolean eightmore = eightHundredMore.isSelected();
+
+        boolean twolessstar = twoStarLess.isSelected();
+        boolean three = threeStar.isSelected();
+        boolean four = fourStar.isSelected();
+        boolean five = fiveStar.isSelected();
+
+        boolean threeless = threeLess.isSelected();
+        boolean threetofour = threeToFour.isSelected();
+        boolean fourtofourpfive = fourToFourPoFive.isSelected();
+        boolean fourpfivemore = fourPoFiveMore.isSelected();
+
+        return single || couple || standard || queen || lover ||
+                family || suite || president || business ||
+                twoless || twotofour || fourtosix || sixtoeight ||
+                eightmore || twolessstar || three || four || five ||
+                threeless || threetofour || fourtofourpfive || fourpfivemore;
     }
 }
