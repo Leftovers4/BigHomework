@@ -321,7 +321,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                   </GridPane>
-                  <GridPane fx:id="showGridPane" hgap="10.0" layoutX="25.0" layoutY="31.0" vgap="15.0">
+                  <GridPane fx:id="showGridPane" hgap="10.0" layoutX="25.0" layoutY="31.0" vgap="15.0" visible="false">
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                            <image>

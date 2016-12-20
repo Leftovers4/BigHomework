@@ -37,10 +37,15 @@ public class MyComboBox {
         cityBox.getSelectionModel().selectedItemProperty().addListener(
                 (o, oldValue, newValue) ->{
                     areaBox.getItems().clear();
-                    Iterator<String> areaList = AddTradProducer.getTradingAreasByAddress(newValue.toString());
-                    while (areaList.hasNext()) areaBox.getItems().add(areaList.next());
 
-                    areaBox.setValue(areaBox.getItems().get(0));
+                    Iterator<String> areaList = null;
+                    if(newValue != null){
+                        areaList = AddTradProducer.getTradingAreasByAddress(newValue.toString());
+                        while (areaList.hasNext()) areaBox.getItems().add(areaList.next());
+
+                        areaBox.setValue(areaBox.getItems().get(0));
+                    }
+
                 }
         );
     }
