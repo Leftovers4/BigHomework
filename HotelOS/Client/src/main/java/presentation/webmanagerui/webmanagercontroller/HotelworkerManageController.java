@@ -226,7 +226,7 @@ public class HotelworkerManageController {
             if (!passwordField.getText().equals("")) {
                 personnelVO.password = passwordField.getText();
             } else {
-                alertController.showInputWrongAlert("密码不能为空", "错误提示");
+                personnelVO.password = personnelVO.password;
             }
 
             try {

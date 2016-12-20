@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
 
-<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.RegisteredHotelController">
+<fx:root prefHeight="690.0" prefWidth="850.0" styleClass="panel" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" type="Pane" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.usercontroller.RegisteredHotelController">
    <children>
-      <TableView fx:id="registeredHotelList" layoutX="143.0" layoutY="145.0" prefHeight="400.0" prefWidth="565.0">
-        <columns>
-          <TableColumn fx:id="hotelNameCol" prefWidth="180.0" resizable="false" styleClass="LeftAlignCol" text="酒店名称" />
-          <TableColumn fx:id="hotelAddressCol" prefWidth="150.0" resizable="false" styleClass="LeftAlignCol" text="城市" />
-            <TableColumn fx:id="hoteltracingCol" prefWidth="150.0" resizable="false" styleClass="LeftAlignCol" text="商圈" />
-            <TableColumn fx:id="btnCol" prefWidth="60.0" resizable="false" />
-        </columns>
-      </TableView>
+      <ScrollPane prefHeight="690.0" prefWidth="850.0">
+         <content>
+            <FlowPane prefHeight="680.0" prefWidth="840.0" styleClass="panel">
+               <children>
+                  <TableView fx:id="registeredHotelList" prefWidth="565.0">
+                    <columns>
+                      <TableColumn fx:id="hotelNameCol" prefWidth="180.0" resizable="false" styleClass="LeftAlignCol" text="酒店名称" />
+                      <TableColumn fx:id="hotelAddressCol" prefWidth="150.0" resizable="false" styleClass="LeftAlignCol" text="城市" />
+                        <TableColumn fx:id="hoteltracingCol" prefWidth="150.0" resizable="false" styleClass="LeftAlignCol" text="商圈" />
+                        <TableColumn fx:id="btnCol" prefWidth="60.0" resizable="false" />
+                    </columns>
+                     <FlowPane.margin>
+                        <Insets left="145.0" top="120.0" />
+                     </FlowPane.margin>
+                  </TableView>
+               </children>
+            </FlowPane>
+         </content>
+      </ScrollPane>
    </children>
 </fx:root>

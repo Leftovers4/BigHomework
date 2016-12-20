@@ -65,7 +65,7 @@ public class UserReviewPaneController {
 
 
     private void initPhoto() {
-        String newpath = "C:/Leftovers/client/hotel/userImg/";
+        String newpath = "C:/Leftovers/client/hotel/userImage/";
 
         try {
             UserVO userVO = userBLService.viewBasicUserInfo(orderVO.username);
@@ -73,8 +73,7 @@ public class UserReviewPaneController {
             if (userVO != null) {
                 if (userVO.image != null) {
                     String path = newpath + orderVO.username + ".jpg";
-                    File file = new File(path);
-
+                    File file = new File(newpath);
                     if (file.exists()) {
                         Image image = new Image("file:///" + path);
                         userphoto.setImage(image);

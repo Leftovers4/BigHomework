@@ -66,7 +66,7 @@ public class InfoPaneController {
     private String city;
     private String tradeArea;
 
-    private String newpath = "C:/Leftovers/client/hotelImage/";
+    private String newpath = "C:/Leftovers/client/hotel/hotelImage/";
 
     private Stage stage;
     @FXML private ImageView hotelphoto;
