@@ -86,6 +86,7 @@ public class UpdateOfflinePaneController {
 
         roomTypeBox.getSelectionModel().selectedItemProperty().addListener(
                 (o, oldValue, newValue) -> {
+                    roomAmountBox.getItems().clear();
                     if(isCheckIn){
                         int roomNum = typeToRoomVOMap.get(roomTypeBox.getValue().toString()).bookable;
                         for (int i = 0; i < roomNum; i++) roomAmountBox.getItems().add(i+1);

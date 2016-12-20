@@ -36,28 +36,32 @@
             </ImageView>
          </graphic>
       </Button>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="66.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../img/login/logo.png" />
-         </image>
-      </ImageView>
-      <Pane fx:id="movingSection" layoutX="352.0" layoutY="106.0" prefHeight="350.0" prefWidth="427.0">
+      <Pane layoutX="66.0" layoutY="80.0">
          <children>
-            <TextField fx:id="loginUsername" layoutX="80.0" layoutY="57.0" prefHeight="50.0" prefWidth="270.0" promptText="用户名" styleClass="loginfield" />
-            <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="80.0" layoutY="128.0" prefHeight="50.0" prefWidth="270.0" promptText="密码" styleClass="loginfield" />
-            <Button id="buttonLogin" fx:id="buttonLogin" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="79.0" layoutY="226.0" mnemonicParsing="false" onAction="#Login" prefHeight="50.0" prefWidth="270.0" styleClass="loginBtn" text="登      录" textAlignment="CENTER">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </Button>
-            <Button id="buttonRegister" fx:id="buttonRegister" layoutX="80.0" layoutY="237.0" mnemonicParsing="false" onAction="#userRegister" prefHeight="50.0" prefWidth="270.0" styleClass="loginBtn" text="注      册" visible="false" />
-            <PasswordField fx:id="confirmPasswordField" layoutX="80.0" layoutY="149.0" prefHeight="50.0" prefWidth="270.0" promptText="确认密码" visible="false" />
-            <Button id="managerEntrance" fx:id="managerEntrance" alignment="CENTER" contentDisplay="RIGHT" layoutX="256.0" layoutY="302.0" onAction="#changeToManager" styleClass="entrance" text="工作人员入口" />
-            <Hyperlink fx:id="toregisterBtn" layoutX="81.0" layoutY="302.0" onAction="#changeToRegister" text="注  册" />
-            <Hyperlink fx:id="tologinBtn" layoutX="79.0" layoutY="302.0" onAction="#changeToLogin" text="登  录" visible="false" />
-            <Button id="userEntrance" fx:id="userEntrance" contentDisplay="RIGHT" layoutX="276.0" layoutY="302.0" mnemonicParsing="false" onAction="#changeToUser" styleClass="entrance" text="客户入口" visible="false" />
+            <Pane fx:id="movingSection" layoutX="286.0" prefHeight="350.0" prefWidth="427.0">
+               <children>
+                  <TextField fx:id="loginUsername" layoutX="80.0" layoutY="57.0" prefHeight="50.0" prefWidth="270.0" promptText="用户名" styleClass="loginfield" />
+                  <PasswordField id="loginPassword" fx:id="loginPassword" layoutX="80.0" layoutY="128.0" prefHeight="50.0" prefWidth="270.0" promptText="密码" styleClass="loginfield" />
+                  <Button id="buttonLogin" fx:id="buttonLogin" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="79.0" layoutY="226.0" mnemonicParsing="false" onAction="#Login" prefHeight="50.0" prefWidth="270.0" styleClass="loginBtn" text="登      录" textAlignment="CENTER">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Button>
+                  <Button id="buttonRegister" fx:id="buttonRegister" layoutX="80.0" layoutY="237.0" mnemonicParsing="false" onAction="#userRegister" prefHeight="50.0" prefWidth="270.0" styleClass="loginBtn" text="注      册" visible="false" />
+                  <PasswordField fx:id="confirmPasswordField" layoutX="80.0" layoutY="149.0" prefHeight="50.0" prefWidth="270.0" promptText="确认密码" visible="false" />
+                  <Button id="managerEntrance" fx:id="managerEntrance" alignment="CENTER" contentDisplay="RIGHT" layoutX="256.0" layoutY="302.0" onAction="#changeToManager" styleClass="entrance" text="工作人员入口" />
+                  <Hyperlink fx:id="toregisterBtn" layoutX="81.0" layoutY="302.0" onAction="#changeToRegister" text="注  册" />
+                  <Hyperlink fx:id="tologinBtn" layoutX="79.0" layoutY="302.0" onAction="#changeToLogin" text="登  录" visible="false" />
+                  <Button id="userEntrance" fx:id="userEntrance" contentDisplay="RIGHT" layoutX="276.0" layoutY="302.0" mnemonicParsing="false" onAction="#changeToUser" styleClass="entrance" text="客户入口" visible="false" />
+               </children>
+            </Pane>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/login/logo.png" />
+               </image>
+            </ImageView>
+            <Separator layoutX="259.0" layoutY="57.0" orientation="VERTICAL" prefHeight="257.0" prefWidth="0.0" />
          </children>
       </Pane>
-      <Separator layoutX="325.0" layoutY="163.0" orientation="VERTICAL" prefHeight="257.0" prefWidth="0.0" />
    </children>
 </Pane>

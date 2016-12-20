@@ -6,12 +6,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import presentation.util.alert.AlertController;
 import presentation.webmarketerui.webmarketerscene.AddCreditPane;
 import util.ResultMessage;
 import vo.user.UserVO;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
 import java.util.regex.Matcher;
@@ -40,6 +43,8 @@ public class AddCreditPaneController {
     @FXML
     private Button addBtn;
 
+    @FXML private ImageView userPhoto;
+
     private Pane mainPane;
     private AlertController alertController;
     private String userName;
@@ -49,6 +54,25 @@ public class AddCreditPaneController {
         this.userName = userVO.username;
         alertController = new AlertController();
         initLabels(userVO);
+
+        initPhoto(userVO);
+    }
+
+
+    private void initPhoto(UserVO userVO) {
+        String newpath = "C:/Leftovers/client/hotel/userImage/";
+
+        if (userVO != null) {
+            if (userVO.image != null) {
+                String path = newpath + userVO.username + ".jpg";
+                File file = new File(newpath);
+                if (file.exists()) {
+                    Image image = new Image("file:///" + path);
+                    userPhoto.setImage(image);
+                }
+            }
+        }
+
     }
 
     private void initLabels(UserVO userVO) {

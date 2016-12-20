@@ -50,9 +50,9 @@
                         <CheckBox fx:id="loverroomCB" layoutX="274.0" layoutY="106.0" mnemonicParsing="false" text="情侣房" />
                         <CheckBox fx:id="familyRoomCB" layoutX="384.0" layoutY="106.0" mnemonicParsing="false" text="家庭房" />
                         <Label layoutX="46.0" layoutY="21.0" text="入住：" />
-                        <DatePicker fx:id="checkInDate" layoutX="102.0" layoutY="16.0" prefHeight="30.0" prefWidth="155.0" promptText="2016-10-24" />
-                        <Label layoutX="264.0" layoutY="21.0" text="退房：" />
-                        <DatePicker fx:id="checkOutDate" layoutX="324.0" layoutY="16.0" prefHeight="30.0" prefWidth="155.0" promptText="2016-20-10" />
+                        <DatePicker fx:id="checkInDate" layoutX="102.0" layoutY="16.0" prefHeight="30.0" prefWidth="155.0" />
+                        <Label layoutX="273.0" layoutY="21.0" text="退房：" />
+                        <DatePicker fx:id="checkOutDate" layoutX="324.0" layoutY="16.0" prefHeight="30.0" prefWidth="155.0" />
                         <Label layoutX="41.0" layoutY="188.0" text="价格：" />
                         <Button fx:id="priceBtn" layoutX="101.0" layoutY="183.0" mnemonicParsing="false" onAction="#allPrice" styleClass="unlimitedBtn" text="不限" />
                         <CheckBox fx:id="twoHundredLess" layoutX="166.0" layoutY="188.0" mnemonicParsing="false" text="¥200以下" />

@@ -60,6 +60,10 @@ public class RoomVO {
         return available;
     }
 
+    public int getBookable() {
+        return bookable;
+    }
+
     public double getPrice() {
         return price;
     }

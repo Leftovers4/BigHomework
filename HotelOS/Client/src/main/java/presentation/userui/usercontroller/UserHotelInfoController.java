@@ -176,7 +176,7 @@ public class UserHotelInfoController {
     private void initialHotelRoomTable() {
 
         roomtypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
-        roomnumCol.setCellValueFactory(new PropertyValueFactory<>("available"));
+        roomnumCol.setCellValueFactory(new PropertyValueFactory<>("bookable"));
         roompriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
         generateBtnCol.setCellFactory(new Callback<TableColumn, TableCell>() {
             @Override
@@ -224,10 +224,6 @@ public class UserHotelInfoController {
                 RoomVO roomVO = (RoomVO) hotelRoomList.getItems().get(selectedIndex);
                 mainPane.getChildren().add(new UserGenerateOrderPane(stage, mainPane, userID, hotelID, roomVO.roomType));
             });
-        }
-
-        public int getSelectedIndex() {
-            return selectedIndex;
         }
 
 

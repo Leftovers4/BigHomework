@@ -271,7 +271,7 @@ public class UserGenerateOrderController {
             List<RoomVO> roomVOList = hotelVO.rooms;
             Period gap = Period.between(checkInDatePicker.getValue(), checkOutDatePicker.getValue());
             System.out.println(gap.getDays()+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-            if (checkInDatePicker.getValue() != checkOutDatePicker.getValue()) {
+            if (!checkInDatePicker.getValue().toString().equals(checkOutDatePicker.getValue().toString())) {
                 for (int i = 0; i<roomVOList.size(); i++) {
                     if (roomVOList.get(i).roomType == orderVO.roomType) {
                         orderVO.orderPriceVO.originPrice = roomVOList.get(i).price * orderVO.roomAmount * gap.getDays();
@@ -359,7 +359,7 @@ public class UserGenerateOrderController {
             alertController.showInputWrongAlert("信息填写不完整", "警告");
         }
 
-        
+
     }
 
     /**

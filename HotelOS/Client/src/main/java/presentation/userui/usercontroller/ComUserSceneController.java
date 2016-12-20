@@ -5,6 +5,7 @@ import bl.hotelbl.impl.HotelBlServiceImpl;
 import bl.userbl.UserBLService;
 import bl.userbl.impl.UserBlServiceImpl;
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,6 +13,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import presentation.loginui.loginscene.LoginScene;
 import presentation.userui.userscene.*;
@@ -245,6 +247,9 @@ public class ComUserSceneController {
 
         if (resultMessage == ResultMessage.Success) {
             stage.setScene(new LoginScene(new Group(), stage));
+            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+            stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
+            stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
         } else {
             System.out.println(resultMessage+"=====================================================");
         }

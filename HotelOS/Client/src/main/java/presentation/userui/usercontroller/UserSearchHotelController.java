@@ -233,39 +233,45 @@ public class UserSearchHotelController {
             alertController.showNullWrongAlert("请选择地址", "错误提示");
         } else {
 
-            if (chooseselected() && checkInDate.getValue()==null && checkOutDate.getValue()==null) {
-                alertController.showUnSelectItemAlert("请选择入住、退房日期", "错误提示");
-            } else if (!chooseselected()) {
-                HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
-                hotelConditionsVO.address = cityComBox.getValue().toString();
-                hotelConditionsVO.tradingArea = tradingAreaCombox.getValue().toString();
+            if(((checkInDate.getValue() == null) == (checkOutDate.getValue()==null))){
+                //同时选择或者不选择
+                if(chooseselected() && checkInDate == null){
+                    alertController.showUnSelectItemAlert("请选择入住、退房日期", "错误提示");
+                }else{
 
-                hotelConditionsVO.name = searchField.getText();
+                    HotelConditionsVO hotelConditionsVO = new HotelConditionsVO();
+                    hotelConditionsVO.address = cityComBox.getValue().toString();
+                    hotelConditionsVO.tradingArea = tradingAreaCombox.getValue().toString();
 
-                hotelConditionsVO.expectedCheckInTime = checkInDate.getValue();
-                hotelConditionsVO.expectedLeaveTime = checkOutDate.getValue();
+                    hotelConditionsVO.name = searchField.getText();
 
-                hotelConditionsVO.roomTypeList = getRoomType();
+                    hotelConditionsVO.expectedCheckInTime = checkInDate.getValue();
+                    hotelConditionsVO.expectedLeaveTime = checkOutDate.getValue();
 
-                hotelConditionsVO.priceLowerBound = getPriceBound()[0];
-                hotelConditionsVO.priceUpperBound = getPriceBound()[1];
+                    hotelConditionsVO.roomTypeList = getRoomType();
 
-                hotelConditionsVO.starLowerBound = getStarBound()[0];
-                hotelConditionsVO.starUpperBound = getStarBound()[1];
+                    hotelConditionsVO.priceLowerBound = getPriceBound()[0];
+                    hotelConditionsVO.priceUpperBound = getPriceBound()[1];
 
-                hotelConditionsVO.ratingLowerBound = getRateBound()[0];
-                hotelConditionsVO.ratingUpperBound = getRateBound()[1];
+                    hotelConditionsVO.starLowerBound = getStarBound()[0];
+                    hotelConditionsVO.starUpperBound = getStarBound()[1];
 
-                hotelConditionsVO.hasOrdered = onlyCheckRegistered.isSelected();
+                    hotelConditionsVO.ratingLowerBound = getRateBound()[0];
+                    hotelConditionsVO.ratingUpperBound = getRateBound()[1];
 
-                ObservableList<HotelVO> list = getSearchedHotelList(hotelConditionsVO);
-                if(list.size() == 0){
-                    alertController.showNullWrongAlert("无符合筛选条件的酒店", "搜索提示");
-                }else {
-                    scrollPane.setVvalue(1.0d);
-                    FlowPane.setMargin(hotelList, new Insets(60, 0, 0, 10));
-                    initalTable(list);
+                    hotelConditionsVO.hasOrdered = onlyCheckRegistered.isSelected();
+
+                    ObservableList<HotelVO> list = getSearchedHotelList(hotelConditionsVO);
+                    if(list.size() == 0){
+                        alertController.showNullWrongAlert("无符合筛选条件的酒店", "搜索提示");
+                    }else {
+                        scrollPane.setVvalue(1.0d);
+                        FlowPane.setMargin(hotelList, new Insets(60, 0, 0, 10));
+                        initalTable(list);
+                    }
                 }
+            }else{
+                alertController.showUnSelectItemAlert("请选择入住、退房日期", "错误提示");
             }
 
         }

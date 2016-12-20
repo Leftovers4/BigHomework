@@ -4,6 +4,9 @@
 .button:hover{
     -fx-cursor: hand;
 }
+.text-field{
+    -fx-font-size: 18px;
+}
 
 #changeToLogin {
     -fx-font-size: 1.1em;

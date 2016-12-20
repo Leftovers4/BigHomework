@@ -59,6 +59,7 @@ public class ComMarketerSceneController {
     private AlertController alertController;
     public void launch(Stage primaryStage) {
         stage = primaryStage;
+        currentBtn = managePromotionBtn;
         mainPane.getChildren().add(new ManagePromotionPane());
         changeSliderPos(260);
         managePromotionBtn.setStyle("-fx-background-color: #0F81C7");
@@ -206,7 +207,7 @@ public class ComMarketerSceneController {
 
 
     private void getAllPhoto() {
-        String userpath = "C:/Leftovers/client/hotel/userImage/";
+        String userpath = "C:/Leftovers/client/webmarketer/userImage/";
         try {
             List<UserVO> userVOList = userBLService.getAllUsers();
 
@@ -229,4 +230,8 @@ public class ComMarketerSceneController {
             e.printStackTrace();
         }
     }
+
+
+
+
 }
