@@ -20,6 +20,7 @@ import javafx.util.Callback;
 import presentation.util.alert.AlertController;
 import presentation.util.other.*;
 import util.PromotionType;
+import util.ResultMessage;
 import vo.promotion.PromotionVO;
 
 import java.rmi.RemoteException;
@@ -485,7 +486,8 @@ public class ManagePromotionPaneController {
             if(isComAdd){
                 promotionVO.hotelID = hotelID;
                 promotionVO.promotionType = PromotionType.EnterprisePromotion;
-                promotionBLService.create(promotionVO);
+                if(promotionBLService.create(promotionVO) == ResultMessage.CoEnterpriseExists)
+                    alertController.showInputWrongAlert("该合作企业已存在，不可重复添加", "添加失败");
             }else{
                 comTable.setDisable(false);
                 promotionVO.promotionID = ((PromotionVO) comTable.getItems().get(modifyChooseIndex)).promotionID;
