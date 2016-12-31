@@ -22,8 +22,8 @@ public interface HotelBLService {
      * 添加新的酒店
      *
      * @param hotelVO 酒店信息
-     * @return 新添加的酒店的ID long
-     * @throws RemoteException the remote exception
+     * @return 新添加的酒店的ID
+     * @throws RemoteException 连接服务器异常
      */
     long addHotel(HotelVO hotelVO) throws RemoteException;
 
@@ -32,27 +32,27 @@ public interface HotelBLService {
      *
      * @param hotelID 要被删除的酒店的ID
      * @return 数据库返回的result message
-     * @throws RemoteException the remote exception
+     * @throws RemoteException 连接服务器异常
      */
     ResultMessage deleteHotel(long hotelID) throws RemoteException;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     /**
-     * 酒店工作人员查看酒店的基本信息
+     * 获取酒店的基本信息
      *
      * @param hotelID 酒店的id
-     * @return 返回酒店的基本信息 ，不可能为空
-     * @throws RemoteException the remote exception
+     * @return 返回酒店的基本信息 ，可能为空
+     * @throws RemoteException 连接服务器异常
      */
     HotelVO viewBasicHotelInfo(long hotelID) throws RemoteException;
 
     /**
-     * 酒店工作人员更新酒店的基本信息
+     * 更新酒店的基本信息
      *
      * @param hotelVO the hotel vo
      * @return SUCCESS或者FAIL ，FAIL表示不存在该酒店
-     * @throws RemoteException the remote exception
+     * @throws RemoteException 连接服务器异常
      */
     ResultMessage updateBasicHotelInfo(HotelVO hotelVO) throws RemoteException;
 
@@ -61,7 +61,7 @@ public interface HotelBLService {
      *
      * @param hotelID 酒店的id
      * @return 对应的酒店的所有房间类型信息 ，返回的有可能是空表
-     * @throws RemoteException the remote exception
+     * @throws RemoteException 连接服务器异常
      */
     List<RoomVO> viewAllHotelRooms(long hotelID) throws RemoteException;
 
@@ -70,7 +70,7 @@ public interface HotelBLService {
      *
      * @param roomVO 新房间类型的信息
      * @return SUCCESS或者HasExist result message
-     * @throws RemoteException the remote exception
+     * @throws RemoteException 连接服务器异常
      */
     ResultMessage addRoom(RoomVO roomVO) throws RemoteException;
 
@@ -79,7 +79,7 @@ public interface HotelBLService {
      *
      * @param roomID 房间类型id，房间类型的唯一标识
      * @return SUCCESS或者FAIL ，FAIL表示不存在该房间类型
-     * @throws RemoteException the remote exception
+     * @throws RemoteException 连接服务器异常
      */
     ResultMessage deleteRoom(long roomID) throws RemoteException;
 
@@ -88,18 +88,18 @@ public interface HotelBLService {
      *
      * @param roomVO 房间类型信息
      * @return SUCCESS或者FAIL ，FAIL表示不存在该房间类型
-     * @throws RemoteException the remote exception
+     * @throws RemoteException 连接服务器异常
      */
     ResultMessage updateRoomInfo(RoomVO roomVO) throws RemoteException;
 
     /**
-     * View full room info room vo.
+     * 查看完整的房间类型信息
      *
-     * @param roomID              the room id
-     * @param expectedCheckInTime the expected check in time
-     * @param expectedLeaveTime   the expected leave time
-     * @return the room vo
-     * @throws RemoteException the remote exception
+     * @param roomID              房间类型ID
+     * @param expectedCheckInTime 入住时间
+     * @param expectedLeaveTime   离开时间
+     * @return 完整的房间类型信息
+     * @throws RemoteException 连接服务器异常
      */
     RoomVO viewFullRoomInfo(long roomID, LocalDateTime expectedCheckInTime, LocalDateTime expectedLeaveTime) throws RemoteException;
 
@@ -109,7 +109,7 @@ public interface HotelBLService {
      * @param roomID the room id
      * @param amount the amount
      * @return the result message
-     * @throws RemoteException the remote exception
+     * @throws RemoteException 连接服务器异常
      */
     ResultMessage offlineCheckIn(long roomID, int amount) throws RemoteException;
 
@@ -119,7 +119,7 @@ public interface HotelBLService {
      * @param roomID the room id
      * @param amount the amount
      * @return the result message
-     * @throws RemoteException the remote exception
+     * @throws RemoteException 连接服务器异常
      */
     ResultMessage offlineCheckOut(long roomID, int amount) throws RemoteException;
 
@@ -128,7 +128,7 @@ public interface HotelBLService {
      *
      * @param hotelID the hotel id
      * @return the int
-     * @throws RemoteException the remote exception
+     * @throws RemoteException 连接服务器异常
      */
     int viewOfflineCheckInRoomAmount(long hotelID) throws RemoteException;
 
@@ -138,7 +138,7 @@ public interface HotelBLService {
      * @param hotelID the hotel id
      * @param image   the image
      * @return the hotel image
-     * @throws RemoteException the remote exception
+     * @throws RemoteException 连接服务器异常
      */
     ResultMessage setHotelImage(long hotelID, byte[] image) throws RemoteException;
 
@@ -147,7 +147,7 @@ public interface HotelBLService {
      *
      * @param hotelID the hotel id
      * @return the hotel min room num
-     * @throws RemoteException the remote exception
+     * @throws RemoteException 连接服务器异常
      */
     int getHotelMinRoomNum(long hotelID) throws RemoteException;
 
@@ -169,7 +169,7 @@ public interface HotelBLService {
      * @param username          the username
      * @param hotelConditionsVO the hotel conditions vo
      * @return 符合筛选条件的所有酒店的列表 list
-     * @throws RemoteException the remote exception
+     * @throws RemoteException 连接服务器异常
      */
     List<HotelVO> searchHotelsByConditions(String username, HotelConditionsVO hotelConditionsVO) throws RemoteException;
 
@@ -178,27 +178,27 @@ public interface HotelBLService {
      *
      * @param username 用户名
      * @return 用户名对应的用户预定过的所有酒店的列表 list
-     * @throws RemoteException the remote exception
+     * @throws RemoteException 连接服务器异常
      */
     List<HotelVO> viewOrderedHotelList(String username) throws RemoteException;
 
     /**
-     * View detailed hotel info hotel vo.
+     * 获取酒店的详细信息
      *
-     * @param hotelID  the hotel id
-     * @param username the username
-     * @return the hotel vo
-     * @throws RemoteException the remote exception
+     * @param hotelID  酒店ID
+     * @param username 用户名
+     * @return 酒店的详细信息
+     * @throws RemoteException 连接服务异常
      */
     HotelVO viewDetailedHotelInfo(long hotelID, String username) throws RemoteException;
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     /**
-     * View full hotel list list.
+     * 获取全部酒店
      *
-     * @return the list
-     * @throws RemoteException the remote exception
+     * @return 全部酒店
+     * @throws RemoteException 连接服务器异常
      */
     List<HotelVO> viewFullHotelList() throws RemoteException;
 

@@ -17,30 +17,40 @@ import java.rmi.RemoteException;
 public class RemoteHelper {
 
     public static RemoteHelper remoteHelper;
+
     private String networkAddress;
+
     private HotelDataService hotelDAO;
+
     private OrderDataService orderDAO;
+
     private PersonnelDataService personnelDAO;
+
     private PromotionDataService promotionDAO;
+
     private UserDataService userDAO;
 
-    public static void main(String[] args) throws RemoteException {
-        RemoteHelper remoteHelper = RemoteHelper.getInstance();
-        HotelDataService hotelDAO = remoteHelper.getHotelDAO();
-        ;
-        System.out.println(hotelDAO.delete(1));
-    }
-
-    private RemoteHelper(){
+    private RemoteHelper() {
         networkAddress = "rmi://localhost:1098";
     }
 
-    public static RemoteHelper getInstance(){
+    /**
+     * 单例模式：接管RemoteHelper实例的创建
+     *
+     * @return RemoteHelper实例
+     */
+    public static RemoteHelper getInstance() {
         if (remoteHelper == null)
             remoteHelper = new RemoteHelper();
         return remoteHelper;
     }
 
+    /**
+     * 获取hotelDAO
+     *
+     * @return hotelDAO
+     * @throws RemoteException 连接服务器异常
+     */
     public HotelDataService getHotelDAO() throws RemoteException {
         try {
             hotelDAO = (HotelDataService) Naming.lookup(networkAddress + "/" + "HotelDataService");
@@ -55,6 +65,12 @@ public class RemoteHelper {
         return hotelDAO;
     }
 
+    /**
+     * 获取orderDAO
+     *
+     * @return orderDAO
+     * @throws RemoteException 连接服务器异常
+     */
     public OrderDataService getOrderDAO() throws RemoteException {
         try {
             orderDAO = (OrderDataService) Naming.lookup(networkAddress + "/" + "OrderDataService");
@@ -69,6 +85,12 @@ public class RemoteHelper {
         return orderDAO;
     }
 
+    /**
+     * 获取personnelDAO
+     *
+     * @return personnelDAO
+     * @throws RemoteException 连接服务器异常
+     */
     public PersonnelDataService getPersonnelDAO() throws RemoteException {
         try {
             personnelDAO = (PersonnelDataService) Naming.lookup(networkAddress + "/" + "PersonnelDataService");
@@ -83,9 +105,15 @@ public class RemoteHelper {
         return personnelDAO;
     }
 
+    /**
+     * 获取promotionDAO
+     *
+     * @return promotionDAO
+     * @throws RemoteException 连接服务器异常
+     */
     public PromotionDataService getPromotionDAO() throws RemoteException {
         try {
-            promotionDAO= (PromotionDataService) Naming.lookup(networkAddress + "/" + "PromotionDataService");
+            promotionDAO = (PromotionDataService) Naming.lookup(networkAddress + "/" + "PromotionDataService");
             System.out.println("Link to server!");
         } catch (NotBoundException e) {
             e.printStackTrace();
@@ -97,6 +125,12 @@ public class RemoteHelper {
         return promotionDAO;
     }
 
+    /**
+     * 获取userDAO
+     *
+     * @return userDAO
+     * @throws RemoteException 连接服务器异常
+     */
     public UserDataService getUserDAO() throws RemoteException {
         try {
             userDAO = (UserDataService) Naming.lookup(networkAddress + "/" + "UserDataService");
