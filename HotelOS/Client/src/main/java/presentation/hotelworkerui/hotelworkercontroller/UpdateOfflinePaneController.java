@@ -56,7 +56,7 @@ public class UpdateOfflinePaneController {
         try {
             hotelBLService = new HotelBlServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -65,7 +65,7 @@ public class UpdateOfflinePaneController {
         try {
             busyRoomLabel.setText(String.valueOf(hotelBLService.viewOfflineCheckInRoomAmount(ComWorkerSceneController.hotelID)));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -75,7 +75,7 @@ public class UpdateOfflinePaneController {
         try {
             list = hotelBLService.viewAllHotelRooms(ComWorkerSceneController.hotelID);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         for (RoomVO roomVO : list){
             String roomType = EnumFactory.getString(roomVO.roomType);
@@ -114,7 +114,7 @@ public class UpdateOfflinePaneController {
                         mainPane.getChildren().add(new UpdateCheckInPane(mainPane));
                 }
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
         }
         else alertController.showInputWrongAlert("无可入住的房间","入住失败");
@@ -130,7 +130,7 @@ public class UpdateOfflinePaneController {
                         mainPane.getChildren().add(new UpdateOutPane(mainPane));
                 }
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
         }
         else alertController.showInputWrongAlert("无可退房的房间","退房失败");

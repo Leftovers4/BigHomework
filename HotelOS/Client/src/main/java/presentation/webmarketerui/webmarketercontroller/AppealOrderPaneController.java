@@ -56,7 +56,7 @@ public class AppealOrderPaneController {
         try {
             orderBLService = new OrderBlServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -91,7 +91,7 @@ public class AppealOrderPaneController {
                     }
                 }
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
         }else {
             try {
@@ -104,7 +104,7 @@ public class AppealOrderPaneController {
                     }
                 }
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
         }
     }

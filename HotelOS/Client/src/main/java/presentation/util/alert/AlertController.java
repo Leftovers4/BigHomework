@@ -1,6 +1,9 @@
 package presentation.util.alert;
 
+import javafx.scene.Group;
 import javafx.scene.control.ButtonType;
+import presentation.loginui.logincontroller.LoginSceneController;
+import presentation.loginui.loginscene.LoginScene;
 
 /**
  * Created by Hitiger on 2016/11/26.
@@ -78,6 +81,12 @@ public class AlertController {
     public void showNetConnectAlert(){
         RemoteAlert remoteAlert = new RemoteAlert("与服务器连接异常","连接失败");
         remoteAlert.showAndWait();
+
+        final ButtonType rtn = remoteAlert.getResult();
+        if (rtn == ButtonType.OK) {
+            LoginSceneController.stage.setScene(new LoginScene(new Group(),LoginSceneController.stage));
+        }
+
     }
 
     /**

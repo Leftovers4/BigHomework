@@ -63,7 +63,7 @@ public class WebmanagerComController {
             hotelBLService = new HotelBlServiceImpl();
             userBLService = new UserBlServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
         currentBtn = hotelManageBtn;

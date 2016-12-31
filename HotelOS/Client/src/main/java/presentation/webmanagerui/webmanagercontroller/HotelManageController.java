@@ -69,12 +69,14 @@ public class HotelManageController {
 
         try {
             hotelBlService = new HotelBlServiceImpl();
+
+            initialData();
+            initialTable();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initialData();
-        initialTable();
+
     }
 
 
@@ -125,7 +127,7 @@ public class HotelManageController {
         try {
             list = FXCollections.observableArrayList(hotelBlService.viewFullHotelList());
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return list;
     }
@@ -210,7 +212,7 @@ public class HotelManageController {
                             pane.getChildren().add(new HotelManagePane(pane));
                         }
                     } catch (RemoteException e) {
-                        e.printStackTrace();
+                        alertController.showNetConnectAlert();
                     }
                 }
             });
@@ -276,7 +278,7 @@ public class HotelManageController {
                     new HotelManagePane(pane);
                 }
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
         } else {
             alertController.showInputWrongAlert("输入信息不完整", "错误提示");

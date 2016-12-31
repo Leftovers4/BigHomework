@@ -142,7 +142,7 @@ public class ManagePromotionPaneController {
             promotionBLService = new PromotionBlServiceImpl();
             hotelBLService = new HotelBlServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -280,7 +280,7 @@ public class ManagePromotionPaneController {
         try {
             tableView.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(ComWorkerSceneController.hotelID, promotionType)));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -305,12 +305,14 @@ public class ManagePromotionPaneController {
                 promotionVO.promotionID = ((PromotionVO) birthTable.getItems().get(0)).promotionID;
                 promotionBLService.update(promotionVO);
             }
+
+            initData(birthTable, PromotionType.BirthdayPromotion);
+            setBirthComponentsVisible(false);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initData(birthTable, PromotionType.BirthdayPromotion);
-        setBirthComponentsVisible(false);
+
     }
 
     @FXML
@@ -330,12 +332,12 @@ public class ManagePromotionPaneController {
             long promotionID = ((PromotionVO) birthTable.getItems().get(0)).promotionID;
             try {
                 promotionBLService.delete(promotionID);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-            }
 
-            initData(birthTable, PromotionType.BirthdayPromotion);
-            setBirthComponentsVisible(false);
+                initData(birthTable, PromotionType.BirthdayPromotion);
+                setBirthComponentsVisible(false);
+            } catch (RemoteException e) {
+                alertController.showNetConnectAlert();
+            }
         }
     }
 
@@ -368,7 +370,7 @@ public class ManagePromotionPaneController {
         try {
             num = hotelBLService.getHotelMinRoomNum(ComWorkerSceneController.hotelID);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return num;
     }
@@ -390,12 +392,14 @@ public class ManagePromotionPaneController {
                 promotionVO.promotionID = ((PromotionVO) roomTable.getItems().get(modifyChooseIndex)).promotionID;
                 promotionBLService.update(promotionVO);
             }
+
+            initData(roomTable, PromotionType.MultipleRoomPromotion);
+            setRoomsComponentsVisible(false);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initData(roomTable, PromotionType.MultipleRoomPromotion);
-        setRoomsComponentsVisible(false);
+
     }
 
     @FXML
@@ -447,12 +451,14 @@ public class ManagePromotionPaneController {
                 promotionVO.promotionID = ((PromotionVO) timeTable.getItems().get(modifyChooseIndex)).promotionID;
                 promotionBLService.update(promotionVO);
             }
+
+            initData(timeTable, PromotionType.SpecialTimePromotion);
+            setTimeComponentsVisible(false);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initData(timeTable, PromotionType.SpecialTimePromotion);
-        setTimeComponentsVisible(false);
+
     }
 
     @FXML
@@ -496,12 +502,14 @@ public class ManagePromotionPaneController {
 
             comDiscountField.clear();
             comNameField.clear();
+
+            initData(comTable, PromotionType.EnterprisePromotion);
+            setComComponentsVisible(false);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initData(comTable, PromotionType.EnterprisePromotion);
-        setComComponentsVisible(false);
+
     }
 
     @FXML
@@ -607,11 +615,13 @@ public class ManagePromotionPaneController {
                     long promotionID = ((PromotionVO) table.getItems().get(selectedIndex)).promotionID;
                     try {
                         promotionBLService.delete(promotionID);
+
+                        initData(table, proType);
                     } catch (RemoteException e) {
-                        e.printStackTrace();
+                        alertController.showNetConnectAlert();
                     }
 
-                    initData(table, proType);
+
                 }
             });
 

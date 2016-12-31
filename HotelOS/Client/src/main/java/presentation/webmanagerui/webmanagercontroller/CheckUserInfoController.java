@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import presentation.util.alert.AlertController;
 import util.MemberType;
 import vo.hotel.HotelVO;
 import vo.user.UserVO;
@@ -37,18 +38,24 @@ public class CheckUserInfoController {
 
     private UserBLService userBlService;
 
+    private AlertController alertController;
+
     public void launch(Pane mainPane, String userID) {
         this.mainPane = mainPane;
         this.userID = userID;
 
+        alertController = new AlertController();
+
         try {
             userBlService = new UserBlServiceImpl();
+
+            initialData();
+            initialPhoto();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initialData();
-        initialPhoto();
+
     }
 
 
@@ -76,7 +83,7 @@ public class CheckUserInfoController {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
 
@@ -120,7 +127,7 @@ public class CheckUserInfoController {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 }

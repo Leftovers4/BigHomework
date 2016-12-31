@@ -98,7 +98,7 @@ public class AddCreditPaneController {
                     }
                 }
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InstantiationException e) {

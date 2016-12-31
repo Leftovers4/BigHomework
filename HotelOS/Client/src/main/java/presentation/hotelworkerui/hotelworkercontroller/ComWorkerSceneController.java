@@ -81,11 +81,10 @@ public class ComWorkerSceneController {
         try {
             hotelBLService = new HotelBlServiceImpl();
             userBLService = new UserBlServiceImpl();
+            getAllPhoto();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
-
-        getAllPhoto();
     }
 
 
@@ -281,7 +280,7 @@ public class ComWorkerSceneController {
                 ChangePhoto.setImage(path, hotelID, hotelVO.image);
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 }

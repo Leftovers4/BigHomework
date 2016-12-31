@@ -107,7 +107,7 @@ public class UpdateOrderInfoPaneController {
         try {
             orderBLService = new OrderBlServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -174,7 +174,7 @@ public class UpdateOrderInfoPaneController {
                 try {
                     orderBLService.executeOrder(orderVO);
                 } catch (RemoteException e) {
-                    e.printStackTrace();
+                    alertController.showNetConnectAlert();
                 }
             }else{
                 //更新退房信息
@@ -184,7 +184,7 @@ public class UpdateOrderInfoPaneController {
                 try {
                     orderBLService.onlineCheckOut(orderVO);
                 } catch (RemoteException e) {
-                    e.printStackTrace();
+                    alertController.showNetConnectAlert();
                 }
             }
 
@@ -194,7 +194,7 @@ public class UpdateOrderInfoPaneController {
             try {
                 updatedOrderVo = orderBLService.searchOrderByID(orderVO.orderID);
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
             mainPane.getChildren().add(new OrderDetailPane(mainPane,isCheckIn,isFromList,updatedOrderVo));
         }else {

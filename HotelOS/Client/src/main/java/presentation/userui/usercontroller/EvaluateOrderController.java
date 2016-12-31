@@ -62,7 +62,7 @@ public class EvaluateOrderController {
             orderBlService = new OrderBlServiceImpl();
             hotelBLService = new HotelBlServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
         starGroup = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
@@ -92,7 +92,7 @@ public class EvaluateOrderController {
                 }
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -245,7 +245,7 @@ public class EvaluateOrderController {
                     System.out.println("review failed");
                 }
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
         } else {
             alertController.showInputWrongAlert("评分不可为0", "错误提示");

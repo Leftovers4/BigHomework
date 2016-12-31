@@ -108,7 +108,7 @@ public class InfoPaneController {
         try {
             userBlService = new UserBlServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -163,7 +163,7 @@ public class InfoPaneController {
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
         }
 
@@ -206,7 +206,7 @@ public class InfoPaneController {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
         return isNew;
@@ -273,7 +273,7 @@ public class InfoPaneController {
                     System.out.println("success");
                 }
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
 
             showmodule(false);

@@ -73,11 +73,13 @@ public class AddHotelController {
         try {
             hotelBlService = new HotelBlServiceImpl();
             personnelBLService = new PersonnelBLServiceImpl();
+
+            initialData();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initialData();
+
     }
 
     private void initialData() {
@@ -139,7 +141,7 @@ public class AddHotelController {
                 hoteltracingareaLabel.setText(hotelVO.tradingArea);
                 hotelstarLabel.setText(String.valueOf(hotelVO.star));
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
         } else {
             alertController.showInputWrongAlert("信息填写不完整", "错误提示");
@@ -180,7 +182,7 @@ public class AddHotelController {
                 hotelworkernameLabel.setText(personnelVO.name);
                 workerhotelLabel.setText(hotelBlService.viewBasicHotelInfo(hotelID).hotelName);
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
         } else {
             alertController.showInputWrongAlert("信息填写不完整", "错误提示");

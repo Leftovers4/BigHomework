@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import presentation.hotelworkerui.hotelworkerscene.OrderDetailPane;
+import presentation.util.alert.AlertController;
 import util.DateTimeFormat;
 import vo.hotel.HotelVO;
 import vo.order.OrderVO;
@@ -44,6 +45,8 @@ public class UserReviewPaneController {
     private ArrayList<ImageView> starLists;
     private OrderVO orderVO;
 
+    private AlertController alertController;
+
     private UserBLService userBLService;
 
     public void launch(Pane mainPane, Boolean isCheckIn, Boolean isFromList, OrderVO orderVO, ReviewVO reviewVO) {
@@ -52,15 +55,19 @@ public class UserReviewPaneController {
         this.isFromList = isFromList;
         this.orderVO = orderVO;
 
+        alertController = new AlertController();
+
         starLists = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
         initData(reviewVO);
 
         try {
             userBLService = new UserBlServiceImpl();
+
+            initPhoto();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
-        initPhoto();
+
     }
 
 
@@ -89,7 +96,7 @@ public class UserReviewPaneController {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
     }

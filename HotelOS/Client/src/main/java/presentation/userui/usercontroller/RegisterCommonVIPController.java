@@ -55,11 +55,13 @@ public class RegisterCommonVIPController {
 
         try {
             userBlService = new UserBlServiceImpl();
+
+            initialData();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initialData();
+
     }
 
     private void initialData() {
@@ -83,7 +85,7 @@ public class RegisterCommonVIPController {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -136,7 +138,7 @@ public class RegisterCommonVIPController {
                     alertController.showNullWrongAlert("信用值不足1000，无法注册会员", "注册失败");
                 }
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
 
             mainPane.getChildren().remove(0);

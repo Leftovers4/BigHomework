@@ -57,8 +57,12 @@ public class OrderListPaneController {
     private OrderBLService orderBLService;
     private HotelBLService hotelBLService;
 
+    private AlertController alertController;
+
     public void launch(Pane mainPane) {
         this.mainPane = mainPane;
+
+        alertController = new AlertController();
 
         initService();
         initBox();
@@ -71,7 +75,7 @@ public class OrderListPaneController {
             orderBLService = new OrderBlServiceImpl();
             hotelBLService = new HotelBlServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -89,7 +93,7 @@ public class OrderListPaneController {
                 nameToIdMap.put(hotelVO.hotelName, hotelVO.hotelID);
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
         addHotelBoxListener(nameToIdMap);
@@ -123,7 +127,7 @@ public class OrderListPaneController {
         try {
             list = FXCollections.observableArrayList(orderBLService.viewFullOrderList());
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return list;
     }
@@ -153,7 +157,7 @@ public class OrderListPaneController {
                                 break;
                         }
                     } catch (RemoteException e) {
-                        e.printStackTrace();
+                        alertController.showNetConnectAlert();
                     }
                 });
     }
@@ -165,7 +169,7 @@ public class OrderListPaneController {
                         if(newValue == "所有酒店")  orderTable.setItems(getOrderVoList());
                         else orderTable.setItems(FXCollections.observableArrayList(orderBLService.viewFullHotelOrderList((nameToIdMap.get(newValue)))));
                     } catch (RemoteException e) {
-                        e.printStackTrace();
+                        alertController.showNetConnectAlert();
                     }
                 }
         );
@@ -179,7 +183,7 @@ public class OrderListPaneController {
         try {
             orderVO = orderBLService.searchOrderByID(searchField.getText());
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         if(orderVO != null) list.add(orderVO);
         orderTable.setItems(list);

@@ -44,7 +44,7 @@ public class FindOrderPaneController {
                     OrderBLService orderBLService = new OrderBlServiceImpl();
                     orderVO = orderBLService.searchOrderByID(orderIDField.getText());
                 } catch (RemoteException e) {
-                    e.printStackTrace();
+                    alertController.showNetConnectAlert();
                 }
                 if(orderVO == null){
                     alertController.showNullWrongAlert("查询不到该订单,请重新输入","查询失败");

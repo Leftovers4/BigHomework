@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import presentation.util.alert.AlertController;
 import util.DateTimeFormat;
 import vo.hotel.HotelVO;
 import vo.order.OrderVO;
@@ -42,23 +43,29 @@ public class CheckMyReviewController {
     private HotelBLService hotelBLService;
     private Pane mainPane;
 
+    private AlertController alertController;
+
     private ArrayList<ImageView> star;
 
     public void launch(String orderID, Pane mainPane) {
         this.orderID = orderID;
         this.mainPane = mainPane;
 
+        alertController = new AlertController();
+
         star = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
 
         try {
             orderBlService = new OrderBlServiceImpl();
             hotelBLService = new HotelBlServiceImpl();
+
+            initialData();
+            initPhoto();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initialData();
-        initPhoto();
+
     }
 
     private void initPhoto() {
@@ -81,7 +88,7 @@ public class CheckMyReviewController {
                 }
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -97,7 +104,7 @@ public class CheckMyReviewController {
             reviewContent.setText(reviewVO.review.equals("") ? "无" : reviewVO.review);
             reviewTimeLabel.setText(reviewVO.reviewTime.format(DateTimeFormat.dateHourFormat));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 

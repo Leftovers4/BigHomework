@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
+import presentation.util.alert.AlertController;
 import vo.hotel.HotelVO;
 
 import java.io.File;
@@ -37,6 +38,8 @@ public class CheckHotelInfoController {
 
     private HotelBlServiceImpl hotelBlService;
 
+    private AlertController alertController;
+
     private ArrayList<ImageView> star;
 
     private String rating;
@@ -45,6 +48,8 @@ public class CheckHotelInfoController {
         this.mainPane = mainPane;
         this.hotelID = hotelID;
 
+        alertController = new AlertController();
+
         star = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
         for (int i = 0; i<star.size(); i++) {
             star.get(i).setVisible(false);
@@ -52,12 +57,14 @@ public class CheckHotelInfoController {
 
         try {
             hotelBlService = new HotelBlServiceImpl();
+
+            initialPhoto();
+            initialData();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initialPhoto();
-        initialData();
+
     }
 
     private void initialPhoto() {
@@ -76,7 +83,7 @@ public class CheckHotelInfoController {
                 }
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -93,7 +100,7 @@ public class CheckHotelInfoController {
             simpleIntroLabel.setText(hotelVO.description);
             hotelServiceLabel.setText(hotelVO.service);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 

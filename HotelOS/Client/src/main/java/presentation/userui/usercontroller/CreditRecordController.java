@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.userui.userscene.InfoPane;
+import presentation.util.alert.AlertController;
 import presentation.util.buttoncell.CreditTabelButtonCell;
 import util.CreditChangedCause;
 import vo.user.CreditRecordVO;
@@ -44,19 +45,25 @@ public class CreditRecordController {
 
     private UserBlServiceImpl userBlService;
 
+    private AlertController alertController;
+
 
     public void launch(Stage primaryStage, Pane mainPane, String userID) {
         this.mainPane = mainPane;
         this.stage = primaryStage;
         this.userID = userID;
 
+        alertController = new AlertController();
+
         try {
             userBlService = new UserBlServiceImpl();
+
+            initialData();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initialData();
+
     }
 
     private void initialData() {
@@ -81,7 +88,7 @@ public class CreditRecordController {
                 }
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
         creditRecordTable.setItems(getCreditRecordList());
@@ -94,7 +101,7 @@ public class CreditRecordController {
         try {
             list = FXCollections.observableArrayList(userBlService.getCreditRecordsByUsername(userID));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return list;
     }

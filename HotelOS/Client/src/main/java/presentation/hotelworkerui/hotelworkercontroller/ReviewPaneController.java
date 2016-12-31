@@ -88,7 +88,7 @@ public class ReviewPaneController {
         try {
             orderBLService = new OrderBlServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -130,7 +130,7 @@ public class ReviewPaneController {
                 star5bar.setProgress(i5);
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -181,7 +181,7 @@ public class ReviewPaneController {
         try {
             list = FXCollections.observableArrayList(orderBLService.viewHotelReviewList(hotelID));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return list;
     }
@@ -197,7 +197,7 @@ public class ReviewPaneController {
                         if(temp.equals("所有")) reviewTable.setItems(getReviewVoList());
                         else reviewTable.setItems(FXCollections.observableArrayList(orderBLService.viewHotelReviewListByRating(hotelID, Integer.parseInt(temp))));
                     }catch (RemoteException e){
-                        e.printStackTrace();
+                        alertController.showNetConnectAlert();
                     }
                 });
     }

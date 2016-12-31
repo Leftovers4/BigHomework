@@ -106,12 +106,14 @@ public class UserGenerateOrderController {
         try {
             orderBlService = new OrderBlServiceImpl();
             hotelBlService = new HotelBlServiceImpl();
+
+            initial();
+            initPhoto();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initial();
-        initPhoto();
+
     }
 
     private void initPhoto() {
@@ -133,7 +135,7 @@ public class UserGenerateOrderController {
                 }
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -181,7 +183,7 @@ public class UserGenerateOrderController {
                 peopleNum.getItems().add(i+1);
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
 
@@ -227,7 +229,7 @@ public class UserGenerateOrderController {
                 alertController.showInputWrongAlert("请先选择房间类型", "错误提示");
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -302,7 +304,7 @@ public class UserGenerateOrderController {
                         promotionLabel.setText(EnumFactory.getString(orderVO.orderPromoInfoVO.promotionType));
                     }
                 } catch (RemoteException e) {
-                    e.printStackTrace();
+                    alertController.showNetConnectAlert();
                 } catch (ClassNotFoundException e) {
                     e.printStackTrace();
                 } catch (InstantiationException e) {
@@ -448,7 +450,7 @@ public class UserGenerateOrderController {
                 System.out.println(resultMessage);
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 

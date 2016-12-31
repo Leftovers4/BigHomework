@@ -67,7 +67,7 @@ public class OrderListPaneController {
         try {
             orderBLService = new OrderBlServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -126,7 +126,7 @@ public class OrderListPaneController {
                                 break;
                         }
                     } catch (RemoteException e) {
-                        e.printStackTrace();
+                        alertController.showNetConnectAlert();
                     }
                 });
     }
@@ -136,7 +136,7 @@ public class OrderListPaneController {
         try {
             list = FXCollections.observableArrayList(orderBLService.viewFullHotelOrderList(ComWorkerSceneController.hotelID));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return list;
     }
@@ -148,7 +148,7 @@ public class OrderListPaneController {
         try {
             orderVO = orderBLService.searchOrderByID(searchField.getText());
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         if(orderVO != null) list.add(orderVO);
         orderTable.setItems(list);

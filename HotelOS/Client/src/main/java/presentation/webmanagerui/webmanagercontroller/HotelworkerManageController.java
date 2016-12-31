@@ -71,12 +71,14 @@ public class HotelworkerManageController {
         try {
             personnelBLService = new PersonnelBLServiceImpl();
             hotelBLService = new HotelBlServiceImpl();
+
+            initialData();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
         index = -1;
-        initialData();
+
     }
 
 
@@ -107,7 +109,7 @@ public class HotelworkerManageController {
         try {
             list = FXCollections.observableArrayList(personnelBLService.viewTypePersonnelList(PersonnelType.HotelWorker));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return list;
     }
@@ -174,7 +176,7 @@ public class HotelworkerManageController {
                             pane.getChildren().add(new HotelworkerManagePane(stage, pane));
                         }
                     } catch (RemoteException e) {
-                        e.printStackTrace();
+                        alertController.showNetConnectAlert();
                     }
                 }
             });
@@ -245,7 +247,7 @@ public class HotelworkerManageController {
                     System.out.println(resultMessage);
                 }
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
         } else {
             alertController.showInputWrongAlert("信息填写不完整", "错误提示");

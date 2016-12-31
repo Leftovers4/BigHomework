@@ -111,12 +111,12 @@ public class UserSearchHotelController {
 
         try {
             hotelBlService = new HotelBlServiceImpl();
+
+            initData();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-
-        initData();
     }
 
 
@@ -573,7 +573,7 @@ public class UserSearchHotelController {
         try {
             list = FXCollections.observableArrayList(hotelBlService.searchHotelsByConditions(userID, hotelConditionsVO));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
         return list;

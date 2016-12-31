@@ -71,7 +71,7 @@ public class ComMarketerSceneController {
         try {
             userBLService = new UserBlServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
         getAllPhoto();
@@ -227,7 +227,7 @@ public class ComMarketerSceneController {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 

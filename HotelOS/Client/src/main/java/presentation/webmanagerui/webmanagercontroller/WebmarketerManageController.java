@@ -71,11 +71,13 @@ public class WebmarketerManageController {
 
         try {
             personnelBLService = new PersonnelBLServiceImpl();
+
+            initialData();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initialData();
+
     }
 
 
@@ -98,7 +100,7 @@ public class WebmarketerManageController {
         try {
             list = FXCollections.observableArrayList(personnelBLService.viewTypePersonnelList(PersonnelType.WebMarketer));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return list;
     }
@@ -159,7 +161,7 @@ public class WebmarketerManageController {
                             mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
                         }
                     } catch (RemoteException e) {
-                        e.printStackTrace();
+                        alertController.showNetConnectAlert();
                     }
                 }
             });
@@ -219,7 +221,7 @@ public class WebmarketerManageController {
                     System.out.println(resultMessage+"==============");
                 }
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
         } else {
             alertController.showInputWrongAlert("信息填写不完整", "错误提示");
@@ -273,7 +275,7 @@ public class WebmarketerManageController {
                 workerIDLabel.setText(String.valueOf(newmarketerID));
                 workernameLabel.setText(personnelVO.name);
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
 
             fillinfoPane.setVisible(false);

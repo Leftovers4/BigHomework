@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.hotelworkerui.hotelworkerscene.ReviewPane;
 import presentation.userui.userscene.UserGenerateOrderPane;
+import presentation.util.alert.AlertController;
 import presentation.util.buttoncell.UserHotelOrderListButtonCell;
 import presentation.util.other.ToolTipShow;
 import vo.hotel.HotelVO;
@@ -66,6 +67,8 @@ public class UserHotelInfoController {
     private UserHotelOrderListButtonCell userHotelOrderListButtonCell;
     private HotelBlServiceImpl hotelBlService;
 
+    private AlertController alertController;
+
     private String rating;
 
     private ArrayList<ImageView> star;
@@ -77,10 +80,17 @@ public class UserHotelInfoController {
         this.userID = userID;
         this.hotelID = hotelID;
 
+        alertController = new AlertController();
+
         try {
             hotelBlService = new HotelBlServiceImpl();
+
+            initPhoto(hotelID);
+            initialHotelRoomTable();
+            initialOrderTable();
+            initialData();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
         star = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
@@ -88,10 +98,7 @@ public class UserHotelInfoController {
             star.get(i).setVisible(false);
         }
 
-        initPhoto(hotelID);
-        initialHotelRoomTable();
-        initialOrderTable();
-        initialData();
+
     }
 
     private void initPhoto(long hotelID) {
@@ -108,7 +115,7 @@ public class UserHotelInfoController {
                 }
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -125,7 +132,7 @@ public class UserHotelInfoController {
             simpleIntroLabel.setText(hotelVO.description);
             hotelServiceLabel.setText(hotelVO.service);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
 
@@ -167,7 +174,7 @@ public class UserHotelInfoController {
 
             list = FXCollections.observableArrayList(hotelVO.ordersByUserAndHotel);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return list;
     }
@@ -196,7 +203,7 @@ public class UserHotelInfoController {
         try {
             list = FXCollections.observableArrayList(hotelBlService.viewAllHotelRooms(hotelID));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return list;
     }

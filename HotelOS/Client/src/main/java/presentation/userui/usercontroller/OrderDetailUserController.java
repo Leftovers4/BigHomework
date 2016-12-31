@@ -76,13 +76,15 @@ public class OrderDetailUserController {
         try {
             orderBlService = new OrderBlServiceImpl();
             hotelBLService = new HotelBlServiceImpl();
+
+            initialData();
+            initPhoto();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
 
-        initialData();
-        initPhoto();
+
     }
 
     private void initPhoto() {
@@ -105,7 +107,7 @@ public class OrderDetailUserController {
                 }
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -183,7 +185,7 @@ public class OrderDetailUserController {
             colorOrderType(orderType);
 
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -210,7 +212,7 @@ public class OrderDetailUserController {
                 }
 
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             }
         }
 

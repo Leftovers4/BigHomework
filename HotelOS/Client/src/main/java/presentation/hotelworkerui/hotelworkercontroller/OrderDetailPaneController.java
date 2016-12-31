@@ -114,7 +114,7 @@ public class OrderDetailPaneController {
             OrderBLService orderBLService = new OrderBlServiceImpl();
             reviewVO = orderBLService.viewOrderReview(orderVO.orderID);
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
         if(reviewVO == null) {

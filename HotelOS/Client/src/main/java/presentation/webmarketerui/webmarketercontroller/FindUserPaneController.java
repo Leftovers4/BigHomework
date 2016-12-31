@@ -38,7 +38,7 @@ public class FindUserPaneController {
                 UserBLService userBLService = new UserBlServiceImpl();
                 userVO = userBLService.viewBasicUserInfo(userNameField.getText());
             } catch (RemoteException e) {
-                e.printStackTrace();
+                alertController.showNetConnectAlert();
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             } catch (InstantiationException e) {

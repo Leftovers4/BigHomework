@@ -73,7 +73,7 @@ public class ComUserSceneController {
             hotelBLService = new HotelBlServiceImpl();
             userBLService = new UserBlServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
         getAllHotelPhoto();
@@ -237,7 +237,7 @@ public class ComUserSceneController {
                 }
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 

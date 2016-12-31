@@ -167,12 +167,12 @@ public class InfoPaneController {
 
         try {
             hotelBLService.updateBasicHotelInfo(hotelVO);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
 
-        //将编辑的内容显示到查看信息界面
-        initData();
+            //将编辑的内容显示到查看信息界面
+            initData();
+        } catch (RemoteException e) {
+            alertController.showNetConnectAlert();
+        }
     }
 
     @FXML

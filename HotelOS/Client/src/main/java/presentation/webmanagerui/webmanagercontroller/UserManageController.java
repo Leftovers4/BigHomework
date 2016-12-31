@@ -60,11 +60,13 @@ public class UserManageController {
 
         try {
             userBlService = new UserBlServiceImpl();
+
+            initialData();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initialData();
+
     }
 
 
@@ -89,7 +91,7 @@ public class UserManageController {
         try {
             list = FXCollections.observableArrayList(userBlService.getAllUsers());
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {
@@ -203,7 +205,7 @@ public class UserManageController {
                         mainPane.getChildren().add(new UserManagePane(stage, mainPane));
                     }
                 } catch (RemoteException e) {
-                    e.printStackTrace();
+                    alertController.showNetConnectAlert();
                 }
             } else {
                 alertController.showInputWrongAlert("联系方式格式错误", "格式错误");

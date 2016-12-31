@@ -53,7 +53,7 @@ public class LoginSceneController {
     private boolean isFromLogin = true;
     private String currentUser;
 
-    private Stage stage;
+    public static Stage stage;
     public void setStage(Stage stage) {
         this.stage = stage;
 
@@ -65,7 +65,7 @@ public class LoginSceneController {
             userBlService = new UserBlServiceImpl();
             personnelBLService = new PersonnelBLServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -251,7 +251,7 @@ public class LoginSceneController {
                 }
             }
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -279,7 +279,7 @@ public class LoginSceneController {
                     loginUsername.setText(null);
                     loginPassword.setText(null);
                 } catch (RemoteException e) {
-                    e.printStackTrace();
+                    alertController.showNetConnectAlert();
                 }
             } else {
                 alertController.showInputWrongAlert("密码不一致", "错误提示");

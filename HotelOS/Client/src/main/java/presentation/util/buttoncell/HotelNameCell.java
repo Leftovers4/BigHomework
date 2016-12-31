@@ -4,6 +4,7 @@ import bl.hotelbl.HotelBLService;
 import bl.hotelbl.impl.HotelBlServiceImpl;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
+import presentation.util.alert.AlertController;
 import vo.hotel.HotelVO;
 import vo.personnel.PersonnelVO;
 
@@ -37,7 +38,8 @@ public class HotelNameCell extends TableCell<HotelVO, Boolean> {
                 setGraphic(null);
                 setText(hotelVO.hotelName);
             } catch (RemoteException e) {
-                e.printStackTrace();
+                AlertController alertController = new AlertController();
+                alertController.showNetConnectAlert();
             }
         }
     }

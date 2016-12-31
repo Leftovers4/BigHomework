@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import presentation.util.alert.AlertController;
 import presentation.util.buttoncell.HotelPhotoButtonCell;
 import presentation.util.buttoncell.RegisteredHotelListButtonCell;
 import vo.hotel.HotelVO;
@@ -37,18 +38,21 @@ public class RegisteredHotelController {
     private RegisteredHotelListButtonCell registeredHotelListButtonCell;
     private HotelBlServiceImpl hotelBlService;
 
+    private AlertController alertController;
+
     public void launch(Stage primaryStage, Pane pane, String userID) {
         this.stage = primaryStage;
         this.mainPane = pane;
         this.userID = userID;
 
+        alertController = new AlertController();
+
         try {
             hotelBlService = new HotelBlServiceImpl();
+            initialData();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
-
-        initialData();
     }
 
 
@@ -83,7 +87,7 @@ public class RegisteredHotelController {
         try {
             list = FXCollections.observableArrayList(hotelBlService.viewOrderedHotelList(userID));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return list;
     }

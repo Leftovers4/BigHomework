@@ -89,7 +89,7 @@ public class RegisterRoomPaneController {
         try {
             hotelBLService = new HotelBlServiceImpl();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
     }
 
@@ -119,7 +119,7 @@ public class RegisterRoomPaneController {
         try {
             list = FXCollections.observableArrayList(hotelBLService.viewAllHotelRooms(ComWorkerSceneController.hotelID));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return list;
     }
@@ -157,7 +157,7 @@ public class RegisterRoomPaneController {
                         try {
                             hotelBLService.addRoom(roomVO);
                         } catch (RemoteException e) {
-                            e.printStackTrace();
+                            alertController.showNetConnectAlert();
                         }
                     } else {
                         //修改客房
@@ -170,7 +170,7 @@ public class RegisterRoomPaneController {
                         try {
                             hotelBLService.updateRoomInfo(roomVO);
                         } catch (RemoteException e) {
-                            e.printStackTrace();
+                            alertController.showNetConnectAlert();
                         }
                     }
 
@@ -248,10 +248,12 @@ public class RegisterRoomPaneController {
                         RoomVO roomVO = (RoomVO) roomTable.getItems().get(selectedIndex);
                         try {
                             hotelBLService.deleteRoom(roomVO.roomID);
+
+                            initData();
                         } catch (RemoteException e) {
-                            e.printStackTrace();
+                            alertController.showNetConnectAlert();
                         }
-                        initData();
+
                     }
                 });
 

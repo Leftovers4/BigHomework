@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import presentation.util.alert.AlertController;
 import presentation.util.buttoncell.UserOrderListButtonCell;
 import util.EnumFactory;
 import util.OrderType;
@@ -40,20 +41,26 @@ public class UserOrderListController {
     private UserOrderListButtonCell userOrderListButtonCell;
     private OrderBLService orderBlService;
 
+    private AlertController alertController;
+
     public void launch(Stage primaryStage, Pane mainPane, String userID, boolean isFromNewOrder) {
         this.stage = primaryStage;
         this.mainPane = mainPane;
         this.userID = userID;
         this.isFromNewOrder = isFromNewOrder;
 
+        alertController = new AlertController();
+
         try {
             orderBlService = new OrderBlServiceImpl();
+
+            initialComBox();
+            initialOrderListData();
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
 
-        initialComBox();
-        initialOrderListData();
+
     }
 
     /**
@@ -84,7 +91,7 @@ public class UserOrderListController {
         try {
             list = FXCollections.observableArrayList(orderBlService.viewFullUserOrderList(userID));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return list;
     }
@@ -93,7 +100,7 @@ public class UserOrderListController {
         try {
             list = FXCollections.observableArrayList(orderBlService.viewTypeUserOrderList(userID, OrderType.Unexecuted));
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         return list;
     }
@@ -131,7 +138,7 @@ public class UserOrderListController {
                                 break;
                         }
                     } catch (RemoteException e) {
-                        e.printStackTrace();
+                        alertController.showNetConnectAlert();
                     }
                 }
         );
@@ -145,7 +152,7 @@ public class UserOrderListController {
         try {
             orderVO = orderBlService.searchOrderByID(searchField.getText());
         } catch (RemoteException e) {
-            e.printStackTrace();
+            alertController.showNetConnectAlert();
         }
         if(orderVO != null) list.add(orderVO);
         orderList.setItems(list);
