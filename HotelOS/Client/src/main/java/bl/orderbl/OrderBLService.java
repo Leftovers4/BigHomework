@@ -140,7 +140,7 @@ public interface OrderBLService {
      * @return the result message
      * @throws RemoteException the 连接服务器异常
      */
-    public ResultMessage reviewOrder(ReviewVO reviewVO) throws RemoteException;
+    ResultMessage reviewOrder(ReviewVO reviewVO) throws RemoteException;
 
     /**
      * View full user order list list.
@@ -149,7 +149,7 @@ public interface OrderBLService {
      * @return the list
      * @throws RemoteException 连接服务器异常
      */
-    public List<OrderVO> viewFullUserOrderList(String username) throws RemoteException;
+    List<OrderVO> viewFullUserOrderList(String username) throws RemoteException;
 
     /**
      * View type user order list list.
@@ -159,7 +159,7 @@ public interface OrderBLService {
      * @return the list
      * @throws RemoteException 连接服务器异常
      */
-    public List<OrderVO> viewTypeUserOrderList(String username, OrderType orderType) throws RemoteException;
+    List<OrderVO> viewTypeUserOrderList(String username, OrderType orderType) throws RemoteException;
 
     /**
      * Search extra order by id order vo.
@@ -168,7 +168,7 @@ public interface OrderBLService {
      * @return the order vo
      * @throws RemoteException 连接服务器异常
      */
-    public OrderVO searchExtraOrderByID(String orderID) throws RemoteException;
+    OrderVO searchExtraOrderByID(String orderID) throws RemoteException;
 
     /**
      * Gets order actual price.
