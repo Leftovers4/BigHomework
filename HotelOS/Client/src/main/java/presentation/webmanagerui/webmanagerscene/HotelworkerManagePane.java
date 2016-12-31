@@ -10,9 +10,9 @@ import java.io.IOException;
 /**
  * Created by wyj on 2016/11/29.
  */
-public class HotelworkerManagePane extends Pane {
+public class HotelWorkerManagePane extends Pane {
 
-    public HotelworkerManagePane(Stage primaryStage, Pane mainPane) {
+    public HotelWorkerManagePane(Stage primaryStage, Pane mainPane) {
         loadFxml(primaryStage, mainPane);
     }
 

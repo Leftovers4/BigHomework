@@ -12,9 +12,9 @@ import java.io.IOException;
 /**
  * Created by wyj on 2016/11/29.
  */
-public class WebmanagerComScene extends Scene {
+public class WebManagerComScene extends Scene {
 
-    public WebmanagerComScene(Parent parent, Stage primaryStage) {
+    public WebManagerComScene(Parent parent, Stage primaryStage) {
         super(parent);
         FXMLLoader fxmlLoader=new FXMLLoader(getClass().getResource("/fxml/webmanager/webmanagercommon.fxml"));
 

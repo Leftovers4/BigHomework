@@ -15,9 +15,9 @@ import presentation.util.alert.AlertController;
 import presentation.util.other.ChangePhoto;
 import presentation.util.other.LeftBarEffect;
 import presentation.webmanagerui.webmanagerscene.HotelManagePane;
-import presentation.webmanagerui.webmanagerscene.HotelworkerManagePane;
+import presentation.webmanagerui.webmanagerscene.HotelWorkerManagePane;
 import presentation.webmanagerui.webmanagerscene.UserManagePane;
-import presentation.webmanagerui.webmanagerscene.WebmarketerManagePane;
+import presentation.webmanagerui.webmanagerscene.WebMarketerManagePane;
 import vo.hotel.HotelVO;
 import vo.user.UserVO;
 
@@ -120,7 +120,7 @@ public class WebmanagerComController {
         leftBarEffect.buttonActionEffect(hotelworkerBtn, buttons);
         changeSliderPos(350);
         mainPane.getChildren().clear();
-        mainPane.getChildren().add(new HotelworkerManagePane(stage, mainPane));
+        mainPane.getChildren().add(new HotelWorkerManagePane(stage, mainPane));
     }
     @FXML
     private void webMarketerEvent() {
@@ -128,7 +128,7 @@ public class WebmanagerComController {
         leftBarEffect.buttonActionEffect(webmarketerBtn, buttons);
         changeSliderPos(395);
         mainPane.getChildren().clear();
-        mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
+        mainPane.getChildren().add(new WebMarketerManagePane(stage, mainPane));
     }
 
     /**

@@ -15,16 +15,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.util.alert.AlertController;
 import presentation.util.buttoncell.HotelNameCell;
-import presentation.util.buttoncell.HotelPhotoButtonCell;
 import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.ToolTipShow;
 import presentation.webmanagerui.webmanagerscene.CheckHotelInfoPane;
-import presentation.webmanagerui.webmanagerscene.HotelworkerManagePane;
+import presentation.webmanagerui.webmanagerscene.HotelWorkerManagePane;
 import util.PersonnelType;
 import util.ResultMessage;
 import vo.hotel.HotelVO;
@@ -173,7 +171,7 @@ public class HotelworkerManageController {
                             hotelworkerList.setDisable(false);
                             modifyhotelworkerPane.setVisible(false);
                             pane.getChildren().remove(0);
-                            pane.getChildren().add(new HotelworkerManagePane(stage, pane));
+                            pane.getChildren().add(new HotelWorkerManagePane(stage, pane));
                         }
                     } catch (RemoteException e) {
                         alertController.showNetConnectAlert();
@@ -242,7 +240,7 @@ public class HotelworkerManageController {
 
                     alertController.showUpdateSuccessAlert("修改成功！", "成功提示");
                     pane.getChildren().remove(0);
-                    pane.getChildren().add(new HotelworkerManagePane(stage, pane));
+                    pane.getChildren().add(new HotelWorkerManagePane(stage, pane));
                 } else {
                     System.out.println(resultMessage);
                 }

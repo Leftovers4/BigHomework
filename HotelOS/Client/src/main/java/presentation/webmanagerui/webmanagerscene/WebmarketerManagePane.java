@@ -10,9 +10,9 @@ import java.io.IOException;
 /**
  * Created by wyj on 2016/11/29.
  */
-public class WebmarketerManagePane extends Pane {
+public class WebMarketerManagePane extends Pane {
 
-    public WebmarketerManagePane(Stage primaryStage, Pane mainPane) {
+    public WebMarketerManagePane(Stage primaryStage, Pane mainPane) {
         loadFxml(primaryStage, mainPane);
     }
 

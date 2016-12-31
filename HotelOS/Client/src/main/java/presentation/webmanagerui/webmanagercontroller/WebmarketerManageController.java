@@ -17,7 +17,7 @@ import javafx.util.Callback;
 import presentation.util.alert.AlertController;
 import presentation.util.other.DisableColumnChangeListener;
 import presentation.util.other.ToolTipShow;
-import presentation.webmanagerui.webmanagerscene.WebmarketerManagePane;
+import presentation.webmanagerui.webmanagerscene.WebMarketerManagePane;
 import util.PersonnelType;
 import util.ResultMessage;
 import vo.hotel.HotelVO;
@@ -158,7 +158,7 @@ public class WebmarketerManageController {
                             System.out.println(resultMessage);
 
                             mainPane.getChildren().clear();
-                            mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
+                            mainPane.getChildren().add(new WebMarketerManagePane(stage, mainPane));
                         }
                     } catch (RemoteException e) {
                         alertController.showNetConnectAlert();
@@ -216,7 +216,7 @@ public class WebmarketerManageController {
                     webmarketerlist.setDisable(false);
                     modifywebmarketerPane.setVisible(false);
                     mainPane.getChildren().remove(0);
-                    mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
+                    mainPane.getChildren().add(new WebMarketerManagePane(stage, mainPane));
                 } else {
                     System.out.println(resultMessage+"==============");
                 }
@@ -301,7 +301,7 @@ public class WebmarketerManageController {
             webmarketerlist.setPrefHeight(472);
             webmarketerlist.setDisable(false);
             mainPane.getChildren().remove(0);
-            mainPane.getChildren().add(new WebmarketerManagePane(stage, mainPane));
+            mainPane.getChildren().add(new WebMarketerManagePane(stage, mainPane));
         }
 
     }

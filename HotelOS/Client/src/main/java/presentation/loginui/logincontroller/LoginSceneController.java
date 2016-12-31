@@ -11,16 +11,13 @@ import javafx.fxml.FXML;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import presentation.hotelworkerui.hotelworkerscene.ComWorkerScene;
 import presentation.userui.userscene.ComUserScene;
 import presentation.util.alert.AlertController;
-import presentation.webmanagerui.webmanagerscene.WebmanagerComScene;
+import presentation.webmanagerui.webmanagerscene.WebManagerComScene;
 import presentation.webmarketerui.webmarketerscene.ComMarketerScene;
 import util.PersonnelType;
 import util.ResultMessage;
@@ -239,7 +236,7 @@ public class LoginSceneController {
                                 stage.setScene(new ComMarketerScene(new Group(), stage));
                                 centerStage(stage);
                             }else {
-                                stage.setScene(new WebmanagerComScene(new Group(), stage));
+                                stage.setScene(new WebManagerComScene(new Group(), stage));
                                 centerStage(stage);
                             }
 
