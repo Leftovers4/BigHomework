@@ -16,6 +16,11 @@ import java.util.List;
  */
 public class OrderList extends ArrayList<OrderPO>{
 
+    /**
+     * Instantiates a new Order list.
+     *
+     * @param orderPOList the order po list
+     */
     public OrderList(List<OrderPO> orderPOList){
         for (int i = 0; i < orderPOList.size(); i++) {
             this.add(orderPOList.get(i));
@@ -23,6 +28,11 @@ public class OrderList extends ArrayList<OrderPO>{
         sortByTime();
     }
 
+    /**
+     * Get hotel rating double.
+     *
+     * @return the double
+     */
     public double getHotelRating(){
         double sum = 0;
 
@@ -35,6 +45,11 @@ public class OrderList extends ArrayList<OrderPO>{
         return Math.round(sum * 100) / 100;
     }
 
+    /**
+     * Filter by different hotels order list.
+     *
+     * @return the order list
+     */
     public OrderList filterByDifferentHotels(){
         OrderList res = new OrderList(new ArrayList<>());
 
@@ -55,6 +70,11 @@ public class OrderList extends ArrayList<OrderPO>{
         return res;
     }
 
+    /**
+     * Filter by has review order list.
+     *
+     * @return the order list
+     */
     public OrderList filterByHasReview(){
         OrderList res = new OrderList(new ArrayList<>());
 
@@ -67,6 +87,12 @@ public class OrderList extends ArrayList<OrderPO>{
         return res;
     }
 
+    /**
+     * Filter by rating order list.
+     *
+     * @param rating the rating
+     * @return the order list
+     */
     public OrderList filterByRating(int rating){
         OrderList res = new OrderList(new ArrayList<>());
 
@@ -79,6 +105,12 @@ public class OrderList extends ArrayList<OrderPO>{
         return res;
     }
 
+    /**
+     * Filter by room type order list.
+     *
+     * @param roomType the room type
+     * @return the order list
+     */
     public OrderList filterByRoomType(RoomType roomType){
         OrderList res = new OrderList(new ArrayList<>());
 
@@ -91,6 +123,11 @@ public class OrderList extends ArrayList<OrderPO>{
         return res;
     }
 
+    /**
+     * Filter by is not overdue order list.
+     *
+     * @return the order list
+     */
     public OrderList filterByIsNotOverdue(){
         OrderList res = new OrderList(new ArrayList<>());
 
@@ -103,12 +140,22 @@ public class OrderList extends ArrayList<OrderPO>{
         return res;
     }
 
+    /**
+     * Fill timeline.
+     *
+     * @param timeline the timeline
+     */
     public void fillTimeline(Timeline timeline){
         for (int i = 0; i < this.size(); i++) {
             timeline.addPeriod(new Order(this.get(i)).getOrderedPeriod(), this.get(i).getRoomAmount());
         }
     }
 
+    /**
+     * Sort by time order list.
+     *
+     * @return the order list
+     */
     public OrderList sortByTime(){
         int num = this.size();
 

@@ -23,9 +23,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by kevin on 2016/11/6.
- */
 public class OrderBlServiceImpl implements OrderBLService {
 
     OrderDataService orderDAO;

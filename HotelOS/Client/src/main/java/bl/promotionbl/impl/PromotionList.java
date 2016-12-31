@@ -13,12 +13,28 @@ import java.util.List;
  */
 public class PromotionList extends ArrayList<PromotionPO>{
 
+    /**
+     * Instantiates a new Promotion list.
+     *
+     * @param promotionPOList the promotion po list
+     */
     public PromotionList(List<PromotionPO> promotionPOList){
         for (int i = 0; i < promotionPOList.size(); i++) {
             this.add(promotionPOList.get(i));
         }
     }
 
+    /**
+     * Gets lowest price.
+     *
+     * @param orderVO the order vo
+     * @return the lowest price
+     * @throws ClassNotFoundException    the class not found exception
+     * @throws InvocationTargetException the invocation target exception
+     * @throws InstantiationException    the instantiation exception
+     * @throws IllegalAccessException    the illegal access exception
+     * @throws RemoteException           the remote exception
+     */
     public double getLowestPrice(OrderVO orderVO) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, RemoteException {
         double res = orderVO.orderPriceVO.originPrice;
 
@@ -43,6 +59,12 @@ public class PromotionList extends ArrayList<PromotionPO>{
         return res;
     }
 
+    /**
+     * Hotel co enterprise exists boolean.
+     *
+     * @param enterprises the enterprises
+     * @return the boolean
+     */
     public boolean hotelCoEnterpriseExists(List<String> enterprises){
         boolean res = false;
 

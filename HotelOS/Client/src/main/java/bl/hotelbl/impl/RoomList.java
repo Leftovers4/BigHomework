@@ -11,12 +11,22 @@ import java.util.List;
  */
 public class RoomList extends ArrayList<RoomPO> {
 
+    /**
+     * Instantiates a new Room list.
+     *
+     * @param roomPOList the room po list
+     */
     public RoomList(List<RoomPO> roomPOList){
         for (int i = 0; i < roomPOList.size(); i++) {
             this.add(roomPOList.get(i));
         }
     }
 
+    /**
+     * Get offline check in room amount int.
+     *
+     * @return the int
+     */
     public int getOfflineCheckInRoomAmount(){
         int res = 0;
 
@@ -27,6 +37,11 @@ public class RoomList extends ArrayList<RoomPO> {
         return res;
     }
 
+    /**
+     * Get hotel price double.
+     *
+     * @return the double
+     */
     public double getHotelPrice(){
         //酒店没有房间的情况
         if (this.size() == 0)
@@ -44,6 +59,12 @@ public class RoomList extends ArrayList<RoomPO> {
         return res;
     }
 
+    /**
+     * Filter by room type room po.
+     *
+     * @param roomType the room type
+     * @return the room po
+     */
     public RoomPO filterByRoomType(RoomType roomType){
         for (int i = 0; i < this.size(); i++) {
             if (this.get(i).getRoomType().equals(roomType)){
@@ -54,6 +75,11 @@ public class RoomList extends ArrayList<RoomPO> {
         return null;
     }
 
+    /**
+     * Get hotel min room num int.
+     *
+     * @return the int
+     */
     public int getHotelMinRoomNum(){
         //表为空的情况
         if (this.isEmpty())

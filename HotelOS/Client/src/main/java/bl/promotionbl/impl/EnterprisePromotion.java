@@ -16,6 +16,11 @@ public class EnterprisePromotion implements Sale{
 
     private PromotionPO promotionPO;
 
+    /**
+     * Instantiates a new Enterprise promotion.
+     *
+     * @param promotionPO the promotion po
+     */
     public EnterprisePromotion(PromotionPO promotionPO){
         this.promotionPO = promotionPO;
     }
@@ -33,6 +38,12 @@ public class EnterprisePromotion implements Sale{
         return price;
     }
 
+    /**
+     * Hotel co enterprise exists boolean.
+     *
+     * @param enterprise the enterprise
+     * @return the boolean
+     */
     public boolean hotelCoEnterpriseExists(String enterprise){
         boolean res = false;
 

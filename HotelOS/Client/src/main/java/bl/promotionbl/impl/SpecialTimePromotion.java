@@ -16,6 +16,11 @@ public class SpecialTimePromotion implements Sale{
 
     private double discount;
 
+    /**
+     * Instantiates a new Special time promotion.
+     *
+     * @param promotionPO the promotion po
+     */
     public SpecialTimePromotion(PromotionPO promotionPO) {
         this.beginTime = promotionPO.getPromotionTimePO().getBeginTime();
         this.endTime = promotionPO.getPromotionTimePO().getEndTime();

@@ -18,6 +18,15 @@ public class Context{
 
     private Level level;
 
+    /**
+     * Instantiates a new Context.
+     *
+     * @param promotionPO the promotion po
+     * @throws ClassNotFoundException    the class not found exception
+     * @throws IllegalAccessException    the illegal access exception
+     * @throws InstantiationException    the instantiation exception
+     * @throws InvocationTargetException the invocation target exception
+     */
     public Context(PromotionPO promotionPO) throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException {
         super();
         String promotionName = promotionPO.getPromotionType().toString();
@@ -34,10 +43,27 @@ public class Context{
         }
     }
 
+    /**
+     * Gets actual price.
+     *
+     * @param orderVO the order vo
+     * @return the actual price
+     * @throws RemoteException           the remote exception
+     * @throws ClassNotFoundException    the class not found exception
+     * @throws InvocationTargetException the invocation target exception
+     * @throws InstantiationException    the instantiation exception
+     * @throws IllegalAccessException    the illegal access exception
+     */
     public double getActualPrice(OrderVO orderVO) throws RemoteException, ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
         return sale.getActualPrice(orderVO);
     }
 
+    /**
+     * Get level int.
+     *
+     * @param credit the credit
+     * @return the int
+     */
     public int getLevel(double credit){
         return level.getLevel(credit);
     }

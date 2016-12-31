@@ -14,6 +14,11 @@ public class Timeline{
 
     private ArrayList<Integer> timelineRoomNums;
 
+    /**
+     * Instantiates a new Timeline.
+     *
+     * @param roomTotal the room total
+     */
     public Timeline(int roomTotal){
         //初始化roomTotal
         this.roomTotal = roomTotal;
@@ -28,10 +33,23 @@ public class Timeline{
         timelineRoomNums.add(roomTotal);
     }
 
+    /**
+     * Add period.
+     *
+     * @param period the period
+     * @param amount the amount
+     */
     public void addPeriod(LocalDateTime[] period, int amount){
         addPeriod(period[0], period[1], amount);
     }
 
+    /**
+     * Add period.
+     *
+     * @param beginTime the begin time
+     * @param endTime   the end time
+     * @param amount    the amount
+     */
     public void addPeriod(LocalDateTime beginTime, LocalDateTime endTime, int amount){
         for (int i = addTime(beginTime, true); i <= addTime(endTime, false); i++) {
             timelineRoomNums.set(i, timelineRoomNums.get(i) - amount);
@@ -53,6 +71,13 @@ public class Timeline{
         return -1;
     }
 
+    /**
+     * Get bookable room amount int.
+     *
+     * @param beginTime the begin time
+     * @param endTime   the end time
+     * @return the int
+     */
     public int getBookableRoomAmount(LocalDateTime beginTime, LocalDateTime endTime){
         int res = roomTotal;
 

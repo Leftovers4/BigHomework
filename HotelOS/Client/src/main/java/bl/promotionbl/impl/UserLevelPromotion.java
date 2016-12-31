@@ -21,6 +21,11 @@ public class UserLevelPromotion implements Sale, Level{
 
     private double[] discounts;
 
+    /**
+     * Instantiates a new User level promotion.
+     *
+     * @param promotionPO the promotion po
+     */
     public UserLevelPromotion(PromotionPO promotionPO) {
         //初始化creditConditions
         creditConditions = new double[Const.MaxMemberLevel + 2];

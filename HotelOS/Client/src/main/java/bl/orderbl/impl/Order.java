@@ -14,18 +14,39 @@ public class Order{
 
     private OrderPO orderPO;
 
+    /**
+     * Instantiates a new Order.
+     *
+     * @param orderPO the order po
+     */
     public Order(OrderPO orderPO){
         this.orderPO = orderPO;
     }
 
+    /**
+     * Has review boolean.
+     *
+     * @return the boolean
+     */
     public boolean hasReview(){
         return orderPO.getReviewPO().getReviewTime() != null;
     }
 
+    /**
+     * Is late cancel boolean.
+     *
+     * @param cancelTime the cancel time
+     * @return the boolean
+     */
     public boolean isLateCancel(LocalDateTime cancelTime){
         return cancelTime.plusHours(6).isAfter(orderPO.getOrderTimePO().getLastExecuteTime());
     }
 
+    /**
+     * Get ordered period local date time [ ].
+     *
+     * @return the local date time [ ]
+     */
     public LocalDateTime[] getOrderedPeriod(){
         LocalDateTime[] res = new LocalDateTime[2];
 
@@ -35,6 +56,11 @@ public class Order{
         return res;
     }
 
+    /**
+     * Is overdue boolean.
+     *
+     * @return the boolean
+     */
     public boolean isOverdue(){
         boolean case1;
         boolean case2;

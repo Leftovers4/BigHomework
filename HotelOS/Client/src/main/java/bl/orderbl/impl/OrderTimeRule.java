@@ -8,6 +8,12 @@ import java.time.LocalDateTime;
  */
 public class OrderTimeRule {
 
+    /**
+     * Get expected check in time local date time.
+     *
+     * @param expectedCheckInDate the expected check in date
+     * @return the local date time
+     */
     public static LocalDateTime getExpectedCheckInTime(LocalDate expectedCheckInDate){
         LocalDateTime now = LocalDateTime.now();
 
@@ -18,14 +24,32 @@ public class OrderTimeRule {
         }
     }
 
+    /**
+     * Get expected leave time local date time.
+     *
+     * @param expectedLeaveDate the expected leave date
+     * @return the local date time
+     */
     public static LocalDateTime getExpectedLeaveTime(LocalDate expectedLeaveDate){
         return expectedLeaveDate.atTime(12, 0, 0);
     }
 
+    /**
+     * Get last execute time local date time.
+     *
+     * @param expectedCheckInTime the expected check in time
+     * @return the local date time
+     */
     public static LocalDateTime getLastExecuteTime(LocalDateTime expectedCheckInTime){
         return expectedCheckInTime.plusHours(6);
     }
 
+    /**
+     * Get offline leave time local date time.
+     *
+     * @param offlineCheckInTime the offline check in time
+     * @return the local date time
+     */
     public static LocalDateTime getOfflineLeaveTime(LocalDateTime offlineCheckInTime){
         if(offlineCheckInTime.isAfter(offlineCheckInTime.withHour(0).withMinute(0).withSecond(0)) && offlineCheckInTime.isBefore(offlineCheckInTime.withHour(12).withMinute(0).withSecond(0))){
             return offlineCheckInTime.withHour(12).withMinute(0).withSecond(0);

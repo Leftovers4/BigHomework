@@ -17,6 +17,11 @@ public class BirthdayPromotion implements Sale{
 
     private double discount;
 
+    /**
+     * Instantiates a new Birthday promotion.
+     *
+     * @param promotionPO the promotion po
+     */
     public BirthdayPromotion(PromotionPO promotionPO) {
         this.discount = promotionPO.getDiscount();
     }

@@ -10,12 +10,23 @@ import java.util.List;
  */
 public class HotelVOList extends ArrayList<HotelVO>{
 
+    /**
+     * Instantiates a new Hotel vo list.
+     *
+     * @param hotelVOList the hotel vo list
+     */
     public HotelVOList(List<HotelVO> hotelVOList){
         for (int i = 0; i < hotelVOList.size(); i++) {
             this.add(hotelVOList.get(i));
         }
     }
 
+    /**
+     * Sort.
+     *
+     * @param key  the key
+     * @param mode the mode
+     */
     public void sort(String key, int mode){
         int hotelVONum = this.size();
 

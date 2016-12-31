@@ -16,6 +16,12 @@ import java.util.ArrayList;
  */
 public class PromotionPOCreator {
 
+    /**
+     * Create promotion po.
+     *
+     * @param promotionVO the promotion vo
+     * @return the promotion po
+     */
     public PromotionPO create(PromotionVO promotionVO){
         PromotionPO res = new PromotionPO();
 

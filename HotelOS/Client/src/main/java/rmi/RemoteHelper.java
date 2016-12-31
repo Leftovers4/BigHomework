@@ -47,8 +47,10 @@ public class RemoteHelper {
             System.out.println("Link to server!");
         } catch (NotBoundException e) {
             e.printStackTrace();
+            throw new RemoteException();
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            throw new RemoteException();
         }
         return hotelDAO;
     }
@@ -59,8 +61,10 @@ public class RemoteHelper {
             System.out.println("Link to server!");
         } catch (NotBoundException e) {
             e.printStackTrace();
+            throw new RemoteException();
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            throw new RemoteException();
         }
         return orderDAO;
     }
@@ -71,8 +75,10 @@ public class RemoteHelper {
             System.out.println("Link to server!");
         } catch (NotBoundException e) {
             e.printStackTrace();
+            throw new RemoteException();
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            throw new RemoteException();
         }
         return personnelDAO;
     }
@@ -83,8 +89,10 @@ public class RemoteHelper {
             System.out.println("Link to server!");
         } catch (NotBoundException e) {
             e.printStackTrace();
+            throw new RemoteException();
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            throw new RemoteException();
         }
         return promotionDAO;
     }
@@ -95,8 +103,10 @@ public class RemoteHelper {
             System.out.println("Link to server!");
         } catch (NotBoundException e) {
             e.printStackTrace();
+            throw new RemoteException();
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            throw new RemoteException();
         }
         return userDAO;
     }
