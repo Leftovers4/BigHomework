@@ -3,7 +3,7 @@ package presentation.webmanagerui.webmanagerscene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import presentation.webmanagerui.webmanagercontroller.HotelworkerManageController;
+import presentation.webmanagerui.webmanagercontroller.HotelWorkerManageController;
 
 import java.io.IOException;
 
@@ -25,7 +25,7 @@ public class HotelWorkerManagePane extends Pane {
             e.printStackTrace();
         }
 
-        HotelworkerManageController hotelworkerManageController = fxmlLoader.getController();
-        hotelworkerManageController.launch(primaryStage, mainPane);
+        HotelWorkerManageController hotelWorkerManageController = fxmlLoader.getController();
+        hotelWorkerManageController.launch(primaryStage, mainPane);
     }
 }

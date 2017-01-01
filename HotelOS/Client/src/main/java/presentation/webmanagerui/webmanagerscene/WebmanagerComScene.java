@@ -5,7 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import presentation.util.other.MyWindow;
-import presentation.webmanagerui.webmanagercontroller.WebmanagerComController;
+import presentation.webmanagerui.webmanagercontroller.WebManagerComController;
 
 import java.io.IOException;
 
@@ -25,8 +25,8 @@ public class WebManagerComScene extends Scene {
         }
 
         //配置控制器
-        WebmanagerComController webmanagerComController = fxmlLoader.getController();
-        webmanagerComController.launch(primaryStage);
+        WebManagerComController webManagerComController = fxmlLoader.getController();
+        webManagerComController.launch(primaryStage);
 
         //实现窗口可拖动
         MyWindow.enableWindowDrag(this.getRoot(), primaryStage);

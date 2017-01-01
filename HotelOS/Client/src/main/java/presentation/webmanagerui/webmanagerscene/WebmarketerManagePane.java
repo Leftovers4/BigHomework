@@ -3,7 +3,7 @@ package presentation.webmanagerui.webmanagerscene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import presentation.webmanagerui.webmanagercontroller.WebmarketerManageController;
+import presentation.webmanagerui.webmanagercontroller.WebMarketerManageController;
 
 import java.io.IOException;
 
@@ -25,7 +25,7 @@ public class WebMarketerManagePane extends Pane {
             e.printStackTrace();
         }
 
-        WebmarketerManageController webmarketerManageController = fxmlLoader.getController();
-        webmarketerManageController.launch(primaryStage, mainPane);
+        WebMarketerManageController webMarketerManageController = fxmlLoader.getController();
+        webMarketerManageController.launch(primaryStage, mainPane);
     }
 }

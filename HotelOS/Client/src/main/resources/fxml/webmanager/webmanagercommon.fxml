@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.WebmanagerComController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" stylesheets="@../../css/hotelworker/hotelworkerstyle.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.webmanagercontroller.WebManagerComController">
    <children>
       <VBox fx:id="LeftArea" prefHeight="690.0" prefWidth="230.0">
          <children>
