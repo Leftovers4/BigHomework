@@ -10,11 +10,6 @@ import java.util.List;
  */
 public class PersonnelList extends ArrayList<PersonnelPO>{
 
-    /**
-     * Instantiates a new Personnel list.
-     *
-     * @param personnelPOList the personnel po list
-     */
     public PersonnelList(List<PersonnelPO> personnelPOList){
         for (int i = 0; i < personnelPOList.size(); i++) {
             this.add(personnelPOList.get(i));
@@ -22,10 +17,10 @@ public class PersonnelList extends ArrayList<PersonnelPO>{
     }
 
     /**
-     * Filter by hotel id personnel po.
+     * 根据酒店ID筛选工作人员
      *
-     * @param hotelID the hotel id
-     * @return the personnel po
+     * @param hotelID 酒店ID
+     * @return 酒店ID是hotelID的工作人员
      */
     public PersonnelPO filterByHotelID(long hotelID){
         for (int i = 0; i < this.size(); i++) {

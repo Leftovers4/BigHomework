@@ -19,7 +19,7 @@ public class Context{
     private Level level;
 
     /**
-     * Instantiates a new Context.
+     * 利用反射创建具体的促销策略
      *
      * @param promotionPO the promotion po
      * @throws ClassNotFoundException    the class not found exception
@@ -44,10 +44,10 @@ public class Context{
     }
 
     /**
-     * Gets actual price.
+     * 获取订单的实际价格
      *
-     * @param orderVO the order vo
-     * @return the actual price
+     * @param orderVO 订单信息
+     * @return 订单的实际价格
      * @throws RemoteException           the remote exception
      * @throws ClassNotFoundException    the class not found exception
      * @throws InvocationTargetException the invocation target exception
@@ -59,10 +59,10 @@ public class Context{
     }
 
     /**
-     * Get level int.
+     * 获取客户的等级
      *
-     * @param credit the credit
-     * @return the int
+     * @param credit 客户当前信用
+     * @return 客户的等级
      */
     public int getLevel(double credit){
         return level.getLevel(credit);

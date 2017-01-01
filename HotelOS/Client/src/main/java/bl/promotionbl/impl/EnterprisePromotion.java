@@ -16,11 +16,6 @@ public class EnterprisePromotion implements Sale{
 
     private PromotionPO promotionPO;
 
-    /**
-     * Instantiates a new Enterprise promotion.
-     *
-     * @param promotionPO the promotion po
-     */
     public EnterprisePromotion(PromotionPO promotionPO){
         this.promotionPO = promotionPO;
     }
@@ -39,10 +34,10 @@ public class EnterprisePromotion implements Sale{
     }
 
     /**
-     * Hotel co enterprise exists boolean.
+     * 根据给定的企业判断其是否已经是酒店的合作企业
      *
-     * @param enterprise the enterprise
-     * @return the boolean
+     * @param enterprise 企业
+     * @return true（已经是酒店的合作企业），false（不是酒店的合作企业）
      */
     public boolean hotelCoEnterpriseExists(String enterprise){
         boolean res = false;

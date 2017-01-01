@@ -9,11 +9,12 @@ import java.rmi.RemoteException;
  * Created by kevin on 2016/11/18.
  */
 public interface Sale extends Promotion{
+
     /**
-     * Gets actual price.
+     * 获取订单实际价格
      *
-     * @param orderVO the order vo
-     * @return the actual price
+     * @param orderVO 订单信息
+     * @return 实际价格
      * @throws RemoteException           the remote exception
      * @throws ClassNotFoundException    the class not found exception
      * @throws InstantiationException    the instantiation exception
@@ -21,4 +22,5 @@ public interface Sale extends Promotion{
      * @throws InvocationTargetException the invocation target exception
      */
     double getActualPrice(OrderVO orderVO) throws RemoteException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException;
+
 }

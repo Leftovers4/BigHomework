@@ -12,11 +12,6 @@ public class MultipleRoomPromotion implements Sale{
 
     private double discount;
 
-    /**
-     * Instantiates a new Multiple room promotion.
-     *
-     * @param promotionPO the promotion po
-     */
     public MultipleRoomPromotion(PromotionPO promotionPO) {
         this.leastRooms = promotionPO.getLeastRooms();
         this.discount = promotionPO.getDiscount();

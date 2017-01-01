@@ -21,7 +21,6 @@ public interface PersonnelBLService {
      * @return the result message
      * @throws RemoteException the remote exception
      */
-// 员工登录
     public ResultMessage login(long personnelID, String password) throws RemoteException;
 
     /**
@@ -30,7 +29,6 @@ public interface PersonnelBLService {
      * @param personnelID the personnel id
      * @return the result message
      */
-// 员工登出
     public ResultMessage logout(long personnelID);
 
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -41,7 +39,6 @@ public interface PersonnelBLService {
      * @return the list
      * @throws RemoteException the remote exception
      */
-// 显示员工列表
     public List<PersonnelVO> viewFullPersonnelList() throws RemoteException;
 
     /**
@@ -51,7 +48,6 @@ public interface PersonnelBLService {
      * @return the list
      * @throws RemoteException the remote exception
      */
-// 按类型显示员工列表
     public List<PersonnelVO> viewTypePersonnelList(PersonnelType personnelType) throws RemoteException;
 
     /**
@@ -61,7 +57,6 @@ public interface PersonnelBLService {
      * @return the long
      * @throws RemoteException the remote exception
      */
-// 增加员工
     public long addHotelWorker(PersonnelVO personnelVO) throws RemoteException;
 
     /**
@@ -80,7 +75,6 @@ public interface PersonnelBLService {
      * @return the result message
      * @throws RemoteException the remote exception
      */
-// 删除员工
     public ResultMessage deletePersonnel(long personnelID) throws RemoteException;
 
     /**
@@ -90,7 +84,6 @@ public interface PersonnelBLService {
      * @return the result message
      * @throws RemoteException the remote exception
      */
-// 修改员工信息
     public ResultMessage updatePersonnelInfo(PersonnelVO personnelVO) throws RemoteException;
 
     /**
@@ -100,7 +93,6 @@ public interface PersonnelBLService {
      * @return the personnel vo
      * @throws RemoteException the remote exception
      */
-// 查找员工
     public PersonnelVO searchPersonnelByID(long personnelID) throws RemoteException;
 
 }

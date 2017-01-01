@@ -16,11 +16,6 @@ import java.util.List;
  */
 public class OrderList extends ArrayList<OrderPO>{
 
-    /**
-     * Instantiates a new Order list.
-     *
-     * @param orderPOList the order po list
-     */
     public OrderList(List<OrderPO> orderPOList){
         for (int i = 0; i < orderPOList.size(); i++) {
             this.add(orderPOList.get(i));
@@ -29,9 +24,9 @@ public class OrderList extends ArrayList<OrderPO>{
     }
 
     /**
-     * Get hotel rating double.
+     * 获取酒店的平均评分
      *
-     * @return the double
+     * @return 酒店的平均评分
      */
     public double getHotelRating(){
         double sum = 0;
@@ -46,9 +41,7 @@ public class OrderList extends ArrayList<OrderPO>{
     }
 
     /**
-     * Filter by different hotels order list.
-     *
-     * @return the order list
+     * 去除掉酒店重复的订单，即列表中不能包含两个或以上的酒店相同的订单
      */
     public OrderList filterByDifferentHotels(){
         OrderList res = new OrderList(new ArrayList<>());
@@ -71,9 +64,9 @@ public class OrderList extends ArrayList<OrderPO>{
     }
 
     /**
-     * Filter by has review order list.
+     * 根据有评价筛选订单
      *
-     * @return the order list
+     * @return 有评价的订单
      */
     public OrderList filterByHasReview(){
         OrderList res = new OrderList(new ArrayList<>());
@@ -88,10 +81,10 @@ public class OrderList extends ArrayList<OrderPO>{
     }
 
     /**
-     * Filter by rating order list.
+     * 根据评分筛选订单
      *
-     * @param rating the rating
-     * @return the order list
+     * @param rating 评分
+     * @return 评分是rating的订单
      */
     public OrderList filterByRating(int rating){
         OrderList res = new OrderList(new ArrayList<>());
@@ -106,10 +99,10 @@ public class OrderList extends ArrayList<OrderPO>{
     }
 
     /**
-     * Filter by room type order list.
+     * 根据房间类型筛选订单
      *
-     * @param roomType the room type
-     * @return the order list
+     * @param roomType 房间类型
+     * @return 房间类型符合roomTyoe的订单
      */
     public OrderList filterByRoomType(RoomType roomType){
         OrderList res = new OrderList(new ArrayList<>());
@@ -124,9 +117,9 @@ public class OrderList extends ArrayList<OrderPO>{
     }
 
     /**
-     * Filter by is not overdue order list.
+     * 根据未过期筛选订单
      *
-     * @return the order list
+     * @return 未过期的订单
      */
     public OrderList filterByIsNotOverdue(){
         OrderList res = new OrderList(new ArrayList<>());
@@ -141,9 +134,9 @@ public class OrderList extends ArrayList<OrderPO>{
     }
 
     /**
-     * Fill timeline.
+     * 填充某房间类型的时间线
      *
-     * @param timeline the timeline
+     * @param timeline 某房间类型的时间线
      */
     public void fillTimeline(Timeline timeline){
         for (int i = 0; i < this.size(); i++) {
@@ -152,9 +145,7 @@ public class OrderList extends ArrayList<OrderPO>{
     }
 
     /**
-     * Sort by time order list.
-     *
-     * @return the order list
+     * 根据生成时间升序对订单排序
      */
     public OrderList sortByTime(){
         int num = this.size();

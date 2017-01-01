@@ -26,6 +26,17 @@ public class CreditRecordList extends ArrayList<CreditRecordPO> {
         sortByTime();
     }
 
+    /**
+     * 获取客户的等级
+     *
+     * @param isMember 是否为会员
+     * @return 客户的等级
+     * @throws ClassNotFoundException    the class not found exception
+     * @throws InvocationTargetException the invocation target exception
+     * @throws InstantiationException    the instantiation exception
+     * @throws IllegalAccessException    the illegal access exception
+     * @throws RemoteException           the remote exception
+     */
     public int getLevel(boolean isMember) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, RemoteException {
         List<PromotionPO> promotionPOList = RemoteHelper.getInstance().getPromotionDAO().findByHotelIDAndType(IDProducer.produceHotelIDForWP(), PromotionType.UserLevelPromotion);
 
@@ -37,6 +48,11 @@ public class CreditRecordList extends ArrayList<CreditRecordPO> {
         return new Context(promotionPOList.get(0)).getLevel(getCurrentCredit());
     }
 
+    /**
+     * 获取客户当前信用
+     *
+     * @return 客户当前信用
+     */
     public double getCurrentCredit(){
         //表为空的情况
         if (this.size() == 0)
@@ -56,6 +72,11 @@ public class CreditRecordList extends ArrayList<CreditRecordPO> {
         return res;
     }
 
+    /**
+     * 按照信用变更时间降序对信用记录排序
+     *
+     * @return 经排序的信用记录
+     */
     public CreditRecordList sortByTime(){
         int num = this.size();
 
@@ -82,10 +103,20 @@ public class CreditRecordList extends ArrayList<CreditRecordPO> {
         return this;
     }
 
+    /**
+     * 判断客户是否能下单
+     *
+     * @return true（能），false（不能）
+     */
     public boolean canAddOrder(){
         return (getCurrentCredit() >= Const.AddOrderThreshold);
     }
 
+    /**
+     * 判断客户是否能注册会员
+     *
+     * @return true（能），false（不能）
+     */
     public boolean canRegisterMember(){
         return (getCurrentCredit() >= Const.MemberRegisterThreshold);
     }

@@ -13,11 +13,6 @@ import java.util.List;
  */
 public class PromotionList extends ArrayList<PromotionPO>{
 
-    /**
-     * Instantiates a new Promotion list.
-     *
-     * @param promotionPOList the promotion po list
-     */
     public PromotionList(List<PromotionPO> promotionPOList){
         for (int i = 0; i < promotionPOList.size(); i++) {
             this.add(promotionPOList.get(i));
@@ -25,10 +20,10 @@ public class PromotionList extends ArrayList<PromotionPO>{
     }
 
     /**
-     * Gets lowest price.
+     * 获取最低价格，并记录优惠信息
      *
-     * @param orderVO the order vo
-     * @return the lowest price
+     * @param orderVO 订单信息
+     * @return 最低价格
      * @throws ClassNotFoundException    the class not found exception
      * @throws InvocationTargetException the invocation target exception
      * @throws InstantiationException    the instantiation exception
@@ -60,10 +55,10 @@ public class PromotionList extends ArrayList<PromotionPO>{
     }
 
     /**
-     * Hotel co enterprise exists boolean.
+     * 根据给定的企业判断其是否已经是酒店的合作企业
      *
-     * @param enterprises the enterprises
-     * @return the boolean
+     * @param enterprises 企业们
+     * @return true（已经是酒店的合作企业），false（不是酒店的合作企业）
      */
     public boolean hotelCoEnterpriseExists(List<String> enterprises){
         boolean res = false;
