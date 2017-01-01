@@ -22,7 +22,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * Created by Hitiger on 2016/11/20.
- * Description :
+ * Description : 订单详情界面控制器
  */
 public class OrderDetailPaneController {
 
@@ -80,6 +80,10 @@ public class OrderDetailPaneController {
         initReviewBtn(orderVO.orderType);
     }
 
+    /**
+     * 初始化标签
+     * @param orderVO
+     */
     private void initOrderLabel(OrderVO orderVO) {
         orderIDLabel.setText(orderVO.orderID);
 
@@ -107,6 +111,9 @@ public class OrderDetailPaneController {
         if(orderType != OrderType.Executed) showReviewBtn.setVisible(false);
     }
 
+    /**
+     * 查看评价
+     */
     @FXML
     private void showReview(){
         ReviewVO reviewVO = null;

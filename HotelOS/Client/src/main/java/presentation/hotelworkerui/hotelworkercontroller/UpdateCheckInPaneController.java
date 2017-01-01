@@ -9,7 +9,7 @@ import presentation.util.alert.AlertController;
 
 /**
  * Created by Hitiger on 2016/11/20.
- * Description :
+ * Description : 更新入住信息界面控制器
  */
 public class UpdateCheckInPaneController {
 

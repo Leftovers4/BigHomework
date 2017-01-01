@@ -6,7 +6,7 @@ import javafx.stage.StageStyle;
 
 /**
  * Created by Hitiger on 2016/11/25.
- * Description :
+ * Description : 确认提示框
  */
 public class ConfirmAlert extends Alert{
 

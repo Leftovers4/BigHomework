@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 /**
  * Created by Hitiger on 2016/12/11.
- * Description :
+ * Description : 自定义组合框
  */
 public class MyComboBox {
 

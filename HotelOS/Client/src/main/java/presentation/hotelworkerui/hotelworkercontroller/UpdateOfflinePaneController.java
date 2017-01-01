@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 
 /**
  * Created by Hitiger on 2016/11/23.
- * Description :
+ * Description : 更新线下入住退房信息控制器
  */
 public class UpdateOfflinePaneController {
 
@@ -69,6 +69,9 @@ public class UpdateOfflinePaneController {
         }
     }
 
+    /**
+     * 初始化房间类型组合框
+     */
     private void initBox() {
         typeToRoomVOMap = new HashMap<>();
         List<RoomVO> list= null;
@@ -104,6 +107,9 @@ public class UpdateOfflinePaneController {
         checkOutBtn.setVisible(!isCheckIn);
     }
 
+    /**
+     * 线下入住
+     */
     @FXML
     private void checkIn(){
         if(roomAmountBox.getValue() != null){
@@ -120,6 +126,10 @@ public class UpdateOfflinePaneController {
         else alertController.showInputWrongAlert("无可入住的房间","入住失败");
 
     }
+
+    /**
+     * 线下退房
+     */
     @FXML
     private void checkOut(){
         if(roomAmountBox.getValue() != null){

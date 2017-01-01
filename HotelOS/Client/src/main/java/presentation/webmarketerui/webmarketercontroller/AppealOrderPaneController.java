@@ -18,7 +18,7 @@ import java.rmi.RemoteException;
 
 /**
  * Created by Hitiger on 2016/11/28.
- * Description :
+ * Description : 订单申诉界面控制器
  */
 public class AppealOrderPaneController {
 
@@ -60,7 +60,10 @@ public class AppealOrderPaneController {
         }
     }
 
-
+    /**
+     * 初始化订单信息标签
+     * @param orderVO
+     */
     private void initLabels(OrderVO orderVO) {
         orderIdLabel.setText(orderVO.orderID);
         usernameLabel.setText(orderVO.username);
@@ -78,6 +81,9 @@ public class AppealOrderPaneController {
         }
     }
 
+    /**
+     * 撤销订单
+     */
     @FXML
     private void cancelAbnOrder(){
         if(allCreditBtn.isSelected()){

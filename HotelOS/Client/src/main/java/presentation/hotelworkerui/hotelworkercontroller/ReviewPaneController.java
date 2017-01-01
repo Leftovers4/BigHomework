@@ -29,7 +29,7 @@ import java.util.List;
 
 /**
  * Created by Hitiger on 2016/11/22.
- * Description :
+ * Description : 酒店评价界面控制器
  */
 public class ReviewPaneController {
 
@@ -92,6 +92,9 @@ public class ReviewPaneController {
         }
     }
 
+    /**
+     * 初始化评价数据
+     */
     private void initialReviewData() {
         try {
             List<ReviewVO> list = orderBLService.viewHotelReviewList(hotelID);
@@ -172,6 +175,9 @@ public class ReviewPaneController {
 
     }
 
+    /**
+     * 初始化评价列表数据
+     */
     private void initData() {
         reviewTable.setItems(getReviewVoList());
     }

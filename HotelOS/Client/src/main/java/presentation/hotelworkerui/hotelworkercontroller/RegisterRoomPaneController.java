@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
 
 /**
  * Created by Hitiger on 2016/11/20.
- * Description :
+ * Description : 录入可用客房界面控制器
  */
 public class RegisterRoomPaneController {
 

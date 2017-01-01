@@ -6,7 +6,7 @@ import javafx.stage.StageStyle;
 
 /**
  * Created by Hitiger on 2016/11/25.
- * Description :
+ * Description : 未选择提示框
  */
 public class UnselectedAlert extends Alert{
 

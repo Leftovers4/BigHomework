@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 
 /**
  * Created by Hitiger on 2016/11/28.
- * Description :
+ * Description : 信用充值界面控制器
  */
 public class AddCreditPaneController {
     @FXML
@@ -58,7 +58,10 @@ public class AddCreditPaneController {
         initPhoto(userVO);
     }
 
-
+    /**
+     * 初始化客户头像
+     * @param userVO
+     */
     private void initPhoto(UserVO userVO) {
         String newpath = "C:/Leftovers/client/hotel/userImage/";
 
@@ -84,6 +87,9 @@ public class AddCreditPaneController {
         creditLabel.setText(String.valueOf(userVO.creditVO.credit));
     }
 
+    /**
+     * 信用充值
+     */
     @FXML
     private void addCredit() {
         if(judgeInput()){

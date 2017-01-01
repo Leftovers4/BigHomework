@@ -14,7 +14,7 @@ import java.rmi.RemoteException;
 
 /**
  * Created by Hitiger on 2016/11/28.
- * Description :
+ * Description : 查找客户界面控制器
  */
 public class FindUserPaneController {
 

@@ -13,7 +13,7 @@ import vo.order.OrderVO;
 
 /**
  * Created by Hitiger on 2016/11/20.
- * Description :
+ * Description : 订单详情界面控制器
  */
 public class OrderDetailPaneController {
 

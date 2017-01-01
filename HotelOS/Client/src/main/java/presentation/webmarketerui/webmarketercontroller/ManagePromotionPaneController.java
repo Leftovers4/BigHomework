@@ -38,7 +38,7 @@ import java.util.regex.Pattern;
 
 /**
  * Created by Hitiger on 2016/11/28.
- * Description :
+ * Description : 网站营销人员制定促销策略界面控制器
  */
 public class ManagePromotionPaneController {
     //特定期间优惠
@@ -137,6 +137,9 @@ public class ManagePromotionPaneController {
         }
     }
 
+    /**
+     * 显示特定期间优惠界面
+     */
     @FXML
     private void showTimePromotion(){
         timeVBox.setVisible(true);
@@ -150,6 +153,9 @@ public class ManagePromotionPaneController {
         MySlider.moveSliderLabel(sliderPromotionLabel,36);
     }
 
+    /**
+     * 初始化特定期间列表
+     */
     private void initTimeTable() {
         proStartTimeCol.setCellValueFactory(new PropertyValueFactory<>("beginTime"));
         proEndTimeCol.setCellValueFactory(new PropertyValueFactory<>("endTime"));
@@ -184,6 +190,9 @@ public class ManagePromotionPaneController {
         endTimeDatePicker.setDayCellFactory(new CancelDateBefore(endTimeDatePicker, LocalDate.now()));
     }
 
+    /**
+     * 显示特定商圈优惠界面
+     */
     @FXML
     private void showMemberAreaPromotion(){
         memberAreaVBox.setVisible(true);
@@ -196,6 +205,9 @@ public class ManagePromotionPaneController {
         MySlider.moveSliderLabel(sliderPromotionLabel,168);
     }
 
+    /**
+     * 初始化商圈列表
+     */
     private void initAreaTable() {
         proAreaCol.setCellValueFactory(new PropertyValueFactory<>("tradingArea"));
         proAreaDiscountCol.setCellValueFactory(new PropertyValueFactory<>("traDiscount"));
@@ -221,6 +233,9 @@ public class ManagePromotionPaneController {
         }
     }
 
+    /**
+     * 显示制定会员等级界面
+     */
     @FXML
     private void showMemberPromotion(){
         memberManagePane.setVisible(true);

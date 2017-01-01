@@ -27,7 +27,7 @@ import java.util.List;
 
 /**
  * Created by Hitiger on 2016/11/18.
- * Description : 酒店主界面控制器，负责基本信息、浏览订单、录入可用客房等界面的跳转
+ * Description : 网站营销人员主界面控制器，负责信用充值、订单申诉、订单列表等界面的跳转
  */
 public class ComMarketerSceneController {
 

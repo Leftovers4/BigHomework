@@ -9,7 +9,7 @@ import presentation.util.alert.AlertController;
 
 /**
  * Created by Hitiger on 2016/11/20.
- * Description :
+ * Description : 选择线下退房方式界面控制器
  */
 public class UpdateOutPaneController {
 

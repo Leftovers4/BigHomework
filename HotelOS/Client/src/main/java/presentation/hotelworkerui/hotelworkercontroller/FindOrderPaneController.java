@@ -23,14 +23,16 @@ import java.util.regex.Pattern;
 
 /**
  * Created by Hitiger on 2016/11/21.
- * Description :
+ * Description : 查找订单界面控制器
  */
 public class FindOrderPaneController {
+
     //选择线上入住后显现的组件
     @FXML private TextField idorNameField;
     private Pane mainPane;
     private Boolean isCheckIn;
     private AlertController alertController;
+
     public void launch(Pane mainPane,Boolean isCheckIn) {
         this.mainPane = mainPane;
         this.isCheckIn = isCheckIn;

@@ -35,7 +35,7 @@ import java.util.regex.Pattern;
 
 /**
  * Created by Hitiger on 2016/11/20.
- * Description :
+ * Description : 酒店制定促销策略控制器
  */
 public class ManagePromotionPaneController {
 
@@ -146,6 +146,9 @@ public class ManagePromotionPaneController {
         }
     }
 
+    /**
+     * 显示生日优惠界面
+     */
     @FXML
     private void showBirth(){
         showVBox(birthVBox);
@@ -156,6 +159,9 @@ public class ManagePromotionPaneController {
         MySlider.moveSliderLabel(sliderPromotionLabel,36);
     }
 
+    /**
+     * 初始化生日优惠列表
+     */
     private void initBirthTable() {
         birthRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         birthDiscountCol.setCellValueFactory(new PropertyValueFactory<>("discount"));
@@ -166,6 +172,9 @@ public class ManagePromotionPaneController {
         initData(birthTable, PromotionType.BirthdayPromotion);
     }
 
+    /**
+     * 显示预订间数优惠界面
+     */
     @FXML
     private void showRoom(){
         showVBox(roomVBox);
@@ -178,6 +187,9 @@ public class ManagePromotionPaneController {
         MySlider.moveSliderLabel(sliderPromotionLabel,168);
     }
 
+    /**
+     * 初始化房间列表
+     */
     private void initRoomTable() {
         roomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         roomLeastCol.setCellValueFactory(new PropertyValueFactory<>("leastRooms"));
@@ -196,6 +208,9 @@ public class ManagePromotionPaneController {
         initData(roomTable, PromotionType.MultipleRoomPromotion);
     }
 
+    /**
+     * 显示特定期间优惠界面
+     */
     @FXML
     private void showTime(){
         showVBox(timeVBox);
@@ -206,6 +221,9 @@ public class ManagePromotionPaneController {
         MySlider.moveSliderLabel(sliderPromotionLabel,300);
     }
 
+    /**
+     * 初始化时间列表
+     */
     private void initTimeTable() {
         timeRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         timeStartCol.setCellValueFactory(new PropertyValueFactory<>("beginTime"));
@@ -242,6 +260,10 @@ public class ManagePromotionPaneController {
             endTimeDatePicker.setDayCellFactory(new CancelDateBefore(endTimeDatePicker,startTimeDatePicker.getValue()));
         });
     }
+
+    /**
+     * 显示合作企业优惠界面
+     */
     @FXML
     private void showCom(){
         showVBox(comVBox);
@@ -251,6 +273,9 @@ public class ManagePromotionPaneController {
         MySlider.moveSliderLabel(sliderPromotionLabel,432);
     }
 
+    /**
+     * 初始化企业列表
+     */
     private void initComTable() {
         comNameCol.setCellValueFactory(new PropertyValueFactory<>("comName"));
         comRoomTypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
@@ -276,6 +301,11 @@ public class ManagePromotionPaneController {
         }
     }
 
+    /**
+     * 初始化列表数据
+     * @param tableView 列表
+     * @param promotionType 优惠类型
+     */
     private void initData(TableView tableView, PromotionType promotionType) {
         try {
             tableView.setItems(FXCollections.observableArrayList(promotionBLService.viewPromotionList(ComWorkerSceneController.hotelID, promotionType)));

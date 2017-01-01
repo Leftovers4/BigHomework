@@ -8,7 +8,7 @@ import javafx.util.Duration;
 
 /**
  * Created by Hitiger on 2016/12/2.
- * Description :
+ * Description : 自定义滑块
  */
 public class MySlider {
 

@@ -22,7 +22,7 @@ import java.time.LocalDate;
 
 /**
  * Created by Hitiger on 2016/11/20.
- * Description :
+ * Description : 订单列表界面控制器
  */
 public class OrderListPaneController {
 
@@ -77,6 +77,9 @@ public class OrderListPaneController {
         addBoxListener();
     }
 
+    /**
+     * 初始化列表
+     */
     private void initTable() {
         orderVoList = getOrderVoList();
 

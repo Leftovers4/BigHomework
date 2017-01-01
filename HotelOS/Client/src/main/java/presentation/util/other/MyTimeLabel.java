@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 
 /**
  * Created by Hitiger on 2016/12/2.
- * Description :
+ * Description : 自定义时间标签，用于显示系统时间
  */
 public class MyTimeLabel {
     public static void EnableShowTime(Label label){

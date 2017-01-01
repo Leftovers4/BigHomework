@@ -25,7 +25,7 @@ import java.time.LocalTime;
 
 /**
  * Created by Hitiger on 2016/11/22.
- * Description :
+ * Description : 更新订单信息界面控制器
  */
 public class UpdateOrderInfoPaneController {
     //标题

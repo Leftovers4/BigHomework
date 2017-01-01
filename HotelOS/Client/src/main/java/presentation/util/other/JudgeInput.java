@@ -1,17 +1,15 @@
 package presentation.util.other;
 
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import presentation.util.alert.AlertController;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Created by Hitiger on 2016/12/13.
- * Description :
+ * Description : 判断输入
  */
 public class JudgeInput {
 

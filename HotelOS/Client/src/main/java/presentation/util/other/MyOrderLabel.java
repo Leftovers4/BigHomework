@@ -5,7 +5,7 @@ import util.OrderType;
 
 /**
  * Created by Hitiger on 2016/12/17.
- * Description :
+ * Description : 自定义订单标签
  */
 public class MyOrderLabel {
 

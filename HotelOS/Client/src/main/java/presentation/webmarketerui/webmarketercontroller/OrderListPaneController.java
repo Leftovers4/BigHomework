@@ -27,7 +27,7 @@ import java.util.List;
 
 /**
  * Created by Hitiger on 2016/11/28.
- * Description :
+ * Description : 订单列表界面控制器
  */
 public class OrderListPaneController {
 
@@ -79,6 +79,9 @@ public class OrderListPaneController {
         }
     }
 
+    /**
+     * 初始化订单组合框
+     */
     private void initBox() {
         orderTypeBox.getItems().addAll("所有订单", "未执行订单", "已执行订单", "异常订单", "撤销订单");
         addOrderBoxListener();

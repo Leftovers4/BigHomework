@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 
 /**
  * Created by Hitiger on 2016/11/28.
- * Description :
+ * Description : 查询订单界面控制器
  */
 public class FindOrderPaneController {
 

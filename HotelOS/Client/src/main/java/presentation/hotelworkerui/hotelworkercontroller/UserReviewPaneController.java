@@ -24,10 +24,11 @@ import java.util.Arrays;
 
 /**
  * Created by Hitiger on 2016/12/6.
- * Description :
+ * Description : 查看客户评价界面控制器
  */
 public class UserReviewPaneController {
 
+    //评分
     @FXML private ImageView star1;
     @FXML private ImageView star2;
     @FXML private ImageView star3;
