@@ -17,6 +17,7 @@ import vo.user.CreditRecordVO;
 
 /**
  * Created by wyj on 2016/12/11.
+ * description: 客户在特定酒店的订单列表中嵌入按钮
  */
 public class UserHotelOrderListButtonCell extends TableCell<OrderVO, Boolean> {
 

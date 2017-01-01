@@ -12,6 +12,7 @@ import java.rmi.RemoteException;
 
 /**
  * Created by wyj on 2016/12/19.
+ * description: 网站管理人员管理酒店工作人员时，列表里加上工作人员所属酒店信息
  */
 public class HotelNameCell extends TableCell<HotelVO, Boolean> {
 

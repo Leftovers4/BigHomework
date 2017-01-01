@@ -14,6 +14,7 @@ import java.rmi.RemoteException;
 
 /**
  * Created by wyj on 2016/12/18.
+ * description: 酒店列表加上酒店图片
  */
 public class HotelPhotoButtonCell extends TableCell<HotelVO, Boolean> {
 

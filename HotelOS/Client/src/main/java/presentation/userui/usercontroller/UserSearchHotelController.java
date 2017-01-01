@@ -33,6 +33,7 @@ import java.util.Iterator;
 
 /**
  * Created by wyj on 2016/11/19.
+ * description: 客户搜索酒店
  */
 public class UserSearchHotelController {
 
@@ -126,7 +127,7 @@ public class UserSearchHotelController {
             cityComBox.getItems().add(cityList.next());
         }
 
-
+        //城市选框
         cityComBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
@@ -134,6 +135,7 @@ public class UserSearchHotelController {
             }
         });
 
+        //商圈选框
         tradingAreaCombox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
@@ -155,6 +157,10 @@ public class UserSearchHotelController {
         });
     }
 
+    /**
+     * 初始化商圈选框
+     * @param city
+     */
     private void initeBusinessAreaComBox(String city) {
 
         tradingAreaCombox.getItems().clear();
@@ -165,6 +171,9 @@ public class UserSearchHotelController {
     }
 
 
+    /**
+     * 显示更多筛选
+     */
     @FXML
     private void showMoreChoice() {
         moreInfoChoice.setVisible(true);
@@ -177,6 +186,9 @@ public class UserSearchHotelController {
         downMoreInfo.setDisable(true);
     }
 
+    /**
+     * 隐藏更多筛选
+     */
     @FXML
     private void hideMoreChoice() {
         moreInfoChoice.setVisible(false);
@@ -562,9 +574,6 @@ public class UserSearchHotelController {
             hotelList.minHeightProperty().bind(hotelList.prefHeightProperty());
             hotelList.maxHeightProperty().bind(hotelList.prefHeightProperty());
 
-
-
-//        }
     }
 
 
@@ -621,6 +630,10 @@ public class UserSearchHotelController {
     }
 
 
+    /**
+     * 判断是否有筛选条件
+     * @return
+     */
     private boolean chooseselected() {
         boolean single = singleRoomCB.isSelected();
         boolean couple = coupleRoomCB.isSelected();

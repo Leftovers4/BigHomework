@@ -32,6 +32,7 @@ import java.util.Iterator;
 
 /**
  * Created by wyj on 2016/11/29.
+ * description: 酒店管理
  */
 public class HotelManageController {
 
@@ -176,6 +177,7 @@ public class HotelManageController {
             checkDetailBtn.getStyleClass().add("TableInfoButtonCell");
 
 
+            //编辑酒店信息按钮
             editBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
                 chooseModifyIndex = selectedIndex;
@@ -192,6 +194,7 @@ public class HotelManageController {
             });
 
 
+            //删除酒店按钮
             deleteBtn.setOnAction(event -> {
 
                 boolean confirm = alertController.showConfirmDeleteAlert("确认删除？", "删除确认");
@@ -217,6 +220,7 @@ public class HotelManageController {
                 }
             });
 
+            //查看酒店详细信息按钮
             checkDetailBtn.setOnAction(event -> {
                 selectedIndex = getTableRow().getIndex();
 

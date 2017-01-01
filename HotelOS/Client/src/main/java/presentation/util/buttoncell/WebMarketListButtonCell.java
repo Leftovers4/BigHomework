@@ -17,7 +17,7 @@ import vo.order.OrderVO;
 
 /**
  * Created by Hitiger on 2016/11/30.
- * Description :
+ * Description : 网站营销人员订单列表按钮
  */
 public class WebMarketListButtonCell extends TableCell<OrderVO, Boolean> {
 

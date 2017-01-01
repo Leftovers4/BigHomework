@@ -67,10 +67,8 @@ public class LoginSceneController {
     }
 
     /**
-     * 登录、注册的切换
-     * 滑块slider特效
-     * @param
-     * @param
+     * 登录、注册切换
+     * @param isfromtogintoregister
      */
     private void changeLoginAndRegister(boolean isfromtogintoregister) {
         if (isfromtogintoregister) {
@@ -301,6 +299,10 @@ public class LoginSceneController {
 
     }
 
+    /**
+     * 窗口居中
+     * @param newStage
+     */
     private void centerStage(Stage newStage){
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         newStage.setX((primScreenBounds.getWidth() - newStage.getWidth()) / 2);

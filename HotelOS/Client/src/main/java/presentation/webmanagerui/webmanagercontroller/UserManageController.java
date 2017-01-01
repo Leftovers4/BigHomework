@@ -29,6 +29,7 @@ import java.rmi.RemoteException;
 
 /**
  * Created by wyj on 2016/11/29.
+ * description: 客户管理
  */
 public class UserManageController {
 

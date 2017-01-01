@@ -17,6 +17,7 @@ import java.util.Arrays;
 
 /**
  * Created by wyj on 2016/12/12.
+ * description: 网站管理人员查看酒店详细信息
  */
 public class CheckHotelInfoController {
 

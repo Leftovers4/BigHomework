@@ -31,6 +31,7 @@ import java.util.Arrays;
 
 /**
  * Created by wyj on 2016/12/11.
+ * description: 客户查看酒店详情
  */
 public class UserHotelInfoController {
 
@@ -147,6 +148,9 @@ public class UserHotelInfoController {
         }
     }
 
+    /**
+     * 初始化订单列表
+     */
     private void initialOrderTable() {
 
         System.out.println(hotelID);
@@ -183,6 +187,9 @@ public class UserHotelInfoController {
     }
 
 
+    /**
+     * 初始化酒店房间列表
+     */
     private void initialHotelRoomTable() {
 
         roomtypeCol.setCellValueFactory(new PropertyValueFactory<>("roomType"));
@@ -214,6 +221,7 @@ public class UserHotelInfoController {
 
     /**
      * Created by wyj on 2016/12/14.
+     * description: 内部类，tableview的内嵌button
      */
     private class UserHotelRoomButtonCell extends TableCell<HotelVO, Boolean> {
 

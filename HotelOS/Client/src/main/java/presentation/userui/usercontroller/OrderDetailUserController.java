@@ -190,11 +190,17 @@ public class OrderDetailUserController {
     }
 
 
+    /**
+     * 评价订单
+     */
     @FXML
     private void evaluateOrder() {
         mainPane.getChildren().add(new EvaluateOrderPane(stage, orderID, userID, mainPane));
     }
 
+    /**
+     * 撤销订单
+     */
     @FXML
     private void cancelOrderEvent() {
         boolean confirm = alertController.showConfirmDeleteAlert("确认撤销订单？这可能会扣除你的信用值", "撤销提示");

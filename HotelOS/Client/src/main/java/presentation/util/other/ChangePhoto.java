@@ -49,6 +49,12 @@ public class ChangePhoto {
     }
 
 
+    /**
+     * 将图片写在本地特定路径
+     * @param dirPath
+     * @param id
+     * @param imageBytes
+     */
     public static void setImage(String dirPath, Object id, byte[] imageBytes) {
 
         // 若文件夹不存在，则创建

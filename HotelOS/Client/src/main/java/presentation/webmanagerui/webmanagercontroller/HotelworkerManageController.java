@@ -32,6 +32,7 @@ import java.rmi.RemoteException;
 
 /**
  * Created by wyj on 2016/11/29.
+ * description: 酒店工作人员管理
  */
 public class HotelworkerManageController {
 

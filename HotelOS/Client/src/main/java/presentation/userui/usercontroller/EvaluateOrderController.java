@@ -97,6 +97,10 @@ public class EvaluateOrderController {
     }
 
 
+    /**
+     * 评分星星效果
+     * @param star
+     */
     private void starHover(ImageView star) {
         isClicked = false;
         Image image = new Image("/img/user/yellowStar.png");

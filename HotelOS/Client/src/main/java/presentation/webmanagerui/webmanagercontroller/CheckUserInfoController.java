@@ -20,6 +20,7 @@ import static presentation.hotelworkerui.hotelworkercontroller.ComWorkerSceneCon
 
 /**
  * Created by wyj on 2016/12/12.
+ * description: 网站管理人员查看客户信息
  */
 public class CheckUserInfoController {
 

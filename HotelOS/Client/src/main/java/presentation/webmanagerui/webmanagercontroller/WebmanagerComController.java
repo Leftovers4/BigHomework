@@ -30,6 +30,7 @@ import static presentation.util.other.MyTimeLabel.EnableShowTime;
 
 /**
  * Created by wyj on 2016/11/29.
+ * description: 网站管理人员主界面，负责跳转
  */
 public class WebmanagerComController {
 

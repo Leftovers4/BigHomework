@@ -27,6 +27,7 @@ import java.util.Iterator;
 
 /**
  * Created by wyj on 2016/11/30.
+ * description: 添加酒店
  */
 public class AddHotelController {
 

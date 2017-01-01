@@ -20,6 +20,7 @@ import java.rmi.RemoteException;
 
 /**
  * Created by wyj on 2016/11/22.
+ * description: 客户查看订单列表
  */
 public class UserOrderListController {
 
