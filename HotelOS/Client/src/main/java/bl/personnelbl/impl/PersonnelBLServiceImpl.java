@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by kevin on 2016/11/6.
  */
-public class PersonnelBLServiceImpl implements PersonnelBLService{
+public class PersonnelBLServiceImpl implements PersonnelBLService {
 
     PersonnelDataService personnelDAO;
 
@@ -95,6 +95,10 @@ public class PersonnelBLServiceImpl implements PersonnelBLService{
     @Override
     public ResultMessage updatePersonnelInfo(PersonnelVO personnelVO) throws RemoteException {
         PersonnelPO personnelPO = personnelDAO.findByPersonnelID(personnelVO.personnelID);
+
+        //存在找不到对应的工作人员的情况
+        if (personnelPO == null)
+            return ResultMessage.DataNotExisted;
 
         personnelPO.setPassword(personnelVO.password);
         personnelPO.setName(personnelVO.name);

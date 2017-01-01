@@ -25,11 +25,11 @@ public interface OrderBLService {
     OrderVO searchOrderByID(String orderID) throws RemoteException;
 
     /**
-     * Search order by hotel id and username list.
+     * 根据酒店ID和用户名搜索订单，一般为获取某用户在某酒店下的订单
      *
-     * @param hotelID  the hotel id
-     * @param username the username
-     * @return the list
+     * @param hotelID  酒店ID
+     * @param username 用户名
+     * @return 某客户在某酒店下的订单
      * @throws RemoteException 连接服务器异常
      */
     List<OrderVO> searchOrderByHotelIDAndUsername(long hotelID, String username) throws RemoteException;
@@ -37,87 +37,84 @@ public interface OrderBLService {
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     /**
-     * View hotel review list list.
+     * 获取酒店的所有评价
      *
-     * @param hotelID the hotel id
-     * @return the list
+     * @param hotelID 酒店ID
+     * @return 酒店的所有评价，若酒店无评价则返回size为0的表
      * @throws RemoteException 连接服务器异常
-     */
-/*
-     * 若酒店无评价则返回size为0的表
      */
     List<ReviewVO> viewHotelReviewList(long hotelID) throws RemoteException;
 
     /**
-     * View hotel review list by rating list.
+     * 获取酒店的特定评分的评价
      *
-     * @param hotelID the hotel id
-     * @param rating  the rating
-     * @return the list
+     * @param hotelID 酒店ID
+     * @param rating  评分
+     * @return 酒店的特定评分的评价，若无则返回size为0的表
      * @throws RemoteException 连接服务器异常
      */
     List<ReviewVO> viewHotelReviewListByRating(long hotelID, int rating) throws RemoteException;
 
     /**
-     * View full hotel order list list.
+     * 获取酒店的所有订单
      *
-     * @param hotelID the hotel id
-     * @return the list
+     * @param hotelID 酒店ID
+     * @return 酒店的所有订单，若无则返回size为0的表
      * @throws RemoteException 连接服务器异常
      */
     List<OrderVO> viewFullHotelOrderList(long hotelID) throws RemoteException;
 
     /**
-     * View type hotel order list list.
+     * 获取酒店某类型的订单
      *
-     * @param hotelID   the hotel id
-     * @param orderType the order type
-     * @return the list
+     * @param hotelID   酒店ID
+     * @param orderType 订单类型
+     * @return 酒店某类型的订单，若无则返回size为0的表
      * @throws RemoteException 连接服务器异常
      */
     List<OrderVO> viewTypeHotelOrderList(long hotelID, OrderType orderType) throws RemoteException;
 
     /**
-     * View order review review vo.
+     * 获取订单的评价
      *
-     * @param orderID the order id
-     * @return the review vo
+     * @param orderID 订单号
+     * @return 订单的评价，可能为null
      * @throws RemoteException 连接服务器异常
      */
     ReviewVO viewOrderReview(String orderID) throws RemoteException;
 
     /**
-     * Online check in result message.
+     * 线上入住
      *
-     * @param orderVO the order vo
-     * @return the result message
+     * @param orderVO 入住信息
+     * @return DataNotExisted，OrederStatusIncorrect，数据库返回的result message
      * @throws RemoteException 连接服务器异常
      */
     ResultMessage onlineCheckIn(OrderVO orderVO) throws RemoteException;
 
     /**
-     * Online check out result message.
+     * 线上退房
      *
-     * @param orderVO the order vo
-     * @return the result message
+     * @param orderVO 退房信息
+     * @return DataNotExisted，OrederStatusIncorrect，DataExisted（已退房），数据库返回的result message
      * @throws RemoteException 连接服务器异常
      */
     ResultMessage onlineCheckOut(OrderVO orderVO) throws RemoteException;
 
     /**
-     * Execute order result message.
+     * 执行订单，不包含入住信息
      *
-     * @param orderID the order id
-     * @return the result message
+     * @param orderID 订单号
+     * @return DataNotExisted，OrederStatusIncorrect，数据库返回的result message
      * @throws RemoteException 连接服务器异常
      */
     ResultMessage executeOrder(String orderID) throws RemoteException;
 
     /**
-     * Execute order result message.
+     * 执行订单，包含入住信息
      *
-     * @param orderVO the order vo
-     * @return the result message
+     * @param orderVO 入住信息
+     * @return DataNotExisted，OrederStatusIncorrect，数据库返回的result message
      * @throws RemoteException 连接服务器异常
      */
     ResultMessage executeOrder(OrderVO orderVO) throws RemoteException;
@@ -125,56 +122,56 @@ public interface OrderBLService {
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     /**
-     * Cancel order result message.
+     * 撤销订单
      *
-     * @param orderID the order id
-     * @return the result message
+     * @param orderID 订单号
+     * @return DataNotExisted，OrederStatusIncorrect，数据库返回的result message
      * @throws RemoteException 连接服务器异常
      */
     ResultMessage cancelOrder(String orderID) throws RemoteException;
 
     /**
-     * Review order result message.
+     * 评价订单
      *
-     * @param reviewVO the review vo
-     * @return the result message
+     * @param reviewVO 评价信息
+     * @return DataNotExisted（订单不存在），DataExisted（订单已评价），数据库返回的result message
      * @throws RemoteException the 连接服务器异常
      */
     ResultMessage reviewOrder(ReviewVO reviewVO) throws RemoteException;
 
     /**
-     * View full user order list list.
+     * 获取客户所有的订单
      *
-     * @param username the username
-     * @return the list
+     * @param username 用户名
+     * @return 客户所有的订单
      * @throws RemoteException 连接服务器异常
      */
     List<OrderVO> viewFullUserOrderList(String username) throws RemoteException;
 
     /**
-     * View type user order list list.
+     * 获取客户某类型的订单
      *
-     * @param username  the username
-     * @param orderType the order type
-     * @return the list
+     * @param username  用户名
+     * @param orderType 订单类型
+     * @return 客户某类型的订单
      * @throws RemoteException 连接服务器异常
      */
     List<OrderVO> viewTypeUserOrderList(String username, OrderType orderType) throws RemoteException;
 
     /**
-     * Search extra order by id order vo.
+     * 根据订单号搜索包含丰富信息的订单
      *
-     * @param orderID the order id
-     * @return the order vo
+     * @param orderID 订单号
+     * @return 包含丰富信息的订单
      * @throws RemoteException 连接服务器异常
      */
     OrderVO searchExtraOrderByID(String orderID) throws RemoteException;
 
     /**
-     * Gets order actual price.
+     * 获取订单实际价格
      *
-     * @param orderVO the order vo
-     * @return the order actual price
+     * @param orderVO 订单信息
+     * @return 订单实际价格
      * @throws RemoteException           连接服务器异常
      * @throws ClassNotFoundException    the class not found exception
      * @throws InstantiationException    the instantiation exception
@@ -184,10 +181,10 @@ public interface OrderBLService {
     double getOrderActualPrice(OrderVO orderVO) throws RemoteException, ClassNotFoundException, InstantiationException, IllegalAccessException, InvocationTargetException;
 
     /**
-     * Add order result message.
+     * 新增订单
      *
-     * @param orderVO the order vo
-     * @return the result message
+     * @param orderVO 订单信息
+     * @return CreditNotEnough，数据库返回的result message
      * @throws RemoteException 连接服务器异常
      */
     ResultMessage addOrder(OrderVO orderVO) throws RemoteException;
@@ -195,28 +192,28 @@ public interface OrderBLService {
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     /**
-     * Handle appeal result message.
+     * 处理订单申诉
      *
-     * @param orderID       the order id
-     * @param creditPercent the credit percent
-     * @return the result message
+     * @param orderID       订单号
+     * @param creditPercent 恢复的信用值比例
+     * @return DataNotExisted，OrederStatusIncorrect，数据库返回的result message
      * @throws RemoteException 连接服务器异常
      */
     ResultMessage handleAppeal(String orderID, double creditPercent) throws RemoteException;
 
     /**
-     * Gets full order list.
+     * 获取全部订单
      *
-     * @return the full order list
+     * @return 全部订单
      * @throws RemoteException 连接服务器异常
      */
     List<OrderVO> viewFullOrderList() throws RemoteException;
 
     /**
-     * Gets type order list.
+     * 获取某类型的订单
      *
-     * @param orderType the order type
-     * @return the type order list
+     * @param orderType 订单类型
+     * @return 某类型的订单
      * @throws RemoteException 连接服务器异常
      */
     List<OrderVO> viewTypeOrderList(OrderType orderType) throws RemoteException;
