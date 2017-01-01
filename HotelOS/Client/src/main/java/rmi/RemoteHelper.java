@@ -56,7 +56,7 @@ public class RemoteHelper {
             hotelDAO = (HotelDataService) Naming.lookup(networkAddress + "/" + "HotelDataService");
             System.out.println("Link to server!");
         } catch (NotBoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             throw new RemoteException();
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -76,7 +76,7 @@ public class RemoteHelper {
             orderDAO = (OrderDataService) Naming.lookup(networkAddress + "/" + "OrderDataService");
             System.out.println("Link to server!");
         } catch (NotBoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             throw new RemoteException();
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -96,7 +96,7 @@ public class RemoteHelper {
             personnelDAO = (PersonnelDataService) Naming.lookup(networkAddress + "/" + "PersonnelDataService");
             System.out.println("Link to server!");
         } catch (NotBoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             throw new RemoteException();
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -116,7 +116,7 @@ public class RemoteHelper {
             promotionDAO = (PromotionDataService) Naming.lookup(networkAddress + "/" + "PromotionDataService");
             System.out.println("Link to server!");
         } catch (NotBoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             throw new RemoteException();
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -136,7 +136,7 @@ public class RemoteHelper {
             userDAO = (UserDataService) Naming.lookup(networkAddress + "/" + "UserDataService");
             System.out.println("Link to server!");
         } catch (NotBoundException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             throw new RemoteException();
         } catch (MalformedURLException e) {
             e.printStackTrace();

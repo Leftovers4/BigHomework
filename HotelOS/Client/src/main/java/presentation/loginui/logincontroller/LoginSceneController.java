@@ -62,7 +62,7 @@ public class LoginSceneController {
             userBlService = new UserBlServiceImpl();
             personnelBLService = new PersonnelBLServiceImpl();
         } catch (RemoteException e) {
-            alertController.showNetConnectAlert();
+//            alertController.showNetConnectAlert();
         }
     }
 
@@ -204,18 +204,24 @@ public class LoginSceneController {
         try {
             if (currentUser.equals("user")) {
                 if (!loginUsername.getText().equals("") && !loginPassword.getText().equals("")) {
-                    ResultMessage resultMessage = userBlService.login(loginUsername.getText(), loginPassword.getText());
+                    if (userBlService != null) {
+                        ResultMessage resultMessage = userBlService.login(loginUsername.getText(), loginPassword.getText());
 
-                    if (resultMessage == ResultMessage.UsernameNotExisted) {
-                        alertController.showInputWrongAlert("用户名不存在！", "登录失败");
-                        System.out.println("not exits");
-                    } else if (resultMessage == ResultMessage.PasswordWrong) {
-                        alertController.showInputWrongAlert("密码错误！", "登录失败");
-                        System.out.println("wrong password");
-                    } else if (resultMessage == ResultMessage.Success) {
-                        stage.setScene(new ComUserScene(new Group(), stage, loginUsername.getText()));
-                        centerStage(stage);
-                        System.out.println("success");
+                        if (resultMessage == ResultMessage.UsernameNotExisted) {
+                            alertController.showInputWrongAlert("用户名不存在！", "登录失败");
+                            System.out.println("not exits");
+                        } else if (resultMessage == ResultMessage.PasswordWrong) {
+                            alertController.showInputWrongAlert("密码错误！", "登录失败");
+                            System.out.println("wrong password");
+                        } else if (resultMessage == ResultMessage.Success) {
+                            stage.setScene(new ComUserScene(new Group(), stage, loginUsername.getText()));
+                            centerStage(stage);
+                            System.out.println("success");
+                        } else if (resultMessage == ResultMessage.ServerConnectionFail) {
+                            alertController.showNetConnectAlert();
+                        }
+                    } else {
+                        alertController.showNetConnectAlert();
                     }
                 } else {
                     alertController.showInputWrongAlert("请输入用户名和密码", "错误提示");
@@ -224,25 +230,29 @@ public class LoginSceneController {
             } else {
                 if (!loginUsername.getText().equals("") && !loginPassword.getText().equals("")) {
                     if (isFormatTrue(loginUsername.getText())) {
-                        ResultMessage resultMessage = personnelBLService.login(Integer.valueOf(loginUsername.getText()), loginPassword.getText());
+                        if (personnelBLService != null) {
+                            ResultMessage resultMessage = personnelBLService.login(Integer.valueOf(loginUsername.getText()), loginPassword.getText());
 
-                        if (resultMessage == ResultMessage.Success) {
-                            System.out.println("personnel login success");
-                            PersonnelVO personnelVO = personnelBLService.searchPersonnelByID(Integer.valueOf(loginUsername.getText()));
-                            if(personnelVO.personnelType == PersonnelType.HotelWorker){
-                                stage.setScene(new ComWorkerScene(new Group(), stage, personnelVO.hotelID));
-                                centerStage(stage);
-                            }else if(personnelVO.personnelType == PersonnelType.WebMarketer){
-                                stage.setScene(new ComMarketerScene(new Group(), stage));
-                                centerStage(stage);
-                            }else {
-                                stage.setScene(new WebManagerComScene(new Group(), stage));
-                                centerStage(stage);
+                            if (resultMessage == ResultMessage.Success) {
+                                System.out.println("personnel login success");
+                                PersonnelVO personnelVO = personnelBLService.searchPersonnelByID(Integer.valueOf(loginUsername.getText()));
+                                if(personnelVO.personnelType == PersonnelType.HotelWorker){
+                                    stage.setScene(new ComWorkerScene(new Group(), stage, personnelVO.hotelID));
+                                    centerStage(stage);
+                                }else if(personnelVO.personnelType == PersonnelType.WebMarketer){
+                                    stage.setScene(new ComMarketerScene(new Group(), stage));
+                                    centerStage(stage);
+                                }else {
+                                    stage.setScene(new WebManagerComScene(new Group(), stage));
+                                    centerStage(stage);
+                                }
+
+                            } else {
+                                alertController.showInputWrongAlert("登录失败！", "登录失败");
+                                System.out.println("personnel login failed");
                             }
-
                         } else {
-                            alertController.showInputWrongAlert("登录失败！", "登录失败");
-                            System.out.println("personnel login failed");
+                            alertController.showNetConnectAlert();
                         }
                     }
                 }
@@ -262,19 +272,23 @@ public class LoginSceneController {
 
             if (loginPassword.getText().equals(confirmPasswordField.getText())) {
                 try {
-                    ResultMessage resultMessage = userBlService.registerUser(loginUsername.getText(), loginPassword.getText());
+                    if (userBlService != null) {
+                        ResultMessage resultMessage = userBlService.registerUser(loginUsername.getText(), loginPassword.getText());
 
-                    if (resultMessage == ResultMessage.DataExisted) {
-                        alertController.showInputWrongAlert("用户名已存在！", "注册失败");
-                        confirmPasswordField.clear();
-                        System.out.printf("exits");
-                    } else if (resultMessage == ResultMessage.Success) {
-                        alertController.showUpdateSuccessAlert("注册成功！", "注册成功");
-                        changeToLogin();
+                        if (resultMessage == ResultMessage.DataExisted) {
+                            alertController.showInputWrongAlert("用户名已存在！", "注册失败");
+                            confirmPasswordField.clear();
+                            System.out.printf("exits");
+                        } else if (resultMessage == ResultMessage.Success) {
+                            alertController.showUpdateSuccessAlert("注册成功！", "注册成功");
+                            changeToLogin();
+                        }
+
+                        loginUsername.setText(null);
+                        loginPassword.setText(null);
+                    } else {
+                        alertController.showNetConnectAlert();
                     }
-
-                    loginUsername.setText(null);
-                    loginPassword.setText(null);
                 } catch (RemoteException e) {
                     alertController.showNetConnectAlert();
                 }

@@ -297,7 +297,7 @@ public class UserGenerateOrderController {
 
                     System.out.println(price+"---------------------------------------");
 
-                    priceLabel.setText(String.valueOf(price));
+                    priceLabel.setText(String.valueOf(Math.round(price)));
                     if (orderVO.orderPromoInfoVO.promotionType == null) {
                         promotionLabel.setText("无");
                     } else {

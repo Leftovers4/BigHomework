@@ -82,6 +82,11 @@ public class UserHotelInfoController {
 
         alertController = new AlertController();
 
+        star = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
+        for (int i = 0; i<star.size(); i++) {
+            star.get(i).setVisible(false);
+        }
+
         try {
             hotelBlService = new HotelBlServiceImpl();
 
@@ -89,13 +94,11 @@ public class UserHotelInfoController {
             initialHotelRoomTable();
             initialOrderTable();
             initialData();
+
+
+
         } catch (RemoteException e) {
             alertController.showNetConnectAlert();
-        }
-
-        star = new ArrayList<>(Arrays.asList(star1, star2, star3, star4, star5));
-        for (int i = 0; i<star.size(); i++) {
-            star.get(i).setVisible(false);
         }
 
 
