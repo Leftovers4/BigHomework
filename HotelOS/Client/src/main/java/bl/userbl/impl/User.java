@@ -16,6 +16,12 @@ public class User{
         this.userPO = userPO;
     }
 
+    /**
+     * 判断给定的日期是不是客户的生日
+     *
+     * @param localDate 日期
+     * @return true（是），false（不是）
+     */
     public boolean isBirthday(LocalDate localDate){
         LocalDate birthday = userPO.getMemberPO().getBirthday();
 
@@ -27,10 +33,22 @@ public class User{
         return birthday.isEqual(localDate);
     }
 
+    /**
+     * 判断给定的密码是不是客户的密码
+     *
+     * @param password 密码
+     * @return true（正确），false（不正确）
+     */
     public boolean passwordCorrect(String password){
         return password.equals(userPO.getPassword());
     }
 
+    /**
+     * 判断给定的企业名称是不是客户的企业名称
+     *
+     * @param enterpriseName 企业名称
+     * @return true（是），false（不是）
+     */
     public boolean isEnterpriseName(String enterpriseName){
         String enterprise = userPO.getMemberPO().getEnterprise();
 
@@ -42,6 +60,11 @@ public class User{
         return enterpriseName.equals(enterprise);
     }
 
+    /**
+     * 判断客户是不是会员
+     *
+     * @return true（是），false（不是）
+     */
     public boolean isMember(){
         return !userPO.getMemberPO().getMemberType().equals(MemberType.None);
     }

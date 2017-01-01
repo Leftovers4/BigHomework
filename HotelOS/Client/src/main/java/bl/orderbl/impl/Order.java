@@ -14,38 +14,33 @@ public class Order{
 
     private OrderPO orderPO;
 
-    /**
-     * Instantiates a new Order.
-     *
-     * @param orderPO the order po
-     */
     public Order(OrderPO orderPO){
         this.orderPO = orderPO;
     }
 
     /**
-     * Has review boolean.
+     * 判断订单有无评价
      *
-     * @return the boolean
+     * @return true（有评价），false（没有评价）
      */
     public boolean hasReview(){
         return orderPO.getReviewPO().getReviewTime() != null;
     }
 
     /**
-     * Is late cancel boolean.
+     * 判断撤销订单的时间距离最晚执行时间是否小于规定值（当前是6个小时）
      *
-     * @param cancelTime the cancel time
-     * @return the boolean
+     * @param cancelTime 撤销订单的时间
+     * @return true（小于规定值），false（大于规定值）
      */
     public boolean isLateCancel(LocalDateTime cancelTime){
         return cancelTime.plusHours(6).isAfter(orderPO.getOrderTimePO().getLastExecuteTime());
     }
 
     /**
-     * Get ordered period local date time [ ].
+     * 获取订单对房间的占用起止时间
      *
-     * @return the local date time [ ]
+     * @return 长度为2的LocalDateTime数组，0位置为占用开始时间，1位置为占用结束时间
      */
     public LocalDateTime[] getOrderedPeriod(){
         LocalDateTime[] res = new LocalDateTime[2];
@@ -57,9 +52,9 @@ public class Order{
     }
 
     /**
-     * Is overdue boolean.
+     * 判断订单是否过期
      *
-     * @return the boolean
+     * @return true（已过期），false（未过期）
      */
     public boolean isOverdue(){
         boolean case1;

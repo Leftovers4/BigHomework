@@ -154,12 +154,12 @@ public interface HotelBLService {
 /*--------------------------------------------------------------------------------------------------------------------*/
 
     /**
-     * 根据选择的关键字对酒店列表进行排序，有升序和降序两种排序，注意该方法会返回一个新的列表
+     * 根据选择的关键字对酒店列表进行排序，有升序和降序两种排序，方法会返回一个新的列表
      *
      * @param hotelVOs 要进行排序的酒店
      * @param key      关键字，有价格，星级，评分，价格为“price”，星级为“star”，评分为“rating”
      * @param mode     排序模式，有升序和降序，升序为0，降序为1
-     * @return the list
+     * @return 经过排序的酒店
      */
     List<HotelVO> sortHotels(List<HotelVO> hotelVOs, String key, int mode);
 

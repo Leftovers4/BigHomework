@@ -10,11 +10,6 @@ import java.util.List;
  */
 public class HotelVOList extends ArrayList<HotelVO>{
 
-    /**
-     * Instantiates a new Hotel vo list.
-     *
-     * @param hotelVOList the hotel vo list
-     */
     public HotelVOList(List<HotelVO> hotelVOList){
         for (int i = 0; i < hotelVOList.size(); i++) {
             this.add(hotelVOList.get(i));
@@ -22,10 +17,10 @@ public class HotelVOList extends ArrayList<HotelVO>{
     }
 
     /**
-     * Sort.
+     * 根据选择的关键字对酒店列表进行排序，有升序和降序两种排序
      *
-     * @param key  the key
-     * @param mode the mode
+     * @param key  关键字
+     * @param mode 排序模式，升序0，降序1
      */
     public void sort(String key, int mode){
         int hotelVONum = this.size();

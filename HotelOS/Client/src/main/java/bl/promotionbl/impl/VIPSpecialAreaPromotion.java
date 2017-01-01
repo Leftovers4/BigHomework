@@ -32,12 +32,6 @@ public class VIPSpecialAreaPromotion implements Sale{
 
     private double[] levelDiscounts;
 
-    /**
-     * Instantiates a new Vip special area promotion.
-     *
-     * @param promotionPO the promotion po
-     * @throws RemoteException the remote exception
-     */
     public VIPSpecialAreaPromotion(PromotionPO promotionPO) throws RemoteException {
         //初始化tradingAreas
         tradingAreas = new ArrayList<>();

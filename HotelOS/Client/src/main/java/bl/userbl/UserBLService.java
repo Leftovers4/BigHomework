@@ -113,6 +113,16 @@ public interface UserBLService {
      */
     ResultMessage deleteUser(String username) throws RemoteException;
 
+    /**
+     * 获取全部客户
+     *
+     * @return 全部客户
+     * @throws RemoteException
+     * @throws ClassNotFoundException
+     * @throws InvocationTargetException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     */
     List<UserVO> getAllUsers() throws RemoteException, ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException;
 
 }

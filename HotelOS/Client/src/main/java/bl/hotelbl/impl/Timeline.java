@@ -14,11 +14,6 @@ public class Timeline{
 
     private ArrayList<Integer> timelineRoomNums;
 
-    /**
-     * Instantiates a new Timeline.
-     *
-     * @param roomTotal the room total
-     */
     public Timeline(int roomTotal){
         //初始化roomTotal
         this.roomTotal = roomTotal;
@@ -34,21 +29,22 @@ public class Timeline{
     }
 
     /**
-     * Add period.
+     * 在时间线上添加一个订单
      *
-     * @param period the period
-     * @param amount the amount
+     * @param period 长度为2的LocalDateTime数组，0位置表示订单对房间占用的开始时间，
+     *               1位置表示订单对房间占用的结束时间
+     * @param amount 订单房间数量
      */
     public void addPeriod(LocalDateTime[] period, int amount){
         addPeriod(period[0], period[1], amount);
     }
 
     /**
-     * Add period.
+     * 在时间线上添加一个订单
      *
-     * @param beginTime the begin time
-     * @param endTime   the end time
-     * @param amount    the amount
+     * @param beginTime 订单对房间占用的开始时间
+     * @param endTime   订单对房间占用的结束时间
+     * @param amount    订单房间数量
      */
     public void addPeriod(LocalDateTime beginTime, LocalDateTime endTime, int amount){
         for (int i = addTime(beginTime, true); i <= addTime(endTime, false); i++) {
@@ -72,11 +68,11 @@ public class Timeline{
     }
 
     /**
-     * Get bookable room amount int.
+     * 获取房间类型的在某段时间的可预定房间数量
      *
-     * @param beginTime the begin time
-     * @param endTime   the end time
-     * @return the int
+     * @param beginTime 入住时间
+     * @param endTime   离开时间
+     * @return 可预定房间数量
      */
     public int getBookableRoomAmount(LocalDateTime beginTime, LocalDateTime endTime){
         int res = roomTotal;

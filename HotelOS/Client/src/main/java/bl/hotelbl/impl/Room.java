@@ -20,11 +20,6 @@ public class Room{
 
     private Timeline timeline;
 
-    /**
-     * Instantiates a new Room.
-     *
-     * @param roomPO the room po
-     */
     public Room(RoomPO roomPO){
         //初始化roomPO
         this.roomPO = roomPO;
@@ -34,21 +29,21 @@ public class Room{
     }
 
     /**
-     * Get offline checkin room amount int.
+     * 获取该房间类型的线下入住房间数
      *
-     * @return the int
+     * @return 该房间类型的线下入住房间数
      */
     public int getOfflineCheckinRoomAmount(){
         return (roomPO.getTotal() - roomPO.getAvailable());
     }
 
     /**
-     * Gets bookable room amount.
+     * 获取该房间类型的可预定房间数
      *
-     * @param beginTime the begin time
-     * @param endTime   the end time
-     * @return the bookable room amount
-     * @throws RemoteException the remote exception
+     * @param beginTime 入住时间
+     * @param endTime   离开时间
+     * @return 可预定房间数
+     * @throws RemoteException 连接服务器异常
      */
     public int getBookableRoomAmount(LocalDateTime beginTime, LocalDateTime endTime) throws RemoteException {
         List<OrderPO> orderPOList = RemoteHelper.getInstance().getOrderDAO().findByHotelID(roomPO.gethotelID());
