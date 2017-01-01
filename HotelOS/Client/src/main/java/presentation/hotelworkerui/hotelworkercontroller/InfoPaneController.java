@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -40,6 +41,8 @@ public class InfoPaneController {
     @FXML private ImageView star3;
     @FXML private ImageView star4;
     @FXML private ImageView star5;
+    @FXML private GridPane starPane;
+    @FXML private ComboBox<Integer> starBox;
 
     //地址
     @FXML private Label    addressLabel;
@@ -65,6 +68,7 @@ public class InfoPaneController {
     private Pane mainPane;
     private String city;
     private String tradeArea;
+    private int starNum;
 
     private String newpath = "C:/Leftovers/client/hotel/hotelImg/";
 
@@ -125,7 +129,8 @@ public class InfoPaneController {
             hotelServiceLabel.setText(hotelVO.service);
 
             //初始化星级
-            initStar(hotelVO.star);
+            starNum = hotelVO.star;
+            initStar(starNum);
         } catch (RemoteException e) {
             alertController.showNetConnectAlert();
         }
@@ -136,6 +141,8 @@ public class InfoPaneController {
         for (int i = 0; i < star; i++){
             starLists.get(i).setVisible(true);
         }
+
+        for(int j = star; j < 5; j++) starLists.get(j).setVisible(false);
     }
 
     /**
@@ -148,6 +155,10 @@ public class InfoPaneController {
         setEditInfoComponentsVisible(true);
         cityBox.setValue(city);
         tradeAreaBox.setValue(tradeArea);
+
+        starBox.getItems().clear();
+        starBox.getItems().addAll(5,4,3,2,1);
+        starBox.setValue(starNum);
     }
 
 
@@ -160,6 +171,7 @@ public class InfoPaneController {
 
         HotelVO hotelVO = new HotelVO();
         hotelVO.hotelID = ComWorkerSceneController.hotelID;
+        hotelVO.star = starBox.getValue();
         hotelVO.address = cityBox.getValue()+"";
         hotelVO.tradingArea = tradeAreaBox.getValue()+"";
         hotelVO.description = simpleIntroArea.getText();
@@ -191,6 +203,7 @@ public class InfoPaneController {
     }
 
     private void setEditInfoComponentsVisible(Boolean isVisible){
+        starBox.setVisible(isVisible);
         cityBox.setVisible(isVisible);
         tradeAreaBox.setVisible(isVisible);
         simpleIntroArea.setVisible(isVisible);
@@ -200,6 +213,7 @@ public class InfoPaneController {
     }
 
     private void setCheckInfoComponentsVisible(Boolean isVisible){
+        starPane.setVisible(isVisible);
         addressLabel.setVisible(isVisible);
         simpleIntroLabel.setVisible(isVisible);
         hotelServiceLabel.setVisible(isVisible);

@@ -98,6 +98,7 @@ public class HotelBlServiceImpl implements HotelBLService {
             return ResultMessage.DataNotExisted;
 
         //酒店存在的情况
+        hotelPO.setStar(hotelVO.star);
         hotelPO.setAddress(hotelVO.address);
         hotelPO.setTradingArea(hotelVO.tradingArea);
         hotelPO.setDescription(hotelVO.description);
